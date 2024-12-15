@@ -1,0 +1,9 @@
+{
+    "require": {
+        "tightenco/jigsaw": "^1.7",
+        "tempest/highlight": "^2.11"
+    },
+    "require-dev": {
+        "tightenco/duster": "^3.1"
+    }
+}

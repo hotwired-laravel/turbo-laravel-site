@@ -1,0 +1,15 @@
+class ChirpsController
+{
+    use InteractsWithHotwireNativeNavigation;
+
+    public function store(ChirpRequest $request)
+    {
+        $request->user()->chirps()->create(
+            $request->validated()
+        );
+
+        return $this->recedeOrRedirectTo(
+            to_back(route('chirps.index'))
+        )->with('notice', __('Chirp created.'));
+    }
+}

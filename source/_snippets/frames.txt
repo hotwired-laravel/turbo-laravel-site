@@ -1,0 +1,12 @@
+<!-- File: chirps/show.blade.php -->
+<x-turbo::frame :id="$chirp">
+    <p>{{ $chirp->content }}</p>
+    <a href="{{ route('chirps.edit', $edit) }}">
+        Edit
+    </a>
+</x-turbo::frame>
+
+<!-- File: chirps/edit.blade.php -->
+<x-turbo::frame :id="$chirp">
+    <form action="{{ route('chirps.update', $chirp) }}" method="POST">...</form>
+</x-turbo::frame>

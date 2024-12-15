@@ -1,0 +1,40 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import './_code';
+@import './_scrollbar';
+@import './_borders';
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+@font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 100;
+    src: url('/assets/fonts/Jost-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Jost';
+    font-style: italic;
+    font-weight: 100;
+    src: url('/assets/fonts/Jost-Italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 900;
+  src: url('/assets/fonts/OpenSans-ExtraBold.ttf') format('ttf');
+}
