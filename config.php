@@ -16,15 +16,18 @@ return [
 
   'current_docs_index' => '/docs/installation',
   'v1_docs_index' => '/1.x/docs/installation',
+  'bootcamp_index' => '/bootcamp/introduction',
 
   'collections' => [
     'docs' => ['path' => 'docs/{filename}', 'sort' => 'order', 'searchable' => fn($page) => $page->search ?? true],
     'v1' => ['path' => '1.x/docs/{filename}', 'sort' => 'order', 'searchable' => fn($page) => $page->search ?? true],
+    'bootcamp' => ['path' => 'bootcamp/{filename}', 'sort' => 'order', 'searchable' => fn($page) => $page->search ?? true],
   ],
 
   'navigation' => [
     'v1' => require('v1-navigation.php'),
     'v2' => require('navigation.php'),
+    'bootcamp' => require('bootcamp.php'),
   ],
 
   'selected' => fn($page, $section) => str_contains($page->getPath(), $section),

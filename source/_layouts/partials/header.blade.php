@@ -9,7 +9,7 @@
     <ul class="flex items-center space-x-6 -my-2">
       <li>
         <div class="group relative py-2">
-          <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+          <a href="/docs" class="{{ str_contains($page->getPath(), '/docs/') ? 'bg-white/90' : '' }} px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
             <span>Documentation</span>
 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -19,14 +19,15 @@
 
           <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
             <ul class="space-y-1">
-              <li><a href="/docs/" class="block px-2 py-1 {{ ! str_starts_with($page->getPath(), '/1.x/') ? 'bg-zinc-900/20' : '' }} rounded">Version <span class="">{{ $page->current_version }}</span></a></li>
-              <li><a href="/1.x/" class="block px-2 py-1 {{ str_starts_with($page->getPath(), '/1.x') ? 'bg-zinc-900/20' : '' }} rounded">Version <span class="">{{ $page->latest_v1 }}</span></a></li>
+              <li><a href="{{ $page->current_docs_index }}" class="block px-2 py-1 {{ ! str_starts_with($page->getPath(), '/1.x/') ? 'bg-zinc-900/20' : '' }} rounded">Version <span class="">{{ $page->current_version }}</span></a></li>
+              <li><a href="{{ $page->v1_docs_index }}" class="block px-2 py-1 {{ str_starts_with($page->getPath(), '/1.x') ? 'bg-zinc-900/20' : '' }} rounded">Version <span class="">{{ $page->latest_v1 }}</span></a></li>
             </ul>
           </div>
         </div>
       </li>
       <li><a href="{{ $page->github_url }}" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
-      <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+      <li><a href="{{ $page->bootcamp_index }}" class="{{ str_contains($page->getPath(), '/bootcamp/') ? 'bg-white/90' : '' }} px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
+      <li><a href="/demo" class="{{ str_starts_with($page->getPath(), '/demo') ? 'bg-white/90' : '' }} px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
     </ul>
   </nav>
 </header>

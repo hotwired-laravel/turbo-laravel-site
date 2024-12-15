@@ -83,7 +83,7 @@
       <p class="text-center text-lg">In order to help you to get a better understanding of the many sides of Hotwire, we offer a free Bootcamp inspired by the official Laravel Bootcamp. In the Turbo Laravel Bootcamp, you’ll get a hands-on introduction to Hotwire and Turbo Laravel building a web application from scratch and then building the hybrid native app for it.</p>
 
       <ul class="sm:flex items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-        <li><a href="#" class="px-4 py-2 inline-block w-full text-center rounded-full bg-zinc-900/90 text-white transition hover:bg-zinc-900/70">Start learning</a></li>
+        <li><a href="{{ $page->bootcamp_index }}" class="px-4 py-2 inline-block w-full text-center rounded-full bg-zinc-900/90 text-white transition hover:bg-zinc-900/70">Start learning</a></li>
       </ul>
     </div>
   </section>
