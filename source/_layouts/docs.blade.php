@@ -1,9 +1,13 @@
 @extends('_layouts.main')
 
+@section('sub-nav-docs-mobile')
+  @include('_layouts.partials.subnav-mobile-menu', ['menu' => $page->navigation['v2']])
+@endsection
+
 @section('body')
   <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
     <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
-      <aside class="max-w-xs w-full hidden sm:block space-y-4">
+      <aside class="max-w-xs w-full hidden lg:block space-y-4">
         @include('_layouts.partials.search', ['href' => '/docs/search', 'placeholder' => 'Search v2 docs...'])
 
         @include('_layouts.partials.sidebar-menu', ['menu' => $page->navigation['v2']])

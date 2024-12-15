@@ -22,10 +22,10 @@
   <section class="bg-white/90 custom-border px-6 py-20">
     <div class="space-y-4 sm:space-y-6 sm:max-w-5xl mx-auto w-full text-center">
       <h3 class="text-4xl sm:text-6xl font-heading font-extrabold">Your typical Laravel app.</h3>
-      <p class="text-xl">Hotwire was built for server-side web frameworks, like Laravel and Rails. Modern web applications don't have to be built as stateful components. We can keep writing regular <a class="underline text-zinc-900/90" href="https://youtu.be/MF0jFKvS4SI?si=1wGv8BYVd8v8IdA2">Cruddy applications</a>, with controllers, Blade views and so on, and progressively enhance the <em>fidelity</em> of our UIs using Turbo Frames, Turbo Streams, or JavaScript.</p>
+      <p class="text-xl">Hotwire was built for full-stack web frameworks, like Laravel and Rails. Modern web applications don't have to be built as stateful components. We can keep writing regular <a class="underline text-zinc-900/90" href="https://youtu.be/MF0jFKvS4SI?si=1wGv8BYVd8v8IdA2">Cruddy applications</a>, with controllers, Blade views and so on, and progressively enhance the <em>fidelity</em> of our UIs using Turbo Frames, Turbo Streams, or JavaScript.</p>
     </div>
 
-    <div class="mt-20 sm:max-w-5xl mx-auto w-full space-y-20 sm:space-y-0 sm:grid grid-cols-2 gap-20 thin-scrollbar">
+    <div class="mt-20 lg:max-w-5xl mx-auto w-full space-y-20 lg:space-y-0 lg:grid grid-cols-2 gap-20 thin-scrollbar">
       <div class="space-y-4">
         <div class="overflow-x-auto text-sm rounded">
           {!! $page->snippets['frames'] !!}
