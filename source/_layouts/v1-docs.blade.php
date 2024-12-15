@@ -14,6 +14,10 @@
           <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
             @yield('content')
           </div>
+
+          @unless ($page->getPath() === '/1.x/docs/search')
+            @include('_layouts.partials.next-previous-links')
+          @endunless
         </div>
       </main>
     </div>

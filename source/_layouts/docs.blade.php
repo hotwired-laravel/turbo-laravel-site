@@ -15,8 +15,8 @@
             @yield('content')
           </div>
 
-          @unless ($withoutLinks ?? true)
-          @include('_layouts.partials.next-previous-links')
+          @unless ($page->getPath() === '/docs/search')
+            @include('_layouts.partials.next-previous-links')
           @endunless
         </div>
       </main>

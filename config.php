@@ -7,16 +7,19 @@ return [
   'baseUrl' => '',
   'title' => 'Turbo Laravel',
   'description' => 'Website and documentation for the Turbo Laravel package.',
-  'version' => '2.5.0',
+
   'github_url' => 'https://github.com/hotwired-laravel/turbo-laravel',
   'hotwire_site_url' => 'https://hotwired.dev/',
+
+  'current_version' => '2.2.0',
+  'latest_v1' => '1.12.2',
 
   'current_docs_index' => '/docs/installation',
   'v1_docs_index' => '/1.x/docs/installation',
 
   'collections' => [
     'docs' => ['path' => 'docs/{filename}', 'sort' => 'order', 'searchable' => fn($page) => $page->search ?? true],
-    '1.x' => ['path' => '1.x/{filename}', 'sort' => 'order'],
+    'v1' => ['path' => '1.x/docs/{filename}', 'sort' => 'order', 'searchable' => fn($page) => $page->search ?? true],
   ],
 
   'navigation' => [
