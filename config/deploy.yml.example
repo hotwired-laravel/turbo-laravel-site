@@ -1,0 +1,22 @@
+# Name of your application. Used to uniquely configure containers.
+service: turbo-laravel-site
+
+image: tonysm/turbo-laravel-site
+
+servers:
+  web:
+    - IP_GOES_HERE
+
+proxy:
+  ssl: true
+  host: docs.turbo-laravel.com
+  app_port: 80
+
+registry:
+  username: tonysm
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+builder:
+  arch: amd64
+

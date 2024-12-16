@@ -1,0 +1,5 @@
+/.git/
+/.kamal/secrets
+/vendor/
+/node_modules/
+/build_*/

@@ -4,7 +4,10 @@
 /vendor/
 /.idea/
 /.vscode/
+/public/
+/.kamal/secrets
 npm-debug.log
+/config/deploy.yml
 
 # Optional ignores
 # /build_staging/
