@@ -8,6 +8,7 @@
 /.kamal/secrets
 npm-debug.log
 /config/deploy.yml
+/package-src/
 
 # Optional ignores
 # /build_staging/
