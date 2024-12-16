@@ -9,6 +9,8 @@
 npm-debug.log
 /config/deploy.yml
 /package-src/
+/source/_v1/
+/source/_docs/
 
 # Optional ignores
 # /build_staging/
