@@ -1,11 +1,12 @@
 
 pre:has(code) {
-  padding: 1.5em;
+    padding: 1.5em;
 }
 
 pre:has(code), pre > code {
     color: #cdd6f4 !important;
     background-color: #1e1e2e !important;
+    width: 100%;
 }
 
 .hl-keyword {

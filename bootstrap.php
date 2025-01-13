@@ -15,8 +15,21 @@ use TightenCo\Jigsaw\Jigsaw;
  *     // Your code here
  * });
  */
-$highlighter = new \Tempest\Highlight\Highlighter();
+$highlighter = new \Tempest\Highlight\Highlighter;
 
 $container['markdownParser']->code_block_content_func = function ($code, $language) use ($highlighter) {
-  return $highlighter->parse($code, $language ?? 'php');
+    return strtr($highlighter->parse(
+        content: strtr($code, [
+            "<{{'?php'}}" => '<?php',
+            "{{'@'}}" => '@',
+            '@{{' => '{{',
+            '@{!!' => '{!!',
+        ]),
+        language: $language,
+    ), [
+        '<?php' => "<{{'?php'}}",
+        '@' => "{{'@'}}",
+        '{{' => '@{{',
+        '{!!' => '@{!!',
+    ]);
 };

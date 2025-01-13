@@ -1,18 +1,29 @@
 <?php
 
 return [
-  'Getting Started' => [
-    'children' => [
-      'Installation' => '/docs/installation',
-      'Overview' => '/docs/overview',
-      'Conventions' => '/docs/conventions',
+    'Prologue' => [
+        'children' => [
+            'Upgrade Guide' => '/docs/upgrade',
+        ],
     ],
-  ],
-  'Essentials' => [
-    'children' => [
-      'Blade Helpers' => '/docs/blade-helpers',
-      'Helper Functions' => '/docs/helper-functions',
-      'Turbo Streams' => '/docs/turbo-streams',
+    'Getting Started' => [
+        'children' => [
+            'Installation' => '/docs/installation',
+            'Overview' => '/docs/overview',
+            'Conventions' => '/docs/conventions',
+        ],
     ],
-  ],
+    'Essentials' => [
+        'children' => [
+            'Helpers' => '/docs/helpers',
+            'Turbo Frames' => '/docs/turbo-frames',
+            'Turbo Streams' => '/docs/turbo-streams',
+            'Broadcasting' => '/docs/broadcasting',
+            'Validation Redirects' => '/docs/validation-response-redirects',
+            'CSRF Protection' => '/docs/csrf',
+            'Hotwire Native' => '/docs/hotwire-native',
+            'Testing' => '/docs/testing',
+            'Known Issues' => '/docs/known-issues',
+        ],
+    ],
 ];
