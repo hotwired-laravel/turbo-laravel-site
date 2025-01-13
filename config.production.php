@@ -1,6 +1,6 @@
 <?php
 
 return [
-  'production' => true,
-  'baseUrl' => 'https://docs.turbo-laravel.com',
+    'production' => true,
+    'baseUrl' => 'https://turbo-laravel.com',
 ];
