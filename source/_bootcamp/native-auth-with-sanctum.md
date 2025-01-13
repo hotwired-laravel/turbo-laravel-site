@@ -1,12 +1,15 @@
+---
+extends: _layouts.bootcamp
+title: Native Authentication
+description: Native Authentication
+order: 10
+---
+
 # *09.* Native Auth Screens and Laravel Sanctum
-
-[TOC]
-
-## Introduction
 
 Let's tackle the mobile authentication first. We're now able to use the web authentication flow, but as we discussed earlier, sometimes we need to implement fully native screens in our app that uses JSON endpoints with an Access Token. For that reason, we're gonna change our login flow just for our Turbo Native Android client. If you were building a Native iOS app, that could also use this same flow.
 
-Laravel has essentially two first-party packages when it comes to Token-based authentication: [Laravel Sanctum](https://laravel.com/docs/9.x/sanctum) and [Laravel Passport](https://laravel.com/docs/passport).
+Laravel has essentially two first-party packages when it comes to Token-based authentication: [Laravel Sanctum](https://laravel.com/docs/sanctum) and [Laravel Passport](https://laravel.com/docs/passport).
 
 For this Bootcamp, we're gonna be using Laravel Sanctum, as our flow is a mix of an SPA and mobile authentication flows, both provided by Sanctum.
 
@@ -17,69 +20,26 @@ Oh, and we're going to use [Jetpack Compose](https://developer.android.com/jetpa
 Open the Module's `build.gradle` file and add the following lines to it:
 
 ```groovy
-plugins {
-    // [tl! collapse:start]
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    // [tl! collapse:end]
-}
-
-android {
-    // [tl! collapse:start]
-    namespace 'com.example.turbochirpernative'
-    compileSdk 33
-
-    defaultConfig {
-        applicationId "com.example.turbochirpernative"
-        minSdk 24
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-    // [tl! collapse:end add:start]
-    buildFeatures {
-        viewBinding true
-        compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion "1.4.0-dev-k1.7.20-RC-a143c065804"
-    }
-    // [tl! add:end]
-}
-
 dependencies {
     def lifecycle_version = '2.5.1'
-    def compose_version = '1.3.0-rc01' // [tl! add]
-    // [tl! collapse:start]
+    def compose_version = '1.3.0-rc01' // Add this
+
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    // [tl! collapse:end]
+
     implementation 'dev.hotwire:turbo:7.0.0-rc12'
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
-    implementation "androidx.compose.ui:ui:$compose_version" // [tl! add:start]
+
+    // Add these:
+    implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "com.squareup.okhttp3:okhttp:4.10.0"
-    implementation "com.google.code.gson:gson:2.9.1" // [tl! add:end]
+    implementation "com.google.code.gson:gson:2.9.1"
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -98,42 +58,28 @@ We also made some changes to the `buildFeatures` to enable compose and also conf
 For that compiler customization to work, we need to make a change to our `settings.gradle` file to add the compose compiler's repository to Maven:
 
 ```groovy
-pluginManagement {
-    // [tl! collapse:start]
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-    // [tl! collapse:end]
-}
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
-        // [tl! add:start]
+        // Add this:
         maven {
             url "https://androidx.dev/storage/compose-compiler/repository/"
         }
-        // [tl! add:end]
     }
 }
-// [tl! collapse:start]
-rootProject.name = "Turbo Chirper Native"
-include ':app'
-// [tl! collapse:end]
 ```
 
 Okay, now press that "Sync now" link at the top and fingers crossed!
 
-![Gradle Dependencies](/images/native/auth-gradle-dependencies.png)
+![Gradle Dependencies](/assets/images/bootcamp/native/auth-gradle-dependencies.png)
 
 ## The Auth Client Service
 
 Now that we have all the libs in place, let's start sketching out how this is gonna work.
 
-As mentioned earlier, we're gonna need both the [Cookie](https://laravel.com/docs/9.x/sanctum#spa-authentication) AND the [Token](https://laravel.com/docs/9.x/sanctum#mobile-application-authentication) authentication in our case. We need the Cookie-based authentication for our shared WebView while the Access Token we'll store in our app settings so we can reuse it whenever we need to build a fully native screen.
+As mentioned earlier, we're gonna need both the [Cookie](https://laravel.com/docs/sanctum#spa-authentication) AND the [Token](https://laravel.com/docs/sanctum#mobile-application-authentication) authentication in our case. We need the Cookie-based authentication for our shared WebView while the Access Token we'll store in our app settings so we can reuse it whenever we need to build a fully native screen.
 
 We'll handle the Laravel side of this soon. Add these new constants to our `util.Constants` file:
 
@@ -142,11 +88,9 @@ package com.example.turbochirpernative.util
 
 const val BASE_URL = "http://10.0.2.2"
 const val CHIRPS_HOME_URL = "$BASE_URL/chirps"
-// [tl! add:start]
 const val API_BASE_URL = "$BASE_URL/api"
 const val API_CSRF_COOKIES_URL = "$BASE_URL/sanctum/csrf-cookie"
 const val API_LOGIN_URL = "$API_BASE_URL/login"
-// [tl! add:end]
 ```
 
 Next, let's create our `AuthClient` to interact with the API. First, add an "api" package to the root of the project (next to the "features" package) by right-clicking on the root package then choosing "New > Package". Inside of it, add a new Kotlin class:
@@ -476,7 +420,7 @@ class LoginFragment : TurboFragment(), LoginRequestCallback, CsrfTokenCallback {
 }
 ```
 
-There's a lot going on in this screen, and we're not gonna talk about it much. The important thing to note here is that we're instanciating the `authClient` as an attribute to the `LoginFragment` instance. This is important because we're storing the CSRF Token, Cookie, and the Laravel Session cookie in the `AuthClient` instance, so we can't just create a new instance of the `AuthClient` whenever we want.
+There's a lot going on in this screen, and we're not gonna talk about it much. The important thing to note here is that we're instantiating the `authClient` as an attribute to the `LoginFragment` instance. This is important because we're storing the CSRF Token, Cookie, and the Laravel Session cookie in the `AuthClient` instance, so we can't just create a new instance of the `AuthClient` whenever we want.
 
 Also, we're calling the `authClient.fetchCsrfToken()` in a `DisposableEffect` to make sure it only calls it once when Compose mounts this screen. Then, whenever the user types non-blank email and password fields to the inputs we have just created, we'll call the `authClient.attempt()` with it. We're using Toast messages here and there to give some feedback on what's going on. That's more for us than for actual users of our app, so feel free to remove those if you want to.
 
@@ -484,54 +428,30 @@ Finally, let's register our fragment in the `MainSessionNavHostFragment`:
 
 ```kotlin
 package com.example.turbochirpernative.main
-// [tl! collapse:start]
+
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.turbochirpernative.BuildConfig
-// [tl! collapse:end]
-import com.example.turbochirpernative.features.auth.LoginFragment // [tl! add]
+
+import com.example.turbochirpernative.features.auth.LoginFragment
 import com.example.turbochirpernative.features.web.WebFragment
-// [tl! collapse:start]
+
 import com.example.turbochirpernative.util.CHIRPS_HOME_URL
 import dev.hotwire.turbo.config.TurboPathConfiguration
 import dev.hotwire.turbo.session.TurboSessionNavHostFragment
 import kotlin.reflect.KClass
-// [tl! collapse:end]
+
 class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
-    // [tl! collapse:start]
-    override val sessionName = "main"
+    // ...
 
-    override val startLocation = CHIRPS_HOME_URL
-
-    override val registeredActivities: List<KClass<out AppCompatActivity>>
-        get() = listOf()
-    // [tl! collapse:end]
     override val registeredFragments: List<KClass<out Fragment>>
         get() = listOf(
             WebFragment::class,
-            LoginFragment::class, // [tl! add]
-        )
-    // [tl! collapse:start]
-    override val pathConfigurationLocation: TurboPathConfiguration.Location
-        get() = TurboPathConfiguration.Location(
-            assetFilePath = "json/configuration.json",
+            LoginFragment::class, // Add this
         )
 
-    override fun onSessionCreated() {
-        super.onSessionCreated()
-        session.webView.settings.userAgentString = customUserAgent(session.webView)
-
-        if (BuildConfig.DEBUG) {
-            session.setDebugLoggingEnabled(true)
-            WebView.setWebContentsDebuggingEnabled(true)
-        }
-    }
-
-    private fun customUserAgent(webView: WebView): String {
-        return "Turbo Native Android ${webView.settings.userAgentString}"
-    }
-    // [tl! collapse:end]
+    // ...
 }
 ```
 
@@ -570,7 +490,7 @@ Then, add the new entry to the `assets/json/configuration.json` to tell Turbo to
 
 This is what the project structure should look like for you:
 
-![Login Screen project structure](/images/native/auth-project-structure-login-screen.png)
+![Login Screen project structure](/assets/images/bootcamp/native/auth-project-structure-login-screen.png)
 
 Before we're able to test this, we need add Sanctum and our API routes to the Laravel side of our Chirper web app!
 
@@ -598,31 +518,15 @@ Now is the exception part. Sanctum's default installation recommends adding the 
 
 ```php
 <?php
-// [tl! collapse:start]
+
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-// [tl! collapse:end]
+
 class Kernel extends HttpKernel
 {
-    // [tl! collapse:start]
-    /**
-     * The application's global HTTP middleware stack.
-     *
-     * These middleware are run during every request to your application.
-     *
-     * @var array<int, class-string|string>
-     */
-    protected $middleware = [
-        // \App\Http\Middleware\TrustHosts::class,
-        \App\Http\Middleware\TrustProxies::class,
-        \Illuminate\Http\Middleware\HandleCors::class,
-        \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
-        \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \App\Http\Middleware\TrimStrings::class,
-        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-    ];
-    // [tl! collapse:end]
+    // ...
+
     /**
      * The application's route middleware groups.
      *
@@ -630,45 +534,18 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            // [tl! collapse:start]
-            \App\Http\Middleware\EncryptCookies::class,
-            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-            \Illuminate\Session\Middleware\StartSession::class,
-            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \App\Http\Middleware\VerifyCsrfToken::class,
-            \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            // [tl! collapse:end]
+            // ...
         ],
 
         'api' => [
-            // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-            \Tonysm\TurboLaravel\Http\Middleware\TurboMiddleware::class, // [tl! remove:-1,1 add]
-            \App\Http\Middleware\EnsureTurboNativeRequestsAreStateful::class, // [tl! add]
+            \Tonysm\TurboLaravel\Http\Middleware\TurboMiddleware::class,
+            \App\Http\Middleware\EnsureTurboNativeRequestsAreStateful::class, // Add this
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
-    // [tl! collapse:start]
-    /**
-     * The application's route middleware.
-     *
-     * These middleware may be assigned to groups or used individually.
-     *
-     * @var array<string, class-string|string>
-     */
-    protected $routeMiddleware = [
-        'auth' => \App\Http\Middleware\Authenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
-        'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
-        'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
-        'signed' => \App\Http\Middleware\ValidateSignature::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-    ];
-    // [tl! collapse:end]
+
+    // ...
 }
 ```
 
@@ -730,7 +607,7 @@ Now, let's add our login route to the `routes/api.php` entrypoint:
 
 ```php
 <?php
-// [tl! collapse:start]
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -738,18 +615,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-// [tl! collapse:end]
-// [tl! add:start]
+// Add this:
 Route::post('/login', function (Request $request) {
     $credentials = $request->validate([
         'email' => 'required|email',
@@ -772,10 +638,8 @@ Route::post('/login', function (Request $request) {
         ],
     ];
 });
-// [tl! add:end]
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+// ...
 ```
 
 Now, we're ready to test it!
@@ -790,12 +654,10 @@ rm -f storage/framework/sessions/*
 
 Now, go back to Android Studio and build the client again. You should see the login screen and if you authenticate, you should then be sent to the chirps home page!
 
-![Native Login Screen](/images/native/auth-login-screen.png)
+![Native Login Screen](/assets/images/bootcamp/native/auth-login-screen.png)
 
-![Invalid Credentials](/images/native/auth-invalid-credentials.png)
+![Invalid Credentials](/assets/images/bootcamp/native/auth-invalid-credentials.png)
 
-![Chirps Home Page After Native Login](/images/native/auth-chirps-home.png)
+![Chirps Home Page After Native Login](/assets/images/bootcamp/native/auth-chirps-home.png)
 
 Our access token is being stored in the preferences section of our app, which means we can reuse it whenever we need to make an HTTP call with a native screen and our WebView is successfully authenticated, so we don't need to worry about those screens that don't need native authentication anymore. Yay! Next, let's take a look at improving our mobile UX for creating Chirps.
-
-[Continue to adding the Native Floating Action Button...](/guides/native-fab-creating-chirps)

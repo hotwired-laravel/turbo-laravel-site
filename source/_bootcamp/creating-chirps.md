@@ -60,6 +60,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Add this route:
 Route::resource('chirps', ChirpController::class) 
     ->only(['index', 'create', 'store'])
     ->middleware(['auth', 'verified']); 
@@ -85,91 +86,20 @@ Let's test our route and controller by returning a test message from the `index`
 
 ```php 
 <?php
-// [tl! collapse:start]
+
 namespace App\Http\Controllers;
 
 use App\Models\Chirp;
 use Illuminate\Http\Request;
-// [tl! collapse:end]
+
 class ChirpController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
-        return 'Hello, World!'; // [tl! remove:-1,1 add]
-    }
-    // [tl! collapse:start]
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return 'Hello, World!';
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Chirp $chirp)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Chirp $chirp)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Chirp $chirp)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Chirp $chirp)
-    {
-        //
-    }
-    // [tl! collapse:end]
+    // ...
 }
 ```
 
@@ -189,88 +119,21 @@ use Illuminate\Http\Request;
 
 class ChirpController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return 'Hello, World!';
-        return view('chirps.index', [ // [tl! remove:-1,1 add:start]
+        return view('chirps.index', [
             //
-        ]);// [tl! add:end]
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
-        return view('chirps.create', [ // [tl! remove:-1,1 add:start]
+        return view('chirps.create', [
             //
-        ]); // [tl! add:end]
-    }
-    // [tl! collapse:start]
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Chirp $chirp)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Chirp $chirp)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Chirp $chirp)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Chirp $chirp)
-    {
-        //
-    }
-    // [tl! collapse:end]
+    // ...
 }
 ```
 
@@ -359,11 +222,11 @@ This partial is making use a Blade component that doesn't exist yet called `x-te
 
 That's it! Refresh the page in your browser to see your new form rendered in the default layout provided by Breeze!
 
-![Creating Chirps Link](/images/bootcamp/creating-chirps-link.png)
+![Creating Chirps Link](/assets/images/bootcamp/creating-chirps-link.png)
 
 If you click on that link, you will see the form to create Chirps and the breadcrumbs should also have been updated:
 
-![Creating Chirps Form](/images/bootcamp/creating-chirps-form.png)
+![Creating Chirps Form](/assets/images/bootcamp/creating-chirps-form.png)
 
 ### Navigation menu
 
@@ -371,76 +234,41 @@ Let's take a moment to add a link to the navigation menu provided by Turbo Breez
 
 Update the `navigation` partial provided by Turbo Breeze to add a menu item for desktop screens:
 
+```blade
+<!-- Navigation Links -->
+<div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+        {{ __('Dashboard') }}
+    </x-nav-link>
+
+    <!-- Chips Link -->
+    <x-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.*')">
+        {{ __('Chirps') }}
+    </x-nav-link>
+</div>
+```
+
+Don't forget the responsive menu:
+
 ```blade 
-<nav
-    data-controller="responsive-nav"
-    data-action="
-        turbo:before-cache@window->responsive-nav#close
-        click@window->responsive-nav#closeWhenClickedOutside
-    "
-    class="group bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700"
->
-    <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                    </a>
-                </div>
+<!-- Responsive Navigation Menu -->
+<div class="hidden group-data-[responsive-nav-open-value=true]:block sm:group-data-[responsive-nav-open-value=true]:hidden">
+    <div class="pt-2 pb-3 space-y-1">
+        <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            {{ __('Dashboard') }}
+        </x-responsive-nav-link>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-
-                    <x-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.*')">
-                        {{ __('Chirps') }}
-                    </x-nav-link> <!-- [tl! add:-2,3] -->
-                </div>
-            </div>
-            <!-- [tl! collapse:start] -->
-            <div class="flex items-center space-x-2">
-                <!-- Settings Dropdown -->
-                <a href="{{ route('profile.index') }}" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                    <div>{{ Auth::user()->name }}</div>
-                </a>
-
-                <!-- Hamburger -->
-                <div class="-me-2 flex items-center sm:hidden">
-                    <button data-action="responsive-nav#toggle" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out">
-                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                            <path class="inline-flex group-data-[responsive-nav-open-value=true]:hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                            <path class="hidden group-data-[responsive-nav-open-value=true]:inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <!-- [tl! collapse:end] -->
-        </div>
+        <!-- Chirps Link -->
+        <x-responsive-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.*')">
+            {{ __('Chirps') }}
+        </x-responsive-nav-link>
     </div>
-
-    <!-- Responsive Navigation Menu -->
-    <div class="hidden group-data-[responsive-nav-open-value=true]:block sm:group-data-[responsive-nav-open-value=true]:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-
-            <x-responsive-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.*')">
-                {{ __('Chirps') }}
-            </x-responsive-nav-link> <!-- [tl! add:-2,3] -->
-        </div>
-    </div>
-</nav>
+</div>
 ```
 
 We should see the Chirps link on the page nav now:
 
-![Chirps Nav Link](/images/creating-chirps-nav-link.png)
+![Chirps Nav Link](/assets/images/bootcamp/creating-chirps-nav-link.png)
 
 ## Saving the Chirp
 
@@ -448,98 +276,28 @@ Our form has been configured to post messages to the `chirps.store` route that w
 
 ```php 
 <?php
-// [tl! collapse:start]
+
 namespace App\Http\Controllers;
 
 use App\Models\Chirp;
 use Illuminate\Http\Request;
-// [tl! collapse:end]
+
 class ChirpController extends Controller
 {
-    // [tl! collapse:start]
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('chirps.index');
-    }
+    // ...
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('chirps.create');
-    }
-    // [tl! collapse:end]
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
-        $validated = $request->validate([ // [tl! remove:-1,1 add:start]
+        $validated = $request->validate([
             'message' => ['required', 'string', 'max:255'],
         ]);
 
         $request->user()->chirps()->create($validated);
 
-        return redirect()->route('chirps.index'); // [tl! add:end]
-    }
-    // [tl! collapse:start]
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Chirp $chirp)
-    {
-        //
+        return redirect()->route('chirps.index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Chirp $chirp)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Chirp $chirp)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Chirp $chirp)
-    {
-        //
-    }
-    // [tl! collapse:end]
+    // ...
 }
 ```
 
@@ -555,54 +313,21 @@ You may have noticed in the previous step that we called a `chirps` method on th
 
 ```php 
 <?php
-// [tl! collapse:start]
+
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-// [tl! collapse:end]
+// ...
+
 class User extends Authenticatable
 {
-    // [tl! collapse:start]
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    // ...
 
     public function chirps()
     {
         return $this->hasMany(Chirp::class);
-    } // [tl! add:-3,4]
+    }
 }
 ```
 
@@ -618,19 +343,19 @@ Let's add the `$fillable` property to our `Chirp` model to enable mass-assignmen
 
 ```php 
 <?php
-// [tl! collapse:start]
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-// [tl! collapse:end]
+
 class Chirp extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'message',
-    ]; // [tl! add:-2,3]
+    ];
 }
 ```
 
@@ -642,38 +367,24 @@ The only thing missing is extra columns in our database to store the relationshi
 
 ```php 
 <?php
-// [tl! collapse:start]
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-// [tl! collapse:end]
+
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('chirps', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('message'); // [tl! add:-1,2]
+            $table->string('message');
             $table->timestamps();
         });
     }
-    // [tl! collapse:start]
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('chirps');
-    }
-    // [tl! collapse:end]
+
+    // ...
 };
 ```
 
@@ -689,7 +400,7 @@ Each database migration will only be run once. To make additional changes to a t
 
 We're now ready to send a Chirp using the form we just created! We won't be able to see the result yet because we haven't displayed existing Chirps on the page.
 
-![Saving Chirps](/images/bootcamp/creating-chirps-saving.png)
+![Saving Chirps](/assets/images/bootcamp/creating-chirps-saving.png)
 
 If you leave the message field empty, or enter more than 255 characters, then you'll see the validation in action.
 
@@ -735,41 +446,16 @@ Let's update our `store` action in the `ChirpController` to also return a flash 
 
 ```php 
 <?php
-// [tl! collapse:start]
+
 namespace App\Http\Controllers;
 
 use App\Models\Chirp;
 use Illuminate\Http\Request;
-// [tl! collapse:end]
+
 class ChirpController extends Controller
 {
-    // [tl! collapse:start]
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('chirps.index');
-    }
+    // ...
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('chirps.create');
-    }
-    // [tl! collapse:end]
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -778,98 +464,37 @@ class ChirpController extends Controller
 
         $request->user()->chirps()->create($validated);
 
-        return redirect()->route('chirps.index');
-        return redirect()->route('chirps.index')->with('notice', __('Chirp created.'));  // [tl! remove:-1,1 add]
-    }
-    // [tl! collapse:start]
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Chirp $chirp)
-    {
-        //
+        return redirect()
+            ->route('chirps.index')
+            ->with('notice', __('Chirp created.')); // Add this
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Chirp $chirp)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Chirp $chirp)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Chirp $chirp)
-    {
-        //
-    }
-    // [tl! collapse:end]
+    // ...
 }
 ```
 
 Then, let's change our `layouts.app` file to include a `layouts.partials.notifications` partial:
 
 ```blade 
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <!-- [tl! collapse:start] -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<body class="font-sans antialiased">
+    <div class="min-h-screen bg-gray-100">
+        @include('layouts.partials.navigation')
+        <!-- Add this -->
+        @include('layouts.partials.notifications')
 
-        <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
+        <!-- Page Heading -->
+        <header class="bg-white shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                {{ $header }}
+            </div>
+        </header>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <!-- [tl! collapse:end] -->
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.partials.navigation')
-            @include('layouts.partials.notifications') <!-- [tl! add]-->
-            <!-- [tl! collapse:start] -->
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-            <!-- [tl! collapse:end] -->
-        </div>
-    </body>
-</html>
+        <!-- Page Content -->
+        <main>
+            {{ $slot }}
+        </main>
+    </div>
+</body>
 ```
 
 Next, let's create the `layouts.partials.notifications` wrapper partial:
@@ -882,9 +507,9 @@ Next, let's create the `layouts.partials.notifications` wrapper partial:
 </div>
 ```
 
-So, each notification will render with the `layouts.partials.notice` (singular) partial and will be added to the wrapper partial. Let's add the indivitual notification partial:
+So, each notification will render with the `layouts.partials.notice` (singular) partial and will be added to the wrapper partial. Let's add the individual notification partial:
 
-```blade 
+```blade
 <div data-turbo-temporary data-controller="flash" data-action="animationend->flash#remove" class="py-1 px-4 leading-7 text-center text-white rounded-full bg-gray-900 transition-all animate-appear-then-fade-out">
     {{ $message }}
 </div>
@@ -896,7 +521,7 @@ There are a few attributes I'd like to briefly discuss here:
 - The `data-controller="flash"` is how we bind Stimulus controllers to an element. In this case, we're binding the `flash` controller, which is a controller that ships with Turbo Breeze and may be found at `resources/js/controllers/flash_controller.js`
 - The `data-action="animationend->flash#remove"` is how we add event listeners and invoke Stimulus controller actions when those events happens. In this case, we're listening to a CSS3 event called `animationend` which is fired whenever a CSS animation ends. The animation is the one provided by the `animation-appear-then-fade-out` CSS class, it also comes from Turbo Breeze.
 
-Now, build our TailwindCSS styles:
+Now, build our Tailwind CSS styles:
 
 ```bash
 php artisan tailwindcss:build
@@ -904,4 +529,4 @@ php artisan tailwindcss:build
 
 If you create another Chirp now, you should see a nice notification message at the top:
 
-![Flash Messages](/images/bootcamp/creating-chirps-flash-messages.png)
+![Flash Messages](/assets//images/bootcamp/creating-chirps-flash-messages.png)

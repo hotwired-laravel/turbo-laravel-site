@@ -1,8 +1,11 @@
+---
+extends: _layouts.bootcamp
+title: Deleting Chirps
+description: Deleting Chirps
+order: 6
+---
+
 # *05.* Deleting Chirps
-
-[TOC]
-
-## Introduction
 
 Sometimes no amount of editing can fix a message, so let's give our users the ability to delete their Chirps.
 
@@ -12,47 +15,28 @@ Hopefully you're starting to get the hang of things now. We think you'll be impr
 
 Let's update our `routes/web.php` file to add the new `destroy` action in our resource definition:
 
-```php filename="routes/web.php"
+```php
 <?php
-// [tl! collapse:start]
+
 use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
+// ...
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-// [tl! collapse:end]
-Route::resource('chirps', ChirpController::class)
-    ->only(['index', 'create', 'store', 'edit', 'update'])
-    ->only(['index', 'create', 'store', 'edit', 'update', 'destroy']) // [tl! remove:-1,1 add]
-    ->middleware(['auth', 'verified']);
-// [tl! collapse:start]
-Route::middleware('auth')->group(function () {
-    Route::prefix('profile')->as('profile.')->group(function () {
-        Route::singleton('password', ProfilePasswordController::class)->only(['edit', 'update']);
-    });
 
-    Route::get('/delete', [ProfileController::class, 'delete'])->name('profile.delete');
-    Route::singleton('profile', ProfileController::class)->destroyable();
+Route::resource('chirps', ChirpController::class)
+    ->only(['index', 'create', 'store', 'edit', 'update', 'destroy']) // Change this
+    ->middleware(['auth', 'verified']);
+
+Route::middleware('auth')->group(function () {
+    // ...
 });
 
-require __DIR__.'/auth.php'; // [tl! collapse:end]
+require __DIR__.'/auth.php';
 ```
 
 Our route table for this controller now looks like this:
@@ -70,126 +54,29 @@ DELETE    | `/chirps/{chirp}`      | destroy      | `chirps.destroy`
 
 Now we can update the `destroy` action on our `ChirpController` class to perform the deletion and return to the Chirp index:
 
-```php filename="app/Http/Controllers/ChirpController.php"
+```php
 <?php
-// [tl! collapse:start]
+
 namespace App\Http\Controllers;
 
 use App\Models\Chirp;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
-// [tl! collapse:end]
+
 class ChirpController extends Controller
 {
-    // [tl! collapse:start]
-    use AuthorizesRequests;
+    // ...
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('chirps.index', [
-            'chirps' => Chirp::with('user:id,name')->latest()->get(),
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('chirps.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'message' => ['required', 'string', 'max:255'],
-        ]);
-
-        $request->user()->chirps()->create($validated);
-
-        return redirect()
-            ->route('chirps.index')
-            ->with('status', __('Chirp created.'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Chirp $chirp)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Chirp $chirp)
-    {
-        //
-        $this->authorize('update', $chirp);
-
-        return view('chirps.edit', [
-            'chirp' => $chirp,
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Chirp $chirp)
-    {
-        $this->authorize('update', $chirp);
-
-        $validated = $request->validate([
-            'message' => ['required', 'string', 'max:255'],
-        ]);
-
-        $chirp->update($validated);
-
-        return redirect()
-            ->route('chirps.index')
-            ->with('status', __('Chirp updated.'));
-    }
-    // [tl! collapse:end]
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Chirp $chirp)
     {
-        //
-        $this->authorize('delete', $chirp);// [tl! remove:-1,1 add:start]
+        $this->authorize('delete', $chirp);
 
         $chirp->delete();
 
-        return redirect()->route('chirps.index')->with('notice', __('Chirp deleted.'));// [tl! add:end]
+        return redirect()
+            ->route('chirps.index')
+            ->with('notice', __('Chirp deleted.'));
     }
-    // [tl! collapse:end]
 }
 ```
 
@@ -197,103 +84,30 @@ class ChirpController extends Controller
 
 As with editing, we only want our Chirp authors to be able to delete their Chirps, so let's update the `delete` method our `ChirpPolicy` class:
 
-```php filename=app/Policies/ChirpPolicy.php
+```php
 <?php
-// [tl! collapse:start]
+
 namespace App\Policies;
 
 use App\Models\Chirp;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-// [tl! collapse:end]
+
 class ChirpPolicy
 {
-    // [tl! collapse:start]
-    use HandlesAuthorization;
+    // ...
 
-    /**
-     * Determine whether the user can view any models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function viewAny(User $user)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function view(User $user, Chirp $chirp)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can create models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function create(User $user)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can update the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
     public function update(User $user, Chirp $chirp)
     {
         return $user->is($chirp->user);
     }
-    // [tl! collapse:end]
-    /**
-     * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
+
     public function delete(User $user, Chirp $chirp)
     {
-        //
-        return $user->is($chirp->user);// [tl! remove:-1,1 add]
-    }
-    // [tl! collapse:start]
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restore(User $user, Chirp $chirp)
-    {
-        //
+        return $user->is($chirp->user);
     }
 
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDelete(User $user, Chirp $chirp)
-    {
-        //
-    }
-    // [tl! collapse:end]
+    // ...
 }
 ```
 
@@ -303,11 +117,12 @@ Although the logic of authorizing users to update or delete Chirps is pretty muc
 
 Finally, we can add a delete button to the dropdown menu we created earlier in our `chirps._chirp` Blade partial:
 
-```blade filename=resources/views/chirps/partials/chirp.blade.php
+```blade
 <div class="p-6 flex space-x-2">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 dark:text-gray-400 -scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
     </svg>
+
     <div class="flex-1">
         <div class="flex justify-between items-center">
             <div>
@@ -330,16 +145,18 @@ Finally, we can add a delete button to the dropdown menu we created earlier in o
 
                 <x-slot name="content">
                     <x-dropdown-link href="{{ route('chirps.edit', $chirp) }}">{{ __('Edit') }}</x-dropdown-link>
-                    <!-- [tl! add:start] -->
+
+                    <!-- Add this: -->
                     <form action="{{ route('chirps.destroy', $chirp) }}" method="POST">
                         @method('DELETE')
 
                         <x-dropdown-button type="submit">{{ __('Delete') }}</x-dropdown-button>
-                    </form><!-- [tl! add:end] -->
+                    </form>
                 </x-slot>
             </x-dropdown>
             @endif
         </div>
+
         <p class="mt-4 text-lg text-gray-900">{{ $chirp->message }}</p>
     </div>
 </div>
@@ -349,6 +166,4 @@ Finally, we can add a delete button to the dropdown menu we created earlier in o
 
 If you Chirped anything you weren't happy with, try deleting it!
 
-![Deleting Chirps](/images/bootcamp/deleting-chirps.png)
-
-[Continue to Hotwiring everything...](/guides/hotwiring-everything)
+![Deleting Chirps](/assets/images/bootcamp/deleting-chirps.png)

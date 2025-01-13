@@ -31,7 +31,7 @@ php artisan serve
 
 Once you have started the Artisan development server, your application will be accessible in your web browser at [http://localhost:8000](http://localhost:8000).
 
-![Laravel Welcome page](/images/bootcamp/laravel-welcome.png)
+![Laravel Welcome page](/assets/images/bootcamp/laravel-welcome.png)
 
 For simplicity, you may use SQLite to store your application's data.
 
@@ -71,11 +71,11 @@ When developing applications using Sail, you may execute Artisan, NPM, and Compo
 
 Once the application's Docker containers have been started, you can access the application in your web browser at: [http://localhost](http://localhost).
 
-![Welcome Page over Sail](/images/bootcamp/laravel-welcome-sail.png)
+![Welcome Page over Sail](/assets/images/bootcamp/laravel-welcome-sail.png)
 
 ## Installing Turbo Breeze
 
-Next, we'll give our application a head-start by installing [Turbo Breeze](https://github.com/hotwired-laravel/turbo-breeze), a minimal, simple imeplementation of all of Laravel's authentication features, including login, registration, password reset, email verification, and password confirmation. Once installed, you are welcome to customize the components to suit your needs.
+Next, we'll give our application a head-start by installing [Turbo Breeze](https://github.com/hotwired-laravel/turbo-breeze), a minimal, simple implementation of all of Laravel's authentication features, including login, registration, password reset, email verification, and password confirmation. Once installed, you are welcome to customize the components to suit your needs.
 
 Turbo Breeze offers two stack options: `turbo`, which comes with [Importmap Laravel](https://github.com/tonysm/importmap-laravel) and [TailwindCSS Laravel](https://github.com/tonysm/tailwindcss-laravel) installed for a Node-less setup, and a `turbo-vite` option, which relies on having Node and NPM. For this tutorial, we'll be using `turbo`.
 
@@ -94,23 +94,23 @@ Turbo Breeze will install and configure your front-end dependencies for you. It 
 
 The welcome page should now have the Login and Register links at the top:
 
-![Welcome with Auth](/images/bootcamp/install-welcome-auth.png)
+![Welcome with Auth](/assets/images/bootcamp/install-welcome-auth.png)
 
 And you should be able to head to the `/register` route and create your own account:
 
-![Register Page](/images/bootcamp/install-register.png)
+![Register Page](/assets/images/bootcamp/install-register.png)
 
 Then, you should be redirected to the Dashboard page:
 
-![Dashboard Page](/images/bootcamp/install-dashboard.png)
+![Dashboard Page](/assets/images/bootcamp/install-dashboard.png)
 
 This Dashboard page is protected by Laravel's auth middleware, so only authenticated users can access it. The registration process automatically authenticates us.
 
 Turbo Breeze is a fork of Laravel Breeze, but customized to work better in a Hotwired context. It comes with all the same components as Laravel Breeze does, except they were rewritten in Stimulus. For an introduction to Stimulus, head out to the [Stimulus Handbook](https://stimulus.hotwired.dev/handbook/introduction).
 
-There are a couple differences between Turbo Breeze and Larave Breeze. In Laravel Breeze, your name at the top of the navigation bar is a dropdown. In Turbo Breeze, it's a link to a page with the menu:
+There are a couple differences between Turbo Breeze and Laravel Breeze. In Laravel Breeze, your name at the top of the navigation bar is a dropdown. In Turbo Breeze, it's a link to a page with the menu:
 
-![Profile Menu](/images/bootcamp/profile-menu.png)
+![Profile Menu](/assets/images/bootcamp/profile-menu.png)
 
 In Laravel Breeze, all the profile forms are rendered in the same page. In Turbo Breeze, each one has its own dedicated page. That's not a requirement for Hotwired apps, but it works best in a mobile context. We'll see more about that later in this bootcamp.
 

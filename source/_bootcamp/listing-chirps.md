@@ -1,8 +1,11 @@
+---
+extends: _layouts.bootcamp
+title: Listing Chirps
+description: Listing Chirps
+order: 4
+---
+
 # *03.* Listing Chirps
-
-[TOC]
-
-## Introduction
 
 In the previous step we added the ability to create Chirps, now we're ready to display them!
 
@@ -10,103 +13,24 @@ In the previous step we added the ability to create Chirps, now we're ready to d
 
 Let's update the `index` action our `ChirpController` to pass Chirps from every user to our `chirps.index` page.
 
-```php filename="app/Http/Controllers/ChirpController.php"
+```php
 <?php
 
 namespace App\Http\Controllers;
 
-use App\Models\Chirp; // [tl! add]
+use App\Models\Chirp;
 use Illuminate\Http\Request;
 
 class ChirpController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('chirps.index', [
-            //
-            'chirps' => Chirp::with('user')->latest()->get(),// [tl! remove:-1,1 add]
+            'chirps' => Chirp::with('user')->latest()->get(),
         ]);
     }
-    // [tl! collapse:start]
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('chirps.create');
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'message' => ['required', 'string', 'max:255'],
-        ]);
-
-        $request->user()->chirps()->create($validated);
-
-        return redirect()
-            ->route('chirps.index')
-            ->with('status', __('Chirp created.'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Chirp $chirp)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Chirp $chirp)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Chirp $chirp)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Chirp $chirp)
-    {
-        //
-    }
-    // [tl! collapse:end]
+    // ...
 }
 ```
 
@@ -118,27 +42,27 @@ Returning all Chirps at once won't scale in production. Take a look at Laravel's
 
 The Chirp's `user` relationship hasn't been defined yet. To fix this, let's add a new ["belongs to"](https://laravel.com/docs/eloquent-relationships#one-to-many-inverse) relationship to our `Chirp` model:
 
-```php filename="app/Models/Chirp.php"
+```php
 <?php
-// [tl! collapse:start]
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-// [tl! collapse:end]
+
 class Chirp extends Model
 {
-    // [tl! collapse:start]
     use HasFactory;
 
     protected $fillable = [
         'message',
     ];
-    // [tl! collapse:end]
-    public function user()// [tl! add:start]
+
+    // Add this:
+    public function user()
     {
         return $this->belongsTo(User::class);
-    }// [tl! add:end]
+    }
 }
 ```
 
@@ -148,7 +72,7 @@ This relationship is the inverse of the "has many" relationship we created earli
 
 Next, update the `chirps.index` view so we can list all Chirps:
 
-```blade filename=resources/views/chirps/index.blade.php
+```blade
 <x-app-layout>
     <x-slot name="header">
         <h2 class="flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -163,8 +87,9 @@ Next, update the `chirps.index` view so we can list all Chirps:
                     @include('chirps.partials.new-chirp-trigger')
 
                     <div class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">
+                        <!-- Add this: -->
                         @each('chirps.partials.chirp', $chirps, 'chirp')
-                    </div> <!-- [tl! add:-2,3]-->
+                    </div>
                 </div>
             </div>
         </div>
@@ -174,7 +99,7 @@ Next, update the `chirps.index` view so we can list all Chirps:
 
 Finally, let's create a `chirps.partials.chirp` Blade partial to display Chirp. This component will be responsible for displaying an individual Chirp:
 
-```blade filename=resources/views/chirps/partials/chirp.blade.php
+```blade
 <div class="p-6 flex space-x-2">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 dark:text-gray-400 -scale-x-100" fill="none" viewBox="0 0 24 24"
         stroke="currentColor" stroke-width="2">
@@ -196,6 +121,4 @@ Finally, let's create a `chirps.partials.chirp` Blade partial to display Chirp. 
 
 Now take a look in your browser to see the message you Chirped earlier!
 
-![Showing Chirps](/images/bootcamp/showing-chirps.png)
-
-[Continue to editing Chirps...](/guides/editing-chirps)
+![Showing Chirps](/assets/images/bootcamp/showing-chirps.png)

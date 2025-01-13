@@ -1259,9 +1259,6 @@ video {
 .-mb-2 {
   margin-bottom: -0.5rem;
 }
-.-me-2 {
-  margin-inline-end: -0.5rem;
-}
 .-mr-2 {
   margin-right: -0.5rem;
 }
@@ -1341,9 +1338,6 @@ video {
 }
 .h-6 {
   height: 1.5rem;
-}
-.h-9 {
-  height: 2.25rem;
 }
 .h-full {
   height: 100%;
@@ -1672,10 +1666,6 @@ video {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1797,9 +1787,6 @@ video {
 }
 .leading-3 {
   line-height: .75rem;
-}
-.leading-4 {
-  line-height: 1rem;
 }
 .leading-5 {
   line-height: 1.25rem;
@@ -2290,12 +2277,6 @@ pre:has(code), pre > code {
 .group[data-responsive-nav-open-value="true"] .group-data-\[responsive-nav-open-value\=true\]\:block {
   display: block;
 }
-.group[data-responsive-nav-open-value="true"] .group-data-\[responsive-nav-open-value\=true\]\:inline-flex {
-  display: inline-flex;
-}
-.group[data-responsive-nav-open-value="true"] .group-data-\[responsive-nav-open-value\=true\]\:hidden {
-  display: none;
-}
 .prose-headings\:font-heading :is(:where(h1, h2, h3, h4, h5, h6, th):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   font-family: OpenSans, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
@@ -2591,34 +2572,9 @@ pre:has(code), pre > code {
     color: rgb(107 114 128 / var(--tw-text-opacity, 1));
   }
 
-  .dark\:hover\:bg-gray-900:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
-  }
-
-  .dark\:hover\:text-gray-300:hover {
-    --tw-text-opacity: 1;
-    color: rgb(209 213 219 / var(--tw-text-opacity, 1));
-  }
-
-  .dark\:hover\:text-gray-400:hover {
-    --tw-text-opacity: 1;
-    color: rgb(156 163 175 / var(--tw-text-opacity, 1));
-  }
-
   .dark\:focus\:border-indigo-600:focus {
     --tw-border-opacity: 1;
     border-color: rgb(79 70 229 / var(--tw-border-opacity, 1));
-  }
-
-  .dark\:focus\:bg-gray-900:focus {
-    --tw-bg-opacity: 1;
-    background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
-  }
-
-  .dark\:focus\:text-gray-400:focus {
-    --tw-text-opacity: 1;
-    color: rgb(156 163 175 / var(--tw-text-opacity, 1));
   }
 
   .dark\:focus\:ring-indigo-600:focus {
