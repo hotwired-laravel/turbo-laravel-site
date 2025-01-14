@@ -1,8 +1,11 @@
+---
+extends: _layouts.bootcamp
+title: Editing in a Modal
+description: Editing in a Modal
+order: 13
+---
+
 # *11.* Editing in a Modal
-
-[TOC]
-
-## Introduction
 
 Right now our editing flow is not very mobile-friendly. Instead of showing the edit form inline in the list, we could show it as a native modal screen instead. But before we introduce the new native screen, let's first ensure our web dropdown appears as a real native bottom sheet list of options. That will serve as an example of how we can bridge the web and mobile native Worlds with a little bit of JavaScript. This approach was based on how the Hey app works (at least on the pieces I could spot from inspecting the page source).
 
@@ -33,48 +36,29 @@ This will be programatically added, so what's really important here is the `andr
 ```kotlin
 package com.example.turbochirpernative.main
 
-import android.webkit.JavascriptInterface // [tl! add]
+import android.webkit.JavascriptInterface // Add this
 import android.webkit.WebView
-import android.widget.Button // [tl! add:start]
+import android.widget.Button // Add this
 import android.widget.LinearLayout
-import android.widget.Toast // [tl! add:end]
+import android.widget.Toast // Add this
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.res.integerResource
 import androidx.fragment.app.Fragment
 import com.example.turbochirpernative.BuildConfig
-import com.example.turbochirpernative.R // [tl! add]
+import com.example.turbochirpernative.R // Add this
 import com.example.turbochirpernative.features.auth.LoginFragment
 import com.example.turbochirpernative.features.web.ChirpsHomeFragment
 import com.example.turbochirpernative.features.web.WebFragment
 import com.example.turbochirpernative.util.CHIRPS_HOME_URL
-import com.google.android.material.bottomsheet.BottomSheetDialog // [tl! add]
-import com.google.gson.Gson // [tl! add]
+import com.google.android.material.bottomsheet.BottomSheetDialog // Add this
+import com.google.gson.Gson // Add this
 import dev.hotwire.turbo.config.TurboPathConfiguration
 import dev.hotwire.turbo.session.TurboSessionNavHostFragment
 import kotlin.reflect.KClass
 
-class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
-class MainSessionNavHostFragment : TurboSessionNavHostFragment(), PopupMenuDelegator { // [tl! remove:-1,1 add]
-    // [tl! collapse:start]
-    override val sessionName = "main"
+class MainSessionNavHostFragment : TurboSessionNavHostFragment(), PopupMenuDelegator {
+    // ...
 
-    override val startLocation = CHIRPS_HOME_URL
-
-    override val registeredActivities: List<KClass<out AppCompatActivity>>
-        get() = listOf()
-
-    override val registeredFragments: List<KClass<out Fragment>>
-        get() = listOf(
-            WebFragment::class,
-            LoginFragment::class,
-            ChirpsHomeFragment::class,
-        )
-
-    override val pathConfigurationLocation: TurboPathConfiguration.Location
-        get() = TurboPathConfiguration.Location(
-            assetFilePath = "json/configuration.json",
-        )
-    // [tl! collapse:end]
     override fun onSessionCreated() {
         super.onSessionCreated()
         session.webView.settings.userAgentString = customUserAgent(session.webView)
@@ -83,18 +67,18 @@ class MainSessionNavHostFragment : TurboSessionNavHostFragment(), PopupMenuDeleg
             session.setDebugLoggingEnabled(true)
             WebView.setWebContentsDebuggingEnabled(true)
         }
-        // [tl! add:start]
+
+        // Add this:
         session.webView.addJavascriptInterface(
             JsBridge(this),
             "NativeBridge",
         )
-        // [tl! add:end]
     }
 
     private fun customUserAgent(webView: WebView): String {
         return "Turbo Native Android ${webView.settings.userAgentString}"
     }
-    // [tl! add:start]
+
     override fun showPopupMenu(options: PopupMenu) {
         activity?.runOnUiThread {
             val context = requireContext()
@@ -179,7 +163,6 @@ class JsBridge(private var delegator: PopupMenuDelegator) {
     fun showToast(msg: String) {
         delegator.showToast(msg)
     }
-    // [tl! add:end]
 }
 ```
 
@@ -282,7 +265,7 @@ export class BridgeElement {
 
         // Remove the target attribute before clicking to avoid an
         // issue in Android WebView that prevents a target="_blank"
-        // url from being obtained from a javascript click.
+        // URL from being obtained from a JavaScript click.
 
         if (isAndroidApp) {
             this.element.removeAttribute("target")
@@ -351,10 +334,11 @@ switch ($width) {
         break;
 }
 @endphp
-<!-- [tl! add:4,1 remove:3,1] -->
+
+<!-- Update the data-controller attribute: -->
+
 <div
     class="relative"
-    data-controller="dropdown"
     data-controller="bridge--popup-menu dropdown"
     data-action="
         click@window->dropdown#close
@@ -364,9 +348,8 @@ switch ($width) {
     "
     {{ $attributes }}
 >
-    <!-- [tl! add:-5,2] -->
-    <div data-action="click->dropdown#toggle click->dropdown#stop">
-    <div data-action="click->bridge--popup-menu#update click->dropdown#toggle click->dropdown#stop"> <!-- [tl! remove:-1,1 add] -->
+    <!-- Update the data-action attribute: -->
+    <div data-action="click->bridge--popup-menu#update click->dropdown#toggle click->dropdown#stop">
         {{ $trigger }}
     </div>
 
@@ -392,43 +375,26 @@ Now, we need to make sure the options are registered in the Stimulus controller 
 ```blade
 <x-turbo::frame :id="$chirp" class="block p-6">
     <div class="flex space-x-2">
-        <!-- [tl! collapse:start] -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 -scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-        </svg>
-        <!-- [tl! collapse:end] -->
+        <!-- ... -->
+
         <div class="flex-1">
             <div class="flex justify-between items-center">
-                <!-- [tl! collapse:start] -->
-                <div>
-                    <span class="text-gray-800">{{ $chirp->user->name }}</span>
-                    <x-time-ago :date="$chirp->created_at" />
-                    @unless ($chirp->created_at->eq($chirp->updated_at))
-                    <small class="text-sm text-gray-600"> &middot; edited</small>
-                    @endunless
-                </div>
-                <!-- [tl! collapse:end] -->
+                <!-- ... -->
+
                 @if (Auth::id() === $chirp->user->id)
                 <x-dropdown align="right" width="48" data-bridge--popup-menu-msg-value="{{ $chirp->message }}">
-                    <!-- [tl! collapse:start] -->
-                    <x-slot name="trigger">
-                        <button>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                            </svg>
-                        </button>
-                    </x-slot>
-                    <!-- [tl! collapse:end] -->
+                    <!-- ... -->
+
                     <x-slot name="content">
-                        <a href="{{ route('chirps.edit', $chirp) }}" class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 transition duration-150 ease-in-out">
-                        <a href="{{ route('chirps.edit', $chirp) }}" data-bridge--popup-menu-target="option" class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 transition duration-150 ease-in-out"> <!-- [tl! remove:-1,1 add] -->
+                        <!-- Update the link: -->
+                        <a href="{{ route('chirps.edit', $chirp) }}" data-bridge--popup-menu-target="option" class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 transition duration-150 ease-in-out">
                             Edit
                         </a>
 
                         <form action="{{ route('chirps.destroy', $chirp) }}" method="POST">
                             @method('DELETE')
-                            <button class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 transition duration-150 ease-in-out">
-                            <button data-bridge--popup-menu-target="option" class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 transition duration-150 ease-in-out"> <!-- [tl! remove:-1,1 add] -->
+                            <!-- Update the button: -->
+                            <button data-bridge--popup-menu-target="option" class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 transition duration-150 ease-in-out">
                                 Delete
                             </button>
                         </form>
@@ -436,6 +402,7 @@ Now, we need to make sure the options are registered in the Stimulus controller 
                 </x-dropdown>
                 @endif
             </div>
+
             <p class="mt-4 text-lg text-gray-900">{{ $chirp->message }}</p>
         </div>
     </div>
@@ -444,7 +411,7 @@ Now, we need to make sure the options are registered in the Stimulus controller 
 
 This should get our dropdown appearing as a BottomSheet menu!
 
-![Edit Bottom Sheet Menu](/images/native/edit-bottom-sheet-menu.png)
+![Edit Bottom Sheet Menu](/assets/images/bootcamp/native/edit-bottom-sheet-menu.png)
 
 Our Bridge Popup Menu controller also changes the frame target to `_top`, which is handy in our case as that will make a full page visit to the edit page instead of rendering the form inline!
 
@@ -452,100 +419,16 @@ If you try to update a chirp, however, the behavior will be similar to what it w
 
 ```php
 <?php
-// [tl! collapse:start]
+
 namespace App\Http\Controllers;
 
 use App\Models\Chirp;
 use Illuminate\Http\Request;
-// [tl! collapse:end]
+
 class ChirpController extends Controller
 {
-    // [tl! collapse:start]
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('chirps.index', [
-            'chirps' => Chirp::with('user:id,name')->latest()->get(),
-        ]);
-    }
+    // ...
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('chirps.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'message' => ['required', 'string', 'max:255'],
-        ]);
-
-        $chirp = $request->user()->chirps()->create($validated);
-
-        if ($request->wantsTurboStream() && ! $request->wasFromTurboNative()) {
-            return turbo_stream([
-                turbo_stream($chirp, 'prepend'),
-                turbo_stream()->update('create_chirp', view('chirps._form')),
-                turbo_stream()->append('notifications', view('layouts.notification', [
-                    'message' => __('Chirp created.'),
-                ])),
-            ]);
-        }
-
-        return redirect()
-            ->route('chirps.index')
-            ->with('status', __('Chirp created.'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Chirp $chirp)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Chirp $chirp)
-    {
-        $this->authorize('update', $chirp);
-
-        return view('chirps.edit', [
-            'chirp' => $chirp,
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Chirp  $chirp
-     * @return \Illuminate\Http\Response
-     */
-    // [tl! collapse:end]
     public function update(Request $request, Chirp $chirp)
     {
         $this->authorize('update', $chirp);
@@ -556,8 +439,8 @@ class ChirpController extends Controller
 
         $chirp->update($validated);
 
-        if ($request->wantsTurboStream()) {
-        if ($request->wantsTurboStream() && ! $request->wasFromTurboNative()) { // [tl! remove:-1,1 add]
+        // Check if the request was from a Hotwire Native client:
+        if ($request->wantsTurboStream() && ! $request->wasFromHotwireNative()) {
             return turbo_stream([
                 turbo_stream($chirp),
                 turbo_stream()->append('notifications', view('layouts.notification', [
@@ -570,23 +453,17 @@ class ChirpController extends Controller
             ->route('chirps.index')
             ->with('status', __('Chirp updated.'));
     }
-    // [tl! collapse:start]
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Chirp         $chirp
-     * @return \Illuminate\Http\Response
-     */
-    // [tl! collapse:end]
+
+    // ...
+
     public function destroy(Request $request, Chirp $chirp)
     {
         $this->authorize('delete', $chirp);
 
         $chirp->delete();
 
-        if ($request->wantsTurboStream()) {
-        if ($request->wantsTurboStream() && ! $request->wasFromTurboNative()) { // [tl! remove:-1,1 add]
+        // Check if the request was from a Hotwire Native client:
+        if ($request->wantsTurboStream() && ! $request->wasFromHotwireNative()) {
             return turbo_stream([
                 turbo_stream($chirp),
                 turbo_stream()->append('notifications', view('layouts.notification', [
@@ -649,156 +526,25 @@ Then, let's register the `WebModalFragment` in our `MainSessionNavHostFragment`:
 
 ```kotlin
 package com.example.turbochirpernative.main
-// [tl! collapse:start]
-import android.webkit.JavascriptInterface
-import android.webkit.WebView
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import com.example.turbochirpernative.BuildConfig
-import com.example.turbochirpernative.R // [tl! collapse:end]
-import com.example.turbochirpernative.features.auth.LoginFragment
-import com.example.turbochirpernative.features.web.ChirpsHomeFragment
-import com.example.turbochirpernative.features.web.WebFragment
-import com.example.turbochirpernative.features.web.WebModalFragment // [tl! add]
-// [tl! collapse:start]
-import com.example.turbochirpernative.util.CHIRPS_HOME_URL
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.gson.Gson
-import dev.hotwire.turbo.config.TurboPathConfiguration
-import dev.hotwire.turbo.session.TurboSessionNavHostFragment
-import kotlin.reflect.KClass
-// [tl! collapse:end]
+
+// ...
+import com.example.turbochirpernative.features.web.WebModalFragment // Add this
+
 class MainSessionNavHostFragment : TurboSessionNavHostFragment(), PopupMenuDelegator {
-    // [tl! collapse:start]
-    override val sessionName = "main"
+    // ...
 
-    override val startLocation = CHIRPS_HOME_URL
-
-    override val registeredActivities: List<KClass<out AppCompatActivity>>
-        get() = listOf()
-    // [tl! collapse:end]
     override val registeredFragments: List<KClass<out Fragment>>
         get() = listOf(
             WebFragment::class,
-            WebModalFragment::class, // [tl! add]
+            WebModalFragment::class, // Add this
             LoginFragment::class,
             ChirpsHomeFragment::class,
         )
-    // [tl! collapse:start]
-    override val pathConfigurationLocation: TurboPathConfiguration.Location
-        get() = TurboPathConfiguration.Location(
-            assetFilePath = "json/configuration.json",
-        )
 
-    override fun onSessionCreated() {
-        super.onSessionCreated()
-        session.webView.settings.userAgentString = customUserAgent(session.webView)
-
-        if (BuildConfig.DEBUG) {
-            session.setDebugLoggingEnabled(true)
-            WebView.setWebContentsDebuggingEnabled(true)
-        }
-
-        session.webView.addJavascriptInterface(
-            JsBridge(this),
-            "NativeBridge",
-        )
-    }
-
-    private fun customUserAgent(webView: WebView): String {
-        return "Turbo Native Android ${webView.settings.userAgentString}"
-    }
-
-    override fun showPopupMenu(options: PopupMenu) {
-        activity?.runOnUiThread {
-            val context = requireContext()
-
-            val dialog = BottomSheetDialog(context)
-
-            val view = layoutInflater.inflate(R.layout.popup_menu, null)!!
-
-            val menuWrapper = view.findViewById<LinearLayout>(R.id.popupMenuWrapper)!!
-
-            menuWrapper.removeAllViews()
-
-            options.items.forEach { item ->
-                val button = Button(context)
-
-                button.text = item.text
-                button.setBackgroundColor(resources.getColor(R.color.white, null))
-
-                button.setOnClickListener {
-                    session.webView.evaluateJavascript(
-                        "window.dispatchEvent(new CustomEvent('popup-menu:selected', { detail: { index: " + item.index + ", text: '" + item.text + "' } }))",
-                        null
-                    )
-
-                    dialog.dismiss()
-                }
-
-                menuWrapper.addView(button)
-            }
-
-            dialog.setOnCancelListener {
-                session.webView.evaluateJavascript("window.dispatchEvent(new CustomEvent('popup-menu:canceled'))", null)
-            }
-
-            dialog.setCancelable(true)
-
-            dialog.setContentView(view)
-
-            dialog.show()
-        }
-    }
-
-    override fun showToast(msg: String) {
-        activity?.runOnUiThread {
-            Toast
-                .makeText(requireContext(), msg, Toast.LENGTH_SHORT)
-                .show()
-        }
-    }
-    // [tl! collapse:end]
-}
-// [tl! collapse:start]
-data class MenuItem(
-    val text: String,
-    val index: Int,
-)
-
-data class PopupMenu(
-    val items: List<MenuItem>,
-)
-
-interface PopupMenuDelegator {
-    fun showPopupMenu(options: PopupMenu);
-    fun showToast(msg: String);
+    // ...
 }
 
-class JsBridge(private var delegator: PopupMenuDelegator) {
-    @JavascriptInterface
-    override fun toString(): String {
-        return "NativeBridge"
-    }
-
-    @JavascriptInterface
-    fun showPopup(json: String) {
-        val gson = Gson()
-
-        val options = gson.fromJson(json, PopupMenu::class.java)
-
-        delegator.showPopupMenu(options)
-    }
-
-    @JavascriptInterface
-    fun showToast(msg: String) {
-        delegator.showToast(msg)
-    }
-}
-// [tl! collapse:end]
+// ...
 ```
 
 We need to add a new entry to our configuration so any URI ending with `/edit` or `/create` (our forms), will open inside of a web modal fragment instead of the default web fragment:
@@ -862,26 +608,16 @@ Let's also hide the cancel button when inside a Turbo Native client by updating 
 
 ```blade
 <form action="{{ ($chirp ?? false) ? route('chirps.update', $chirp) : route('chirps.store') }}" method="POST">
-    <!-- [tl! collapse:start] -->
-    @if ($chirp ?? false)
-        @method('PUT')
-    @endif
+    <!-- ... -->
 
-    <textarea
-        name="message"
-        placeholder="What's on your mind?"
-        class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-    >{{ $chirp->message ?? '' }}</textarea>
-    <x-input-error :messages="$errors->get('message')" class="mt-2" />
-    <!-- [tl! collapse:end] -->
     <div class="flex items-center justify-start space-x-2">
         <x-primary-button class="mt-4">
             {{ __('Chirp') }}
         </x-primary-button>
 
         @if ($chirp ?? false)
-        <a href="{{ route('chirps.index') }}" class="mt-4">Cancel</a>
-        <a href="{{ route('chirps.index') }}" class="mt-4 turbo-native:hidden">Cancel</a><!-- [tl! remove:-1,1 add] -->
+        <!-- Update the link: -->
+        <a href="{{ route('chirps.index') }}" class="mt-4 turbo-native:hidden">Cancel</a>
         @endif
     </div>
 </form>
@@ -891,6 +627,4 @@ Let's also hide the cancel button when inside a Turbo Native client by updating 
 
 Now, our app should be a bit nicer:
 
-![Edit Chirp as modal](/images/native/web-modal-fragment.png)
-
-[Continue to Chirps Delete Confirmation...](/guides/native-deleting-confirmation)
+![Edit Chirp as modal](/assets/images/bootcamp/native/web-modal-fragment.png)

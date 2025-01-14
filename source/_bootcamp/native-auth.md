@@ -5,7 +5,7 @@ description: Native Authentication
 order: 10
 ---
 
-# *09.* Native Auth Screens and Laravel Sanctum
+# *09.* Native Authentication
 
 Let's tackle the mobile authentication first. We're now able to use the web authentication flow, but as we discussed earlier, sometimes we need to implement fully native screens in our app that uses JSON endpoints with an Access Token. For that reason, we're gonna change our login flow just for our Turbo Native Android client. If you were building a Native iOS app, that could also use this same flow.
 

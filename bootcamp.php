@@ -27,4 +27,9 @@ return [
             'Native Toasts' => '/bootcamp/native-toasts',
         ],
     ],
+    'Epilogue' => [
+        'children' => [
+            'Conclusion' => '/bootcamp/conclusion',
+        ],
+    ],
 ];

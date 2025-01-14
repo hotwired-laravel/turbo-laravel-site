@@ -1,8 +1,11 @@
-# *12.* Deleting Chirps Confirmation
+---
+extends: _layouts.bootcamp
+title: Native Confirmation Dialog
+description: Native Confirmation Dialog
+order: 14
+---
 
-[TOC]
-
-## Introduction
+# *12.* Native Confirmation Dialog
 
 Right now we're not showing a confirmation when the user presses the delete button. Let's fix that.
 
@@ -15,40 +18,23 @@ First, let's update our `chirps/partials/chirp.blade.php` file and add the `data
 ```blade
 <x-turbo::frame :id="$chirp" class="block p-6">
     <div class="flex space-x-2">
-        <!-- [tl! collapse:start] -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 -scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-        </svg>
-        <!-- [tl! collapse:end] -->
+        <!-- ... -->
+
         <div class="flex-1">
             <div class="flex justify-between items-center">
-                <!-- [tl! collapse:start] -->
-                <div>
-                    <span class="text-gray-800">{{ $chirp->user->name }}</span>
-                    <x-time-ago :date="$chirp->created_at" />
-                    @unless ($chirp->created_at->eq($chirp->updated_at))
-                    <small class="text-sm text-gray-600"> &middot; edited</small>
-                    @endunless
-                </div>
-                <!-- [tl! collapse:end] -->
+                <!-- ... -->
+
                 @if (Auth::id() === $chirp->user->id)
                 <x-dropdown align="right" width="48" data-bridge--popup-menu-msg-value="{{ $chirp->message }}">
-                    <!-- [tl! collapse:start] -->
-                    <x-slot name="trigger">
-                        <button>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                            </svg>
-                        </button>
-                    </x-slot>
-                    <!-- [tl! collapse:end] -->
+                    <!-- ... -->
+
                     <x-slot name="content">
                         <a href="{{ route('chirps.edit', $chirp) }}" data-bridge--popup-menu-target="option" class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 transition duration-150 ease-in-out">
                             Edit
                         </a>
 
-                        <form action="{{ route('chirps.destroy', $chirp) }}" method="POST">
-                        <form action="{{ route('chirps.destroy', $chirp) }}" method="POST" data-turbo-confirm="{{ __('Are you sure you want to delete this chirp?') }}"> <!-- [tl! remove:-1,1 add] -->
+                        <!-- Update form: -->
+                        <form action="{{ route('chirps.destroy', $chirp) }}" method="POST" data-turbo-confirm="{{ __('Are you sure you want to delete this chirp?') }}">
                             @method('DELETE')
                             <button data-bridge--popup-menu-target="option" class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 transition duration-150 ease-in-out">
                                 Delete
@@ -58,6 +44,7 @@ First, let's update our `chirps/partials/chirp.blade.php` file and add the `data
                 </x-dropdown>
                 @endif
             </div>
+
             <p class="mt-4 text-lg text-gray-900">{{ $chirp->message }}</p>
         </div>
     </div>
@@ -66,9 +53,9 @@ First, let's update our `chirps/partials/chirp.blade.php` file and add the `data
 
 That should get the JS confirm appearing both in the webapp and native.
 
-![Turbo Confirm Web](/images/native/native-delete-js-confirm-web.png)
+![Turbo Confirm Web](/assets/images/bootcamp/native/native-delete-js-confirm-web.png)
 
-![Turbo Confirm Native](/images/native/native-delete-js-confirm-native.png)
+![Turbo Confirm Native](/assets/images/bootcamp/native/native-delete-js-confirm-native.png)
 
 That's nice, but we can do a lot better. Let's start with the web version. Turbo allows us to override the default implementation of its confirm feature. Let's implement it using our own modal.
 
@@ -78,41 +65,11 @@ First, we're gonna create a global modal that will be used for this kind of conf
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <!-- [tl! collapse:start] -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <!-- [tl! collapse:end] -->
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            <!-- [tl! collapse:start] -->
-            @include('layouts.partials.navigation')
-            @include('layouts.partials.notifications')
+        <!-- ... -->
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow turbo-native:hidden">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-            <!-- [tl! collapse:end] -->
-        </div>
-
-        @include('layouts.confirmation_modal') <!-- [tl! add] -->
+        @include('layouts.confirmation_modal') <!-- Add this -->
     </body>
 </html>
 ```
@@ -159,9 +116,9 @@ Now, let's override the default behavior to show this new modal instead of using
 
 ```js
 import * as Turbo from '@hotwired/turbo';
-import { Confirmation } from '../helpers'; // [tl! add:start]
+import { Confirmation } from '../helpers';
 
-Turbo.setConfirmMethod(Confirmation); // [tl! add:end]
+Turbo.setConfirmMethod(Confirmation);
 
 export default Turbo;
 ```
@@ -199,9 +156,9 @@ export class WebConfirmation
 
 We're querying the dialog from the DOM, setting the contents of the `#confirmation_message` element as the message, then we're registering an event listener for the `close` event, then we're calling the `dialog.showModal()` method. As for the Promise, Turbo only expects that we pass `true` or `false` to the resolve function to indicate if it was confirmed or not. Let's see that in action:
 
-![Turbo Modal Confirm Web](/images/native/native-delete-modal-confirm-web.png)
+![Turbo Modal Confirm Web](/assets/images/bootcamp/native/native-delete-modal-confirm-web.png)
 
-![Turbo Modal Confirm Web](/images/native/native-delete-modal-confirm-native.png)
+![Turbo Modal Confirm Web](/assets/images/bootcamp/native/native-delete-modal-confirm-native.png)
 
 This is not so good for the native version, but the web one is nice. Let's fix that.
 
@@ -212,14 +169,15 @@ For the Native confirmation, we're gonna need to extend our Kotlin JSBridge a li
 Let's start with the web side, since it's simpler. Change the `resources/js/helpers/confirmation.js` file to look like the following:
 
 ```js
-import { BridgeConfirmation } from './bridge_confirmation'; // [tl! add]
+import { BridgeConfirmation } from './bridge_confirmation'; // Add this
 import { WebConfirmation } from './web_confirmation';
-import { isMobileApp } from './platform'; // [tl! add]
+import { isMobileApp } from './platform'; // Add this
 
 export function Confirmation (message) {
-    if (isMobileApp) { // [tl! add:start]
+    // Add this:
+    if (isMobileApp) {
         return new BridgeConfirmation().confirm(message);
-    } // [tl! add:end]
+    }
 
     return new WebConfirmation().confirm(message);
 };
@@ -249,111 +207,13 @@ Now, let's update the `MainSessionNavHostFragment.kt` in the native side to acce
 ```kotlin
 package com.example.turbochirpernative.main
 
-import android.content.DialogInterface // [tl! add]
-import android.webkit.JavascriptInterface // [tl! collapse:start]
-import android.webkit.WebView
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.Toast // [tl! collapse:end]
-import androidx.appcompat.app.AlertDialog // [tl! add]
-import androidx.appcompat.app.AppCompatActivity // [tl! collapse:start]
-import androidx.fragment.app.Fragment
-import com.example.turbochirpernative.BuildConfig
-import com.example.turbochirpernative.R
-import com.example.turbochirpernative.features.auth.LoginFragment
-import com.example.turbochirpernative.features.web.ChirpsHomeFragment
-import com.example.turbochirpernative.features.web.WebFragment
-import com.example.turbochirpernative.features.web.WebModalFragment
-import com.example.turbochirpernative.util.CHIRPS_HOME_URL
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.gson.Gson
-import dev.hotwire.turbo.config.TurboPathConfiguration
-import dev.hotwire.turbo.session.TurboSessionNavHostFragment
-import kotlin.reflect.KClass // [tl! collapse:end]
+// ...
+import android.content.DialogInterface
+import androidx.appcompat.app.AlertDialog
 
 class MainSessionNavHostFragment : TurboSessionNavHostFragment(), PopupMenuDelegator {
-    // [tl! collapse:start]
-    override val sessionName = "main"
+    // ...
 
-    override val startLocation = CHIRPS_HOME_URL
-
-    override val registeredActivities: List<KClass<out AppCompatActivity>>
-        get() = listOf()
-
-    override val registeredFragments: List<KClass<out Fragment>>
-        get() = listOf(
-            WebFragment::class,
-            WebModalFragment::class,
-            LoginFragment::class,
-            ChirpsHomeFragment::class,
-        )
-
-    override val pathConfigurationLocation: TurboPathConfiguration.Location
-        get() = TurboPathConfiguration.Location(
-            assetFilePath = "json/configuration.json",
-        )
-
-    override fun onSessionCreated() {
-        super.onSessionCreated()
-        session.webView.settings.userAgentString = customUserAgent(session.webView)
-
-        if (BuildConfig.DEBUG) {
-            session.setDebugLoggingEnabled(true)
-            WebView.setWebContentsDebuggingEnabled(true)
-        }
-
-        session.webView.addJavascriptInterface(
-            JsBridge(this),
-            "NativeBridge",
-        )
-    }
-
-    private fun customUserAgent(webView: WebView): String {
-        return "Turbo Native Android ${webView.settings.userAgentString}"
-    }
-
-    override fun showPopupMenu(options: PopupMenu) {
-        activity?.runOnUiThread {
-            val context = requireContext()
-
-            val dialog = BottomSheetDialog(context)
-
-            val view = layoutInflater.inflate(R.layout.popup_menu, null)!!
-
-            val menuWrapper = view.findViewById<LinearLayout>(R.id.popupMenuWrapper)!!
-
-            menuWrapper.removeAllViews()
-
-            options.items.forEach { item ->
-                val button = Button(context)
-
-                button.text = item.text
-                button.setBackgroundColor(resources.getColor(R.color.white, null))
-
-                button.setOnClickListener {
-                    session.webView.evaluateJavascript(
-                        "window.dispatchEvent(new CustomEvent('popup-menu:selected', { detail: { index: " + item.index + ", text: '" + item.text + "' } }))",
-                        null
-                    )
-
-                    dialog.dismiss()
-                }
-
-                menuWrapper.addView(button)
-            }
-
-            dialog.setOnCancelListener {
-                session.webView.evaluateJavascript("window.dispatchEvent(new CustomEvent('popup-menu:canceled'))", null)
-            }
-
-            dialog.setCancelable(true)
-
-            dialog.setContentView(view)
-
-            dialog.show()
-        }
-    }
-    // [tl! collapse:end]
     override fun showToast(msg: String) {
         activity?.runOnUiThread {
             Toast
@@ -361,7 +221,7 @@ class MainSessionNavHostFragment : TurboSessionNavHostFragment(), PopupMenuDeleg
                 .show()
         }
     }
-    // [tl! add:start]
+
     override fun showConfirmationModal(msg: String) {
         activity?.runOnUiThread {
             val builder = AlertDialog.Builder(requireContext())
@@ -388,52 +248,23 @@ class MainSessionNavHostFragment : TurboSessionNavHostFragment(), PopupMenuDeleg
             alert.show()
         }
     }
-    // [tl! add:end]
 }
-// [tl! collapse:start]
-data class MenuItem(
-    val text: String,
-    val index: Int,
-)
 
-data class PopupMenu(
-    val items: List<MenuItem>,
-)
-// [tl! collapse:end]
+// ...
+
 interface PopupMenuDelegator {
-    // [tl! collapse:start]
-    fun showPopupMenu(options: PopupMenu);
-    fun showToast(msg: String);
-    // [tl! collapse:end add:1,1]
+    // ...
+
     fun showConfirmationModal(msg: String);
 }
 
 class JsBridge(private var delegator: PopupMenuDelegator) {
-    // [tl! collapse:start]
-    @JavascriptInterface
-    override fun toString(): String {
-        return "NativeBridge"
-    }
+    // ...
 
-    @JavascriptInterface
-    fun showPopup(json: String) {
-        val gson = Gson()
-
-        val options = gson.fromJson(json, PopupMenu::class.java)
-
-        delegator.showPopupMenu(options)
-    }
-
-    @JavascriptInterface
-    fun showToast(msg: String) {
-        delegator.showToast(msg)
-    }
-    // [tl! collapse:end add:start]
     @JavascriptInterface
     fun showConfirmationModal(msg: String) {
         delegator.showConfirmationModal(msg)
     }
-    // [tl! add:end]
 }
 ```
 
@@ -441,6 +272,4 @@ class JsBridge(private var delegator: PopupMenuDelegator) {
 
 This should get our native confirmation modal looking similar to our JS confirm one, but now we're in full control of it looks like and what it does:
 
-![Turbo Confirm Native](/images/native/native-delete-confirmation-native.png)
-
-[Continue to fix native flash messages...](/guides/native-fix-flash-messages)
+![Turbo Confirm Native](/assets/images/bootcamp/native/native-delete-confirmation-native.png)
