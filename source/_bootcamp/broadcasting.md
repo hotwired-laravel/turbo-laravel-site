@@ -27,6 +27,8 @@ php artisan importmap:pin laravel-echo pusher-js current.js
 
 Next, we'll need to update the published `echo.js` file. It currently uses `import.meta.env.*`, which requires a build step. Instead, we'll update it to use the `current.js` to read the configs from meta tags we'll add to our layouts. But first, replace the `echo.js` with the following version:
 
+<x-fenced-code file="resources/js/echo.js">
+
 ```js 
 import Echo from 'laravel-echo';
 
@@ -47,7 +49,11 @@ window.Echo = new Echo({
 });
 ```
 
+</x-fenced-code>
+
 We also need to update the `bootstrap.js` file to fix the import that was appended by Reverb to the Importmap style:
+
+<x-fenced-code file="resources/js/bootstrap.js">
 
 ```js
 // ...
@@ -58,10 +64,15 @@ We also need to update the `bootstrap.js` file to fix the import that was append
  * allow your team to quickly build robust real-time web applications.
  */
 
-import 'echo'; // Import like this (without the `./`)
+{-import './echo';-}
+{+import 'echo';+}
 ```
 
+</x-fenced-code>
+
 Next, let's create a new layout partial at `resources/views/layouts/partials/reverb.blade.php` with the following content:
+
+<x-fenced-code file="resources/views/layouts/partials/reverb.blade.php">
 
 ```blade
 <meta name="current-reverb-app-key" content="{{ config('broadcasting.connections.reverb.key') }}" />
@@ -70,7 +81,11 @@ Next, let's create a new layout partial at `resources/views/layouts/partials/rev
 <meta name="current-reverb-scheme" content="{{ config('reverb.servers.reverb.frontend.scheme') }}" />
 ```
 
+</x-fenced-code>
+
 Then, add that to the `app.blade.php` layout file:
+
+<x-fenced-code file="resources/views/layouts/app.blade.php">
 
 ```blade
 <!DOCTYPE html>
@@ -84,7 +99,7 @@ Then, add that to the `app.blade.php` layout file:
         <meta name="view-transition" content="same-origin" />
         @endif
 
-        @include('layouts.partials.reverb')
+{+        @include('layouts.partials.reverb')+}
 
         {{ $meta ?? '' }}
         
@@ -97,11 +112,40 @@ Then, add that to the `app.blade.php` layout file:
 </html>
 ```
 
-Do the same for the guest layout.
+</x-fenced-code>
+
+Do the same for the guest layout:
+
+<x-fenced-code file="resources/views/layouts/guest.blade.php">
+
+```blade
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        
+        @if ($viewTransitions ?? false)
+        <meta name="view-transition" content="same-origin" />
+        @endif
+
+{+        @include('layouts.partials.reverb')+}
+        
+        {{ $meta ?? '' }}
+
+        <!-- ... -->
+    </head>
+
+    <!-- ... -->
+</html>
+```
+
+</x-fenced-code>
 
 Then, we need to tweak our `.env` file to look something like this:
 
-```env
+```php
 # ...
 
 BROADCAST_CONNECTION=reverb
@@ -119,6 +163,8 @@ REVERB_FRONTEND_SCHEME="${REVERB_SCHEME}"
 ```
 
 With that, our Reverb config needs to be updated to use the new frontend configs:
+
+<x-fenced-code file="config/reverb.php">
 
 ```php
 <?php
@@ -139,11 +185,11 @@ return [
                 'enabled' => env('REVERB_SCALING_ENABLED', false),
                 'channel' => env('REVERB_SCALING_CHANNEL', 'reverb'),
             ],
-            'frontend' => [ // Add this section
+{+            'frontend' => [
                 'host' => env('REVERB_FRONTEND_HOST'),
                 'port' => env('REVERB_FRONTEND_PORT'),
                 'scheme' => env('REVERB_FRONTEND_SCHEME'),
-            ],
+            ],+}
             'pulse_ingest_interval' => env('REVERB_PULSE_INGEST_INTERVAL', 15),
         ],
     ],
@@ -152,17 +198,21 @@ return [
 ];
 ```
 
+</x-fenced-code>
+
 The Broadcasting component has two sides: the backend and the frontend. The backend needs to connect to the Reverb server, and since we're using Sail, we'll spin up a new container for that. For this reason, we cannot use the same host as the frontend, since that's what the browser will use to connect to the server. The backend will connect to a host named `reverb.test:8080` (we'll add it next), and the browser will connect to `localhost:8080`.
 
 If you're following using `artisan serve`, both can be `localhost` or `127.0.0.1`.
 
 Next, update the `docker-compose.yml` to add the new `reverb.test` service:
 
+<x-fenced-code file="docker-compose.yml">
+
 ```yaml
 services:
     # ...
 
-    reverb.test: # Add this new service
+{+    reverb.test:
         build:
             context: ./vendor/laravel/sail/runtimes/8.3
             dockerfile: Dockerfile
@@ -185,12 +235,14 @@ services:
         networks:
             - sail
         depends_on:
-            - laravel.test
+            - laravel.test+}
 
 networks:
     sail:
         driver: bridge
 ```
+
+</x-fenced-code>
 
 Now, we can boot the Reverb service by running:
 
@@ -204,6 +256,8 @@ That's it!
 
 Let's start by sending new Chirps to all users currently visiting the chirps page. We're going to start by creating a private broadcasting channel called `chirps` in our `routes/channels.php` file. Any authenticated user may start receiving new Chirps broadcasts when they visit the `chirps.index` page, so we're simply returning `true` in the authorization check:
 
+<x-fenced-code file="routes/channels.php">
+
 ```php
 <?php
 
@@ -214,13 +268,16 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
 
-// Add this:
-Broadcast::channel('chirps', function () {
+{+Broadcast::channel('chirps', function () {
     return true;
-});
+});+}
 ```
 
+</x-fenced-code>
+
 Now, let's update the `chirps/index.blade.php` to add the `x-turbo::stream-from` Blade component that ships with Turbo Laravel:
+
+<x-fenced-code file="resources/views/chirps/index.blade.php">
 
 ```blade
 <x-app-layout>
@@ -230,8 +287,7 @@ Now, let's update the `chirps/index.blade.php` to add the `x-turbo::stream-from`
         </h2>
     </x-slot>
 
-    <!-- Add this: -->
-    <x-turbo::stream-from source="chirps" />
+{+    <x-turbo::stream-from source="chirps" />+}
 
     <div class="py-12">
         <!-- ... -->
@@ -239,23 +295,27 @@ Now, let's update the `chirps/index.blade.php` to add the `x-turbo::stream-from`
 </x-app-layout>
 ```
 
+</x-fenced-code>
+
 That's it! When the user visits that page, this component will automatically start listening to a `chirps` _private_ channel for broadcasts. By default, it assumes we're using private channels, but you may configure it to listen to `presence` or `public` channels by passing the `type` prop to the component. In this case, we're passing a string for the channel name, but we could also pass an Eloquent model instance and it would figure out the channel name based on [Laravel's conventions](https://laravel.com/docs/broadcasting#model-broadcasting-conventions).
 
 Now, we're ready to start broadcasting! First, let's add the `Broadcasts` trait to our `Chirp` model:
+
+<x-fenced-code file="app/Models/Chirp.php">
 
 ```php
 <?php
 
 namespace App\Models;
 
-use HotwiredLaravel\TurboLaravel\Models\Broadcasts; // Add this
+{+use HotwiredLaravel\TurboLaravel\Models\Broadcasts;+}
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Chirp extends Model
 {
     use HasFactory;
-    use Broadcasts; // Add this
+{+    use Broadcasts;+}
 
     protected $fillable = [
         'message',
@@ -268,7 +328,11 @@ class Chirp extends Model
 }
 ```
 
+</x-fenced-code>
+
 That trait will give us a bunch of methods we can call from our Chirp model instances. Let's use it in the `store` action of our `ChirpController` to send newly created Chirps to all connected users:
+
+<x-fenced-code file="app/Http/Controllers/ChirpController.php">
 
 ```php
 <?php
@@ -290,11 +354,10 @@ class ChirpController extends Controller
 
         $chirp = $request->user()->chirps()->create($validated);
 
-        // Add this:
-        $chirp->broadcastPrependTo('chirps')
+{+        $chirp->broadcastPrependTo('chirps')
             ->target('chirps')
             ->partial('chirps.partials.chirp', ['chirp' => $chirp])
-            ->toOthers();
+            ->toOthers();+}
 
         if ($request->wantsTurboStream()) {
             return turbo_stream([
@@ -313,9 +376,13 @@ class ChirpController extends Controller
 }
 ```
 
+</x-fenced-code>
+
 To test this, try visiting the `/chirps` page from two different tabs and creating a Chirp in one of them. The other should automatically update! We're also broadcasting on-the-fly in the same request/response life-cycle, which could slow down our response time a bit, depending on your load and your queue driver response time. We can delay the broadcasting (which includes view rendering) to a queued job by chaining the `->later()` method, for example.
 
 Now, let's make sure all visiting users receive Chirp updates whenever it changes. To achieve that, change the `update` action in the `ChirpController`:
+
+<x-fenced-code file="app/Http/Controllers/ChirpController.php">
 
 ```php
 <?php
@@ -325,7 +392,7 @@ namespace App\Http\Controllers;
 use App\Models\Chirp;
 use Illuminate\Http\Request;
 
-use function HotwiredLaravel\TurboLaravel\dom_id;
+{+use function HotwiredLaravel\TurboLaravel\dom_id;+}
 
 class ChirpController extends Controller
 {
@@ -341,11 +408,10 @@ class ChirpController extends Controller
 
         $chirp->update($validated);
 
-        // Add this:
-        $chirp->broadcastReplaceTo('chirps')
+{+        $chirp->broadcastReplaceTo('chirps')
             ->target(dom_id($chirp))
             ->partial('chirps.partials.chirp', ['chirp' => $chirp])
-            ->toOthers();
+            ->toOthers();+}
 
         if ($request->wantsTurboStream()) {
             return turbo_stream([
@@ -363,9 +429,13 @@ class ChirpController extends Controller
 }
 ```
 
+</x-fenced-code>
+
 Again, open two tabs, try editing a Chirp and you should see the other tab automatically updating! Cool, right?!
 
 Finally, let's make sure deleted Chirps are removed from all visiting users' pages. Tweak the `destroy` action in the `ChirpController` like so:
+
+<x-fenced-code file="app/Http/Controllers/ChirpController.php">
 
 ```php
 <?php
@@ -387,10 +457,9 @@ class ChirpController extends Controller
 
         $chirp->delete();
 
-        // Add this:
-        $chirp->broadcastRemoveTo('chirps')
+{+        $chirp->broadcastRemoveTo('chirps')
             ->target(dom_id($chirp))
-            ->toOthers();
+            ->toOthers();+}
 
         if ($request->wantsTurboStream()) {
             return turbo_stream([
@@ -406,6 +475,8 @@ class ChirpController extends Controller
 }
 ```
 
+</x-fenced-code>
+
 Now, open two tabs and try deleting a Chirp. You should see it being removed from the other tab as well!
 
 ## Automatically Broadcasting on Model Changes
@@ -418,13 +489,15 @@ We also need to override where these broadcasts are going to be sent to. Turbo L
 
 Our `Chirp` model would end up looking like this:
 
+<x-fenced-code file="app/Models/Chirp.php">
+
 ```php
 <?php
 
 namespace App\Models;
 
 use HotwiredLaravel\TurboLaravel\Models\Broadcasts;
-use Illuminate\Broadcasting\PrivateChannel; // Add this
+{+use Illuminate\Broadcasting\PrivateChannel;+}
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -433,10 +506,9 @@ class Chirp extends Model
     use HasFactory;
     use Broadcasts;
 
-    // Add this:
-    protected $broadcasts = [
+{+    protected $broadcasts = [
         'insertsBy' => 'prepend',
-    ];
+    ];+}
 
     protected $fillable = [
         'message',
@@ -447,17 +519,20 @@ class Chirp extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Add this method:
-    public function broadcastsTo()
+{+    public function broadcastsTo()
     {
         return [
             new PrivateChannel('chirps'),
         ];
-    }
+    }+}
 }
 ```
 
+</x-fenced-code>
+
 We can then remove a few lines from our `ChirpsController`:
+
+<x-fenced-code file="app/Http/Controllers/ChirpController.php">
 
 ```php
 <?php
@@ -467,7 +542,7 @@ namespace App\Http\Controllers;
 use App\Models\Chirp;
 use Illuminate\Http\Request;
 
-use function HotwiredLaravel\TurboLaravel\dom_id;
+{-use function HotwiredLaravel\TurboLaravel\dom_id;-}
 
 class ChirpController extends Controller
 {
@@ -481,10 +556,10 @@ class ChirpController extends Controller
 
         $chirp = $request->user()->chirps()->create($validated);
 
-        // $chirp->broadcastPrependTo('chirps')
-        //    ->target('chirps')
-        //    ->partial('chirps.partials.chirp', ['chirp' => $chirp])
-        //    ->toOthers();
+{-        $chirp->broadcastPrependTo('chirps')
+           ->target('chirps')
+           ->partial('chirps.partials.chirp', ['chirp' => $chirp])
+           ->toOthers();-}
 
         if ($request->wantsTurboStream()) {
             return turbo_stream([
@@ -511,12 +586,17 @@ class ChirpController extends Controller
 
         $chirp->update($validated);
 
-        // if ($request->wantsTurboStream()) {
-        //     return turbo_stream([
-        //         turbo_stream($chirp),
-        //         turbo_stream()->notice(__('Chirp updated.')),
-        //     ]);
-        // }
+{-        $chirp->broadcastReplaceTo('chirps')
+            ->target(dom_id($chirp))
+            ->partial('chirps.partials.chirp', ['chirp' => $chirp])
+            ->toOthers();-}
+
+        if ($request->wantsTurboStream()) {
+            return turbo_stream([
+                turbo_stream($chirp),
+                turbo_stream()->notice(__('Chirp updated.')),
+            ]);
+        }
 
         return redirect()
             ->route('chirps.index')
@@ -529,9 +609,9 @@ class ChirpController extends Controller
 
         $chirp->delete();
 
-        // $chirp->broadcastRemoveTo('chirps')
-        //     ->target(dom_id($chirp))
-        //     ->toOthers();
+{-        $chirp->broadcastRemoveTo('chirps')
+            ->target(dom_id($chirp))
+            ->toOthers();-}
 
         if ($request->wantsTurboStream()) {
             return turbo_stream([
@@ -546,6 +626,8 @@ class ChirpController extends Controller
     }
 }
 ```
+
+</x-fenced-code>
 
 > **note**
 > We're only covering Turbo Stream broadcasts from an Eloquent model's perspective. However, you may broadcast anything using the `TurboStream` Facade or by chaining the `broadcastTo()` method call when using the `turbo_stream()` response builder function. Check the [Broadcasting docs](/docs/broadcasting#content-handmade-broadcasts) to know more about this.
@@ -589,6 +671,8 @@ Instead of conditionally rendering the dropdown in the server side, let's switch
 
 First, let's update our `layouts.partials.current-identity` partial to include a few things about the currently authenticated user when there's one:
 
+<x-fenced-code file="resources/views/layouts/partials/current-identity.blade.php">
+
 ```blade
 @auth
 <meta name="current-identity-id" content="{{ Auth::user()->id }}" />
@@ -596,7 +680,11 @@ First, let's update our `layouts.partials.current-identity` partial to include a
 @endauth
 ```
 
+</x-fenced-code>
+
 Next, update the `app.blade.php` to include it:
+
+<x-fenced-code file="resources/views/layouts/app.blade.php">
 
 ```blade
 <!DOCTYPE html>
@@ -611,8 +699,7 @@ Next, update the `app.blade.php` to include it:
         @endif
 
         @include('layouts.partials.reverb')
-        <!-- Add this: -->
-        @include('layouts.partials.current-identity')
+{+        @include('layouts.partials.current-identity')+}
 
         {{ $meta ?? '' }}
 
@@ -627,6 +714,8 @@ Next, update the `app.blade.php` to include it:
 </html>
 ```
 
+</x-fenced-code>
+
 Now, we're going to create a new Stimulus controller that is going to be responsible for the dropdown visibility. It should only show it if the currently authenticated user is the creator of the Chirp. First, let's create the controller:
 
 ```bash
@@ -634,6 +723,8 @@ php artisan stimulus:make visible_to_creator
 ```
 
 Now, update the Stimulus controller to look like this:
+
+<x-fenced-code file="resources/js/controllers/visible_to_creator_controller.js">
 
 ```js
 import { Controller } from "@hotwired/stimulus"
@@ -660,7 +751,11 @@ export default class extends Controller {
 }
 ```
 
+</x-fenced-code>
+
 Now, let's update our `chirps.partials.chirp.blade.php` partial to use this controller instead of handling this in the server-side:
+
+<x-fenced-code file="resources/views/chirps/partials/chirp.blade.php">
 
 ```blade
 <x-turbo::frame :id="$chirp" class="p-6 flex space-x-2">
@@ -678,28 +773,37 @@ Now, let's update our `chirps.partials.chirp.blade.php` partial to use this cont
                 @endunless
             </div>
 
-            <!-- Remove the @if (Auth) stuff... -->
-            <x-dropdown align="right" width="48" class="hidden" data-controller="visible-to-creator" data-visible-to-creator-id-value="{{ $chirp->user_id }}" data-visible-to-creator-hidden-class="hidden">
+{-            @if (Auth::id() === $chirp->user->id) 
+            <x-dropdown align="right" width="48">-}
+{+            <x-dropdown align="right" width="48" class="hidden" data-controller="visible-to-creator" data-visible-to-creator-id-value="{{ $chirp->user_id }}" data-visible-to-creator-hidden-class="hidden">+}
                 <!-- ... -->
             </x-dropdown>
+{-            @endif-}
         </div>
         <p class="mt-4 text-lg text-gray-900 dark:text-gray-200">{{ $chirp->message }}</p>
     </div>
 </x-turbo::frame>
 ```
 
+</x-fenced-code>
+
 Next, we need to tweak our `dropdown.blade.php` Blade component to accept and merge the `class`, `data-controller`, and `data-action` attributes:
 
+<x-fenced-code file="resources/views/components/dropdown.blade.php">
+
 ```blade
-<!-- add the dataController and dataAction props... -->
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white', 'dataController' => '', 'dataAction' => ''])
+{-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white'])-}
+{+@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white', 'dataController' => '', 'dataAction' => ''])+}
 
 <!-- ... -->
 
-<div {{ $attributes->merge(['class' => 'relative', 'data-controller' => "dropdown {$dataController}", 'data-action' => "turbo:before-cache@window->dropdown#closeNow click@window->dropdown#closeWhenClickedOutside close->dropdown#close:stop {$dataAction}"]) }}>
+{-<div class="relative" data-controller="dropdown" data-action="turbo:before-cache@window->dropdown#closeNow click@window->dropdown#close close->dropdown#close">-}
+{+<div {{ $attributes->merge(['class' => 'relative', 'data-controller' => "dropdown {$dataController}", 'data-action' => "turbo:before-cache@window->dropdown#closeNow click@window->dropdown#closeWhenClickedOutside close->dropdown#close:stop {$dataAction}"]) }}>+}
     <!-- ... -->
 </div>
 ```
+
+</x-fenced-code>
 
 Now, if you try creating another user and test this out, you'll see that the dropdown only shows up for the creator of the Chirp!
 

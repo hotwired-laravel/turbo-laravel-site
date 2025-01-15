@@ -15,29 +15,21 @@ Hopefully you're starting to get the hang of things now. We think you'll be impr
 
 Let's update our `routes/web.php` file to add the new `destroy` action in our resource definition:
 
-```php
-<?php
+<x-fenced-code file="routes/web.php">
 
-use App\Http\Controllers\ChirpController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+```php
+// ...
+
+Route::resource('chirps', ChirpController::class)
+{-    ->only(['index', 'create', 'store', 'edit', 'update'])-}
+{+    ->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])+}
+    ->middleware(['auth', 'verified']);
 
 // ...
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::resource('chirps', ChirpController::class)
-    ->only(['index', 'create', 'store', 'edit', 'update', 'destroy']) // Change this
-    ->middleware(['auth', 'verified']);
-
-Route::middleware('auth')->group(function () {
-    // ...
-});
-
-require __DIR__.'/auth.php';
 ```
+
+</x-fenced-code>
 
 Our route table for this controller now looks like this:
 
@@ -54,14 +46,12 @@ DELETE    | `/chirps/{chirp}`      | destroy      | `chirps.destroy`
 
 Now we can update the `destroy` action on our `ChirpController` class to perform the deletion and return to the Chirp index:
 
+<x-fenced-code file="app/Http/Controllers/ChirpController.php">
+
 ```php
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Models\Chirp;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Http\Request;
+// ...
 
 class ChirpController extends Controller
 {
@@ -69,53 +59,54 @@ class ChirpController extends Controller
 
     public function destroy(Chirp $chirp)
     {
-        $this->authorize('delete', $chirp);
+{-        //-}
+{+        $this->authorize('delete', $chirp);
 
         $chirp->delete();
 
         return redirect()
             ->route('chirps.index')
-            ->with('notice', __('Chirp deleted.'));
+            ->with('notice', __('Chirp deleted.'));+}
     }
 }
 ```
+
+</x-fenced-code>
 
 ## Authorization
 
 As with editing, we only want our Chirp authors to be able to delete their Chirps, so let's update the `delete` method our `ChirpPolicy` class:
 
+<x-fenced-code file="app/Policies/ChirpPolicy.php">
+
 ```php
 <?php
 
-namespace App\Policies;
-
-use App\Models\Chirp;
-use App\Models\User;
-use Illuminate\Auth\Access\HandlesAuthorization;
+// ...
 
 class ChirpPolicy
 {
     // ...
 
-    public function update(User $user, Chirp $chirp)
-    {
-        return $user->is($chirp->user);
-    }
-
     public function delete(User $user, Chirp $chirp)
     {
-        return $user->is($chirp->user);
+{-        //-}
+{+        return $user->is($chirp->user);+}
     }
 
     // ...
 }
 ```
+
+</x-fenced-code>
 
 Although the logic of authorizing users to update or delete Chirps is pretty much the same for this demo app, chances are you may have different authorization policies in a real app. For that reason, we're leaving them separate.
 
 ## Updating our Chirp partial
 
 Finally, we can add a delete button to the dropdown menu we created earlier in our `chirps._chirp` Blade partial:
+
+<x-fenced-code file="resources/views/chirps/partials/chirp.blade.php">
 
 ```blade
 <div class="p-6 flex space-x-2">
@@ -146,12 +137,10 @@ Finally, we can add a delete button to the dropdown menu we created earlier in o
                 <x-slot name="content">
                     <x-dropdown-link href="{{ route('chirps.edit', $chirp) }}">{{ __('Edit') }}</x-dropdown-link>
 
-                    <!-- Add this: -->
-                    <form action="{{ route('chirps.destroy', $chirp) }}" method="POST">
+{+                    <form action="{{ route('chirps.destroy', $chirp) }}" method="POST">
                         @method('DELETE')
-
                         <x-dropdown-button type="submit">{{ __('Delete') }}</x-dropdown-button>
-                    </form>
+                    </form>+}
                 </x-slot>
             </x-dropdown>
             @endif
@@ -161,6 +150,8 @@ Finally, we can add a delete button to the dropdown menu we created earlier in o
     </div>
 </div>
 ```
+
+</x-fenced-code>
 
 ## Testing it out
 

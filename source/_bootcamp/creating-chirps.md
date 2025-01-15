@@ -48,8 +48,10 @@ We are also going to place these routes behind two [middlewares](https://laravel
 * The `auth` middleware ensures that only logged-in users can access the route.
 * The `verified` middleware will be used if you decide to enable [email verification](https://laravel.com/docs/verification).
 
+<x-fenced-code file="routes/web.php">
+
 ```php
-use App\Http\Controllers\ChirpController;
+{+use App\Http\Controllers\ChirpController; +}
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfilePasswordController;
 use Illuminate\Support\Facades\Route;
@@ -60,10 +62,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Add this route:
-Route::resource('chirps', ChirpController::class) 
+{+Route::resource('chirps', ChirpController::class)
     ->only(['index', 'create', 'store'])
-    ->middleware(['auth', 'verified']); 
+    ->middleware(['auth', 'verified']); +}
 
 Route::middleware('auth')->group(function () {
     // ...
@@ -71,6 +72,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 ```
+
+</x-fenced-code>
 
 This will create the following routes:
 
@@ -84,24 +87,26 @@ You may view all of the routes for your application by running the `php artisan 
 
 Let's test our route and controller by returning a test message from the `index` method of our new `ChirpController` class:
 
+<x-fenced-code file="app/Http/Controllers/ChirpController.php">
+
 ```php 
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Models\Chirp;
-use Illuminate\Http\Request;
+// ...
 
 class ChirpController extends Controller
 {
     public function index()
     {
-        return 'Hello, World!';
+{-        //-}
+{+        return 'Hello, World!';+}
     }
 
     // ...
 }
 ```
+
+</x-fenced-code>
 
 If you are still logged in from earlier, you should see your message when navigating to [http://localhost:8000/chirps](http://localhost:8000/chirps), or [http://localhost/chirps](http://localhost/chirps) if you're using Sail!
 
@@ -109,35 +114,40 @@ If you are still logged in from earlier, you should see your message when naviga
 
 Let's update our `index` action in the `ChirpController` to render the view that will display the listing of Chirps and a link to create a Chirp. We'll also update the `create` action to render the view that will display the form to create Chirps:
 
+<x-fenced-code file="app/Http/Controllers/ChirpController.php">
+
 ```php
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Models\Chirp;
-use Illuminate\Http\Request;
+// ...
 
 class ChirpController extends Controller
 {
     public function index()
     {
-        return view('chirps.index', [
+{-        return 'Hello, World';-}
+{+        return view('chirps.index', [
             //
-        ]);
+        ]);+}
     }
 
     public function create()
     {
-        return view('chirps.create', [
+{-        //-}
+{+        return view('chirps.create', [
             //
-        ]);
+        ]);+}
     }
 
     // ...
 }
 ```
 
+</x-fenced-code>
+
 We can then create our `chirps.index` view with a link to our form for creating new Chirps:
+
+<x-fenced-code file="resources/views/chirps/index.blade.php">
 
 ```blade
 <x-app-layout>
@@ -159,7 +169,11 @@ We can then create our `chirps.index` view with a link to our form for creating 
 </x-app-layout>
 ```
 
+</x-fenced-code>
+
 This view is including a partial called `new-chirp-trigger`, so create the partial with the following content:
+
+<x-fenced-code file="resources/views/chirps/partials/new-chirp-trigger.blade.php">
 
 ```blade 
 <div class="relative flex items-center justify-center py-10 px-4 rounded-lg border border-dotted border-gray-300 dark:border-gray-600">
@@ -170,7 +184,11 @@ This view is including a partial called `new-chirp-trigger`, so create the parti
 </div>
 ```
 
+</x-fenced-code>
+
 Then, let's create our `chirps.create` page view with the Chirps form:
+
+<x-fenced-code file="resources/views/chirps/create.blade.php">
 
 ```blade 
 <x-app-layout :title="__('Create Chirp')">
@@ -192,7 +210,11 @@ Then, let's create our `chirps.create` page view with the Chirps form:
 </x-app-layout>
 ```
 
+</x-fenced-code>
+
 Again, this view is including a `form` partial. Create that file with the following content:
+
+<x-fenced-code file="resources/views/chirps/partials/form.blade.php">
 
 ```blade 
 <form action="{{ route('chirps.store') }}" method="POST" class="w-full">
@@ -212,13 +234,19 @@ Again, this view is including a `form` partial. Create that file with the follow
 </form>
 ```
 
+</x-fenced-code>
+
 This partial is making use a Blade component that doesn't exist yet called `x-textarea-input`, let's create it:
+
+<x-fenced-code file="resources/views/components/textarea-input.blade.php">
 
 ```blade 
 @props(['disabled' => false, 'value' => ''])
 
 <textarea {{ $disabled ? 'disabled' : '' }} {!! $attributes->merge(['class' => 'border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm']) !!}>{{ $value }}</textarea>
 ```
+
+</x-fenced-code>
 
 That's it! Refresh the page in your browser to see your new form rendered in the default layout provided by Breeze!
 
@@ -234,6 +262,8 @@ Let's take a moment to add a link to the navigation menu provided by Turbo Breez
 
 Update the `navigation` partial provided by Turbo Breeze to add a menu item for desktop screens:
 
+<x-fenced-code file="resources/views/layouts/partials/navigation.blade.php">
+
 ```blade
 <!-- Navigation Links -->
 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -241,14 +271,17 @@ Update the `navigation` partial provided by Turbo Breeze to add a menu item for 
         {{ __('Dashboard') }}
     </x-nav-link>
 
-    <!-- Chips Link -->
-    <x-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.*')">
+{+    <x-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.*')">
         {{ __('Chirps') }}
-    </x-nav-link>
+    </x-nav-link>+}
 </div>
 ```
 
+</x-fenced-code>
+
 Don't forget the responsive menu:
+
+<x-fenced-code file="resources/views/layouts/partials/navigation.blade.php">
 
 ```blade 
 <!-- Responsive Navigation Menu -->
@@ -258,13 +291,14 @@ Don't forget the responsive menu:
             {{ __('Dashboard') }}
         </x-responsive-nav-link>
 
-        <!-- Chirps Link -->
-        <x-responsive-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.*')">
+{+        <x-responsive-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.*')">
             {{ __('Chirps') }}
-        </x-responsive-nav-link>
+        </x-responsive-nav-link>+}
     </div>
 </div>
 ```
+
+</x-fenced-code>
 
 We should see the Chirps link on the page nav now:
 
@@ -274,13 +308,12 @@ We should see the Chirps link on the page nav now:
 
 Our form has been configured to post messages to the `chirps.store` route that we created earlier. Let's update the `store` action on our `ChirpController` class to validate the data and create a new Chirp:
 
+<x-fenced-code file="app/Http/Controllers/ChirpController.php">
+
 ```php 
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Models\Chirp;
-use Illuminate\Http\Request;
+// ...
 
 class ChirpController extends Controller
 {
@@ -288,18 +321,21 @@ class ChirpController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
+{-        //-}
+{+        $validated = $request->validate([
             'message' => ['required', 'string', 'max:255'],
         ]);
 
         $request->user()->chirps()->create($validated);
 
-        return redirect()->route('chirps.index');
+        return redirect()->route('chirps.index');+}
     }
 
     // ...
 }
 ```
+
+</x-fenced-code>
 
 We're using Laravel's powerful validation feature to ensure that the user provides a message and that it won't exceed the 255 character limit of the database column we'll be creating.
 
@@ -310,6 +346,8 @@ Finally, we can return a redirect response to our `chirps.index` route.
 ### Creating a relationship
 
 You may have noticed in the previous step that we called a `chirps` method on the `$request->user()` object. We need to create this method on our `User` model to define a ["has many"](https://laravel.com/docs/eloquent-relationships#one-to-many) relationship:
+
+<x-fenced-code file="app/Models/User.php">
 
 ```php 
 <?php
@@ -324,12 +362,14 @@ class User extends Authenticatable
 
     // ...
 
-    public function chirps()
+{+    public function chirps()
     {
         return $this->hasMany(Chirp::class);
-    }
+    }+}
 }
 ```
+
+</x-fenced-code>
 
 Laravel offers many different types of model relationships that you can read more about in the [Eloquent Relationships](https://laravel.com/docs/eloquent-relationships) documentation.
 
@@ -341,29 +381,32 @@ Laravel protects you from accidentally doing this by blocking mass assignment by
 
 Let's add the `$fillable` property to our `Chirp` model to enable mass-assignment for the `message` attribute:
 
+<x-fenced-code file="app/Models/Chirp.php">
+
 ```php 
 <?php
 
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+// ...
 
 class Chirp extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+{+    protected $fillable = [
         'message',
-    ];
+    ];+}
 }
 ```
+
+</x-fenced-code>
 
 You can learn more about Laravel's mass assignment protection in the [documentation](https://laravel.com/docs/eloquent#mass-assignment).
 
 ### Updating the migration
 
 The only thing missing is extra columns in our database to store the relationship between a `Chirp` and its `User` and the message itself. Remember the database migration we created earlier? It's time to open that file to add some extra columns:
+
+<x-fenced-code file="database/migrations/{timestamp}_create_chirps_table.php">
 
 ```php 
 <?php
@@ -378,8 +421,8 @@ return new class extends Migration
     {
         Schema::create('chirps', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('message');
+{+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('message');+}
             $table->timestamps();
         });
     }
@@ -387,6 +430,8 @@ return new class extends Migration
     // ...
 };
 ```
+
+</x-fenced-code>
 
 We haven't migrated the database since we added this migration, so let do it now:
 
@@ -444,13 +489,12 @@ Since we're redirecting the user to another page and redirects happens in the br
 
 Let's update our `store` action in the `ChirpController` to also return a flash message named `notice` in the redirect:
 
+<x-fenced-code file="app/Http/Controllers/ChirpController.php">
+
 ```php 
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Models\Chirp;
-use Illuminate\Http\Request;
+// ...
 
 class ChirpController extends Controller
 {
@@ -464,40 +508,38 @@ class ChirpController extends Controller
 
         $request->user()->chirps()->create($validated);
 
-        return redirect()
+{-        return redirect()->route('chirps.index');-}
+{+        return redirect()
             ->route('chirps.index')
-            ->with('notice', __('Chirp created.')); // Add this
+            ->with('notice', __('Chirp created.'));+}
     }
 
     // ...
 }
 ```
 
+</x-fenced-code>
+
 Then, let's change our `layouts.app` file to include a `layouts.partials.notifications` partial:
+
+<x-fenced-code file="resources/views/layouts/app.blade.php">
 
 ```blade 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
         @include('layouts.partials.navigation')
-        <!-- Add this -->
-        @include('layouts.partials.notifications')
+{+        @include('layouts.partials.notifications')+}
 
-        <!-- Page Heading -->
-        <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
-            </div>
-        </header>
-
-        <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
+        <!-- ... -->
     </div>
 </body>
 ```
 
+</x-fenced-code>
+
 Next, let's create the `layouts.partials.notifications` wrapper partial:
+
+<x-fenced-code file="resources/views/layouts/partials/notifications.blade.php">
 
 ```blade 
 <div id="notifications" class="fixed top-10 left-0 right-0 flex flex-col items-center justify-center space-y-2 z-10 opacity-80">
@@ -507,13 +549,19 @@ Next, let's create the `layouts.partials.notifications` wrapper partial:
 </div>
 ```
 
+</x-fenced-code>
+
 So, each notification will render with the `layouts.partials.notice` (singular) partial and will be added to the wrapper partial. Let's add the individual notification partial:
+
+<x-fenced-code file="resources/views/layouts/partials/notice.blade.php">
 
 ```blade
 <div data-turbo-temporary data-controller="flash" data-action="animationend->flash#remove" class="py-1 px-4 leading-7 text-center text-white rounded-full bg-gray-900 transition-all animate-appear-then-fade-out">
     {{ $message }}
 </div>
 ```
+
+</x-fenced-code>
 
 There are a few attributes I'd like to briefly discuss here:
 

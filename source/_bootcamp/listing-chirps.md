@@ -13,12 +13,14 @@ In the previous step we added the ability to create Chirps, now we're ready to d
 
 Let's update the `index` action our `ChirpController` to pass Chirps from every user to our `chirps.index` page.
 
+<x-fenced-code file="app/Http/Controllers/ChirpController.php">
+
 ```php
 <?php
 
 namespace App\Http\Controllers;
 
-use App\Models\Chirp;
+{+use App\Models\Chirp;+}
 use Illuminate\Http\Request;
 
 class ChirpController extends Controller
@@ -26,13 +28,16 @@ class ChirpController extends Controller
     public function index()
     {
         return view('chirps.index', [
-            'chirps' => Chirp::with('user')->latest()->get(),
+{-            //-}
+{+            'chirps' => Chirp::with('user')->latest()->get(),+}
         ]);
     }
 
     // ...
 }
 ```
+
+</x-fenced-code>
 
 Here we've used Eloquent's `with` method to [eager-load](https://laravel.com/docs/eloquent-relationships#eager-loading) every Chirp's associated user's ID and name. We've also used the `latest` scope to return the records in reverse-chronological order.
 
@@ -42,35 +47,35 @@ Returning all Chirps at once won't scale in production. Take a look at Laravel's
 
 The Chirp's `user` relationship hasn't been defined yet. To fix this, let's add a new ["belongs to"](https://laravel.com/docs/eloquent-relationships#one-to-many-inverse) relationship to our `Chirp` model:
 
+<x-fenced-code file="app/Models/Chirp.php">
+
 ```php
 <?php
 
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+// ...
 
 class Chirp extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'message',
-    ];
+    // ...
 
-    // Add this:
-    public function user()
+{+    public function user()
     {
         return $this->belongsTo(User::class);
-    }
+    }+}
 }
 ```
+
+</x-fenced-code>
 
 This relationship is the inverse of the "has many" relationship we created earlier on the `User` model.
 
 ## Displaying The Chirps
 
 Next, update the `chirps.index` view so we can list all Chirps:
+
+<x-fenced-code file="resources/views/chirps/index.blade.php">
 
 ```blade
 <x-app-layout>
@@ -86,10 +91,9 @@ Next, update the `chirps.index` view so we can list all Chirps:
                 <div class="max-w-xl mx-auto">
                     @include('chirps.partials.new-chirp-trigger')
 
-                    <div class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">
-                        <!-- Add this: -->
+{+                    <div class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">
                         @each('chirps.partials.chirp', $chirps, 'chirp')
-                    </div>
+                    </div>+}
                 </div>
             </div>
         </div>
@@ -97,7 +101,11 @@ Next, update the `chirps.index` view so we can list all Chirps:
 </x-app-layout>
 ```
 
+</x-fenced-code>
+
 Finally, let's create a `chirps.partials.chirp` Blade partial to display Chirp. This component will be responsible for displaying an individual Chirp:
+
+<x-fenced-code file="resources/views/chirps/partials/chirp.blade.php">
 
 ```blade
 <div class="p-6 flex space-x-2">
@@ -118,6 +126,8 @@ Finally, let's create a `chirps.partials.chirp` Blade partial to display Chirp. 
     </div>
 </div>
 ```
+
+</x-fenced-code>
 
 Now take a look in your browser to see the message you Chirped earlier!
 

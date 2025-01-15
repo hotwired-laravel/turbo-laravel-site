@@ -13,6 +13,8 @@ So far, our application is quite basic. Out of Hotwire, we're only using Turbo D
 
 Our application works, but we could improve it. Instead of sending users to a dedicated chirp creation form page, let's display the form inline right on the `chirps.index` page. To do that, we're going to use [lazy-loading Turbo Frames](https://turbo.hotwired.dev/reference/frames):
 
+<x-fenced-code file="resources/views/chirps/index.blade.php">
+
 ```blade
 <x-app-layout>
     <x-slot name="header">
@@ -25,10 +27,10 @@ Our application works, but we could improve it. Instead of sending users to a de
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="max-w-xl mx-auto">
-                    @include('chirps.partials.new-chirp-trigger')
-                    <x-turbo::frame id="create_chirp" src="{{ route('chirps.create') }}">
+{-                    @include('chirps.partials.new-chirp-trigger')-}
+{+                    <x-turbo::frame id="create_chirp" src="{{ route('chirps.create') }}">
                         @include('chirps.partials.new-chirp-trigger')
-                    </x-turbo::frame><!-- [tl! remove:-3,1 add:-2,3] -->
+                    </x-turbo::frame>+}
 
                     <div class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">
                         @each('chirps.partials.chirp', $chirps, 'chirp')
@@ -40,7 +42,11 @@ Our application works, but we could improve it. Instead of sending users to a de
 </x-app-layout>
 ```
 
+</x-fenced-code>
+
 For that to work, we also need to wrap our create form with a matching Turbo Frame (by "matching" I mean same DOM ID):
+
+<x-fenced-code file="resources/views/chirps/create.blade.php">
 
 ```blade
 <x-app-layout :title="__('Create Chirp')">
@@ -54,16 +60,18 @@ For that to work, we also need to wrap our create form with a matching Turbo Fra
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="max-w-xl mx-auto">
-                    <!-- Wrap in a Turbo Frame: -->
-                    <x-turbo::frame id="create_chirp" target="_top">
+{-                    @include('chirps.partials.form')-}
+{+                    <x-turbo::frame id="create_chirp" target="_top">
                         @include('chirps.partials.form')
-                    </x-turbo::frame>
+                    </x-turbo::frame>+}
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
 ```
+
+</x-fenced-code>
 
 A few things about this:
 
@@ -80,6 +88,8 @@ Let's make use of Turbo Streams to update our form with a clean one and prepend 
 
 Before we change the `ChirpController`, let's give our list of chirps wrapper element an ID in the `chirps.index` page:
 
+<x-fenced-code file="resources/views/chirps/index.blade.php">
+
 ```blade
 <x-app-layout>
     <x-slot name="header">
@@ -96,8 +106,8 @@ Before we change the `ChirpController`, let's give our list of chirps wrapper el
                         @include('chirps.partials.new-chirp-trigger')
                     </x-turbo::frame>
 
-                    <!-- Add the ID: -->
-                    <div id="chirps" class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">
+{-                    <div class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">-}
+{+                    <div id="chirps" class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">+}
                         @each('chirps.partials.chirp', $chirps, 'chirp')
                     </div>
                 </div>
@@ -107,15 +117,16 @@ Before we change the `ChirpController`, let's give our list of chirps wrapper el
 </x-app-layout>
 ```
 
+</x-fenced-code>
+
 Okay, now we can change the `store` action in our `ChirpController` to return 3 Turbo Streams if the client supports it, one to update the form with a clean one, another to prepend the new chirp to the list, and another to append the flash message:
+
+<x-fenced-code file="app/Http/Controllers/ChirpController.php">
 
 ```php
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Models\Chirp;
-use Illuminate\Http\Request;
+// ...
 
 class ChirpController extends Controller
 {
@@ -127,15 +138,18 @@ class ChirpController extends Controller
             'message' => ['required', 'string', 'max:255'],
         ]);
 
-        $chirp = $request->user()->chirps()->create($validated);
+{-        $request->user()->chirps()->create($validated);-}
+{+        $chirp = $request->user()->chirps()->create($validated);
 
         if ($request->wantsTurboStream()) {
             return turbo_stream([
                 turbo_stream($chirp, 'prepend'),
                 turbo_stream()->update('create_chirp', view('chirps.partials.form')),
-                turbo_stream()->append('notifications', view('layouts.partials.notice', ['message' => __('Chirp created.')])),
+                turbo_stream()->append('notifications', view('layouts.partials.notice', [
+                    'message' => __('Chirp created.'),
+                ])),
             ]);
-        }
+        }+}
 
         return redirect()
             ->route('chirps.index')
@@ -146,14 +160,18 @@ class ChirpController extends Controller
 }
 ```
 
+</x-fenced-code>
+
 If you try to create one now, you'll notice Turbo Laravel expects to find the Chirp partial at `resources/views/chirps/_chirp.blade.php`, but we are using a folder-based partial convention. This pattern is common in Laravel, so Turbo Laravel understands that as well. Let's update the package to use that. Update your `AppServiceProvider` like so:
+
+<x-fenced-code file="app/Providers/AppServiceProvider.php">
 
 ```php
 <?php
 
 namespace App\Providers;
 
-use HotwiredLaravel\TurboLaravel\Facades\Turbo; // Add this
+{+use HotwiredLaravel\TurboLaravel\Facades\Turbo;+}
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -162,10 +180,12 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        Turbo::usePartialsSubfolderPattern(); // Add this
+{+        Turbo::usePartialsSubfolderPattern();+}
     }
 }
 ```
+
+</x-fenced-code>
 
 Now if you try creating a Chirp, you should see the newly created Chirp at the top of the chirps list, the form should have been cleared, and a flash message showed up.
 
@@ -177,9 +197,11 @@ Let's also implement inline editing for our chirps.
 
 To do that, we need to tweak our `chirps.partials.chirp` partial and wrap it with a Turbo Frame. Instead of showing you a long Git diff, replace the existing partial with this one:
 
+<x-fenced-code file="resources/views/chirps/partials/chirp.blade.php">
+
 ```blade
-<!-- Change the wrapping div to a Turbo Frame.. -->
-<x-turbo::frame :id="$chirp" class="p-6 flex space-x-2">
+{-<div class="p-6 flex space-x-2">-}
+{+<x-turbo::frame :id="$chirp" class="p-6 flex space-x-2">+}
     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 dark:text-gray-400 -scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <!-- ... -->
     </svg>
@@ -187,11 +209,15 @@ To do that, we need to tweak our `chirps.partials.chirp` partial and wrap it wit
     <div class="flex-1">
         <!-- ... -->
     </div>
-</div>
-</x-turbo::frame>
+{-</div>-}
+{+</x-turbo::frame>+}
 ```
 
+</x-fenced-code>
+
 Now, let's also update the `chirps.edit` page to add a wrapping Turbo Frame around the form there:
+
+<x-fenced-code file="resources/views/chirps/edit.blade.php">
 
 ```blade
 <x-app-layout :title="__('Edit Chirp')">
@@ -205,10 +231,10 @@ Now, let's also update the `chirps.edit` page to add a wrapping Turbo Frame arou
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="max-w-xl mx-auto">
-                    <!-- Wrap the form in a Turbo Frame... -->
-                    <x-turbo::frame :id="$chirp" target="_top">
+{-                    @include('chirps.partials.form', ['chirp' => $chirp])-}
+{+                    <x-turbo::frame :id="$chirp" target="_top">
                         @include('chirps.partials.form', ['chirp' => $chirp])
-                    </x-turbo::frame>
+                    </x-turbo::frame>+}
                 </div>
             </div>
         </div>
@@ -216,19 +242,20 @@ Now, let's also update the `chirps.edit` page to add a wrapping Turbo Frame arou
 </x-app-layout>
 ```
 
+</x-fenced-code>
+
 ## Updating inline edit form with the chirps partial
 
 Now, if you try clicking on the edit button, you should see the form appearing inline! If you submit it, you will see the change takes place already. That's awesome, right? Well, not so much. See, we can see the change because after the chirp is updated, the controller redirects the user to the index page and it happens that the chirp is rendered on that page, so it finds a matching Turbo Frame. If that wasn't the case, we would see a strange behavior.
 
 Let's change the `update` action in the `ChirpController` to return a Turbo Stream with the updated Chirp partial if the client supports it:
 
+<x-fenced-code file="app/Controllers/ChirpController.php">
+
 ```php
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Models\Chirp;
-use Illuminate\Http\Request;
+// ...
 
 class ChirpController extends Controller
 {
@@ -244,13 +271,14 @@ class ChirpController extends Controller
 
         $chirp->update($validated);
 
-        // Add this:
-        if ($request->wantsTurboStream()) {
+{+        if ($request->wantsTurboStream()) {
             return turbo_stream([
                 turbo_stream($chirp),
-                turbo_stream()->append('notifications', view('layouts.partials.notice', ['message' => __('Chirp updated.')])),
+                turbo_stream()->append('notifications', view('layouts.partials.notice', [
+                    'message' => __('Chirp updated.'),
+                ])),
             ]);
-        }
+        }+}
 
         return redirect()
             ->route('chirps.index')
@@ -260,6 +288,8 @@ class ChirpController extends Controller
     // ...
 }
 ```
+
+</x-fenced-code>
 
 Now, if you try editing a chirp, you should see the same thing as before, but now we're sure that our chirp will just be updated no matter if it's present in the index listing of chirps or not after the form is submitted. Yay!
 
@@ -271,32 +301,31 @@ If you try deleting a Chirp now that they are wrapped in a `turbo-frame` you'll 
 
 Let's change the `destroy` action in our `ChirpController` to respond with a remove Turbo Stream whenever a Chirp is deleted and the client supports it:
 
+<x-fenced-code file="app/Controllers/ChirpController.php">
+
 ```php
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Models\Chirp;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Http\Request;
+// ...
 
 class ChirpController extends Controller
 {
     // ...
 
-    public function destroy(Request $request, Chirp $chirp)
+    public function destroy(Chirp $chirp)
     {
         $this->authorize('delete', $chirp);
 
         $chirp->delete();
 
-        // Add this:
-        if ($request->wantsTurboStream()) {
+{+        if (request()->wantsTurboStream()) {
             return turbo_stream([
                 turbo_stream($chirp),
-                turbo_stream()->append('notifications', view('layouts.partials.notice', ['message' => __('Chirp deleted.')])),
+                turbo_stream()->append('notifications', view('layouts.partials.notice', [
+                    'message' => __('Chirp deleted.'),
+                ])),
             ]);
-        }
+        }+}
 
         return redirect()
             ->route('chirps.index')
@@ -305,11 +334,15 @@ class ChirpController extends Controller
 }
 ```
 
+</x-fenced-code>
+
 And that's it!
 
 ## Turbo Stream Flash Macro
 
 So far we've been using the default action methods provided by the Turbo Laravel package. Let's add a `notice` macro to the `PendingTurboStreamResponse` class, which the `turbo_stream()` function returns (except when we give it an array, which then it returns an instance of the `MultiplePendingTurboStreamResponse` class). This `notice` macro will work as a shorthand for the creating Turbo Streams to append notifications on the page:
+
+<x-fenced-code file="app/Providers/AppServiceProvider.php">
 
 ```php
 <?php
@@ -318,7 +351,7 @@ namespace App\Providers;
 
 use HotwiredLaravel\TurboLaravel\Facades\Turbo;
 use Illuminate\Support\ServiceProvider;
-use Tonysm\TurboLaravel\Http\PendingTurboStreamResponse; // Add this
+{+use Tonysm\TurboLaravel\Http\PendingTurboStreamResponse;+}
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -326,26 +359,25 @@ class AppServiceProvider extends ServiceProvider
     {
         Turbo::usePartialsSubfolderPattern();
 
-        // Add this
-        PendingTurboStreamResponse::macro('notice', function ($message) {
+{+        PendingTurboStreamResponse::macro('notice', function ($message) {
             return turbo_stream()->append('notifications', view('layouts.partials.notice', [
                 'message' => $message,
             ]));
-        });
+        });+}
     }
 }
 ```
 
+</x-fenced-code>
+
 Now, our controllers can be cleaned up a bit:
+
+<x-fenced-code file="app/Http/Controllers/ChirpController.php">
 
 ```php
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Models\Chirp;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Http\Request;
+// ...
 
 class ChirpController extends Controller
 {
@@ -363,7 +395,10 @@ class ChirpController extends Controller
             return turbo_stream([
                 turbo_stream($chirp, 'prepend'),
                 turbo_stream()->update('create_chirp', view('chirps.partials.form')),
-                turbo_stream()->notice(__('Chirp created.')), // Change this
+{-                turbo_stream()->append('notifications', view('layouts.partials.notice', [
+                    'message' => __('Chirp created.'),
+                ])),-}
+{+                turbo_stream()->notice(__('Chirp created.')),+}
             ]);
         }
 
@@ -385,7 +420,10 @@ class ChirpController extends Controller
         if ($request->wantsTurboStream()) {
             return turbo_stream([
                 turbo_stream($chirp),
-                turbo_stream()->notice(__('Chirp updated.')), // Change this
+{-                turbo_stream()->append('notifications', view('layouts.partials.notice', [
+                    'message' => __('Chirp updated.'),
+                ])),-}
+{+                turbo_stream()->notice(__('Chirp updated.')),+}
             ]);
         }
 
@@ -394,16 +432,19 @@ class ChirpController extends Controller
             ->with('notice', __('Chirp updated.'));
     }
 
-    public function destroy(Request $request, Chirp $chirp)
+    public function destroy(Chirp $chirp)
     {
         $this->authorize('delete', $chirp);
 
         $chirp->delete();
 
-        if ($request->wantsTurboStream()) {
+        if (request()->wantsTurboStream()) {
             return turbo_stream([
                 turbo_stream($chirp),
-                turbo_stream()->notice(__('Chirp deleted.')), // Change this
+{-                turbo_stream()->append('notifications', view('layouts.partials.notice', [
+                    'message' => __('Chirp deleted.'),
+                ])),-}
+{+                turbo_stream()->notice(__('Chirp deleted.')),+}
             ]);
         }
 
@@ -413,6 +454,8 @@ class ChirpController extends Controller
     }
 }
 ```
+
+</x-fenced-code>
 
 Although this is using Macros, we're still using the Turbo Stream actions that ship with Turbo by default. It's also possible to go custom and create your own actions, if you want to.
 
