@@ -629,8 +629,14 @@ class ChirpController extends Controller
 
 </x-fenced-code>
 
-> **note**
-> We're only covering Turbo Stream broadcasts from an Eloquent model's perspective. However, you may broadcast anything using the `TurboStream` Facade or by chaining the `broadcastTo()` method call when using the `turbo_stream()` response builder function. Check the [Broadcasting docs](/docs/broadcasting#content-handmade-broadcasts) to know more about this.
+<x-note type="warning">
+
+<x-slot name="heading">
+#### You don't need a model to use Turbo Streams
+</x-slot>
+
+We're only covering Turbo Stream broadcasts from an Eloquent model's perspective. However, you may broadcast anything using the `TurboStream` Facade or by chaining the `broadcastTo()` method call when using the `turbo_stream()` response builder function. Check the [Broadcasting docs](/docs/broadcasting#content-handmade-broadcasts) to know more about this.
+</x-note>
 
 ## Testing it out
 
@@ -811,5 +817,13 @@ Now, if you try creating another user and test this out, you'll see that the dro
 
 This change also makes our entire `_chirp` partial cacheable! We could cache it and only render that when changes are made to the Chirp model using the Chirp's `updated_at` timestamps, for example.
 
-> **warning**
-> Hiding the links in the frontend _**MUST NOT**_ be your only protection here. Always ensure users are authorized to perform actions in the server side. We're already doing this in our controller using [Laravel's Authorization Policies](https://laravel.com/docs/authorization#introduction).
+
+<x-note type="warning">
+
+<x-slot name="heading">
+#### Is hiding the links with CSS enough?
+</x-slot>
+
+Hiding the links in the frontend _**MUST NOT**_ be your only protection here. Always ensure users are authorized to perform actions in the server side. We're already doing this in our controller using [Laravel's Authorization Policies](https://laravel.com/docs/authorization#introduction).
+
+</x-note>

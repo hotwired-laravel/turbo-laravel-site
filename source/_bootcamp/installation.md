@@ -57,8 +57,15 @@ cd turbo-chirper
 ./vendor/bin/sail up -d
 ```
 
-> **note**
-> You may [create a shell alias](https://laravel.com/docs/sail#configuring-a-shell-alias) that allows you execute Sail's commands more easily.
+<x-note type="warning">
+
+<x-slot name="heading">
+#### Create an alias
+</x-slot>
+
+You may [create a shell alias](https://laravel.com/docs/sail#configuring-a-shell-alias) that allows you execute Sail's commands more easily.
+
+</x-note>
 
 When developing applications using Sail, you may execute Artisan, NPM, and Composer commands via the Sail CLI instead of invoking them directly:
 
@@ -87,8 +94,15 @@ composer require hotwired-laravel/turbo-breeze:1.x-dev --dev
 php artisan turbo-breeze:install turbo --dark
 ```
 
-> **note**
-> If you're using Sail, remember to prefix this command with `./vendor/bin/sail`, since the symlink needs to be created inside the container.
+<x-note type="warning">
+
+<x-slot name="heading">
+#### Prefix all Sail commands
+</x-slot>
+
+If you're using Sail, remember to prefix this command with `./vendor/bin/sail`, since the symlink needs to be created inside the container.
+
+</x-note>
 
 Turbo Breeze will install and configure your front-end dependencies for you. It should have built the initial version of our assets for us.
 
