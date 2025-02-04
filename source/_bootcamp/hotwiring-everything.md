@@ -351,7 +351,7 @@ namespace App\Providers;
 
 use HotwiredLaravel\TurboLaravel\Facades\Turbo;
 use Illuminate\Support\ServiceProvider;
-{+use Tonysm\TurboLaravel\Http\PendingTurboStreamResponse;+}
+{+use HotwiredLaravel\TurboLaravel\Http\PendingTurboStreamResponse;+}
 
 class AppServiceProvider extends ServiceProvider
 {

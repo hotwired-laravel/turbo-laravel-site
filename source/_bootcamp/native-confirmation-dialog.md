@@ -164,7 +164,7 @@ This is not so good for the native version, but the web one is nice. Let's fix t
 
 ## Native Confirmation
 
-For the Native confirmation, we're gonna need to extend our Kotlin JSBridge a little bit. Whenever a confirmation is triggered by the webapp, and we're in a Turbo Native client, we're gonna register a listener for the Native confirmation result, then send a message to the bridge and ask it to show a native `AlertDialog`. When the user chooses an option, we're going to send the result back to the web app via a custom event.
+For the Native confirmation, we're gonna need to extend our Kotlin JSBridge a little bit. Whenever a confirmation is triggered by the webapp, and we're in a Hotwire Native client, we're gonna register a listener for the Native confirmation result, then send a message to the bridge and ask it to show a native `AlertDialog`. When the user chooses an option, we're going to send the result back to the web app via a custom event.
 
 Let's start with the web side, since it's simpler. Change the `resources/js/helpers/confirmation.js` file to look like the following:
 

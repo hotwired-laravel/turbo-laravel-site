@@ -40,7 +40,7 @@ When creating the project, make sure you choose the "Empty Activity" option.
 
 ![Empty Compose Activity](/assets/images/bootcamp/native/setup-empty-activity.png)
 
-On the next screen, make sure you choose the "API 24" as that's required by the Turbo Native adapter.
+On the next screen, make sure you choose the "API 24" as that's required by the Hotwire Native adapter.
 
 ![API 24](/assets/images/bootcamp/native/setup-api-24.png)
 
@@ -56,11 +56,11 @@ Now, you should see the option to run the app on the device emulator! Pressing o
 
 ![App running](/assets/images/bootcamp/native/setup-running-app.png)
 
-Let's install Turbo Native.
+Let's install Hotwire Native.
 
-## Installing Turbo Native
+## Installing Hotwire Native
 
-Now, let's add the Turbo lib. On the left sidebar, there's a "Gradle Scripts" section dropdown. Open it. In there, you should see 2 files named `build.gradle`, one for the project and one for the module. Open the module one. On it, scroll to the bottom where your dependencies are listed and add the Turbo Native one:
+Now, let's add the Turbo lib. On the left sidebar, there's a "Gradle Scripts" section dropdown. Open it. In there, you should see 2 files named `build.gradle`, one for the project and one for the module. Open the module one. On it, scroll to the bottom where your dependencies are listed and add the Hotwire Native one:
 
 ```
 dependencies {
@@ -87,9 +87,9 @@ Then, press on "Sync now" at the top of the file. Once that's done, you should h
 
 ![Add Turbo](/assets/images/bootcamp/native/setup-add-turbo.png)
 
-## Configuring Turbo Native
+## Configuring Hotwire Native
 
-So far, we have only added Turbo Native to the project, but we're not using it yet. Let's configure it.
+So far, we have only added Hotwire Native to the project, but we're not using it yet. Let's configure it.
 
 We're following the official [Quick Start guide](https://native.hotwired.dev/android/getting-started) here.
 
@@ -155,7 +155,7 @@ class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
     }
 
     private fun customUserAgent(webView: WebView): String {
-        return "Turbo Native Android ${webView.settings.userAgentString}"
+        return "Hotwire Native Android ${webView.settings.userAgentString}"
     }
 }
 ```
@@ -319,9 +319,9 @@ class MainActivity : AppCompatActivity(), TurboActivity {
 }
 ```
 
-Now, if you run the app, you should see that we have successfully wrapped our web app in a native shell using Turbo Native! Yay!
+Now, if you run the app, you should see that we have successfully wrapped our web app in a native shell using Hotwire Native! Yay!
 
-![Turbo Chirper on Turbo Native](/assets/images/bootcamp/native/setup-turbo-chirper-native-running.png)
+![Turbo Chirper on Hotwire Native](/assets/images/bootcamp/native/setup-turbo-chirper-native-running.png)
 
 As of right now, mobile users have access to all the features exactly the way it works on mobile. As long as we build our features with a mobile first mentality using responsive UIs, we should be good most of the time. However, as of right now, you may notice our app is a little weird to use on mobile. Let's tweak our app so it looks better.
 

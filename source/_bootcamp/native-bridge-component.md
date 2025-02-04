@@ -7,11 +7,11 @@ order: 12
 
 # *10.* Our First Bridge Component
 
-Rendering the create chirps form inline right on the homepage isn't the best UX for mobile. Instead, it would be better to display the form as a native modal screen. Let's implement that, but first, let's hide the entire create chirps form on Turbo Native.
+Rendering the create chirps form inline right on the homepage isn't the best UX for mobile. Instead, it would be better to display the form as a native modal screen. Let's implement that, but first, let's hide the entire create chirps form on Hotwire Native.
 
-## Hiding the Elements for Turbo Native only
+## Hiding the Elements for Hotwire Native only
 
-We could technically prevent the entire section from even rendering on requests made by Turbo Native clients using the `@unlessturbonative` Blade directives, something like this:
+We could technically prevent the entire section from even rendering on requests made by Hotwire Native clients using the `@unlessturbonative` Blade directives, something like this:
 
 ```blade
 <x-app-layout>
@@ -43,7 +43,7 @@ We could technically prevent the entire section from even rendering on requests 
 
 This would work, but that makes this page harder to cache. Not a problem now, but I prefer doing things like that on the client-side with CSS and a bit of JS.
 
-Since we have configured our WebView to use a custom `User-Agent` header, we can actually detect when our webapp is running inside a Turbo Native client by checking that. Let's first add a helper to check the platform by creating a `resources/js/helpers/platform.js` file with the following contents:
+Since we have configured our WebView to use a custom `User-Agent` header, we can actually detect when our webapp is running inside a Hotwire Native client by checking that. Let's first add a helper to check the platform by creating a `resources/js/helpers/platform.js` file with the following contents:
 
 ```js
 const { userAgent } = window.navigator;
@@ -52,8 +52,8 @@ export const isIos = /iPhone|iPad/.test(userAgent)
 export const isAndroid = /Android/.test(userAgent)
 export const isMobile = isIos || isAndroid
 
-export const isIosApp = /Turbo Native iOS/.test(userAgent)
-export const isAndroidApp = /Turbo Native Android/.test(userAgent)
+export const isIosApp = /Hotwire Native iOS/.test(userAgent)
+export const isAndroidApp = /Hotwire Native Android/.test(userAgent)
 export const isMobileApp = isIosApp || isAndroidApp
 ```
 
@@ -73,7 +73,7 @@ if (isMobileApp) {
 }
 ```
 
-This will ensure that when our web app runs inside a Turbo Native client, a `.turbo-native` class will be added to the `<html>` element in our page, but we're not doing anything yet with it. Let's create a custom Tailwind CSS modifier that will allow us to make things behave differently when the `.turbo-native` class is present in the document.
+This will ensure that when our web app runs inside a Hotwire Native client, a `.turbo-native` class will be added to the `<html>` element in our page, but we're not doing anything yet with it. Let's create a custom Tailwind CSS modifier that will allow us to make things behave differently when the `.turbo-native` class is present in the document.
 
 To do that, open the `tailwind.config.js` file in the root of your Laravel app and make the following changes:
 
@@ -95,7 +95,7 @@ module.exports = {
 };
 ```
 
-With that, we can use the new modifier like any other default modifier in Tailwind. Let's use it to hide the create chirps form on the index page for Turbo Native clients. Open the `resources/views/chirps/index.blade.php` and make the following changes:
+With that, we can use the new modifier like any other default modifier in Tailwind. Let's use it to hide the create chirps form on the index page for Hotwire Native clients. Open the `resources/views/chirps/index.blade.php` and make the following changes:
 
 ```blade
 <x-app-layout>
@@ -141,7 +141,7 @@ Let's also tweak our index page a bit to remove some padding and unnecessary mar
 </x-app-layout>
 ```
 
-Let's also hide the web nav bar for Turbo Native users, our navigation should be fully native on the mobile clients anyways. To do that, change the `resources/views/layouts/navigation.blade.php` file:
+Let's also hide the web nav bar for Hotwire Native users, our navigation should be fully native on the mobile clients anyways. To do that, change the `resources/views/layouts/navigation.blade.php` file:
 
 ```blade
 <!-- Update the root nav element: -->
@@ -161,7 +161,7 @@ Let's also hide the header section in the `resources/views/layouts/app.blade.php
 
 And our page should look like this:
 
-![Turbo Native UI Tweaks](/assets/images/bootcamp/native/fab-ui-tweaks.png)
+![Hotwire Native UI Tweaks](/assets/images/bootcamp/native/fab-ui-tweaks.png)
 
 ## Adding the Floating Action Button
 
@@ -338,7 +338,7 @@ At this point, our app looks like this:
 
 ![With The FAB](/assets/images/bootcamp/native/fab-showing-up.png)
 
-But our button doesn't work yet. Let's tell Turbo Native to make a visit to the `chirps/create` route. First, add the new constant to the `util.Constants` file:
+But our button doesn't work yet. Let's tell Hotwire Native to make a visit to the `chirps/create` route. First, add the new constant to the `util.Constants` file:
 
 ```kotlin
 package com.example.turbochirpernative.util
@@ -383,7 +383,7 @@ If you try creating a chirp, however, you should see some interesting behavior..
 
 ![Wrong behavior after creating chirps](/assets/images/bootcamp/native/fab-wrong-behavior-after-creating.png)
 
-That's not good. That's because we're returning Turbo Streams on the `ChirpController@store` action. Let's change it so it doesn't do that when the request was done via a Turbo Native client. We want the redirect there. Head to the `app/Http/Controllers/ChirpController.php` file and change the `store` action like so:
+That's not good. That's because we're returning Turbo Streams on the `ChirpController@store` action. Let's change it so it doesn't do that when the request was done via a Hotwire Native client. We want the redirect there. Head to the `app/Http/Controllers/ChirpController.php` file and change the `store` action like so:
 
 ```php
 <?php

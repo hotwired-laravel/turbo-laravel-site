@@ -11,7 +11,7 @@ Right now our editing flow is not very mobile-friendly. Instead of showing the e
 
 ## Dropdowns in a BottomSheet modal
 
-Let's first create our BottomSheet. This one won't be driven by a navigation, though. We're going implement a web->native bridge that we can trigger when the app is running inside a Turbo Native client. For now, let's create a new XML view. Head to the sidebar, under "res/layout", right-click on it an choose "New -> Layout Resource File". Call it "popup_menu.xml" and add this content:
+Let's first create our BottomSheet. This one won't be driven by a navigation, though. We're going implement a web->native bridge that we can trigger when the app is running inside a Hotwire Native client. For now, let's create a new XML view. Head to the sidebar, under "res/layout", right-click on it an choose "New -> Layout Resource File". Call it "popup_menu.xml" and add this content:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -31,7 +31,7 @@ Let's first create our BottomSheet. This one won't be driven by a navigation, th
 </androidx.cardview.widget.CardView>
 ```
 
-This will be programatically added, so what's really important here is the `android:id` property. Since we're going to trigger this native feature from the web, the Turbo Native for Android [documentation says](https://github.com/hotwired/turbo-android/blob/main/docs/ADVANCED-OPTIONS.md#native---javascript-integration) that the best location is in the `TurboSessionNavHostFragment::onSessionCreated` function. Let's then tweak our `MainSessionNavHostFragment` with the following change:
+This will be programatically added, so what's really important here is the `android:id` property. Since we're going to trigger this native feature from the web, the Hotwire Native for Android [documentation says](https://github.com/hotwired/turbo-android/blob/main/docs/ADVANCED-OPTIONS.md#native---javascript-integration) that the best location is in the `TurboSessionNavHostFragment::onSessionCreated` function. Let's then tweak our `MainSessionNavHostFragment` with the following change:
 
 ```kotlin
 package com.example.turbochirpernative.main
@@ -76,7 +76,7 @@ class MainSessionNavHostFragment : TurboSessionNavHostFragment(), PopupMenuDeleg
     }
 
     private fun customUserAgent(webView: WebView): String {
-        return "Turbo Native Android ${webView.settings.userAgentString}"
+        return "Hotwire Native Android ${webView.settings.userAgentString}"
     }
 
     override fun showPopupMenu(options: PopupMenu) {
@@ -170,7 +170,7 @@ Now we have the BottomSheet Menu ready to be triggered by our webapp.
 
 ## Telling the Native App to Show The Options
 
-We're gonna create a Stimulus controller that will act when a user triggers the dropdown inside a Turbo Native client. We're also gonna use the custom User Agent to detect we're on that platform. Whenever that is the case, we'll get some metadata from the HTML and pass that to the Native app so it can build the native menu. When the user either picks one of the options or dismisses the menu, we're gonna notify the web app about it.
+We're gonna create a Stimulus controller that will act when a user triggers the dropdown inside a Hotwire Native client. We're also gonna use the custom User Agent to detect we're on that platform. Whenever that is the case, we'll get some metadata from the HTML and pass that to the Native app so it can build the native menu. When the user either picks one of the options or dismisses the menu, we're gonna notify the web app about it.
 
 Let's then add the Stimulus controller. Open a terminal at the root of the webapp and run:
 
@@ -233,7 +233,7 @@ export default class extends Controller {
 }
 ```
 
-So, we're detecting if we're on a Turbo Native client using the `isMobileApp` platform check (that same one we're using to add the `turbo-native` CSS class to the HTML document). The `update` method will be triggered by the dropdown trigger (same one that opens it), but we need to register it *before* the normal web trigger because we want to stop it from showing the dropdown and, instead, show the native menu. When the dropdown opens, we'll scan through all the option targets and fetch metadata from it, then register a callback in the controller's instance. When the user picks one of the options, the native client will dispatch a custom event to the window, so all instances of dropdown controllers will receive that event, but only the one with the callback will act on it. Then, it should trigger the default behavior of that option (link or button click).
+So, we're detecting if we're on a Hotwire Native client using the `isMobileApp` platform check (that same one we're using to add the `turbo-native` CSS class to the HTML document). The `update` method will be triggered by the dropdown trigger (same one that opens it), but we need to register it *before* the normal web trigger because we want to stop it from showing the dropdown and, instead, show the native menu. When the dropdown opens, we'll scan through all the option targets and fetch metadata from it, then register a callback in the controller's instance. When the user picks one of the options, the native client will dispatch a custom event to the window, so all instances of dropdown controllers will receive that event, but only the one with the callback will act on it. Then, it should trigger the default behavior of that option (link or button click).
 
 When the controller scans the option targets, it builds an instance of a `BridgeElement` class, which we don't have yet. Let's add one at `resources/js/helpers/bridge_element.js`:
 
@@ -604,7 +604,7 @@ We need to add a new entry to our configuration so any URI ending with `/edit` o
 }
 ```
 
-Let's also hide the cancel button when inside a Turbo Native client by updating our `resources/chirps/_form.blade.php` in our web app:
+Let's also hide the cancel button when inside a Hotwire Native client by updating our `resources/chirps/_form.blade.php` in our web app:
 
 ```blade
 <form action="{{ ($chirp ?? false) ? route('chirps.update', $chirp) : route('chirps.store') }}" method="POST">

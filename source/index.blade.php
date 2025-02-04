@@ -35,7 +35,9 @@
 
         <p class="text-center text-lg">Turbo Frames allow predefined sections of your page to be updated on request, independently of the rest of the page. We can build things like data tables, inline forms, and so on with a blink of an eye.</p>
 
-        <div class="flex items-center justify-center"><a href="#" class="px-4 py-2 inline-block w-full mx-auto sm:w-auto text-center rounded-full border border-zinc-900/30 hover:bg-zinc-900/5 text-zinc-900 transition">Read more</a></div>
+        <div class="flex items-center justify-center">
+            <a href="/docs/turbo-frames" class="px-4 py-2 inline-block w-full mx-auto sm:w-auto text-center rounded-full border border-zinc-900/30 hover:bg-zinc-900/5 text-zinc-900 transition">Read more</a>
+        </div>
       </div>
 
       <div class="space-y-4">
@@ -47,7 +49,9 @@
 
         <p class="text-center text-lg">Turbo Streams deliver page changes as fragments of HTML. They may be delivered to the browser synchronously after form submits, or asynchronously over WebSockets via Laravel Echo.</p>
 
-        <div class="flex items-center justify-center"><a href="#" class="px-4 py-2 inline-block w-full mx-auto sm:w-auto text-center rounded-full border border-zinc-900/30 hover:bg-zinc-900/5 text-zinc-900 transition">Read more</a></div>
+        <div class="flex items-center justify-center">
+            <a href="/docs/turbo-streams" class="px-4 py-2 inline-block w-full mx-auto sm:w-auto text-center rounded-full border border-zinc-900/30 hover:bg-zinc-900/5 text-zinc-900 transition">Read more</a>
+        </div>
       </div>
 
       <div class="space-y-4">
@@ -59,7 +63,9 @@
 
         <p class="text-center text-lg">Hotwire Native lets your Laravel application be the center of your native iOS and Android apps, with seamless transitions between web and native screens. Turbo Laravel has tons of helpers for instrumenting your Hotwire Native clients!</p>
 
-        <div class="flex items-center justify-center"><a href="#" class="px-4 py-2 inline-block w-full mx-auto sm:w-auto text-center rounded-full border border-zinc-900/30 hover:bg-zinc-900/5 text-zinc-900 transition">Read more</a></div>
+        <div class="flex items-center justify-center">
+            <a href="/docs/hotwire-native" class="px-4 py-2 inline-block w-full mx-auto sm:w-auto text-center rounded-full border border-zinc-900/30 hover:bg-zinc-900/5 text-zinc-900 transition">Read more</a>
+        </div>
       </div>
 
       <div class="space-y-4">
@@ -71,7 +77,9 @@
 
         <p class="text-center text-lg">Turbo Laravel ships with a series of testing helpers out of the box, so you can ensure your application is fully tested. The best part is that not much changes from your typical Laravel testing approach.</p>
 
-        <div class="flex items-center justify-center"><a href="#" class="px-4 py-2 inline-block w-full mx-auto sm:w-auto text-center rounded-full border border-zinc-900/30 hover:bg-zinc-900/5 text-zinc-900 transition">Read more</a></div>
+        <div class="flex items-center justify-center">
+            <a href="/docs/testing" class="px-4 py-2 inline-block w-full mx-auto sm:w-auto text-center rounded-full border border-zinc-900/30 hover:bg-zinc-900/5 text-zinc-900 transition">Read more</a>
+        </div>
       </div>
     </div>
 

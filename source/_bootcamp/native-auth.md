@@ -7,7 +7,7 @@ order: 10
 
 # *09.* Native Authentication
 
-Let's tackle the mobile authentication first. We're now able to use the web authentication flow, but as we discussed earlier, sometimes we need to implement fully native screens in our app that uses JSON endpoints with an Access Token. For that reason, we're gonna change our login flow just for our Turbo Native Android client. If you were building a Native iOS app, that could also use this same flow.
+Let's tackle the mobile authentication first. We're now able to use the web authentication flow, but as we discussed earlier, sometimes we need to implement fully native screens in our app that uses JSON endpoints with an Access Token. For that reason, we're gonna change our login flow just for our Hotwire Native Android client. If you were building a Native iOS app, that could also use this same flow.
 
 Laravel has essentially two first-party packages when it comes to Token-based authentication: [Laravel Sanctum](https://laravel.com/docs/sanctum) and [Laravel Passport](https://laravel.com/docs/passport).
 
@@ -112,7 +112,7 @@ import okio.IOException
 import java.net.URLDecoder
 
 class AuthClient() {
-    private var CLIENT_USER_AGENT = "Turbo Native Android HTTP Client"
+    private var CLIENT_USER_AGENT = "Hotwire Native Android HTTP Client"
 
     private var csrfToken: String = ""
     private var csrfCookieStored: String = ""
@@ -538,7 +538,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-            \Tonysm\TurboLaravel\Http\Middleware\TurboMiddleware::class,
+            \HotwiredLaravel\TurboLaravel\Http\Middleware\TurboMiddleware::class,
             \App\Http\Middleware\EnsureTurboNativeRequestsAreStateful::class, // Add this
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -631,7 +631,7 @@ Route::post('/login', function (Request $request) {
     $request->session()->regenerate();
 
     return [
-        'token' => Auth::user()->createToken('Turbo Native')->plainTextToken,
+        'token' => Auth::user()->createToken('Hotwire Native')->plainTextToken,
         'redirectTo' => route('chirps.index'),
         'data' => [
             'name' => Auth::user()->name,

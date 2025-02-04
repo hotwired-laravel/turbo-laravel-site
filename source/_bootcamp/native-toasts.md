@@ -9,7 +9,7 @@ order: 15
 
 You may have noticed that our flash messages are not behaving correctly in the native side. That's because of how our native client handles redirects. It looks like it actiaves the cache first, which triggers a new request to the web app, then it visits the redirected URL, which then triggers another visit. Our flash messages are flashed for a single subsequent request, which is the one that comes from the activated cache, so they get lost when the redirect visit starts.
 
-We can fix that by using some predefined URLs in the webapp that will only happen for Turbo Native requests and they only instruct the web app to either recede, resume, or refresh the screens natively instead of following redirects.
+We can fix that by using some predefined URLs in the webapp that will only happen for Hotwire Native requests and they only instruct the web app to either recede, resume, or refresh the screens natively instead of following redirects.
 
 Turbo Laravel ships with those predefined URLs for you:
 
@@ -33,7 +33,7 @@ curl localhost/resume_historical_location
 Staying put...
 ```
 
-Turbo Laravel ships with a `InteractsWithTurboNativeNavigation` trait that we can use in our controllers to redirect to these routes when the request comes from a Turbo Native client or to a fallback route otherwise.
+Turbo Laravel ships with a `InteractsWithTurboNativeNavigation` trait that we can use in our controllers to redirect to these routes when the request comes from a Hotwire Native client or to a fallback route otherwise.
 
 Let's change our controller to make use of that. We're going to change both the store and update actions to _recede_ the screen stacks instead of a regular redirect:
 
@@ -44,7 +44,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chirp;
 use Illuminate\Http\Request;
-use Tonysm\TurboLaravel\Http\Controllers\Concerns\InteractsWithHotwireNativeNavigation; // Add this
+use HotwiredLaravel\TurboLaravel\Http\Controllers\Concerns\InteractsWithHotwireNativeNavigation; // Add this
 
 class ChirpController extends Controller
 {
@@ -108,7 +108,7 @@ class ChirpController extends Controller
 }
 ```
 
-The `recedeOrRedirectTo` method is the one that does the job of checking if the request comes from a Turbo Native client or a regular web client and recides to redirect to the recede route instead of default redirect route. We also need to ensure that for when we're creating or updating chirps, we only return Turbo Streams if the request didn't come from a Turbo Native client.
+The `recedeOrRedirectTo` method is the one that does the job of checking if the request comes from a Hotwire Native client or a regular web client and recides to redirect to the recede route instead of default redirect route. We also need to ensure that for when we're creating or updating chirps, we only return Turbo Streams if the request didn't come from a Hotwire Native client.
 
 Next, we need to configure our specific routes in the `Constants.kt` file:
 
@@ -182,7 +182,7 @@ Now, if we try creating or updating a _Chirp_, we should see the web flash messa
 
 It's cool that we're showing the web flash messages, but it would be even better if we could instead convert those messages to appear as real native Toasts, don't you think?! So, let's implement that.
 
-First, we'll need to hide the flash messages wrapper, so they don't appear in a Turbo Native context. We can do that using the `turbo-native:` Tailwind variant we already have. Open the `resources/views/layouts/notifications.blade.php` file and update its contents:
+First, we'll need to hide the flash messages wrapper, so they don't appear in a Hotwire Native context. We can do that using the `turbo-native:` Tailwind variant we already have. Open the `resources/views/layouts/notifications.blade.php` file and update its contents:
 
 ```blade
 <!-- Update the root element: -->
@@ -193,7 +193,7 @@ First, we'll need to hide the flash messages wrapper, so they don't appear in a 
 </div>
 ```
 
-With that, the flash messages shouldn't appear in Turbo Native clients, but they should still appear in the web ones.
+With that, the flash messages shouldn't appear in Hotwire Native clients, but they should still appear in the web ones.
 
 Next, let's create a bridge Stimulus controller that will send a message to the Native client to show convert those web flash messages into native ones.
 

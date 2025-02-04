@@ -7,7 +7,7 @@ order: 1
 
 # Introduction
 
-Lean how to make [Hotwired](https://hotwired.dev/) web apps using Laravel. And when we're finished with the web app, we'll dive into the Turbo Native side of Hotwire so we can see how it bridges the web and native worlds!
+Lean how to make [Hotwired](https://hotwired.dev/) web apps using Laravel. And when we're finished with the web app, we'll dive into the Hotwire Native side of Hotwire so we can see how it bridges the web and native worlds!
 
 To explore the many sides of Hotwire, we'll build a micro-blogging platform called Turbo Chirper. Many parts of this tutorial were inspired by the [official Laravel Bootcamp](https://bootcamp.laravel.com/) adapted to work better in a Hotwired app.
 
