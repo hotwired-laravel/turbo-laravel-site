@@ -1,6 +1,9 @@
 name: Publish
 
 on:
+  repository_dispatch:
+    types: [publish-workflow]
+
   push:
     branches: [main]
 
