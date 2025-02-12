@@ -7,8 +7,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
+
+    permissions:
+      contents: write
 
     name: Publish to GH Pages
 
