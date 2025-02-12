@@ -150,7 +150,7 @@ php artisan importmap:pin local-time
 
 Now, let's create our own lib setup file in the `libs/localtime.js` file:
 
-<x-fenced-code file="resources/js/libs/localtime.js" copy>
+<x-fenced-code file="resources/js/libs/local-time.js" copy>
 
 ```js
 import LocalTime from "local-time"
@@ -165,7 +165,7 @@ Next, update the `libs/index.js` file to import it:
 
 ```js
 import "libs/turbo";
-{+import "libs/localtime";+}
+{+import "libs/local-time";+}
 import "controllers";
 ```
 
