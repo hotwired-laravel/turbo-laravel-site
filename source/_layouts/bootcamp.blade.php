@@ -7,7 +7,7 @@
 @section('body')
   <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
     <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
-      <aside class="relative w-1/4 hidden lg:block">
+      <aside class="relative w-1/4 hidden lg:block" data-search-target="aside">
         <div class="sticky top-4 block space-y-4">
             @include('_layouts.partials.search', ['href' => '/bootcamp/search', 'placeholder' => 'Search bootcamp... (press "/" to focus)'])
 
