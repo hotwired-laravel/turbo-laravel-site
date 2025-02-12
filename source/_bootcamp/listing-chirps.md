@@ -139,36 +139,32 @@ Right now our `chirp.blade.php` partial formats the date as relative, but that's
 
 First, install JS package:
 ```bash
-php artisan importmap:pin @github/time-elements
+php artisan importmap:pin local-time
 ```
-Now, import the elements in the `libs/index.js` file:
+Now, let's create our own lib setup file in the `libs/localtime.js` file:
+
+<x-fenced-code file="resources/js/libs/localtime.js" copy>
+
+```js
+import LocalTime from "local-time"
+LocalTime.start()
+```
+
+</x-fenced-code>
+
+Next, update the `libs/index.js` file to import it:
 
 <x-fenced-code file="resources/js/libs/index.js">
 
 ```js
-import "bootstrap";
-import "elements/turbo-echo-stream-tag";
-import "libs";
-{+import '@github/time-elements';+}
+import "libs/turbo";
+{+import "libs/localtime";+}
+import "controllers";
 ```
 
 </x-fenced-code>
 
-Let's create an `<x-relative-time />` component that takes a Carbon instance and renders the `<relative-time>` tag we just installed using the package:
-
-<x-fenced-code file="resources/views/components/relative-time.blade.php" copy>
-
-```blade
-@props(['date'])
-
-<relative-time datetime="{{ $date->format(DateTime::ISO8601) }}">
-    {{ $date->toFormattedDateString() }}
-</relative-time>
-```
-
-</x-fenced-code>
-
-Then we can use this library in our `chirps._chirp` Blade partial to display relative dates using the newly installed HTML elements:
+Then we can use this package's component in our `chirps._chirp` Blade partial to display relative dates using the newly installed HTML elements:
 
 <x-fenced-code file="resources/views/chirps/partials/chirp.blade.php">
 
@@ -185,7 +181,7 @@ Then we can use this library in our `chirps._chirp` Blade partial to display rel
             <div>
                 <span class="text-gray-800 dark:text-gray-200">{{ $chirp->user->name }}</span>
 {-                <small class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ $chirp->created_at->diffForHumans() }}</small>-}
-{+                <small class="ml-2 text-sm text-gray-600 dark:text-gray-400"><x-relative-time :date="$chirp->created_at" /></small>+}
+{+                <small class="ml-2 text-sm text-gray-600 dark:text-gray-400"><x-local-time-ago :value="$chirp->created_at" /></small>+}
             </div>
         </div>
         <p class="mt-4 text-lg text-gray-900 dark:text-gray-200">{{ $chirp->message }}</p>

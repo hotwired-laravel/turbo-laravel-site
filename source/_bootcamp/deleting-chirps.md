@@ -118,7 +118,7 @@ Finally, we can add a delete button to the dropdown menu we created earlier in o
         <div class="flex justify-between items-center">
             <div>
                 <span class="text-gray-800 dark:text-gray-200">{{ $chirp->user->name }}</span>
-                <small class="ml-2 text-sm text-gray-600 dark:text-gray-400"><x-relative-time :date="$chirp->created_at" /></small>
+                <small class="ml-2 text-sm text-gray-600 dark:text-gray-400"><x-local-time-ago :value="$chirp->created_at" /></small>
                 @unless ($chirp->created_at->eq($chirp->updated_at))
                 <small class="text-sm text-gray-600"> &middot; edited</small>
                 @endunless
