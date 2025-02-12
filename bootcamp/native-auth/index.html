@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="canonical" href="https://hotwired-laravel.github.io/turbo-laravel-site/bootcamp/native-auth">
+        <meta name="description" content="Native Authentication">
+        <title>Native Authentication</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/manifest/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/manifest/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/manifest/favicon-16x16.png">
+        <link rel="manifest" href="/assets/site.webmanifest">
+        <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=7756ef47cdc6e051280b7984fd99b8f7">
+        <script defer src="/assets/build/js/main.js?id=2685052459ff19e5e2ef09aac148fca7"></script>
+    </head>
+    <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
+  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
+    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
+      <a href="/">Turbo Laravel</a>
+    </h1>
+
+    <nav class="inline-block lg:hidden">
+      <details class="group" data-search-target="nav">
+        <summary class="list-none">
+          <span>
+            <span class="sr-only">Navigation</span>
+
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
+              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </span>
+        </summary>
+
+        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
+          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
+            <form action="/docs/search" method="GET" class="px-4">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 2.x docs..." />
+  <button type="submit" class="sr-only">Search</button>
+</form>
+
+            <ul class="space-y-6 -mb-2 mt-4">
+              <li>
+                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+                  <span>Documentation</span>
+                </a>
+
+                              </li>
+              <li>
+                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
+              </li>
+              <li class="space-y-6">
+                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
+                  <div class="mx-4 pl-3 border-l-4 border-zinc-900/30">
+  <ul class="">
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Introduction</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Creating Chirps</a></li>
+                <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Listing Chirps</a></li>
+                <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing Chirps</a></li>
+                <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Deleting Chirps</a></li>
+                <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Hotwiring Everything</a></li>
+                <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Broadcasting</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/bootcamp/native-auth" class="font-bold transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Authentication</a></li>
+                <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Our First Bridge Component</a></li>
+                <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing as a Modal</a></li>
+                <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Confirmation Dialog</a></li>
+                <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Toasts</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Conclusion</a></li>
+              </ul>
+    </li>
+      </ul>
+</div>
+              </li>
+              <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </nav>
+  </div>
+
+  <nav class="hidden lg:block">
+    <ul class="flex items-center space-x-6 -my-2">
+      <li>
+        <div class="group relative py-2">
+          <a href="/docs" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+            <span>Documentation</span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </a>
+
+          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
+            <ul class="space-y-1">
+              <li><a href="/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">2.2.0</span></a></li>
+              <li><a href="/1.x/docs/installation" class="block px-2 py-1  rounded">Version <span class="">1.12.2</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
+      <li><a href="/bootcamp/introduction" class="bg-white/90 px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
+      <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+    </ul>
+  </nav>
+</header>
+
+          <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
+    <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
+      <aside class="relative w-1/4 hidden lg:block">
+        <div class="sticky top-4 block space-y-4">
+            <form action="/bootcamp/search" method="GET">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="web" type="text" name="q" placeholder="Search bootcamp guides..." class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
+</form>
+
+            <ul class="[&_.children]:mb-4">
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Introduction</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Creating Chirps</a></li>
+            <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Listing Chirps</a></li>
+            <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing Chirps</a></li>
+            <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Deleting Chirps</a></li>
+            <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Hotwiring Everything</a></li>
+            <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/bootcamp/native-auth" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Authentication</a></li>
+            <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Our First Bridge Component</a></li>
+            <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing as a Modal</a></li>
+            <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Confirmation Dialog</a></li>
+            <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Toasts</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conclusion</a></li>
+          </ul>
+  </li>
+  </ul>
+        </div>
+      </aside>
+
+      <main class="flex-1 min-w-0">
+        <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+            <h1><em>09.</em> Native Authentication</h1>
+
+<p>Let's tackle the mobile authentication first. We're now able to use the web authentication flow, but as we discussed earlier, sometimes we need to implement fully native screens in our app that uses JSON endpoints with an Access Token. For that reason, we're gonna change our login flow just for our Hotwire Native Android client. If you were building a Native iOS app, that could also use this same flow.</p>
+
+<p>Laravel has essentially two first-party packages when it comes to Token-based authentication: <a href="https://laravel.com/docs/sanctum">Laravel Sanctum</a> and <a href="https://laravel.com/docs/passport">Laravel Passport</a>.</p>
+
+<p>For this Bootcamp, we're gonna be using Laravel Sanctum, as our flow is a mix of an SPA and mobile authentication flows, both provided by Sanctum.</p>
+
+<p>Oh, and we're going to use <a href="https://developer.android.com/jetpack/compose">Jetpack Compose</a> to build the Login screen. I don't know about you, but building screens in XML ain't I'd be proud to show you. Let's start by adding the Gradle dependencies we need and making some tweaks to our app so Compose works properly.</p>
+
+<h2>Adding Jetpack Compose</h2>
+
+<p>Open the Module's <code>build.gradle</code> file and add the following lines to it:</p>
+
+<pre><code class="language-groovy">dependencies {
+    def lifecycle_version = '2.5.1'
+    def compose_version = '1.3.0-rc01' // Add this
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    implementation 'dev.hotwire:turbo:7.0.0-rc12'
+    implementation &quot;androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version&quot;
+    implementation &quot;androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version&quot;
+    implementation &quot;androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version&quot;
+
+    // Add these:
+    implementation &quot;androidx.compose.ui:ui:$compose_version&quot;
+    implementation &quot;androidx.compose.material:material:$compose_version&quot;
+    implementation &quot;com.squareup.okhttp3:okhttp:4.10.0&quot;
+    implementation &quot;com.google.code.gson:gson:2.9.1&quot;
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
+</code></pre>
+
+<p>We added a bunch of dependencies here, let's dissect that:</p>
+
+<ul>
+<li>The <code>androidx.compose.ui:ui:*</code> one is the main Jetpack Compose package</li>
+<li>The <code>androidx.compose.material:material:*</code> comes with a set of Material UI components we can use</li>
+<li>The <code>com.squareup.okhttp3:okhttp:4.10.0</code> is the lib we're gonna use to make HTTP requests from our Native screens</li>
+<li>The <code>com.google.code.gson:gson:2.9.1</code> is the lib we're gonna use to serialize our JSON responses to objects we can use in Kotlin</li>
+</ul>
+
+<p>We also made some changes to the <code>buildFeatures</code> to enable compose and also configured the <code>composeOptions</code> to use a specific version Jetcompose Compose Compiler to work with the Kotlin version I have (which is <code>1.7.20-RC</code>). I was getting weird compilation errors without this. It was after many attempts that I found this fix (again, I'm no mobile Android expert). If you happen to use a different Kotlin version, make sure you visit the <a href="https://androidx.dev/storage/compose-compiler/repository">compatibility table to see which version of the Compose Compiler you need</a>.</p>
+
+<p>For that compiler customization to work, we need to make a change to our <code>settings.gradle</code> file to add the compose compiler's repository to Maven:</p>
+
+<pre><code class="language-groovy">dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        // Add this:
+        maven {
+            url &quot;https://androidx.dev/storage/compose-compiler/repository/&quot;
+        }
+    }
+}
+</code></pre>
+
+<p>Okay, now press that "Sync now" link at the top and fingers crossed!</p>
+
+<p><img src="/assets/images/bootcamp/native/auth-gradle-dependencies.png" alt="Gradle Dependencies" /></p>
+
+<h2>The Auth Client Service</h2>
+
+<p>Now that we have all the libs in place, let's start sketching out how this is gonna work.</p>
+
+<p>As mentioned earlier, we're gonna need both the <a href="https://laravel.com/docs/sanctum#spa-authentication">Cookie</a> AND the <a href="https://laravel.com/docs/sanctum#mobile-application-authentication">Token</a> authentication in our case. We need the Cookie-based authentication for our shared WebView while the Access Token we'll store in our app settings so we can reuse it whenever we need to build a fully native screen.</p>
+
+<p>We'll handle the Laravel side of this soon. Add these new constants to our <code>util.Constants</code> file:</p>
+
+<pre><code class="language-kotlin">package com.example.turbochirpernative.util
+
+const val BASE_URL = &quot;http://10.0.2.2&quot;
+const val CHIRPS_HOME_URL = &quot;$BASE_URL/chirps&quot;
+const val API_BASE_URL = &quot;$BASE_URL/api&quot;
+const val API_CSRF_COOKIES_URL = &quot;$BASE_URL/sanctum/csrf-cookie&quot;
+const val API_LOGIN_URL = &quot;$API_BASE_URL/login&quot;
+</code></pre>
+
+<p>Next, let's create our <code>AuthClient</code> to interact with the API. First, add an "api" package to the root of the project (next to the "features" package) by right-clicking on the root package then choosing "New > Package". Inside of it, add a new Kotlin class:</p>
+
+<pre><code class="language-kotlin">package com.example.turbochirpernative.api
+
+import android.util.Log
+import android.webkit.CookieManager
+import com.example.turbochirpernative.util.API_CSRF_COOKIES_URL
+import com.example.turbochirpernative.util.API_LOGIN_URL
+import com.example.turbochirpernative.util.BASE_URL
+import com.google.gson.Gson
+import com.google.gson.JsonObject
+import okhttp3.*
+import okhttp3.HttpUrl.Companion.toHttpUrl
+import okhttp3.RequestBody.Companion.toRequestBody
+import okio.IOException
+import java.net.URLDecoder
+
+class AuthClient() {
+    private var CLIENT_USER_AGENT = &quot;Hotwire Native Android HTTP Client&quot;
+
+    private var csrfToken: String = &quot;&quot;
+    private var csrfCookieStored: String = &quot;&quot;
+    private var sessionCookieStored: String = &quot;&quot;
+
+    @Throws(IOException::class)
+    fun fetchCsrfToken(onCsrfTokenFetched: () -&gt; Unit) {
+        val client = OkHttpClient()
+
+        val request: Request = Request.Builder()
+            .url(API_CSRF_COOKIES_URL)
+            .addHeader(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)
+            .addHeader(&quot;Accept&quot;, &quot;application/json; charset=utf-8&quot;)
+            .addHeader(&quot;User-Agent&quot;, CLIENT_USER_AGENT)
+            .get()
+            .build()
+
+        client.newCall(request).enqueue(object: Callback {
+            override fun onFailure(call: Call, e: java.io.IOException) {
+                e.printStackTrace()
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                response.use {
+                    val cookieManager = CookieManager.getInstance()
+                    val cookies = Cookie.parseAll(BASE_URL.toHttpUrl(), it.headers)
+
+                    cookies.forEach { cookie -&gt;
+                        if (cookie.name == &quot;XSRF-TOKEN&quot;) {
+                            csrfToken = URLDecoder.decode(cookie.value.toString(), Charsets.UTF_8.name())
+                            csrfCookieStored = cookie.toString()
+                        } else if (cookie.name == &quot;turbo_chirp_native_session&quot;) {
+                            sessionCookieStored = cookie.toString()
+                        }
+
+                        cookieManager.setCookie(BASE_URL, cookie.toString())
+                    }
+                }
+
+                onCsrfTokenFetched()
+            }
+        })
+    }
+
+    @Throws(IOException::class)
+    fun attempt(email: String, password: String, onResponse: (AuthResponse) -&gt; Unit) {
+        val client = OkHttpClient()
+
+        val body = JsonObject()
+        body.addProperty(&quot;email&quot;, email)
+        body.addProperty(&quot;password&quot;, password)
+
+        val request: Request = Request.Builder()
+            .url(API_LOGIN_URL)
+            .addHeader(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)
+            .addHeader(&quot;Accept&quot;, &quot;application/json; charset=utf-8&quot;)
+            .addHeader(&quot;User-Agent&quot;, CLIENT_USER_AGENT)
+            .addHeader(&quot;X-XSRF-TOKEN&quot;, csrfToken)
+            .addHeader(&quot;Cookie&quot;, &quot;$sessionCookieStored; $csrfCookieStored&quot;)
+            .post(body.toString().toRequestBody())
+            .build()
+
+        client.newCall(request).enqueue(object: Callback {
+            override fun onFailure(call: Call, e: java.io.IOException) {
+                e.printStackTrace()
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                response.use {
+                    val gson = Gson()
+
+                    when {
+                        it.isSuccessful -&gt; {
+                            Log.i(&quot;AuthClient&quot;, &quot;HTTP request worked!&quot;)
+
+                            val cookieManager = CookieManager.getInstance()
+                            val cookies = Cookie.parseAll(BASE_URL.toHttpUrl(), it.headers)
+
+                            cookies.forEach { cookie -&gt;
+                                Log.i(&quot;AuthClient&quot;, &quot;Received cookie &quot; + cookie.name + &quot; adding to the CookieManager...&quot;)
+
+                                cookieManager.setCookie(BASE_URL, cookie.toString())
+                            }
+
+                            val login = gson.fromJson(it.body?.string(), LoginSuccessful::class.java)
+
+                            onResponse(AuthResponse(
+                                ok = true,
+                                successResponse = login,
+                                failedResponse = null,
+                            ))
+                        }
+                        else -&gt; {
+                            Log.i(&quot;AuthClient&quot;, &quot;HTTP request failed!&quot;)
+
+                            onResponse(AuthResponse(
+                                ok = false,
+                                failedResponse = gson.fromJson(it.body?.string(), FailedResponse::class.java),
+                                successResponse = null,
+                            ))
+                        }
+                    }
+                }
+            }
+        })
+    }
+}
+
+data class AuthResponse(
+    var ok: Boolean,
+    var successResponse: LoginSuccessful?,
+    var failedResponse: FailedResponse?,
+)
+
+data class UserData(
+    val name: String,
+)
+
+data class LoginSuccessful(
+    val token: String,
+    val data: UserData,
+    val redirectTo: String?,
+)
+
+data class InvalidLoginResponse(
+    val email: Array&lt;String&gt;?,
+    val password: Array&lt;String&gt;?,
+)
+
+data class FailedResponse(
+    val message: String,
+    val errors: InvalidLoginResponse,
+)
+</code></pre>
+
+<p>I know there's a lot here. I'm not that good in Kotlin, but this is not the point of this bootcamp. We're essentially adding a method to fetch the CSRF token used to get the Cookie authentication working, which we can use like so:</p>
+
+<pre><code class="language-kotlin">AuthClient().fetchCsrfToken {
+    // It worked, do something after...
+}
+</code></pre>
+
+<p>This method will make an HTTP call to the <code>/sanctum/csrf-cookie</code> route provided by Sanctum. That route will return the Cookies we need in order to successfully authenticate, since we're gonna use the CSRF protection middleware from Laravel in the API routes.</p>
+
+<p>We'd need a way to store the cookies so they'd automatically be added to the <code>CookieManager</code> whenever a response is received by the HTTP Client in whatever context, not just for the auth one. Anyways, for our purposes, this will do.</p>
+
+<p>This code also adds the method to attempt authenticating, which should call an endpoint at <code>/api/login</code>, which will create soon when we're handling the Laravel side of things. This is how the <code>attempt</code> method may be used:</p>
+
+<pre><code class="language-kotlin">AuthClient().attempt(email, password) { it -&gt;
+    // &quot;it&quot; in this case is an instance of the `AuthResponse` class
+    // we created in the same file as the `AuthClient`...
+}
+</code></pre>
+
+<p>With that in place, let's build the Login Screen!</p>
+
+<h2>The Native Login Screen</h2>
+
+<p>Create the <code>features.auth</code> package. And, before we create the <code>LoginFragment</code>, we'll add two interfaces that it's gonna use. First, add a <code>CsrfTokenCallback</code> interface to the <code>features.auth</code> package with the following contents:</p>
+
+<pre><code class="language-kotlin">package com.example.turbochirpernative.features.auth
+
+interface CsrfTokenCallback {
+    fun onCsrfTokenFetched()
+}
+</code></pre>
+
+<p>Then, add a <code>LoginRequestCallback</code> interface also in the <code>features.auth</code> package:</p>
+
+<pre><code class="language-kotlin">package com.example.turbochirpernative.features.auth
+
+interface LoginRequestCallback {
+    fun onLoginSucceeded(url: String)
+    fun onLoginFailed(msg: String)
+}
+</code></pre>
+
+<p>Next, add the <code>LoginFragment</code> also to the <code>features.auth</code> package:</p>
+
+<pre><code class="language-kotlin">package com.example.turbochirpernative.features.auth
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.turbochirpernative.api.AuthClient
+import dev.hotwire.turbo.fragments.TurboFragment
+import dev.hotwire.turbo.nav.TurboNavGraphDestination
+
+@TurboNavGraphDestination(uri = &quot;turbo://fragment/auth/login&quot;)
+class LoginFragment : TurboFragment(), LoginRequestCallback, CsrfTokenCallback {
+    private val authClient = AuthClient()
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return ComposeView(requireContext()).apply {
+            setContent {
+                MaterialTheme {
+                    LoginScreen()
+                }
+            }
+        }
+    }
+
+    @Composable
+    private fun LoginScreen() {
+        DisposableEffect(true) {
+            fetchCsrfToken()
+
+            onDispose {  }
+        }
+
+        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+
+            val email = remember { mutableStateOf(TextFieldValue(&quot;&quot;)) }
+            val password = remember { mutableStateOf(TextFieldValue(&quot;&quot;)) }
+
+            Text(&quot;Turbo Chirp Native&quot;, fontSize = 30.sp, style = TextStyle(fontWeight = FontWeight.Bold))
+            Text(&quot;Login&quot;, fontSize = 24.sp, modifier = Modifier.padding(top = 10.dp))
+            Column(modifier = Modifier.padding(vertical = 16.dp)) {
+                OutlinedTextField(
+                    label = { Text(&quot;Email&quot;) },
+                    singleLine = true,
+                    value = email.value,
+                    onValueChange = { email.value = it }
+                )
+            }
+            Column(modifier = Modifier.padding(vertical = 10.dp)) {
+                OutlinedTextField(
+                    label = { Text(&quot;Password&quot;) },
+                    singleLine = true,
+                    value = password.value,
+                    onValueChange = { password.value = it },
+                    visualTransformation = PasswordVisualTransformation(),
+                )
+            }
+            Column(modifier = Modifier.padding(vertical = 10.dp)) {
+                Button(onClick = {
+                    if (! email.value.text.isEmpty() &amp;&amp; ! password.value.text.isEmpty()) {
+                        authClient.attempt(email.value.text, password.value.text) {
+                            if (it.ok) {
+                                onLoginSucceeded(it.successResponse?.redirectTo + &quot;&quot;)
+                            } else {
+                                onLoginFailed(it.failedResponse?.message ?: &quot;Something went wrong!&quot;)
+                            }
+                        }
+                    }
+                }) {
+                    Text(&quot;Login&quot;)
+                }
+            }
+        }
+    }
+
+    override fun onLoginSucceeded(url: String) {
+        activity?.runOnUiThread { navigate(url) }
+    }
+
+    override fun onLoginFailed(msg: String) {
+        activity?.runOnUiThread {
+            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onCsrfTokenFetched() {
+        activity?.runOnUiThread {
+            Toast.makeText(context, &quot;CSRF Token fetched!&quot;, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun fetchCsrfToken() {
+        authClient.fetchCsrfToken() {
+            onCsrfTokenFetched()
+        }
+    }
+}
+</code></pre>
+
+<p>There's a lot going on in this screen, and we're not gonna talk about it much. The important thing to note here is that we're instantiating the <code>authClient</code> as an attribute to the <code>LoginFragment</code> instance. This is important because we're storing the CSRF Token, Cookie, and the Laravel Session cookie in the <code>AuthClient</code> instance, so we can't just create a new instance of the <code>AuthClient</code> whenever we want.</p>
+
+<p>Also, we're calling the <code>authClient.fetchCsrfToken()</code> in a <code>DisposableEffect</code> to make sure it only calls it once when Compose mounts this screen. Then, whenever the user types non-blank email and password fields to the inputs we have just created, we'll call the <code>authClient.attempt()</code> with it. We're using Toast messages here and there to give some feedback on what's going on. That's more for us than for actual users of our app, so feel free to remove those if you want to.</p>
+
+<p>Finally, let's register our fragment in the <code>MainSessionNavHostFragment</code>:</p>
+
+<pre><code class="language-kotlin">package com.example.turbochirpernative.main
+
+import android.webkit.WebView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.turbochirpernative.BuildConfig
+
+import com.example.turbochirpernative.features.auth.LoginFragment
+import com.example.turbochirpernative.features.web.WebFragment
+
+import com.example.turbochirpernative.util.CHIRPS_HOME_URL
+import dev.hotwire.turbo.config.TurboPathConfiguration
+import dev.hotwire.turbo.session.TurboSessionNavHostFragment
+import kotlin.reflect.KClass
+
+class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
+    // ...
+
+    override val registeredFragments: List&lt;KClass&lt;out Fragment&gt;&gt;
+        get() = listOf(
+            WebFragment::class,
+            LoginFragment::class, // Add this
+        )
+
+    // ...
+}
+</code></pre>
+
+<p>Then, add the new entry to the <code>assets/json/configuration.json</code> to tell Turbo to render the <code>LoginFragment</code> whenever we're visiting the <code>/login</code> route:</p>
+
+<pre><code class="language-json"><span class="hl-property">{</span>
+  <span class="hl-keyword">&quot;settings&quot;</span>: <span class="hl-property">{</span>
+    <span class="hl-keyword">&quot;screenshots_enabled&quot;</span>: true
+  <span class="hl-property">}</span>,
+  <span class="hl-keyword">&quot;rules&quot;</span>: <span class="hl-property">[</span>
+    <span class="hl-property">{</span>
+      <span class="hl-keyword">&quot;patterns&quot;</span>: <span class="hl-property">[</span>
+        <span class="hl-value">&quot;.*&quot;</span>
+      <span class="hl-property">]</span>,
+      <span class="hl-keyword">&quot;properties&quot;</span>: <span class="hl-property">{</span>
+        <span class="hl-keyword">&quot;context&quot;</span>: <span class="hl-value">&quot;default&quot;</span>,
+        <span class="hl-keyword">&quot;uri&quot;</span>: <span class="hl-value">&quot;turbo://fragment/web&quot;</span>,
+        <span class="hl-keyword">&quot;pull_to_refresh_enabled&quot;</span>: true
+      <span class="hl-property">}</span>
+    <span class="hl-property">}</span>,
+    <span class="hl-property">{</span>
+      <span class="hl-keyword">&quot;patterns&quot;</span>: <span class="hl-property">[</span>
+        <span class="hl-value">&quot;login$&quot;</span>,
+        <span class="hl-value">&quot;login/$&quot;</span>
+      <span class="hl-property">]</span>,
+      <span class="hl-keyword">&quot;properties&quot;</span>: <span class="hl-property">{</span>
+        <span class="hl-keyword">&quot;context&quot;</span>: <span class="hl-value">&quot;default&quot;</span>,
+        <span class="hl-keyword">&quot;uri&quot;</span>: <span class="hl-value">&quot;turbo://fragment/auth/login&quot;</span>,
+        <span class="hl-keyword">&quot;pull_to_refresh_enabled&quot;</span>: false
+      <span class="hl-property">}</span>
+    <span class="hl-property">}</span>
+  <span class="hl-property">]</span>
+<span class="hl-property">}</span>
+</code></pre>
+
+<p>This is what the project structure should look like for you:</p>
+
+<p><img src="/assets/images/bootcamp/native/auth-project-structure-login-screen.png" alt="Login Screen project structure" /></p>
+
+<p>Before we're able to test this, we need add Sanctum and our API routes to the Laravel side of our Chirper web app!</p>
+
+<h2>Setting up Sanctum and the API Endpoints</h2>
+
+<p>Our Sanctum installation process will follow the docs with one exception. First thing is the Sanctum installation. In the chirper web app root folder, install Sanctum via Composer:</p>
+
+<pre><code class="language-bash">composer require laravel/sanctum
+</code></pre>
+
+<p>Next, publish the configuration file:</p>
+
+<pre><code class="language-bash">php artisan vendor:publish --provider=&quot;Laravel\Sanctum\SanctumServiceProvider&quot;
+</code></pre>
+
+<p>Then, migrate the database:</p>
+
+<pre><code class="language-bash">php artisan migrate
+</code></pre>
+
+<p>Now is the exception part. Sanctum's default installation recommends adding the <code>EnsureFrontendRequestsAreStateful</code> middleware that ships with Sanctum at the top of the API route group middleware stack. Instead, we're gonna create our own. We're also adding the <code>TurboMiddleware</code> to that route group:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-keyword">namespace</span> <span class="hl-type">App\Http</span>;
+
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Foundation\Http\Kernel</span> <span class="hl-keyword">as</span> <span class="hl-type">HttpKernel</span>;
+
+<span class="hl-keyword">class</span> <span class="hl-type">Kernel</span> <span class="hl-keyword">extends</span> <span class="hl-type">HttpKernel</span>
+{
+    <span class="hl-comment">// ...</span>
+
+    <span class="hl-comment">/**
+     * The application's route middleware groups.
+     *
+     * <span class="hl-value">@var</span> array&lt;string, array&lt;int, class-string|string&gt;&gt;
+     */</span>
+    <span class="hl-keyword">protected</span> <span class="hl-property">$middlewareGroups</span> = [
+        <span class="hl-value">'web'</span> =&gt; [
+            <span class="hl-comment">// ...</span>
+        ],
+
+        <span class="hl-value">'api'</span> =&gt; [
+            <span class="hl-type">\HotwiredLaravel\TurboLaravel\Http\Middleware\TurboMiddleware</span>::<span class="hl-keyword">class</span>,
+            <span class="hl-type">\App\Http\Middleware\EnsureTurboNativeRequestsAreStateful</span>::<span class="hl-keyword">class</span>, <span class="hl-comment">// Add this</span>
+            <span class="hl-value">'throttle:api'</span>,
+            <span class="hl-type">\Illuminate\Routing\Middleware\SubstituteBindings</span>::<span class="hl-keyword">class</span>,
+        ],
+    ];
+
+    <span class="hl-comment">// ...</span>
+}
+</code></pre>
+
+<p>Now, let's create our own <code>EnsureFrontendRequestsAreStateful</code> in the <code>app/Http/Middleware/</code> folder:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-keyword">namespace</span> <span class="hl-type">App\Http\Middleware</span>;
+
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Routing\Pipeline</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Support\Collection</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Support\Str</span>;
+
+<span class="hl-keyword">class</span> <span class="hl-type">EnsureTurboNativeRequestsAreStateful</span>
+{
+    <span class="hl-comment">/**
+     * Handle the incoming requests.
+     *
+     * <span class="hl-value">@param</span>  <span class="hl-type">\Illuminate\Http\Request </span> <span class="hl-variable">$request</span>
+     * <span class="hl-value">@param</span>  <span class="hl-type">callable </span> <span class="hl-variable">$next</span>
+     * <span class="hl-value">@return</span> <span class="hl-type">\Illuminate\Http\Response</span>
+     */</span>
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">handle</span>(<span class="hl-injection">$request, $next</span>)
+    {
+        <span class="hl-variable">$this</span>-&gt;<span class="hl-property">configureSecureCookieSessions</span>();
+
+        <span class="hl-keyword">return</span> (<span class="hl-keyword">new</span> <span class="hl-type">Pipeline</span>(<span class="hl-property">app</span>()))-&gt;<span class="hl-property">send</span>(<span class="hl-variable">$request</span>)-&gt;<span class="hl-property">through</span>(<span class="hl-variable">$request</span>-&gt;<span class="hl-property">wasFromTurboNative</span>() <span class="hl-operator">?</span> [
+            <span class="hl-keyword">function</span> (<span class="hl-injection">$request, $next</span>) {
+                <span class="hl-variable">$request</span>-&gt;<span class="hl-property">attributes</span>-&gt;<span class="hl-keyword">set</span>(<span class="hl-value">'turbo-native'</span>, <span class="hl-keyword">true</span>);
+
+                <span class="hl-keyword">return</span> <span class="hl-variable">$next</span>(<span class="hl-variable">$request</span>);
+            },
+            <span class="hl-property">config</span>(<span class="hl-value">'turbo-laravel.middleware.encrypt_cookies'</span>, <span class="hl-type">\Illuminate\Cookie\Middleware\EncryptCookies</span>::<span class="hl-keyword">class</span>),
+            <span class="hl-type">\Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse</span>::<span class="hl-keyword">class</span>,
+            <span class="hl-type">\Illuminate\Session\Middleware\StartSession</span>::<span class="hl-keyword">class</span>,
+            <span class="hl-property">config</span>(<span class="hl-value">'turbo-laravel.middleware.verify_csrf_token'</span>, <span class="hl-type">\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken</span>::<span class="hl-keyword">class</span>),
+        ] : [])-&gt;<span class="hl-property">then</span>(<span class="hl-keyword">function</span> (<span class="hl-injection">$request) use ($next</span>) {
+            <span class="hl-keyword">return</span> <span class="hl-variable">$next</span>(<span class="hl-variable">$request</span>);
+        });
+    }
+
+    <span class="hl-comment">/**
+     * Configure secure cookie sessions.
+     *
+     * <span class="hl-value">@return</span> <span class="hl-type">void</span>
+     */</span>
+    <span class="hl-keyword">protected</span> <span class="hl-keyword">function</span> <span class="hl-property">configureSecureCookieSessions</span>()
+    {
+        <span class="hl-property">config</span>([
+            <span class="hl-value">'session.http_only'</span> =&gt; <span class="hl-keyword">true</span>,
+            <span class="hl-value">'session.same_site'</span> =&gt; <span class="hl-value">'lax'</span>,
+        ]);
+    }
+}
+</code></pre>
+
+<p>Now, let's add our login route to the <code>routes/api.php</code> entrypoint:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-keyword">use</span> <span class="hl-type">App\Models\User</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Http\Request</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Support\Facades\Auth</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Support\Facades\Hash</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Support\Facades\Route</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Validation\ValidationException</span>;
+
+<span class="hl-comment">// Add this:</span>
+<span class="hl-type">Route</span>::<span class="hl-property">post</span>(<span class="hl-value">'/login'</span>, <span class="hl-keyword">function</span> (<span class="hl-injection"><span class="hl-type">Request</span> $request</span>) {
+    <span class="hl-variable">$credentials</span> = <span class="hl-variable">$request</span>-&gt;<span class="hl-property">validate</span>([
+        <span class="hl-value">'email'</span> =&gt; <span class="hl-value">'required|email'</span>,
+        <span class="hl-value">'password'</span> =&gt; <span class="hl-value">'required'</span>,
+    ]);
+
+    <span class="hl-keyword">if</span> (! <span class="hl-type">Auth</span>::<span class="hl-property">attempt</span>(<span class="hl-variable">$credentials</span>, <span class="hl-keyword">true</span>)) {
+        <span class="hl-keyword">throw</span> <span class="hl-type">ValidationException</span>::<span class="hl-property">withMessages</span>([
+            <span class="hl-value">'email'</span> =&gt; [<span class="hl-value">'The provided credentials are incorrect.'</span>],
+        ]);
+    }
+
+    <span class="hl-variable">$request</span>-&gt;<span class="hl-property">session</span>()-&gt;<span class="hl-property">regenerate</span>();
+
+    <span class="hl-keyword">return</span> [
+        <span class="hl-value">'token'</span> =&gt; <span class="hl-type">Auth</span>::<span class="hl-property">user</span>()-&gt;<span class="hl-property">createToken</span>(<span class="hl-value">'Hotwire Native'</span>)-&gt;<span class="hl-property">plainTextToken</span>,
+        <span class="hl-value">'redirectTo'</span> =&gt; <span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>),
+        <span class="hl-value">'data'</span> =&gt; [
+            <span class="hl-value">'name'</span> =&gt; <span class="hl-type">Auth</span>::<span class="hl-property">user</span>()-&gt;<span class="hl-property">name</span>,
+        ],
+    ];
+});
+
+<span class="hl-comment">// ...</span>
+</code></pre>
+
+<p>Now, we're ready to test it!</p>
+
+<h2>Testing Out</h2>
+
+<p>If you want to, purge all your sessions in the Laravel app by deleting all the files in the <code>storage/framework/sessions/</code> folder (assuming you're using the file session driver):</p>
+
+<pre><code class="language-bash">rm -f storage/framework/sessions/*
+</code></pre>
+
+<p>Now, go back to Android Studio and build the client again. You should see the login screen and if you authenticate, you should then be sent to the chirps home page!</p>
+
+<p><img src="/assets/images/bootcamp/native/auth-login-screen.png" alt="Native Login Screen" /></p>
+
+<p><img src="/assets/images/bootcamp/native/auth-invalid-credentials.png" alt="Invalid Credentials" /></p>
+
+<p><img src="/assets/images/bootcamp/native/auth-chirps-home.png" alt="Chirps Home Page After Native Login" /></p>
+
+<p>Our access token is being stored in the preferences section of our app, which means we can reuse it whenever we need to make an HTTP call with a native screen and our WebView is successfully authenticated, so we don't need to worry about those screens that don't need native authentication anymore. Yay! Next, let's take a look at improving our mobile UX for creating Chirps.</p>
+        </div>
+
+                    <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Previous</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/native-setup">Hotwire Native Installation <span class="absolute inset-0"></span></a>
+    </div>
+  
+      <div class="lg:col-start-2 relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Next</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/native-bridge-component">Our First Bridge Component <span class="absolute inset-0"></span></a>
+    </div>
+  </div>
+              </main>
+    </div>
+  </div>
+
+        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
+          <p class="text-base text-center w-full">
+            Turbo Laravel is maintained by <a href="" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
+          </p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="canonical" href="https://hotwired-laravel.github.io/turbo-laravel-site/bootcamp/introduction">
+        <meta name="description" content="Introduction">
+        <title>Introduction</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/manifest/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/manifest/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/manifest/favicon-16x16.png">
+        <link rel="manifest" href="/assets/site.webmanifest">
+        <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=7756ef47cdc6e051280b7984fd99b8f7">
+        <script defer src="/assets/build/js/main.js?id=2685052459ff19e5e2ef09aac148fca7"></script>
+    </head>
+    <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
+  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
+    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
+      <a href="/">Turbo Laravel</a>
+    </h1>
+
+    <nav class="inline-block lg:hidden">
+      <details class="group" data-search-target="nav">
+        <summary class="list-none">
+          <span>
+            <span class="sr-only">Navigation</span>
+
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
+              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </span>
+        </summary>
+
+        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
+          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
+            <form action="/docs/search" method="GET" class="px-4">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 2.x docs..." />
+  <button type="submit" class="sr-only">Search</button>
+</form>
+
+            <ul class="space-y-6 -mb-2 mt-4">
+              <li>
+                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+                  <span>Documentation</span>
+                </a>
+
+                              </li>
+              <li>
+                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
+              </li>
+              <li class="space-y-6">
+                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
+                  <div class="mx-4 pl-3 border-l-4 border-zinc-900/30">
+  <ul class="">
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/introduction" class="font-bold transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Introduction</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Creating Chirps</a></li>
+                <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Listing Chirps</a></li>
+                <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing Chirps</a></li>
+                <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Deleting Chirps</a></li>
+                <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Hotwiring Everything</a></li>
+                <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Broadcasting</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Authentication</a></li>
+                <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Our First Bridge Component</a></li>
+                <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing as a Modal</a></li>
+                <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Confirmation Dialog</a></li>
+                <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Toasts</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Conclusion</a></li>
+              </ul>
+    </li>
+      </ul>
+</div>
+              </li>
+              <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </nav>
+  </div>
+
+  <nav class="hidden lg:block">
+    <ul class="flex items-center space-x-6 -my-2">
+      <li>
+        <div class="group relative py-2">
+          <a href="/docs" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+            <span>Documentation</span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </a>
+
+          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
+            <ul class="space-y-1">
+              <li><a href="/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">2.2.0</span></a></li>
+              <li><a href="/1.x/docs/installation" class="block px-2 py-1  rounded">Version <span class="">1.12.2</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
+      <li><a href="/bootcamp/introduction" class="bg-white/90 px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
+      <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+    </ul>
+  </nav>
+</header>
+
+          <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
+    <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
+      <aside class="relative w-1/4 hidden lg:block">
+        <div class="sticky top-4 block space-y-4">
+            <form action="/bootcamp/search" method="GET">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="web" type="text" name="q" placeholder="Search bootcamp guides..." class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
+</form>
+
+            <ul class="[&_.children]:mb-4">
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/introduction" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Introduction</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Creating Chirps</a></li>
+            <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Listing Chirps</a></li>
+            <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing Chirps</a></li>
+            <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Deleting Chirps</a></li>
+            <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Hotwiring Everything</a></li>
+            <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Authentication</a></li>
+            <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Our First Bridge Component</a></li>
+            <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing as a Modal</a></li>
+            <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Confirmation Dialog</a></li>
+            <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Toasts</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conclusion</a></li>
+          </ul>
+  </li>
+  </ul>
+        </div>
+      </aside>
+
+      <main class="flex-1 min-w-0">
+        <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+            <h1>Introduction</h1>
+
+<p>Lean how to make <a href="https://hotwired.dev/">Hotwired</a> web apps using Laravel. And when we're finished with the web app, we'll dive into the Hotwire Native side of Hotwire so we can see how it bridges the web and native worlds!</p>
+
+<p>To explore the many sides of Hotwire, we'll build a micro-blogging platform called Turbo Chirper. Many parts of this tutorial were inspired by the <a href="https://bootcamp.laravel.com/">official Laravel Bootcamp</a> adapted to work better in a Hotwired app.</p>
+
+<p>We'll use <a href="https://github.com/tonysm/importmap-laravel">Importmap Laravel</a> and <a href="https://github.com/tonysm/tailwindcss-laravel">TailwindCSS Laravel</a> instead of Laravel's default Vite setup. Vite would work, but I'm taking this opportunity to demonstrate an alternative front-end setup. If you're already familiar with Vite, feel free to choose the <code>turbo-vite</code> stack when setting up the application in the <a href="/bootcamp/installation">installation guide</a>.</p>
+
+<p>On the JavaScript side, we'll use <a href="https://stimulus.hotwired.dev/">Stimulus.js</a>. <a href="https://github.com/hotwired-laravel/turbo-breeze">Turbo Breeze</a> - the starter kit we'll use - comes with all the same components in Laravel Breeze, reimplemented in Stimulus, so you won't miss out on anything. Also, most of the time, we're able to quickly convert Alpine components into Stimulus controllers.</p>
+
+<p>Let's get started!</p>
+
+<h2>Web</h2>
+
+<p>In the Web Tutorial, we're gonna build our <a href="https://m.signalvnoise.com/the-majestic-monolith/">majestic web app</a> using <a href="https://laravel.com/">Laravel</a> and <a href="https://github.com/hotwired-laravel/turbo-laravel">Turbo Laravel</a> that will serve as basis for the second part of the tutorial which focuses on Hotwire Native and Android.</p>
+
+<p><a href="/guides/installation">Start the Web Tutorial...</a></p>
+
+<h2>Native</h2>
+
+<p>The second part of this Bootcamp will focus on Hotwire Native. The goal is to showcase the Native side of Hotwire. We're going to use Android and Kotlin to build a fully native wrapper around our web app and <a href="https://m.signalvnoise.com/basecamp-3-for-ios-hybrid-architecture/">progressively enhance the UX for mobile users</a>.</p>
+        </div>
+
+                    <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+  
+      <div class="lg:col-start-2 relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Next</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/installation">Installation <span class="absolute inset-0"></span></a>
+    </div>
+  </div>
+              </main>
+    </div>
+  </div>
+
+        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
+          <p class="text-base text-center w-full">
+            Turbo Laravel is maintained by <a href="" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
+          </p>
+        </footer>
+    </body>
+</html>

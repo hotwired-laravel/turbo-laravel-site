@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="canonical" href="https://hotwired-laravel.github.io/turbo-laravel-site/bootcamp/native-setup">
+        <meta name="description" content="Hotwire Native Installation">
+        <title>Hotwire Native Installation</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/manifest/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/manifest/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/manifest/favicon-16x16.png">
+        <link rel="manifest" href="/assets/site.webmanifest">
+        <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=7756ef47cdc6e051280b7984fd99b8f7">
+        <script defer src="/assets/build/js/main.js?id=2685052459ff19e5e2ef09aac148fca7"></script>
+    </head>
+    <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
+  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
+    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
+      <a href="/">Turbo Laravel</a>
+    </h1>
+
+    <nav class="inline-block lg:hidden">
+      <details class="group" data-search-target="nav">
+        <summary class="list-none">
+          <span>
+            <span class="sr-only">Navigation</span>
+
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
+              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </span>
+        </summary>
+
+        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
+          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
+            <form action="/docs/search" method="GET" class="px-4">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 2.x docs..." />
+  <button type="submit" class="sr-only">Search</button>
+</form>
+
+            <ul class="space-y-6 -mb-2 mt-4">
+              <li>
+                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+                  <span>Documentation</span>
+                </a>
+
+                              </li>
+              <li>
+                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
+              </li>
+              <li class="space-y-6">
+                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
+                  <div class="mx-4 pl-3 border-l-4 border-zinc-900/30">
+  <ul class="">
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Introduction</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Creating Chirps</a></li>
+                <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Listing Chirps</a></li>
+                <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing Chirps</a></li>
+                <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Deleting Chirps</a></li>
+                <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Hotwiring Everything</a></li>
+                <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Broadcasting</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/native-setup" class="font-bold transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Authentication</a></li>
+                <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Our First Bridge Component</a></li>
+                <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing as a Modal</a></li>
+                <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Confirmation Dialog</a></li>
+                <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Toasts</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Conclusion</a></li>
+              </ul>
+    </li>
+      </ul>
+</div>
+              </li>
+              <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </nav>
+  </div>
+
+  <nav class="hidden lg:block">
+    <ul class="flex items-center space-x-6 -my-2">
+      <li>
+        <div class="group relative py-2">
+          <a href="/docs" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+            <span>Documentation</span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </a>
+
+          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
+            <ul class="space-y-1">
+              <li><a href="/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">2.2.0</span></a></li>
+              <li><a href="/1.x/docs/installation" class="block px-2 py-1  rounded">Version <span class="">1.12.2</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
+      <li><a href="/bootcamp/introduction" class="bg-white/90 px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
+      <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+    </ul>
+  </nav>
+</header>
+
+          <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
+    <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
+      <aside class="relative w-1/4 hidden lg:block">
+        <div class="sticky top-4 block space-y-4">
+            <form action="/bootcamp/search" method="GET">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="web" type="text" name="q" placeholder="Search bootcamp guides..." class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
+</form>
+
+            <ul class="[&_.children]:mb-4">
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Introduction</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Creating Chirps</a></li>
+            <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Listing Chirps</a></li>
+            <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing Chirps</a></li>
+            <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Deleting Chirps</a></li>
+            <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Hotwiring Everything</a></li>
+            <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/native-setup" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Authentication</a></li>
+            <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Our First Bridge Component</a></li>
+            <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing as a Modal</a></li>
+            <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Confirmation Dialog</a></li>
+            <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Toasts</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conclusion</a></li>
+          </ul>
+  </li>
+  </ul>
+        </div>
+      </aside>
+
+      <main class="flex-1 min-w-0">
+        <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+            <h1><em>08.</em> Hotwire Native Android Setup</h1>
+
+<p>Hotwire offers mobile native adapters to help building high-fidelity hybrid apps with native navigation and a single shared web view.</p>
+
+<p>You'll need a little bit of mobile development knowledge, specifically for Android and Kotlin. Not that much, though, because to be honest I'm no mobile dev expert myself.</p>
+
+<p>This guide isn't about "the best way to build Hotwire Native apps". The idea is just to show you what's possible and how it integrates with Turbo.js and Turbo Laravel.</p>
+
+<p>We're gonna focus on the <a href="https://github.com/hotwired/hotwire-native-android/">Hotwire Native for Android</a> lib. I feel like <a href="https://github.com/hotwired/hotwire-native-ios/">Hotwire Native for iOS</a> has a lot more attention, so I want to focus on Android for a bit. It's also the platform I am more familiar with, to be honest.</p>
+
+<p>In Android development, each screen used to be its own Activity, but that has changed over the years and now the "Single Activity" approach seems to be the way to go. Watch this talk called <a href="https://www.youtube.com/watch?v=2k8x8V77CrU">"Single activity: why, when, and how"</a>. In short, we're gonna have a single activity and each screen will be represented by a Fragment and we'll use Google's <a href="https://developer.android.com/guide/navigation">Navigation component library</a> to decide which fragment to present.</p>
+
+<p>Head over to the <a href="https://native.hotwired.dev/overview/how-it-works">Overview section in the docs for Hotwire Native</a>.</p>
+
+<p>Let's setup the Android app.</p>
+
+<h2>Setting Up The Local Development</h2>
+
+<p>To get started, you will need Java, Kotlin, and Android Studio installed locally. We're not gonna cover installing those things, but you should be able to find many resources on that.</p>
+
+<p>I'm using ASDF, so here's some links:</p>
+
+<ul>
+<li>ASDF itself: https://asdf-vm.com/</li>
+<li>ASDF Java: https://github.com/halcyon/asdf-java</li>
+<li>ASDF Kotlin: https://github.com/asdf-community/asdf-kotlin</li>
+<li>Android Studio: https://developer.android.com/studio</li>
+</ul>
+
+<p>Get those installed first, and then we'll create the project.</p>
+
+<h2>Setting Up The Project</h2>
+
+<p>When creating the project, make sure you choose the "Empty Activity" option.</p>
+
+<p><img src="/assets/images/bootcamp/native/setup-empty-activity.png" alt="Empty Compose Activity" /></p>
+
+<p>On the next screen, make sure you choose the "API 24" as that's required by the Hotwire Native adapter.</p>
+
+<p><img src="/assets/images/bootcamp/native/setup-api-24.png" alt="API 24" /></p>
+
+<p>Next, you're going to need to create a <a href="https://developer.android.com/studio/run/managing-avds">Virtual Device</a>, next to the "run" icon (the green right-arrow in toolbar at the top), there's a dropdown with the "Device Manager" option. Click on it. In the sidebar that opens, click on the "Create Device" option. Choose whatever device you want to emulate, I'll go with a Pixel 2.</p>
+
+<p><img src="/assets/images/bootcamp/native/setup-choose-device.png" alt="Choose Device" /></p>
+
+<p>For the System image, I'm choose API level 30, which is Android R.</p>
+
+<p><img src="/assets/images/bootcamp/native/setup-system-image.png" alt="System Image" /></p>
+
+<p>Now, you should see the option to run the app on the device emulator! Pressing on that, you should the app is running!</p>
+
+<p><img src="/assets/images/bootcamp/native/setup-running-app.png" alt="App running" /></p>
+
+<p>Let's install Hotwire Native.</p>
+
+<h2>Installing Hotwire Native</h2>
+
+<p>Now, let's add the Turbo lib. On the left sidebar, there's a "Gradle Scripts" section dropdown. Open it. In there, you should see 2 files named <code>build.gradle</code>, one for the project and one for the module. Open the module one. On it, scroll to the bottom where your dependencies are listed and add the Hotwire Native one:</p>
+
+<pre><code>dependencies {
+    def lifecycle_version = '2.5.1' // Add this
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // Add this section:
+    implementation 'dev.hotwire:turbo:7.0.0-rc12'
+    implementation &quot;androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version&quot;
+    implementation &quot;androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version&quot;
+    implementation &quot;androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version&quot;
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
+</code></pre>
+
+<p>Then, press on "Sync now" at the top of the file. Once that's done, you should have Turbo installed.</p>
+
+<p><img src="/assets/images/bootcamp/native/setup-add-turbo.png" alt="Add Turbo" /></p>
+
+<h2>Configuring Hotwire Native</h2>
+
+<p>So far, we have only added Hotwire Native to the project, but we're not using it yet. Let's configure it.</p>
+
+<p>We're following the official <a href="https://native.hotwired.dev/android/getting-started">Quick Start guide</a> here.</p>
+
+<p>Let's start by creating our <code>NavHostFragment</code>, which is a component available in Android Jetpack that provides a contained navigation area where our fragments will appear.</p>
+
+<p>Before we start, let's create a <code>util</code> package where we're going to have a Constants Kotlin file. To do that, right-click on the root package and choosing the "New > Package" option. Then create the "util" package.</p>
+
+<p>Inside of it, create the <code>Constants.kt</code> file with the following contents:</p>
+
+<pre><code class="language-js"><span class="hl-keyword">package</span> com.<span class="hl-property">example</span>.<span class="hl-property">turbochirpernative</span>.<span class="hl-property">util</span>
+
+<span class="hl-keyword">const</span> val BASE_URL = <span class="hl-value">&quot;http://10.0.2.2&quot;</span>
+<span class="hl-keyword">const</span> val CHIRPS_HOME_URL = <span class="hl-value">&quot;$BASE_URL/chirps&quot;</span>
+</code></pre>
+
+<p>We need to use something <a href="https://developer.android.com/studio/run/emulator-networking">10.0.2.2 instead of localhost</a> here or something like <a href="https://expose.dev/">Expose</a> to get a remote URL that points to your app running locally.</p>
+
+<p>Let's now create a package in our app called "main":</p>
+
+<p><img src="/assets/images/bootcamp/native/setup-main-package.png" alt="The main package" /></p>
+
+<p>Now, create a Kotlin class called <code>MainSessionNavHostFragment</code>. This class will extend the <code>TurboSessionNavHostFragment</code> class that ships with Turbo, feel free to copy the body of the class (make sure the imports are correct and the package name too):</p>
+
+<pre><code class="language-kotlin">package com.example.turbochirpernative.main
+
+import android.webkit.WebView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.turbochirpernative.util.CHIRPS_HOME_URL
+import dev.hotwire.turbo.BuildConfig
+import dev.hotwire.turbo.config.TurboPathConfiguration
+import dev.hotwire.turbo.session.TurboSessionNavHostFragment
+import kotlin.reflect.KClass
+
+class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
+    override val sessionName = &quot;main&quot;
+
+    override val startLocation = CHIRPS_HOME_URL
+
+    override val registeredActivities: List&lt;KClass&lt;out AppCompatActivity&gt;&gt;
+        get() = listOf()
+
+    override val registeredFragments: List&lt;KClass&lt;out Fragment&gt;&gt;
+        get() = listOf(
+            //
+        )
+
+    override val pathConfigurationLocation: TurboPathConfiguration.Location
+        get() = TurboPathConfiguration.Location(
+            assetFilePath = &quot;json/configuration.json&quot;,
+        )
+
+    override fun onSessionCreated() {
+        super.onSessionCreated()
+        session.webView.settings.userAgentString = customUserAgent(session.webView)
+
+        if (BuildConfig.DEBUG) {
+            session.setDebugLoggingEnabled(true)
+            WebView.setWebContentsDebuggingEnabled(true)
+        }
+    }
+
+    private fun customUserAgent(webView: WebView): String {
+        return &quot;Hotwire Native Android ${webView.settings.userAgentString}&quot;
+    }
+}
+</code></pre>
+
+<p>There's a lot going on here, and this code doesn't even work yet. Let's go piece by piece.</p>
+
+<ol>
+<li>The <code>startLocation</code> property should point to your app's default home page. In our case, it's the <code>/chirps</code> page. It could be the <code>/dashboard</code>, but we don't have anything there yet;</li>
+<li>The <code>registeredActivities</code> method is only used when we have more than one activity in our app, which isn't our case, so we return an empty list;</li>
+<li>The <code>registeredFragments</code> method will return a list of all fragments in our app to build the navigation graph. It's currently empty, but we'll use it in a bit;</li>
+<li>The <code>pathConfigurationLocation</code> returns the location to the path configuration JSON files. This file will have some app specific configurations which can be used for things like feature toggles, but it's also going to have the navigation configuration where we're going to specify which fragments will be used based on the URL pattern (more on that later). Our app should must ship with a default <code>configuration.json</code> file, but we could also provide a remote URL for the file that we could control dynamically from our backend server;</li>
+<li>We're also configuring the WebView to use the <code>Hotwire Native Android</code> User Agent header so we can detect in the backend that the request is coming from a Hotwire Native client (see more <a href="/docs/hotwire-native">here</a>)</li>
+</ol>
+
+<p>Okay, now let's create our <code>configuration.json</code> file. Right-click on the project root named "app" and choose "New > Directory", then call it "assets/json". Then, right-click on the <code>json</code> directory we just created, and add a new file called <code>configuration.json</code> with the following contents:</p>
+
+<p><img src="/assets/images/bootcamp/native/setup-assets-folder.png" alt="Assets directory" /></p>
+
+<pre><code class="language-json"><span class="hl-property">{</span>
+  <span class="hl-keyword">&quot;settings&quot;</span>: <span class="hl-property">{</span>
+    <span class="hl-keyword">&quot;screenshots_enabled&quot;</span>: true
+  <span class="hl-property">}</span>,
+  <span class="hl-keyword">&quot;rules&quot;</span>: <span class="hl-property">[</span>
+    <span class="hl-property">{</span>
+      <span class="hl-keyword">&quot;patterns&quot;</span>: <span class="hl-property">[</span>
+        <span class="hl-value">&quot;.*&quot;</span>
+      <span class="hl-property">]</span>,
+      <span class="hl-keyword">&quot;properties&quot;</span>: <span class="hl-property">{</span>
+        <span class="hl-keyword">&quot;context&quot;</span>: <span class="hl-value">&quot;default&quot;</span>,
+        <span class="hl-keyword">&quot;uri&quot;</span>: <span class="hl-value">&quot;turbo://fragment/web&quot;</span>,
+        <span class="hl-keyword">&quot;pull_to_refresh_enabled&quot;</span>: true
+      <span class="hl-property">}</span>
+    <span class="hl-property">}</span>
+  <span class="hl-property">]</span>
+<span class="hl-property">}</span>
+</code></pre>
+
+<p>We only have one rule defined in this file right now. This is the "catch-all" rule, which will be applied to every navigation started by Turbo. By default, it will render the fragment configured as the <code>turbo://fragment/web</code> URI. Let's create that fragment and register it in our <code>MainSessionNavHostFragment</code>.</p>
+
+<p>To create the fragment, let's first create a "features" package and then a "web" package inside of it. The "features" package will be where we keep our fragments and we can create sub packages for each subsystem we may have. For now, we only have one which we'll call "web".</p>
+
+<p>Inside of the <code>features.web</code> package, create a Kotlin class named <code>WebFragment</code> with the following contents:</p>
+
+<pre><code class="language-kotlin">package com.example.turbochirpernative.features.web
+
+import dev.hotwire.turbo.fragments.TurboWebFragment
+import dev.hotwire.turbo.nav.TurboNavGraphDestination
+
+@TurboNavGraphDestination(uri = &quot;turbo://fragment/web&quot;)
+class WebFragment: TurboWebFragment() {
+}
+</code></pre>
+
+<p>Notice that we're annotating this class as the <code>turbo://fragment/web</code> URI using the <code>TurboNavGraphDestination</code> annotation. This matches our URI config for the catch-all rule in our <code>configuration.json</code> file.</p>
+
+<p>Now, let's register this fragment in the <code>MainSessionNavHostFragment</code>:</p>
+
+<pre><code class="language-kotlin">package com.example.turbochirpernative.main
+
+// ...
+
+class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
+    override val registeredFragments: List&lt;KClass&lt;out Fragment&gt;&gt;
+        get() = listOf(
+            WebFragment::class // Add this
+        )
+
+    // ...
+}
+</code></pre>
+
+<p>Next, we need to update our <code>MainActivity</code> to use the <code>MainSessionNavHostFragment</code> we have just created. But before we do that, let's do a refactor and also move it to the "main" package. You may have to do it twice for the refactoring to take effect.</p>
+
+<p><img src="/assets/images/bootcamp/native/setup-refactor-main-activity.png" alt="Move main activity to the main package" /></p>
+
+<p>This activity class is referenced in the <code>AndroidManifest.xml</code> file, make sure you update the reference to also use the <code>.main</code> package. You can edit the manifest by clicking on the "app/manifests" section on your left sidebar. Since we're changing the manifest, let's also make sure we add the <code>INTERNET</code> permission to our app, otherwise we won't be able to make network requests.</p>
+
+<pre><code class="language-xml">&lt;?xml <span class="hl-property">version</span>=&quot;1.0&quot; <span class="hl-property">encoding</span>=&quot;utf-8&quot;?&gt;
+&lt;<span class="hl-keyword">manifest</span> xmlns:<span class="hl-property">android</span>=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:<span class="hl-property">tools</span>=&quot;http://schemas.android.com/tools&quot;&gt;
+
+    <span class="hl-comment">&lt;!-- Add this: --&gt;</span>
+    &lt;<span class="hl-keyword">uses-permission</span> android:<span class="hl-property">name</span>=&quot;android.permission.INTERNET&quot; /&gt;
+
+    &lt;<span class="hl-keyword">application</span>
+        android:<span class="hl-property">allowBackup</span>=&quot;true&quot;
+        android:<span class="hl-property">dataExtractionRules</span>=&quot;@xml/data_extraction_rules&quot;
+        android:<span class="hl-property">fullBackupContent</span>=&quot;@xml/backup_rules&quot;
+        android:<span class="hl-property">icon</span>=&quot;@mipmap/ic_launcher&quot;
+        android:<span class="hl-property">label</span>=&quot;@string/app_name&quot;
+        android:<span class="hl-property">roundIcon</span>=&quot;@mipmap/ic_launcher_round&quot;
+        android:<span class="hl-property">supportsRtl</span>=&quot;true&quot;
+        android:<span class="hl-property">theme</span>=&quot;@style/Theme.TurboChirperNative&quot;
+        tools:<span class="hl-property">targetApi</span>=&quot;31&quot;
+        android:<span class="hl-property">usesCleartextTraffic</span>=&quot;true&quot;&gt; <span class="hl-comment">&lt;!-- Allow &quot;clear text&quot; --&gt;</span>
+
+        &lt;<span class="hl-keyword">activity</span>
+            android:<span class="hl-property">name</span>=&quot;.main.MainActivity&quot;
+            android:<span class="hl-property">exported</span>=&quot;true&quot;
+            android:<span class="hl-property">label</span>=&quot;@string/app_name&quot;
+            android:<span class="hl-property">theme</span>=&quot;@style/Theme.TurboChirperNative&quot;&gt;
+
+            &lt;<span class="hl-keyword">intent-filter</span>&gt;
+                &lt;<span class="hl-keyword">action</span> android:<span class="hl-property">name</span>=&quot;android.intent.action.MAIN&quot; /&gt;
+
+                &lt;<span class="hl-keyword">category</span> android:<span class="hl-property">name</span>=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+            &lt;/<span class="hl-keyword">intent-filter</span>&gt;
+
+            &lt;<span class="hl-keyword">meta-data</span>
+                android:<span class="hl-property">name</span>=&quot;android.app.lib_name&quot;
+                android:<span class="hl-property">value</span>=&quot;&quot; /&gt;
+        &lt;/<span class="hl-keyword">activity</span>&gt;
+    &lt;/<span class="hl-keyword">application</span>&gt;
+&lt;/<span class="hl-keyword">manifest</span>&gt;
+</code></pre>
+
+<p>Now, let's update our <code>activity_main.xml</code> layout file. Update it to match this content:</p>
+
+<pre><code class="language-xml">&lt;?xml <span class="hl-property">version</span>=&quot;1.0&quot; <span class="hl-property">encoding</span>=&quot;utf-8&quot;?&gt;
+&lt;<span class="hl-keyword">androidx</span>.constraintlayout.widget.ConstraintLayout
+    xmlns:<span class="hl-property">android</span>=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:<span class="hl-property">app</span>=&quot;http://schemas.android.com/apk/res-auto&quot;
+    android:<span class="hl-property">layout_width</span>=&quot;match_parent&quot;
+    android:<span class="hl-property">layout_height</span>=&quot;match_parent&quot;&gt;
+
+    &lt;<span class="hl-keyword">androidx</span>.fragment.app.FragmentContainerView
+        android:<span class="hl-property">id</span>=&quot;@+id/main_nav_host&quot;
+        android:<span class="hl-property">name</span>=&quot;com.example.turbochirpernative.main.MainSessionNavHostFragment&quot;
+        android:<span class="hl-property">layout_width</span>=&quot;match_parent&quot;
+        android:<span class="hl-property">layout_height</span>=&quot;match_parent&quot;
+        app:<span class="hl-property">defaultNavHost</span>=&quot;false&quot; /&gt;
+
+&lt;/<span class="hl-keyword">androidx</span>.constraintlayout.widget.ConstraintLayout&gt;
+</code></pre>
+
+<p>Make sure the <code>android:name</code> property points to the full package namespace of your <code>MainSessionNavHostFragment</code>.</p>
+
+<p>Next, update the <code>MainActivity</code> to match this:</p>
+
+<pre><code class="language-kotlin">package com.example.turbochirpernative.main
+
+import android.os.Bundle
+import com.example.turbochirpernative.R
+import androidx.appcompat.app.AppCompatActivity
+import dev.hotwire.turbo.activities.TurboActivity
+import dev.hotwire.turbo.delegates.TurboActivityDelegate
+
+class MainActivity : AppCompatActivity(), TurboActivity {
+    override lateinit var delegate: TurboActivityDelegate
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        delegate = TurboActivityDelegate(this, R.id.main_nav_host)
+    }
+}
+</code></pre>
+
+<p>Now, if you run the app, you should see that we have successfully wrapped our web app in a native shell using Hotwire Native! Yay!</p>
+
+<p><img src="/assets/images/bootcamp/native/setup-turbo-chirper-native-running.png" alt="Turbo Chirper on Hotwire Native" /></p>
+
+<p>As of right now, mobile users have access to all the features exactly the way it works on mobile. As long as we build our features with a mobile first mentality using responsive UIs, we should be good most of the time. However, as of right now, you may notice our app is a little weird to use on mobile. Let's tweak our app so it looks better.</p>
+
+<p>Let's hide the top-level action bar and only leave the right below it. Open the layout file in "res -> values -> themes" and make it inherit from the <code>NoActionBar</code> theme:</p>
+
+<pre><code class="language-xml">&lt;<span class="hl-keyword">resources</span> xmlns:<span class="hl-property">tools</span>=&quot;http://schemas.android.com/tools&quot;&gt;
+    <span class="hl-comment">&lt;!-- Fix the parent: --&gt;</span>
+    &lt;<span class="hl-keyword">style</span> <span class="hl-property">name</span>=&quot;Theme.TurboChirperNative&quot; <span class="hl-property">parent</span>=&quot;Theme.MaterialComponents.DayNight.NoActionBar&quot;&gt;
+        <span class="hl-comment">&lt;!-- ... --&gt;</span>
+    &lt;/<span class="hl-keyword">style</span>&gt;
+&lt;/<span class="hl-keyword">resources</span>&gt;
+</code></pre>
+
+<p>Then, change add the new indigo colors to the <code>colors.xml</code> file in "res -> values -> colors.xml":</p>
+
+<pre><code class="language-xml">&lt;?xml <span class="hl-property">version</span>=&quot;1.0&quot; <span class="hl-property">encoding</span>=&quot;utf-8&quot;?&gt;
+&lt;<span class="hl-keyword">resources</span>&gt;
+    &lt;<span class="hl-keyword">color</span> <span class="hl-property">name</span>=&quot;indigo_500&quot;&gt;#6366f1&lt;/<span class="hl-keyword">color</span>&gt;
+    &lt;<span class="hl-keyword">color</span> <span class="hl-property">name</span>=&quot;indigo_700&quot;&gt;#4338ca&lt;/<span class="hl-keyword">color</span>&gt;
+    &lt;<span class="hl-keyword">color</span> <span class="hl-property">name</span>=&quot;purple_200&quot;&gt;#FFBB86FC&lt;/<span class="hl-keyword">color</span>&gt;
+    &lt;<span class="hl-keyword">color</span> <span class="hl-property">name</span>=&quot;purple_500&quot;&gt;#FF6200EE&lt;/<span class="hl-keyword">color</span>&gt;
+    &lt;<span class="hl-keyword">color</span> <span class="hl-property">name</span>=&quot;purple_700&quot;&gt;#FF3700B3&lt;/<span class="hl-keyword">color</span>&gt;
+    &lt;<span class="hl-keyword">color</span> <span class="hl-property">name</span>=&quot;teal_200&quot;&gt;#FF03DAC5&lt;/<span class="hl-keyword">color</span>&gt;
+    &lt;<span class="hl-keyword">color</span> <span class="hl-property">name</span>=&quot;teal_700&quot;&gt;#FF018786&lt;/<span class="hl-keyword">color</span>&gt;
+    &lt;<span class="hl-keyword">color</span> <span class="hl-property">name</span>=&quot;black&quot;&gt;#FF000000&lt;/<span class="hl-keyword">color</span>&gt;
+    &lt;<span class="hl-keyword">color</span> <span class="hl-property">name</span>=&quot;white&quot;&gt;#FFFFFFFF&lt;/<span class="hl-keyword">color</span>&gt;
+&lt;/<span class="hl-keyword">resources</span>&gt;
+</code></pre>
+
+<p>Now, it looks a little better. If you try to login, you should see the app looks exactly like you'd expect: it's a web responsive version of the Turbo Chirper app we built on the previous module.</p>
+
+<p><img src="/assets/images/bootcamp/native/setup-app-running-login-screen.png" alt="App Running Login Screen" /></p>
+
+<p><img src="/assets/images/bootcamp/native/setup-app-running-chirps-home.png" alt="App Running Chirps Home" /></p>
+
+<p>There are a bunch of things we can improve here. Some of the interactions we built for the web don't really make sense in a mobile UX point-of-view. For instance:</p>
+
+<ul>
+<li>Adding a Chirp inline. Or editing a Chirp inline. These features would usually be done in a native modal screen instead of showing the forms inline</li>
+<li>We're currently showing the web navbar at the top of the page, but that's not that useful inside the mobile app (it's still useful for users visiting our web app from mobile device's browsers), as menu bars and dropdowns like that kind of breaks the illusion of native screens. Same goes for the edit/delete Chirp dropdown</li>
+<li>Right now we're only authenticating users inside the WebView using Cookies. However, it's not uncommon to need a fully native screen here and there to enhance the mobile experience. For that, we would need to setup some API routes and handle authentication</li>
+</ul>
+
+<p>And we're gonna solve all that!</p>
+        </div>
+
+                    <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Previous</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/broadcasting">Broadcasting <span class="absolute inset-0"></span></a>
+    </div>
+  
+      <div class="lg:col-start-2 relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Next</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/native-auth">Native Authentication <span class="absolute inset-0"></span></a>
+    </div>
+  </div>
+              </main>
+    </div>
+  </div>
+
+        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
+          <p class="text-base text-center w-full">
+            Turbo Laravel is maintained by <a href="" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
+          </p>
+        </footer>
+    </body>
+</html>

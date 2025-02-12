@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="canonical" href="https://hotwired-laravel.github.io/turbo-laravel-site/bootcamp/installation">
+        <meta name="description" content="Installation">
+        <title>Installation</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/manifest/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/manifest/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/manifest/favicon-16x16.png">
+        <link rel="manifest" href="/assets/site.webmanifest">
+        <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=7756ef47cdc6e051280b7984fd99b8f7">
+        <script defer src="/assets/build/js/main.js?id=2685052459ff19e5e2ef09aac148fca7"></script>
+    </head>
+    <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
+  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
+    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
+      <a href="/">Turbo Laravel</a>
+    </h1>
+
+    <nav class="inline-block lg:hidden">
+      <details class="group" data-search-target="nav">
+        <summary class="list-none">
+          <span>
+            <span class="sr-only">Navigation</span>
+
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
+              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </span>
+        </summary>
+
+        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
+          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
+            <form action="/docs/search" method="GET" class="px-4">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 2.x docs..." />
+  <button type="submit" class="sr-only">Search</button>
+</form>
+
+            <ul class="space-y-6 -mb-2 mt-4">
+              <li>
+                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+                  <span>Documentation</span>
+                </a>
+
+                              </li>
+              <li>
+                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
+              </li>
+              <li class="space-y-6">
+                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
+                  <div class="mx-4 pl-3 border-l-4 border-zinc-900/30">
+  <ul class="">
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Introduction</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/installation" class="font-bold transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Creating Chirps</a></li>
+                <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Listing Chirps</a></li>
+                <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing Chirps</a></li>
+                <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Deleting Chirps</a></li>
+                <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Hotwiring Everything</a></li>
+                <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Broadcasting</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Authentication</a></li>
+                <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Our First Bridge Component</a></li>
+                <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing as a Modal</a></li>
+                <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Confirmation Dialog</a></li>
+                <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Toasts</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Conclusion</a></li>
+              </ul>
+    </li>
+      </ul>
+</div>
+              </li>
+              <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </nav>
+  </div>
+
+  <nav class="hidden lg:block">
+    <ul class="flex items-center space-x-6 -my-2">
+      <li>
+        <div class="group relative py-2">
+          <a href="/docs" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+            <span>Documentation</span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </a>
+
+          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
+            <ul class="space-y-1">
+              <li><a href="/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">2.2.0</span></a></li>
+              <li><a href="/1.x/docs/installation" class="block px-2 py-1  rounded">Version <span class="">1.12.2</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
+      <li><a href="/bootcamp/introduction" class="bg-white/90 px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
+      <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+    </ul>
+  </nav>
+</header>
+
+          <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
+    <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
+      <aside class="relative w-1/4 hidden lg:block">
+        <div class="sticky top-4 block space-y-4">
+            <form action="/bootcamp/search" method="GET">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="web" type="text" name="q" placeholder="Search bootcamp guides..." class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
+</form>
+
+            <ul class="[&_.children]:mb-4">
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Introduction</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/installation" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Creating Chirps</a></li>
+            <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Listing Chirps</a></li>
+            <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing Chirps</a></li>
+            <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Deleting Chirps</a></li>
+            <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Hotwiring Everything</a></li>
+            <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Authentication</a></li>
+            <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Our First Bridge Component</a></li>
+            <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing as a Modal</a></li>
+            <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Confirmation Dialog</a></li>
+            <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Toasts</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conclusion</a></li>
+          </ul>
+  </li>
+  </ul>
+        </div>
+      </aside>
+
+      <main class="flex-1 min-w-0">
+        <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+            <h1><em>01.</em> Installation</h1>
+
+<p>Our first step is to create the web app and setup our local environment.</p>
+
+<h2>Installing Laravel</h2>
+
+<p>There are two paths in here: one uses a local installation setup, and another one that uses <a href="https://laravel.com/docs/sail">Laravel Sail</a>. Choose how you're going to run the app locally as you feel more comfortable.</p>
+
+<h3>Quick Installation</h3>
+
+<p>If you have already installed PHP and Composer on your local machine, you may create a new Laravel project via <a href="https://getcomposer.org/">Composer</a>:</p>
+
+<pre><code class="language-bash">composer create-project laravel/laravel turbo-chirper
+</code></pre>
+
+<p>After the project has been created, start Laravel's local development server using the Laravel's Artisan CLI serve command:</p>
+
+<pre><code class="language-bash">cd turbo-chirper/
+
+php artisan serve
+</code></pre>
+
+<p>Once you have started the Artisan development server, your application will be accessible in your web browser at <a href="http://localhost:8000">http://localhost:8000</a>.</p>
+
+<p><img src="/assets/images/bootcamp/laravel-welcome.png" alt="Laravel Welcome page" /></p>
+
+<p>For simplicity, you may use SQLite to store your application's data.</p>
+
+<h3>Installing via Docker</h3>
+
+<p>If you do not have PHP installed locally, you may develop your application using <a href="https://laravel.com/docs/sail">Laravel Sail</a>, a light-weight command-line interface for interacting with Laravel's default Docker development environment, which is compatible with all operating systems. Before we get started, make sure to install <a href="https://docs.docker.com/get-docker/">Docker</a> for your operating system. For alternative installation methods, check out Laravel's full <a href="https://laravel.com/docs/installation">installation guide</a>.</p>
+
+<p>The easiest way to install Laravel is using Laravel's <code>laravel.build</code> service, which will download and create a fresh Laravel application for you. Launch a terminal and run the following command:</p>
+
+<pre><code class="language-bash">curl -s &quot;https://laravel.build/turbo-chirper?with=none&quot; | bash
+</code></pre>
+
+<p>Sail installation may take several minutes while Sail's application containers are built on your local machine.</p>
+
+<p>Notice that we're passing the <code>?with=none</code> flag to the command. By default, the installer will pre-configure Laravel Sail with a number of useful services for your application. We don't want that. We only need the app container and we'll use SQLite, which should be the default.</p>
+
+<p>After the project has been created, you can navigate to the application directory and start Laravel Sail:</p>
+
+<pre><code class="language-bash">cd turbo-chirper
+
+./vendor/bin/sail up -d
+</code></pre>
+
+<p><div class="p-6 flex space-x-4 border border-opacity-75 bg-opacity-75 rounded shadow my-8 sm:p-8 border-yellow-50 bg-yellow-50 text-yellow-900">
+    <div>
+        <svg class="!size-8 mt-3 !shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+        </svg>
+    </div>
+
+    <div class="[&_h4]:!my-0 [&_h4]:text-yellow-900">
+        <div class="!mt-0 !font-bold !text-2xl flex items-center space-x-1"></p>
+
+<h4>Create an alias</h4>
+
+<p></div>
+        <div class="!my-0 [&>p]:my-0"></p>
+
+<p> </p>
+
+<p>You may <a href="https://laravel.com/docs/sail#configuring-a-shell-alias">create a shell alias</a> that allows you execute Sail's commands more easily.</p>
+
+<p></div>
+    </div>
+</div>
+</p>
+
+<p>When developing applications using Sail, you may execute Artisan, NPM, and Composer commands via the Sail CLI instead of invoking them directly:</p>
+
+<pre><code class="language-bash">./vendor/bin/sail php --version
+./vendor/bin/sail artisan --version
+./vendor/bin/sail composer --version
+./vendor/bin/sail npm --version
+</code></pre>
+
+<p>Once the application's Docker containers have been started, you can access the application in your web browser at: <a href="http://localhost">http://localhost</a>.</p>
+
+<p><img src="/assets/images/bootcamp/laravel-welcome-sail.png" alt="Welcome Page over Sail" /></p>
+
+<h2>Installing Turbo Breeze</h2>
+
+<p>Next, we'll give our application a head-start by installing <a href="https://github.com/hotwired-laravel/turbo-breeze">Turbo Breeze</a>, a minimal, simple implementation of all of Laravel's authentication features, including login, registration, password reset, email verification, and password confirmation. Once installed, you are welcome to customize the components to suit your needs.</p>
+
+<p>Turbo Breeze offers two stack options: <code>turbo</code>, which comes with <a href="https://github.com/tonysm/importmap-laravel">Importmap Laravel</a> and <a href="https://github.com/tonysm/tailwindcss-laravel">TailwindCSS Laravel</a> installed for a Node-less setup, and a <code>turbo-vite</code> option, which relies on having Node and NPM. For this tutorial, we'll be using <code>turbo</code>.</p>
+
+<p>Open a new terminal in your <code>turbo-chirper</code> project directory and install your chosen stack with the given commands:</p>
+
+<pre><code class="language-bash">composer require hotwired-laravel/turbo-breeze:1.x-dev --dev
+
+php artisan turbo-breeze:install turbo --dark
+</code></pre>
+
+<p><div class="p-6 flex space-x-4 border border-opacity-75 bg-opacity-75 rounded shadow my-8 sm:p-8 border-yellow-50 bg-yellow-50 text-yellow-900">
+    <div>
+        <svg class="!size-8 mt-3 !shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+        </svg>
+    </div>
+
+    <div class="[&_h4]:!my-0 [&_h4]:text-yellow-900">
+        <div class="!mt-0 !font-bold !text-2xl flex items-center space-x-1"></p>
+
+<h4>Prefix all Sail commands</h4>
+
+<p></div>
+        <div class="!my-0 [&>p]:my-0"></p>
+
+<p> </p>
+
+<p>If you're using Sail, remember to prefix this command with <code>./vendor/bin/sail</code>, since the symlink needs to be created inside the container.</p>
+
+<p></div>
+    </div>
+</div>
+</p>
+
+<p>Turbo Breeze will install and configure your front-end dependencies for you. It should have built the initial version of our assets for us.</p>
+
+<p>The welcome page should now have the Login and Register links at the top:</p>
+
+<p><img src="/assets/images/bootcamp/install-welcome-auth.png" alt="Welcome with Auth" /></p>
+
+<p>And you should be able to head to the <code>/register</code> route and create your own account:</p>
+
+<p><img src="/assets/images/bootcamp/install-register.png" alt="Register Page" /></p>
+
+<p>Then, you should be redirected to the Dashboard page:</p>
+
+<p><img src="/assets/images/bootcamp/install-dashboard.png" alt="Dashboard Page" /></p>
+
+<p>This Dashboard page is protected by Laravel's auth middleware, so only authenticated users can access it. The registration process automatically authenticates us.</p>
+
+<p>Turbo Breeze is a fork of Laravel Breeze, but customized to work better in a Hotwired context. It comes with all the same components as Laravel Breeze does, except they were rewritten in Stimulus. For an introduction to Stimulus, head out to the <a href="https://stimulus.hotwired.dev/handbook/introduction">Stimulus Handbook</a>.</p>
+
+<p>There are a couple differences between Turbo Breeze and Laravel Breeze. In Laravel Breeze, your name at the top of the navigation bar is a dropdown. In Turbo Breeze, it's a link to a page with the menu:</p>
+
+<p><img src="/assets/images/bootcamp/profile-menu.png" alt="Profile Menu" /></p>
+
+<p>In Laravel Breeze, all the profile forms are rendered in the same page. In Turbo Breeze, each one has its own dedicated page. That's not a requirement for Hotwired apps, but it works best in a mobile context. We'll see more about that later in this bootcamp.</p>
+
+<p>Now we're ready for our first feature!</p>
+        </div>
+
+                    <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Previous</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/introduction">Introduction <span class="absolute inset-0"></span></a>
+    </div>
+  
+      <div class="lg:col-start-2 relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Next</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/creating-chirps">Creating Chirps <span class="absolute inset-0"></span></a>
+    </div>
+  </div>
+              </main>
+    </div>
+  </div>
+
+        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
+          <p class="text-base text-center w-full">
+            Turbo Laravel is maintained by <a href="" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
+          </p>
+        </footer>
+    </body>
+</html>

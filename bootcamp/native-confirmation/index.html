@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="canonical" href="https://hotwired-laravel.github.io/turbo-laravel-site/bootcamp/native-confirmation">
+        <meta name="description" content="Native Confirmation Dialog">
+        <title>Native Confirmation Dialog</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/manifest/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/manifest/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/manifest/favicon-16x16.png">
+        <link rel="manifest" href="/assets/site.webmanifest">
+        <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=7756ef47cdc6e051280b7984fd99b8f7">
+        <script defer src="/assets/build/js/main.js?id=2685052459ff19e5e2ef09aac148fca7"></script>
+    </head>
+    <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
+  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
+    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
+      <a href="/">Turbo Laravel</a>
+    </h1>
+
+    <nav class="inline-block lg:hidden">
+      <details class="group" data-search-target="nav">
+        <summary class="list-none">
+          <span>
+            <span class="sr-only">Navigation</span>
+
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
+              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </span>
+        </summary>
+
+        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
+          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
+            <form action="/docs/search" method="GET" class="px-4">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 2.x docs..." />
+  <button type="submit" class="sr-only">Search</button>
+</form>
+
+            <ul class="space-y-6 -mb-2 mt-4">
+              <li>
+                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+                  <span>Documentation</span>
+                </a>
+
+                              </li>
+              <li>
+                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
+              </li>
+              <li class="space-y-6">
+                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
+                  <div class="mx-4 pl-3 border-l-4 border-zinc-900/30">
+  <ul class="">
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Introduction</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Creating Chirps</a></li>
+                <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Listing Chirps</a></li>
+                <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing Chirps</a></li>
+                <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Deleting Chirps</a></li>
+                <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Hotwiring Everything</a></li>
+                <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Broadcasting</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Authentication</a></li>
+                <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Our First Bridge Component</a></li>
+                <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing as a Modal</a></li>
+                <li><a href="/bootcamp/native-confirmation" class="font-bold transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Confirmation Dialog</a></li>
+                <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Toasts</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Conclusion</a></li>
+              </ul>
+    </li>
+      </ul>
+</div>
+              </li>
+              <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </nav>
+  </div>
+
+  <nav class="hidden lg:block">
+    <ul class="flex items-center space-x-6 -my-2">
+      <li>
+        <div class="group relative py-2">
+          <a href="/docs" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+            <span>Documentation</span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </a>
+
+          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
+            <ul class="space-y-1">
+              <li><a href="/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">2.2.0</span></a></li>
+              <li><a href="/1.x/docs/installation" class="block px-2 py-1  rounded">Version <span class="">1.12.2</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
+      <li><a href="/bootcamp/introduction" class="bg-white/90 px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
+      <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+    </ul>
+  </nav>
+</header>
+
+          <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
+    <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
+      <aside class="relative w-1/4 hidden lg:block">
+        <div class="sticky top-4 block space-y-4">
+            <form action="/bootcamp/search" method="GET">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="web" type="text" name="q" placeholder="Search bootcamp guides..." class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
+</form>
+
+            <ul class="[&_.children]:mb-4">
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Introduction</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Creating Chirps</a></li>
+            <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Listing Chirps</a></li>
+            <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing Chirps</a></li>
+            <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Deleting Chirps</a></li>
+            <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Hotwiring Everything</a></li>
+            <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Authentication</a></li>
+            <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Our First Bridge Component</a></li>
+            <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing as a Modal</a></li>
+            <li><a href="/bootcamp/native-confirmation" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Confirmation Dialog</a></li>
+            <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Toasts</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conclusion</a></li>
+          </ul>
+  </li>
+  </ul>
+        </div>
+      </aside>
+
+      <main class="flex-1 min-w-0">
+        <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+            <h1><em>12.</em> Native Confirmation Dialog</h1>
+
+<p>Right now we're not showing a confirmation when the user presses the delete button. Let's fix that.</p>
+
+<h2>JS Confirm</h2>
+
+<p>Turbo offers a <code>data-turbo-confirm</code> attribute we can use in forms and links. By default, that uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm">JS confirm</a> feature. Let's start with that.</p>
+
+<p>First, let's update our <code>chirps/partials/chirp.blade.php</code> file and add the <code>data-turbo-confirm</code> to the delete form:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::frame</span> :<span class="hl-property">id</span>=&quot;$chirp&quot; <span class="hl-property">class</span>=&quot;block p-6&quot;&gt;
+    &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex space-x-2&quot;&gt;
+        <span class="hl-comment">&lt;!-- ... --&gt;</span>
+
+        &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex-1&quot;&gt;
+            &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex justify-between items-center&quot;&gt;
+                <span class="hl-comment">&lt;!-- ... --&gt;</span>
+
+                <span class="hl-keyword">@if</span> (<span class="hl-type">Auth</span>::<span class="hl-property">id</span>() === <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user</span>-&gt;<span class="hl-property">id</span>)
+                &lt;<span class="hl-keyword">x-dropdown</span> <span class="hl-property">align</span>=&quot;right&quot; <span class="hl-property">width</span>=&quot;48&quot; <span class="hl-property">data-bridge--popup-menu-msg-value</span>=&quot;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">message</span> }}&quot;&gt;
+                    <span class="hl-comment">&lt;!-- ... --&gt;</span>
+
+                    &lt;<span class="hl-keyword">x-slot</span> <span class="hl-property">name</span>=&quot;content&quot;&gt;
+                        &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.edit'</span>, <span class="hl-variable">$chirp</span>) }}&quot; <span class="hl-property">data-bridge--popup-menu-target</span>=&quot;option&quot; <span class="hl-property">class</span>=&quot;block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 transition duration-150 ease-in-out&quot;&gt;
+                            Edit
+                        &lt;/<span class="hl-keyword">a</span>&gt;
+
+                        <span class="hl-comment">&lt;!-- Update form: --&gt;</span>
+                        &lt;<span class="hl-keyword">form</span> <span class="hl-property">action</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.destroy'</span>, <span class="hl-variable">$chirp</span>) }}<span class="hl-value">&quot; <span class="hl-property">method</span>=&quot;</span><span class="hl-property">POST</span><span class="hl-value">&quot; <span class="hl-property">data-turbo-confirm</span>=&quot;</span>{{ <span class="hl-property">__</span>(<span class="hl-value">'Are you sure you want to delete this chirp?'</span>) }}&quot;&gt;
+                            <span class="hl-keyword">@method</span>(<span class="hl-value">'DELETE'</span>)
+                            &lt;<span class="hl-keyword">button</span> <span class="hl-property">data-bridge--popup-menu-target</span>=&quot;option&quot; <span class="hl-property">class</span>=&quot;block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 transition duration-150 ease-in-out&quot;&gt;
+                                Delete
+                            &lt;/<span class="hl-keyword">button</span>&gt;
+                        &lt;/<span class="hl-keyword">form</span>&gt;
+                    &lt;/<span class="hl-keyword">x-slot</span>&gt;
+                &lt;/<span class="hl-keyword">x-dropdown</span>&gt;
+                <span class="hl-keyword">@endif</span>
+            &lt;/<span class="hl-keyword">div</span>&gt;
+
+            &lt;<span class="hl-keyword">p</span> <span class="hl-property">class</span>=&quot;mt-4 text-lg text-gray-900&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">message</span> }}&lt;/<span class="hl-keyword">p</span>&gt;
+        &lt;/<span class="hl-keyword">div</span>&gt;
+    &lt;/<span class="hl-keyword">div</span>&gt;
+&lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;
+</code></pre>
+
+<p>That should get the JS confirm appearing both in the webapp and native.</p>
+
+<p><img src="/assets/images/bootcamp/native/native-delete-js-confirm-web.png" alt="Turbo Confirm Web" /></p>
+
+<p><img src="/assets/images/bootcamp/native/native-delete-js-confirm-native.png" alt="Turbo Confirm Native" /></p>
+
+<p>That's nice, but we can do a lot better. Let's start with the web version. Turbo allows us to override the default implementation of its confirm feature. Let's implement it using our own modal.</p>
+
+<p>First, we're gonna create a global modal that will be used for this kind of confirmation. In the <code>resources/views/layouts/app.blade.php</code>, update it to include the modal:</p>
+
+<pre><code class="language-blade">&lt;!DOCTYPE html&gt;
+&lt;<span class="hl-keyword">html</span> <span class="hl-property">lang</span>=&quot;{{ <span class="hl-property">str_replace</span>(<span class="hl-value">'_'</span>, <span class="hl-value">'-'</span>, <span class="hl-property">app</span>()-&gt;<span class="hl-property">getLocale</span>()) }}&quot;&gt;
+    &lt;<span class="hl-keyword">head</span>&gt;
+    &lt;/<span class="hl-keyword">head</span>&gt;
+    &lt;<span class="hl-keyword">body</span> <span class="hl-property">class</span>=&quot;font-sans antialiased&quot;&gt;
+        <span class="hl-comment">&lt;!-- ... --&gt;</span>
+
+        <span class="hl-keyword">@include</span>(<span class="hl-value">'layouts.confirmation_modal'</span>) <span class="hl-comment">&lt;!-- Add this --&gt;</span>
+    &lt;/<span class="hl-keyword">body</span>&gt;
+&lt;/<span class="hl-keyword">html</span>&gt;
+</code></pre>
+
+<p>Next, let's create the <code>resources/views/lauouts/confirmation_modal.blade.php</code> file with the following contents:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">dialog</span> <span class="hl-property">id</span>=&quot;confirmation_modal&quot; <span class="hl-property">class</span>=&quot;p-0&quot;&gt;
+    &lt;<span class="hl-keyword">form</span> <span class="hl-property">method</span>=&quot;dialog&quot;&gt;
+        &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4&quot;&gt;
+            &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;sm:flex sm:items-start&quot;&gt;
+                &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;mx-auto shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10&quot;&gt;
+                    &lt;<span class="hl-keyword">svg</span> <span class="hl-property">class</span>=&quot;h-6 w-6 text-red-600&quot; <span class="hl-property">stroke</span>=&quot;currentColor&quot; <span class="hl-property">fill</span>=&quot;none&quot; <span class="hl-property">viewBox</span>=&quot;0 0 24 24&quot;&gt;
+                        &lt;<span class="hl-keyword">path</span> <span class="hl-property">stroke-linecap</span>=&quot;round&quot; <span class="hl-property">stroke-linejoin</span>=&quot;round&quot; <span class="hl-property">stroke-width</span>=&quot;2&quot; <span class="hl-property">d</span>=&quot;M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z&quot;/&gt;
+                    &lt;/<span class="hl-keyword">svg</span>&gt;
+                &lt;/<span class="hl-keyword">div</span>&gt;
+
+                &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left&quot;&gt;
+                    &lt;<span class="hl-keyword">h3</span> <span class="hl-property">class</span>=&quot;text-lg&quot; <span class="hl-property">id</span>=&quot;confirmation_title&quot;&gt;
+                        {{ <span class="hl-property">__</span>(<span class="hl-value">'Confirmation'</span>) }}
+                    &lt;/<span class="hl-keyword">h3</span>&gt;
+
+                    &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;mt-2&quot; <span class="hl-property">id</span>=&quot;confirmation_message&quot;&gt;
+                        {{ <span class="hl-property">__</span>(<span class="hl-value">'Are you sure?'</span>) }}
+                    &lt;/<span class="hl-keyword">div</span>&gt;
+                &lt;/<span class="hl-keyword">div</span>&gt;
+            &lt;/<span class="hl-keyword">div</span>&gt;
+        &lt;/<span class="hl-keyword">div</span>&gt;
+
+        &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex flex-row space-x-2 justify-end px-6 py-4 bg-gray-100 text-right&quot;&gt;
+            &lt;<span class="hl-keyword">button</span> <span class="hl-property">id</span>=&quot;confirmation_negative_btn&quot; <span class="hl-property">type</span>=&quot;submit&quot; <span class="hl-property">value</span>=&quot;canceled&quot; <span class="hl-property">class</span>=&quot;inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition&quot;&gt;
+                {{ <span class="hl-property">__</span>(<span class="hl-value">'Cancel'</span>) }}
+            &lt;/<span class="hl-keyword">button</span>&gt;
+
+            &lt;<span class="hl-keyword">button</span> <span class="hl-property">id</span>=&quot;confirmation_positive_btn&quot; <span class="hl-property">type</span>=&quot;submit&quot; <span class="hl-property">value</span>=&quot;confirmed&quot; <span class="hl-property">class</span>=&quot;inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 active:bg-red-600 disabled:opacity-25 transition&quot;&gt;
+                {{ <span class="hl-property">__</span>(<span class="hl-value">'Confirm'</span>) }}
+            &lt;/<span class="hl-keyword">button</span>&gt;
+        &lt;/<span class="hl-keyword">div</span>&gt;
+    &lt;/<span class="hl-keyword">form</span>&gt;
+&lt;/<span class="hl-keyword">dialog</span>&gt;
+</code></pre>
+
+<p>Now, let's override the default behavior to show this new modal instead of using the default JS confirm. In the <code>resources/js/libs/turbo.js</code>, let's use the <code>Turbo.setConfirmMethod()</code>, it accepts a function that returns a Promise.</p>
+
+<pre><code class="language-js"><span class="hl-keyword">import</span> * <span class="hl-keyword">as</span> Turbo <span class="hl-keyword">from</span> <span class="hl-value">'@hotwired/turbo'</span>;
+<span class="hl-keyword">import</span> { Confirmation } <span class="hl-keyword">from</span> <span class="hl-value">'../helpers'</span>;
+
+<span class="hl-type">Turbo</span>.<span class="hl-property">setConfirmMethod</span>(Confirmation);
+
+<span class="hl-keyword">export</span> <span class="hl-keyword">default</span> Turbo;
+</code></pre>
+
+<p>Now, let's create our Confirmation function. Create a <code>resources/js/libs/helpers/confirmation.js</code> file with the function defined:</p>
+
+<pre><code class="language-js"><span class="hl-keyword">import</span> { WebConfirmation } <span class="hl-keyword">from</span> <span class="hl-value">'./web_confirmation'</span>;
+
+<span class="hl-keyword">export</span> <span class="hl-keyword">function</span> Confirmation (message) {
+    <span class="hl-keyword">return</span> <span class="hl-keyword">new</span> <span class="hl-type">WebConfirmation</span>().<span class="hl-property">confirm</span>(message);
+};
+</code></pre>
+
+<p>Turbo will pass the message we set in the <code>data-turbo-confirm</code> as the first parameter and the HTML element as the second parameter. We could use it to set additional params as <code>data-*</code> attributes in the form itself if we wanted to, like the icon or title shown in the modal, for instance. We're not gonna use that here, so we only need the message. We're going to delegate the manipulation of the modal to a <code>WebConfirmation</code> class, we only need to call its <code>confirm</code> method passing down the message. Let's create the <code>resources/js/libs/helpers/web_confirmation.js</code>:</p>
+
+<pre><code class="language-js"><span class="hl-keyword">export</span> <span class="hl-keyword">class</span> <span class="hl-type">WebConfirmation</span>
+{
+    <span class="hl-property">confirm</span>(message) {
+        <span class="hl-keyword">return</span> <span class="hl-keyword">new</span> <span class="hl-type">Promise</span>((resolve) =&gt; {
+            <span class="hl-keyword">let</span> dialog = document.<span class="hl-property">querySelector</span>(<span class="hl-value">'#confirmation_modal'</span>)
+
+            dialog.<span class="hl-property">querySelector</span>(<span class="hl-value">'#confirmation_message'</span>).<span class="hl-property">textContent</span> = message;
+
+            dialog.<span class="hl-property">addEventListener</span>(<span class="hl-value">'close'</span>, () =&gt; {
+                <span class="hl-property">resolve</span>(dialog.<span class="hl-property">returnValue</span> === <span class="hl-value">'confirmed'</span>);
+            }, { <span class="hl-property">once</span>: <span class="hl-keyword">true</span> });
+
+            dialog.<span class="hl-property">showModal</span>();
+        });
+    }
+}
+</code></pre>
+
+<p>We're querying the dialog from the DOM, setting the contents of the <code>#confirmation_message</code> element as the message, then we're registering an event listener for the <code>close</code> event, then we're calling the <code>dialog.showModal()</code> method. As for the Promise, Turbo only expects that we pass <code>true</code> or <code>false</code> to the resolve function to indicate if it was confirmed or not. Let's see that in action:</p>
+
+<p><img src="/assets/images/bootcamp/native/native-delete-modal-confirm-web.png" alt="Turbo Modal Confirm Web" /></p>
+
+<p><img src="/assets/images/bootcamp/native/native-delete-modal-confirm-native.png" alt="Turbo Modal Confirm Web" /></p>
+
+<p>This is not so good for the native version, but the web one is nice. Let's fix that.</p>
+
+<h2>Native Confirmation</h2>
+
+<p>For the Native confirmation, we're gonna need to extend our Kotlin JSBridge a little bit. Whenever a confirmation is triggered by the webapp, and we're in a Hotwire Native client, we're gonna register a listener for the Native confirmation result, then send a message to the bridge and ask it to show a native <code>AlertDialog</code>. When the user chooses an option, we're going to send the result back to the web app via a custom event.</p>
+
+<p>Let's start with the web side, since it's simpler. Change the <code>resources/js/helpers/confirmation.js</code> file to look like the following:</p>
+
+<pre><code class="language-js"><span class="hl-keyword">import</span> { BridgeConfirmation } <span class="hl-keyword">from</span> <span class="hl-value">'./bridge_confirmation'</span>; <span class="hl-comment">// Add this</span>
+<span class="hl-keyword">import</span> { WebConfirmation } <span class="hl-keyword">from</span> <span class="hl-value">'./web_confirmation'</span>;
+<span class="hl-keyword">import</span> { isMobileApp } <span class="hl-keyword">from</span> <span class="hl-value">'./platform'</span>; <span class="hl-comment">// Add this</span>
+
+<span class="hl-keyword">export</span> <span class="hl-keyword">function</span> Confirmation (message) {
+    <span class="hl-comment">// Add this:</span>
+    <span class="hl-keyword">if</span> (isMobileApp) {
+        <span class="hl-keyword">return</span> <span class="hl-keyword">new</span> <span class="hl-type">BridgeConfirmation</span>().<span class="hl-property">confirm</span>(message);
+    }
+
+    <span class="hl-keyword">return</span> <span class="hl-keyword">new</span> <span class="hl-type">WebConfirmation</span>().<span class="hl-property">confirm</span>(message);
+};
+</code></pre>
+
+<p>Now, let's create our <code>resources/js/helpers/bridge_confirmation.js</code> file:</p>
+
+<pre><code class="language-js"><span class="hl-keyword">export</span> <span class="hl-keyword">class</span> <span class="hl-type">BridgeConfirmation</span>
+{
+    <span class="hl-property">confirm</span>(message) {
+        <span class="hl-keyword">return</span> <span class="hl-keyword">new</span> <span class="hl-type">Promise</span>((resolve) =&gt; {
+            window.<span class="hl-property">addEventListener</span>(<span class="hl-value">'confirmation:handle'</span>, ({ detail }) =&gt; {
+                <span class="hl-property">resolve</span>(detail === <span class="hl-value">&quot;confirmed&quot;</span>);
+            }, { <span class="hl-property">once</span>: <span class="hl-keyword">true</span> });
+
+            window.<span class="hl-type">NativeBridge</span>.<span class="hl-property">showConfirmationModal</span>(message);
+        });
+    }
+}
+</code></pre>
+
+<p>It's really simple, right? Registering the event listener and sending a <code>showConfirmationModal</code> message to the bridge.</p>
+
+<p>Now, let's update the <code>MainSessionNavHostFragment.kt</code> in the native side to accept that message:</p>
+
+<pre><code class="language-kotlin">package com.example.turbochirpernative.main
+
+// ...
+import android.content.DialogInterface
+import androidx.appcompat.app.AlertDialog
+
+class MainSessionNavHostFragment : TurboSessionNavHostFragment(), PopupMenuDelegator {
+    // ...
+
+    override fun showToast(msg: String) {
+        activity?.runOnUiThread {
+            Toast
+                .makeText(requireContext(), msg, Toast.LENGTH_SHORT)
+                .show()
+        }
+    }
+
+    override fun showConfirmationModal(msg: String) {
+        activity?.runOnUiThread {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle(&quot;Confirmation&quot;)
+            builder.setMessage(msg)
+            builder.setPositiveButton(&quot;Yes&quot;, DialogInterface.OnClickListener { dialog, id -&gt;
+                session.webView.evaluateJavascript(
+                    &quot;window.dispatchEvent(new CustomEvent('confirmation:handle', { detail: 'confirmed' }))&quot;,
+                    null
+                )
+                dialog.dismiss()
+            })
+
+            builder.setNegativeButton(&quot;No&quot;, DialogInterface.OnClickListener { dialog, id -&gt;
+                session.webView.evaluateJavascript(
+                    &quot;window.dispatchEvent(new CustomEvent('confirmation:handle', { detail: 'canceled' }))&quot;,
+                    null
+                )
+                dialog.dismiss()
+            })
+
+            val alert = builder.create()
+
+            alert.show()
+        }
+    }
+}
+
+// ...
+
+interface PopupMenuDelegator {
+    // ...
+
+    fun showConfirmationModal(msg: String);
+}
+
+class JsBridge(private var delegator: PopupMenuDelegator) {
+    // ...
+
+    @JavascriptInterface
+    fun showConfirmationModal(msg: String) {
+        delegator.showConfirmationModal(msg)
+    }
+}
+</code></pre>
+
+<h2>Testing It Out</h2>
+
+<p>This should get our native confirmation modal looking similar to our JS confirm one, but now we're in full control of it looks like and what it does:</p>
+
+<p><img src="/assets/images/bootcamp/native/native-delete-confirmation-native.png" alt="Turbo Confirm Native" /></p>
+        </div>
+
+                    <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Previous</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/native-editing-modal">Editing in a Modal <span class="absolute inset-0"></span></a>
+    </div>
+  
+      <div class="lg:col-start-2 relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Next</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/native-toasts">Native Toasts <span class="absolute inset-0"></span></a>
+    </div>
+  </div>
+              </main>
+    </div>
+  </div>
+
+        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
+          <p class="text-base text-center w-full">
+            Turbo Laravel is maintained by <a href="" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
+          </p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="canonical" href="https://hotwired-laravel.github.io/turbo-laravel-site/bootcamp/creating-chirps">
+        <meta name="description" content="Creating Chirps">
+        <title>Creating Chirps</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/manifest/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/manifest/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/manifest/favicon-16x16.png">
+        <link rel="manifest" href="/assets/site.webmanifest">
+        <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=7756ef47cdc6e051280b7984fd99b8f7">
+        <script defer src="/assets/build/js/main.js?id=2685052459ff19e5e2ef09aac148fca7"></script>
+    </head>
+    <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
+  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
+    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
+      <a href="/">Turbo Laravel</a>
+    </h1>
+
+    <nav class="inline-block lg:hidden">
+      <details class="group" data-search-target="nav">
+        <summary class="list-none">
+          <span>
+            <span class="sr-only">Navigation</span>
+
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
+              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </span>
+        </summary>
+
+        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
+          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
+            <form action="/docs/search" method="GET" class="px-4">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 2.x docs..." />
+  <button type="submit" class="sr-only">Search</button>
+</form>
+
+            <ul class="space-y-6 -mb-2 mt-4">
+              <li>
+                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+                  <span>Documentation</span>
+                </a>
+
+                              </li>
+              <li>
+                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
+              </li>
+              <li class="space-y-6">
+                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
+                  <div class="mx-4 pl-3 border-l-4 border-zinc-900/30">
+  <ul class="">
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Introduction</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/bootcamp/creating-chirps" class="font-bold transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Creating Chirps</a></li>
+                <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Listing Chirps</a></li>
+                <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing Chirps</a></li>
+                <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Deleting Chirps</a></li>
+                <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Hotwiring Everything</a></li>
+                <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Broadcasting</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Authentication</a></li>
+                <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Our First Bridge Component</a></li>
+                <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing as a Modal</a></li>
+                <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Confirmation Dialog</a></li>
+                <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Toasts</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Conclusion</a></li>
+              </ul>
+    </li>
+      </ul>
+</div>
+              </li>
+              <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </nav>
+  </div>
+
+  <nav class="hidden lg:block">
+    <ul class="flex items-center space-x-6 -my-2">
+      <li>
+        <div class="group relative py-2">
+          <a href="/docs" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+            <span>Documentation</span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </a>
+
+          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
+            <ul class="space-y-1">
+              <li><a href="/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">2.2.0</span></a></li>
+              <li><a href="/1.x/docs/installation" class="block px-2 py-1  rounded">Version <span class="">1.12.2</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
+      <li><a href="/bootcamp/introduction" class="bg-white/90 px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
+      <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+    </ul>
+  </nav>
+</header>
+
+          <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
+    <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
+      <aside class="relative w-1/4 hidden lg:block">
+        <div class="sticky top-4 block space-y-4">
+            <form action="/bootcamp/search" method="GET">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="web" type="text" name="q" placeholder="Search bootcamp guides..." class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
+</form>
+
+            <ul class="[&_.children]:mb-4">
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Introduction</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/bootcamp/creating-chirps" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Creating Chirps</a></li>
+            <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Listing Chirps</a></li>
+            <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing Chirps</a></li>
+            <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Deleting Chirps</a></li>
+            <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Hotwiring Everything</a></li>
+            <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Authentication</a></li>
+            <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Our First Bridge Component</a></li>
+            <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing as a Modal</a></li>
+            <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Confirmation Dialog</a></li>
+            <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Toasts</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conclusion</a></li>
+          </ul>
+  </li>
+  </ul>
+        </div>
+      </aside>
+
+      <main class="flex-1 min-w-0">
+        <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+            <h1><em>02.</em> Creating Chirps</h1>
+
+<p>Let's allow users to post short messages called <em>Chirps</em>.</p>
+
+<h2>Models, migrations, and controllers</h2>
+
+<p>To allow users to post <em>Chirps</em>, we'll use migrations, models, and controllers. Let's briefly cover those concepts:</p>
+
+<ul>
+<li><a href="https://laravel.com/docs/eloquent">Models</a> provide a powerful and enjoyable interface for you to interact with the tables in your database.</li>
+<li><a href="https://laravel.com/docs/migrations">Migrations</a> allow you to easily create and modify the tables in your database. They ensure that the same database structure exists everywhere that your application runs.</li>
+<li><a href="https://laravel.com/docs/controllers">Controllers</a> are responsible for processing requests made to your application and returning a response.</li>
+</ul>
+
+<p>Almost every feature you build will involve all of these pieces working together in harmony, so the <code>artisan make:model</code> command can create them all for you at once.</p>
+
+<p>Let's create a model, migration, and resource controller for our Chirps with the following command:</p>
+
+<pre><code class="language-bash">php artisan make:model -mcr Chirp
+</code></pre>
+
+<p>You can see all the available options by using the <code>--help</code> option, like <code>php artisan make:model --help</code>.</p>
+
+<p>This command will create three files:</p>
+
+<ul>
+<li><code>app/Models/Chirp.php</code> - The Eloquent model.</li>
+<li><code>database/migrations/&lt;timestamp&gt;_create_chirps_table.php</code> - The database migration that will create the database table.</li>
+<li><code>app/Http/Controller/ChirpController.php</code> - The HTTP controller that will take incoming requests and return responses.</li>
+</ul>
+
+<h2>Routing</h2>
+
+<p>We will also need to create URLs for our controller. We can do this by adding "routes", which are managed in the <code>routes</code> directory of your project. Because we're using a resource controller, we can use a single <code>Route::resource()</code> statement to define all of the routes following a conventional URL structure.</p>
+
+<p>To start with, we are going to enable three routes:</p>
+
+<ul>
+<li>The <code>index</code> route will display our listing of Chirps.</li>
+<li>The <code>create</code> route will display the form to create Chirps.</li>
+<li>The <code>store</code> route will be used for saving new Chirps.</li>
+</ul>
+
+<p>We are also going to place these routes behind two <a href="https://laravel.com/docs/middleware">middlewares</a>:</p>
+
+<ul>
+<li>The <code>auth</code> middleware ensures that only logged-in users can access the route.</li>
+<li>The <code>verified</code> middleware will be used if you decide to enable <a href="https://laravel.com/docs/verification">email verification</a>.</li>
+</ul>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>routes/web.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-php"><span class="hl-addition"><span class="hl-keyword">use</span> <span class="hl-type">App\Http\Controllers\ChirpController</span>; </span>
+<span class="hl-keyword">use</span> <span class="hl-type">App\Http\Controllers\ProfileController</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">App\Http\Controllers\ProfilePasswordController</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Support\Facades\Route</span>;
+
+<span class="hl-comment">// ...</span>
+
+<span class="hl-type">Route</span>::<span class="hl-property">get</span>(<span class="hl-value">'/dashboard'</span>, <span class="hl-keyword">function</span> () {
+    <span class="hl-keyword">return</span> <span class="hl-property">view</span>(<span class="hl-value">'dashboard'</span>);
+})-&gt;<span class="hl-property">middleware</span>([<span class="hl-value">'auth'</span>, <span class="hl-value">'verified'</span>])-&gt;<span class="hl-property">name</span>(<span class="hl-value">'dashboard'</span>);
+
+<span class="hl-addition"><span class="hl-type">Route</span>::<span class="hl-property">resource</span>(<span class="hl-value">'chirps'</span>, <span class="hl-type">ChirpController</span>::<span class="hl-keyword">class</span>)</span>
+<span class="hl-addition">    -&gt;<span class="hl-property">only</span>([<span class="hl-value">'index'</span>, <span class="hl-value">'create'</span>, <span class="hl-value">'store'</span>])</span>
+<span class="hl-addition">    -&gt;<span class="hl-property">middleware</span>([<span class="hl-value">'auth'</span>, <span class="hl-value">'verified'</span>]); </span>
+
+<span class="hl-type">Route</span>::<span class="hl-property">middleware</span>(<span class="hl-value">'auth'</span>)-&gt;<span class="hl-property">group</span>(<span class="hl-keyword">function</span> () {
+    <span class="hl-comment">// ...</span>
+});
+
+<span class="hl-keyword">require</span> <span class="hl-property">__DIR__</span>.<span class="hl-value">'/auth.php'</span>;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>This will create the following routes:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Verb</th>
+  <th>URI</th>
+  <th>Action</th>
+  <th>Route Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>GET</td>
+  <td><code>/chirps</code></td>
+  <td>index</td>
+  <td><code>chirps.index</code></td>
+</tr>
+<tr>
+  <td>GET</td>
+  <td><code>/chirps/create</code></td>
+  <td>create</td>
+  <td><code>chirps.create</code></td>
+</tr>
+<tr>
+  <td>POST</td>
+  <td><code>/chirps</code></td>
+  <td>store</td>
+  <td><code>chirps.store</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>You may view all of the routes for your application by running the <code>php artisan route:list</code> command.</p>
+
+<p>Let's test our route and controller by returning a test message from the <code>index</code> method of our new <code>ChirpController</code> class:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>app/Http/Controllers/ChirpController.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-comment">// ...</span>
+
+<span class="hl-keyword">class</span> <span class="hl-type">ChirpController</span> <span class="hl-keyword">extends</span> <span class="hl-type">Controller</span>
+{
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">index</span>()
+    {
+<span class="hl-deletion">        <span class="hl-comment">//</span></span>
+<span class="hl-addition">        <span class="hl-keyword">return</span> <span class="hl-value">'Hello, World!'</span>;</span>
+    }
+
+    <span class="hl-comment">// ...</span>
+}
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>If you are still logged in from earlier, you should see your message when navigating to <a href="http://localhost:8000/chirps">http://localhost:8000/chirps</a>, or <a href="http://localhost/chirps">http://localhost/chirps</a> if you're using Sail!</p>
+
+<h3>Adding The Form</h3>
+
+<p>Let's update our <code>index</code> action in the <code>ChirpController</code> to render the view that will display the listing of Chirps and a link to create a Chirp. We'll also update the <code>create</code> action to render the view that will display the form to create Chirps:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>app/Http/Controllers/ChirpController.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-comment">// ...</span>
+
+<span class="hl-keyword">class</span> <span class="hl-type">ChirpController</span> <span class="hl-keyword">extends</span> <span class="hl-type">Controller</span>
+{
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">index</span>()
+    {
+<span class="hl-deletion">        <span class="hl-keyword">return</span> <span class="hl-value">'Hello, World'</span>;</span>
+<span class="hl-addition">        <span class="hl-keyword">return</span> <span class="hl-property">view</span>(<span class="hl-value">'chirps.index'</span>, [</span>
+<span class="hl-addition">            <span class="hl-comment">//</span></span>
+<span class="hl-addition">        ]);</span>
+    }
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">create</span>()
+    {
+<span class="hl-deletion">        <span class="hl-comment">//</span></span>
+<span class="hl-addition">        <span class="hl-keyword">return</span> <span class="hl-property">view</span>(<span class="hl-value">'chirps.create'</span>, [</span>
+<span class="hl-addition">            <span class="hl-comment">//</span></span>
+<span class="hl-addition">        ]);</span>
+    }
+
+    <span class="hl-comment">// ...</span>
+}
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>We can then create our <code>chirps.index</code> view with a link to our form for creating new Chirps:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/chirps/index.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-app-layout</span>&gt;
+    &lt;<span class="hl-keyword">x-slot</span> <span class="hl-property">name</span>=&quot;header&quot;&gt;
+        &lt;<span class="hl-keyword">h2</span> <span class="hl-property">class</span>=&quot;flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight&quot;&gt;
+            &lt;<span class="hl-keyword">x-breadcrumbs</span> :<span class="hl-property">links</span>=&quot;[__('Chirps')]&quot; /&gt;
+        &lt;/<span class="hl-keyword">h2</span>&gt;
+    &lt;/<span class="hl-keyword">x-slot</span>&gt;
+
+    &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;py-12&quot;&gt;
+        &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6&quot;&gt;
+            &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg&quot;&gt;
+                &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;max-w-xl mx-auto&quot;&gt;
+                    <span class="hl-keyword">@include</span>(<span class="hl-value">'chirps.partials.new-chirp-trigger'</span>)
+                &lt;/<span class="hl-keyword">div</span>&gt;
+            &lt;/<span class="hl-keyword">div</span>&gt;
+        &lt;/<span class="hl-keyword">div</span>&gt;
+    &lt;/<span class="hl-keyword">div</span>&gt;
+&lt;/<span class="hl-keyword">x-app-layout</span>&gt;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>This view is including a partial called <code>new-chirp-trigger</code>, so create the partial with the following content:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/chirps/partials/new-chirp-trigger.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;relative flex items-center justify-center py-10 px-4 rounded-lg border border-dotted border-gray-300 dark:border-gray-600&quot;&gt;
+    &lt;<span class="hl-keyword">a</span> <span class="hl-property">class</span>=&quot;text-gray-700 dark:text-gray-500&quot; <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}&quot;&gt;
+        {{ <span class="hl-property">__</span>(<span class="hl-value">'New Chirp'</span>) }}
+        &lt;<span class="hl-keyword">span</span> <span class="hl-property">class</span>=&quot;absolute inset-0&quot;&gt;&lt;/<span class="hl-keyword">span</span>&gt;
+    &lt;/<span class="hl-keyword">a</span>&gt;
+&lt;/<span class="hl-keyword">div</span>&gt;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Then, let's create our <code>chirps.create</code> page view with the Chirps form:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/chirps/create.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-app-layout</span> :<span class="hl-property">title</span>=&quot;__('Create Chirp')&quot;&gt;
+    &lt;<span class="hl-keyword">x-slot</span> <span class="hl-property">name</span>=&quot;header&quot;&gt;
+        &lt;<span class="hl-keyword">h2</span> <span class="hl-property">class</span>=&quot;flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight&quot;&gt;
+            &lt;<span class="hl-keyword">x-breadcrumbs</span> :<span class="hl-property">links</span>=&quot;[route('chirps.index') =&gt; __('Chirps'), __('New Chirp')]&quot; /&gt;
+        &lt;/<span class="hl-keyword">h2</span>&gt;
+    &lt;/<span class="hl-keyword">x-slot</span>&gt;
+
+    &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;py-12&quot;&gt;
+        &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6&quot;&gt;
+            &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg&quot;&gt;
+                &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;max-w-xl mx-auto&quot;&gt;
+                    <span class="hl-keyword">@include</span>(<span class="hl-value">'chirps.partials.form'</span>)
+                &lt;/<span class="hl-keyword">div</span>&gt;
+            &lt;/<span class="hl-keyword">div</span>&gt;
+        &lt;/<span class="hl-keyword">div</span>&gt;
+    &lt;/<span class="hl-keyword">div</span>&gt;
+&lt;/<span class="hl-keyword">x-app-layout</span>&gt;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Again, this view is including a <code>form</code> partial. Create that file with the following content:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/chirps/partials/form.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">form</span> <span class="hl-property">action</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.store'</span>) }}&quot; <span class="hl-property">method</span>=&quot;POST&quot; <span class="hl-property">class</span>=&quot;w-full&quot;&gt;
+    <span class="hl-keyword">@csrf</span>
+
+    &lt;<span class="hl-keyword">div</span>&gt;
+        &lt;<span class="hl-keyword">x-input-label</span> <span class="hl-property">for</span>=&quot;message&quot; :<span class="hl-property">value</span>=&quot;__('Message')&quot; <span class="hl-property">class</span>=&quot;sr-only&quot; /&gt;
+        &lt;<span class="hl-keyword">x-textarea-input</span> <span class="hl-property">id</span>=&quot;message&quot; <span class="hl-property">name</span>=&quot;message&quot; <span class="hl-property">placeholder</span>=&quot;{{ <span class="hl-property">__</span>(<span class="hl-value">'What\'s on your mind?'</span>) }}&quot; <span class="hl-property">class</span>=&quot;block w-full&quot; /&gt;
+        &lt;<span class="hl-keyword">x-input-error</span> :<span class="hl-property">messages</span>=&quot;$errors-&gt;get('message')&quot; <span class="hl-property">class</span>=&quot;mt-2&quot; /&gt;
+    &lt;/<span class="hl-keyword">div</span>&gt;
+
+    &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;mt-6&quot;&gt;
+        &lt;<span class="hl-keyword">x-primary-button</span>&gt;
+            {{ <span class="hl-property">__</span>(<span class="hl-value">'Chirp'</span>) }}
+        &lt;/<span class="hl-keyword">x-primary-button</span>&gt;
+    &lt;/<span class="hl-keyword">div</span>&gt;
+&lt;/<span class="hl-keyword">form</span>&gt;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>This partial is making use a Blade component that doesn't exist yet called <code>x-textarea-input</code>, let's create it:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/components/textarea-input.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade"><span class="hl-keyword">@props</span>([<span class="hl-value">'disabled'</span> =&gt; <span class="hl-keyword">false</span>, <span class="hl-value">'value'</span> =&gt; <span class="hl-value">''</span>])
+
+&lt;<span class="hl-keyword">textarea</span> {{ <span class="hl-variable">$disabled</span> <span class="hl-operator">?</span> <span class="hl-value">'disabled'</span> : <span class="hl-value">''</span> }} {!! <span class="hl-variable"><span class="hl-variable">$attributes</span></span>-&gt;<span class="hl-property">merge</span>([<span class="hl-value"><span class="hl-value">'class'</span></span> =&gt; <span class="hl-value"><span class="hl-value">'border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm'</span></span>]) !!}&gt;{{ <span class="hl-variable">$value</span> }}&lt;/<span class="hl-keyword">textarea</span>&gt;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>That's it! Refresh the page in your browser to see your new form rendered in the default layout provided by Breeze!</p>
+
+<p><img src="/assets/images/bootcamp/creating-chirps-link.png" alt="Creating Chirps Link" /></p>
+
+<p>If you click on that link, you will see the form to create Chirps and the breadcrumbs should also have been updated:</p>
+
+<p><img src="/assets/images/bootcamp/creating-chirps-form.png" alt="Creating Chirps Form" /></p>
+
+<h3>Navigation menu</h3>
+
+<p>Let's take a moment to add a link to the navigation menu provided by Turbo Breeze.</p>
+
+<p>Update the <code>navigation</code> partial provided by Turbo Breeze to add a menu item for desktop screens:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/layouts/partials/navigation.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade"><span class="hl-comment">&lt;!-- Navigation Links --&gt;</span>
+&lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;hidden space-x-8 sm:-my-px sm:ms-10 sm:flex&quot;&gt;
+    &lt;<span class="hl-keyword">x-nav-link</span> :<span class="hl-property">href</span>=&quot;route('dashboard')&quot; :<span class="hl-property">active</span>=&quot;request()-&gt;routeIs('dashboard')&quot;&gt;
+        {{ <span class="hl-property">__</span>(<span class="hl-value">'Dashboard'</span>) }}
+    &lt;/<span class="hl-keyword">x-nav-link</span>&gt;
+
+<span class="hl-addition">    &lt;<span class="hl-keyword">x-nav-link</span> :<span class="hl-property">href</span>=&quot;route('chirps.index')&quot; :<span class="hl-property">active</span>=&quot;request()-&gt;routeIs('chirps.*')&quot;&gt;</span>
+<span class="hl-addition">        {{ <span class="hl-property">__</span>(<span class="hl-value">'Chirps'</span>) }}</span>
+<span class="hl-addition">    &lt;/<span class="hl-keyword">x-nav-link</span>&gt;</span>
+&lt;/<span class="hl-keyword">div</span>&gt;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Don't forget the responsive menu:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/layouts/partials/navigation.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade"><span class="hl-comment">&lt;!-- Responsive Navigation Menu --&gt;</span>
+&lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;hidden group-data-[responsive-nav-open-value=true]:block sm:group-data-[responsive-nav-open-value=true]:hidden&quot;&gt;
+    &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;pt-2 pb-3 space-y-1&quot;&gt;
+        &lt;<span class="hl-keyword">x-responsive-nav-link</span> :<span class="hl-property">href</span>=&quot;route('dashboard')&quot; :<span class="hl-property">active</span>=&quot;request()-&gt;routeIs('dashboard')&quot;&gt;
+            {{ <span class="hl-property">__</span>(<span class="hl-value">'Dashboard'</span>) }}
+        &lt;/<span class="hl-keyword">x-responsive-nav-link</span>&gt;
+
+<span class="hl-addition">        &lt;<span class="hl-keyword">x-responsive-nav-link</span> :<span class="hl-property">href</span>=&quot;route('chirps.index')&quot; :<span class="hl-property">active</span>=&quot;request()-&gt;routeIs('chirps.*')&quot;&gt;</span>
+<span class="hl-addition">            {{ <span class="hl-property">__</span>(<span class="hl-value">'Chirps'</span>) }}</span>
+<span class="hl-addition">        &lt;/<span class="hl-keyword">x-responsive-nav-link</span>&gt;</span>
+    &lt;/<span class="hl-keyword">div</span>&gt;
+&lt;/<span class="hl-keyword">div</span>&gt;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>We should see the Chirps link on the page nav now:</p>
+
+<p><img src="/assets/images/bootcamp/creating-chirps-nav-link.png" alt="Chirps Nav Link" /></p>
+
+<h2>Saving the Chirp</h2>
+
+<p>Our form has been configured to post messages to the <code>chirps.store</code> route that we created earlier. Let's update the <code>store</code> action on our <code>ChirpController</code> class to validate the data and create a new Chirp:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>app/Http/Controllers/ChirpController.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-comment">// ...</span>
+
+<span class="hl-keyword">class</span> <span class="hl-type">ChirpController</span> <span class="hl-keyword">extends</span> <span class="hl-type">Controller</span>
+{
+    <span class="hl-comment">// ...</span>
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">store</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request</span>)
+    {
+<span class="hl-deletion">        <span class="hl-comment">//</span></span>
+<span class="hl-addition">        <span class="hl-variable">$validated</span> = <span class="hl-variable">$request</span>-&gt;<span class="hl-property">validate</span>([</span>
+<span class="hl-addition">            <span class="hl-value">'message'</span> =&gt; [<span class="hl-value">'required'</span>, <span class="hl-value">'string'</span>, <span class="hl-value">'max:255'</span>],</span>
+<span class="hl-addition">        ]);</span>
+<span class="hl-addition"></span>
+<span class="hl-addition">        <span class="hl-variable">$request</span>-&gt;<span class="hl-property">user</span>()-&gt;<span class="hl-property">chirps</span>()-&gt;<span class="hl-property">create</span>(<span class="hl-variable">$validated</span>);</span>
+<span class="hl-addition"></span>
+<span class="hl-addition">        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()-&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>);</span>
+    }
+
+    <span class="hl-comment">// ...</span>
+}
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>We're using Laravel's powerful validation feature to ensure that the user provides a message and that it won't exceed the 255 character limit of the database column we'll be creating.</p>
+
+<p>We're then creating a record that will belong to the logged in user by leveraging a <code>chirps</code> relationship. We will define that relationship soon.</p>
+
+<p>Finally, we can return a redirect response to our <code>chirps.index</code> route.</p>
+
+<h3>Creating a relationship</h3>
+
+<p>You may have noticed in the previous step that we called a <code>chirps</code> method on the <code>$request-&gt;user()</code> object. We need to create this method on our <code>User</code> model to define a <a href="https://laravel.com/docs/eloquent-relationships#one-to-many">"has many"</a> relationship:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>app/Models/User.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-keyword">namespace</span> <span class="hl-type">App\Models</span>;
+
+<span class="hl-comment">// ...</span>
+
+<span class="hl-keyword">class</span> <span class="hl-type">User</span> <span class="hl-keyword">extends</span> <span class="hl-type">Authenticatable</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">HasApiTokens</span>, HasFactory, Notifiable;
+
+    <span class="hl-comment">// ...</span>
+
+<span class="hl-addition">    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">chirps</span>()</span>
+<span class="hl-addition">    {</span>
+<span class="hl-addition">        <span class="hl-keyword">return</span> <span class="hl-variable">$this</span>-&gt;<span class="hl-property">hasMany</span>(<span class="hl-type">Chirp</span>::<span class="hl-keyword">class</span>);</span>
+<span class="hl-addition">    }</span>
+}
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Laravel offers many different types of model relationships that you can read more about in the <a href="https://laravel.com/docs/eloquent-relationships">Eloquent Relationships</a> documentation.</p>
+
+<h3>Mass assignment protection</h3>
+
+<p>Passing all of the data from a request to your model can be risky. Imagine you have a page where users can edit their profiles. If you were to pass the entire request to the model, then a user could edit any column they like, such as an <code>is_admin</code> column. This is called a <a href="https://en.wikipedia.org/wiki/Mass_assignment_vulnerability">mass assignment vulnerability</a>.</p>
+
+<p>Laravel protects you from accidentally doing this by blocking mass assignment by default. Mass assignment is very convenient though, as it prevents you from having to assign each attribute one-by-one. We can enable mass assignment for safe attributes by marking them as "fillable".</p>
+
+<p>Let's add the <code>$fillable</code> property to our <code>Chirp</code> model to enable mass-assignment for the <code>message</code> attribute:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>app/Models/Chirp.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-comment">// ...</span>
+
+<span class="hl-keyword">class</span> <span class="hl-type">Chirp</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">HasFactory</span>;
+
+<span class="hl-addition">    <span class="hl-keyword">protected</span> <span class="hl-property">$fillable</span> = [</span>
+<span class="hl-addition">        <span class="hl-value">'message'</span>,</span>
+<span class="hl-addition">    ];</span>
+}
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>You can learn more about Laravel's mass assignment protection in the <a href="https://laravel.com/docs/eloquent#mass-assignment">documentation</a>.</p>
+
+<h3>Updating the migration</h3>
+
+<p>The only thing missing is extra columns in our database to store the relationship between a <code>Chirp</code> and its <code>User</code> and the message itself. Remember the database migration we created earlier? It's time to open that file to add some extra columns:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>database/migrations/{timestamp}_create_chirps_table.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Database\Migrations\Migration</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Database\Schema\Blueprint</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Support\Facades\Schema</span>;
+
+<span class="hl-keyword">return</span> <span class="hl-keyword">new</span> <span class="hl-keyword">class</span> <span class="hl-type">extends</span> <span class="hl-type">Migration</span>
+{
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">up</span>()
+    {
+        <span class="hl-type">Schema</span>::<span class="hl-property">create</span>(<span class="hl-value">'chirps'</span>, <span class="hl-keyword">function</span> (<span class="hl-injection"><span class="hl-type">Blueprint</span> $table</span>) {
+            <span class="hl-variable">$table</span>-&gt;<span class="hl-property">id</span>();
+<span class="hl-addition">            <span class="hl-variable">$table</span>-&gt;<span class="hl-property">foreignId</span>(<span class="hl-value">'user_id'</span>)-&gt;<span class="hl-property">constrained</span>()-&gt;<span class="hl-property">cascadeOnDelete</span>();</span>
+<span class="hl-addition">            <span class="hl-variable">$table</span>-&gt;<span class="hl-property">string</span>(<span class="hl-value">'message'</span>);</span>
+            <span class="hl-variable">$table</span>-&gt;<span class="hl-property">timestamps</span>();
+        });
+    }
+
+    <span class="hl-comment">// ...</span>
+};
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>We haven't migrated the database since we added this migration, so let do it now:</p>
+
+<pre><code class="language-bash">php artisan migrate
+</code></pre>
+
+<p>Each database migration will only be run once. To make additional changes to a table, you will need to create another migration. During development, you may wish to update an undeployed migration and rebuild your database from scratch using the <code>php artisan migrate:fresh</code> command.</p>
+
+<h3>Testing it out</h3>
+
+<p>We're now ready to send a Chirp using the form we just created! We won't be able to see the result yet because we haven't displayed existing Chirps on the page.</p>
+
+<p><img src="/assets/images/bootcamp/creating-chirps-saving.png" alt="Saving Chirps" /></p>
+
+<p>If you leave the message field empty, or enter more than 255 characters, then you'll see the validation in action.</p>
+
+<h3>Artisan Tinker</h3>
+
+<p>This is great time to learn about <a href="https://laravel.com/docs/artisan#tinker">Artisan Tinker</a>, a <em>REPL</em> (<a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">Read-eval-print loop</a>) where you can execute arbitrary PHP code in your Laravel application.</p>
+
+<p>In your console, start a new tinker session:</p>
+
+<pre><code class="language-bash">php artisan tinker
+</code></pre>
+
+<p>Next, execute the following code to display the Chirps in your database:</p>
+
+<pre><code class="language-php"><span class="hl-type">App\Models\Chirp</span>::<span class="hl-property">all</span>();
+</code></pre>
+
+<pre><code class="language-bash">=&gt; Illuminate\Database\Eloquent\Collection {#4634
+     all: [
+       App\Models\Chirp {#4636
+         id: 1,
+         user_id: 1,
+         message: &quot;Hello World!&quot;,
+         created_at: &quot;2023-11-26 19:53:33&quot;,
+         updated_at: &quot;2023-11-26 19:53:33&quot;,
+       },
+     ],
+   }
+</code></pre>
+
+<p>You may exit Tinker by using the <code>exit</code> command, or by pressing <code>Ctrl</code> + <code>c</code>.</p>
+
+<h2>Flash Messages</h2>
+
+<p>Before we move on from creating Chirps, let's add the ability to show flash messages to the users. This may be useful to tell them that something happened in our app.</p>
+
+<p>Since we're redirecting the user to another page and redirects happens in the browser (client side), we'd need a way to store messages across requests. Laravel has a feature called <a href="https://laravel.com/docs/session#flash-data">Flash Data</a> which does exactly that! With that, we can safely store a flash message in the user's session, just so we can retrive it from there after the redirect happens in the user's browser.</p>
+
+<p>Let's update our <code>store</code> action in the <code>ChirpController</code> to also return a flash message named <code>notice</code> in the redirect:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>app/Http/Controllers/ChirpController.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-comment">// ...</span>
+
+<span class="hl-keyword">class</span> <span class="hl-type">ChirpController</span> <span class="hl-keyword">extends</span> <span class="hl-type">Controller</span>
+{
+    <span class="hl-comment">// ...</span>
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">store</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request</span>)
+    {
+        <span class="hl-variable">$validated</span> = <span class="hl-variable">$request</span>-&gt;<span class="hl-property">validate</span>([
+            <span class="hl-value">'message'</span> =&gt; [<span class="hl-value">'required'</span>, <span class="hl-value">'string'</span>, <span class="hl-value">'max:255'</span>],
+        ]);
+
+        <span class="hl-variable">$request</span>-&gt;<span class="hl-property">user</span>()-&gt;<span class="hl-property">chirps</span>()-&gt;<span class="hl-property">create</span>(<span class="hl-variable">$validated</span>);
+
+<span class="hl-deletion">        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()-&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>);</span>
+<span class="hl-addition">        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()</span>
+<span class="hl-addition">            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)</span>
+<span class="hl-addition">            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));</span>
+    }
+
+    <span class="hl-comment">// ...</span>
+}
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Then, let's change our <code>layouts.app</code> file to include a <code>layouts.partials.notifications</code> partial:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/layouts/app.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">body</span> <span class="hl-property">class</span>=&quot;font-sans antialiased&quot;&gt;
+    &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;min-h-screen bg-gray-100&quot;&gt;
+        <span class="hl-keyword">@include</span>(<span class="hl-value">'layouts.partials.navigation'</span>)
+<span class="hl-addition">        <span class="hl-keyword">@include</span>(<span class="hl-value">'layouts.partials.notifications'</span>)</span>
+
+        <span class="hl-comment">&lt;!-- ... --&gt;</span>
+    &lt;/<span class="hl-keyword">div</span>&gt;
+&lt;/<span class="hl-keyword">body</span>&gt;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Next, let's create the <code>layouts.partials.notifications</code> wrapper partial:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/layouts/partials/notifications.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">div</span> <span class="hl-property">id</span>=&quot;notifications&quot; <span class="hl-property">class</span>=&quot;fixed top-10 left-0 right-0 flex flex-col items-center justify-center space-y-2 z-10 opacity-80&quot;&gt;
+    <span class="hl-keyword">@if</span> (<span class="hl-property">session</span>()-&gt;<span class="hl-property">has</span>(<span class="hl-value">'notice'</span>))
+        <span class="hl-keyword">@include</span>(<span class="hl-value">'layouts.partials.notice'</span>, [<span class="hl-value">'message'</span> =&gt; <span class="hl-property">session</span>(<span class="hl-value">'notice'</span>)])
+    <span class="hl-keyword">@endif</span>
+&lt;/<span class="hl-keyword">div</span>&gt;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>So, each notification will render with the <code>layouts.partials.notice</code> (singular) partial and will be added to the wrapper partial. Let's add the individual notification partial:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/layouts/partials/notice.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">div</span> data-turbo-temporary <span class="hl-property">data-controller</span>=&quot;flash&quot; <span class="hl-property">data-action</span>=&quot;animationend-&gt;flash#remove&quot; <span class="hl-property">class</span>=&quot;py-1 px-4 leading-7 text-center text-white rounded-full bg-gray-900 transition-all animate-appear-then-fade-out&quot;&gt;
+    {{ <span class="hl-variable">$message</span> }}
+&lt;/<span class="hl-keyword">div</span>&gt;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>There are a few attributes I'd like to briefly discuss here:</p>
+
+<ul>
+<li>The <code>data-turbo-temporary</code> tells Turbo to remove this element from the <a href="https://turbo.hotwired.dev/handbook/building#preparing-the-page-to-be-cached">Page Cache</a></li>
+<li>The <code>data-controller="flash"</code> is how we bind Stimulus controllers to an element. In this case, we're binding the <code>flash</code> controller, which is a controller that ships with Turbo Breeze and may be found at <code>resources/js/controllers/flash_controller.js</code></li>
+<li>The <code>data-action="animationend-&gt;flash#remove"</code> is how we add event listeners and invoke Stimulus controller actions when those events happens. In this case, we're listening to a CSS3 event called <code>animationend</code> which is fired whenever a CSS animation ends. The animation is the one provided by the <code>animation-appear-then-fade-out</code> CSS class, it also comes from Turbo Breeze.</li>
+</ul>
+
+<p>Now, build our Tailwind CSS styles:</p>
+
+<pre><code class="language-bash">php artisan tailwindcss:build
+</code></pre>
+
+<p>If you create another Chirp now, you should see a nice notification message at the top:</p>
+
+<p><img src="/assets//images/bootcamp/creating-chirps-flash-messages.png" alt="Flash Messages" /></p>
+        </div>
+
+                    <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Previous</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/installation">Installation <span class="absolute inset-0"></span></a>
+    </div>
+  
+      <div class="lg:col-start-2 relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Next</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/listing-chirps">Listing Chirps <span class="absolute inset-0"></span></a>
+    </div>
+  </div>
+              </main>
+    </div>
+  </div>
+
+        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
+          <p class="text-base text-center w-full">
+            Turbo Laravel is maintained by <a href="" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
+          </p>
+        </footer>
+    </body>
+</html>

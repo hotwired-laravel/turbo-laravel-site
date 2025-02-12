@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="canonical" href="https://hotwired-laravel.github.io/turbo-laravel-site/bootcamp/broadcasting">
+        <meta name="description" content="Broadcasting">
+        <title>Broadcasting</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/manifest/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/manifest/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/manifest/favicon-16x16.png">
+        <link rel="manifest" href="/assets/site.webmanifest">
+        <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=7756ef47cdc6e051280b7984fd99b8f7">
+        <script defer src="/assets/build/js/main.js?id=2685052459ff19e5e2ef09aac148fca7"></script>
+    </head>
+    <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
+  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
+    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
+      <a href="/">Turbo Laravel</a>
+    </h1>
+
+    <nav class="inline-block lg:hidden">
+      <details class="group" data-search-target="nav">
+        <summary class="list-none">
+          <span>
+            <span class="sr-only">Navigation</span>
+
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
+              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </span>
+        </summary>
+
+        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
+          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
+            <form action="/docs/search" method="GET" class="px-4">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 2.x docs..." />
+  <button type="submit" class="sr-only">Search</button>
+</form>
+
+            <ul class="space-y-6 -mb-2 mt-4">
+              <li>
+                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+                  <span>Documentation</span>
+                </a>
+
+                              </li>
+              <li>
+                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
+              </li>
+              <li class="space-y-6">
+                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
+                  <div class="mx-4 pl-3 border-l-4 border-zinc-900/30">
+  <ul class="">
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Introduction</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Creating Chirps</a></li>
+                <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Listing Chirps</a></li>
+                <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing Chirps</a></li>
+                <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Deleting Chirps</a></li>
+                <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Hotwiring Everything</a></li>
+                <li><a href="/bootcamp/broadcasting" class="font-bold transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Broadcasting</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Authentication</a></li>
+                <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Our First Bridge Component</a></li>
+                <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing as a Modal</a></li>
+                <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Confirmation Dialog</a></li>
+                <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Toasts</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Conclusion</a></li>
+              </ul>
+    </li>
+      </ul>
+</div>
+              </li>
+              <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </nav>
+  </div>
+
+  <nav class="hidden lg:block">
+    <ul class="flex items-center space-x-6 -my-2">
+      <li>
+        <div class="group relative py-2">
+          <a href="/docs" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+            <span>Documentation</span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </a>
+
+          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
+            <ul class="space-y-1">
+              <li><a href="/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">2.2.0</span></a></li>
+              <li><a href="/1.x/docs/installation" class="block px-2 py-1  rounded">Version <span class="">1.12.2</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
+      <li><a href="/bootcamp/introduction" class="bg-white/90 px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
+      <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+    </ul>
+  </nav>
+</header>
+
+          <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
+    <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
+      <aside class="relative w-1/4 hidden lg:block">
+        <div class="sticky top-4 block space-y-4">
+            <form action="/bootcamp/search" method="GET">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="web" type="text" name="q" placeholder="Search bootcamp guides..." class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
+</form>
+
+            <ul class="[&_.children]:mb-4">
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Introduction</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Creating Chirps</a></li>
+            <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Listing Chirps</a></li>
+            <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing Chirps</a></li>
+            <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Deleting Chirps</a></li>
+            <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Hotwiring Everything</a></li>
+            <li><a href="/bootcamp/broadcasting" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Authentication</a></li>
+            <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Our First Bridge Component</a></li>
+            <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing as a Modal</a></li>
+            <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Confirmation Dialog</a></li>
+            <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Toasts</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conclusion</a></li>
+          </ul>
+  </li>
+  </ul>
+        </div>
+      </aside>
+
+      <main class="flex-1 min-w-0">
+        <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+            <h1><em>07.</em> Broadcasting</h1>
+
+<p>We can send the same Turbo Streams we're returning to our users after a form submission over WebSockets and update the page for all users visiting it! Broadcasts may be triggered automatically whenever a <a href="https://laravel.com/docs/eloquent#events">model updates</a> or manually whenever you want to broadcast it.</p>
+
+<h2>Setting Up Reverb</h2>
+
+<p>Let's setup <a href="https://laravel.com/docs/11.x/reverb">Reverb</a> to handle our WebSockets connections.</p>
+
+<p>First, run the <code>install:broadcasting</code> Artisan command:</p>
+
+<pre><code class="language-bash">php artisan install:broadcasting
+</code></pre>
+
+<p>When it asks if you want to install the Node dependencies, say "No". After that, we'll install them manually with importamps:</p>
+
+<pre><code class="language-bash">php artisan importmap:pin laravel-echo pusher-js current.js
+</code></pre>
+
+<p>Next, we'll need to update the published <code>echo.js</code> file. It currently uses <code>import.meta.env.*</code>, which requires a build step. Instead, we'll update it to use the <code>current.js</code> to read the configs from meta tags we'll add to our layouts. But first, replace the <code>echo.js</code> with the following version:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/js/echo.js</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-js"><span class="hl-keyword">import</span> Echo <span class="hl-keyword">from</span> <span class="hl-value">'laravel-echo'</span>;
+
+<span class="hl-keyword">import</span> Pusher <span class="hl-keyword">from</span> <span class="hl-value">'pusher-js'</span>;
+window.<span class="hl-property">Pusher</span> = Pusher;
+
+<span class="hl-keyword">import</span> { Current } <span class="hl-keyword">from</span> <span class="hl-value">'current.js'</span>;
+window.<span class="hl-property">Current</span> = Current;
+
+window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</span> <span class="hl-type">Echo</span>({
+    <span class="hl-property">broadcaster</span>: <span class="hl-value">'reverb'</span>,
+    <span class="hl-property">key</span>: <span class="hl-type">Current</span>.<span class="hl-property">reverb</span>.<span class="hl-property">appKey</span>,
+    <span class="hl-property">wsHost</span>: <span class="hl-type">Current</span>.<span class="hl-property">reverb</span>.<span class="hl-property">host</span>,
+    <span class="hl-property">wsPort</span>: <span class="hl-type">Current</span>.<span class="hl-property">reverb</span>.<span class="hl-property">port</span> ?? 80,
+    <span class="hl-property">wssPort</span>: <span class="hl-type">Current</span>.<span class="hl-property">reverb</span>.<span class="hl-property">port</span> ?? 443,
+    <span class="hl-property">forceTLS</span>: (<span class="hl-type">Current</span>.<span class="hl-property">reverb</span>.<span class="hl-property">scheme</span> ?? <span class="hl-value">'https'</span>) === <span class="hl-value">'https'</span>,
+    <span class="hl-property">enabledTransports</span>: [<span class="hl-value">'ws'</span>, <span class="hl-value">'wss'</span>],
+});
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>We also need to update the <code>bootstrap.js</code> file to fix the import that was appended by Reverb to the Importmap style:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/js/bootstrap.js</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-js"><span class="hl-comment">// ...</span>
+
+<span class="hl-comment">/**
+ * Echo exposes an expressive API for subscribing to channels and listening
+ * for events that are broadcast by Laravel. Echo and event broadcasting
+ * allow your team to quickly build robust real-time web applications.
+ */</span>
+
+<span class="hl-deletion"><span class="hl-keyword">import</span> <span class="hl-value">'./echo'</span>;</span>
+<span class="hl-addition"><span class="hl-keyword">import</span> <span class="hl-value">'echo'</span>;</span>
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Next, let's create a new layout partial at <code>resources/views/layouts/partials/reverb.blade.php</code> with the following content:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/layouts/partials/reverb.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-reverb-app-key&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">config</span>(<span class="hl-value">'broadcasting.connections.reverb.key'</span>) }}&quot; /&gt;
+&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-reverb-host&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">config</span>(<span class="hl-value">'reverb.servers.reverb.frontend.host'</span>) }}&quot; /&gt;
+&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-reverb-port&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">config</span>(<span class="hl-value">'reverb.servers.reverb.frontend.port'</span>) }}&quot; /&gt;
+&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-reverb-scheme&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">config</span>(<span class="hl-value">'reverb.servers.reverb.frontend.scheme'</span>) }}&quot; /&gt;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Then, add that to the <code>app.blade.php</code> layout file:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/layouts/app.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade">&lt;!DOCTYPE html&gt;
+&lt;<span class="hl-keyword">html</span> <span class="hl-property">lang</span>=&quot;{{ <span class="hl-property">str_replace</span>(<span class="hl-value">'_'</span>, <span class="hl-value">'-'</span>, <span class="hl-property">app</span>()-&gt;<span class="hl-property">getLocale</span>()) }}&quot;&gt;
+    &lt;<span class="hl-keyword">head</span>&gt;
+        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">charset</span>=&quot;utf-8&quot;&gt;
+        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;viewport&quot; <span class="hl-property">content</span>=&quot;width=device-width, initial-scale=1&quot;&gt;
+        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;csrf-token&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">csrf_token</span>() }}&quot;&gt;
+
+        <span class="hl-keyword">@if</span> (<span class="hl-variable">$viewTransitions</span> ?? <span class="hl-keyword">false</span>)
+        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;view-transition&quot; <span class="hl-property">content</span>=&quot;same-origin&quot; /&gt;
+        <span class="hl-keyword">@endif</span>
+
+<span class="hl-addition">        <span class="hl-keyword">@include</span>(<span class="hl-value">'layouts.partials.reverb'</span>)</span>
+
+        {{ <span class="hl-variable">$meta</span> ?? <span class="hl-value">''</span> }}
+
+        &lt;<span class="hl-keyword">title</span>&gt;{{ <span class="hl-property">config</span>(<span class="hl-value">'app.name'</span>, <span class="hl-value">'Laravel'</span>) }}&lt;/<span class="hl-keyword">title</span>&gt;
+
+        <span class="hl-comment">&lt;!-- ... --&gt;</span>
+    &lt;/<span class="hl-keyword">head</span>&gt;
+
+    <span class="hl-comment">&lt;!-- ... --&gt;</span>
+&lt;/<span class="hl-keyword">html</span>&gt;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Do the same for the guest layout:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/layouts/guest.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade">&lt;!DOCTYPE html&gt;
+&lt;<span class="hl-keyword">html</span> <span class="hl-property">lang</span>=&quot;{{ <span class="hl-property">str_replace</span>(<span class="hl-value">'_'</span>, <span class="hl-value">'-'</span>, <span class="hl-property">app</span>()-&gt;<span class="hl-property">getLocale</span>()) }}&quot;&gt;
+    &lt;<span class="hl-keyword">head</span>&gt;
+        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">charset</span>=&quot;utf-8&quot;&gt;
+        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;viewport&quot; <span class="hl-property">content</span>=&quot;width=device-width, initial-scale=1&quot;&gt;
+        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;csrf-token&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">csrf_token</span>() }}&quot;&gt;
+
+        <span class="hl-keyword">@if</span> (<span class="hl-variable">$viewTransitions</span> ?? <span class="hl-keyword">false</span>)
+        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;view-transition&quot; <span class="hl-property">content</span>=&quot;same-origin&quot; /&gt;
+        <span class="hl-keyword">@endif</span>
+
+<span class="hl-addition">        <span class="hl-keyword">@include</span>(<span class="hl-value">'layouts.partials.reverb'</span>)</span>
+
+        {{ <span class="hl-variable">$meta</span> ?? <span class="hl-value">''</span> }}
+
+        <span class="hl-comment">&lt;!-- ... --&gt;</span>
+    &lt;/<span class="hl-keyword">head</span>&gt;
+
+    <span class="hl-comment">&lt;!-- ... --&gt;</span>
+&lt;/<span class="hl-keyword">html</span>&gt;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Then, we need to tweak our <code>.env</code> file to look something like this:</p>
+
+<pre><code class="language-php"># ...
+
+<span class="hl-type">BROADCAST_CONNECTION</span>=reverb
+
+<span class="hl-type">REVERB_APP_ID</span>=[<span class="hl-property">REDACTED</span>]
+<span class="hl-type">REVERB_APP_KEY</span>=[<span class="hl-property">REDACTED</span>]
+<span class="hl-type">REVERB_APP_SECRET</span>=[<span class="hl-property">REDACTED</span>]
+<span class="hl-type">REVERB_HOST</span>=<span class="hl-value">&quot;reverb.test&quot;</span>
+<span class="hl-type">REVERB_PORT</span>=8080
+<span class="hl-type">REVERB_SCHEME</span>=http
+
+<span class="hl-type">REVERB_FRONTEND_HOST</span>=<span class="hl-value">&quot;localhost&quot;</span>
+<span class="hl-type">REVERB_FRONTEND_PORT</span>=<span class="hl-value">&quot;${REVERB_PORT}&quot;</span>
+<span class="hl-type">REVERB_FRONTEND_SCHEME</span>=<span class="hl-value">&quot;${REVERB_SCHEME}&quot;</span>
+</code></pre>
+
+<p>With that, our Reverb config needs to be updated to use the new frontend configs:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>config/reverb.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-keyword">return</span> [
+    <span class="hl-comment">// ...</span>
+
+    <span class="hl-value">'servers'</span> =&gt; [
+
+        <span class="hl-value">'reverb'</span> =&gt; [
+            <span class="hl-value">'host'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_SERVER_HOST'</span>, <span class="hl-value">'0.0.0.0'</span>),
+            <span class="hl-value">'port'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_SERVER_PORT'</span>, 8080),
+            <span class="hl-value">'hostname'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_HOST'</span>),
+            <span class="hl-value">'options'</span> =&gt; [
+                <span class="hl-value">'tls'</span> =&gt; [],
+            ],
+            <span class="hl-value">'scaling'</span> =&gt; [
+                <span class="hl-value">'enabled'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_SCALING_ENABLED'</span>, <span class="hl-keyword">false</span>),
+                <span class="hl-value">'channel'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_SCALING_CHANNEL'</span>, <span class="hl-value">'reverb'</span>),
+            ],
+<span class="hl-addition">            <span class="hl-value">'frontend'</span> =&gt; [</span>
+<span class="hl-addition">                <span class="hl-value">'host'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_FRONTEND_HOST'</span>),</span>
+<span class="hl-addition">                <span class="hl-value">'port'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_FRONTEND_PORT'</span>),</span>
+<span class="hl-addition">                <span class="hl-value">'scheme'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_FRONTEND_SCHEME'</span>),</span>
+<span class="hl-addition">            ],</span>
+            <span class="hl-value">'pulse_ingest_interval'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_PULSE_INGEST_INTERVAL'</span>, 15),
+        ],
+    ],
+
+    <span class="hl-comment">// ...</span>
+];
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>The Broadcasting component has two sides: the backend and the frontend. The backend needs to connect to the Reverb server, and since we're using Sail, we'll spin up a new container for that. For this reason, we cannot use the same host as the frontend, since that's what the browser will use to connect to the server. The backend will connect to a host named <code>reverb.test:8080</code> (we'll add it next), and the browser will connect to <code>localhost:8080</code>.</p>
+
+<p>If you're following using <code>artisan serve</code>, both can be <code>localhost</code> or <code>127.0.0.1</code>.</p>
+
+<p>Next, update the <code>docker-compose.yml</code> to add the new <code>reverb.test</code> service:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>docker-compose.yml</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-yaml"><span class="hl-keyword">services</span><span class="hl-property">:</span>
+    <span class="hl-comment"># ...</span>
+
+<span class="hl-addition">    reverb.<span class="hl-keyword">test</span>:</span>
+<span class="hl-addition">        <span class="hl-keyword">build</span><span class="hl-property">:</span></span>
+<span class="hl-addition">            <span class="hl-keyword">context</span><span class="hl-property">:</span> ./vendor/laravel/sail/runtimes/8.3</span>
+<span class="hl-addition">            <span class="hl-keyword">dockerfile</span><span class="hl-property">:</span> Dockerfile</span>
+<span class="hl-addition">            <span class="hl-keyword">args</span><span class="hl-property">:</span></span>
+<span class="hl-addition">                <span class="hl-keyword">WWWGROUP</span><span class="hl-property">:</span> '<span class="hl-value">${WWWGROUP}</span>'</span>
+<span class="hl-addition">        <span class="hl-keyword">image</span><span class="hl-property">:</span> sail-8.3/app</span>
+<span class="hl-addition">        <span class="hl-keyword">command</span><span class="hl-property">:</span> <span class="hl-property">[</span>&quot;<span class="hl-value">php</span>&quot;, &quot;<span class="hl-value">artisan</span>&quot;, &quot;<span class="hl-value">reverb:start</span>&quot;<span class="hl-property">]</span></span>
+<span class="hl-addition">        <span class="hl-keyword">extra_hosts</span><span class="hl-property">:</span></span>
+<span class="hl-addition">            <span class="hl-property">-</span> '<span class="hl-value">host.docker.internal:host-gateway</span>'</span>
+<span class="hl-addition">        <span class="hl-keyword">ports</span><span class="hl-property">:</span></span>
+<span class="hl-addition">            <span class="hl-property">-</span> '<span class="hl-value">${REVERB_PORT:-8080}:8080</span>'</span>
+<span class="hl-addition">        <span class="hl-keyword">environment</span><span class="hl-property">:</span></span>
+<span class="hl-addition">            <span class="hl-keyword">WWWUSER</span><span class="hl-property">:</span> '<span class="hl-value">${WWWUSER}</span>'</span>
+<span class="hl-addition">            <span class="hl-keyword">LARAVEL_SAIL</span><span class="hl-property">:</span> 1</span>
+<span class="hl-addition">            <span class="hl-keyword">XDEBUG_MODE</span><span class="hl-property">:</span> '<span class="hl-value">${SAIL_XDEBUG_MODE:-off}</span>'</span>
+<span class="hl-addition">            <span class="hl-keyword">XDEBUG_CONFIG</span><span class="hl-property">:</span> '<span class="hl-value">${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}</span>'</span>
+<span class="hl-addition">            <span class="hl-keyword">IGNITION_LOCAL_SITES_PATH</span><span class="hl-property">:</span> '<span class="hl-value">${PWD}</span>'</span>
+<span class="hl-addition">        <span class="hl-keyword">volumes</span><span class="hl-property">:</span></span>
+<span class="hl-addition">            <span class="hl-property">-</span> '<span class="hl-value">.:/var/www/html</span>'</span>
+<span class="hl-addition">        <span class="hl-keyword">networks</span><span class="hl-property">:</span></span>
+<span class="hl-addition">            <span class="hl-property">-</span> sail</span>
+<span class="hl-addition">        <span class="hl-keyword">depends_on</span><span class="hl-property">:</span></span>
+<span class="hl-addition">            <span class="hl-property">-</span> laravel.test</span>
+
+<span class="hl-keyword">networks</span><span class="hl-property">:</span>
+    <span class="hl-keyword">sail</span><span class="hl-property">:</span>
+        <span class="hl-keyword">driver</span><span class="hl-property">:</span> bridge
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Now, we can boot the Reverb service by running:</p>
+
+<pre><code class="language-bash">./vendor/bin/sail up -d
+</code></pre>
+
+<p>That's it!</p>
+
+<h2>Broadcasting Turbo Streams</h2>
+
+<p>Let's start by sending new Chirps to all users currently visiting the chirps page. We're going to start by creating a private broadcasting channel called <code>chirps</code> in our <code>routes/channels.php</code> file. Any authenticated user may start receiving new Chirps broadcasts when they visit the <code>chirps.index</code> page, so we're simply returning <code>true</code> in the authorization check:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>routes/channels.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-keyword">use</span> <span class="hl-type">App\Models\Chirp</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Support\Facades\Broadcast</span>;
+
+<span class="hl-type">Broadcast</span>::<span class="hl-property">channel</span>(<span class="hl-value">'App.Models.User.{id}'</span>, <span class="hl-keyword">function</span> (<span class="hl-injection">$user, $id</span>) {
+    <span class="hl-keyword">return</span> (int) <span class="hl-variable">$user</span>-&gt;<span class="hl-property">id</span> === (int) <span class="hl-variable">$id</span>;
+});
+
+<span class="hl-addition"><span class="hl-type">Broadcast</span>::<span class="hl-property">channel</span>(<span class="hl-value">'chirps'</span>, <span class="hl-keyword">function</span> () {</span>
+<span class="hl-addition">    <span class="hl-keyword">return</span> <span class="hl-keyword">true</span>;</span>
+<span class="hl-addition">});</span>
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Now, let's update the <code>chirps/index.blade.php</code> to add the <code>x-turbo::stream-from</code> Blade component that ships with Turbo Laravel:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/chirps/index.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-app-layout</span>&gt;
+    &lt;<span class="hl-keyword">x-slot</span> <span class="hl-property">name</span>=&quot;header&quot;&gt;
+        &lt;<span class="hl-keyword">h2</span> <span class="hl-property">class</span>=&quot;flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight&quot;&gt;
+            &lt;<span class="hl-keyword">x-breadcrumbs</span> :<span class="hl-property">links</span>=&quot;[__('Chirps')]&quot; /&gt;
+        &lt;/<span class="hl-keyword">h2</span>&gt;
+    &lt;/<span class="hl-keyword">x-slot</span>&gt;
+
+<span class="hl-addition">    &lt;<span class="hl-keyword">x-turbo::stream-from</span> <span class="hl-property">source</span>=&quot;chirps&quot; /&gt;</span>
+
+    &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;py-12&quot;&gt;
+        <span class="hl-comment">&lt;!-- ... --&gt;</span>
+    &lt;/<span class="hl-keyword">div</span>&gt;
+&lt;/<span class="hl-keyword">x-app-layout</span>&gt;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>That's it! When the user visits that page, this component will automatically start listening to a <code>chirps</code> <em>private</em> channel for broadcasts. By default, it assumes we're using private channels, but you may configure it to listen to <code>presence</code> or <code>public</code> channels by passing the <code>type</code> prop to the component. In this case, we're passing a string for the channel name, but we could also pass an Eloquent model instance and it would figure out the channel name based on <a href="https://laravel.com/docs/broadcasting#model-broadcasting-conventions">Laravel's conventions</a>.</p>
+
+<p>Now, we're ready to start broadcasting! First, let's add the <code>Broadcasts</code> trait to our <code>Chirp</code> model:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>app/Models/Chirp.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-keyword">namespace</span> <span class="hl-type">App\Models</span>;
+
+<span class="hl-addition"><span class="hl-keyword">use</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\Models\Broadcasts</span>;</span>
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Database\Eloquent\Factories\HasFactory</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Database\Eloquent\Model</span>;
+
+<span class="hl-keyword">class</span> <span class="hl-type">Chirp</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">HasFactory</span>;
+<span class="hl-addition">    <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;</span>
+
+    <span class="hl-keyword">protected</span> <span class="hl-property">$fillable</span> = [
+        <span class="hl-value">'message'</span>,
+    ];
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">user</span>()
+    {
+        <span class="hl-keyword">return</span> <span class="hl-variable">$this</span>-&gt;<span class="hl-property">belongsTo</span>(<span class="hl-type">User</span>::<span class="hl-keyword">class</span>);
+    }
+}
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>That trait will give us a bunch of methods we can call from our Chirp model instances. Let's use it in the <code>store</code> action of our <code>ChirpController</code> to send newly created Chirps to all connected users:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>app/Http/Controllers/ChirpController.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-keyword">namespace</span> <span class="hl-type">App\Http\Controllers</span>;
+
+<span class="hl-keyword">use</span> <span class="hl-type">App\Models\Chirp</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Http\Request</span>;
+
+<span class="hl-keyword">class</span> <span class="hl-type">ChirpController</span> <span class="hl-keyword">extends</span> <span class="hl-type">Controller</span>
+{
+    <span class="hl-comment">// ...</span>
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">store</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request</span>)
+    {
+        <span class="hl-variable">$validated</span> = <span class="hl-variable">$request</span>-&gt;<span class="hl-property">validate</span>([
+            <span class="hl-value">'message'</span> =&gt; [<span class="hl-value">'required'</span>, <span class="hl-value">'string'</span>, <span class="hl-value">'max:255'</span>],
+        ]);
+
+        <span class="hl-variable">$chirp</span> = <span class="hl-variable">$request</span>-&gt;<span class="hl-property">user</span>()-&gt;<span class="hl-property">chirps</span>()-&gt;<span class="hl-property">create</span>(<span class="hl-variable">$validated</span>);
+
+<span class="hl-addition">        <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">broadcastPrependTo</span>(<span class="hl-value">'chirps'</span>)</span>
+<span class="hl-addition">            -&gt;<span class="hl-property">target</span>(<span class="hl-value">'chirps'</span>)</span>
+<span class="hl-addition">            -&gt;<span class="hl-property">partial</span>(<span class="hl-value">'chirps.partials.chirp'</span>, [<span class="hl-value">'chirp'</span> =&gt; <span class="hl-variable">$chirp</span>])</span>
+<span class="hl-addition">            -&gt;<span class="hl-property">toOthers</span>();</span>
+
+        <span class="hl-keyword">if</span> (<span class="hl-variable">$request</span>-&gt;<span class="hl-property">wantsTurboStream</span>()) {
+            <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([
+                <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$chirp</span>, <span class="hl-value">'prepend'</span>),
+                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">update</span>(<span class="hl-value">'create_chirp'</span>, <span class="hl-property">view</span>(<span class="hl-value">'chirps._form'</span>)),
+                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">notice</span>(<span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>)),
+            ]);
+        }
+
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
+            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
+            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));
+    }
+
+    <span class="hl-comment">// ...</span>
+}
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>To test this, try visiting the <code>/chirps</code> page from two different tabs and creating a Chirp in one of them. The other should automatically update! We're also broadcasting on-the-fly in the same request/response life-cycle, which could slow down our response time a bit, depending on your load and your queue driver response time. We can delay the broadcasting (which includes view rendering) to a queued job by chaining the <code>-&gt;later()</code> method, for example.</p>
+
+<p>Now, let's make sure all visiting users receive Chirp updates whenever it changes. To achieve that, change the <code>update</code> action in the <code>ChirpController</code>:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>app/Http/Controllers/ChirpController.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-keyword">namespace</span> <span class="hl-type">App\Http\Controllers</span>;
+
+<span class="hl-keyword">use</span> <span class="hl-type">App\Models\Chirp</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Http\Request</span>;
+
+<span class="hl-addition"><span class="hl-keyword">use</span> <span class="hl-keyword">function</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\</span><span class="hl-property">dom_id</span>;</span>
+
+<span class="hl-keyword">class</span> <span class="hl-type">ChirpController</span> <span class="hl-keyword">extends</span> <span class="hl-type">Controller</span>
+{
+    <span class="hl-comment">// ...</span>
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">update</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request, <span class="hl-type">Chirp</span> $chirp</span>)
+    {
+        <span class="hl-variable">$this</span>-&gt;<span class="hl-property">authorize</span>(<span class="hl-value">'update'</span>, <span class="hl-variable">$chirp</span>);
+
+        <span class="hl-variable">$validated</span> = <span class="hl-variable">$request</span>-&gt;<span class="hl-property">validate</span>([
+            <span class="hl-value">'message'</span> =&gt; [<span class="hl-value">'required'</span>, <span class="hl-value">'string'</span>, <span class="hl-value">'max:255'</span>],
+        ]);
+
+        <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">update</span>(<span class="hl-variable">$validated</span>);
+
+<span class="hl-addition">        <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">broadcastReplaceTo</span>(<span class="hl-value">'chirps'</span>)</span>
+<span class="hl-addition">            -&gt;<span class="hl-property">target</span>(<span class="hl-property">dom_id</span>(<span class="hl-variable">$chirp</span>))</span>
+<span class="hl-addition">            -&gt;<span class="hl-property">partial</span>(<span class="hl-value">'chirps.partials.chirp'</span>, [<span class="hl-value">'chirp'</span> =&gt; <span class="hl-variable">$chirp</span>])</span>
+<span class="hl-addition">            -&gt;<span class="hl-property">toOthers</span>();</span>
+
+        <span class="hl-keyword">if</span> (<span class="hl-variable">$request</span>-&gt;<span class="hl-property">wantsTurboStream</span>()) {
+            <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([
+                <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$chirp</span>),
+                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">notice</span>(<span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>)),
+            ]);
+        }
+
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
+            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
+            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
+    }
+
+    <span class="hl-comment">// ...</span>
+}
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Again, open two tabs, try editing a Chirp and you should see the other tab automatically updating! Cool, right?!</p>
+
+<p>Finally, let's make sure deleted Chirps are removed from all visiting users' pages. Tweak the <code>destroy</code> action in the <code>ChirpController</code> like so:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>app/Http/Controllers/ChirpController.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-keyword">namespace</span> <span class="hl-type">App\Http\Controllers</span>;
+
+<span class="hl-keyword">use</span> <span class="hl-type">App\Models\Chirp</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Http\Request</span>;
+
+<span class="hl-keyword">use</span> <span class="hl-keyword">function</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\</span><span class="hl-property">dom_id</span>;
+
+<span class="hl-keyword">class</span> <span class="hl-type">ChirpController</span> <span class="hl-keyword">extends</span> <span class="hl-type">Controller</span>
+{
+    <span class="hl-comment">// ...</span>
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">destroy</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request, <span class="hl-type">Chirp</span> $chirp</span>)
+    {
+        <span class="hl-variable">$this</span>-&gt;<span class="hl-property">authorize</span>(<span class="hl-value">'delete'</span>, <span class="hl-variable">$chirp</span>);
+
+        <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">delete</span>();
+
+<span class="hl-addition">        <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">broadcastRemoveTo</span>(<span class="hl-value">'chirps'</span>)</span>
+<span class="hl-addition">            -&gt;<span class="hl-property">target</span>(<span class="hl-property">dom_id</span>(<span class="hl-variable">$chirp</span>))</span>
+<span class="hl-addition">            -&gt;<span class="hl-property">toOthers</span>();</span>
+
+        <span class="hl-keyword">if</span> (<span class="hl-variable">$request</span>-&gt;<span class="hl-property">wantsTurboStream</span>()) {
+            <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([
+                <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$chirp</span>),
+                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">notice</span>(<span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>)),
+            ]);
+        }
+
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
+            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
+            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
+    }
+}
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Now, open two tabs and try deleting a Chirp. You should see it being removed from the other tab as well!</p>
+
+<h2>Automatically Broadcasting on Model Changes</h2>
+
+<p>Since we're interested in broadcasting all changes of our Chirp model, we can remove a few lines of code and instruct Turbo Laravel to make that automatically for us.</p>
+
+<p>We may achieve that by setting the <code>$broadcasts</code> property to <code>true</code> in our <code>Chirp</code> model. However, Turbo Laravel will automatically broadcast newly created models using the <code>append</code> Turbo Stream action. In our case, we want it to <code>prepend</code> instead, so we're setting the <code>$broadcasts</code> property to an array and using the <code>insertsBy</code> key to configure the creation action to be used.</p>
+
+<p>We also need to override where these broadcasts are going to be sent to. Turbo Laravel will automatically send creates to a channel named using the pluralization of our model's basename, which would work for us. But updates and deletes will be sent to a model's individual channel names (something like <code>App.Models.Chirp.1</code> where <code>1</code> is the model ID). This is useful because we're usually broadcasting to a parent model's channel via a relationship, which we can do with the <code>$broadcastsTo</code> property (see <a href="/docs/broadcasting#content-broadcasting-model-changes">the docs</a> to know more about this), but in our case we'll always be sending the broadcasts to a private channel named <code>chirps</code>.</p>
+
+<p>Our <code>Chirp</code> model would end up looking like this:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>app/Models/Chirp.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-keyword">namespace</span> <span class="hl-type">App\Models</span>;
+
+<span class="hl-keyword">use</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\Models\Broadcasts</span>;
+<span class="hl-addition"><span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Broadcasting\PrivateChannel</span>;</span>
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Database\Eloquent\Factories\HasFactory</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Database\Eloquent\Model</span>;
+
+<span class="hl-keyword">class</span> <span class="hl-type">Chirp</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">HasFactory</span>;
+    <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;
+
+<span class="hl-addition">    <span class="hl-keyword">protected</span> <span class="hl-property">$broadcasts</span> = [</span>
+<span class="hl-addition">        <span class="hl-value">'insertsBy'</span> =&gt; <span class="hl-value">'prepend'</span>,</span>
+<span class="hl-addition">    ];</span>
+
+    <span class="hl-keyword">protected</span> <span class="hl-property">$fillable</span> = [
+        <span class="hl-value">'message'</span>,
+    ];
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">user</span>()
+    {
+        <span class="hl-keyword">return</span> <span class="hl-variable">$this</span>-&gt;<span class="hl-property">belongsTo</span>(<span class="hl-type">User</span>::<span class="hl-keyword">class</span>);
+    }
+
+<span class="hl-addition">    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">broadcastsTo</span>()</span>
+<span class="hl-addition">    {</span>
+<span class="hl-addition">        <span class="hl-keyword">return</span> [</span>
+<span class="hl-addition">            <span class="hl-keyword">new</span> <span class="hl-type">PrivateChannel</span>(<span class="hl-value">'chirps'</span>),</span>
+<span class="hl-addition">        ];</span>
+<span class="hl-addition">    }</span>
+}
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>We can then remove a few lines from our <code>ChirpsController</code>:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>app/Http/Controllers/ChirpController.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-keyword">namespace</span> <span class="hl-type">App\Http\Controllers</span>;
+
+<span class="hl-keyword">use</span> <span class="hl-type">App\Models\Chirp</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Http\Request</span>;
+
+<span class="hl-deletion"><span class="hl-keyword">use</span> <span class="hl-keyword">function</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\</span><span class="hl-property">dom_id</span>;</span>
+
+<span class="hl-keyword">class</span> <span class="hl-type">ChirpController</span> <span class="hl-keyword">extends</span> <span class="hl-type">Controller</span>
+{
+    <span class="hl-comment">// ...</span>
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">store</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request</span>)
+    {
+        <span class="hl-variable">$validated</span> = <span class="hl-variable">$request</span>-&gt;<span class="hl-property">validate</span>([
+            <span class="hl-value">'message'</span> =&gt; [<span class="hl-value">'required'</span>, <span class="hl-value">'string'</span>, <span class="hl-value">'max:255'</span>],
+        ]);
+
+        <span class="hl-variable">$chirp</span> = <span class="hl-variable">$request</span>-&gt;<span class="hl-property">user</span>()-&gt;<span class="hl-property">chirps</span>()-&gt;<span class="hl-property">create</span>(<span class="hl-variable">$validated</span>);
+
+<span class="hl-deletion">        <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">broadcastPrependTo</span>(<span class="hl-value">'chirps'</span>)</span>
+<span class="hl-deletion">           -&gt;<span class="hl-property">target</span>(<span class="hl-value">'chirps'</span>)</span>
+<span class="hl-deletion">           -&gt;<span class="hl-property">partial</span>(<span class="hl-value">'chirps.partials.chirp'</span>, [<span class="hl-value">'chirp'</span> =&gt; <span class="hl-variable">$chirp</span>])</span>
+<span class="hl-deletion">           -&gt;<span class="hl-property">toOthers</span>();</span>
+
+        <span class="hl-keyword">if</span> (<span class="hl-variable">$request</span>-&gt;<span class="hl-property">wantsTurboStream</span>()) {
+            <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([
+                <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$chirp</span>, <span class="hl-value">'prepend'</span>),
+                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">update</span>(<span class="hl-value">'create_chirp'</span>, <span class="hl-property">view</span>(<span class="hl-value">'chirps._form'</span>)),
+                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">notice</span>(<span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>)),
+            ]);
+        }
+
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
+            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
+            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));
+    }
+
+    <span class="hl-comment">// ...</span>
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">update</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request, <span class="hl-type">Chirp</span> $chirp</span>)
+    {
+        <span class="hl-variable">$this</span>-&gt;<span class="hl-property">authorize</span>(<span class="hl-value">'update'</span>, <span class="hl-variable">$chirp</span>);
+
+        <span class="hl-variable">$validated</span> = <span class="hl-variable">$request</span>-&gt;<span class="hl-property">validate</span>([
+            <span class="hl-value">'message'</span> =&gt; [<span class="hl-value">'required'</span>, <span class="hl-value">'string'</span>, <span class="hl-value">'max:255'</span>],
+        ]);
+
+        <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">update</span>(<span class="hl-variable">$validated</span>);
+
+<span class="hl-deletion">        <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">broadcastReplaceTo</span>(<span class="hl-value">'chirps'</span>)</span>
+<span class="hl-deletion">            -&gt;<span class="hl-property">target</span>(<span class="hl-property">dom_id</span>(<span class="hl-variable">$chirp</span>))</span>
+<span class="hl-deletion">            -&gt;<span class="hl-property">partial</span>(<span class="hl-value">'chirps.partials.chirp'</span>, [<span class="hl-value">'chirp'</span> =&gt; <span class="hl-variable">$chirp</span>])</span>
+<span class="hl-deletion">            -&gt;<span class="hl-property">toOthers</span>();</span>
+
+        <span class="hl-keyword">if</span> (<span class="hl-variable">$request</span>-&gt;<span class="hl-property">wantsTurboStream</span>()) {
+            <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([
+                <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$chirp</span>),
+                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">notice</span>(<span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>)),
+            ]);
+        }
+
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
+            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
+            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
+    }
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">destroy</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request, <span class="hl-type">Chirp</span> $chirp</span>)
+    {
+        <span class="hl-variable">$this</span>-&gt;<span class="hl-property">authorize</span>(<span class="hl-value">'delete'</span>, <span class="hl-variable">$chirp</span>);
+
+        <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">delete</span>();
+
+<span class="hl-deletion">        <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">broadcastRemoveTo</span>(<span class="hl-value">'chirps'</span>)</span>
+<span class="hl-deletion">            -&gt;<span class="hl-property">target</span>(<span class="hl-property">dom_id</span>(<span class="hl-variable">$chirp</span>))</span>
+<span class="hl-deletion">            -&gt;<span class="hl-property">toOthers</span>();</span>
+
+        <span class="hl-keyword">if</span> (<span class="hl-variable">$request</span>-&gt;<span class="hl-property">wantsTurboStream</span>()) {
+            <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([
+                <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$chirp</span>),
+                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">notice</span>(<span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>)),
+            ]);
+        }
+
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
+            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
+            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
+    }
+}
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p><div class="p-6 flex space-x-4 border border-opacity-75 bg-opacity-75 rounded shadow my-8 sm:p-8 border-yellow-50 bg-yellow-50 text-yellow-900">
+    <div>
+        <svg class="!size-8 mt-3 !shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+        </svg>
+    </div>
+
+    <div class="[&_h4]:!my-0 [&_h4]:text-yellow-900">
+        <div class="!mt-0 !font-bold !text-2xl flex items-center space-x-1"></p>
+
+<h4>You don't need a model to use Turbo Streams</h4>
+
+<p></div>
+        <div class="!my-0 [&>p]:my-0"></p>
+
+<p> </p>
+
+<p>We're only covering Turbo Stream broadcasts from an Eloquent model's perspective. However, you may broadcast anything using the <code>TurboStream</code> Facade or by chaining the <code>broadcastTo()</code> method call when using the <code>turbo_stream()</code> response builder function. Check the <a href="/docs/broadcasting#content-handmade-broadcasts">Broadcasting docs</a> to know more about this.</div>
+    </div>
+</div>
+</p>
+
+<h2>Testing it out</h2>
+
+<p>Before testing it out, we'll need to start a queue worker. That's because Laravel 11 sets the <code>QUEUE_CONNECTION=database</code> by default instead of <code>sync</code>, and Turbo Laravel will send automatic broadcasts in background. Let's do that:</p>
+
+<pre><code class="language-bash">sail artisan queue:work --tries=1
+</code></pre>
+
+<p>Now we can test it and it should be working!</p>
+
+<p>One more cool thing about this approach: users will receive the broadcasts no matter where the Chirp models were created from! We can test this out by creating a Chirp entry from Tinker, for example. To try that, start a new Tinker session:</p>
+
+<pre><code class="language-bash">php artisan tinker
+</code></pre>
+
+<p>And then create a Chirp from there:</p>
+
+<pre><code class="language-php"><span class="hl-type">App\Models\User</span>::<span class="hl-property">first</span>()-&gt;<span class="hl-property">chirps</span>()-&gt;<span class="hl-property">create</span>([<span class="hl-value">'message'</span> =&gt; <span class="hl-value">'Hello from Tinker!'</span>])
+# App\Models\Chirp {#7426
+#   <span class="hl-property">message</span>: <span class="hl-value">&quot;Hello from Tinker!&quot;</span>,
+#   <span class="hl-property">user_id</span>: 1,
+#   <span class="hl-property">updated_at</span>: <span class="hl-value">&quot;2023-11-26 23:01:00&quot;</span>,
+#   <span class="hl-property">created_at</span>: <span class="hl-value">&quot;2023-11-26 23:01:00&quot;</span>,
+#   <span class="hl-property">id</span>: 18,
+# }
+</code></pre>
+
+<p><img src="/assets/images/bootcamp/broadcasting-tinker.png" alt="Broadcasting from Tinker" /></p>
+
+<h3>Extra Credit: Fixing The Missing Dropdowns</h3>
+
+<p>When creating the Chirp from Tinker, even though we see them appearing on the page, if you look closely, you may notice that the dropdown with the "Edit" and "Delete" buttons is missing. This would also be true if we were using a real queue driver, since it would defer the rendering of the partial to a background queue worker. That's because when we send the broadcasts to run in background, the partial will render without a request and session contexts, so our calls to <code>Auth::id()</code> inside of it will always return <code>null</code>, which means the dropdown would never render.</p>
+
+<p>Instead of conditionally rendering the dropdown in the server side, let's switch to always rendering them and hide it from our users with a sprinkle of JavaScript instead.</p>
+
+<p>First, let's update our <code>layouts.partials.current-identity</code> partial to include a few things about the currently authenticated user when there's one:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/layouts/partials/current-identity.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade"><span class="hl-keyword">@auth</span>
+&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-identity-id&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-type">Auth</span>::<span class="hl-property">user</span>()-&gt;<span class="hl-property">id</span> }}&quot; /&gt;
+&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-identity-name&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-type">Auth</span>::<span class="hl-property">user</span>()-&gt;<span class="hl-property">name</span> }}&quot; /&gt;
+<span class="hl-keyword">@endauth</span>
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Next, update the <code>app.blade.php</code> to include it:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/layouts/app.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade">&lt;!DOCTYPE html&gt;
+&lt;<span class="hl-keyword">html</span> <span class="hl-property">lang</span>=&quot;{{ <span class="hl-property">str_replace</span>(<span class="hl-value">'_'</span>, <span class="hl-value">'-'</span>, <span class="hl-property">app</span>()-&gt;<span class="hl-property">getLocale</span>()) }}&quot;&gt;
+    &lt;<span class="hl-keyword">head</span>&gt;
+        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">charset</span>=&quot;utf-8&quot;&gt;
+        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;viewport&quot; <span class="hl-property">content</span>=&quot;width=device-width, initial-scale=1&quot;&gt;
+        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;csrf-token&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">csrf_token</span>() }}&quot;&gt;
+
+        <span class="hl-keyword">@if</span> (<span class="hl-variable">$viewTransitions</span> ?? <span class="hl-keyword">false</span>)
+        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;view-transition&quot; <span class="hl-property">content</span>=&quot;same-origin&quot; /&gt;
+        <span class="hl-keyword">@endif</span>
+
+        <span class="hl-keyword">@include</span>(<span class="hl-value">'layouts.partials.reverb'</span>)
+<span class="hl-addition">        <span class="hl-keyword">@include</span>(<span class="hl-value">'layouts.partials.current-identity'</span>)</span>
+
+        {{ <span class="hl-variable">$meta</span> ?? <span class="hl-value">''</span> }}
+
+        &lt;<span class="hl-keyword">title</span>&gt;{{ <span class="hl-property">config</span>(<span class="hl-value">'app.name'</span>, <span class="hl-value">'Laravel'</span>) }}&lt;/<span class="hl-keyword">title</span>&gt;
+
+        <span class="hl-comment">&lt;!-- ... --&gt;</span>
+    &lt;/<span class="hl-keyword">head</span>&gt;
+
+    &lt;<span class="hl-keyword">body</span> <span class="hl-property">class</span>=&quot;font-sans antialiased&quot;&gt;
+        <span class="hl-comment">&lt;!-- ... --&gt;</span>
+    &lt;/<span class="hl-keyword">body</span>&gt;
+&lt;/<span class="hl-keyword">html</span>&gt;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Now, we're going to create a new Stimulus controller that is going to be responsible for the dropdown visibility. It should only show it if the currently authenticated user is the creator of the Chirp. First, let's create the controller:</p>
+
+<pre><code class="language-bash">php artisan stimulus:make visible_to_creator
+</code></pre>
+
+<p>Now, update the Stimulus controller to look like this:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/js/controllers/visible_to_creator_controller.js</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-js"><span class="hl-keyword">import</span> { Controller } <span class="hl-keyword">from</span> <span class="hl-value">&quot;@hotwired/stimulus&quot;</span>
+
+<span class="hl-comment">// Connects to data-controller=&quot;visible-to-creator&quot;</span>
+<span class="hl-keyword">export</span> <span class="hl-keyword">default</span> <span class="hl-keyword">class</span> <span class="hl-keyword">extends</span> Controller {
+    <span class="hl-keyword">static</span> <span class="hl-property">values</span> = {
+        <span class="hl-property">id</span>: String,
+    }
+
+    <span class="hl-keyword">static</span> <span class="hl-property">classes</span> = [<span class="hl-value">'hidden'</span>]
+
+    <span class="hl-property">connect</span>() {
+        <span class="hl-keyword">this</span>.<span class="hl-property">toggleVisibility</span>()
+    }
+
+    <span class="hl-property">toggleVisibility</span>() {
+        <span class="hl-keyword">if</span> (<span class="hl-keyword">this</span>.<span class="hl-property">idValue</span> == window.<span class="hl-type">Current</span>.<span class="hl-property">identity</span>.<span class="hl-property">id</span>) {
+            <span class="hl-keyword">this</span>.<span class="hl-property">element</span>.<span class="hl-property">classList</span>.<span class="hl-property">remove</span>(...<span class="hl-property">this</span>.<span class="hl-property">hiddenClasses</span>)
+        } <span class="hl-keyword">else</span> {
+            <span class="hl-keyword">this</span>.<span class="hl-property">element</span>.<span class="hl-property">classList</span>.<span class="hl-property">add</span>(...<span class="hl-property">this</span>.<span class="hl-property">hiddenClasses</span>)
+        }
+    }
+}
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Now, let's update our <code>chirps.partials.chirp.blade.php</code> partial to use this controller instead of handling this in the server-side:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/chirps/partials/chirp.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::frame</span> :<span class="hl-property">id</span>=&quot;$chirp&quot; <span class="hl-property">class</span>=&quot;p-6 flex space-x-2&quot;&gt;
+    &lt;<span class="hl-keyword">svg</span> <span class="hl-property">xmlns</span>=&quot;http://www.w3.org/2000/svg&quot; <span class="hl-property">class</span>=&quot;h-6 w-6 text-gray-600 dark:text-gray-400 -scale-x-100&quot; <span class="hl-property">fill</span>=&quot;none&quot; <span class="hl-property">viewBox</span>=&quot;0 0 24 24&quot; <span class="hl-property">stroke</span>=&quot;currentColor&quot; <span class="hl-property">stroke-width</span>=&quot;2&quot;&gt;
+        <span class="hl-comment">&lt;!-- ... --&gt;</span>
+    &lt;/<span class="hl-keyword">svg</span>&gt;
+
+    &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex-1&quot;&gt;
+        &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex justify-between items-center&quot;&gt;
+            &lt;<span class="hl-keyword">div</span>&gt;
+                &lt;<span class="hl-keyword">span</span> <span class="hl-property">class</span>=&quot;text-gray-800 dark:text-gray-200&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user</span>-&gt;<span class="hl-property">name</span> }}&lt;/<span class="hl-keyword">span</span>&gt;
+                &lt;<span class="hl-keyword">small</span> <span class="hl-property">class</span>=&quot;ml-2 text-sm text-gray-600 dark:text-gray-400&quot;&gt;&lt;<span class="hl-keyword">x-relative-time</span> :<span class="hl-property">date</span>=&quot;$chirp-&gt;created_at&quot; /&gt;&lt;/<span class="hl-keyword">small</span>&gt;
+                <span class="hl-keyword">@unless</span> (<span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">created_at</span>-&gt;<span class="hl-property">eq</span>(<span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">updated_at</span>))
+                &lt;<span class="hl-keyword">small</span> <span class="hl-property">class</span>=&quot;text-sm text-gray-600&quot;&gt; &amp;middot; edited&lt;/<span class="hl-keyword">small</span>&gt;
+                <span class="hl-keyword">@endunless</span>
+            &lt;/<span class="hl-keyword">div</span>&gt;
+
+<span class="hl-deletion">            <span class="hl-keyword">@if</span> (<span class="hl-type">Auth</span>::<span class="hl-property">id</span>() === <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user</span>-&gt;<span class="hl-property">id</span>) </span>
+<span class="hl-deletion">            &lt;<span class="hl-keyword">x-dropdown</span> <span class="hl-property">align</span>=&quot;right&quot; <span class="hl-property">width</span>=&quot;48&quot;&gt;</span>
+<span class="hl-addition">            &lt;<span class="hl-keyword">x-dropdown</span> <span class="hl-property">align</span>=&quot;right&quot; <span class="hl-property">width</span>=&quot;48&quot; <span class="hl-property">class</span>=&quot;hidden&quot; <span class="hl-property">data-controller</span>=&quot;visible-to-creator&quot; <span class="hl-property">data-visible-to-creator-id-value</span>=&quot;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user_id</span> }}&quot; <span class="hl-property">data-visible-to-creator-hidden-class</span>=&quot;hidden&quot;&gt;</span>
+                <span class="hl-comment">&lt;!-- ... --&gt;</span>
+            &lt;/<span class="hl-keyword">x-dropdown</span>&gt;
+<span class="hl-deletion">            <span class="hl-keyword">@endif</span></span>
+        &lt;/<span class="hl-keyword">div</span>&gt;
+        &lt;<span class="hl-keyword">p</span> <span class="hl-property">class</span>=&quot;mt-4 text-lg text-gray-900 dark:text-gray-200&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">message</span> }}&lt;/<span class="hl-keyword">p</span>&gt;
+    &lt;/<span class="hl-keyword">div</span>&gt;
+&lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Next, we need to tweak our <code>dropdown.blade.php</code> Blade component to accept and merge the <code>class</code>, <code>data-controller</code>, and <code>data-action</code> attributes:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
+    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+
+        <span>resources/views/components/dropdown.blade.php</span>
+    </div>
+
+    </p>
+
+<pre><code class="language-blade"><span class="hl-deletion"><span class="hl-keyword">@props</span>([<span class="hl-value">'align'</span> =&gt; <span class="hl-value">'right'</span>, <span class="hl-value">'width'</span> =&gt; <span class="hl-value">'48'</span>, <span class="hl-value">'contentClasses'</span> =&gt; <span class="hl-value">'py-1 bg-white'</span>])</span>
+<span class="hl-addition"><span class="hl-keyword">@props</span>([<span class="hl-value">'align'</span> =&gt; <span class="hl-value">'right'</span>, <span class="hl-value">'width'</span> =&gt; <span class="hl-value">'48'</span>, <span class="hl-value">'contentClasses'</span> =&gt; <span class="hl-value">'py-1 bg-white'</span>, <span class="hl-value">'dataController'</span> =&gt; <span class="hl-value">''</span>, <span class="hl-value">'dataAction'</span> =&gt; <span class="hl-value">''</span>])</span>
+
+<span class="hl-comment">&lt;!-- ... --&gt;</span>
+
+<span class="hl-deletion">&lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;relative&quot; <span class="hl-property">data-controller</span>=&quot;dropdown&quot; <span class="hl-property">data-action</span>=&quot;turbo:before-cache<span class="hl-keyword">@window</span>-&gt;dropdown#closeNow click<span class="hl-keyword">@window</span>-&gt;dropdown#close close-&gt;dropdown#close&quot;&gt;</span>
+<span class="hl-addition">&lt;<span class="hl-keyword">div</span> {{ <span class="hl-variable">$attributes</span>-&gt;<span class="hl-property">merge</span>([<span class="hl-value">'class'</span> =&gt; <span class="hl-value">'relative'</span>, <span class="hl-value">'data-controller'</span> =&gt; <span class="hl-value">&quot;dropdown {$dataController}&quot;</span>, <span class="hl-value">'data-action'</span> =&gt; <span class="hl-value">&quot;turbo:before-cache<span class="hl-keyword">{{'@'}}window</span>-&gt;dropdown#closeNow click<span class="hl-keyword">@window</span>-&gt;dropdown#closeWhenClickedOutside close-&gt;dropdown#close:stop {$dataAction}&quot;</span>]) }}&gt;</span>
+    <span class="hl-comment">&lt;!-- ... --&gt;</span>
+&lt;/<span class="hl-keyword">div</span>&gt;
+</code></pre>
+
+<p>
+</div>
+</p>
+
+<p>Now, if you try creating another user and test this out, you'll see that the dropdown only shows up for the creator of the Chirp!</p>
+
+<p><img src="/assets/images/bootcamp/broadcasting-dropdown-fix.png" alt="Dropdown only shows up for creator" /></p>
+
+<p>This change also makes our entire <code>_chirp</code> partial cacheable! We could cache it and only render that when changes are made to the Chirp model using the Chirp's <code>updated_at</code> timestamps, for example.</p>
+
+<p><div class="p-6 flex space-x-4 border border-opacity-75 bg-opacity-75 rounded shadow my-8 sm:p-8 border-yellow-50 bg-yellow-50 text-yellow-900">
+    <div>
+        <svg class="!size-8 mt-3 !shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+        </svg>
+    </div>
+
+    <div class="[&_h4]:!my-0 [&_h4]:text-yellow-900">
+        <div class="!mt-0 !font-bold !text-2xl flex items-center space-x-1"></p>
+
+<h4>Is hiding the links with CSS enough?</h4>
+
+<p></div>
+        <div class="!my-0 [&>p]:my-0"></p>
+
+<p> </p>
+
+<p>Hiding the links in the frontend <em><strong>MUST NOT</strong></em> be your only protection here. Always ensure users are authorized to perform actions in the server side. We're already doing this in our controller using <a href="https://laravel.com/docs/authorization#introduction">Laravel's Authorization Policies</a>.</p>
+
+<p></div>
+    </div>
+</div>
+</p>
+        </div>
+
+                    <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Previous</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/hotwiring-everything">Hotwiring Everything <span class="absolute inset-0"></span></a>
+    </div>
+  
+      <div class="lg:col-start-2 relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Next</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/native-setup">Hotwire Native Installation <span class="absolute inset-0"></span></a>
+    </div>
+  </div>
+              </main>
+    </div>
+  </div>
+
+        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
+          <p class="text-base text-center w-full">
+            Turbo Laravel is maintained by <a href="" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
+          </p>
+        </footer>
+    </body>
+</html>

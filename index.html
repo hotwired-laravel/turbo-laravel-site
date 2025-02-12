@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="canonical" href="https://hotwired-laravel.github.io/turbo-laravel-site/">
+        <meta name="description" content="Website and documentation for the Turbo Laravel package.">
+        <title>Turbo Laravel</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/manifest/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/manifest/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/manifest/favicon-16x16.png">
+        <link rel="manifest" href="/assets/site.webmanifest">
+        <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=7756ef47cdc6e051280b7984fd99b8f7">
+        <script defer src="/assets/build/js/main.js?id=2685052459ff19e5e2ef09aac148fca7"></script>
+    </head>
+    <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
+  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
+    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
+      <a href="/">Turbo Laravel</a>
+    </h1>
+
+    <nav class="inline-block lg:hidden">
+      <details class="group" data-search-target="nav">
+        <summary class="list-none">
+          <span>
+            <span class="sr-only">Navigation</span>
+
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
+              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </span>
+        </summary>
+
+        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
+          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
+            <form action="/docs/search" method="GET" class="px-4">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 2.x docs..." />
+  <button type="submit" class="sr-only">Search</button>
+</form>
+
+            <ul class="space-y-6 -mb-2 mt-4">
+              <li>
+                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+                  <span>Documentation</span>
+                </a>
+
+                              </li>
+              <li>
+                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
+              </li>
+              <li class="space-y-6">
+                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
+                              </li>
+              <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </nav>
+  </div>
+
+  <nav class="hidden lg:block">
+    <ul class="flex items-center space-x-6 -my-2">
+      <li>
+        <div class="group relative py-2">
+          <a href="/docs" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+            <span>Documentation</span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </a>
+
+          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
+            <ul class="space-y-1">
+              <li><a href="/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">2.2.0</span></a></li>
+              <li><a href="/1.x/docs/installation" class="block px-2 py-1  rounded">Version <span class="">1.12.2</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
+      <li><a href="/bootcamp/introduction" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
+      <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+    </ul>
+  </nav>
+</header>
+
+          <main>
+    <div class="sm:max-w-5xl mx-auto w-full px-6 py-12 space-y-4 sm:space-y-12  xl:space-y-6">
+      <h2 class="font-heading text-4xl sm:text-7xl font-extrabold text-center">
+          Build web and hybrid native apps in Laravel <em>today</em>.
+      </h2>
+
+      <p class="text-center font-sans text-xl sm:text-2xl text-zinc-900/80">
+        Turbo Laravel integrates your Laravel application with <a href="https://hotwired.dev/" class="underline text-zinc-900/90">Hotwire</a>, an alternative way of building web and native apps with minimal JavaScript, sending HTML over the wire.
+      </p>
+
+      <ul class="sm:flex items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+        <li><a href="/docs" class="px-4 py-2 inline-block w-full text-center rounded-full bg-zinc-900/90 text-white transition hover:bg-zinc-900/70">Read the docs</a></li>
+        <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 inline-block w-full text-center rounded-full bg-zinc-900/90 text-white transition hover:bg-zinc-900/70">View the source</a></li>
+        <li><a href="/demo" class="px-4 py-2 inline-block w-full text-center rounded-full bg-zinc-900/90 text-white transition hover:bg-zinc-900/70">Try the demo</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <section class="bg-white/90 custom-border px-6 py-20">
+    <div class="space-y-4 sm:space-y-6 sm:max-w-5xl mx-auto w-full text-center">
+      <h3 class="text-4xl sm:text-6xl font-heading font-extrabold">Your typical Laravel app.</h3>
+      <p class="text-xl">Hotwire was built for full-stack web frameworks, like Laravel and Rails. Modern web applications don't have to be built as stateful components. We can keep writing regular <a class="underline text-zinc-900/90" href="https://youtu.be/MF0jFKvS4SI?si=1wGv8BYVd8v8IdA2">Cruddy applications</a>, with controllers, Blade views and so on, and progressively enhance the <em>fidelity</em> of our UIs using Turbo Frames, Turbo Streams, or JavaScript.</p>
+    </div>
+
+    <div class="mt-20 lg:max-w-5xl mx-auto w-full space-y-20 lg:space-y-0 lg:grid grid-cols-2 gap-20 thin-scrollbar">
+      <div class="space-y-4">
+        <div class="overflow-x-auto text-sm rounded">
+          <pre class="overflow-x-auto"><code class="language-php"><span class="hl-comment">&lt;!-- File: chirps/show.blade.php --&gt;</span>
+&lt;<span class="hl-keyword">x-turbo::frame</span> :<span class="hl-property">id</span>=&quot;$chirp&quot;&gt;
+    &lt;<span class="hl-keyword">p</span>&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">content</span> }}&lt;/<span class="hl-keyword">p</span>&gt;
+    &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.edit'</span>, <span class="hl-variable">$edit</span>) }}&quot;&gt;
+        Edit
+    &lt;/<span class="hl-keyword">a</span>&gt;
+&lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;
+
+<span class="hl-comment">&lt;!-- File: chirps/edit.blade.php --&gt;</span>
+&lt;<span class="hl-keyword">x-turbo::frame</span> :<span class="hl-property">id</span>=&quot;$chirp&quot;&gt;
+    &lt;<span class="hl-keyword">form</span> <span class="hl-property">action</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.update'</span>, <span class="hl-variable">$chirp</span>) }}&quot; <span class="hl-property">method</span>=&quot;POST&quot;&gt;...&lt;/<span class="hl-keyword">form</span>&gt;
+&lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;
+</code></pre>
+        </div>
+
+        <p class="text-2xl font-heading font-extrabold text-center text-zinc-900/90">Decompose screens with Turbo Frames.</p>
+
+        <p class="text-center text-lg">Turbo Frames allow predefined sections of your page to be updated on request, independently of the rest of the page. We can build things like data tables, inline forms, and so on with a blink of an eye.</p>
+
+        <div class="flex items-center justify-center">
+            <a href="/docs/turbo-frames" class="px-4 py-2 inline-block w-full mx-auto sm:w-auto text-center rounded-full border border-zinc-900/30 hover:bg-zinc-900/5 text-zinc-900 transition">Read more</a>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div class="overflow-x-auto text-sm rounded">
+          <pre class="overflow-x-auto"><code class="language-php"><span class="hl-keyword">class</span> <span class="hl-type">Comment</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;
+}
+
+<span class="hl-comment">// And then...</span>
+
+<span class="hl-variable">$comment</span> = <span class="hl-variable">$post</span>-&gt;<span class="hl-property">comments</span>()-&gt;<span class="hl-property">create</span>();
+
+<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastPrependTo</span>(<span class="hl-variable">$post</span>)
+    -&gt;<span class="hl-property">toOthers</span>()
+    -&gt;<span class="hl-property">later</span>();
+</code></pre>
+        </div>
+
+        <p class="text-2xl font-heading font-extrabold text-center text-zinc-900/90">Come Alive with Turbo Streams.</p>
+
+        <p class="text-center text-lg">Turbo Streams deliver page changes as fragments of HTML. They may be delivered to the browser synchronously after form submits, or asynchronously over WebSockets via Laravel Echo.</p>
+
+        <div class="flex items-center justify-center">
+            <a href="/docs/turbo-streams" class="px-4 py-2 inline-block w-full mx-auto sm:w-auto text-center rounded-full border border-zinc-900/30 hover:bg-zinc-900/5 text-zinc-900 transition">Read more</a>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div class="overflow-x-auto text-sm rounded">
+          <pre class="overflow-x-auto"><code class="language-php"><span class="hl-keyword">class</span> <span class="hl-type">ChirpsController</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">InteractsWithHotwireNativeNavigation</span>;
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">store</span>(<span class="hl-injection"><span class="hl-type">ChirpRequest</span> $request</span>)
+    {
+        <span class="hl-variable">$request</span>-&gt;<span class="hl-property">user</span>()-&gt;<span class="hl-property">chirps</span>()-&gt;<span class="hl-property">create</span>(
+            <span class="hl-variable">$request</span>-&gt;<span class="hl-property">validated</span>()
+        );
+
+        <span class="hl-keyword">return</span> <span class="hl-variable">$this</span>-&gt;<span class="hl-property">recedeOrRedirectTo</span>(
+            <span class="hl-property">to_back</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))
+        )-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));
+    }
+}
+</code></pre>
+        </div>
+
+        <p class="text-2xl font-heading font-extrabold text-center text-zinc-900/90">Go Native with iOS & Android.</p>
+
+        <p class="text-center text-lg">Hotwire Native lets your Laravel application be the center of your native iOS and Android apps, with seamless transitions between web and native screens. Turbo Laravel has tons of helpers for instrumenting your Hotwire Native clients!</p>
+
+        <div class="flex items-center justify-center">
+            <a href="/docs/hotwire-native" class="px-4 py-2 inline-block w-full mx-auto sm:w-auto text-center rounded-full border border-zinc-900/30 hover:bg-zinc-900/5 text-zinc-900 transition">Read more</a>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div class="overflow-x-auto text-sm rounded">
+          <pre class="overflow-x-auto"><code class="language-php"><span class="hl-property">it</span>(<span class="hl-value">'creates chirps'</span>, <span class="hl-keyword">function</span> () {
+    <span class="hl-variable">$response</span> = <span class="hl-variable">$this</span>-&gt;<span class="hl-property">post</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.store'</span>), [
+        <span class="hl-value">'content'</span> =&gt; <span class="hl-value">'Test Chirp'</span>,
+    ]);
+
+    <span class="hl-variable">$response</span>-&gt;<span class="hl-property">assertTurboStream</span>(<span class="hl-keyword">fn</span> (<span class="hl-injection"><span class="hl-type">AssertableTurboStream</span> $streams</span>) =&gt; (
+        <span class="hl-variable">$streams</span>-&gt;<span class="hl-property">has</span>(1)
+        <span class="hl-operator">&amp;&amp;</span> <span class="hl-variable">$streams</span>-&gt;<span class="hl-property">hasTurboStream</span>(<span class="hl-keyword">fn</span> (<span class="hl-injection">$turboStream</span>) =&gt; (
+            <span class="hl-variable">$turboStream</span>
+                -&gt;<span class="hl-property">where</span>(<span class="hl-value">'target'</span>, <span class="hl-value">'chirps'</span>)
+                -&gt;<span class="hl-property">where</span>(<span class="hl-value">'action'</span>, <span class="hl-value">'prepend'</span>)
+                -&gt;<span class="hl-property">see</span>(<span class="hl-value">'Test Chirp'</span>)
+        ))
+    ));
+});
+</code></pre>
+        </div>
+
+        <p class="text-2xl font-heading font-extrabold text-center text-zinc-900/90">Everything is testable.</p>
+
+        <p class="text-center text-lg">Turbo Laravel ships with a series of testing helpers out of the box, so you can ensure your application is fully tested. The best part is that not much changes from your typical Laravel testing approach.</p>
+
+        <div class="flex items-center justify-center">
+            <a href="/docs/testing" class="px-4 py-2 inline-block w-full mx-auto sm:w-auto text-center rounded-full border border-zinc-900/30 hover:bg-zinc-900/5 text-zinc-900 transition">Read more</a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="max-w-xs mx-auto my-20">
+
+    <div class="space-y-6 sm:max-w-5xl mx-auto w-full text-center">
+      <h3 class="font-heading font-extrabold text-4xl">The Bootcamp</h3>
+
+      <p class="text-center text-lg">In order to help you to get a better understanding of the many sides of Hotwire, we offer a free Bootcamp inspired by the official Laravel Bootcamp. In the Turbo Laravel Bootcamp, you’ll get a hands-on introduction to Hotwire and Turbo Laravel building a web application from scratch and then building the hybrid native app for it.</p>
+
+      <ul class="sm:flex items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+        <li><a href="/bootcamp/introduction" class="px-4 py-2 inline-block w-full text-center rounded-full bg-zinc-900/90 text-white transition hover:bg-zinc-900/70">Start learning</a></li>
+      </ul>
+    </div>
+  </section>
+
+        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
+          <p class="text-base text-center w-full">
+            Turbo Laravel is maintained by <a href="" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
+          </p>
+        </footer>
+    </body>
+</html>
