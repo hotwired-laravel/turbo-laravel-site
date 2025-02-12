@@ -14,7 +14,7 @@
         <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="stylesheet" href="/assets/build/css/main.css?id=7756ef47cdc6e051280b7984fd99b8f7">
-        <script defer src="/assets/build/js/main.js?id=2685052459ff19e5e2ef09aac148fca7"></script>
+        <script defer src="/assets/build/js/main.js?id=c803e2f5c4ee879500977d6eb36d43a5"></script>
     </head>
     <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
         <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
@@ -202,14 +202,24 @@
 
 <p>Next, we'll need to update the published <code>echo.js</code> file. It currently uses <code>import.meta.env.*</code>, which requires a build step. Instead, we'll update it to use the <code>current.js</code> to read the configs from meta tags we'll add to our layouts. But first, replace the <code>echo.js</code> with the following version:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>resources/js/echo.js</span>
-    </div>
+            <span>resources/js/echo.js</span>
+        </div>
+
+                <button title="Copy to clipboard" data-action="clipboard#copy" type="button">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+            </svg>
+
+            <span class="sr-only">Copy</span>
+        </button>
+            </div>
 
     </p>
 
@@ -238,14 +248,17 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>We also need to update the <code>bootstrap.js</code> file to fix the import that was appended by Reverb to the Importmap style:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>resources/js/bootstrap.js</span>
-    </div>
+            <span>resources/js/bootstrap.js</span>
+        </div>
+
+            </div>
 
     </p>
 
@@ -267,14 +280,24 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>Next, let's create a new layout partial at <code>resources/views/layouts/partials/reverb.blade.php</code> with the following content:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>resources/views/layouts/partials/reverb.blade.php</span>
-    </div>
+            <span>resources/views/layouts/partials/reverb.blade.php</span>
+        </div>
+
+                <button title="Copy to clipboard" data-action="clipboard#copy" type="button">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+            </svg>
+
+            <span class="sr-only">Copy</span>
+        </button>
+            </div>
 
     </p>
 
@@ -290,14 +313,17 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>Then, add that to the <code>app.blade.php</code> layout file:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>resources/views/layouts/app.blade.php</span>
-    </div>
+            <span>resources/views/layouts/app.blade.php</span>
+        </div>
+
+            </div>
 
     </p>
 
@@ -331,14 +357,17 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>Do the same for the guest layout:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>resources/views/layouts/guest.blade.php</span>
-    </div>
+            <span>resources/views/layouts/guest.blade.php</span>
+        </div>
+
+            </div>
 
     </p>
 
@@ -388,14 +417,17 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>With that, our Reverb config needs to be updated to use the new frontend configs:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>config/reverb.php</span>
-    </div>
+            <span>config/reverb.php</span>
+        </div>
+
+            </div>
 
     </p>
 
@@ -440,14 +472,17 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>Next, update the <code>docker-compose.yml</code> to add the new <code>reverb.test</code> service:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>docker-compose.yml</span>
-    </div>
+            <span>docker-compose.yml</span>
+        </div>
+
+            </div>
 
     </p>
 
@@ -499,14 +534,17 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>Let's start by sending new Chirps to all users currently visiting the chirps page. We're going to start by creating a private broadcasting channel called <code>chirps</code> in our <code>routes/channels.php</code> file. Any authenticated user may start receiving new Chirps broadcasts when they visit the <code>chirps.index</code> page, so we're simply returning <code>true</code> in the authorization check:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>routes/channels.php</span>
-    </div>
+            <span>routes/channels.php</span>
+        </div>
+
+            </div>
 
     </p>
 
@@ -530,14 +568,17 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>Now, let's update the <code>chirps/index.blade.php</code> to add the <code>x-turbo::stream-from</code> Blade component that ships with Turbo Laravel:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>resources/views/chirps/index.blade.php</span>
-    </div>
+            <span>resources/views/chirps/index.blade.php</span>
+        </div>
+
+            </div>
 
     </p>
 
@@ -564,14 +605,17 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>Now, we're ready to start broadcasting! First, let's add the <code>Broadcasts</code> trait to our <code>Chirp</code> model:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>app/Models/Chirp.php</span>
-    </div>
+            <span>app/Models/Chirp.php</span>
+        </div>
+
+            </div>
 
     </p>
 
@@ -605,14 +649,17 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>That trait will give us a bunch of methods we can call from our Chirp model instances. Let's use it in the <code>store</code> action of our <code>ChirpController</code> to send newly created Chirps to all connected users:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>app/Http/Controllers/ChirpController.php</span>
-    </div>
+            <span>app/Http/Controllers/ChirpController.php</span>
+        </div>
+
+            </div>
 
     </p>
 
@@ -665,14 +712,17 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>Now, let's make sure all visiting users receive Chirp updates whenever it changes. To achieve that, change the <code>update</code> action in the <code>ChirpController</code>:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>app/Http/Controllers/ChirpController.php</span>
-    </div>
+            <span>app/Http/Controllers/ChirpController.php</span>
+        </div>
+
+            </div>
 
     </p>
 
@@ -728,14 +778,17 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>Finally, let's make sure deleted Chirps are removed from all visiting users' pages. Tweak the <code>destroy</code> action in the <code>ChirpController</code> like so:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>app/Http/Controllers/ChirpController.php</span>
-    </div>
+            <span>app/Http/Controllers/ChirpController.php</span>
+        </div>
+
+            </div>
 
     </p>
 
@@ -792,14 +845,17 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>Our <code>Chirp</code> model would end up looking like this:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>app/Models/Chirp.php</span>
-    </div>
+            <span>app/Models/Chirp.php</span>
+        </div>
+
+            </div>
 
     </p>
 
@@ -845,14 +901,17 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>We can then remove a few lines from our <code>ChirpsController</code>:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>app/Http/Controllers/ChirpController.php</span>
-    </div>
+            <span>app/Http/Controllers/ChirpController.php</span>
+        </div>
+
+            </div>
 
     </p>
 
@@ -1010,14 +1069,24 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>First, let's update our <code>layouts.partials.current-identity</code> partial to include a few things about the currently authenticated user when there's one:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>resources/views/layouts/partials/current-identity.blade.php</span>
-    </div>
+            <span>resources/views/layouts/partials/current-identity.blade.php</span>
+        </div>
+
+                <button title="Copy to clipboard" data-action="clipboard#copy" type="button">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+            </svg>
+
+            <span class="sr-only">Copy</span>
+        </button>
+            </div>
 
     </p>
 
@@ -1033,14 +1102,17 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>Next, update the <code>app.blade.php</code> to include it:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>resources/views/layouts/app.blade.php</span>
-    </div>
+            <span>resources/views/layouts/app.blade.php</span>
+        </div>
+
+            </div>
 
     </p>
 
@@ -1082,14 +1154,24 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>Now, update the Stimulus controller to look like this:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>resources/js/controllers/visible_to_creator_controller.js</span>
-    </div>
+            <span>resources/js/controllers/visible_to_creator_controller.js</span>
+        </div>
+
+                <button title="Copy to clipboard" data-action="clipboard#copy" type="button">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+            </svg>
+
+            <span class="sr-only">Copy</span>
+        </button>
+            </div>
 
     </p>
 
@@ -1123,14 +1205,17 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>Now, let's update our <code>chirps.partials.chirp.blade.php</code> partial to use this controller instead of handling this in the server-side:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>resources/views/chirps/partials/chirp.blade.php</span>
-    </div>
+            <span>resources/views/chirps/partials/chirp.blade.php</span>
+        </div>
+
+            </div>
 
     </p>
 
@@ -1167,14 +1252,17 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>Next, we need to tweak our <code>dropdown.blade.php</code> Blade component to accept and merge the <code>class</code>, <code>data-controller</code>, and <code>data-action</code> attributes:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]">
-    <div class="min-w-0 overflow-auto pt-3 pb-2.5 px-6 font-mono text-base border-b border-gray-700 text-gray-400 flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-        </svg>
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
 
-        <span>resources/views/components/dropdown.blade.php</span>
-    </div>
+            <span>resources/views/components/dropdown.blade.php</span>
+        </div>
+
+            </div>
 
     </p>
 
