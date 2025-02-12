@@ -135,7 +135,7 @@ Now take a look in your browser to see the message you Chirped earlier!
 
 ## Extra Credit: Relative Dates
 
-Right now our `chirp.blade.php` partial formats the date as relative, but that's relative to the time it was rendered, not the current time. We can write it in a way that it would auto-update without requiring a page refresh using [Local-time Laravel](https://github.com/tonysm/local-time-laravel) package.
+Right now our `chirp.blade.php` partial formats the date as relative, but that's relative to the time it was rendered, not the current time. We can write it in a way that it would auto-update without requiring a page refresh using [Local Time Laravel](https://github.com/tonysm/local-time-laravel) package.
 
 First, let's install it via Composer:
 
