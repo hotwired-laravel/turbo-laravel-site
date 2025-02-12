@@ -1,0 +1,51 @@
+name: Publish
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+
+    name: Publish to GH Pages
+
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v2
+
+      - name: Checkout 1.x docs
+        uses: actions/checkout@master
+        with:
+          name: hotwired-laravel/turbo-laravel
+          ref: refs/heads/1.x
+          path: /tmp/1.x
+
+      - name: Checkout 2.x docs
+        uses: actions/checkout@master
+        with:
+          name: hotwired-laravel/turbo-laravel
+          ref: refs/heads/2.x
+          path: /tmp/2.x
+
+      - name: Install Dependencies
+        run: |
+          composer install
+          npm install
+
+      - name: Copy sources
+        run: |
+          cp -R /tmp/1.x/docs/ source/_1.x
+          cp -R /tmp/2.x/docs/ source/_2.x
+
+      - name: Build
+        run: |
+          npm run prod
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build_production
