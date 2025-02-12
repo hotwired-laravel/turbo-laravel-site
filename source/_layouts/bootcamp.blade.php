@@ -16,7 +16,7 @@
       </aside>
 
       <main class="flex-1 min-w-0">
-        <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+        <div class="prose prose-xl prose-zinc [&_code:not(pre_code)]:text-wrap [&_code:not(pre_code)]:break-words prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
             @yield('content')
         </div>
 
