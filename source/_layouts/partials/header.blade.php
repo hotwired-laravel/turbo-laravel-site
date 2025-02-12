@@ -39,7 +39,7 @@
                 <a href="{{ $page->bootcamp_index }}" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
                 @yield('sub-nav-bootcamp-mobile')
               </li>
-              <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+              <!-- <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li> -->
             </ul>
           </div>
         </div>
@@ -69,7 +69,7 @@
       </li>
       <li><a href="{{ $page->github_url }}" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
       <li><a href="{{ $page->bootcamp_index }}" class="{{ str_contains($page->getPath(), '/bootcamp/') ? 'bg-white/90' : '' }} px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
-      <li><a href="/demo" class="{{ str_starts_with($page->getPath(), '/demo') ? 'bg-white/90' : '' }} px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+      <!-- <li><a href="/demo" class="{{ str_starts_with($page->getPath(), '/demo') ? 'bg-white/90' : '' }} px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li> -->
     </ul>
   </nav>
 </header>

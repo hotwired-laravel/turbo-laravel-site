@@ -14,7 +14,7 @@
       <ul class="sm:flex items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
         <li><a href="/docs" class="px-4 py-2 inline-block w-full text-center rounded-full bg-zinc-900/90 text-white transition hover:bg-zinc-900/70">Read the docs</a></li>
         <li><a href="{{ $page->github_url }}" class="px-4 py-2 inline-block w-full text-center rounded-full bg-zinc-900/90 text-white transition hover:bg-zinc-900/70">View the source</a></li>
-        <li><a href="/demo" class="px-4 py-2 inline-block w-full text-center rounded-full bg-zinc-900/90 text-white transition hover:bg-zinc-900/70">Try the demo</a></li>
+        <!-- <li><a href="/demo" class="px-4 py-2 inline-block w-full text-center rounded-full bg-zinc-900/90 text-white transition hover:bg-zinc-900/70">Try the demo</a></li> -->
       </ul>
     </div>
   </main>
