@@ -137,10 +137,17 @@ Now take a look in your browser to see the message you Chirped earlier!
 
 Right now our `chirp.blade.php` partial formats the date as relative, but that's relative to the time it was rendered, not the current time. We can write it in a way that it would auto-update without requiring a page refresh using [Local-time Laravel](https://github.com/tonysm/local-time-laravel) package.
 
-First, install JS package:
+First, let's install it via Composer:
+
+```bash
+composer require tonysm/local-time-laravel
+```
+
+Then, install JS package:
 ```bash
 php artisan importmap:pin local-time
 ```
+
 Now, let's create our own lib setup file in the `libs/localtime.js` file:
 
 <x-fenced-code file="resources/js/libs/localtime.js" copy>
