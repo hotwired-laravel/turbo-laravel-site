@@ -33,7 +33,7 @@ jobs:
 
       - name: Copy sources
         run: |
-          cp -R 1.x-src/docs/ source/_1.x
+          cp -R 1.x-src/docs/ source/_v1
           cp -R 2.x-src/docs/ source/_docs
 
       - name: Install Dependencies
