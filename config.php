@@ -10,6 +10,7 @@ return [
 
     'github_url' => 'https://github.com/hotwired-laravel/turbo-laravel',
     'hotwire_site_url' => 'https://hotwired.dev/',
+    'tony_site_url' => 'https://tonysm.com',
 
     'current_version' => '2.2.0',
     'latest_v1' => '1.12.2',
@@ -19,18 +20,18 @@ return [
     'bootcamp_index' => '/bootcamp/introduction',
 
     'collections' => [
-        'docs' => ['path' => 'docs/{filename}', 'sort' => 'order', 'searchable' => fn ($page) => $page->search ?? true],
-        'v1' => ['path' => '1.x/docs/{filename}', 'sort' => 'order', 'searchable' => fn ($page) => $page->search ?? true],
-        'bootcamp' => ['path' => 'bootcamp/{filename}', 'sort' => 'order', 'searchable' => fn ($page) => $page->search ?? true],
+        'docs' => ['path' => 'docs/{filename}', 'sort' => 'order', 'searchable' => fn($page) => $page->search ?? true],
+        'v1' => ['path' => '1.x/docs/{filename}', 'sort' => 'order', 'searchable' => fn($page) => $page->search ?? true],
+        'bootcamp' => ['path' => 'bootcamp/{filename}', 'sort' => 'order', 'searchable' => fn($page) => $page->search ?? true],
     ],
 
     'navigation' => [
-        'v1' => require ('v1-navigation.php'),
-        'v2' => require ('navigation.php'),
-        'bootcamp' => require ('bootcamp.php'),
+        'v1' => require('v1-navigation.php'),
+        'v2' => require('navigation.php'),
+        'bootcamp' => require('bootcamp.php'),
     ],
 
-    'selected' => fn ($page, $section) => str_contains($page->getPath(), $section),
+    'selected' => fn($page, $section) => str_contains($page->getPath(), $section),
 
     'snippets' => [
         'frames' => <<<HTML
