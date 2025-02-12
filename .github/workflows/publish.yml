@@ -20,14 +20,14 @@ jobs:
         uses: actions/checkout@master
         with:
           name: hotwired-laravel/turbo-laravel
-          ref: refs/heads/1.x
+          ref: 1.x
           path: 1.x-src
 
       - name: Checkout 2.x docs
         uses: actions/checkout@master
         with:
           name: hotwired-laravel/turbo-laravel
-          ref: refs/heads/2.x
+          ref: 2.x
           path: 2.x-src
 
       - name: Install Dependencies
