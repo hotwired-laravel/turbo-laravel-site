@@ -385,7 +385,7 @@
         &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex justify-between items-center&quot;&gt;
             &lt;<span class="hl-keyword">div</span>&gt;
                 &lt;<span class="hl-keyword">span</span> <span class="hl-property">class</span>=&quot;text-gray-800 dark:text-gray-200&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user</span>-&gt;<span class="hl-property">name</span> }}&lt;/<span class="hl-keyword">span</span>&gt;
-                &lt;<span class="hl-keyword">small</span> <span class="hl-property">class</span>=&quot;ml-2 text-sm text-gray-600 dark:text-gray-400&quot;&gt;&lt;<span class="hl-keyword">x-relative-time</span> :<span class="hl-property">date</span>=&quot;$chirp-&gt;created_at&quot; /&gt;&lt;/<span class="hl-keyword">small</span>&gt;
+                &lt;<span class="hl-keyword">small</span> <span class="hl-property">class</span>=&quot;ml-2 text-sm text-gray-600 dark:text-gray-400&quot;&gt;&lt;<span class="hl-keyword">x-local-time-ago</span> :<span class="hl-property">value</span>=&quot;$chirp-&gt;created_at&quot; /&gt;&lt;/<span class="hl-keyword">small</span>&gt;
                 <span class="hl-keyword">@unless</span> (<span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">created_at</span>-&gt;<span class="hl-property">eq</span>(<span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">updated_at</span>))
                 &lt;<span class="hl-keyword">small</span> <span class="hl-property">class</span>=&quot;text-sm text-gray-600&quot;&gt; &amp;middot; edited&lt;/<span class="hl-keyword">small</span>&gt;
                 <span class="hl-keyword">@endunless</span>
