@@ -9,7 +9,7 @@
     <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
       <aside class="relative w-1/4 hidden lg:block">
         <div class="sticky top-4 block space-y-4">
-            @include('_layouts.partials.search', ['href' => '/1.x/docs/search', 'placeholder' => 'Search v1 docs...'])
+            @include('_layouts.partials.search', ['href' => '/1.x/docs/search', 'placeholder' => 'Search v1 docs... (press "/" to focus)'])
 
             @include('_layouts.partials.sidebar-menu', ['menu' => $page->navigation['v1']])
         </div>
