@@ -1,5 +1,5 @@
 <docs>
-    <page title="Upgrade Guide" url="https://new.turbo-laravel.com/docs/upgrade">
+    <page title="Upgrade Guide" url="https://turbo-laravel.com/docs/upgrade">
         Upgrade Guide
 
 Upgrading from 1.x to 2.x
@@ -24,7 +24,7 @@ composer remove hotwired/turbo-laravel
 
 
     </page>
-    <page title="Installation" url="https://new.turbo-laravel.com/docs/installation">
+    <page title="Installation" url="https://turbo-laravel.com/docs/installation">
         Installation
 
 Turbo Laravel can be installed via Composer:
@@ -42,7 +42,7 @@ This will add the Turbo.js dependency to your package.json file, when you&#039;r
 Note: Turbo used to work with Livewire, but somewhere around Livewire V3 the bridges stopped working. There&#039;s an open issue to investigate Livewire V3 compatibility. If you&#039;re into Livewire and would love to use Turbo in a Livewire app (maybe you want to augment your Livewire &amp; Turbo app with Hotwire Native or something like that), you&#039;re welcome to check out the issue and try to bring the compatibility back. If you wanted an application scaffolding like Laravel Breeze or Laravel Jetstream, checkout Turbo Breeze, our fork of Breeze that sets up a fresh Laravel app using Stimulus, Importmaps, TailwindCSS (via the CLI), and Turbo.
 
     </page>
-    <page title="Overview" url="https://new.turbo-laravel.com/docs/overview">
+    <page title="Overview" url="https://turbo-laravel.com/docs/overview">
         Overview
 
 It&#039;s highly recommended that you read the Turbo Handbook first before continuing here. However, a quick intro will be provided here and we&#039;ll link to the Turbo documentations when relevant.
@@ -187,7 +187,7 @@ This will get &quot;Hello World&quot; printed on the DevTools Console. With cust
 So far, all vanilla Hotwire and Turbo.
 
     </page>
-    <page title="Conventions" url="https://new.turbo-laravel.com/docs/conventions">
+    <page title="Conventions" url="https://turbo-laravel.com/docs/conventions">
         Conventions
 
 The conventions described below are NOT mandatory. Feel free to pick what you like and also come up with your own conventions. With that out of the way, here&#039;s a list of conventions you may find helpful.
@@ -267,7 +267,7 @@ Note: Turbo Stream Broadcasts are optional.
 You may use the model&#039;s Fully Qualified Class Name (aka. FQCN) as your Broadcasting Channel authorization routes with a wildcard, such as App.Models.Comment.{comment} for a Comment model living in App\\Models\\ - the wildcard&#039;s name doesn&#039;t matter, as long as there is one. This is the default broadcasting channel naming convention in Laravel.
 
     </page>
-    <page title="Helpers" url="https://new.turbo-laravel.com/docs/helpers">
+    <page title="Helpers" url="https://turbo-laravel.com/docs/helpers">
         Helpers
 
 Turbo Laravel has a set of Blade Directives, Components, helper functions, and request/response macros to help making the most out of Turbo in Laravel.
@@ -529,7 +529,7 @@ The response()-&gt;turboStreamView() macro
 The response()-&gt;turboStreamView() macro works similarly to the turbo_stream_view() function above. It was only added to the response for convenience.
 
     </page>
-    <page title="Turbo Frames" url="https://new.turbo-laravel.com/docs/turbo-frames">
+    <page title="Turbo Frames" url="https://turbo-laravel.com/docs/turbo-frames">
         Turbo Frames
 
 The Turbo Frame tag that ships with Turbo can be used on your Blade views just like any other HTML tag:
@@ -580,7 +580,7 @@ if ($request-&gt;wasFromTurboFrame(dom_id($post, &#039;create_comment&#039;))) {
 
 
     </page>
-    <page title="Turbo Streams" url="https://new.turbo-laravel.com/docs/turbo-streams">
+    <page title="Turbo Streams" url="https://turbo-laravel.com/docs/turbo-streams">
         Turbo Streams
 
 Out of everything Turbo provides, it&#039;s Turbo Streams that benefits the most from a tight backend integration.
@@ -901,7 +901,7 @@ You may also use the &lt;x-turbo::stream&gt; Blade component for your custom act
 Custom actions are only supported from Blade views. You cannot return those from controllers using the Pending Streams Builder.
 
     </page>
-    <page title="Broadcasting" url="https://new.turbo-laravel.com/docs/broadcasting">
+    <page title="Broadcasting" url="https://turbo-laravel.com/docs/broadcasting">
         Broadcasting Turbo Streams
 
 So far, we&#039;ve seen how we may generate Turbo Streams to either add it to our Blade views or return them from controllers after a form submission over HTTP. In addition to that, we may also broadcast model changes over WebSockets (or Server-Sent Events).
@@ -1356,7 +1356,7 @@ turbo_stream()
 
 
     </page>
-    <page title="Validation Response" url="https://new.turbo-laravel.com/docs/validation-response-redirects">
+    <page title="Validation Response" url="https://turbo-laravel.com/docs/validation-response-redirects">
         Validation Response
 
 By default, Laravel redirects failed validation exceptions &quot;back&quot; to the page where the request came from. This isn&#039;t usually a problem, in fact it&#039;s the expected behavior, since that page usually is the one where the form which triggered the request renders.
@@ -1430,7 +1430,7 @@ class Kernel extends HttpKernel
 
 
     </page>
-    <page title="CSRF Protection" url="https://new.turbo-laravel.com/docs/csrf">
+    <page title="CSRF Protection" url="https://turbo-laravel.com/docs/csrf">
         CSRF Protection
 
 Laravel has built-in CSRF protection in place. It prevents our app from processing any non-GET requests that doesn&#039;t include a valid CSRF Token that was generated in our backend.
@@ -1451,7 +1451,7 @@ Since Turbo.js intercepts form submissions and converts those to fetch requests 
 With that being said, you may still want to use the @csrf Blade directive if you want to support users with JavaScript disabled, since the forms will still work if they contain the CSRF token.
 
     </page>
-    <page title="Hotwire Native" url="https://new.turbo-laravel.com/docs/hotwire-native">
+    <page title="Hotwire Native" url="https://turbo-laravel.com/docs/hotwire-native">
         Hotwire Native
 
 Hotwire also has a mobile side and Turbo Laravel provides some helpers to help integrating with that.
@@ -1593,7 +1593,7 @@ return [
 
 
     </page>
-    <page title="Testing" url="https://new.turbo-laravel.com/docs/testing">
+    <page title="Testing" url="https://turbo-laravel.com/docs/testing">
         Testing
 
 Testing a Hotwired app is like testing a regular Laravel app. However, Turbo Laravel comes with a set of helpers that may be used to ease testing some aspects that are specific to Turbo:
@@ -1862,7 +1862,7 @@ class CreatesCommentsTest extends TestCase
 Note: If you&#039;re using the automatic model changes broadcasting, make sure your turbo-laravel.queue config key is set to false, otherwise actions may not be dispatched during test because the model observer only fires them after the transaction is committed, which never happens in tests since they run inside a transaction.
 
     </page>
-    <page title="Known Issues" url="https://new.turbo-laravel.com/docs/known-issues">
+    <page title="Known Issues" url="https://turbo-laravel.com/docs/known-issues">
         Known Issues
 
 If you ever encounter an issue with the package, look here first for documented solutions.
