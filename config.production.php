@@ -2,5 +2,5 @@
 
 return [
     'production' => true,
-    'baseUrl' => 'https://new.turbo-laravel.com',
+    'baseUrl' => 'https://turbo-laravel.com',
 ];

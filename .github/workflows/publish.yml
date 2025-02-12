@@ -47,7 +47,7 @@ jobs:
 
       - name: Add CNAME
         run: |
-          echo "new.turbo-laravel.com" > build_production/CNAME
+          echo "turbo-laravel.com" > build_production/CNAME
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
