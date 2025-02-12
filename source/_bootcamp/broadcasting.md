@@ -27,7 +27,7 @@ php artisan importmap:pin laravel-echo pusher-js current.js
 
 Next, we'll need to update the published `echo.js` file. It currently uses `import.meta.env.*`, which requires a build step. Instead, we'll update it to use the `current.js` to read the configs from meta tags we'll add to our layouts. But first, replace the `echo.js` with the following version:
 
-<x-fenced-code file="resources/js/echo.js">
+<x-fenced-code file="resources/js/echo.js" copy>
 
 ```js 
 import Echo from 'laravel-echo';
@@ -72,7 +72,7 @@ We also need to update the `bootstrap.js` file to fix the import that was append
 
 Next, let's create a new layout partial at `resources/views/layouts/partials/reverb.blade.php` with the following content:
 
-<x-fenced-code file="resources/views/layouts/partials/reverb.blade.php">
+<x-fenced-code file="resources/views/layouts/partials/reverb.blade.php" copy>
 
 ```blade
 <meta name="current-reverb-app-key" content="{{ config('broadcasting.connections.reverb.key') }}" />
@@ -677,7 +677,7 @@ Instead of conditionally rendering the dropdown in the server side, let's switch
 
 First, let's update our `layouts.partials.current-identity` partial to include a few things about the currently authenticated user when there's one:
 
-<x-fenced-code file="resources/views/layouts/partials/current-identity.blade.php">
+<x-fenced-code file="resources/views/layouts/partials/current-identity.blade.php" copy>
 
 ```blade
 @auth
@@ -730,7 +730,7 @@ php artisan stimulus:make visible_to_creator
 
 Now, update the Stimulus controller to look like this:
 
-<x-fenced-code file="resources/js/controllers/visible_to_creator_controller.js">
+<x-fenced-code file="resources/js/controllers/visible_to_creator_controller.js" copy>
 
 ```js
 import { Controller } from "@hotwired/stimulus"

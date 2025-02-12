@@ -128,7 +128,7 @@ class ChirpController extends Controller
 
 Now, we need to create our `chirps.edit` view:
 
-<x-fenced-code file="resources/views/chirps/edit.blade.php">
+<x-fenced-code file="resources/views/chirps/edit.blade.php" copy>
 
 ```blade
 <x-app-layout :title="__('Edit Chirp')">
@@ -154,7 +154,7 @@ Now, we need to create our `chirps.edit` view:
 
 We're using the same `form` partial the create chirps view uses. However, in this case we're passing down a Chirp model to the form so it can pre-fill the message field. Since we're passing a Chirp model, we can make the form submit to the `chirps.update` endpoint instead of the default `chirps.store` one when no Chirp is passed. Let's make the changes to the `chirps.partials.form` partial, replace the existing form with this one:
 
-<x-fenced-code file="resources/views/chirps/partials/form.blade.php">
+<x-fenced-code file="resources/views/chirps/partials/form.blade.php" copy>
 
 ```blade
 <form action="{{ ($chirp ?? false) ? route('chirps.update', $chirp) : route('chirps.store') }}" method="POST" class="w-full">

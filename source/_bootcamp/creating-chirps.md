@@ -147,7 +147,7 @@ class ChirpController extends Controller
 
 We can then create our `chirps.index` view with a link to our form for creating new Chirps:
 
-<x-fenced-code file="resources/views/chirps/index.blade.php">
+<x-fenced-code file="resources/views/chirps/index.blade.php" copy>
 
 ```blade
 <x-app-layout>
@@ -173,7 +173,7 @@ We can then create our `chirps.index` view with a link to our form for creating 
 
 This view is including a partial called `new-chirp-trigger`, so create the partial with the following content:
 
-<x-fenced-code file="resources/views/chirps/partials/new-chirp-trigger.blade.php">
+<x-fenced-code file="resources/views/chirps/partials/new-chirp-trigger.blade.php" copy>
 
 ```blade 
 <div class="relative flex items-center justify-center py-10 px-4 rounded-lg border border-dotted border-gray-300 dark:border-gray-600">
@@ -188,7 +188,7 @@ This view is including a partial called `new-chirp-trigger`, so create the parti
 
 Then, let's create our `chirps.create` page view with the Chirps form:
 
-<x-fenced-code file="resources/views/chirps/create.blade.php">
+<x-fenced-code file="resources/views/chirps/create.blade.php" copy>
 
 ```blade 
 <x-app-layout :title="__('Create Chirp')">
@@ -214,7 +214,7 @@ Then, let's create our `chirps.create` page view with the Chirps form:
 
 Again, this view is including a `form` partial. Create that file with the following content:
 
-<x-fenced-code file="resources/views/chirps/partials/form.blade.php">
+<x-fenced-code file="resources/views/chirps/partials/form.blade.php" copy>
 
 ```blade 
 <form action="{{ route('chirps.store') }}" method="POST" class="w-full">
@@ -238,7 +238,7 @@ Again, this view is including a `form` partial. Create that file with the follow
 
 This partial is making use a Blade component that doesn't exist yet called `x-textarea-input`, let's create it:
 
-<x-fenced-code file="resources/views/components/textarea-input.blade.php">
+<x-fenced-code file="resources/views/components/textarea-input.blade.php" copy>
 
 ```blade 
 @props(['disabled' => false, 'value' => ''])
@@ -539,7 +539,7 @@ Then, let's change our `layouts.app` file to include a `layouts.partials.notific
 
 Next, let's create the `layouts.partials.notifications` wrapper partial:
 
-<x-fenced-code file="resources/views/layouts/partials/notifications.blade.php">
+<x-fenced-code file="resources/views/layouts/partials/notifications.blade.php" copy>
 
 ```blade 
 <div id="notifications" class="fixed top-10 left-0 right-0 flex flex-col items-center justify-center space-y-2 z-10 opacity-80">
@@ -553,7 +553,7 @@ Next, let's create the `layouts.partials.notifications` wrapper partial:
 
 So, each notification will render with the `layouts.partials.notice` (singular) partial and will be added to the wrapper partial. Let's add the individual notification partial:
 
-<x-fenced-code file="resources/views/layouts/partials/notice.blade.php">
+<x-fenced-code file="resources/views/layouts/partials/notice.blade.php" copy>
 
 ```blade
 <div data-turbo-temporary data-controller="flash" data-action="animationend->flash#remove" class="py-1 px-4 leading-7 text-center text-white rounded-full bg-gray-900 transition-all animate-appear-then-fade-out">
