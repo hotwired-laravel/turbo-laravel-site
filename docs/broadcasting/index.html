@@ -13,7 +13,7 @@
         <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=129fb0445747f81b8320297b7e0b2d1e">
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=62e57fdfe8d488536a9d3781fc8e074f">
         <script defer src="/assets/build/js/main.js?id=c803e2f5c4ee879500977d6eb36d43a5"></script>
     </head>
     <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
@@ -166,9 +166,8 @@
         </div>
       </aside>
 
-      <main class="flex-1 overflow-hidden">
-        <div>
-          <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+      <main class="flex-1 min-w-0">
+        <div class="prose prose-xl prose-zinc overflow-hidden prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
             <h1>Broadcasting Turbo Streams</h1>
 
 <p>So far, we've seen how we may generate Turbo Streams to either add it to our Blade views or return them from controllers after a form submission over HTTP. In addition to that, we may also broadcast model changes over WebSockets (or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events">Server-Sent Events</a>).</p>
@@ -621,9 +620,9 @@
     -&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-value">'Hello World'</span>)
     -&gt;<span class="hl-property">broadcastToPresenceChannel</span>(<span class="hl-value">'chat.123'</span>, <span class="hl-keyword">fn</span> (<span class="hl-injection">$broadcast</span>) =&gt; <span class="hl-variable">$broadcast</span>-&gt;<span class="hl-property">toOthers</span>());
 </code></pre>
-          </div>
+        </div>
 
-                      <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
       <div class="relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
       <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Previous</div>
       <a class="font-heading font-extrabold text-zinc-900/80" href="/docs/turbo-streams">Turbo Streams <span class="absolute inset-0"></span></a>
@@ -634,8 +633,7 @@
       <a class="font-heading font-extrabold text-zinc-900/80" href="/docs/validation-response-redirects">Validation Response <span class="absolute inset-0"></span></a>
     </div>
   </div>
-                  </div>
-      </main>
+              </main>
     </div>
   </div>
 

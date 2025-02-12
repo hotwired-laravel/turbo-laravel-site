@@ -13,7 +13,7 @@
         <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=129fb0445747f81b8320297b7e0b2d1e">
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=62e57fdfe8d488536a9d3781fc8e074f">
         <script defer src="/assets/build/js/main.js?id=c803e2f5c4ee879500977d6eb36d43a5"></script>
     </head>
     <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
@@ -166,9 +166,8 @@
         </div>
       </aside>
 
-      <main class="flex-1 overflow-hidden">
-        <div>
-          <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+      <main class="flex-1 min-w-0">
+        <div class="prose prose-xl prose-zinc overflow-hidden prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
             <h1>Installation</h1>
 
 <p>Turbo Laravel can be installed via <a href="https://getcomposer.org/">Composer</a>:</p>
@@ -184,9 +183,9 @@
 <p>This will add the Turbo.js dependency to your <code>package.json</code> file, when you're using Vite and NPM, or to your <code>routes/importmap.php</code> file, when it detects that you're using <a href="https://github.com/tonysm/importmap-laravel">Importmap Laravel</a>. It also publishes some files to your <code>resources/js</code> folder, which imports Turbo for you</p>
 
 <p>Note: Turbo used to work with Livewire, but somewhere around Livewire V3 the bridges stopped working. There's an open issue to investigate Livewire V3 compatibility. If you're into Livewire and would love to use Turbo in a Livewire app (maybe you want to augment your Livewire &amp; Turbo app with Hotwire Native or something like that), you're welcome to check out the issue and try to bring the compatibility back. If you wanted an application scaffolding like Laravel Breeze or Laravel Jetstream, checkout Turbo Breeze, our fork of Breeze that sets up a fresh Laravel app using Stimulus, Importmaps, TailwindCSS (via the CLI), and Turbo.</p>
-          </div>
+        </div>
 
-                      <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
       <div class="relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
       <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Previous</div>
       <a class="font-heading font-extrabold text-zinc-900/80" href="/docs/upgrade">Upgrade Guide <span class="absolute inset-0"></span></a>
@@ -197,8 +196,7 @@
       <a class="font-heading font-extrabold text-zinc-900/80" href="/docs/overview">Overview <span class="absolute inset-0"></span></a>
     </div>
   </div>
-                  </div>
-      </main>
+              </main>
     </div>
   </div>
 

@@ -13,7 +13,7 @@
         <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=129fb0445747f81b8320297b7e0b2d1e">
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=62e57fdfe8d488536a9d3781fc8e074f">
         <script defer src="/assets/build/js/main.js?id=c803e2f5c4ee879500977d6eb36d43a5"></script>
     </head>
     <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
@@ -166,9 +166,8 @@
         </div>
       </aside>
 
-      <main class="flex-1 overflow-hidden">
-        <div>
-          <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+      <main class="flex-1 min-w-0">
+        <div class="prose prose-xl prose-zinc overflow-hidden prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
             <h1>Conventions</h1>
 
 <p>The conventions described below are <strong>NOT mandatory</strong>. Feel free to pick what you like and also come up with your own conventions. With that out of the way, here's a list of conventions you may find helpful.</p>
@@ -246,9 +245,9 @@
 <p><em>Note: Turbo Stream Broadcasts are optional.</em></p>
 
 <p>You may use the model's Fully Qualified Class Name (aka. FQCN) as your Broadcasting Channel authorization routes with a wildcard, such as <code>App.Models.Comment.{comment}</code> for a <code>Comment</code> model living in <code>App\\Models\\</code> - the wildcard's name doesn't matter, as long as there is one. This is the default <a href="https://laravel.com/docs/8.x/broadcasting#model-broadcasting-conventions">broadcasting channel naming convention</a> in Laravel.</p>
-          </div>
+        </div>
 
-                      <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
       <div class="relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
       <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Previous</div>
       <a class="font-heading font-extrabold text-zinc-900/80" href="/docs/overview">Overview <span class="absolute inset-0"></span></a>
@@ -259,8 +258,7 @@
       <a class="font-heading font-extrabold text-zinc-900/80" href="/docs/helpers">Helpers <span class="absolute inset-0"></span></a>
     </div>
   </div>
-                  </div>
-      </main>
+              </main>
     </div>
   </div>
 
