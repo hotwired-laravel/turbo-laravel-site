@@ -31,15 +31,15 @@ jobs:
           ref: 2.x
           path: 2.x-src
 
+      - name: Copy sources
+        run: |
+          cp -R 1.x-src/docs/ source/_1.x
+          cp -R 2.x-src/docs/ source/_docs
+
       - name: Install Dependencies
         run: |
           composer install
           npm install
-
-      - name: Copy sources
-        run: |
-          cp -R 1.x-src/docs/ source/_1.x
-          cp -R 2.x-src/docs/ source/_2.x
 
       - name: Build
         run: |
