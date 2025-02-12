@@ -45,6 +45,10 @@ jobs:
         run: |
           npm run prod
 
+      - name: Add CNAME
+        run: |
+          echo "new.turbo-laravel.com" > CNAME
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
