@@ -19,14 +19,14 @@ jobs:
       - name: Checkout 1.x docs
         uses: actions/checkout@master
         with:
-          name: hotwired-laravel/turbo-laravel
+          repository: hotwired-laravel/turbo-laravel
           ref: 1.x
           path: 1.x-src
 
       - name: Checkout 2.x docs
         uses: actions/checkout@master
         with:
-          name: hotwired-laravel/turbo-laravel
+          repository: hotwired-laravel/turbo-laravel
           ref: 2.x
           path: 2.x-src
 
