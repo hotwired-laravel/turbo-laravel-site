@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="canonical" href="https://new.turbo-laravel.com/1.x/docs/installation">
+        <meta name="description" content="Installation">
+        <title>Installation</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/manifest/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/manifest/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/manifest/favicon-16x16.png">
+        <link rel="manifest" href="/assets/site.webmanifest">
+        <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=7756ef47cdc6e051280b7984fd99b8f7">
+        <script defer src="/assets/build/js/main.js?id=2685052459ff19e5e2ef09aac148fca7"></script>
+    </head>
+    <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
+  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
+    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
+      <a href="/">Turbo Laravel</a>
+    </h1>
+
+    <nav class="inline-block lg:hidden">
+      <details class="group" data-search-target="nav">
+        <summary class="list-none">
+          <span>
+            <span class="sr-only">Navigation</span>
+
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
+              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </span>
+        </summary>
+
+        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
+          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
+            <form action="/1.x/docs/search" method="GET" class="px-4">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 1.x docs..." />
+  <button type="submit" class="sr-only">Search</button>
+</form>
+
+            <ul class="space-y-6 -mb-2 mt-4">
+              <li>
+                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+                  <span>Documentation</span>
+                </a>
+
+                  <div class="mx-4 pl-3 border-l-4 border-zinc-900/30">
+  <ul class="">
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Getting Started</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/1.x/docs/installation" class="font-bold transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/1.x/docs/overview" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Overview</a></li>
+                <li><a href="/1.x/docs/conventions" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Conventions</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Essentials</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/1.x/docs/blade-helpers" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Blade Helpers</a></li>
+                <li><a href="/1.x/docs/helper-functions" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Helper Functions</a></li>
+                <li><a href="/1.x/docs/turbo-streams" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Turbo Streams</a></li>
+                <li><a href="/1.x/docs/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Broadcasting</a></li>
+                <li><a href="/1.x/docs/livewire" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Livewire Integration</a></li>
+                <li><a href="/1.x/docs/validation-response-redirects" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Validation Redirects</a></li>
+                <li><a href="/1.x/docs/csrf" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">CSRF Protection</a></li>
+                <li><a href="/1.x/docs/turbo-native" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Turbo Native</a></li>
+                <li><a href="/1.x/docs/testing" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Testing</a></li>
+                <li><a href="/1.x/docs/known-issues" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Known Issues</a></li>
+              </ul>
+    </li>
+      </ul>
+</div>
+              </li>
+              <li>
+                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
+              </li>
+              <li class="space-y-6">
+                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
+                              </li>
+              <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </nav>
+  </div>
+
+  <nav class="hidden lg:block">
+    <ul class="flex items-center space-x-6 -my-2">
+      <li>
+        <div class="group relative py-2">
+          <a href="/docs" class="bg-white/90 px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+            <span>Documentation</span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </a>
+
+          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
+            <ul class="space-y-1">
+              <li><a href="/docs/installation" class="block px-2 py-1  rounded">Version <span class="">2.2.0</span></a></li>
+              <li><a href="/1.x/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">1.12.2</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
+      <li><a href="/bootcamp/introduction" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
+      <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+    </ul>
+  </nav>
+</header>
+
+          <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
+    <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
+      <aside class="relative w-1/4 hidden lg:block">
+        <div class="sticky top-4 block space-y-4">
+            <form action="/1.x/docs/search" method="GET">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="web" type="text" name="q" placeholder="Search v1 docs..." class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
+</form>
+
+            <ul class="[&_.children]:mb-4">
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Getting Started</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/1.x/docs/installation" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/1.x/docs/overview" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Overview</a></li>
+            <li><a href="/1.x/docs/conventions" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conventions</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Essentials</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/1.x/docs/blade-helpers" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Blade Helpers</a></li>
+            <li><a href="/1.x/docs/helper-functions" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Helper Functions</a></li>
+            <li><a href="/1.x/docs/turbo-streams" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Turbo Streams</a></li>
+            <li><a href="/1.x/docs/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
+            <li><a href="/1.x/docs/livewire" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Livewire Integration</a></li>
+            <li><a href="/1.x/docs/validation-response-redirects" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Validation Redirects</a></li>
+            <li><a href="/1.x/docs/csrf" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">CSRF Protection</a></li>
+            <li><a href="/1.x/docs/turbo-native" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Turbo Native</a></li>
+            <li><a href="/1.x/docs/testing" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Testing</a></li>
+            <li><a href="/1.x/docs/known-issues" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Known Issues</a></li>
+          </ul>
+  </li>
+  </ul>
+        </div>
+      </aside>
+
+      <main class="flex-1 overflow-hidden">
+        <div>
+          <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+            <h1>Installation</h1>
+
+<p>Turbo Laravel may be installed via Composer:</p>
+
+<pre><code class="language-bash">composer require hotwired/turbo-laravel
+</code></pre>
+
+<p>After installing, you may execute the <code>turbo:install</code> Artisan command, which will add a couple JS dependencies to your <code>package.json</code> file (when you're using Vite and NPM) or to your <code>routes/importmap.php</code> file (when you're using <a href="https://github.com/tonysm/importmap-laravel">Importmap Laravel</a>), publish some JS scripts to your <code>resources/js</code> folder that configure Turbo.js for you:</p>
+
+<pre><code class="language-bash">php artisan turbo:install
+</code></pre>
+
+<p>If you are using Jetstream with Livewire, you may add the <code>--jet</code> flag to the <code>turbo:install</code> Artisan command, which will add a couple more JS dependencies to make sure Alpine.js works nicely with Turbo.js. This will also change the layout that ships with Jetstream files a bit, which will make sure Livewire works nicely as well:</p>
+
+<pre><code class="language-bash">php artisan turbo:install --jet
+</code></pre>
+
+<p>When using Jetstream with Livewire, the <a href="https://github.com/livewire/turbolinks">Livewire Turbo Plugin</a> is needed so Livewire works nicely with Turbo. This one will be added to your Jetstream layouts as script tags fetching from a CDN (both <code>app.blade.php</code> and <code>guest.blade.php</code>).</p>
+
+<p>If you're not using <a href="https://github.com/tonysm/importmap-laravel">Importmap Laravel</a>, the install command will tell you to pull and compile the assets before proceeding:</p>
+
+<pre><code class="language-bash">npm install &amp;&amp; npm run build
+</code></pre>
+
+<p>You may also optionally install <a href="https://alpinejs.dev/">Alpine.js</a> in a non-Jetstream context (maybe you're more into <a href="https://laravel.com/docs/9.x/starter-kits#laravel-breeze">Breeze</a>) passing <code>--alpine</code> flag to the <code>turbo:install</code> Artisan command:</p>
+
+<pre><code class="language-bash">php artisan turbo:install --alpine
+</code></pre>
+
+<p><em>Note: the <code>--jet</code> option also adds all the necessary Alpine dependencies since Jetstream depends on Alpine.</em></p>
+          </div>
+
+                      <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+  
+      <div class="lg:col-start-2 relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Next</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/1.x/docs/overview">Overview <span class="absolute inset-0"></span></a>
+    </div>
+  </div>
+                  </div>
+      </main>
+    </div>
+  </div>
+
+        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
+          <p class="text-base text-center w-full">
+            Turbo Laravel is maintained by <a href="" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
+          </p>
+        </footer>
+    </body>
+</html>

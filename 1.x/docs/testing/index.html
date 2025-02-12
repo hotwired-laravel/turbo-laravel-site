@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="canonical" href="https://new.turbo-laravel.com/1.x/docs/testing">
+        <meta name="description" content="Testing Helpers">
+        <title>Testing</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/manifest/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/manifest/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/manifest/favicon-16x16.png">
+        <link rel="manifest" href="/assets/site.webmanifest">
+        <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=7756ef47cdc6e051280b7984fd99b8f7">
+        <script defer src="/assets/build/js/main.js?id=2685052459ff19e5e2ef09aac148fca7"></script>
+    </head>
+    <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
+  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
+    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
+      <a href="/">Turbo Laravel</a>
+    </h1>
+
+    <nav class="inline-block lg:hidden">
+      <details class="group" data-search-target="nav">
+        <summary class="list-none">
+          <span>
+            <span class="sr-only">Navigation</span>
+
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
+              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </span>
+        </summary>
+
+        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
+          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
+            <form action="/1.x/docs/search" method="GET" class="px-4">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 1.x docs..." />
+  <button type="submit" class="sr-only">Search</button>
+</form>
+
+            <ul class="space-y-6 -mb-2 mt-4">
+              <li>
+                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+                  <span>Documentation</span>
+                </a>
+
+                  <div class="mx-4 pl-3 border-l-4 border-zinc-900/30">
+  <ul class="">
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Getting Started</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/1.x/docs/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/1.x/docs/overview" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Overview</a></li>
+                <li><a href="/1.x/docs/conventions" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Conventions</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Essentials</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/1.x/docs/blade-helpers" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Blade Helpers</a></li>
+                <li><a href="/1.x/docs/helper-functions" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Helper Functions</a></li>
+                <li><a href="/1.x/docs/turbo-streams" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Turbo Streams</a></li>
+                <li><a href="/1.x/docs/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Broadcasting</a></li>
+                <li><a href="/1.x/docs/livewire" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Livewire Integration</a></li>
+                <li><a href="/1.x/docs/validation-response-redirects" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Validation Redirects</a></li>
+                <li><a href="/1.x/docs/csrf" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">CSRF Protection</a></li>
+                <li><a href="/1.x/docs/turbo-native" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Turbo Native</a></li>
+                <li><a href="/1.x/docs/testing" class="font-bold transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Testing</a></li>
+                <li><a href="/1.x/docs/known-issues" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Known Issues</a></li>
+              </ul>
+    </li>
+      </ul>
+</div>
+              </li>
+              <li>
+                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
+              </li>
+              <li class="space-y-6">
+                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
+                              </li>
+              <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </nav>
+  </div>
+
+  <nav class="hidden lg:block">
+    <ul class="flex items-center space-x-6 -my-2">
+      <li>
+        <div class="group relative py-2">
+          <a href="/docs" class="bg-white/90 px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+            <span>Documentation</span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </a>
+
+          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
+            <ul class="space-y-1">
+              <li><a href="/docs/installation" class="block px-2 py-1  rounded">Version <span class="">2.2.0</span></a></li>
+              <li><a href="/1.x/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">1.12.2</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
+      <li><a href="/bootcamp/introduction" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
+      <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+    </ul>
+  </nav>
+</header>
+
+          <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
+    <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
+      <aside class="relative w-1/4 hidden lg:block">
+        <div class="sticky top-4 block space-y-4">
+            <form action="/1.x/docs/search" method="GET">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="web" type="text" name="q" placeholder="Search v1 docs..." class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
+</form>
+
+            <ul class="[&_.children]:mb-4">
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Getting Started</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/1.x/docs/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/1.x/docs/overview" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Overview</a></li>
+            <li><a href="/1.x/docs/conventions" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conventions</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Essentials</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/1.x/docs/blade-helpers" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Blade Helpers</a></li>
+            <li><a href="/1.x/docs/helper-functions" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Helper Functions</a></li>
+            <li><a href="/1.x/docs/turbo-streams" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Turbo Streams</a></li>
+            <li><a href="/1.x/docs/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
+            <li><a href="/1.x/docs/livewire" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Livewire Integration</a></li>
+            <li><a href="/1.x/docs/validation-response-redirects" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Validation Redirects</a></li>
+            <li><a href="/1.x/docs/csrf" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">CSRF Protection</a></li>
+            <li><a href="/1.x/docs/turbo-native" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Turbo Native</a></li>
+            <li><a href="/1.x/docs/testing" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Testing</a></li>
+            <li><a href="/1.x/docs/known-issues" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Known Issues</a></li>
+          </ul>
+  </li>
+  </ul>
+        </div>
+      </aside>
+
+      <main class="flex-1 overflow-hidden">
+        <div>
+          <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+            <h1>Testing</h1>
+
+<p>There are two aspects of your application using Turbo Laravel that are specific this approach itself:</p>
+
+<ol>
+<li><strong>Turbo Stream HTTP responses.</strong> As you return Turbo Stream responses from your route handlers/controllers to be applied by Turbo itself; and</li>
+<li><strong>Turbo Stream broadcasts.</strong> Which is the side-effect of certain model changes, or when you call <code>$model-&gt;broadcastAppend()</code> on your models, or when you're using Handmade Turbo Stream broadcasts.</li>
+</ol>
+
+<p>We're going to cover both of these scenarios here.</p>
+
+<h2>Making Turbo &amp; Turbo Native HTTP requests</h2>
+
+<p>To enhance your testing capabilities here, Turbo Laravel adds a couple of macros to the TestResponse that Laravel uses under the hood. The goal is that testing Turbo Stream responses is as convenient as testing regular HTTP responses.</p>
+
+<p>To mimic Turbo requests, which means sending a request setting the correct Content-Type in the <code>Accept:</code> HTTP header, you need to use the <code>InteractsWithTurbo</code> trait to your testcase. Now you can mimic a Turbo HTTP request by using the <code>$this-&gt;turbo()</code> method before you make the HTTP call itself. You can also mimic Turbo Native specific requests by using the <code>$this-&gt;turboNative()</code> also before you make the HTTP call. The first method will add the correct Turbo Stream content type to the <code>Accept:</code> header, and the second method will add Turbo Native <code>User-Agent:</code> value.</p>
+
+<p>These methods are handy when you are conditionally returning Turbo Stream responses based on the <code>request()-&gt;wantsTurboStream()</code> helper, for instance. Or when using the <code>@turbonative</code> or <code>@unlessturbonative</code> Blade directives.</p>
+
+<h2>Testing Turbo Stream HTTP Responses</h2>
+
+<p>You can test if you got a Turbo Stream response by using the <code>assertTurboStream</code>. Similarly, you can assert that your response is <em>not</em> a Turbo Stream response by using the <code>assertNotTurboStream()</code> macro:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">use</span> <span class="hl-type">Tonysm\TurboLaravel\Testing\InteractsWithTurbo</span>;
+
+<span class="hl-keyword">class</span> <span class="hl-type">CreateTodosTest</span> <span class="hl-keyword">extends</span> <span class="hl-type">TestCase</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">InteractsWithTurbo</span>;
+
+    <span class="hl-comment">/** <span class="hl-value">@test</span> */</span>
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">creating_todo_from_turbo_request_returns_turbo_stream_response</span>()
+    {
+        <span class="hl-variable">$response</span> = <span class="hl-variable">$this</span>-&gt;<span class="hl-property">turbo</span>()-&gt;<span class="hl-property">post</span>(<span class="hl-property">route</span>(<span class="hl-value">'todos.store'</span>), [
+            <span class="hl-value">'content'</span> =&gt; <span class="hl-value">'Test the app'</span>,
+        ]);
+
+        <span class="hl-variable">$response</span>-&gt;<span class="hl-property">assertTurboStream</span>();
+    }
+
+    <span class="hl-comment">/** <span class="hl-value">@test</span> */</span>
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">creating_todo_from_regular_request_does_not_return_turbo_stream_response</span>()
+    {
+        <span class="hl-comment">// Notice we're not chaining the `$this-&gt;turbo()` method here.</span>
+        <span class="hl-variable">$response</span> = <span class="hl-variable">$this</span>-&gt;<span class="hl-property">post</span>(<span class="hl-property">route</span>(<span class="hl-value">'todos.store'</span>), [
+            <span class="hl-value">'content'</span> =&gt; <span class="hl-value">'Test the app'</span>,
+        ]);
+
+        <span class="hl-variable">$response</span>-&gt;<span class="hl-property">assertNotTurboStream</span>();
+    }
+}
+</code></pre>
+
+<p>The controller for such response would be something like this:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">class</span> <span class="hl-type">TodosController</span>
+{
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">store</span>()
+    {
+        <span class="hl-variable">$todo</span> = <span class="hl-property">auth</span>()-&gt;<span class="hl-property">user</span>()-&gt;<span class="hl-property">todos</span>()-&gt;<span class="hl-property">create</span>(<span class="hl-property">request</span>()-&gt;<span class="hl-property">validate</span>([
+            <span class="hl-value">'content'</span> =&gt; [<span class="hl-value">'required'</span>],
+        ]));
+
+        <span class="hl-keyword">if</span> (<span class="hl-property">request</span>()-&gt;<span class="hl-property">wantsTurboStream</span>()) {
+            <span class="hl-keyword">return</span> <span class="hl-property">response</span>()-&gt;<span class="hl-property">turboStream</span>(<span class="hl-variable">$todo</span>);
+        }
+
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()-&gt;<span class="hl-property">route</span>(<span class="hl-value">'todos.index'</span>);
+    }
+}
+</code></pre>
+
+<h2>Fluent Turbo Stream Testing</h2>
+
+<p>You can get specific on your Turbo Stream responses by passing a callback to the <code>assertTurboStream(fn)</code> method. This can be used to test that you have a specific Turbo Stream tag being returned, or that you're returning exactly 2 Turbo Stream tags, for instance:</p>
+
+<pre><code class="language-php"><span class="hl-comment">/** <span class="hl-value">@test</span> */</span>
+<span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">create_todos</span>()
+{
+    <span class="hl-variable">$this</span>-&gt;<span class="hl-property">get</span>(<span class="hl-property">route</span>(<span class="hl-value">'todos.store'</span>))
+        -&gt;<span class="hl-property">assertTurboStream</span>(<span class="hl-keyword">fn</span> (<span class="hl-injection"><span class="hl-type">AssertableTurboStream</span> $turboStreams</span>) =&gt; (
+            <span class="hl-variable">$turboStreams</span>-&gt;<span class="hl-property">has</span>(2)
+            <span class="hl-operator">&amp;&amp;</span> <span class="hl-variable">$turboStreams</span>-&gt;<span class="hl-property">hasTurboStream</span>(<span class="hl-keyword">fn</span> (<span class="hl-injection">$turboStream</span>) =&gt; (
+                <span class="hl-variable">$turboStream</span>-&gt;<span class="hl-property">where</span>(<span class="hl-value">'target'</span>, <span class="hl-value">'flash_messages'</span>)
+                            -&gt;<span class="hl-property">where</span>(<span class="hl-value">'action'</span>, <span class="hl-value">'prepend'</span>)
+                            -&gt;<span class="hl-property">see</span>(<span class="hl-value">'Todo was successfully created!'</span>)
+            ))
+            <span class="hl-operator">&amp;&amp;</span> <span class="hl-variable">$turboStreams</span>-&gt;<span class="hl-property">hasTurboStream</span>(<span class="hl-keyword">fn</span> (<span class="hl-injection">$turboStream</span>) =&gt; (
+                <span class="hl-variable">$turboStream</span>-&gt;<span class="hl-property">where</span>(<span class="hl-value">'target'</span>, <span class="hl-value">'todos'</span>)
+                            -&gt;<span class="hl-property">where</span>(<span class="hl-value">'action'</span>, <span class="hl-value">'append'</span>)
+                            -&gt;<span class="hl-property">see</span>(<span class="hl-value">'Test the app'</span>)
+            ))
+        ));
+}
+</code></pre>
+
+<h2>Testing Turbo Stream Broadcasts</h2>
+
+<p>All broadcasts use the <code>TurboStream</code> Facade. You may want to fake it so you can that the broadcasts are being correctly sent:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">use</span> <span class="hl-type">App\Models\Todo</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Tonysm\TurboLaravel\Facades\TurboStream</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Tonysm\TurboLaravel\Broadcasting\PendingBroadcast</span>;
+
+<span class="hl-keyword">class</span> <span class="hl-type">CreatesCommentsTest</span> <span class="hl-keyword">extends</span> <span class="hl-type">TestCase</span>
+{
+    <span class="hl-comment">/** <span class="hl-value">@test</span> */</span>
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">content_is_required</span>()
+    {
+        <span class="hl-type">TurboStream</span>::<span class="hl-property">fake</span>();
+
+        <span class="hl-variable">$todo</span> = <span class="hl-type">Todo</span>::<span class="hl-property">factory</span>()-&gt;<span class="hl-property">create</span>();
+
+        <span class="hl-variable">$this</span>-&gt;<span class="hl-property">turbo</span>()-&gt;<span class="hl-property">post</span>(<span class="hl-property">route</span>(<span class="hl-value">'todos.comments.store'</span>, <span class="hl-variable">$todo</span>), [
+            <span class="hl-value">'content'</span> =&gt; <span class="hl-keyword">null</span>,
+        ])-&gt;<span class="hl-property">assertInvalid</span>([<span class="hl-value">'content'</span>]);
+
+        <span class="hl-type">TurboStream</span>::<span class="hl-property">assertNothingWasBroadcasted</span>();
+    }
+
+    <span class="hl-comment">/** <span class="hl-value">@test</span> */</span>
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">creates_comments</span>()
+    {
+        <span class="hl-type">TurboStream</span>::<span class="hl-property">fake</span>();
+
+        <span class="hl-variable">$todo</span> = <span class="hl-type">Todo</span>::<span class="hl-property">factory</span>()-&gt;<span class="hl-property">create</span>();
+
+        <span class="hl-variable">$this</span>-&gt;<span class="hl-property">turbo</span>()-&gt;<span class="hl-property">post</span>(<span class="hl-property">route</span>(<span class="hl-value">'todos.comments.store'</span>, <span class="hl-variable">$todo</span>), [
+            <span class="hl-value">'content'</span> =&gt; <span class="hl-value">'Hey, this is really nice!'</span>,
+        ])-&gt;<span class="hl-property">assertTurboStream</span>();
+
+        <span class="hl-type">TurboStream</span>::<span class="hl-property">assertBroadcasted</span>(<span class="hl-keyword">function</span> (<span class="hl-injection"><span class="hl-type">PendingBroadcast</span> $broadcast) use ($todo</span>) {
+            <span class="hl-keyword">return</span> <span class="hl-variable">$broadcast</span>-&gt;<span class="hl-property">target</span> === <span class="hl-value">'comments'</span>
+                <span class="hl-operator">&amp;&amp;</span> <span class="hl-variable">$broadcast</span>-&gt;<span class="hl-property">action</span> === <span class="hl-value">'append'</span>
+                <span class="hl-operator">&amp;&amp;</span> <span class="hl-variable">$broadcast</span>-&gt;<span class="hl-property">partialView</span> === <span class="hl-value">'comments._comment'</span>
+                <span class="hl-operator">&amp;&amp;</span> <span class="hl-variable">$broadcast</span>-&gt;<span class="hl-property">partialData</span>[<span class="hl-value">'comment'</span>]-&gt;<span class="hl-property">is</span>(<span class="hl-variable">$todo</span>-&gt;<span class="hl-property">comments</span>-&gt;<span class="hl-property">first</span>())
+                <span class="hl-operator">&amp;&amp;</span> <span class="hl-property">count</span>(<span class="hl-variable">$broadcast</span>-&gt;<span class="hl-property">channels</span>) === 1
+                <span class="hl-operator">&amp;&amp;</span> <span class="hl-variable">$broadcast</span>-&gt;<span class="hl-property">channels</span>[0]-&gt;<span class="hl-property">name</span> === <span class="hl-property">sprintf</span>(<span class="hl-value">'private-%s'</span>, <span class="hl-variable">$todo</span>-&gt;<span class="hl-property">broadcastChannel</span>());
+        });
+    }
+}
+</code></pre>
+
+<p><em>Note: If you're using the automatic model changes broadcasting, make sure your <code>turbo-laravel.queue</code> config key is set to false, otherwise actions may not be dispatched during test because the model observer only fires them after the transaction is committed, which never happens in tests since they run inside a transaction.</em></p>
+          </div>
+
+                      <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Previous</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/1.x/docs/turbo-native">Turbo Native <span class="absolute inset-0"></span></a>
+    </div>
+  
+      <div class="lg:col-start-2 relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Next</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/1.x/docs/known-issues">Known Issues <span class="absolute inset-0"></span></a>
+    </div>
+  </div>
+                  </div>
+      </main>
+    </div>
+  </div>
+
+        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
+          <p class="text-base text-center w-full">
+            Turbo Laravel is maintained by <a href="" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
+          </p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="canonical" href="https://new.turbo-laravel.com/1.x/docs/turbo-streams">
+        <meta name="description" content="The Turbo Streams Components and Helpers">
+        <title>Turbo Streams</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/manifest/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/manifest/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/manifest/favicon-16x16.png">
+        <link rel="manifest" href="/assets/site.webmanifest">
+        <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=7756ef47cdc6e051280b7984fd99b8f7">
+        <script defer src="/assets/build/js/main.js?id=2685052459ff19e5e2ef09aac148fca7"></script>
+    </head>
+    <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
+  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
+    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
+      <a href="/">Turbo Laravel</a>
+    </h1>
+
+    <nav class="inline-block lg:hidden">
+      <details class="group" data-search-target="nav">
+        <summary class="list-none">
+          <span>
+            <span class="sr-only">Navigation</span>
+
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
+              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </span>
+        </summary>
+
+        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
+          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
+            <form action="/1.x/docs/search" method="GET" class="px-4">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 1.x docs..." />
+  <button type="submit" class="sr-only">Search</button>
+</form>
+
+            <ul class="space-y-6 -mb-2 mt-4">
+              <li>
+                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+                  <span>Documentation</span>
+                </a>
+
+                  <div class="mx-4 pl-3 border-l-4 border-zinc-900/30">
+  <ul class="">
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Getting Started</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/1.x/docs/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/1.x/docs/overview" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Overview</a></li>
+                <li><a href="/1.x/docs/conventions" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Conventions</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Essentials</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/1.x/docs/blade-helpers" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Blade Helpers</a></li>
+                <li><a href="/1.x/docs/helper-functions" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Helper Functions</a></li>
+                <li><a href="/1.x/docs/turbo-streams" class="font-bold transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Turbo Streams</a></li>
+                <li><a href="/1.x/docs/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Broadcasting</a></li>
+                <li><a href="/1.x/docs/livewire" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Livewire Integration</a></li>
+                <li><a href="/1.x/docs/validation-response-redirects" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Validation Redirects</a></li>
+                <li><a href="/1.x/docs/csrf" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">CSRF Protection</a></li>
+                <li><a href="/1.x/docs/turbo-native" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Turbo Native</a></li>
+                <li><a href="/1.x/docs/testing" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Testing</a></li>
+                <li><a href="/1.x/docs/known-issues" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Known Issues</a></li>
+              </ul>
+    </li>
+      </ul>
+</div>
+              </li>
+              <li>
+                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
+              </li>
+              <li class="space-y-6">
+                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
+                              </li>
+              <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </nav>
+  </div>
+
+  <nav class="hidden lg:block">
+    <ul class="flex items-center space-x-6 -my-2">
+      <li>
+        <div class="group relative py-2">
+          <a href="/docs" class="bg-white/90 px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+            <span>Documentation</span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </a>
+
+          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
+            <ul class="space-y-1">
+              <li><a href="/docs/installation" class="block px-2 py-1  rounded">Version <span class="">2.2.0</span></a></li>
+              <li><a href="/1.x/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">1.12.2</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
+      <li><a href="/bootcamp/introduction" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
+      <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+    </ul>
+  </nav>
+</header>
+
+          <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
+    <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
+      <aside class="relative w-1/4 hidden lg:block">
+        <div class="sticky top-4 block space-y-4">
+            <form action="/1.x/docs/search" method="GET">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="web" type="text" name="q" placeholder="Search v1 docs..." class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
+</form>
+
+            <ul class="[&_.children]:mb-4">
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Getting Started</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/1.x/docs/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/1.x/docs/overview" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Overview</a></li>
+            <li><a href="/1.x/docs/conventions" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conventions</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Essentials</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/1.x/docs/blade-helpers" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Blade Helpers</a></li>
+            <li><a href="/1.x/docs/helper-functions" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Helper Functions</a></li>
+            <li><a href="/1.x/docs/turbo-streams" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Turbo Streams</a></li>
+            <li><a href="/1.x/docs/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
+            <li><a href="/1.x/docs/livewire" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Livewire Integration</a></li>
+            <li><a href="/1.x/docs/validation-response-redirects" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Validation Redirects</a></li>
+            <li><a href="/1.x/docs/csrf" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">CSRF Protection</a></li>
+            <li><a href="/1.x/docs/turbo-native" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Turbo Native</a></li>
+            <li><a href="/1.x/docs/testing" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Testing</a></li>
+            <li><a href="/1.x/docs/known-issues" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Known Issues</a></li>
+          </ul>
+  </li>
+  </ul>
+        </div>
+      </aside>
+
+      <main class="flex-1 overflow-hidden">
+        <div>
+          <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+            <h1>Turbo Streams</h1>
+
+<p>Out of everything Turbo provides, it's Turbo Streams that benefits the most from a tight back-end integration.</p>
+
+<p>Turbo Drive will get your pages behaving like an SPA and Turbo Frames will allow you to have a finer grained control of chunks of your page instead of replacing the entire page when a form is submitted or a link is clicked.</p>
+
+<p>However, sometimes you want to update <em>multiple</em> parts of your page at the same time. For instance, after a form submission to create a comment, you may want to append the comment to the comments' list and also update the comments' count in the page. You may achieve that with Turbo Streams.</p>
+
+<p>Form submissions will get annotated by Turbo with a <code>Accept: text/vnd.turbo-stream.html</code> header (besides the other normal Content Types). This is a signal to the back-end that you can return a Turbo Stream response for that form submission if you want to.</p>
+
+<p>Here's an example of a route handler detecting and returning a Turbo Stream response to a form submission:</p>
+
+<pre><code class="language-php"><span class="hl-type">Route</span>::<span class="hl-property">post</span>(<span class="hl-value">'posts/{post}/comments'</span>, <span class="hl-keyword">function</span> (<span class="hl-injection"><span class="hl-type">Post</span> $post</span>) {
+    <span class="hl-variable">$comment</span> = <span class="hl-variable">$post</span>-&gt;<span class="hl-property">comments</span>()-&gt;<span class="hl-property">create</span>(<span class="hl-comment">/** params */</span>);
+
+    <span class="hl-keyword">if</span> (<span class="hl-property">request</span>()-&gt;<span class="hl-property">wantsTurboStream</span>()) {
+        <span class="hl-keyword">return</span> <span class="hl-property">response</span>()-&gt;<span class="hl-property">turboStream</span>(<span class="hl-variable">$comment</span>);
+    }
+
+    <span class="hl-keyword">return</span> <span class="hl-property">back</span>();
+});
+</code></pre>
+
+<p>The <code>request()-&gt;wantsTurboStream()</code> macro added to the request class will check if the request accepts Turbo Stream and return <code>true</code> or <code>false</code> accordingly.</p>
+
+<p>The <code>response()-&gt;turboStream()</code> macro may be used to generate streams, but you may also use the <code>turbo_stream()</code> helper function. From now on, the docs will be using the helper function, but you may use either one of those. Using the function, this example would be:</p>
+
+<pre><code class="language-php"><span class="hl-type">Route</span>::<span class="hl-property">post</span>(<span class="hl-value">'posts/{post}/comments'</span>, <span class="hl-keyword">function</span> (<span class="hl-injection"><span class="hl-type">Post</span> $post</span>) {
+    <span class="hl-variable">$comment</span> = <span class="hl-variable">$post</span>-&gt;<span class="hl-property">comments</span>()-&gt;<span class="hl-property">create</span>(<span class="hl-comment">/** params */</span>);
+
+    <span class="hl-keyword">if</span> (<span class="hl-property">request</span>()-&gt;<span class="hl-property">wantsTurboStream</span>()) {
+        <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$comment</span>);
+    }
+
+    <span class="hl-keyword">return</span> <span class="hl-property">back</span>();
+});
+</code></pre>
+
+<p>Here's what the HTML response will look like:</p>
+
+<pre><code class="language-html">&lt;<span class="hl-keyword">turbo-stream</span> <span class="hl-property">action</span>=&quot;append&quot; <span class="hl-property">target</span>=&quot;comments&quot;&gt;
+    &lt;<span class="hl-keyword">template</span>&gt;
+        &lt;<span class="hl-keyword">div</span> <span class="hl-property">id</span>=&quot;comment_123&quot;&gt;
+            &lt;<span class="hl-keyword">p</span>&gt;Hello, World&lt;/<span class="hl-keyword">p</span>&gt;
+        &lt;/<span class="hl-keyword">div</span>&gt;
+    &lt;/<span class="hl-keyword">template</span>&gt;
+&lt;/<span class="hl-keyword">turbo-stream</span>&gt;
+</code></pre>
+
+<p>Most of these things were "guessed" based on the <a href="/1.x/docs/conventions">naming conventions</a> we talked about earlier. But you can override most things, like so:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$comment</span>)-&gt;<span class="hl-property">target</span>(<span class="hl-value">'post_comments'</span>);
+</code></pre>
+
+<p>Although it's handy to pass the model instance to the <code>turbo_stream()</code> function - which will be used to decide the default values of the Turbo Stream response based on the model's current state, sometimes you may want to build a Turbo Stream response manually:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>()
+    -&gt;<span class="hl-property">target</span>(<span class="hl-value">'comments'</span>)
+    -&gt;<span class="hl-property">action</span>(<span class="hl-value">'append'</span>)
+    -&gt;<span class="hl-property">view</span>(<span class="hl-value">'comments._comment'</span>, [<span class="hl-value">'comment'</span> =&gt; <span class="hl-variable">$comment</span>]);
+</code></pre>
+
+<p>There are 7 <em>actions</em> in Turbo Streams. They are:</p>
+
+<ul>
+<li><code>append</code> &amp; <code>prepend</code>: to insert the elements in the target element at the top or at the bottom, respectively</li>
+<li><code>before</code> &amp; <code>after</code>: to insert the elements next to the target element before or after, respectively</li>
+<li><code>replace</code>: will replace the existing element entirely with the contents of the <em>template</em> tag in the Turbo Stream</li>
+<li><code>update</code>: will keep the target element and only replace the contents of it with the contents of the <em>template</em> tag in the Turbo Stream</li>
+<li><code>remove</code>: will remove the element. This one doesn't need a <em>template</em> tag. It accepts either an instance of a Model or the DOM ID of the element to be removed as a string.</li>
+</ul>
+
+<p>You will find shorthand methods for them all:</p>
+
+<pre><code class="language-php"><span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-variable">$comment</span>);
+<span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">prepend</span>(<span class="hl-variable">$comment</span>);
+<span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">before</span>(<span class="hl-variable">$comment</span>);
+<span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">after</span>(<span class="hl-variable">$comment</span>);
+<span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">replace</span>(<span class="hl-variable">$comment</span>);
+<span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">update</span>(<span class="hl-variable">$comment</span>);
+<span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">remove</span>(<span class="hl-variable">$comment</span>);
+</code></pre>
+
+<p>For these shorthand stream builders, you may pass an instance of an Eloquent model, which will be used to figure out things like <code>target</code>, <code>action</code>, and the <code>view</code> partial as well as the view data passed to them.</p>
+
+<p>Alternatively, you may also pass strings to the shorthand stream builders, which will be used as the target, and an optional content string, which will be rendered instead of a partial, for instance:</p>
+
+<pre><code class="language-php"><span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'statuses'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Comment was successfully created!'</span>));
+</code></pre>
+
+<p>The optional content parameter expects either a string, a view instance, or an instance of Laravel's <code>Illuminate\Support\HtmlString</code>, so you could do something like:</p>
+
+<pre><code class="language-php"><span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'some_dom_id'</span>, <span class="hl-property">view</span>(<span class="hl-value">'greetings'</span>, [
+    <span class="hl-value">'name'</span> =&gt; <span class="hl-value">'Tester'</span>,
+]));
+</code></pre>
+
+<p>Or more explicitly by passing an instance of the <code>HtmlString</code> as content:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Support\Facades\Blade</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Support\HtmlString</span>;
+
+<span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'statuses'</span>, <span class="hl-keyword">new</span> <span class="hl-type">HtmlString</span>(
+    <span class="hl-type">Blade</span>::<span class="hl-property">render</span>(<span class="hl-value">'&lt;div&gt;Hello, {{ $name }}&lt;/div&gt;'</span>, [<span class="hl-value">'name'</span> =&gt; <span class="hl-value">'Tony'</span>])
+));
+</code></pre>
+
+<p>Which will result in a Turbo Stream like this:</p>
+
+<pre><code class="language-html">&lt;<span class="hl-keyword">turbo-stream</span> <span class="hl-property">target</span>=&quot;statuses&quot; <span class="hl-property">action</span>=&quot;append&quot;&gt;
+    &lt;<span class="hl-keyword">template</span>&gt;
+        &lt;<span class="hl-keyword">div</span>&gt;Hello, Tony&lt;/<span class="hl-keyword">div</span>&gt;
+    &lt;/<span class="hl-keyword">template</span>&gt;
+&lt;/<span class="hl-keyword">turbo-stream</span>&gt;
+</code></pre>
+
+<p>For both the <code>before</code> and <code>after</code> methods you need additional calls to specify the view template you want to insert, since the given model/string will only be used to specify the target, something like:</p>
+
+<pre><code class="language-php"><span class="hl-property">turbo_stream</span>()
+    -&gt;<span class="hl-property">before</span>(<span class="hl-variable">$comment</span>)
+    -&gt;<span class="hl-property">view</span>(<span class="hl-value">'comments._flash_message'</span>, [
+        <span class="hl-value">'message'</span> =&gt; <span class="hl-property">__</span>(<span class="hl-value">'Comment was created!'</span>),
+    ]);
+</code></pre>
+
+<p>Just like the other shorthand stream builders, you may also pass an option content string or <code>HtmlString</code> instance to the <code>before</code> and <code>after</code> shorthands. When doing that, you don't need to specify the view section.</p>
+
+<pre><code class="language-php"><span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">before</span>(<span class="hl-variable">$comment</span>, <span class="hl-property">__</span>(<span class="hl-value">'Oh, hey!'</span>));
+</code></pre>
+
+<p>You can read more about Turbo Streams in the <a href="https://turbo.hotwired.dev/handbook/streams">Turbo Handbook</a>.</p>
+
+<p>The shorthand methods also return a pending Turbo Stream builder which you can chain and override everything you want before it's rendered:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>()
+    -&gt;<span class="hl-property">append</span>(<span class="hl-variable">$comment</span>)
+    -&gt;<span class="hl-property">view</span>(<span class="hl-value">'comments._comment_card'</span>, [
+        <span class="hl-value">'comment'</span> =&gt; <span class="hl-variable">$comment</span>,
+    ]);
+</code></pre>
+
+<p>As mentioned earlier, passing a model to the <code>turbo_stream()</code> helper will pre-fill the pending response object with some defaults based on the model's state.</p>
+
+<p>It will build a <code>remove</code> Turbo Stream if the model was deleted (or if it is trashed - in case it's a Soft Deleted model), an <code>append</code> if the model was recently created (which you can override the action as the second parameter), a <code>replace</code> if the model was just updated (you can also override the action as the second parameter.) Here's how overriding would look like:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$comment</span>, <span class="hl-value">'append'</span>);
+</code></pre>
+
+<h2>Target Multiple Elements</h2>
+
+<p>You may also <a href="https://turbo.hotwired.dev/reference/streams#targeting-multiple-elements">target multiple elements</a> using CSS classes with the <code>xAll</code> methods:</p>
+
+<pre><code class="language-php"><span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">appendAll</span>(<span class="hl-value">'.comment'</span>, <span class="hl-value">'Some content'</span>);
+<span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">prependAll</span>(<span class="hl-value">'.comment'</span>, <span class="hl-value">'Some content'</span>);
+<span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">updateAll</span>(<span class="hl-value">'.comment'</span>, <span class="hl-value">'Some content'</span>);
+<span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">removeAll</span>(<span class="hl-value">'.comment'</span>);
+<span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">beforeAll</span>(<span class="hl-value">'.comment'</span>, <span class="hl-value">'Some content'</span>);
+<span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">afterAll</span>(<span class="hl-value">'.comment'</span>, <span class="hl-value">'Some content'</span>);
+</code></pre>
+
+<p>With the exception of the <code>removeAll</code> method, the <code>xAll</code> methods accept as the second parameter a string of inline content, an instance of a View (which may be created using the <code>view()</code> function provided by Laravel), or an instance of the <code>HtmlSafe</code> class.</p>
+
+<p>When creating Turbo Streams using the builders, you may also specify the CSS class using the <code>targets()</code> (plural) method instead of the <code>target()</code> (singular) version:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>()
+    -&gt;<span class="hl-property">targets</span>(<span class="hl-value">'.comment'</span>)
+    -&gt;<span class="hl-property">action</span>(<span class="hl-value">'append'</span>)
+    -&gt;<span class="hl-property">view</span>(<span class="hl-value">'comments._comment'</span>, [<span class="hl-value">'comment'</span> =&gt; <span class="hl-variable">$comment</span>]);
+</code></pre>
+
+<h2>Turbo Stream Macros</h2>
+
+<p>The <code>turbo_stream()</code> function returns an instance of <code>PendingTurboStreamResponse</code>, which is <em>macroable</em>. This means you can create your custom DSL for streams. Let's say you always return flash messages from your controllers like so:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">class</span> <span class="hl-type">ChirpsController</span> <span class="hl-keyword">extends</span> <span class="hl-type">Controller</span>
+{
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">destroy</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request, <span class="hl-type">Chirp</span> $chirp</span>)
+    {
+        <span class="hl-variable">$this</span>-&gt;<span class="hl-property">authorize</span>(<span class="hl-value">'delete'</span>, <span class="hl-variable">$chirp</span>);
+
+        <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">delete</span>();
+
+        <span class="hl-keyword">if</span> (<span class="hl-variable">$request</span>-&gt;<span class="hl-property">wantsTurboStream</span>()) {
+            <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([
+                <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$chirp</span>),
+                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-property">view</span>(<span class="hl-value">'layouts.notification'</span>, [
+                    <span class="hl-value">'message'</span> =&gt; <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>),
+                ])),
+            ]);
+        }
+
+        <span class="hl-comment">// ...</span>
+    }
+}
+</code></pre>
+
+<p>Chances are you're gonna return flash messages from all your controllers, so you could create a custom macro like so:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">class</span> <span class="hl-type">AppServiceProvider</span> <span class="hl-keyword">extends</span> <span class="hl-type">ServiceProvider</span>
+{
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">boot</span>()
+    {
+        <span class="hl-type">PendingTurboStreamResponse</span>::<span class="hl-property">macro</span>(<span class="hl-value">'flash'</span>, <span class="hl-keyword">function</span> (<span class="hl-injection"><span class="hl-type">string</span> $message</span>) {
+            <span class="hl-keyword">return</span> <span class="hl-variable">$this</span>-&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-property">view</span>(<span class="hl-value">'layouts.notification'</span>, [
+                <span class="hl-value">'message'</span> =&gt; <span class="hl-variable">$message</span>,
+            ]));
+        });
+    }
+}
+</code></pre>
+
+<p>You could then rewrite that controller like so:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">class</span> <span class="hl-type">ChirpsController</span> <span class="hl-keyword">extends</span> <span class="hl-type">Controller</span>
+{
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">destroy</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request, <span class="hl-type">Chirp</span> $chirp</span>)
+    {
+        <span class="hl-variable">$this</span>-&gt;<span class="hl-property">authorize</span>(<span class="hl-value">'delete'</span>, <span class="hl-variable">$chirp</span>);
+
+        <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">delete</span>();
+
+        <span class="hl-keyword">if</span> (<span class="hl-variable">$request</span>-&gt;<span class="hl-property">wantsTurboStream</span>()) {
+            <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([
+                <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$chirp</span>),
+                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-property">view</span>(<span class="hl-value">'layouts.notification'</span>, [
+                    <span class="hl-value">'message'</span> =&gt; <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>),
+                ])),
+                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">flash</span>(<span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>)),
+            ]);
+        }
+
+        <span class="hl-comment">// ...</span>
+    }
+}
+</code></pre>
+
+<h2>Turbo Streams Combo</h2>
+
+<p>You may combine multiple Turbo Streams in a single response like so:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([
+    <span class="hl-property">turbo_stream</span>()
+        -&gt;<span class="hl-property">append</span>(<span class="hl-variable">$comment</span>)
+        -&gt;<span class="hl-property">target</span>(<span class="hl-property">dom_id</span>(<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">post</span>, <span class="hl-value">'comments'</span>)),
+    <span class="hl-property">turbo_stream</span>()
+        -&gt;<span class="hl-property">update</span>(<span class="hl-property">dom_id</span>(<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">post</span>, <span class="hl-value">'comments_count'</span>), <span class="hl-property">view</span>(<span class="hl-value">'posts._comments_count'</span>, [<span class="hl-value">'post'</span> =&gt; <span class="hl-variable">$comment</span>-&gt;<span class="hl-property">post</span>])),
+]);
+</code></pre>
+
+<p>Although this is a valid option, it might feel like too much work for a controller. If that's the case, use <a href="#custom-turbo-stream-views">Custom Turbo Stream Views</a>.</p>
+
+<h2>Custom Turbo Stream Views</h2>
+
+<p>Although combining Turbo Streams in a single response right there in the controller is a valid option, it may feel like too much work for a controller. If that's the case, you may want to extract the Turbo Streams to a Blade view and respond with that instead:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">return</span> <span class="hl-property">response</span>()-&gt;<span class="hl-property">turboStreamView</span>(<span class="hl-value">'comments.turbo.created_stream'</span>, [
+    <span class="hl-value">'comment'</span> =&gt; <span class="hl-variable">$comment</span>,
+]);
+</code></pre>
+
+<p>Similar to the <code>Response::turboStream()</code> macro and the <code>turbo_stream()</code> helper function, you may prefer using the helper function <code>turbo_stream_view()</code>:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">return</span> <span class="hl-property">turbo_stream_view</span>(<span class="hl-value">'comments.turbo.created_stream'</span>, [
+    <span class="hl-value">'comment'</span> =&gt; <span class="hl-variable">$comment</span>,
+]);
+</code></pre>
+
+<p>And here's an example of a more complex custom Turbo Stream view:</p>
+
+<pre><code class="language-blade"><span class="hl-keyword">@include</span>(<span class="hl-value">'layouts.turbo.flash_stream'</span>)
+
+&lt;<span class="hl-keyword">turbo-stream</span> <span class="hl-property">target</span>=&quot;<span class="hl-keyword">@domid</span>(<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">post</span>, <span class="hl-value">'comments'</span>)&quot; <span class="hl-property">action</span>=&quot;append&quot;&gt;
+    &lt;<span class="hl-keyword">template</span>&gt;
+        <span class="hl-keyword">@include</span>(<span class="hl-value">'comments._comment'</span>, [<span class="hl-value">'comment'</span> =&gt; <span class="hl-variable">$comment</span>])
+    &lt;/<span class="hl-keyword">template</span>&gt;
+&lt;/<span class="hl-keyword">turbo-stream</span>&gt;
+</code></pre>
+
+<p>Remember, these are Blade views, so you have the full power of Blade at your hands. In this example, we're including a shared Turbo Stream partial which could append any flash messages we may have. That <code>layouts.turbo.flash_stream</code> could look like this:</p>
+
+<pre><code class="language-blade"><span class="hl-keyword">@if</span> (<span class="hl-property">session</span>()-&gt;<span class="hl-property">has</span>(<span class="hl-value">'status'</span>))
+&lt;<span class="hl-keyword">turbo-stream</span> <span class="hl-property">target</span>=&quot;notice&quot; <span class="hl-property">action</span>=&quot;append&quot;&gt;
+    &lt;<span class="hl-keyword">template</span>&gt;
+        <span class="hl-keyword">@include</span>(<span class="hl-value">'layouts._flash'</span>)
+    &lt;/<span class="hl-keyword">template</span>&gt;
+&lt;/<span class="hl-keyword">turbo-stream</span>&gt;
+<span class="hl-keyword">@endif</span>
+</code></pre>
+
+<p>Similar to the <code>&lt;x-turbo-frame&gt;</code> Blade component, there's also a <code>&lt;x-turbo-stream&gt;</code> Blade component that can simplify things a bit. It has the same convention of figuring out the DOM ID when you're passing a model instance or an array as the <code>&lt;x-turbo-frame&gt;</code> component applied to the <code>target</code> attribute. When using the component version, there's also no need to specify the template wrapper for the Turbo Stream tag, as that will be added by the component itself. So, the same example would look something like this:</p>
+
+<pre><code class="language-blade"><span class="hl-keyword">@include</span>(<span class="hl-value">'layouts.turbo.flash_stream'</span>)
+
+&lt;<span class="hl-keyword">x-turbo-stream</span> :<span class="hl-property">target</span>=&quot;[$comment-&gt;post, 'comments']&quot; <span class="hl-property">action</span>=&quot;append&quot;&gt;
+    <span class="hl-keyword">@include</span>(<span class="hl-value">'comments._comment'</span>, [<span class="hl-value">'comment'</span> =&gt; <span class="hl-variable">$comment</span>])
+&lt;/<span class="hl-keyword">x-turbo-stream</span>&gt;
+</code></pre>
+
+<p>I hope you can see how powerful this can be to reusing views.</p>
+
+<h2>Custom Actions</h2>
+
+<p>When you're using the Blade component, you can use Turbo's custom actions:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo-stream</span> <span class="hl-property">action</span>=&quot;console_log&quot; <span class="hl-property">value</span>=&quot;Hello World&quot; /&gt;
+</code></pre>
+
+<p>As you can see, when using custom actions, the <code>&lt;template&gt;&lt;/template&gt;</code> is also optional. To implement custom actions in the front-end, you'd need something like this:</p>
+
+<pre><code class="language-js"><span class="hl-keyword">import</span> * <span class="hl-keyword">as</span> Turbo <span class="hl-keyword">from</span> <span class="hl-value">'@hotwired/turbo'</span>;
+
+<span class="hl-type">Turbo</span>.<span class="hl-type">StreamActions</span>.<span class="hl-property">console_log</span> = <span class="hl-keyword">function</span> () {
+    console.<span class="hl-property">log</span>(<span class="hl-keyword">this</span>.<span class="hl-property">getAttribute</span>(<span class="hl-value">&quot;value&quot;</span>))
+}
+</code></pre>
+
+<p>Custom actions are only supported from Blade views. You cannot return those from controllers using the Pending Streams Builder, for instance.</p>
+          </div>
+
+                      <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Previous</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/1.x/docs/helper-functions">Helper Functions <span class="absolute inset-0"></span></a>
+    </div>
+  
+      <div class="lg:col-start-2 relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Next</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/1.x/docs/broadcasting">Broadcasting <span class="absolute inset-0"></span></a>
+    </div>
+  </div>
+                  </div>
+      </main>
+    </div>
+  </div>
+
+        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
+          <p class="text-base text-center w-full">
+            Turbo Laravel is maintained by <a href="" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
+          </p>
+        </footer>
+    </body>
+</html>
