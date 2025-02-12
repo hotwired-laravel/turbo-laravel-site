@@ -2,5 +2,5 @@
 
 return [
     'production' => true,
-    'baseUrl' => 'https://hotwired-laravel.github.io/turbo-laravel-site',
+    'baseUrl' => 'https://new.turbo-laravel.com',
 ];
