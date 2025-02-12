@@ -15,16 +15,14 @@
         </div>
       </aside>
 
-      <main class="flex-1 overflow-hidden">
-        <div>
-          <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+      <main class="flex-1 min-w-0">
+        <div class="prose prose-xl overflow-hidden prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
             @yield('content')
-          </div>
-
-          @unless ($page->getPath() === '/1.x/docs/search')
-            @include('_layouts.partials.next-previous-links')
-          @endunless
         </div>
+
+        @unless ($page->getPath() === '/1.x/docs/search')
+            @include('_layouts.partials.next-previous-links')
+        @endunless
       </main>
     </div>
   </div>
