@@ -1,2 +1,1875 @@
 <docs>
+    <page title="Upgrade Guide" url="https://new.turbo-laravel.com/docs/upgrade">
+        Upgrade Guide
+
+Upgrading from 1.x to 2.x
+
+For version 2.x, we&#039;re migrating from hotwired/turbo-laravel to hotwired-laravel/turbo-laravel. That&#039;s just so folks don&#039;t get confused thinking this is an official Hotwired project, which it&#039;s not. Even if you&#039;re on 1.x, it&#039;s recommended to migrate to hotwired-laravel/turbo-laravel.
+
+First, update the namespaces from the previous package. You can either do it from your IDE by searching for Tonysm\TurboLaravel and replacing it with HotwiredLaravel\TurboLaravel on your application (make sure you include all folders), or you can run the following command if you&#039;re on a macOS or Linux machine:
+
+find app config resources tests -type f -exec sed -i &#039;s/Tonysm\\TurboLaravel/HotwiredLaravel\\TurboLaravel/g&#039; {} +
+
+
+Next, update your views referencing the old components as &lt;x-turbo-* to the new format which is &lt;x-turbo::*. This command should be enough:
+
+find app resources tests -type f -exec sed -i &#039;s/x-turbo-/x-turbo::/g&#039; {} +
+
+
+Then, require the new package and remove the previous one:
+
+composer require hotwired-laravel/turbo-laravel:^2.0
+
+composer remove hotwired/turbo-laravel
+
+
+    </page>
+    <page title="Installation" url="https://new.turbo-laravel.com/docs/installation">
+        Installation
+
+Turbo Laravel can be installed via Composer:
+
+composer require hotwired-laravel/turbo-laravel
+
+
+After installing the package, you may run the turbo:install Artisan command:
+
+php artisan turbo:install
+
+
+This will add the Turbo.js dependency to your package.json file, when you&#039;re using Vite and NPM, or to your routes/importmap.php file, when it detects that you&#039;re using Importmap Laravel. It also publishes some files to your resources/js folder, which imports Turbo for you
+
+Note: Turbo used to work with Livewire, but somewhere around Livewire V3 the bridges stopped working. There&#039;s an open issue to investigate Livewire V3 compatibility. If you&#039;re into Livewire and would love to use Turbo in a Livewire app (maybe you want to augment your Livewire &amp; Turbo app with Hotwire Native or something like that), you&#039;re welcome to check out the issue and try to bring the compatibility back. If you wanted an application scaffolding like Laravel Breeze or Laravel Jetstream, checkout Turbo Breeze, our fork of Breeze that sets up a fresh Laravel app using Stimulus, Importmaps, TailwindCSS (via the CLI), and Turbo.
+
+    </page>
+    <page title="Overview" url="https://new.turbo-laravel.com/docs/overview">
+        Overview
+
+It&#039;s highly recommended that you read the Turbo Handbook first before continuing here. However, a quick intro will be provided here and we&#039;ll link to the Turbo documentations when relevant.
+
+Turbo is the heart of Hotwire. In essence, it&#039;s a JavaScript library that turns regular web applications (aka. multi-page web applications) into something that feels like a single-page application (SPA).
+
+It provides a bunch of components that allows us to build modern web applications with minimal JavaScript. It relies on sending HTML Over The Wire (hence the name), instead of JSON, which is how JavaScript-heavy web applications are built, typically consuming some sort of JSON API.
+
+When Turbo.js is started in the browser, it intercepts link clicks and form submissions to convert those into fetch requests (aka. AJAX) instead of letting the browser do a full page refresh. The component in Turbo that handles this behavior is called Turbo Drive.
+
+Turbo Drive will do the heavy-lifting of the SPA feel in our application. Just by turning it on, the perceived performance should be noticeable. The default behavior of Turbo will be to replace the contents of the &lt;body&gt; tag in our page with the one from the response it gets from the link or form submission.
+
+Additionally, since Turbo 8, we can also instruct Turbo to morph the page instead of just replacing its contents by adding a meta tag on the pages we can it enabled:
+
+&lt;meta name=&quot;turbo-refresh-method&quot; content=&quot;morph&quot;&gt;
+&lt;meta name=&quot;turbo-refresh-scroll&quot; content=&quot;preserve&quot;&gt;
+
+
+Alternatively, Turbo Laravel provides some Blade components to make it easier (and autocomplete friendlier) to interact with these Turbo page configurations:
+
+&lt;x-turbo::refreshes-with method=&quot;morph&quot; scroll=&quot;preserve&quot; /&gt;
+
+
+Turbo Drive does a lot for us, and with morphing it gets even more powerful, but sometimes you can want to decompose a page into independent sections (for different reasons, such as having more control over HTTP caching for these sections). For these use cases, Turbo offers Turbo Frames.
+
+Turbo Frames are custom HTML tags that Turbo provides. You can think of those as &quot;modern iframes&quot;, if you will. When link clicks or form submissions happen inside of a Turbo Frame, instead of replacing or morphing the entire page, Turbo will only affect that specific Turbo Frame&#039;s content. It will do so by extracting a matching Turbo Frame (one that has the same DOM ID) on the response.
+
+Here&#039;s how you can use Turbo Frames:
+
+&lt;turbo-frame id=&quot;my_frame&quot;&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+
+    &lt;a href=&quot;/somewhere&quot;&gt;Click me&lt;/a&gt;
+&lt;/turbo-frame&gt;
+
+
+Alternatively, you may want a Turbo Frame to immediately fetch its contents instead of waiting for a user interaction. For that, you may add a [src] attribute to the Turbo Frame tag with the URL of where Turbo should fetch that content from. This technique is called Lazy-loading Turbo Frames:
+
+&lt;turbo-frame id=&quot;my_frame&quot; src=&quot;@{{ route(&#039;my.page&#039;) }}&quot;&gt;
+    &lt;p&gt;Loading...&lt;/p&gt;
+&lt;/turbo-frame&gt;
+
+
+A lazy-loaded Turbo Frame will dispatch a fetch request (aka. AJAX) as soon as it enters the DOM, replacing its contents with the contents of a matching Turbo Frame in the response HTML. Optionally, you may add a [loading=lazy] attribute to the lazy-loaded Turbo Frame so Turbo will only fetch its content when the Turbo Frame is visible (within the viewport):
+
+&lt;turbo-frame id=&quot;my_frame&quot; src=&quot;@{{ route(&#039;my.page&#039;) }}&quot; loading=&quot;lazy&quot;&gt;
+    &lt;p&gt;Loading...&lt;/p&gt;
+&lt;/turbo-frame&gt;
+
+
+You may also trigger a Turbo Frame with forms and links that are outside of the frame tag by adding a [data-turbo-frame] attribute in the link, form, or submit buttons, passing the ID of the Turbo Frame:
+
+&lt;div&gt;
+    &lt;a href=&quot;/somewhere&quot; data-turbo-frame=&quot;my_frame&quot;&gt;I&#039;m a link&lt;/a&gt;
+
+    &lt;turbo-frame id=&quot;my_frame&quot;&gt;
+        ...
+    &lt;/turbo-frame&gt;
+&lt;/div&gt;
+
+
+Turbo Drive and Turbo Frames allows us to build A LOT of different sorts of interactions. However, sometimes you may want to update multiple sections of a page after a form submission, for instance. For those use cases, Turbo provides another custom HTML tag called Turbo Streams.
+
+All link clicks and form submissions that Turbo intercepts are annotated by Turbo, which tells our back-end application that Turbo is on, so we can return a special type of response that only contains Turbo Streams. Turbo.js will do so by adding a custom MIME type of text/vnd.turbo-stream.html to the Accept HTTP Header.
+
+Turbo Streams allows for a more fine-grained control over the page updates. For instance, here&#039;s an example of a Turbro Stream that appends a new comment to a comments section:
+
+&lt;turbo-stream action=&quot;append&quot; target=&quot;comments&quot;&gt;
+    &lt;template&gt;
+        ...
+    &lt;/template&gt;
+&lt;/turbo-stream&gt;
+
+
+The [action=append] will add the contents of what&#039;s inside the &lt;template&gt;&lt;/template&gt; tag into the element that has a DOM ID matching the [target=comments] attribute, so #comments in this case.
+
+There are 8 default Turbo Stream actions in Turbo:
+
+
+
+
+  Action
+  Description
+
+
+
+
+  append
+  Appends the contents of the &lt;template&gt; tag into the target or targets
+
+
+  prepend
+  Prepends the contents of the &lt;template&gt; tag to the target or targets
+
+
+  update
+  Updates the target or targets with the contents of the &lt;template&gt; tag (keeps the targeted elements around)
+
+
+  replace
+  Replaces the target or targets with the contents of the &lt;template&gt; tag (actually removes the targets)
+
+
+  before
+  Inserts the contents of the &lt;template&gt; tag before the targeted elements
+
+
+  after
+  Inserts the contents of the &lt;template&gt; tag after the targeted elements
+
+
+  remove
+  Removes the targeted elements (doesn&#039;t require a &lt;template&gt; tag)
+
+
+  refresh
+  Signals to Turbo Drive to do a page refresh (doesn&#039;t require a &lt;template&gt; tag, nor &quot;target&quot;)
+
+
+
+
+All the default Turbo Stream actions, except the refresh one, require a target or a targets attribute. The difference here is that if you use the target attribute, it expects a DOM ID of the target element, and if you use the targets attribute, it expects a CSS selector of the target(s) element(s).
+
+All of the default actions require the contents of the new or updated element to be wrapped inside a &lt;template&gt; tag, except for the remove and refresh actions. That&#039;s because Turbo Stream tags can be activated by simply adding them to the document. They&#039;ll get activate based on the action and then get removed from the DOM. Having the &lt;template&gt; ensure the content is not visible in the browser as it gets activated.
+
+I keep saying &quot;default action&quot;, well, that&#039;s because Turbo allows us to create our own custom actions:
+
+import { StreamActions } from &quot;{{&#039;@&#039;}}hotwired/turbo&quot;
+
+StreamActions.log = function () {
+  console.log(this.getAttribute(&quot;message&quot;))
+}
+
+
+In this case, we can use this action like so:
+
+&lt;turbo-stream action=&quot;log&quot; message=&quot;Hello World&quot;&gt;&lt;/turbo-stream&gt;
+
+
+This will get &quot;Hello World&quot; printed on the DevTools Console. With custom actions, you can do pretty much anything on the document.
+
+So far, all vanilla Hotwire and Turbo.
+
+    </page>
+    <page title="Conventions" url="https://new.turbo-laravel.com/docs/conventions">
+        Conventions
+
+The conventions described below are NOT mandatory. Feel free to pick what you like and also come up with your own conventions. With that out of the way, here&#039;s a list of conventions you may find helpful.
+
+Resource Routes
+
+Laravel supports resource routes and that plays really well with Hotwire for most things. This creates route names such as posts.index, posts.store, etc.
+
+If you don&#039;t want to use resource routes, at least consider using the naming convention: render forms in route names ending in .create, .edit, or .delete, and name their handler routes ending with .store, .update, or .destroy, accordingly.
+
+Turbo Laravel uses this naming convention so it doesn&#039;t redirect after failed validations and, instead, triggers another internal request to the application as well so it can re-render the form returning a 422 response with. The form should re-render with the old() input values and any validation messages as well.
+
+You may want to define exceptions to the route guessing behavior. In that&#039;s the case, set them in the redirect_guessing_exceptions in the config/turbo-laravel.php config file:
+
+return [
+    // ...
+    &#039;redirect_guessing_exceptions&#039; =&gt; [
+        &#039;/some-page&#039;,
+    ],
+];
+
+
+When using this config, the redirection behavior will still happen, but the package will not attempt to guess the routes that render the forms on those routes. See the Validation Response Redirects page to know more about why this happens.
+
+Partials
+
+You may want to split up your views in smaller chunks (aka. &quot;partials&quot;), such as a comments/_comment.blade.php to display a comment resource, or comments/_form.blade.php to display the form for both creating and updating comments. This allows you to reuse these partials in Turbo Streams.
+
+Alternatively, you may override the pattern to a {plural}.partials.{singular} convention for your partials location by calling the Turbo::usePartialsSubfolderPattern() method of the Turbo Facade from your AppServiceProvider::boot() method:
+
+&lt;?php
+
+namespace App\Providers;
+
+use HotwiredLaravel\TurboLaravel\Facades\Turbo;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        Turbo::usePartialsSubfolderPattern();
+    }
+}
+
+
+You may also want to define your own pattern for partials, which you can do using the Turbo::resolvePartialsUsing() method. This method accepts either a string pattern or a Closure. If you pass a string pattern, you&#039;ll have two placeholders available: {singular} and {plural}, which will get replaced with the model&#039;s singular and plural names, respectively, when the pattern is used. If you pass a Closure, you&#039;ll have the model instance available and you must return the view pattern using Laravel&#039;s dot notation convention. The pattern returned from the Closure will also get the placeholders applied, if you need that. Here&#039;s how you could manually define the partials subfolder pattern:
+
+&lt;?php
+
+namespace App\Providers;
+
+use HotwiredLaravel\TurboLaravel\Facades\Turbo;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        Turbo::resolvePartialsPathUsing(&#039;{plural}.partials.{singular}&#039;);
+
+        // Or...
+
+        Turbo::resolvePartialsPathUsing(fn ($model) =&gt; &#039;partials.{singular}&#039;);
+    }
+}
+
+
+You may also want to define your own pattern, which you can do by either specifying a string where you have the {plural} and {singular} placeholders available, but you can also specify a Closure, which will receive the model instance. On that Closure, you must return a string with the view location using the dot convention of Laravel. For instance, the subfolder pattern sets the config value to {plural}.partials.{singular} instead of the default, which is {plural}._{singular}. These will resolve to comments.partials.comment and comments._comment views, respectively.
+
+The models&#039; partials (such as a comments/_comment.blade.php for a Comment model) may only rely on having a single $comment variable passed to them. That&#039;s because Turbo Stream Model Broadcasts - which is an optional feature, by the way - relies on these conventions to figure out the partial for a given model when broadcasting and will also pass the model to such partial, using the class basename as the variable instance in camelCase. Again, this is optional, you can customize most of these things or create your own model broadcasting convention. Read the Broadcasting section to know more.
+
+Turbo Stream Channel Names
+
+Note: Turbo Stream Broadcasts are optional.
+
+You may use the model&#039;s Fully Qualified Class Name (aka. FQCN) as your Broadcasting Channel authorization routes with a wildcard, such as App.Models.Comment.{comment} for a Comment model living in App\\Models\\ - the wildcard&#039;s name doesn&#039;t matter, as long as there is one. This is the default broadcasting channel naming convention in Laravel.
+
+    </page>
+    <page title="Helpers" url="https://new.turbo-laravel.com/docs/helpers">
+        Helpers
+
+Turbo Laravel has a set of Blade Directives, Components, helper functions, and request/response macros to help making the most out of Turbo in Laravel.
+
+Blade Directives
+
+The @domid() Blade Directive
+
+Since Turbo relies a lot on DOM IDs, the package offers a helper to generate unique DOM IDs based on your models. You may use the @domid Blade Directive in your Blade views like so:
+
+&lt;turbo-frame id=&quot;{{&#039;@&#039;}}domid($post)&quot;&gt;
+    &lt;!-- Content --&gt;
+&lt;/turbo-frame&gt;
+
+
+This will generate a DOM ID string using your model&#039;s basename and its ID, such as post_123. You may also give it a prefix that will be added to the DOM ID, such as:
+
+&lt;turbo-frame id=&quot;{{&#039;@&#039;}}domid($post, &#039;comments&#039;)&quot;&gt;
+    &lt;!-- Comments --&gt;
+&lt;/turbo-frame&gt;
+
+
+Which will generate a comments_post_123 DOM ID, assuming your Post model has an ID of 123.
+
+Blade Components
+
+The &lt;x-turbo::frame&gt; Blade Component
+
+You may also prefer using the &lt;x-turbo::frame&gt; Blade component that ships with the package. This way, you don&#039;t need to worry about using the @domid() helper for your Turbo Frame:
+
+&lt;x-turbo::frame :id=&quot;$post&quot;&gt;
+    &lt;!-- Content --&gt;
+&lt;/x-turbo::frame&gt;
+
+
+To the :id prop, you may pass a string, which will be used as-is as the DOM ID, an Eloquent model instance, which will be passed to the dom_id() function that ships with the package (the same one as the @domid() Blade directive uses behind the scenes), or an array tuple where the first item is an instance of an Eloquent model and the second is the prefix of the DOM ID, something like this:
+
+&lt;x-turbo::frame :id=&quot;[$post, &#039;comments&#039;]&quot;&gt;
+    &lt;!-- Comments --&gt;
+&lt;/x-turbo::frame&gt;
+
+
+Additionally, you may also pass along any prop that is supported by the Turbo Frame custom Element to the &lt;x-turbo::frame&gt; Blade component, like target, src, or loading. These are the listed attributes, but any other attribute will also be forwarded to the &lt;turbo-frame&gt; tag that will be rendered by the &lt;x-turbo::frame&gt; component. For a full list of what&#039;s possible to do with Turbo Frames, see the documentation.
+
+The &lt;x-turbo::stream&gt; Blade Component
+
+If you&#039;re rendering a Turbo Stream inside a your Blade files, you may use the &lt;x-turbo::stream&gt; helper:
+
+&lt;x-turbo::stream :target=&quot;$post&quot; action=&quot;update&quot;&gt;
+    {{&#039;@&#039;}}include(&#039;posts.partials.post&#039;, [&#039;post&#039; =&gt; $post])
+&lt;x-turbo::stream&gt;
+
+
+Just like in the Turbo Frames&#039; :id prop, the :target prop of the Turbo Stream component accepts a string, a model instance, or an array to resolve the DOM ID using the dom_id() function.
+
+The &lt;x-turbo::refresh-method method=&quot;morph&quot; /&gt; Blade Component
+
+We can configure which update method Turbo should so to update the document:
+
+
+
+
+  Method
+  Description
+
+
+
+
+  replace
+  Updates the entire body of the document on Turbo Visits
+
+
+  morph
+  Uses DOM morphing to update the document instead of replacing everything
+
+
+
+
+Here&#039;s how you can use it:
+
+&lt;x-turbo::refresh-method method=&quot;morph&quot; /&gt;
+
+
+The output would be:
+
+&lt;meta name=&quot;turbo-refresh-method&quot; content=&quot;morph&quot;&gt;
+
+
+The &lt;x-turbo::refresh-scroll scroll=&quot;preserve&quot; /&gt; Blade Component
+
+You can also configure the scroll behavior on Turbo:
+
+
+
+
+  Behavior
+  Description
+
+
+
+
+  reset
+  Resets the scroll position to the top, mimicking for the browser handles new page visits
+
+
+  preserve
+  Preserves the current scroll position (usually results in a better UX when used with the morph method)
+
+
+
+
+Here&#039;s how you can use it:
+
+&lt;x-turbo::refresh-scroll scroll=&quot;preserve&quot; /&gt;
+
+
+The output would be:
+
+&lt;meta name=&quot;turbo-refresh-scroll&quot; content=&quot;preserve&quot;&gt;
+
+
+The &lt;x-turbo::refreshes-with&gt; Blade Component
+
+You may configure both the refresh method and scroll behavior using the &lt;x-turbo::refreshes-with /&gt; component in your main layout&#039;s &lt;head&gt; tag or on specific pages to configure how Turbo should update the page. Here&#039;s an example:
+
+&lt;x-turbo::refreshes-with method=&quot;morph&quot; scroll=&quot;preserve&quot; /&gt;
+
+
+This will render two HTML &lt;meta&gt; tags:
+
+&lt;meta name=&quot;turbo-refresh-method&quot; content=&quot;morph&quot;&gt;
+&lt;meta name=&quot;turbo-refresh-scroll&quot; content=&quot;preserve&quot;&gt;
+
+
+The &lt;x-turbo::exempts-page-from-cache /&gt; Blade Component
+
+This component may be added to any page you don&#039;t want Turbo to keep a cache in the page cache. Example:
+
+&lt;x-turbo::exempts-page-from-cache /&gt;
+
+
+It will render the HTML &lt;meta&gt; tag:
+
+&lt;meta name=&quot;turbo-cache-control&quot; content=&quot;no-cache&quot;&gt;
+
+
+The &lt;x-turbo::exempts-page-from-preview /&gt; Blade Component
+
+This component may be added to any page you don&#039;t want Turbo to show as a preview on regular navigation visits. No-preview pages will only be used in restoration visits (when you use the browser&#039;s back or forward buttons, or when when moving backward in the navigation stack). Example:
+
+&lt;x-turbo::exempts-page-from-preview /&gt;
+
+
+It will render the HTML &lt;meta&gt; tag:
+
+&lt;meta name=&quot;turbo-cache-control&quot; content=&quot;no-preview&quot;&gt;
+
+
+The &lt;x-turbo::page-requires-reload /&gt; Blade Component
+
+This component may be added to any page you want Turbo to reload. This will break out of Turbo Frame navigations. May be used at a login screen, for instance. Example:
+
+&lt;x-turbo::page-requires-reload /&gt;
+
+
+It will render the HTML &lt;meta&gt; tag:
+
+&lt;meta name=&quot;turbo-visit-control&quot; content=&quot;reload&quot;&gt;
+
+
+Helper Functions
+
+The package ships with a set of helper functions. These functions are all namespaced under HotwiredLaravel\\TurboLaravel\\ but we also add them globally for convenience, so you may use them directly without the use statements (this is useful in contexts like Blade views, for instance).
+
+The dom_id()
+
+The mentioned namespaced dom_id() helper function may also be used from anywhere in your application, like so:
+
+use function HotwiredLaravel\TurboLaravel\dom_id;
+
+dom_id($comment);
+
+
+When a new instance of a model is passed to any of these DOM ID helpers, since it doesn&#039;t have an ID, it will prefix the resource name with a create_ prefix. This way, new instances of an App\\Models\\Comment model will generate a create_comment DOM ID.
+
+These helpers strip out the model&#039;s FQCN (see config/turbo-laravel.php if you use an unconventional location for your models).
+
+The dom_class()
+
+The dom_class() helper function may be used from anywhere in your application, like so:
+
+use function HotwiredLaravel\TurboLaravel\dom_class;
+
+dom_class($comment);
+
+
+This function will generate the DOM class named based on your model&#039;s class name. If you have an instance of a App\Models\Comment model, it will generate a comment DOM class.
+
+Similarly to the dom_id() function, you may also pass a context prefix as the second parameter:
+
+dom_class($comment, &#039;reactions_list&#039;);
+
+
+This will generate a DOM class of reactions_list_comment.
+
+The turbo_stream()
+
+You may generate Turbo Streams using the Response::turboStream() macro, but you may also do so using the turbo_stream() helper function:
+
+use function HotwiredLaravel\TurboLaravel\turbo_stream;
+
+turbo_stream()-&gt;append($comment);
+
+
+Both the Response::turboStream() and the turbo_stream() function work the same way. The turbo_stream() function may be easier to use.
+
+The turbo_stream_view()
+
+You may combo Turbo Streams using the turbo_stream([]) function passing an array, but you may prefer to create a separate Blade view with all the Turbo Streams, this way you may also use template extensions and everything else Blade offers:
+
+use function HotwiredLaravel\TurboLaravel\turbo_stream_view;
+
+return turbo_stream_view(&#039;comments.turbo.created&#039;, [
+    &#039;comment&#039; =&gt; $comment,
+]);
+
+
+Request &amp; Response Macros
+
+The request()-&gt;wantsTurboStream() macro
+
+The request()-&gt;wantsTurboStream() macro added to the request class will check if the request accepts Turbo Stream and return true or false accordingly.
+
+Turbo will add a Accept: text/vnd.turbo-stream.html, ... header to the requests. That&#039;s how we can detect if the request came from a client using Turbo.
+
+The request()-&gt;wasFromTurboFrame() macro
+
+The request()-&gt;wasFromTurboFrame() macro added to the request class will check if the request was made from a Turbo Frame. When used with no parameters, it returns true if the request has a Turbo-Frame header, no matter which specific Turbo Frame.
+
+Additionally, you may specific the optional $frame parameter. When that&#039;s passed, it returns true if it has a Turbo-Frame header where the value matches the specified $frame. Otherwise, it will return false:
+
+if (request()-&gt;wasFromTurboFrame(dom_id($post, &#039;create_comment&#039;))) {
+    // ...
+}
+
+
+The request()-&gt;wasFromHotwireNative() macro
+
+The request()-&gt;wasFromHotwireNative() macro added to the request class will check if the request came from a Hotwire Native client and returns true or false accordingly.
+
+Hotwire Native clients are encouraged to override the User-Agent header in the WebViews to mention the words Hotwire Native on them. This is what this macro uses to detect if it came from a Hotwire Native client.
+
+The response()-&gt;turboStream() macro
+
+The response()-&gt;turboStream() macro works similarly to the turbo_stream() function above. It was only added to the response for convenience.
+
+The response()-&gt;turboStreamView() macro
+
+The response()-&gt;turboStreamView() macro works similarly to the turbo_stream_view() function above. It was only added to the response for convenience.
+
+    </page>
+    <page title="Turbo Frames" url="https://new.turbo-laravel.com/docs/turbo-frames">
+        Turbo Frames
+
+The Turbo Frame tag that ships with Turbo can be used on your Blade views just like any other HTML tag:
+
+&lt;turbo-frame id=&quot;{{&#039;@&#039;}}domid($post, &#039;create_comment&#039;)&quot;&gt;
+    &lt;p&gt;Loading...&lt;/p&gt;
+&lt;/turbo-frame&gt;
+
+
+In this case, the @domid() directive is being used to create a DOM ID that looks like this create_comment_post_123. There&#039;s also a Blade Component that ships with Turbo Laravel and can be used like this:
+
+&lt;x-turbo::frame :id=&quot;[$post, &#039;create_comment&#039;]&quot;&gt;
+    &lt;p&gt;Loading...&lt;/p&gt;
+&lt;/x-turbo::frame&gt;
+
+
+When using the Blade Component, you don&#039;t have to worry about using the @domid() directive or the dom_id() function, as this gets handled automatically by the package. You may also pass a string if you want to enforce your own DOM ID.
+
+Any other attribute passed to the Blade Component will get forwarded to the underlying &lt;turbo-frame&gt; element, so if you want to turn a Turbo Frame into a lazy-loading Turbo Frame using the Blade Component, you can do it like so:
+
+&lt;x-turbo::frame
+    :id=&quot;[$post, &#039;create_comment&#039;]&quot;
+    :src=&quot;route(&#039;post.comments.create&#039;, $post)&quot;
+    loading=&quot;lazy&quot;
+&gt;
+    &lt;p&gt;Loading...&lt;/p&gt;
+&lt;/x-turbo::frame&gt;
+
+
+This will work for any other attribute you want to forward to the underlying component.
+
+The request()-&gt;wasFromTurboFrame() Macro
+
+You may want to detect if a request came from a Turbo Frame in the backend. You may use the wasFromTurboFrame() method for that:
+
+if ($request-&gt;wasFromTurboFrame()) {
+    // ...
+}
+
+
+When used like this, the macro will return true if the X-Turbo-Frame custom HTTP header is present in the request (which Turbo adds automatically), or false otherwise.
+
+You may also check if the request came from a specific Turbo Frame:
+
+if ($request-&gt;wasFromTurboFrame(dom_id($post, &#039;create_comment&#039;))) {
+    // ...
+}
+
+
+    </page>
+    <page title="Turbo Streams" url="https://new.turbo-laravel.com/docs/turbo-streams">
+        Turbo Streams
+
+Out of everything Turbo provides, it&#039;s Turbo Streams that benefits the most from a tight backend integration.
+
+Turbo Laravel offers helper functions, Blade Components, and Model traits to generate Turbo Streams. Turbo will add a new Content-Type to the HTTP Accept header (Accept: text/vnd.turbo-stream.html, ...) on Form submissions. This is a signal to the backend that we can return a Turbo Stream response for that form submission instead of an HTML document, if we want to.
+
+Here&#039;s an example of a route handler detecting and returning a Turbo Stream response to a form submission:
+
+Route::post(&#039;posts/{post}/comments&#039;, function (Post $post) {
+    $comment = $post-&gt;comments()-&gt;create(/** params */);
+
+    if (request()-&gt;wantsTurboStream()) {
+        return turbo_stream($comment);
+    }
+
+    return back();
+});
+
+
+The request()-&gt;wantsTurboStream() macro added to the request class will check if the request accepts Turbo Stream and return true or false accordingly.
+
+The turbo_stream() helper function may be used to generate streams, but you may also use the response()-&gt;turboStream() macro as well. In the docs, we&#039;ll only use the helper function, but you may use either one of those.
+
+Here&#039;s what the HTML response will look like:
+
+&lt;turbo-stream action=&quot;append&quot; target=&quot;comments&quot;&gt;
+    &lt;template&gt;
+        &lt;div id=&quot;comment_123&quot;&gt;
+            &lt;p&gt;Hello, World&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+&lt;/turbo-stream&gt;
+
+
+Most of these things were &quot;guessed&quot; based on the conventions we talked about earlier. But you can override most things, like so:
+
+turbo_stream($comment)-&gt;target(&#039;post_comments&#039;);
+
+
+This would render the following Turbo Stream:
+
+&lt;turbo-stream action=&quot;append&quot; target=&quot;post_comments&quot;&gt;
+    &lt;template&gt;
+        &lt;div id=&quot;comment_123&quot;&gt;
+            &lt;p&gt;Hello, World&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+&lt;/turbo-stream&gt;
+
+
+Although it&#039;s handy to pass a model instance to the turbo_stream() function - which will be used to decide the default values of the Turbo Stream response based on the model&#039;s current state, sometimes you may want to build a Turbo Stream response manually:
+
+turbo_stream()
+    -&gt;target(&#039;comments&#039;)
+    -&gt;action(&#039;append&#039;)
+    -&gt;view(&#039;comments.partials.comment&#039;, [&#039;comment&#039; =&gt; $comment]);
+
+
+There are also shorthand methods which may be used as well:
+
+turbo_stream()-&gt;append($comment);
+turbo_stream()-&gt;prepend($comment);
+turbo_stream()-&gt;before($comment);
+turbo_stream()-&gt;after($comment);
+turbo_stream()-&gt;replace($comment);
+turbo_stream()-&gt;update($comment);
+turbo_stream()-&gt;remove($comment);
+turbo_stream()-&gt;refresh();
+
+
+You may pass an instance of an Eloquent model to all these shorthand methods, except the refresh one, which will be used to figure things out like target, the view, and will also pass that model instance to the view.
+
+For a model App\Models\Comment, the convention says that the view is located at resources/views/comments/_comment.blade.php. Based on the model&#039;s class basename, it will figure out the name of the variable that the view should depend on, which would be $comment in this case, so it would pass the model instance down to the view automatically. For that reason, when using the convention (which is optional), the model view must only depend on the model instance to be available (no globals or other locals with no defaults).
+
+Alternatively, you may also pass strings to the shorthand stream builders, which will be used as the target, and an optional content string, which will be rendered instead of a partial, for instance:
+
+turbo_stream()-&gt;append(&#039;statuses&#039;, __(&#039;Comment created!&#039;));
+
+
+The optional content parameter expects either a string, a view instance, or an instance of Laravel&#039;s Illuminate\Support\HtmlString, so you could do something like:
+
+turbo_stream()-&gt;append(&#039;some_dom_id&#039;, view(&#039;greetings&#039;, [
+    &#039;name&#039; =&gt; &#039;Tester&#039;,
+]));
+
+
+Or more explicitly by passing an instance of the HtmlString as content:
+
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\HtmlString;
+
+turbo_stream()-&gt;append(&#039;statuses&#039;, new HtmlString(
+    Blade::render(&#039;&lt;div&gt;Hello, @{{ $name }}&lt;/div&gt;&#039;, [&#039;name&#039; =&gt; &#039;Tony&#039;])
+));
+
+
+Which will result in a Turbo Stream like this:
+
+&lt;turbo-stream target=&quot;statuses&quot; action=&quot;append&quot;&gt;
+    &lt;template&gt;
+        &lt;div&gt;Hello, Tony&lt;/div&gt;
+    &lt;/template&gt;
+&lt;/turbo-stream&gt;
+
+
+For both the before and after methods you need additional calls to specify the view template you want to insert, since the given model/string will only be used to specify the target, something like:
+
+turbo_stream()
+    -&gt;before($comment)
+    -&gt;view(&#039;comments.partials.flash_message&#039;, [
+        &#039;message&#039; =&gt; __(&#039;Comment created!&#039;),
+    ]);
+
+
+Just like the other shorthand stream builders, you may also pass an option content string or HtmlString instance to the before and after shorthands. When doing that, you don&#039;t need to specify the view section.
+
+turbo_stream()-&gt;before($comment, __(&#039;Oh, hey!&#039;));
+
+
+You can read more about Turbo Streams in the Turbo Handbook.
+
+As mentioned earlier, passing a model to the turbo_stream() helper (or the shorthand Turbo Stream builders) will pre-fill the pending response object with some defaults based on the model&#039;s state.
+
+It will build a remove Turbo Stream if the model was just deleted (or if it was trashed - in case it&#039;s a Soft Deleted model), an append if the model was recently created (which you can override the action as the second parameter), a replace if the model was just updated (you can also change it to update using the second parameter.) Here&#039;s how overriding would look like:
+
+return turbo_stream($comment, &#039;append&#039;);
+
+
+Turbo Streams &amp; Morph
+
+Both the update and replace Turbo Stream actions can specify a [method=&quot;morph&quot;] attribute, so the action will use DOM morphing instead of the default renderer.
+
+To generate a Turbo Stream with the [method=&quot;morph&quot;] attribute, chain the morph() method:
+
+turbo_stream()-&gt;replace(dom_id($post, &#039;comments&#039;), view(&#039;comments.partials.comment&#039;, [
+    &#039;comment&#039; =&gt; $comment,
+]))-&gt;morph();
+
+
+This would generate the following Turbo Stream HTML:
+
+&lt;turbo-stream action=&quot;replace&quot; target=&quot;comments_post_123&quot; method=&quot;morph&quot;&gt;
+    &lt;template&gt;...&lt;/template&gt;
+&lt;/turbo-stream&gt;
+
+
+And here&#039;s the update action version:
+
+turbo_stream()-&gt;update(dom_id($post, &#039;comments&#039;), view(&#039;comments.partials.comment&#039;, [
+    &#039;comment&#039; =&gt; $comment,
+]))-&gt;morph();
+
+
+This would generate the following Turbo Stream HTML:
+
+&lt;turbo-stream action=&quot;update&quot; target=&quot;comments_post_123&quot; method=&quot;morph&quot;&gt;
+    &lt;template&gt;...&lt;/template&gt;
+&lt;/turbo-stream&gt;
+
+
+Target Multiple Elements
+
+Turbo Stream elements can either have a target with a DOM ID or a targets attribute with a CSS selector to match multiple elements. You may use the xAll shorthand methods to set the targets attribute instead of target:
+
+turbo_stream()-&gt;appendAll(&#039;.comment&#039;, &#039;Some content&#039;);
+turbo_stream()-&gt;prependAll(&#039;.comment&#039;, &#039;Some content&#039;);
+turbo_stream()-&gt;updateAll(&#039;.comment&#039;, &#039;Some content&#039;);
+turbo_stream()-&gt;replaceAll(&#039;.comment&#039;, &#039;Some content&#039;);
+turbo_stream()-&gt;beforeAll(&#039;.comment&#039;, &#039;Some content&#039;);
+turbo_stream()-&gt;afterAll(&#039;.comment&#039;, &#039;Some content&#039;);
+turbo_stream()-&gt;removeAll(&#039;.comment&#039;);
+
+
+With the exception of the removeAll method, the xAll methods accept a string of inline content, an instance of a View (which may be created using the view() function provided by Laravel), or an instance of the HtmlSafe class as the second parameter.
+
+When creating Turbo Streams using the builders, you may also specify the CSS class using the targets() (plural) method instead of the target() (singular) version:
+
+turbo_stream()
+    -&gt;targets(&#039;.comment&#039;)
+    -&gt;action(&#039;append&#039;)
+    -&gt;view(&#039;comments.partials.comment&#039;, [&#039;comment&#039; =&gt; $comment]);
+
+
+Turbo Stream Macros
+
+The turbo_stream() function returns an instance of PendingTurboStreamResponse, which is macroable. This means you can create your own DSL for your custom Turbo Streams. Let&#039;s say you always return flash messages from your controllers like so:
+
+class ChirpsController extends Controller
+{
+    public function destroy(Request $request, Chirp $chirp)
+    {
+        $this-&gt;authorize(&#039;delete&#039;, $chirp);
+
+        $chirp-&gt;delete();
+
+        if ($request-&gt;wantsTurboStream()) {
+            return turbo_stream([
+                turbo_stream($chirp),
+                turbo_stream()-&gt;append(&#039;notifications&#039;, view(&#039;layouts.notification&#039;, [
+                    &#039;message&#039; =&gt; __(&#039;Chirp deleted.&#039;),
+                ])),
+            ]);
+        }
+
+        // ...
+    }
+}
+
+
+Chances are you&#039;re gonna return flash messages from all your controllers, so you could create a custom macro like so:
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        PendingTurboStreamResponse::macro(&#039;flash&#039;, function (string $message) {
+            return $this-&gt;append(&#039;notifications&#039;, view(&#039;layouts.notification&#039;, [
+                &#039;message&#039; =&gt; $message,
+            ]));
+        });
+    }
+}
+
+
+You could then rewrite that controller like so:
+
+class ChirpsController extends Controller
+{
+    public function destroy(Request $request, Chirp $chirp)
+    {
+        $this-&gt;authorize(&#039;delete&#039;, $chirp);
+
+        $chirp-&gt;delete();
+
+        if ($request-&gt;wantsTurboStream()) {
+            return turbo_stream([
+                turbo_stream($chirp),
+                turbo_stream()-&gt;append(&#039;notifications&#039;, view(&#039;layouts.notification&#039;, [
+                    &#039;message&#039; =&gt; __(&#039;Chirp deleted.&#039;),
+                ])),
+                turbo_stream()-&gt;flash(__(&#039;Chirp deleted.&#039;)),
+            ]);
+        }
+
+        // ...
+    }
+}
+
+
+Turbo Streams Combo
+
+You may combine multiple Turbo Streams in a single response like so:
+
+return turbo_stream([
+    turbo_stream()
+        -&gt;append($comment)
+        -&gt;target(dom_id($comment-&gt;post, &#039;comments&#039;)),
+    turbo_stream()
+        -&gt;update(dom_id($comment-&gt;post, &#039;comments_count&#039;), view(&#039;posts.partials.comments_count&#039;, [
+            &#039;post&#039; =&gt; $comment-&gt;post,
+        ])),
+]);
+
+
+Although this is a valid option, it might feel like too much work for a controller. If that&#039;s the case, you may use Custom Turbo Stream Views.
+
+Custom Turbo Stream Views
+
+Although combining Turbo Streams in a single response right there in the controller is a valid option, it may feel like too much work for a controller. If that&#039;s the case, you may want to extract the Turbo Streams to a Blade view and respond with that instead:
+
+return turbo_stream_view(&#039;comments.turbo.created_stream&#039;, [
+    &#039;comment&#039; =&gt; $comment,
+]);
+
+
+Similar to the turbo_stream() helper function and the Response::turboStream() macro, you may prefer using the Response::turboStreamView() macro. It works the same way.
+
+Here&#039;s an example of a more complex custom Turbo Stream view:
+
+{{&#039;@&#039;}}include(&#039;layouts.turbo.flash_stream&#039;)
+
+&lt;turbo-stream target=&quot;{{&#039;@&#039;}}domid($comment-&gt;post, &#039;comments&#039;)&quot; action=&quot;append&quot;&gt;
+    &lt;template&gt;
+        {{&#039;@&#039;}}include(&#039;comments.partials.comment&#039;, [&#039;comment&#039; =&gt; $comment])
+    &lt;/template&gt;
+&lt;/turbo-stream&gt;
+
+
+Remember, these are Blade views, so you have the full power of Blade at your hands. In this example, we&#039;re including a shared Turbo Stream partial which could append any flash messages we may have. That layouts.turbo.flash_stream could look like this:
+
+{{&#039;@&#039;}}if (session()-&gt;has(&#039;status&#039;))
+&lt;turbo-stream target=&quot;notice&quot; action=&quot;append&quot;&gt;
+    &lt;template&gt;
+        {{&#039;@&#039;}}include(&#039;layouts.partials.flash&#039;)
+    &lt;/template&gt;
+&lt;/turbo-stream&gt;
+{{&#039;@&#039;}}endif
+
+
+Similar to the &lt;x-turbo::frame&gt; Blade component, there&#039;s also a &lt;x-turbo::stream&gt; Blade component that can simplify things a bit. It has the same convention of figuring out the DOM ID when you&#039;re passing a model instance or an array as target attribute of the &lt;x-turbo::frame&gt; component. When using the component version, there&#039;s no need to specify the template wrapper for the Turbo Stream tag, as that will be added by the component itself. So, the same example would look something like this:
+
+{{&#039;@&#039;}}include(&#039;layouts.turbo.flash_stream&#039;)
+
+&lt;x-turbo::stream :target=&quot;[$comment-&gt;post, &#039;comments&#039;]&quot; action=&quot;append&quot;&gt;
+    {{&#039;@&#039;}}include(&#039;comments.partials.comment&#039;, [&#039;comment&#039; =&gt; $comment])
+&lt;/x-turbo::stream&gt;
+
+
+I hope you can see how powerful this can be to reusing views.
+
+Custom Actions
+
+You may also use the &lt;x-turbo::stream&gt; Blade component for your custom actions as well:
+
+&lt;x-turbo::stream action=&quot;console_log&quot; value=&quot;Hello World&quot; /&gt;
+
+
+Custom actions are only supported from Blade views. You cannot return those from controllers using the Pending Streams Builder.
+
+    </page>
+    <page title="Broadcasting" url="https://new.turbo-laravel.com/docs/broadcasting">
+        Broadcasting Turbo Streams
+
+So far, we&#039;ve seen how we may generate Turbo Streams to either add it to our Blade views or return them from controllers after a form submission over HTTP. In addition to that, we may also broadcast model changes over WebSockets (or Server-Sent Events).
+
+It&#039;s important to mention that this is an optional feature of Turbo and Turbo Laravel. You don&#039;t have to use Turbo Streams Broadcasting if you don&#039;t have the need for it in order to use Turbo.
+
+We can make our model changes generate Turbo Streams. Yes, the exact same Turbo Streams tags we&#039;re used to. Remember, &quot;HTML over the wire.&quot; Turbo Streams Broadcasting use Laravel Echo and Laravel&#039;s Broadcasting component.
+
+Broadcasts are usually triggered after a form submission. You may still return Turbo Streams over HTTP to the user that triggered the form submission, and only send the Turbo Stream Broadcasting to other users. This way, the user making the change will have an instant feedback compared to having to wait for the broadcasting over WebSockets, which may involve queue workers.
+
+Configuration
+
+Broadcasting Turbo Streams relies heavily on Laravel&#039;s Broadcasting  component. This means you need to configure Laravel Echo in the frontend and either Laravel Reverb or a paid service like Pusher.
+
+Listening to Broadcasts
+
+Turbo Laravel will publish a custom HTML tag to your application&#039;s resources/js/elements folder. This tag is called &lt;turbo-echo-stream-source&gt; (see here).
+
+You may add this tag to any Blade view passing the channel you want to listen to and users will start receiving Turbo Stream Broadcasts right away:
+
+&lt;turbo-echo-stream-source
+    channel=&quot;App.Models.Post.@{{ $post-&gt;id }}&quot;
+/&gt;
+
+
+For convenience, you may prefer using the &lt;x-turbo::stream-from&gt; Blade component that ships with Turbo Laravel (it requires that you have a custom element named &lt;turbo-echo-stream-source&gt; available, since that&#039;s the tag this component will render in HTML). You may pass the model as the source prop to it, it will figure out the channel name for that specific model using Laravel&#039;s conventions:
+
+&lt;x-turbo::stream-from :source=&quot;$post&quot; /&gt;
+
+
+By default, it expects a private channel, so it must be used in a page where users are already authenticated. You may control the channel type in the tag with a type attribute.
+
+&lt;x-turbo::stream-from :source=&quot;$post&quot; type=&quot;public&quot; /&gt;
+
+
+Make sure you have the Broadcast Auth Route for your models registered in your routes/channels.php file:
+
+use App\Models\Post;
+use App\Models\User;
+use Illuminate\Support\Facades\Broadcast;
+
+Broadcast::channel(Post::class, function (User $user, Post $post) {
+    return $user-&gt;belongsToTeam($post-&gt;team);
+});
+
+
+You may want to read the Laravel Broadcasting documentation.
+
+Broadcasting Model Changes
+
+To be broadcast model changes for a particular, you must add the Broadcasts trait to your models:
+
+use HotwiredLaravel\TurboLaravel\Models\Broadcasts;
+
+class Comment extends Model
+{
+    use Broadcasts;
+}
+
+
+This trait will augment any model with Turbo Stream broadcasting methods that you may use to trigger broadcasts manually. Here&#039;s how you can broadcast an append Turbo Stream for a newly created comment to all users visiting the post page:
+
+Route::post(&#039;posts/{post}/comments&#039;, function (Post $post) {
+    $comment = $post-&gt;comments()-&gt;create(/** params */);
+
+    $comment-&gt;broadcastAppend()-&gt;toOthers()-&gt;later();
+
+    if (request()-&gt;wantsTurboStream()) {
+        return turbo_stream($comment);
+    }
+
+    return back();
+});
+
+
+Here are the methods now available to your model:
+
+$comment-&gt;broadcastAppend();
+$comment-&gt;broadcastPrepend();
+$comment-&gt;broadcastBefore(&#039;target_dom_id&#039;);
+$comment-&gt;broadcastAfter(&#039;target_dom_id&#039;);
+$comment-&gt;broadcastReplace();
+$comment-&gt;broadcastUpdate();
+$comment-&gt;broadcastRemove();
+$comment-&gt;broadcastRefresh();
+
+
+These methods will assume you want to broadcast to your model&#039;s channel. In this case, it would broadcast the Turbo Streams to a private channel named App.Models.Comments.{id}.
+
+Additionally, you may send these broadcasts to any other model&#039;s channel:
+
+$comment-&gt;broadcastAppendTo($post);
+$comment-&gt;broadcastPrependTo($post);
+$comment-&gt;broadcastBeforeTo($post, &#039;target_dom_id&#039;);
+$comment-&gt;broadcastAfterTo($post, &#039;target_dom_id&#039;);
+$comment-&gt;broadcastReplaceTo($post);
+$comment-&gt;broadcastUpdateTo($post);
+$comment-&gt;broadcastRemoveTo($post);
+$comment-&gt;broadcastRefreshTo($post);
+
+
+These broadcastXTo() methods accept either a model, an instance of the Channel class, or an array containing both of these.
+
+When it receives a model, it will guess the channel name using Laravel&#039;s Broadcasting channel naming convention.
+
+All of these broadcasting methods return an instance of the PendingBroadcast class that will only dispatch the broadcasting job when that pending object is being garbage collected. Which means you may make changes to this pending broadcast by chaining on the returned object:
+
+$comment-&gt;broadcastAppend()
+    -&gt;to($post)
+    -&gt;view(&#039;comments/_custom_view_partial&#039;, [
+        &#039;comment&#039; =&gt; $comment,
+        &#039;post&#039; =&gt; $post,
+    ])
+    -&gt;toOthers() // Do not send to the current user...
+    -&gt;later(); // Don&#039;t send it now, dispatch a job to send in background instead...
+
+
+You may want to hook these broadcasts from your model&#039;s events to trigger Turbo Stream broadcasts whenever your models are changed in any context:
+
+class Comment extends Model
+{
+    use Broadcasts;
+
+    protected static function booted()
+    {
+        static::created(function (Comment $comment) {
+            $comment-&gt;broadcastPrependTo($comment-&gt;post)-&gt;later();
+        });
+
+        static::updated(function (Comment $comment) {
+            $comment-&gt;broadcastReplaceTo($comment-&gt;post)-&gt;later();
+        });
+
+        static::deleted(function (Comment $comment) {
+            $comment-&gt;broadcastRemoveTo($comment-&gt;post)-&gt;later();
+        });
+    }
+}
+
+
+For convenience, instead of adding all these lines to achieve this set of broadcasting, you may add a $broadcasts = true property to your model class. This property instructs the Brodcasts trait to automatically hook the model Turbo Stream broadcasts on the correct events:
+
+class Comment extends Model
+{
+    use Broadcasts;
+
+    protected $broadcasts = true;
+}
+
+
+This achieves almost the same set of Broadcasts as the previous example, with a few nuanced differences. First, by default, it will broadcast an append Turbo Stream on newly created models. You may want to use prepend instead. You may do that by changing the $broadcasts property to be a configuration array instead of a boolean true, then set the insertsBy key to prepend:
+
+class Comment extends Model
+{
+    use Broadcasts;
+
+    protected $broadcasts = [
+        &#039;insertsBy&#039; =&gt; &#039;prepend&#039;,
+    ];
+}
+
+
+When using the $broadcasts property, the Turbo Stream broadcasts will be sent to the current model&#039;s channel. However, since the channels use the model&#039;s ID as per the naming convention, no one will ever be able to listen on that channel before the model is created. For that reason, Turbo Stream broadcasts of newly created models will be sent to a private channel using the model&#039;s plural name instead. You may also configure which stream name this specific Turbo Stream should be sent to by setting the stream key on the $broadcasts property:
+
+class Comment extends Model
+{
+    use Broadcasts;
+
+    protected $broadcasts = [
+        &#039;insertsBy&#039; =&gt; &#039;prepend&#039;,
+        &#039;stream&#039; =&gt; &#039;my-comments&#039;,
+    ];
+}
+
+
+This will send the Turbo Stream broadcast to private channel called my-comments when a new comment is created.
+
+Alternatively, you may also set a $broadcastsTo property with either a string with the name of the relationship to be used to resolve the channel, or an array of relationships if you want to send the broadcast to multiple related model&#039;s channels:
+
+class Comment extends Model
+{
+    use Broadcasts;
+
+    protected $broadcasts = [
+        &#039;insertsBy&#039; =&gt; &#039;prepend&#039;,
+    ];
+
+    protected $broadcastsTo = &#039;post&#039;;
+
+    public function post()
+    {
+        return $this-&gt;belongsTo(Post::class);
+    }
+}
+
+
+You may also do that by adding a broadcastsTo() method to your model instead of the $broadcastsTo property. The method must return either an Eloquent model, a Channel instance, or an array with a mix of those:
+
+use Illuminate\Broadcasting\Channel;
+
+class Comment extends Model
+{
+    use Broadcasts;
+
+    protected $broadcasts = [
+        &#039;insertsBy&#039; =&gt; &#039;prepend&#039;,
+    ];
+
+    public function post()
+    {
+        return $this-&gt;belongsTo(Post::class);
+    }
+
+    public function broadcastsTo()
+    {
+        return [
+            $this,
+            $this-&gt;post,
+            new Channel(&#039;full-control&#039;),
+        ];
+    }
+}
+
+
+Having a $broadcastsTo property or implementing the broadcastsTo() method in your model will have precedence over the stream key of the $broadcasts property.
+
+Broadcasting Page Refreshes
+
+Similar to the $broadcasts property, you may want to automatically configure page refresh broadcasts on a modal. You may use the $broadcastsRefreshes property for that:
+
+use Illuminate\Broadcasting\Channel;
+
+class Comment extends Model
+{
+    use Broadcasts;
+
+    protected $broadcastsRefreshes = true;
+}
+
+
+This is the same as doing:
+
+use Illuminate\Broadcasting\Channel;
+
+class Comment extends Model
+{
+    use Broadcasts;
+
+    public static function booted()
+    {
+        static::created(function ($comment) {
+            $comment-&gt;broadcastRefreshTo(&quot;comments&quot;)-&gt;later();
+        });
+
+        static::updated(function ($comment) {
+            $comment-&gt;broadcastRefresh()-&gt;later();
+        });
+
+        static::deleted(function ($comment) {
+            $comment-&gt;broadcastRefresh();
+        });
+    }
+}
+
+
+You may want to broadcast page refreshes to a related model:
+
+use Illuminate\Broadcasting\Channel;
+
+class Comment extends Model
+{
+    use Broadcasts;
+
+    protected $broadcastsRefreshes = true;
+
+    protected $broadcastsRefreshesTo = [&#039;post&#039;];
+
+    public function post()
+    {
+        return $this-&gt;belongsTo(Post::class);
+    }
+}
+
+
+This will send page refreshes broadcasts to the related Post model channel.
+
+Alternatively, you may specific a broadcastsRefreshesTo method instead of a property:
+
+use Illuminate\Broadcasting\Channel;
+
+class Comment extends Model
+{
+    use Broadcasts;
+
+    protected $broadcastsRefreshes = true;
+
+    public function post()
+    {
+        return $this-&gt;belongsTo(Post::class);
+    }
+
+    public function broadcastsRefreshesTo()
+    {
+        return [$this-&gt;post];
+    }
+}
+
+
+From this method, you may return an instance of an Eloquent model, a string representing the channel name, or an instance of a Channel class.
+
+Broadcasting Turbo Streams to Other Users Only
+
+As mentioned earlier, you may want to feed the current user with Turbo Streams using HTTP requests and only send the broadcasts to other users. You may achieve that by chaining on the pending broadcast object that returns from all broadcastX methods:
+
+$comment-&gt;broadcastAppendTo($post)-&gt;toOthers();
+
+
+Alternatively, you may use the Turbo Facade like so to configure a scope where all broadcast Turbo Streams triggered inside of it will be sent to other users only:
+
+use HotwiredLaravel\TurboLaravel\Facades\Turbo;
+
+Turbo::broadcastToOthers(function () {
+    // ...
+});
+
+
+If you always want to send broadcasts to other users excluding the current user from receiving broadcasts, you may call the broadcastToOthers without passing a closure to it somewhere globally like a middleware or the AppServiceProvider::boot() method:
+
+&lt;?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use HotwiredLaravel\TurboLaravel\Facades\Turbo;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        Turbo::broadcastToOthers();
+    }
+}
+
+
+This only applies to broadcasts generated in an HTTP request, because this relies on having the X-Socket-ID header in the request, which Laravel Echo sets automatically. Any broadcast generate from a queue worker, for instance, will always be broadcast to all users listening on the broadcast channels.
+
+Handmade Broadcasts
+
+You may want to broadcast something independently of a model. You may do so using the HotwiredLaravel\TurboLaravel\Facades\TurboStream Facade (if you&#039;re not into Facades, type-hinting the HotwiredLaravel\TurboLaravel\Broadcasting\Factory class should also work):
+
+TurboStream::broadcastAppend(
+    content: __(&#039;Hello World&#039;),
+    target: &#039;notifications&#039;,
+    channel: &#039;general&#039;,
+);
+
+
+Model broadcasts use this same abstraction under the hood, so you have similar methods available:
+
+TurboStream::broadcastAppend();
+TurboStream::broadcastPrepend();
+TurboStream::broadcastBefore();
+TurboStream::broadcastAfter();
+TurboStream::broadcastUpdate();
+TurboStream::broadcastReplace();
+TurboStream::broadcastRemove();
+TurboStream::broadcastRefresh();
+
+
+All of these methods, except the broadcastRemove() and broadcastRefresh, accept a $content parameter that may be a View instance, an instance of the HtmlString class, or a simple string:
+
+// Passing a view instance as content...
+TurboStream::broadcastAppend(
+    content: view(&#039;layouts.notification&#039;, [&#039;message&#039; =&gt; &#039;Hello World&#039;]),
+    target: &#039;notifications&#039;,
+    channel: &#039;general&#039;,
+);
+
+// Passing an instance of the HtmlString class (won&#039;t be escaped by Blade)...
+TurboStream::broadcastAppend(
+    content: new HtmlString(&#039;Hello World&#039;),
+    target: &#039;notifications&#039;,
+    channel: &#039;general&#039;,
+);
+
+// Passing a simple string (will be escaped by Blade)...
+TurboStream::broadcastAppend(
+    content: &#039;Hello World&#039;,
+    target: &#039;notifications&#039;,
+    channel: &#039;general&#039;,
+);
+
+
+You may also customize the Turbo Stream by chaining on the returned PendingBroadcast object:
+
+TurboStream::broadcastAppend(&#039;Hello World&#039;)
+    -&gt;target(&#039;notifications&#039;)
+    -&gt;to(&#039;general&#039;);
+
+
+As for the channel, you may pass a string that will be interpreted as a public channel name, an Eloquent model which will resolve to a private channel using that model&#039;s broadcasting channel convention, or instances of the Illuminate\Broadcasting\Channel class.
+
+You may want to specify private or presence string channels instead of public ones:
+
+TurboStream::broadcastAppend(&#039;Hello World&#039;)
+    -&gt;target(&#039;notifications&#039;)
+    -&gt;toPrivateChannel(&#039;user.123&#039;);
+
+TurboStream::broadcastAppend(&#039;Hello World&#039;)
+    -&gt;target(&#039;notifications&#039;)
+    -&gt;toPresenceChannel(&#039;user.123&#039;);
+
+
+Using the broadcastAction() will allow you to broadcast any custom Turbo Stream action, so you&#039;re not limited to the default ones when using this approach:
+
+TurboStream::broadcastAction(&#039;scroll_to&#039;, target: &#039;todo_123&#039;);
+
+
+Handmade Broadcasting Using The turbo_stream() Response Builder
+
+One more alternative to broadcasting Turbo Streams is to call the broadcastTo() method on the returned object of the turbo_stream() function:
+
+turbo_stream()
+    -&gt;append(&#039;notifications&#039;, &#039;Hello World&#039;)
+    -&gt;broadcastTo(&#039;general&#039;);
+
+
+This will tap on the PendingTurboStreamResponse and create a PendingBroadcast from it. It&#039;s important to note that this will return the same PendingTurboStreamResponse, not the PendingBroadcast. If you want to configure the PendingBroadcast that will be generated, you must do that before calling the broadcastTo() method, but you may also pass a Closure as the second parameter:
+
+turbo_stream()
+    -&gt;append(&#039;notifications&#039;, &#039;Hello World&#039;)
+    -&gt;broadcastTo(&#039;general&#039;, fn ($broadcast) =&gt; $broadcast-&gt;toOthers());
+
+
+The first argument must be either a string, an Eloquent model, or an instance of the Illuminate\Broadcasting\Channel class as the channel:
+
+turbo_stream($comment)
+    -&gt;broadcastTo($comment-&gt;post, fn ($broadcast) =&gt; $broadcast-&gt;toOthers());
+
+
+Similarly to using the Facade, you may also want to broadcast to private or presence string channels like so:
+
+// Broadcast to private channels...
+turbo_stream()
+    -&gt;append(&#039;notifications&#039;, &#039;Hello World&#039;)
+    -&gt;broadcastToPrivateChannel(&#039;user.123&#039;, fn ($broadcast) =&gt; $broadcast-&gt;toOthers())
+
+// Broadcast to presence channels...
+turbo_stream()
+    -&gt;append(&#039;notifications&#039;, &#039;Hello World&#039;)
+    -&gt;broadcastToPresenceChannel(&#039;chat.123&#039;, fn ($broadcast) =&gt; $broadcast-&gt;toOthers());
+
+
+    </page>
+    <page title="Validation Response" url="https://new.turbo-laravel.com/docs/validation-response-redirects">
+        Validation Response
+
+By default, Laravel redirects failed validation exceptions &quot;back&quot; to the page where the request came from. This isn&#039;t usually a problem, in fact it&#039;s the expected behavior, since that page usually is the one where the form which triggered the request renders.
+
+However, this is a bit of a problem when it comes to Turbo Frames, since a form might get injected into a page that doesn&#039;t initially render it. The problem is that after a failed validation exception from that form, Laravel would redirect it &quot;back&quot; to the page where the form got injected and since the form is not rendered there initially, the user would see the form disappear.
+
+In other words, we can&#039;t redirect &quot;back&quot; to display the form again with the error messages, because the form might not be re-rendered there originally. Instead, Turbo expects that we return a non-200 HTTP status code with the form and validation messages right way after a failed validation exception is thrown.
+
+Turbo Laravel automatically prepends a TurboMiddleware on the web route group. The middleware will intercept the response when it detects that Laravel is responding after a ValidationException. Instead of letting it send the &quot;redirect back&quot; response, it will try to guess where the form for that request usually renders and send an internal request back to the app to render the form, then update the status code so it renders as a 422 instead of 200.
+
+To guess where the form is located at we rely on the route resource naming convention. For any route name ending in .store, it will guess that the form can be located in a similar route ending with .create for the same resource. Similarly, for any route ending with .update, it will guess the form is located at a route ending with .edit. Additionally, for any route ending with .destroy, it will guess the form is located at a route ending with .delete (this is the only convention that is not there by default in Laravel&#039;s conventions.)
+
+For this internal request, the middleware will pass along any resource the current route has as well as any query string that was passed.
+
+Here are some examples:
+
+
+posts.comments.store will guess the form is at the posts.comments.create route with the {post} route param.
+comments.store will guess the form is at the comments.create route with no route params.
+comments.update will guess the form is at the comments.edit with the {comment} param.
+
+
+If a guessed route name doesn&#039;t exist (which will always happen if you don&#039;t use the route resource convention), the middleware will not change the default handling of validation errors, so the regular &quot;redirect back&quot; behavior will act.
+
+When you&#039;re not using the resource route naming convention, you may override redirect behavior by catching the ValidationException and re-throwing it setting the correct location where the form renders using the redirectTo method. If the exception has that, the middleware will respect it and make a GET request to that location instead of trying to guess it:
+
+public function store()
+{
+  try {
+     request()-&gt;validate([&#039;name&#039; =&gt; &#039;required&#039;]);
+  } catch (\Illuminate\Validation\ValidationException $exception) {
+    throw $exception-&gt;redirectTo(url(&#039;/somewhere&#039;));
+  }
+}
+
+
+If you want to register exceptions to this route guessing behavior, add the URIs to the redirect_guessing_exceptions key in the config/turbo-laravel.php config file:
+
+return [
+    // ...
+    &#039;redirect_guessing_exceptions&#039; =&gt; [
+        &#039;/some-page&#039;,
+    ],
+];
+
+
+The Turbo HTTP Middleware
+
+Turbo Laravel ships with a middleware which applies some conventions on your redirects, like the one for how failed validations are handled automatically by Laravel as described before. Read more about this in the Conventions section of the documentation.
+
+The middleware is automatically prepended to your web route group middleware stack. You may want to add the middleware to other groups. When doing so, make sure it&#039;s at the top of the middleware stack:
+
+\HotwiredLaravel\TurboLaravel\Http\Middleware\TurboMiddleware::class,
+
+
+Like so:
+
+namespace App\Http;
+
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+
+class Kernel extends HttpKernel
+{
+    protected $middlewareGroups = [
+        &#039;web&#039; =&gt; [
+            \HotwiredLaravel\TurboLaravel\Http\Middleware\TurboMiddleware::class,
+            // other middlewares...
+        ],
+    ];
+}
+
+
+    </page>
+    <page title="CSRF Protection" url="https://new.turbo-laravel.com/docs/csrf">
+        CSRF Protection
+
+Laravel has built-in CSRF protection in place. It prevents our app from processing any non-GET requests that doesn&#039;t include a valid CSRF Token that was generated in our backend.
+
+So, to allow a POST form to be processed, we usually need to add a @csrf Blade directive to our forms:
+
+&lt;form action=&quot;@{{ route(&#039;chirps.store&#039;) }}&quot; method=&quot;post&quot;&gt;
+    {{&#039;@&#039;}}csrf
+    &lt;!-- ... --&gt;
+&lt;/form&gt;
+
+
+Since Turbo.js intercepts form submissions and converts those to fetch requests (AJAX), we don&#039;t actually need the @csrf token applied to each form. Turbo is smart enough to read our page&#039;s meta tags, look for one named csrf-token and use its contents to add the token to all form submissions it intercepts. Jetstream and Breeze both ship with such element in the layout files, but in case you&#039;re missing it in your views, it should look like this:
+
+&lt;meta name=&quot;csrf-token&quot; content=&quot;@{{ csrf_token() }}&quot;&gt;
+
+
+With that being said, you may still want to use the @csrf Blade directive if you want to support users with JavaScript disabled, since the forms will still work if they contain the CSRF token.
+
+    </page>
+    <page title="Hotwire Native" url="https://new.turbo-laravel.com/docs/hotwire-native">
+        Hotwire Native
+
+Hotwire also has a mobile side and Turbo Laravel provides some helpers to help integrating with that.
+
+Turbo visits made by a Hotwire Native client should send a custom User-Agent header. Using that header, we can detect in the backend that a request is coming from a Hotwire Native client instead of a regular web browser.
+
+This is useful if you want to customize the behavior a little bit different based on that information. For instance, you may want to include some elements for mobile users, like a mobile-only CSS stylesheet, for instance. To do so, you may use the @hotwirenative Blade directive in your Blade views:
+
+{{&#039;@&#039;}}hotwirenative
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;mobile.css&quot;&gt;
+{{&#039;@&#039;}}endhotwirenative
+
+
+Alternatively, you may want to include some elements only if the client requesting it is NOT a Hotwire Native client using the @unlesshotwirenative Blade helpers:
+
+{{&#039;@&#039;}}unlesshotwirenative
+    &lt;h1&gt;Hello, Non-Hotwire Native Users!&lt;/h1&gt;
+{{&#039;@&#039;}}endunlesshotwirenative
+
+
+You may also check if the request was made from a Hotwire Native visit using the request macro:
+
+if (request()-&gt;wasFromHotwireNative()) {
+    // ...
+}
+
+
+Or the Turbo Facade directly, like so:
+
+use HotwiredLaravel\TurboLaravel\Facades\Turbo;
+
+if (Turbo::isHotwireNativeVisit()) {
+    // ...
+}
+
+
+Interacting With Hotwire Native Navigation
+
+Hotwire Native will hook into Turbo&#039;s visits so it displays them on mobile mimicking the mobile way of stacking screens instead of just replace elements on the same screen. This helps the native feel of our hybrid app.
+
+However, sometimes we may need to customize the behavior of form request handler to avoid a weird screen jumping effect happening on the mobile client. Instead of regular redirects, we can send some signals by redirecting to specific routes that are detected by the Hotwire Native client.
+
+For instance, if a form submission request came from a Hotwire Native client, the form was probably rendered on a native modal, which is not part of the screen stack, so we can just tell Turbo to refresh the current screen it has on stack instead. There are 3 signals we can send to the Hotwire Native client:
+
+
+
+
+  Signal
+  Route
+  Description
+
+
+
+
+  recede
+  /recede_historical_location
+  Go back to previous screen
+
+
+  resume
+  /resume_historical_location
+  Stay on the current screen as is
+
+
+  refresh
+  /refresh_historical_location
+  Stay on the current screen but refresh
+
+
+
+
+Sending these signals is a matter of detecting if the request came from a Hotwire Native client and, if so, redirect the user to these signal URLs instead. The Hotwire Native client should detect the redirect was from one of these special routes and trigger the desired behavior.
+
+You may use the InteractsWithHotwireNativeNavigation trait on your controllers to achieve this behavior and fallback to a regular redirect if the request wasn&#039;t from a Hotwire Native client:
+
+use HotwiredLaravel\TurboLaravel\Http\Controllers\Concerns\InteractsWithHotwireNativeNavigation;
+
+class TraysController extends Controller
+{
+    use InteractsWithHotwireNativeNavigation;
+
+    public function store()
+    {
+        // Tray creation...
+
+        return $this-&gt;recedeOrRedirectTo(route(&#039;trays.show&#039;, $tray));
+    }
+}
+
+
+In this example, when the request to create trays comes from a Hotwire Native client, we&#039;re going to redirect to the /recede_historical_location URL instead of the trays.show route. However, if the request was made from your web app, we&#039;re going to redirect the client to the trays.show route.
+
+There are a couple of redirect helpers available:
+
+$this-&gt;recedeOrRedirectTo(string $url);
+$this-&gt;resumeOrRedirectTo(string $url);
+$this-&gt;refreshOrRedirectTo(string $url);
+$this-&gt;recedeOrRedirectBack(string $fallbackUrl, array $options = []);
+$this-&gt;resumeOrRedirectBack(string $fallbackUrl, array $options = []);
+$this-&gt;refreshOrRedirectBack(string $fallbackUrl, array $options = []);
+
+
+It&#039;s common to flash messages using the -&gt;with() method of the Redirect response in Laravel. However, since a Hotwire Native request will never actually redirect somewhere where the flash message will be rendered, the behavior of the -&gt;with() method was slightly modified too.
+
+If you&#039;re setting flash messages like this after a form submission:
+
+use HotwiredLaravel\TurboLaravel\Http\Controllers\Concerns\InteractsWithHotwireNativeNavigation;
+
+class TraysController extends Controller
+{
+    use InteractsWithHotwireNativeNavigation;
+
+    public function store()
+    {
+        // Tray creation...
+
+        return $this-&gt;recedeOrRedirectTo(route(&#039;trays.show&#039;, $tray))
+            -&gt;with(&#039;status&#039;, __(&#039;Tray created.&#039;));
+    }
+}
+
+
+If a request was sent from a Hotwire Native client, the flashed messages will be added to the query string instead of flashed into the session like they&#039;d normally be. In this example, it would redirect like this:
+
+/recede_historical_location?status=Tray%20created.
+
+
+In the Hotwire Native client, you should be able to intercept these redirects, retrieve the flash messages from the query string and create native toasts, if you&#039;d like to.
+
+If the request wasn&#039;t from a Hotwire Native client, the message would be flashed into the session as normal, and the client would receive a redirect to the trays.show route in this case.
+
+If you don&#039;t want these routes enabled, feel free to disable them by commenting out the feature on your config/turbo-laravel.php file (make sure the Turbo Laravel configs are published):
+
+return [
+    &#039;features&#039; =&gt; [
+        // Features::hotwireNativeRoutes(),
+    ],
+];
+
+
+    </page>
+    <page title="Testing" url="https://new.turbo-laravel.com/docs/testing">
+        Testing
+
+Testing a Hotwired app is like testing a regular Laravel app. However, Turbo Laravel comes with a set of helpers that may be used to ease testing some aspects that are specific to Turbo:
+
+
+Turbo HTTP Request Helpers. When you may want to mimic a Turbo visit, or a Hotwire Native visit, or a request coming from a Turbo Frame.
+Turbo Streams on HTTP Responses. When you may want to test the Turbo Streams returned from HTTP requests.
+Turbo Stream Broadcasts. When you&#039;re either using the broadcast methods on your models using the Broadcasts trait, or when you&#039;re using Handmade Turbo Stream Broadcasts.
+
+
+Let&#039;s dig into those aspects and how you may test them.
+
+Turbo HTTP Request Helpers
+
+To enhance your testing capabilities when using Turbo, Turbo Laravel adds a few macros to the TestResponse that Laravel uses under the hood. It also ships with a InteractsWithTurbo trait that adds Turbo-specific testing helper methods. The goal is to allow mimicking a request and inspecting the response in a very Laravel way.
+
+Acting as Turbo Visits
+
+Turbo visits are marked with a Accept: text/vnd.turbo-stream.html, ... header, which you may want to respond differently (maybe returning a Turbo Streams document instead of plain HTML). To be able to make request adding that header, you may add the InteractsWithTurbo trait to your current test class (or to the base TestCase). Then, you may use the $this-&gt;turbo() method before issuing a request:
+
+use HotwiredLaravel\TurboLaravel\Testing\InteractsWithTurbo;
+
+class CreateCommentsTest extends TestCase
+{
+    use InteractsWithTurbo;
+
+    /** {{&#039;@&#039;}}test */
+    public function creates_comments()
+    {
+        $post = Post::factory()-&gt;create();
+
+        $this-&gt;assertCount(0, $post-&gt;comments);
+
+        $this-&gt;turbo()-&gt;post(route(&#039;posts.comments.store&#039;, $post), [
+            &#039;content&#039; =&gt; &#039;Hello World&#039;,
+        ])-&gt;assertOk();
+
+        $this-&gt;assertCount(1, $post-&gt;refresh()-&gt;comments);
+        $this-&gt;assertEquals(&#039;Hello World&#039;, $post-&gt;comments-&gt;first()-&gt;content);
+    }
+}
+
+
+When using this method, calls to request()-&gt;wantsTurboStream() will return true.
+
+Acting as Turbo Frame Requests
+
+You may want to handle requests a bit differently based on whether they came from a request triggered inside a Turbo Frame or not. To mimic a request coming from a Turbo Frame, you may use the fromTurboFrame() helper from the InteractsWithTurbo trait:
+
+use HotwiredLaravel\TurboLaravel\Testing\InteractsWithTurbo;
+
+class CreateCommentsTest extends TestCase
+{
+    use InteractsWithTurbo;
+
+    /** {{&#039;@&#039;}}test */
+    public function create_comment()
+    {
+        $article = Article::factory()-&gt;create();
+
+        $this-&gt;fromTurboFrame(dom_id($article, &#039;create_comment&#039;))
+            -&gt;post(route(&#039;articles.comments.store&#039;, $article), [...])
+            -&gt;assertRedirect();
+    }
+}
+
+
+Acting as Hotwire Native
+
+Additionally, when you&#039;re building a Hotwire Native mobile app, you may want to issue a request pretending to be sent from a Hotwire Native client. That&#039;s done by setting the User-Agent header to something that mentions the word Hotwire Native. The InteractsWithTurbo trait also has a $this-&gt;hotwireNative() method you may use that automatically sets the header correctly:
+
+use HotwiredLaravel\TurboLaravel\Testing\InteractsWithTurbo;
+
+class CreateCommentsTest extends TestCase
+{
+    use InteractsWithTurbo;
+
+    /** {{&#039;@&#039;}}test */
+    public function creating_comments_from_native_recedes()
+    {
+        $post = Post::factory()-&gt;create();
+
+        $this-&gt;assertCount(0, $post-&gt;comments);
+
+        $this-&gt;hotwireNative()-&gt;post(route(&#039;posts.comments.store&#039;, $post), [
+            &#039;content&#039; =&gt; &#039;Hello World&#039;,
+        ])-&gt;assertOk();
+
+        $this-&gt;assertCount(1, $post-&gt;refresh()-&gt;comments);
+        $this-&gt;assertEquals(&#039;Hello World&#039;, $post-&gt;comments-&gt;first()-&gt;content);
+    }
+}
+
+
+When using this method, calls to request()-&gt;wasFromHotwireNative() will return true. Additionally, the @hotwirenative and @unlesshotwirenative Blade directives will render as expected.
+
+A few other macros were added to the TestResponse class to make it easier to assert based on the recede, resume, and refresh redirects using the specific assert methods:
+
+
+
+
+  Method
+  Descrition
+
+
+
+
+  assertRedirectRecede(array $with = [])
+  Asserts that a redirect was returned to the /recede_historical_location route.
+
+
+  assertRedirectResume(array $with = [])
+  Asserts that a redirect was returned to the /resume_historical_location route.
+
+
+  assertRedirectRefresh(array $with = [])
+  Asserts that a redirect was returned to the /refresh_historical_location route.
+
+
+
+
+The $with argument will ensure that not only the route is correct, but also any flashed message will be included in the query string:
+
+use HotwiredLaravel\TurboLaravel\Testing\InteractsWithTurbo;
+
+class CreateCommentsTest extends TestCase
+{
+    use InteractsWithTurbo;
+
+    /** {{&#039;@&#039;}}test */
+    public function creating_comments_from_native_recedes()
+    {
+        $post = Post::factory()-&gt;create();
+
+        $this-&gt;assertCount(0, $post-&gt;comments);
+
+        $this-&gt;hotwireNative()-&gt;post(route(&#039;posts.comments.store&#039;, $post), [
+            &#039;content&#039; =&gt; &#039;Hello World&#039;,
+        ])-&gt;assertRedirectRecede([&#039;status&#039; =&gt; __(&#039;Comment created.&#039;)]);
+
+        $this-&gt;assertCount(1, $post-&gt;refresh()-&gt;comments);
+        $this-&gt;assertEquals(&#039;Hello World&#039;, $post-&gt;comments-&gt;first()-&gt;content);
+    }
+}
+
+
+Asserting Turbo Stream HTTP Responses
+
+You may test if you got a Turbo Stream response by using the assertTurboStream() response helper macro. Similarly, you may assert that your response was not a Turbo Stream response by using the assertNotTurboStream() response helper macro:
+
+use HotwiredLaravel\TurboLaravel\Testing\InteractsWithTurbo;
+
+class CreateTodosTest extends TestCase
+{
+    use InteractsWithTurbo;
+
+    /** {{&#039;@&#039;}}test */
+    public function creating_todo_from_turbo_request_returns_turbo_stream_response()
+    {
+        $this-&gt;turbo()-&gt;post(route(&#039;todos.store&#039;), [
+            &#039;content&#039; =&gt; &#039;Test the app&#039;,
+        ])-&gt;assertTurboStream();
+    }
+
+    /** {{&#039;@&#039;}}test */
+    public function creating_todo_from_regular_request_does_not_return_turbo_stream_response()
+    {
+        // Notice we&#039;re not chaining the `$this-&gt;turbo()` method here.
+        $this-&gt;post(route(&#039;todos.store&#039;), [
+            &#039;content&#039; =&gt; &#039;Test the app&#039;,
+        ])-&gt;assertNotTurboStream();
+    }
+}
+
+
+The controller for such response would be something like this:
+
+class TodosController
+{
+    public function store()
+    {
+        $todo = auth()-&gt;user()-&gt;todos()-&gt;create(request()-&gt;validate([
+            &#039;content&#039; =&gt; [&#039;required&#039;],
+        ]));
+
+        if (request()-&gt;wantsTurboStream()) {
+            return turbo_stream($todo);
+        }
+
+        return redirect()-&gt;route(&#039;todos.index&#039;);
+    }
+}
+
+
+Fluent Turbo Stream Assertions
+
+The assertTurboStream() macro accepts a callback which allows you to assert specific details about your returned Turbo Streams. The callback takes an instance of the AssertableTurboStream class, which has some matching methods to help you building your specific assertion. In the following example, we&#039;re asserting that 2 Turbo Streams were returned, as well as their targets, actions, and even HTML content:
+
+/** {{&#039;@&#039;}}test */
+public function create_todos()
+{
+    $this-&gt;get(route(&#039;todos.store&#039;))
+        -&gt;assertTurboStream(fn (AssertableTurboStream $turboStreams) =&gt; (
+            $turboStreams-&gt;has(2)
+            &amp;&amp; $turboStreams-&gt;hasTurboStream(fn ($turboStream) =&gt; (
+                $turboStream-&gt;where(&#039;target&#039;, &#039;flash_messages&#039;)
+                            -&gt;where(&#039;action&#039;, &#039;prepend&#039;)
+                            -&gt;see(&#039;Todo was successfully created!&#039;)
+            ))
+            &amp;&amp; $turboStreams-&gt;hasTurboStream(fn ($turboStream) =&gt; (
+                $turboStream-&gt;where(&#039;target&#039;, &#039;todos&#039;)
+                            -&gt;where(&#039;action&#039;, &#039;append&#039;)
+                            -&gt;see(&#039;Test the app&#039;)
+            ))
+        ));
+}
+
+
+Testing Turbo Stream Broadcasts
+
+You may assert that Turbo Stream broadcasts were sent from any mechanism provided by Turbo Laravel by using the TurboStream::fake() abstraction. This allows you to capture any kind of Turbo Stream broadcasting that happens inside your application and assert on them:
+
+use App\Models\Todo;
+use HotwiredLaravel\TurboLaravel\Facades\TurboStream;
+use HotwiredLaravel\TurboLaravel\Broadcasting\PendingBroadcast;
+
+class CreatesCommentsTest extends TestCase
+{
+    /** {{&#039;@&#039;}}test */
+    public function content_is_required()
+    {
+        TurboStream::fake();
+
+        $todo = Todo::factory()-&gt;create();
+
+        $this-&gt;turbo()-&gt;post(route(&#039;todos.comments.store&#039;, $todo), [
+            &#039;content&#039; =&gt; null,
+        ])-&gt;assertInvalid([&#039;content&#039;]);
+
+        TurboStream::assertNothingWasBroadcasted();
+    }
+
+    /** {{&#039;@&#039;}}test */
+    public function creates_comments()
+    {
+        TurboStream::fake();
+
+        $todo = Todo::factory()-&gt;create();
+
+        $this-&gt;turbo()-&gt;post(route(&#039;todos.comments.store&#039;, $todo), [
+            &#039;content&#039; =&gt; &#039;Hey, this is really nice!&#039;,
+        ])-&gt;assertTurboStream();
+
+        TurboStream::assertBroadcasted(function (PendingBroadcast $broadcast) use ($todo) {
+            return $broadcast-&gt;target === &#039;comments&#039;
+                &amp;&amp; $broadcast-&gt;action === &#039;append&#039;
+                &amp;&amp; $broadcast-&gt;partialView === &#039;comments.partials.comment&#039;
+                &amp;&amp; $broadcast-&gt;partialData[&#039;comment&#039;]-&gt;is($todo-&gt;comments-&gt;first())
+                &amp;&amp; count($broadcast-&gt;channels) === 1
+                &amp;&amp; $broadcast-&gt;channels[0]-&gt;name === sprintf(&#039;private-%s&#039;, $todo-&gt;broadcastChannel());
+        });
+    }
+}
+
+
+Note: If you&#039;re using the automatic model changes broadcasting, make sure your turbo-laravel.queue config key is set to false, otherwise actions may not be dispatched during test because the model observer only fires them after the transaction is committed, which never happens in tests since they run inside a transaction.
+
+    </page>
+    <page title="Known Issues" url="https://new.turbo-laravel.com/docs/known-issues">
+        Known Issues
+
+If you ever encounter an issue with the package, look here first for documented solutions.
+
+Fixing Laravel&#039;s Previous URL Issue
+
+Visits from Turbo Frames will hit your application and Laravel by default keeps track of previously visited URLs to be used with helpers like url()-&gt;previous(), for instance. This might be confusing because chances are that you wouldn&#039;t want to redirect users to the URL of the most recent Turbo Frame that hit your app. So, to avoid storing Turbo Frames visits as Laravel&#039;s previous URL, head to the issue where a solution was discussed.
+
+    </page>
 </docs>

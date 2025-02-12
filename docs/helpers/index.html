@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="canonical" href="https://new.turbo-laravel.com/docs/helpers">
+        <meta name="description" content="All the helpers the package provides">
+        <title>Helpers</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/manifest/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/manifest/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/manifest/favicon-16x16.png">
+        <link rel="manifest" href="/assets/site.webmanifest">
+        <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=7756ef47cdc6e051280b7984fd99b8f7">
+        <script defer src="/assets/build/js/main.js?id=2685052459ff19e5e2ef09aac148fca7"></script>
+    </head>
+    <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
+  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
+    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
+      <a href="/">Turbo Laravel</a>
+    </h1>
+
+    <nav class="inline-block lg:hidden">
+      <details class="group" data-search-target="nav">
+        <summary class="list-none">
+          <span>
+            <span class="sr-only">Navigation</span>
+
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
+              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </span>
+        </summary>
+
+        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
+          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
+            <form action="/docs/search" method="GET" class="px-4">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 2.x docs..." />
+  <button type="submit" class="sr-only">Search</button>
+</form>
+
+            <ul class="space-y-6 -mb-2 mt-4">
+              <li>
+                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+                  <span>Documentation</span>
+                </a>
+
+                  <div class="mx-4 pl-3 border-l-4 border-zinc-900/30">
+  <ul class="">
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/docs/upgrade" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Upgrade Guide</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Getting Started</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/docs/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/docs/overview" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Overview</a></li>
+                <li><a href="/docs/conventions" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Conventions</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Essentials</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/docs/helpers" class="font-bold transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Helpers</a></li>
+                <li><a href="/docs/turbo-frames" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Turbo Frames</a></li>
+                <li><a href="/docs/turbo-streams" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Turbo Streams</a></li>
+                <li><a href="/docs/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Broadcasting</a></li>
+                <li><a href="/docs/validation-response-redirects" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Validation Redirects</a></li>
+                <li><a href="/docs/csrf" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">CSRF Protection</a></li>
+                <li><a href="/docs/hotwire-native" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Hotwire Native</a></li>
+                <li><a href="/docs/testing" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Testing</a></li>
+                <li><a href="/docs/known-issues" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Known Issues</a></li>
+              </ul>
+    </li>
+      </ul>
+</div>
+              </li>
+              <li>
+                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
+              </li>
+              <li class="space-y-6">
+                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
+                              </li>
+              <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </nav>
+  </div>
+
+  <nav class="hidden lg:block">
+    <ul class="flex items-center space-x-6 -my-2">
+      <li>
+        <div class="group relative py-2">
+          <a href="/docs" class="bg-white/90 px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+            <span>Documentation</span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </a>
+
+          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
+            <ul class="space-y-1">
+              <li><a href="/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">2.2.0</span></a></li>
+              <li><a href="/1.x/docs/installation" class="block px-2 py-1  rounded">Version <span class="">1.12.2</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
+      <li><a href="/bootcamp/introduction" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
+      <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+    </ul>
+  </nav>
+</header>
+
+          <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
+    <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
+      <aside data-search-target="aside" class="relative w-1/4 hidden lg:block">
+        <div class="sticky top-4 block space-y-4">
+            <form action="/docs/search" method="GET">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="web" type="text" name="q" placeholder="Search v2 docs... (press &quot;/&quot; to focus)" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
+</form>
+
+            <ul class="[&_.children]:mb-4">
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/docs/upgrade" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Upgrade Guide</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Getting Started</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/docs/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/docs/overview" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Overview</a></li>
+            <li><a href="/docs/conventions" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conventions</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Essentials</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/docs/helpers" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Helpers</a></li>
+            <li><a href="/docs/turbo-frames" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Turbo Frames</a></li>
+            <li><a href="/docs/turbo-streams" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Turbo Streams</a></li>
+            <li><a href="/docs/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
+            <li><a href="/docs/validation-response-redirects" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Validation Redirects</a></li>
+            <li><a href="/docs/csrf" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">CSRF Protection</a></li>
+            <li><a href="/docs/hotwire-native" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Hotwire Native</a></li>
+            <li><a href="/docs/testing" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Testing</a></li>
+            <li><a href="/docs/known-issues" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Known Issues</a></li>
+          </ul>
+  </li>
+  </ul>
+        </div>
+      </aside>
+
+      <main class="flex-1 overflow-hidden">
+        <div>
+          <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+            <h1>Helpers</h1>
+
+<p>Turbo Laravel has a set of Blade Directives, Components, helper functions, and request/response macros to help making the most out of Turbo in Laravel.</p>
+
+<h2>Blade Directives</h2>
+
+<h3>The <code>@domid()</code> Blade Directive</h3>
+
+<p>Since Turbo relies a lot on DOM IDs, the package offers a helper to generate unique DOM IDs based on your models. You may use the <code>@domid</code> Blade Directive in your Blade views like so:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">turbo-frame</span> <span class="hl-property">id</span>=&quot;<span class="hl-keyword">@domid</span>(<span class="hl-variable">$post</span>)&quot;&gt;
+    <span class="hl-comment">&lt;!-- Content --&gt;</span>
+&lt;/<span class="hl-keyword">turbo-frame</span>&gt;
+</code></pre>
+
+<p>This will generate a DOM ID string using your model's basename and its ID, such as <code>post_123</code>. You may also give it a prefix that will be added to the DOM ID, such as:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">turbo-frame</span> <span class="hl-property">id</span>=&quot;<span class="hl-keyword">@domid</span>(<span class="hl-variable">$post</span>, <span class="hl-value">'comments'</span>)&quot;&gt;
+    <span class="hl-comment">&lt;!-- Comments --&gt;</span>
+&lt;/<span class="hl-keyword">turbo-frame</span>&gt;
+</code></pre>
+
+<p>Which will generate a <code>comments_post_123</code> DOM ID, assuming your Post model has an ID of <code>123</code>.</p>
+
+<h2>Blade Components</h2>
+
+<h3>The <code>&lt;x-turbo::frame&gt;</code> Blade Component</h3>
+
+<p>You may also prefer using the <code>&lt;x-turbo::frame&gt;</code> Blade component that ships with the package. This way, you don't need to worry about using the <code>@domid()</code> helper for your Turbo Frame:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::frame</span> :<span class="hl-property">id</span>=&quot;$post&quot;&gt;
+    <span class="hl-comment">&lt;!-- Content --&gt;</span>
+&lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;
+</code></pre>
+
+<p>To the <code>:id</code> prop, you may pass a string, which will be used as-is as the DOM ID, an Eloquent model instance, which will be passed to the <code>dom_id()</code> function that ships with the package (the same one as the <code>@domid()</code> Blade directive uses behind the scenes), or an array tuple where the first item is an instance of an Eloquent model and the second is the prefix of the DOM ID, something like this:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::frame</span> :<span class="hl-property">id</span>=&quot;[$post, 'comments']&quot;&gt;
+    <span class="hl-comment">&lt;!-- Comments --&gt;</span>
+&lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;
+</code></pre>
+
+<p>Additionally, you may also pass along any prop that is supported by the Turbo Frame custom Element to the <code>&lt;x-turbo::frame&gt;</code> Blade component, like <code>target</code>, <code>src</code>, or <code>loading</code>. These are the listed attributes, but any other attribute will also be forwarded to the <code>&lt;turbo-frame&gt;</code> tag that will be rendered by the <code>&lt;x-turbo::frame&gt;</code> component. For a full list of what's possible to do with Turbo Frames, see the <a href="https://turbo.hotwired.dev/handbook/frames">documentation</a>.</p>
+
+<h3>The <code>&lt;x-turbo::stream&gt;</code> Blade Component</h3>
+
+<p>If you're rendering a Turbo Stream inside a your Blade files, you may use the <code>&lt;x-turbo::stream&gt;</code> helper:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::stream</span> :<span class="hl-property">target</span>=&quot;$post&quot; <span class="hl-property">action</span>=&quot;update&quot;&gt;
+    <span class="hl-keyword">@include</span>(<span class="hl-value">'posts.partials.post'</span>, [<span class="hl-value">'post'</span> =&gt; <span class="hl-variable">$post</span>])
+&lt;<span class="hl-keyword">x-turbo::stream</span>&gt;
+</code></pre>
+
+<p>Just like in the Turbo Frames' <code>:id</code> prop, the <code>:target</code> prop of the Turbo Stream component accepts a string, a model instance, or an array to resolve the DOM ID using the <code>dom_id()</code> function.</p>
+
+<h3>The <code>&lt;x-turbo::refresh-method method="morph" /&gt;</code> Blade Component</h3>
+
+<p>We can configure which update method Turbo should so to update the document:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Method</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>replace</code></td>
+  <td>Updates the entire body of the document on Turbo Visits</td>
+</tr>
+<tr>
+  <td><code>morph</code></td>
+  <td>Uses DOM morphing to update the document instead of replacing everything</td>
+</tr>
+</tbody>
+</table>
+
+<p>Here's how you can use it:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::refresh-method</span> <span class="hl-property">method</span>=&quot;morph&quot; /&gt;
+</code></pre>
+
+<p>The output would be:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;turbo-refresh-method&quot; <span class="hl-property">content</span>=&quot;morph&quot;&gt;
+</code></pre>
+
+<h3>The <code>&lt;x-turbo::refresh-scroll scroll="preserve" /&gt;</code> Blade Component</h3>
+
+<p>You can also configure the scroll behavior on Turbo:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Behavior</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>reset</code></td>
+  <td>Resets the scroll position to the top, mimicking for the browser handles new page visits</td>
+</tr>
+<tr>
+  <td><code>preserve</code></td>
+  <td>Preserves the current scroll position (usually results in a better UX when used with the <code>morph</code> method)</td>
+</tr>
+</tbody>
+</table>
+
+<p>Here's how you can use it:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::refresh-scroll</span> <span class="hl-property">scroll</span>=&quot;preserve&quot; /&gt;
+</code></pre>
+
+<p>The output would be:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;turbo-refresh-scroll&quot; <span class="hl-property">content</span>=&quot;preserve&quot;&gt;
+</code></pre>
+
+<h3>The <code>&lt;x-turbo::refreshes-with&gt;</code> Blade Component</h3>
+
+<p>You may configure both the refresh method and scroll behavior using the <code>&lt;x-turbo::refreshes-with /&gt;</code> component in your main layout's <code>&lt;head&gt;</code> tag or on specific pages to configure how Turbo should update the page. Here's an example:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::refreshes-with</span> <span class="hl-property">method</span>=&quot;morph&quot; <span class="hl-property">scroll</span>=&quot;preserve&quot; /&gt;
+</code></pre>
+
+<p>This will render two HTML <code>&lt;meta&gt;</code> tags:</p>
+
+<pre><code class="language-html">&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;turbo-refresh-method&quot; <span class="hl-property">content</span>=&quot;morph&quot;&gt;
+&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;turbo-refresh-scroll&quot; <span class="hl-property">content</span>=&quot;preserve&quot;&gt;
+</code></pre>
+
+<h3>The <code>&lt;x-turbo::exempts-page-from-cache /&gt;</code> Blade Component</h3>
+
+<p>This component may be added to any page you don't want Turbo to keep a cache in the page cache. Example:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::exempts-page-from-cache</span> /&gt;
+</code></pre>
+
+<p>It will render the HTML <code>&lt;meta&gt;</code> tag:</p>
+
+<pre><code class="language-html">&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;turbo-cache-control&quot; <span class="hl-property">content</span>=&quot;no-cache&quot;&gt;
+</code></pre>
+
+<h3>The <code>&lt;x-turbo::exempts-page-from-preview /&gt;</code> Blade Component</h3>
+
+<p>This component may be added to any page you don't want Turbo to show as a preview on regular navigation visits. No-preview pages will only be used in restoration visits (when you use the browser's back or forward buttons, or when when moving backward in the navigation stack). Example:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::exempts-page-from-preview</span> /&gt;
+</code></pre>
+
+<p>It will render the HTML <code>&lt;meta&gt;</code> tag:</p>
+
+<pre><code class="language-html">&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;turbo-cache-control&quot; <span class="hl-property">content</span>=&quot;no-preview&quot;&gt;
+</code></pre>
+
+<h3>The <code>&lt;x-turbo::page-requires-reload /&gt;</code> Blade Component</h3>
+
+<p>This component may be added to any page you want Turbo to reload. This will break out of Turbo Frame navigations. May be used at a login screen, for instance. Example:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::page-requires-reload</span> /&gt;
+</code></pre>
+
+<p>It will render the HTML <code>&lt;meta&gt;</code> tag:</p>
+
+<pre><code class="language-html">&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;turbo-visit-control&quot; <span class="hl-property">content</span>=&quot;reload&quot;&gt;
+</code></pre>
+
+<h2>Helper Functions</h2>
+
+<p>The package ships with a set of helper functions. These functions are all namespaced under <code>HotwiredLaravel\\TurboLaravel\\</code> but we also add them globally for convenience, so you may use them directly without the <code>use</code> statements (this is useful in contexts like Blade views, for instance).</p>
+
+<h3>The <code>dom_id()</code></h3>
+
+<p>The mentioned namespaced <code>dom_id()</code> helper function may also be used from anywhere in your application, like so:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">use</span> <span class="hl-keyword">function</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\</span><span class="hl-property">dom_id</span>;
+
+<span class="hl-property">dom_id</span>(<span class="hl-variable">$comment</span>);
+</code></pre>
+
+<p>When a new instance of a model is passed to any of these DOM ID helpers, since it doesn't have an ID, it will prefix the resource name with a <code>create_</code> prefix. This way, new instances of an <code>App\\Models\\Comment</code> model will generate a <code>create_comment</code> DOM ID.</p>
+
+<p>These helpers strip out the model's FQCN (see <a href="https://github.com/hotwired-laravel/turbo-laravel/blob/main/config/turbo-laravel.php">config/turbo-laravel.php</a> if you use an unconventional location for your models).</p>
+
+<h3>The <code>dom_class()</code></h3>
+
+<p>The <code>dom_class()</code> helper function may be used from anywhere in your application, like so:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">use</span> <span class="hl-keyword">function</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\</span><span class="hl-property">dom_class</span>;
+
+<span class="hl-property">dom_class</span>(<span class="hl-variable">$comment</span>);
+</code></pre>
+
+<p>This function will generate the DOM class named based on your model's class name. If you have an instance of a <code>App\Models\Comment</code> model, it will generate a <code>comment</code> DOM class.</p>
+
+<p>Similarly to the <code>dom_id()</code> function, you may also pass a context prefix as the second parameter:</p>
+
+<pre><code class="language-php"><span class="hl-property">dom_class</span>(<span class="hl-variable">$comment</span>, <span class="hl-value">'reactions_list'</span>);
+</code></pre>
+
+<p>This will generate a DOM class of <code>reactions_list_comment</code>.</p>
+
+<h3>The <code>turbo_stream()</code></h3>
+
+<p>You may generate Turbo Streams using the <code>Response::turboStream()</code> macro, but you may also do so using the <code>turbo_stream()</code> helper function:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">use</span> <span class="hl-keyword">function</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\</span><span class="hl-property">turbo_stream</span>;
+
+<span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-variable">$comment</span>);
+</code></pre>
+
+<p>Both the <code>Response::turboStream()</code> and the <code>turbo_stream()</code> function work the same way. The <code>turbo_stream()</code> function may be easier to use.</p>
+
+<h3>The <code>turbo_stream_view()</code></h3>
+
+<p>You may combo Turbo Streams using the <code>turbo_stream([])</code> function passing an array, but you may prefer to create a separate Blade view with all the Turbo Streams, this way you may also use template extensions and everything else Blade offers:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">use</span> <span class="hl-keyword">function</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\</span><span class="hl-property">turbo_stream_view</span>;
+
+<span class="hl-keyword">return</span> <span class="hl-property">turbo_stream_view</span>(<span class="hl-value">'comments.turbo.created'</span>, [
+    <span class="hl-value">'comment'</span> =&gt; <span class="hl-variable">$comment</span>,
+]);
+</code></pre>
+
+<h2>Request &amp; Response Macros</h2>
+
+<h3>The <code>request()-&gt;wantsTurboStream()</code> macro</h3>
+
+<p>The <code>request()-&gt;wantsTurboStream()</code> macro added to the request class will check if the request accepts Turbo Stream and return <code>true</code> or <code>false</code> accordingly.</p>
+
+<p>Turbo will add a <code>Accept: text/vnd.turbo-stream.html, ...</code> header to the requests. That's how we can detect if the request came from a client using Turbo.</p>
+
+<h3>The <code>request()-&gt;wasFromTurboFrame()</code> macro</h3>
+
+<p>The <code>request()-&gt;wasFromTurboFrame()</code> macro added to the request class will check if the request was made from a Turbo Frame. When used with no parameters, it returns <code>true</code> if the request has a <code>Turbo-Frame</code> header, no matter which specific Turbo Frame.</p>
+
+<p>Additionally, you may specific the optional <code>$frame</code> parameter. When that's passed, it returns <code>true</code> if it has a <code>Turbo-Frame</code> header where the value matches the specified <code>$frame</code>. Otherwise, it will return <code>false</code>:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">if</span> (<span class="hl-property">request</span>()-&gt;<span class="hl-property">wasFromTurboFrame</span>(<span class="hl-property">dom_id</span>(<span class="hl-variable">$post</span>, <span class="hl-value">'create_comment'</span>))) {
+    <span class="hl-comment">// ...</span>
+}
+</code></pre>
+
+<h3>The <code>request()-&gt;wasFromHotwireNative()</code> macro</h3>
+
+<p>The <code>request()-&gt;wasFromHotwireNative()</code> macro added to the request class will check if the request came from a Hotwire Native client and returns <code>true</code> or <code>false</code> accordingly.</p>
+
+<p>Hotwire Native clients are encouraged to override the <code>User-Agent</code> header in the WebViews to mention the words <code>Hotwire Native</code> on them. This is what this macro uses to detect if it came from a Hotwire Native client.</p>
+
+<h3>The <code>response()-&gt;turboStream()</code> macro</h3>
+
+<p>The <code>response()-&gt;turboStream()</code> macro works similarly to the <code>turbo_stream()</code> function above. It was only added to the response for convenience.</p>
+
+<h3>The <code>response()-&gt;turboStreamView()</code> macro</h3>
+
+<p>The <code>response()-&gt;turboStreamView()</code> macro works similarly to the <code>turbo_stream_view()</code> function above. It was only added to the response for convenience.</p>
+          </div>
+
+                      <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Previous</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/docs/conventions">Conventions <span class="absolute inset-0"></span></a>
+    </div>
+  
+      <div class="lg:col-start-2 relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Next</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/docs/turbo-frames">Turbo Frames <span class="absolute inset-0"></span></a>
+    </div>
+  </div>
+                  </div>
+      </main>
+    </div>
+  </div>
+
+        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
+          <p class="text-base text-center w-full">
+            Turbo Laravel is maintained by <a href="" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
+          </p>
+        </footer>
+    </body>
+</html>

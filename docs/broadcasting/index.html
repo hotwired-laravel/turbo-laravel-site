@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="canonical" href="https://new.turbo-laravel.com/docs/broadcasting">
+        <meta name="description" content="Broadcasting Turbo Streams">
+        <title>Broadcasting</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/manifest/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/manifest/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/manifest/favicon-16x16.png">
+        <link rel="manifest" href="/assets/site.webmanifest">
+        <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=7756ef47cdc6e051280b7984fd99b8f7">
+        <script defer src="/assets/build/js/main.js?id=2685052459ff19e5e2ef09aac148fca7"></script>
+    </head>
+    <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
+  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
+    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
+      <a href="/">Turbo Laravel</a>
+    </h1>
+
+    <nav class="inline-block lg:hidden">
+      <details class="group" data-search-target="nav">
+        <summary class="list-none">
+          <span>
+            <span class="sr-only">Navigation</span>
+
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
+              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </span>
+        </summary>
+
+        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
+          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
+            <form action="/docs/search" method="GET" class="px-4">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 2.x docs..." />
+  <button type="submit" class="sr-only">Search</button>
+</form>
+
+            <ul class="space-y-6 -mb-2 mt-4">
+              <li>
+                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+                  <span>Documentation</span>
+                </a>
+
+                  <div class="mx-4 pl-3 border-l-4 border-zinc-900/30">
+  <ul class="">
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/docs/upgrade" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Upgrade Guide</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Getting Started</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/docs/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/docs/overview" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Overview</a></li>
+                <li><a href="/docs/conventions" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Conventions</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Essentials</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/docs/helpers" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Helpers</a></li>
+                <li><a href="/docs/turbo-frames" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Turbo Frames</a></li>
+                <li><a href="/docs/turbo-streams" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Turbo Streams</a></li>
+                <li><a href="/docs/broadcasting" class="font-bold transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Broadcasting</a></li>
+                <li><a href="/docs/validation-response-redirects" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Validation Redirects</a></li>
+                <li><a href="/docs/csrf" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">CSRF Protection</a></li>
+                <li><a href="/docs/hotwire-native" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Hotwire Native</a></li>
+                <li><a href="/docs/testing" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Testing</a></li>
+                <li><a href="/docs/known-issues" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Known Issues</a></li>
+              </ul>
+    </li>
+      </ul>
+</div>
+              </li>
+              <li>
+                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
+              </li>
+              <li class="space-y-6">
+                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
+                              </li>
+              <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </nav>
+  </div>
+
+  <nav class="hidden lg:block">
+    <ul class="flex items-center space-x-6 -my-2">
+      <li>
+        <div class="group relative py-2">
+          <a href="/docs" class="bg-white/90 px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+            <span>Documentation</span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </a>
+
+          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
+            <ul class="space-y-1">
+              <li><a href="/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">2.2.0</span></a></li>
+              <li><a href="/1.x/docs/installation" class="block px-2 py-1  rounded">Version <span class="">1.12.2</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
+      <li><a href="/bootcamp/introduction" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
+      <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+    </ul>
+  </nav>
+</header>
+
+          <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
+    <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
+      <aside data-search-target="aside" class="relative w-1/4 hidden lg:block">
+        <div class="sticky top-4 block space-y-4">
+            <form action="/docs/search" method="GET">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="web" type="text" name="q" placeholder="Search v2 docs... (press &quot;/&quot; to focus)" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
+</form>
+
+            <ul class="[&_.children]:mb-4">
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/docs/upgrade" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Upgrade Guide</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Getting Started</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/docs/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/docs/overview" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Overview</a></li>
+            <li><a href="/docs/conventions" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conventions</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Essentials</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/docs/helpers" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Helpers</a></li>
+            <li><a href="/docs/turbo-frames" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Turbo Frames</a></li>
+            <li><a href="/docs/turbo-streams" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Turbo Streams</a></li>
+            <li><a href="/docs/broadcasting" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
+            <li><a href="/docs/validation-response-redirects" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Validation Redirects</a></li>
+            <li><a href="/docs/csrf" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">CSRF Protection</a></li>
+            <li><a href="/docs/hotwire-native" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Hotwire Native</a></li>
+            <li><a href="/docs/testing" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Testing</a></li>
+            <li><a href="/docs/known-issues" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Known Issues</a></li>
+          </ul>
+  </li>
+  </ul>
+        </div>
+      </aside>
+
+      <main class="flex-1 overflow-hidden">
+        <div>
+          <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+            <h1>Broadcasting Turbo Streams</h1>
+
+<p>So far, we've seen how we may generate Turbo Streams to either add it to our Blade views or return them from controllers after a form submission over HTTP. In addition to that, we may also broadcast model changes over WebSockets (or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events">Server-Sent Events</a>).</p>
+
+<p>It's important to mention that this is an optional feature of Turbo and Turbo Laravel. <strong>You don't have to use Turbo Streams Broadcasting if you don't have the need for it</strong> in order to use Turbo.</p>
+
+<p>We can make our model changes generate Turbo Streams. Yes, the exact same Turbo Streams tags we're used to. Remember, "HTML over the wire." Turbo Streams Broadcasting use <a href="https://github.com/laravel/echo">Laravel Echo</a> and <a href="https://laravel.com/docs/broadcasting">Laravel's Broadcasting</a> component.</p>
+
+<p>Broadcasts are usually triggered after a form submission. You may still return Turbo Streams over HTTP to the user that triggered the form submission, and only send the Turbo Stream Broadcasting to <em>other</em> users. This way, the user making the change will have an instant feedback compared to having to wait for the broadcasting over WebSockets, which may involve queue workers.</p>
+
+<h2>Configuration</h2>
+
+<p>Broadcasting Turbo Streams relies heavily on <a href="https://laravel.com/docs/broadcasting">Laravel's Broadcasting</a>  component. This means you need to configure Laravel Echo in the frontend and either <a href="https://reverb.laravel.com/">Laravel Reverb</a> or a paid service like <a href="https://pusher.com/">Pusher</a>.</p>
+
+<h2>Listening to Broadcasts</h2>
+
+<p>Turbo Laravel will publish a custom HTML tag to your application's <code>resources/js/elements</code> folder. This tag is called <code>&lt;turbo-echo-stream-source&gt;</code> (see <a href="https://github.com/hotwired-laravel/turbo-laravel/blob/main/stubs/resources/js/elements/turbo-echo-stream-tag.js">here</a>).</p>
+
+<p>You may add this tag to any Blade view passing the channel you want to listen to and users will start receiving Turbo Stream Broadcasts right away:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">turbo-echo-stream-source</span>
+    <span class="hl-property">channel</span>=&quot;App.Models.Post.{{ <span class="hl-variable">$post</span>-&gt;<span class="hl-property">id</span> }}&quot;
+/&gt;
+</code></pre>
+
+<p>For convenience, you may prefer using the <code>&lt;x-turbo::stream-from&gt;</code> Blade component that ships with Turbo Laravel (it requires that you have a custom element named <code>&lt;turbo-echo-stream-source&gt;</code> available, since that's the tag this component will render in HTML). You may pass the model as the <code>source</code> prop to it, it will figure out the channel name for that specific model using <a href="https://laravel.com/docs/broadcasting#model-broadcasting-conventions">Laravel's conventions</a>:</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::stream-from</span> :<span class="hl-property">source</span>=&quot;$post&quot; /&gt;
+</code></pre>
+
+<p>By default, it expects a private channel, so it must be used in a page where users are already authenticated. You may control the channel type in the tag with a <code>type</code> attribute.</p>
+
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::stream-from</span> :<span class="hl-property">source</span>=&quot;$post&quot; <span class="hl-property">type</span>=&quot;public&quot; /&gt;
+</code></pre>
+
+<p>Make sure you have the Broadcast Auth Route for your models registered in your <code>routes/channels.php</code> file:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">use</span> <span class="hl-type">App\Models\Post</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">App\Models\User</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Support\Facades\Broadcast</span>;
+
+<span class="hl-type">Broadcast</span>::<span class="hl-property">channel</span>(<span class="hl-type">Post</span>::<span class="hl-keyword">class</span>, <span class="hl-keyword">function</span> (<span class="hl-injection"><span class="hl-type">User</span> $user, <span class="hl-type">Post</span> $post</span>) {
+    <span class="hl-keyword">return</span> <span class="hl-variable">$user</span>-&gt;<span class="hl-property">belongsToTeam</span>(<span class="hl-variable">$post</span>-&gt;<span class="hl-property">team</span>);
+});
+</code></pre>
+
+<p>You may want to read the <a href="https://laravel.com/docs/broadcasting">Laravel Broadcasting</a> documentation.</p>
+
+<h2>Broadcasting Model Changes</h2>
+
+<p>To be broadcast model changes for a particular, you must add the <code>Broadcasts</code> trait to your models:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">use</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\Models\Broadcasts</span>;
+
+<span class="hl-keyword">class</span> <span class="hl-type">Comment</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;
+}
+</code></pre>
+
+<p>This trait will augment any model with Turbo Stream broadcasting methods that you may use to trigger broadcasts <em>manually</em>. Here's how you can broadcast an <code>append</code> Turbo Stream for a newly created comment to all users visiting the post page:</p>
+
+<pre><code class="language-php"><span class="hl-type">Route</span>::<span class="hl-property">post</span>(<span class="hl-value">'posts/{post}/comments'</span>, <span class="hl-keyword">function</span> (<span class="hl-injection"><span class="hl-type">Post</span> $post</span>) {
+    <span class="hl-variable">$comment</span> = <span class="hl-variable">$post</span>-&gt;<span class="hl-property">comments</span>()-&gt;<span class="hl-property">create</span>(<span class="hl-comment">/** params */</span>);
+
+    <span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastAppend</span>()-&gt;<span class="hl-property">toOthers</span>()-&gt;<span class="hl-property">later</span>();
+
+    <span class="hl-keyword">if</span> (<span class="hl-property">request</span>()-&gt;<span class="hl-property">wantsTurboStream</span>()) {
+        <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$comment</span>);
+    }
+
+    <span class="hl-keyword">return</span> <span class="hl-property">back</span>();
+});
+</code></pre>
+
+<p>Here are the methods now available to your model:</p>
+
+<pre><code class="language-php"><span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastAppend</span>();
+<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastPrepend</span>();
+<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastBefore</span>(<span class="hl-value">'target_dom_id'</span>);
+<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastAfter</span>(<span class="hl-value">'target_dom_id'</span>);
+<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastReplace</span>();
+<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastUpdate</span>();
+<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastRemove</span>();
+<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastRefresh</span>();
+</code></pre>
+
+<p>These methods will assume you want to broadcast to your model's channel. In this case, it would broadcast the Turbo Streams to a private channel named <code>App.Models.Comments.{id}</code>.</p>
+
+<p>Additionally, you may send these broadcasts to any other model's channel:</p>
+
+<pre><code class="language-php"><span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastAppendTo</span>(<span class="hl-variable">$post</span>);
+<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastPrependTo</span>(<span class="hl-variable">$post</span>);
+<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastBeforeTo</span>(<span class="hl-variable">$post</span>, <span class="hl-value">'target_dom_id'</span>);
+<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastAfterTo</span>(<span class="hl-variable">$post</span>, <span class="hl-value">'target_dom_id'</span>);
+<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastReplaceTo</span>(<span class="hl-variable">$post</span>);
+<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastUpdateTo</span>(<span class="hl-variable">$post</span>);
+<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastRemoveTo</span>(<span class="hl-variable">$post</span>);
+<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastRefreshTo</span>(<span class="hl-variable">$post</span>);
+</code></pre>
+
+<p>These <code>broadcastXTo()</code> methods accept either a model, an instance of the <a href="https://github.com/laravel/framework/blob/10.x/src/Illuminate/Broadcasting/Channel.php"><code>Channel</code></a> class, or an array containing both of these.</p>
+
+<p>When it receives a model, it will guess the channel name using Laravel's <a href="https://laravel.com/docs/broadcasting#model-broadcasting-conventions">Broadcasting channel naming convention</a>.</p>
+
+<p>All of these broadcasting methods return an instance of the <code>PendingBroadcast</code> class that will only dispatch the broadcasting job when that pending object is being garbage collected. Which means you may make changes to this pending broadcast by chaining on the returned object:</p>
+
+<pre><code class="language-php"><span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastAppend</span>()
+    -&gt;<span class="hl-property">to</span>(<span class="hl-variable">$post</span>)
+    -&gt;<span class="hl-property">view</span>(<span class="hl-value">'comments/_custom_view_partial'</span>, [
+        <span class="hl-value">'comment'</span> =&gt; <span class="hl-variable">$comment</span>,
+        <span class="hl-value">'post'</span> =&gt; <span class="hl-variable">$post</span>,
+    ])
+    -&gt;<span class="hl-property">toOthers</span>() <span class="hl-comment">// Do not send to the current user...</span>
+    -&gt;<span class="hl-property">later</span>(); <span class="hl-comment">// Don't send it now, dispatch a job to send in background instead...</span>
+</code></pre>
+
+<p>You may want to hook these broadcasts from your <a href="https://laravel.com/docs/eloquent#events">model's events</a> to trigger Turbo Stream broadcasts whenever your models are changed in any context:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">class</span> <span class="hl-type">Comment</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;
+
+    <span class="hl-keyword">protected</span> <span class="hl-keyword">static</span> <span class="hl-keyword">function</span> <span class="hl-property">booted</span>()
+    {
+        <span class="hl-keyword">static</span>::<span class="hl-property">created</span>(<span class="hl-keyword">function</span> (<span class="hl-injection"><span class="hl-type">Comment</span> $comment</span>) {
+            <span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastPrependTo</span>(<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">post</span>)-&gt;<span class="hl-property">later</span>();
+        });
+
+        <span class="hl-keyword">static</span>::<span class="hl-property">updated</span>(<span class="hl-keyword">function</span> (<span class="hl-injection"><span class="hl-type">Comment</span> $comment</span>) {
+            <span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastReplaceTo</span>(<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">post</span>)-&gt;<span class="hl-property">later</span>();
+        });
+
+        <span class="hl-keyword">static</span>::<span class="hl-property">deleted</span>(<span class="hl-keyword">function</span> (<span class="hl-injection"><span class="hl-type">Comment</span> $comment</span>) {
+            <span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastRemoveTo</span>(<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">post</span>)-&gt;<span class="hl-property">later</span>();
+        });
+    }
+}
+</code></pre>
+
+<p>For convenience, instead of adding all these lines to achieve this set of broadcasting, you may add a <code>$broadcasts = true</code> property to your model class. This property instructs the <code>Brodcasts</code> trait to automatically hook the model Turbo Stream broadcasts on the correct events:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">class</span> <span class="hl-type">Comment</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;
+
+    <span class="hl-keyword">protected</span> <span class="hl-property">$broadcasts</span> = <span class="hl-keyword">true</span>;
+}
+</code></pre>
+
+<p>This achieves almost the same set of Broadcasts as the previous example, with a few nuanced differences. First, by default, it will broadcast an <code>append</code> Turbo Stream on newly created models. You may want to use <code>prepend</code> instead. You may do that by changing the <code>$broadcasts</code> property to be a configuration array instead of a boolean <code>true</code>, then set the <code>insertsBy</code> key to <code>prepend</code>:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">class</span> <span class="hl-type">Comment</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;
+
+    <span class="hl-keyword">protected</span> <span class="hl-property">$broadcasts</span> = [
+        <span class="hl-value">'insertsBy'</span> =&gt; <span class="hl-value">'prepend'</span>,
+    ];
+}
+</code></pre>
+
+<p>When using the <code>$broadcasts</code> property, the Turbo Stream broadcasts will be sent to the current model's channel. However, since the channels use the model's ID as per the naming convention, no one will ever be able to listen on that channel before the model is created. For that reason, Turbo Stream broadcasts of newly created models will be sent to a private channel using the model's plural name instead. You may also configure which <code>stream</code> name this specific Turbo Stream should be sent to by setting the <code>stream</code> key on the <code>$broadcasts</code> property:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">class</span> <span class="hl-type">Comment</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;
+
+    <span class="hl-keyword">protected</span> <span class="hl-property">$broadcasts</span> = [
+        <span class="hl-value">'insertsBy'</span> =&gt; <span class="hl-value">'prepend'</span>,
+        <span class="hl-value">'stream'</span> =&gt; <span class="hl-value">'my-comments'</span>,
+    ];
+}
+</code></pre>
+
+<p>This will send the Turbo Stream broadcast to private channel called <code>my-comments</code> when a new comment is created.</p>
+
+<p>Alternatively, you may also set a <code>$broadcastsTo</code> property with either a string with the name of the relationship to be used to resolve the channel, or an array of relationships if you want to send the broadcast to multiple related model's channels:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">class</span> <span class="hl-type">Comment</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;
+
+    <span class="hl-keyword">protected</span> <span class="hl-property">$broadcasts</span> = [
+        <span class="hl-value">'insertsBy'</span> =&gt; <span class="hl-value">'prepend'</span>,
+    ];
+
+    <span class="hl-keyword">protected</span> <span class="hl-property">$broadcastsTo</span> = <span class="hl-value">'post'</span>;
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">post</span>()
+    {
+        <span class="hl-keyword">return</span> <span class="hl-variable">$this</span>-&gt;<span class="hl-property">belongsTo</span>(<span class="hl-type">Post</span>::<span class="hl-keyword">class</span>);
+    }
+}
+</code></pre>
+
+<p>You may also do that by adding a <code>broadcastsTo()</code> method to your model instead of the <code>$broadcastsTo</code> property. The method must return either an Eloquent model, a Channel instance, or an array with a mix of those:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Broadcasting\Channel</span>;
+
+<span class="hl-keyword">class</span> <span class="hl-type">Comment</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;
+
+    <span class="hl-keyword">protected</span> <span class="hl-property">$broadcasts</span> = [
+        <span class="hl-value">'insertsBy'</span> =&gt; <span class="hl-value">'prepend'</span>,
+    ];
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">post</span>()
+    {
+        <span class="hl-keyword">return</span> <span class="hl-variable">$this</span>-&gt;<span class="hl-property">belongsTo</span>(<span class="hl-type">Post</span>::<span class="hl-keyword">class</span>);
+    }
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">broadcastsTo</span>()
+    {
+        <span class="hl-keyword">return</span> [
+            <span class="hl-variable">$this</span>,
+            <span class="hl-variable">$this</span>-&gt;<span class="hl-property">post</span>,
+            <span class="hl-keyword">new</span> <span class="hl-type">Channel</span>(<span class="hl-value">'full-control'</span>),
+        ];
+    }
+}
+</code></pre>
+
+<p>Having a <code>$broadcastsTo</code> property or implementing the <code>broadcastsTo()</code> method in your model will have precedence over the <code>stream</code> key of the <code>$broadcasts</code> property.</p>
+
+<h2>Broadcasting Page Refreshes</h2>
+
+<p>Similar to the <code>$broadcasts</code> property, you may want to automatically configure page refresh broadcasts on a modal. You may use the <code>$broadcastsRefreshes</code> property for that:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Broadcasting\Channel</span>;
+
+<span class="hl-keyword">class</span> <span class="hl-type">Comment</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;
+
+    <span class="hl-keyword">protected</span> <span class="hl-property">$broadcastsRefreshes</span> = <span class="hl-keyword">true</span>;
+}
+</code></pre>
+
+<p>This is the same as doing:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Broadcasting\Channel</span>;
+
+<span class="hl-keyword">class</span> <span class="hl-type">Comment</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">static</span> <span class="hl-keyword">function</span> <span class="hl-property">booted</span>()
+    {
+        <span class="hl-keyword">static</span>::<span class="hl-property">created</span>(<span class="hl-keyword">function</span> (<span class="hl-injection">$comment</span>) {
+            <span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastRefreshTo</span>(<span class="hl-value">&quot;comments&quot;</span>)-&gt;<span class="hl-property">later</span>();
+        });
+
+        <span class="hl-keyword">static</span>::<span class="hl-property">updated</span>(<span class="hl-keyword">function</span> (<span class="hl-injection">$comment</span>) {
+            <span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastRefresh</span>()-&gt;<span class="hl-property">later</span>();
+        });
+
+        <span class="hl-keyword">static</span>::<span class="hl-property">deleted</span>(<span class="hl-keyword">function</span> (<span class="hl-injection">$comment</span>) {
+            <span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastRefresh</span>();
+        });
+    }
+}
+</code></pre>
+
+<p>You may want to broadcast page refreshes to a related model:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Broadcasting\Channel</span>;
+
+<span class="hl-keyword">class</span> <span class="hl-type">Comment</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;
+
+    <span class="hl-keyword">protected</span> <span class="hl-property">$broadcastsRefreshes</span> = <span class="hl-keyword">true</span>;
+
+    <span class="hl-keyword">protected</span> <span class="hl-property">$broadcastsRefreshesTo</span> = [<span class="hl-value">'post'</span>];
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">post</span>()
+    {
+        <span class="hl-keyword">return</span> <span class="hl-variable">$this</span>-&gt;<span class="hl-property">belongsTo</span>(<span class="hl-type">Post</span>::<span class="hl-keyword">class</span>);
+    }
+}
+</code></pre>
+
+<p>This will send page refreshes broadcasts to the related <code>Post</code> model channel.</p>
+
+<p>Alternatively, you may specific a <code>broadcastsRefreshesTo</code> method instead of a property:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Broadcasting\Channel</span>;
+
+<span class="hl-keyword">class</span> <span class="hl-type">Comment</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
+{
+    <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;
+
+    <span class="hl-keyword">protected</span> <span class="hl-property">$broadcastsRefreshes</span> = <span class="hl-keyword">true</span>;
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">post</span>()
+    {
+        <span class="hl-keyword">return</span> <span class="hl-variable">$this</span>-&gt;<span class="hl-property">belongsTo</span>(<span class="hl-type">Post</span>::<span class="hl-keyword">class</span>);
+    }
+
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">broadcastsRefreshesTo</span>()
+    {
+        <span class="hl-keyword">return</span> [<span class="hl-variable">$this</span>-&gt;<span class="hl-property">post</span>];
+    }
+}
+</code></pre>
+
+<p>From this method, you may return an instance of an Eloquent model, a string representing the channel name, or an instance of a <code>Channel</code> class.</p>
+
+<h2>Broadcasting Turbo Streams to Other Users Only</h2>
+
+<p>As mentioned earlier, you may want to feed the current user with Turbo Streams using HTTP requests and only send the broadcasts to other users. You may achieve that by chaining on the pending broadcast object that returns from all <code>broadcastX</code> methods:</p>
+
+<pre><code class="language-php"><span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastAppendTo</span>(<span class="hl-variable">$post</span>)-&gt;<span class="hl-property">toOthers</span>();
+</code></pre>
+
+<p>Alternatively, you may use the Turbo Facade like so to configure a scope where all broadcast Turbo Streams triggered inside of it will be sent to other users only:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">use</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\Facades\Turbo</span>;
+
+<span class="hl-type">Turbo</span>::<span class="hl-property">broadcastToOthers</span>(<span class="hl-keyword">function</span> () {
+    <span class="hl-comment">// ...</span>
+});
+</code></pre>
+
+<p>If you always want to send broadcasts to other users excluding the current user from receiving broadcasts, you may call the <code>broadcastToOthers</code> without passing a closure to it somewhere globally like a middleware or the <code>AppServiceProvider::boot()</code> method:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-keyword">namespace</span> <span class="hl-type">App\Providers</span>;
+
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Support\ServiceProvider</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\Facades\Turbo</span>;
+
+<span class="hl-keyword">class</span> <span class="hl-type">AppServiceProvider</span> <span class="hl-keyword">extends</span> <span class="hl-type">ServiceProvider</span>
+{
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">boot</span>()
+    {
+        <span class="hl-type">Turbo</span>::<span class="hl-property">broadcastToOthers</span>();
+    }
+}
+</code></pre>
+
+<p>This only applies to broadcasts generated in an HTTP request, because this relies on having the <code>X-Socket-ID</code> header in the request, which Laravel Echo sets automatically. Any broadcast generate from a queue worker, for instance, will always be broadcast to all users listening on the broadcast channels.</p>
+
+<h2>Handmade Broadcasts</h2>
+
+<p>You may want to broadcast something independently of a model. You may do so using the <code>HotwiredLaravel\TurboLaravel\Facades\TurboStream</code> Facade (if you're not into Facades, type-hinting the <code>HotwiredLaravel\TurboLaravel\Broadcasting\Factory</code> class should also work):</p>
+
+<pre><code class="language-php"><span class="hl-type">TurboStream</span>::<span class="hl-property">broadcastAppend</span>(
+    <span class="hl-property">content</span>: <span class="hl-property">__</span>(<span class="hl-value">'Hello World'</span>),
+    <span class="hl-property">target</span>: <span class="hl-value">'notifications'</span>,
+    <span class="hl-property">channel</span>: <span class="hl-value">'general'</span>,
+);
+</code></pre>
+
+<p>Model broadcasts use this same abstraction under the hood, so you have similar methods available:</p>
+
+<pre><code class="language-php"><span class="hl-type">TurboStream</span>::<span class="hl-property">broadcastAppend</span>();
+<span class="hl-type">TurboStream</span>::<span class="hl-property">broadcastPrepend</span>();
+<span class="hl-type">TurboStream</span>::<span class="hl-property">broadcastBefore</span>();
+<span class="hl-type">TurboStream</span>::<span class="hl-property">broadcastAfter</span>();
+<span class="hl-type">TurboStream</span>::<span class="hl-property">broadcastUpdate</span>();
+<span class="hl-type">TurboStream</span>::<span class="hl-property">broadcastReplace</span>();
+<span class="hl-type">TurboStream</span>::<span class="hl-property">broadcastRemove</span>();
+<span class="hl-type">TurboStream</span>::<span class="hl-property">broadcastRefresh</span>();
+</code></pre>
+
+<p>All of these methods, except the <code>broadcastRemove()</code> and <code>broadcastRefresh</code>, accept a <code>$content</code> parameter that may be a View instance, an instance of the <code>HtmlString</code> class, or a simple string:</p>
+
+<pre><code class="language-php"><span class="hl-comment">// Passing a view instance as content...</span>
+<span class="hl-type">TurboStream</span>::<span class="hl-property">broadcastAppend</span>(
+    <span class="hl-property">content</span>: <span class="hl-property">view</span>(<span class="hl-value">'layouts.notification'</span>, [<span class="hl-value">'message'</span> =&gt; <span class="hl-value">'Hello World'</span>]),
+    <span class="hl-property">target</span>: <span class="hl-value">'notifications'</span>,
+    <span class="hl-property">channel</span>: <span class="hl-value">'general'</span>,
+);
+
+<span class="hl-comment">// Passing an instance of the HtmlString class (won't be escaped by Blade)...</span>
+<span class="hl-type">TurboStream</span>::<span class="hl-property">broadcastAppend</span>(
+    <span class="hl-property">content</span>: <span class="hl-keyword">new</span> <span class="hl-type">HtmlString</span>(<span class="hl-value">'Hello World'</span>),
+    <span class="hl-property">target</span>: <span class="hl-value">'notifications'</span>,
+    <span class="hl-property">channel</span>: <span class="hl-value">'general'</span>,
+);
+
+<span class="hl-comment">// Passing a simple string (will be escaped by Blade)...</span>
+<span class="hl-type">TurboStream</span>::<span class="hl-property">broadcastAppend</span>(
+    <span class="hl-property">content</span>: <span class="hl-value">'Hello World'</span>,
+    <span class="hl-property">target</span>: <span class="hl-value">'notifications'</span>,
+    <span class="hl-property">channel</span>: <span class="hl-value">'general'</span>,
+);
+</code></pre>
+
+<p>You may also customize the Turbo Stream by chaining on the returned <code>PendingBroadcast</code> object:</p>
+
+<pre><code class="language-php"><span class="hl-type">TurboStream</span>::<span class="hl-property">broadcastAppend</span>(<span class="hl-value">'Hello World'</span>)
+    -&gt;<span class="hl-property">target</span>(<span class="hl-value">'notifications'</span>)
+    -&gt;<span class="hl-property">to</span>(<span class="hl-value">'general'</span>);
+</code></pre>
+
+<p>As for the channel, you may pass a string that will be interpreted as a public channel name, an Eloquent model which will resolve to a private channel using that model's broadcasting channel convention, or instances of the <code>Illuminate\Broadcasting\Channel</code> class.</p>
+
+<p>You may want to specify private or presence string channels instead of public ones:</p>
+
+<pre><code class="language-php"><span class="hl-type">TurboStream</span>::<span class="hl-property">broadcastAppend</span>(<span class="hl-value">'Hello World'</span>)
+    -&gt;<span class="hl-property">target</span>(<span class="hl-value">'notifications'</span>)
+    -&gt;<span class="hl-property">toPrivateChannel</span>(<span class="hl-value">'user.123'</span>);
+
+<span class="hl-type">TurboStream</span>::<span class="hl-property">broadcastAppend</span>(<span class="hl-value">'Hello World'</span>)
+    -&gt;<span class="hl-property">target</span>(<span class="hl-value">'notifications'</span>)
+    -&gt;<span class="hl-property">toPresenceChannel</span>(<span class="hl-value">'user.123'</span>);
+</code></pre>
+
+<p>Using the <code>broadcastAction()</code> will allow you to broadcast any custom Turbo Stream action, so you're not limited to the default ones when using this approach:</p>
+
+<pre><code class="language-php"><span class="hl-type">TurboStream</span>::<span class="hl-property">broadcastAction</span>(<span class="hl-value">'scroll_to'</span>, <span class="hl-property">target</span>: <span class="hl-value">'todo_123'</span>);
+</code></pre>
+
+<h2>Handmade Broadcasting Using The <code>turbo_stream()</code> Response Builder</h2>
+
+<p>One more alternative to broadcasting Turbo Streams is to call the <code>broadcastTo()</code> method on the returned object of the <code>turbo_stream()</code> function:</p>
+
+<pre><code class="language-php"><span class="hl-property">turbo_stream</span>()
+    -&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-value">'Hello World'</span>)
+    -&gt;<span class="hl-property">broadcastTo</span>(<span class="hl-value">'general'</span>);
+</code></pre>
+
+<p>This will tap on the <code>PendingTurboStreamResponse</code> and create a <code>PendingBroadcast</code> from it. It's important to note that this will return the same <code>PendingTurboStreamResponse</code>, not the <code>PendingBroadcast</code>. If you want to configure the <code>PendingBroadcast</code> that will be generated, you must do that before calling the <code>broadcastTo()</code> method, but you may also pass a <code>Closure</code> as the second parameter:</p>
+
+<pre><code class="language-php"><span class="hl-property">turbo_stream</span>()
+    -&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-value">'Hello World'</span>)
+    -&gt;<span class="hl-property">broadcastTo</span>(<span class="hl-value">'general'</span>, <span class="hl-keyword">fn</span> (<span class="hl-injection">$broadcast</span>) =&gt; <span class="hl-variable">$broadcast</span>-&gt;<span class="hl-property">toOthers</span>());
+</code></pre>
+
+<p>The first argument must be either a string, an Eloquent model, or an instance of the <code>Illuminate\Broadcasting\Channel</code> class as the channel:</p>
+
+<pre><code class="language-php"><span class="hl-property">turbo_stream</span>(<span class="hl-variable">$comment</span>)
+    -&gt;<span class="hl-property">broadcastTo</span>(<span class="hl-variable">$comment</span>-&gt;<span class="hl-property">post</span>, <span class="hl-keyword">fn</span> (<span class="hl-injection">$broadcast</span>) =&gt; <span class="hl-variable">$broadcast</span>-&gt;<span class="hl-property">toOthers</span>());
+</code></pre>
+
+<p>Similarly to using the Facade, you may also want to broadcast to private or presence string channels like so:</p>
+
+<pre><code class="language-php"><span class="hl-comment">// Broadcast to private channels...</span>
+<span class="hl-property">turbo_stream</span>()
+    -&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-value">'Hello World'</span>)
+    -&gt;<span class="hl-property">broadcastToPrivateChannel</span>(<span class="hl-value">'user.123'</span>, <span class="hl-keyword">fn</span> (<span class="hl-injection">$broadcast</span>) =&gt; <span class="hl-variable">$broadcast</span>-&gt;<span class="hl-property">toOthers</span>())
+
+<span class="hl-comment">// Broadcast to presence channels...</span>
+<span class="hl-property">turbo_stream</span>()
+    -&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-value">'Hello World'</span>)
+    -&gt;<span class="hl-property">broadcastToPresenceChannel</span>(<span class="hl-value">'chat.123'</span>, <span class="hl-keyword">fn</span> (<span class="hl-injection">$broadcast</span>) =&gt; <span class="hl-variable">$broadcast</span>-&gt;<span class="hl-property">toOthers</span>());
+</code></pre>
+          </div>
+
+                      <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Previous</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/docs/turbo-streams">Turbo Streams <span class="absolute inset-0"></span></a>
+    </div>
+  
+      <div class="lg:col-start-2 relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Next</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/docs/validation-response-redirects">Validation Response <span class="absolute inset-0"></span></a>
+    </div>
+  </div>
+                  </div>
+      </main>
+    </div>
+  </div>
+
+        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
+          <p class="text-base text-center w-full">
+            Turbo Laravel is maintained by <a href="" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
+          </p>
+        </footer>
+    </body>
+</html>

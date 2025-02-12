@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="canonical" href="https://new.turbo-laravel.com/docs/conventions">
+        <meta name="description" content="All the (optional) conventions and recommendations">
+        <title>Conventions</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/manifest/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/manifest/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/manifest/favicon-16x16.png">
+        <link rel="manifest" href="/assets/site.webmanifest">
+        <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=7756ef47cdc6e051280b7984fd99b8f7">
+        <script defer src="/assets/build/js/main.js?id=2685052459ff19e5e2ef09aac148fca7"></script>
+    </head>
+    <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
+  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
+    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
+      <a href="/">Turbo Laravel</a>
+    </h1>
+
+    <nav class="inline-block lg:hidden">
+      <details class="group" data-search-target="nav">
+        <summary class="list-none">
+          <span>
+            <span class="sr-only">Navigation</span>
+
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
+              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </span>
+        </summary>
+
+        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
+          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
+            <form action="/docs/search" method="GET" class="px-4">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 2.x docs..." />
+  <button type="submit" class="sr-only">Search</button>
+</form>
+
+            <ul class="space-y-6 -mb-2 mt-4">
+              <li>
+                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+                  <span>Documentation</span>
+                </a>
+
+                  <div class="mx-4 pl-3 border-l-4 border-zinc-900/30">
+  <ul class="">
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/docs/upgrade" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Upgrade Guide</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Getting Started</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/docs/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
+                <li><a href="/docs/overview" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Overview</a></li>
+                <li><a href="/docs/conventions" class="font-bold transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Conventions</a></li>
+              </ul>
+    </li>
+        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Essentials</li>
+    <li class="children mt-2">
+      <ul class="list-inside space-y-1 text-lg">
+                <li><a href="/docs/helpers" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Helpers</a></li>
+                <li><a href="/docs/turbo-frames" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Turbo Frames</a></li>
+                <li><a href="/docs/turbo-streams" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Turbo Streams</a></li>
+                <li><a href="/docs/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Broadcasting</a></li>
+                <li><a href="/docs/validation-response-redirects" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Validation Redirects</a></li>
+                <li><a href="/docs/csrf" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">CSRF Protection</a></li>
+                <li><a href="/docs/hotwire-native" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Hotwire Native</a></li>
+                <li><a href="/docs/testing" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Testing</a></li>
+                <li><a href="/docs/known-issues" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Known Issues</a></li>
+              </ul>
+    </li>
+      </ul>
+</div>
+              </li>
+              <li>
+                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
+              </li>
+              <li class="space-y-6">
+                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
+                              </li>
+              <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </nav>
+  </div>
+
+  <nav class="hidden lg:block">
+    <ul class="flex items-center space-x-6 -my-2">
+      <li>
+        <div class="group relative py-2">
+          <a href="/docs" class="bg-white/90 px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
+            <span>Documentation</span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </a>
+
+          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
+            <ul class="space-y-1">
+              <li><a href="/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">2.2.0</span></a></li>
+              <li><a href="/1.x/docs/installation" class="block px-2 py-1  rounded">Version <span class="">1.12.2</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
+      <li><a href="/bootcamp/introduction" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
+      <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li>
+    </ul>
+  </nav>
+</header>
+
+          <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
+    <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
+      <aside data-search-target="aside" class="relative w-1/4 hidden lg:block">
+        <div class="sticky top-4 block space-y-4">
+            <form action="/docs/search" method="GET">
+  <label for="search" class="sr-only">Search</label>
+  <input data-search-target="web" type="text" name="q" placeholder="Search v2 docs... (press &quot;/&quot; to focus)" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
+</form>
+
+            <ul class="[&_.children]:mb-4">
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/docs/upgrade" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Upgrade Guide</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Getting Started</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/docs/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
+            <li><a href="/docs/overview" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Overview</a></li>
+            <li><a href="/docs/conventions" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conventions</a></li>
+          </ul>
+  </li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Essentials</li>
+  <li class="children mt-2">
+    <ul class="list-inside space-y-1 text-lg">
+            <li><a href="/docs/helpers" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Helpers</a></li>
+            <li><a href="/docs/turbo-frames" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Turbo Frames</a></li>
+            <li><a href="/docs/turbo-streams" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Turbo Streams</a></li>
+            <li><a href="/docs/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
+            <li><a href="/docs/validation-response-redirects" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Validation Redirects</a></li>
+            <li><a href="/docs/csrf" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">CSRF Protection</a></li>
+            <li><a href="/docs/hotwire-native" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Hotwire Native</a></li>
+            <li><a href="/docs/testing" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Testing</a></li>
+            <li><a href="/docs/known-issues" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Known Issues</a></li>
+          </ul>
+  </li>
+  </ul>
+        </div>
+      </aside>
+
+      <main class="flex-1 overflow-hidden">
+        <div>
+          <div class="prose prose-xl prose-zinc prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+            <h1>Conventions</h1>
+
+<p>The conventions described below are <strong>NOT mandatory</strong>. Feel free to pick what you like and also come up with your own conventions. With that out of the way, here's a list of conventions you may find helpful.</p>
+
+<h2>Resource Routes</h2>
+
+<p>Laravel supports <a href="https://laravel.com/docs/controllers#resource-controllers">resource routes</a> and that plays really well with Hotwire for most things. This creates route names such as <code>posts.index</code>, <code>posts.store</code>, etc.</p>
+
+<p>If you don't want to use resource routes, at least consider using the naming convention: render forms in route names ending in <code>.create</code>, <code>.edit</code>, or <code>.delete</code>, and name their handler routes ending with <code>.store</code>, <code>.update</code>, or <code>.destroy</code>, accordingly.</p>
+
+<p>Turbo Laravel uses this naming convention so it doesn't redirect after failed validations and, instead, triggers another internal request to the application as well so it can re-render the form returning a 422 response with. The form should re-render with the <code>old()</code> input values and any validation messages as well.</p>
+
+<p>You may want to define exceptions to the route guessing behavior. In that's the case, set them in the <code>redirect_guessing_exceptions</code> in the <code>config/turbo-laravel.php</code> config file:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">return</span> [
+    <span class="hl-comment">// ...</span>
+    <span class="hl-value">'redirect_guessing_exceptions'</span> =&gt; [
+        <span class="hl-value">'/some-page'</span>,
+    ],
+];
+</code></pre>
+
+<p>When using this config, the redirection behavior will still happen, but the package will not attempt to guess the routes that render the forms on those routes. See the <a href="/docs/validation-response-redirects">Validation Response Redirects</a> page to know more about why this happens.</p>
+
+<h2>Partials</h2>
+
+<p>You may want to split up your views in smaller chunks (aka. "partials"), such as a <code>comments/_comment.blade.php</code> to display a comment resource, or <code>comments/_form.blade.php</code> to display the form for both creating and updating comments. This allows you to reuse these <em>partials</em> in <a href="/docs/turbo-streams">Turbo Streams</a>.</p>
+
+<p>Alternatively, you may override the pattern to a <code>{plural}.partials.{singular}</code> convention for your partials location by calling the <code>Turbo::usePartialsSubfolderPattern()</code> method of the Turbo Facade from your <code>AppServiceProvider::boot()</code> method:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-keyword">namespace</span> <span class="hl-type">App\Providers</span>;
+
+<span class="hl-keyword">use</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\Facades\Turbo</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Support\ServiceProvider</span>;
+
+<span class="hl-keyword">class</span> <span class="hl-type">AppServiceProvider</span> <span class="hl-keyword">extends</span> <span class="hl-type">ServiceProvider</span>
+{
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">boot</span>()
+    {
+        <span class="hl-type">Turbo</span>::<span class="hl-property">usePartialsSubfolderPattern</span>();
+    }
+}
+</code></pre>
+
+<p>You may also want to define your own pattern for partials, which you can do using the <code>Turbo::resolvePartialsUsing()</code> method. This method accepts either a string pattern or a Closure. If you pass a string pattern, you'll have two placeholders available: <code>{singular}</code> and <code>{plural}</code>, which will get replaced with the model's singular and plural names, respectively, when the pattern is used. If you pass a Closure, you'll have the model instance available and you must return the view pattern using Laravel's dot notation convention. The pattern returned from the Closure will also get the placeholders applied, if you need that. Here's how you could manually define the partials subfolder pattern:</p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-keyword">namespace</span> <span class="hl-type">App\Providers</span>;
+
+<span class="hl-keyword">use</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\Facades\Turbo</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Support\ServiceProvider</span>;
+
+<span class="hl-keyword">class</span> <span class="hl-type">AppServiceProvider</span> <span class="hl-keyword">extends</span> <span class="hl-type">ServiceProvider</span>
+{
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">boot</span>()
+    {
+        <span class="hl-type">Turbo</span>::<span class="hl-property">resolvePartialsPathUsing</span>(<span class="hl-value">'{plural}.partials.{singular}'</span>);
+
+        <span class="hl-comment">// Or...</span>
+
+        <span class="hl-type">Turbo</span>::<span class="hl-property">resolvePartialsPathUsing</span>(<span class="hl-keyword">fn</span> (<span class="hl-injection">$model</span>) =&gt; <span class="hl-value">'partials.{singular}'</span>);
+    }
+}
+</code></pre>
+
+<p>You may also want to define your own pattern, which you can do by either specifying a string where you have the <code>{plural}</code> and <code>{singular}</code> placeholders available, but you can also specify a Closure, which will receive the model instance. On that Closure, you must return a string with the view location using the dot convention of Laravel. For instance, the subfolder pattern sets the config value to <code>{plural}.partials.{singular}</code> instead of the default, which is <code>{plural}._{singular}</code>. These will resolve to <code>comments.partials.comment</code> and <code>comments._comment</code> views, respectively.</p>
+
+<p>The models' partials (such as a <code>comments/_comment.blade.php</code> for a <code>Comment</code> model) may only rely on having a single <code>$comment</code> variable passed to them. That's because Turbo Stream Model Broadcasts - which is an <em>optional</em> feature, by the way - relies on these conventions to figure out the partial for a given model when broadcasting and will also pass the model to such partial, using the class basename as the variable instance in <em>camelCase</em>. Again, this is optional, you can customize most of these things or create your own model broadcasting convention. Read the <a href="/docs/broadcasting">Broadcasting</a> section to know more.</p>
+
+<h2>Turbo Stream Channel Names</h2>
+
+<p><em>Note: Turbo Stream Broadcasts are optional.</em></p>
+
+<p>You may use the model's Fully Qualified Class Name (aka. FQCN) as your Broadcasting Channel authorization routes with a wildcard, such as <code>App.Models.Comment.{comment}</code> for a <code>Comment</code> model living in <code>App\\Models\\</code> - the wildcard's name doesn't matter, as long as there is one. This is the default <a href="https://laravel.com/docs/8.x/broadcasting#model-broadcasting-conventions">broadcasting channel naming convention</a> in Laravel.</p>
+          </div>
+
+                      <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Previous</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/docs/overview">Overview <span class="absolute inset-0"></span></a>
+    </div>
+  
+      <div class="lg:col-start-2 relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
+      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Next</div>
+      <a class="font-heading font-extrabold text-zinc-900/80" href="/docs/helpers">Helpers <span class="absolute inset-0"></span></a>
+    </div>
+  </div>
+                  </div>
+      </main>
+    </div>
+  </div>
+
+        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
+          <p class="text-base text-center w-full">
+            Turbo Laravel is maintained by <a href="" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
+          </p>
+        </footer>
+    </body>
+</html>
