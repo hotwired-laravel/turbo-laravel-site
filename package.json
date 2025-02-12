@@ -15,6 +15,7 @@
         "tailwindcss": "^3.1.6"
     },
     "dependencies": {
+        "@hotwired/stimulus": "^3.2.2",
         "lunr": "^2.3.9"
     }
 }

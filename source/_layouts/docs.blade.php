@@ -7,9 +7,9 @@
 @section('body')
   <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
     <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
-      <aside class="relative w-1/4 hidden lg:block">
+      <aside data-search-target="aside" class="relative w-1/4 hidden lg:block">
         <div class="sticky top-4 block space-y-4">
-            @include('_layouts.partials.search', ['href' => '/docs/search', 'placeholder' => 'Search v2 docs...'])
+            @include('_layouts.partials.search', ['href' => '/docs/search', 'placeholder' => 'Search v2 docs... (press "/" to focus)'])
 
             @include('_layouts.partials.sidebar-menu', ['menu' => $page->navigation['v2']])
         </div>

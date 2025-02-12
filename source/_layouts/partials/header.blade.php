@@ -5,7 +5,7 @@
     </h1>
 
     <nav class="inline-block lg:hidden">
-      <details class="group">
+      <details class="group" data-search-target="nav">
         <summary class="list-none">
           <span>
             <span class="sr-only">Navigation</span>
