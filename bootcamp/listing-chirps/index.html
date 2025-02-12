@@ -394,8 +394,9 @@
 
     </p>
 
-<pre><code class="language-js"><span class="hl-keyword">import</span> <span class="hl-value">'libs/turbo'</span>;
-<span class="hl-keyword">import</span> <span class="hl-value">'controllers'</span>;
+<pre><code class="language-js"><span class="hl-keyword">import</span> <span class="hl-value">&quot;bootstrap&quot;</span>;
+<span class="hl-keyword">import</span> <span class="hl-value">&quot;elements/turbo-echo-stream-tag&quot;</span>;
+<span class="hl-keyword">import</span> <span class="hl-value">&quot;libs&quot;</span>;
 <span class="hl-addition"><span class="hl-keyword">import</span> <span class="hl-value">'@github/time-elements'</span>;</span>
 </code></pre>
 
@@ -454,18 +455,21 @@
     </p>
 
 <pre><code class="language-blade">&lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;p-6 flex space-x-2&quot;&gt;
-    &lt;<span class="hl-keyword">svg</span> <span class="hl-property">xmlns</span>=&quot;http://www.w3.org/2000/svg&quot; <span class="hl-property">class</span>=&quot;h-6 w-6 text-gray-600 -scale-x-100&quot; <span class="hl-property">fill</span>=&quot;none&quot; <span class="hl-property">viewBox</span>=&quot;0 0 24 24&quot; <span class="hl-property">stroke</span>=&quot;currentColor&quot; <span class="hl-property">stroke-width</span>=&quot;2&quot;&gt;
-        &lt;<span class="hl-keyword">path</span> <span class="hl-property">stroke-linecap</span>=&quot;round&quot; <span class="hl-property">stroke-linejoin</span>=&quot;round&quot; <span class="hl-property">d</span>=&quot;M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z&quot; /&gt;
+    &lt;<span class="hl-keyword">svg</span> <span class="hl-property">xmlns</span>=&quot;http://www.w3.org/2000/svg&quot; <span class="hl-property">class</span>=&quot;h-6 w-6 text-gray-600 dark:text-gray-400 -scale-x-100&quot; <span class="hl-property">fill</span>=&quot;none&quot; <span class="hl-property">viewBox</span>=&quot;0 0 24 24&quot;
+        <span class="hl-property">stroke</span>=&quot;currentColor&quot; <span class="hl-property">stroke-width</span>=&quot;2&quot;&gt;
+        &lt;<span class="hl-keyword">path</span> <span class="hl-property">stroke-linecap</span>=&quot;round&quot; <span class="hl-property">stroke-linejoin</span>=&quot;round&quot;
+            <span class="hl-property">d</span>=&quot;M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z&quot; /&gt;
     &lt;/<span class="hl-keyword">svg</span>&gt;
+
     &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex-1&quot;&gt;
         &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex justify-between items-center&quot;&gt;
             &lt;<span class="hl-keyword">div</span>&gt;
-                &lt;<span class="hl-keyword">span</span> <span class="hl-property">class</span>=&quot;text-gray-800&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user</span>-&gt;<span class="hl-property">name</span> }}&lt;/<span class="hl-keyword">span</span>&gt;
+                &lt;<span class="hl-keyword">span</span> <span class="hl-property">class</span>=&quot;text-gray-800 dark:text-gray-200&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user</span>-&gt;<span class="hl-property">name</span> }}&lt;/<span class="hl-keyword">span</span>&gt;
 <span class="hl-deletion">                &lt;<span class="hl-keyword">small</span> <span class="hl-property">class</span>=&quot;ml-2 text-sm text-gray-600 dark:text-gray-400&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">created_at</span>-&gt;<span class="hl-property">diffForHumans</span>() }}&lt;/<span class="hl-keyword">small</span>&gt;</span>
 <span class="hl-addition">                &lt;<span class="hl-keyword">small</span> <span class="hl-property">class</span>=&quot;ml-2 text-sm text-gray-600 dark:text-gray-400&quot;&gt;&lt;<span class="hl-keyword">x-relative-time</span> :<span class="hl-property">date</span>=&quot;$chirp-&gt;created_at&quot; /&gt;&lt;/<span class="hl-keyword">small</span>&gt;</span>
             &lt;/<span class="hl-keyword">div</span>&gt;
         &lt;/<span class="hl-keyword">div</span>&gt;
-        &lt;<span class="hl-keyword">p</span> <span class="hl-property">class</span>=&quot;mt-4 text-lg text-gray-900&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">message</span> }}&lt;/<span class="hl-keyword">p</span>&gt;
+        &lt;<span class="hl-keyword">p</span> <span class="hl-property">class</span>=&quot;mt-4 text-lg text-gray-900 dark:text-gray-200&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">message</span> }}&lt;/<span class="hl-keyword">p</span>&gt;
     &lt;/<span class="hl-keyword">div</span>&gt;
 &lt;/<span class="hl-keyword">div</span>&gt;
 </code></pre>
