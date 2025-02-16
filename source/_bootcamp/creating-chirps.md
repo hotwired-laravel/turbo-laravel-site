@@ -250,11 +250,11 @@ This partial is making use a Blade component that doesn't exist yet called `x-te
 
 That's it! Refresh the page in your browser to see your new form rendered in the default layout provided by Breeze!
 
-![Creating Chirps Link](/assets/images/bootcamp/creating-chirps-link.png)
+![Creating Chirps Link](/assets/images/bootcamp/creating-chirps-link.png?v=2)
 
 If you click on that link, you will see the form to create Chirps and the breadcrumbs should also have been updated:
 
-![Creating Chirps Form](/assets/images/bootcamp/creating-chirps-form.png)
+![Creating Chirps Form](/assets/images/bootcamp/creating-chirps-form.png?v=2)
 
 ### Navigation menu
 
@@ -302,7 +302,7 @@ Don't forget the responsive menu:
 
 We should see the Chirps link on the page nav now:
 
-![Chirps Nav Link](/assets/images/bootcamp/creating-chirps-nav-link.png)
+![Chirps Nav Link](/assets/images/bootcamp/creating-chirps-nav-link.png?v=2)
 
 ## Saving the Chirp
 
@@ -445,7 +445,7 @@ Each database migration will only be run once. To make additional changes to a t
 
 We're now ready to send a Chirp using the form we just created! We won't be able to see the result yet because we haven't displayed existing Chirps on the page.
 
-![Saving Chirps](/assets/images/bootcamp/creating-chirps-saving.png)
+![Saving Chirps](/assets/images/bootcamp/creating-chirps-saving.png?v=2)
 
 If you leave the message field empty, or enter more than 255 characters, then you'll see the validation in action.
 
@@ -577,4 +577,4 @@ php artisan tailwindcss:build
 
 If you create another Chirp now, you should see a nice notification message at the top:
 
-![Flash Messages](/assets/images/bootcamp/creating-chirps-flash-messages.png)
+![Flash Messages](/assets/images/bootcamp/creating-chirps-flash-messages.png?v=2)
