@@ -19,7 +19,7 @@ First, run the `install:broadcasting` Artisan command:
 php artisan install:broadcasting --without-node
 ```
 
-When it asks if you wan to install Reverb, answer "Yes". After that, we'll install them manually with importamps:
+When it asks if you wan to install Reverb, answer "Yes". After that, we'll install the JS dependencies with importamps:
 
 ```bash
 php artisan importmap:pin laravel-echo pusher-js current.js
