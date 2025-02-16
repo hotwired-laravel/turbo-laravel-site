@@ -13,10 +13,10 @@
         <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=4d73d68534fb60a6d8714799848a8219">
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=7c6f8b27ddcb18db8e76e62fda1aa439">
         <script defer src="/assets/build/js/main.js?id=b0f29cd4e71d41b4ee570d0f42344180"></script>
     </head>
-    <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
+    <body class="text-zinc-900 text-lg font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
         <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
   <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
     <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
@@ -132,7 +132,7 @@
 </header>
 
           <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
-    <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
+    <div class="sm:flex sm:space-x-12 sm:max-w-7xl w-full mx-auto">
       <aside class="relative w-1/4 hidden lg:block" data-search-target="aside">
         <div class="sticky top-4 block space-y-4">
             <form action="/bootcamp/search" method="GET">
@@ -140,16 +140,16 @@
   <input data-search-target="web" type="text" name="q" placeholder="Search bootcamp... (press &quot;/&quot; to focus)" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
 </form>
 
-            <ul class="[&_.children]:mb-4">
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+            <ul class="[&_.children]:mb-4 text-base">
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Prologue</li>
   <li class="children mt-2">
-    <ul class="list-inside space-y-1 text-lg">
+    <ul class="list-inside space-y-1">
             <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Introduction</a></li>
           </ul>
   </li>
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Web</li>
   <li class="children mt-2">
-    <ul class="list-inside space-y-1 text-lg">
+    <ul class="list-inside space-y-1">
             <li><a href="/bootcamp/installation" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
             <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Creating Chirps</a></li>
             <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Listing Chirps</a></li>
@@ -159,9 +159,9 @@
             <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
           </ul>
   </li>
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Native</li>
   <li class="children mt-2">
-    <ul class="list-inside space-y-1 text-lg">
+    <ul class="list-inside space-y-1">
             <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
             <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Authentication</a></li>
             <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Our First Bridge Component</a></li>
@@ -170,9 +170,9 @@
             <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Toasts</a></li>
           </ul>
   </li>
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Epilogue</li>
   <li class="children mt-2">
-    <ul class="list-inside space-y-1 text-lg">
+    <ul class="list-inside space-y-1">
             <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conclusion</a></li>
           </ul>
   </li>
@@ -180,8 +180,8 @@
         </div>
       </aside>
 
-      <main class="flex-1 min-w-0">
-        <div class="prose prose-xl overflow-hidden prose-zinc [&_code:not(pre_code)]:text-wrap [&_code:not(pre_code)]:break-words prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+      <main class="flex-1 min-w-0 max-w-3xl">
+        <div class="prose prose-lg overflow-hidden prose-zinc [&_code:not(pre_code)]:text-wrap [&_code:not(pre_code)]:break-words prose-headings:font-heading prose-headings:font-extrabold max-w-none w-full">
             <h1><em>01.</em> Installation</h1>
 
 <p>Our first step is to create the web app and setup our local environment. This bootcamp <a href="https://php.new/">assumes you have PHP installed on your system</a>.</p>
@@ -202,7 +202,7 @@ php artisan serve
 
 <p>Once you have started the Artisan development server, your application will be accessible in your web browser at <a href="http://localhost:8000">http://localhost:8000</a>.</p>
 
-<p><img src="/assets/images/bootcamp/laravel-welcome.png?v=2" alt="Laravel Welcome page" /></p>
+<p><img src="/assets/images/bootcamp/laravel-welcome.png?v=3" alt="Laravel Welcome page" /></p>
 
 <p>By default, the Laravel app will be created using SQLite.</p>
 
@@ -223,15 +223,15 @@ php artisan turbo-breeze:install turbo --dark
 
 <p>The welcome page should now have the Login and Register links at the top:</p>
 
-<p><img src="/assets/images/bootcamp/install-welcome-auth.png?v=2" alt="Welcome with Auth" /></p>
+<p><img src="/assets/images/bootcamp/install-welcome-auth.png?v=3" alt="Welcome with Auth" /></p>
 
 <p>And you should be able to head to the <code>/register</code> route and create your own account:</p>
 
-<p><img src="/assets/images/bootcamp/install-register.png?v=2" alt="Register Page" /></p>
+<p><img src="/assets/images/bootcamp/install-register.png?v=3" alt="Register Page" /></p>
 
 <p>Then, you should be redirected to the Dashboard page:</p>
 
-<p><img src="/assets/images/bootcamp/install-dashboard.png?v=2" alt="Dashboard Page" /></p>
+<p><img src="/assets/images/bootcamp/install-dashboard.png?v=3" alt="Dashboard Page" /></p>
 
 <p>This Dashboard page is protected by Laravel's auth middleware, so only authenticated users can access it. The registration process automatically authenticates us.</p>
 
@@ -239,7 +239,7 @@ php artisan turbo-breeze:install turbo --dark
 
 <p>There are a couple differences between Turbo Breeze and Laravel Breeze. In Laravel Breeze, your name at the top of the navigation bar is a dropdown. In Turbo Breeze, it's a link to a page with the menu:</p>
 
-<p><img src="/assets/images/bootcamp/profile-menu.png?v=2" alt="Profile Menu" /></p>
+<p><img src="/assets/images/bootcamp/profile-menu.png?v=3" alt="Profile Menu" /></p>
 
 <p>In Laravel Breeze, all the profile forms are rendered in the same page. In Turbo Breeze, each one has its own dedicated page. That's not a requirement for Hotwired apps, but it works best in a mobile context. We'll see more about that later in this bootcamp.</p>
 

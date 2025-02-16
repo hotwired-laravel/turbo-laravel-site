@@ -13,10 +13,10 @@
         <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=4d73d68534fb60a6d8714799848a8219">
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=7c6f8b27ddcb18db8e76e62fda1aa439">
         <script defer src="/assets/build/js/main.js?id=b0f29cd4e71d41b4ee570d0f42344180"></script>
     </head>
-    <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
+    <body class="text-zinc-900 text-lg font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
         <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
   <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
     <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
@@ -132,7 +132,7 @@
 </header>
 
           <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
-    <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
+    <div class="sm:flex sm:space-x-12 sm:max-w-7xl w-full mx-auto">
       <aside class="relative w-1/4 hidden lg:block" data-search-target="aside">
         <div class="sticky top-4 block space-y-4">
             <form action="/bootcamp/search" method="GET">
@@ -140,16 +140,16 @@
   <input data-search-target="web" type="text" name="q" placeholder="Search bootcamp... (press &quot;/&quot; to focus)" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
 </form>
 
-            <ul class="[&_.children]:mb-4">
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+            <ul class="[&_.children]:mb-4 text-base">
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Prologue</li>
   <li class="children mt-2">
-    <ul class="list-inside space-y-1 text-lg">
+    <ul class="list-inside space-y-1">
             <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Introduction</a></li>
           </ul>
   </li>
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Web</li>
   <li class="children mt-2">
-    <ul class="list-inside space-y-1 text-lg">
+    <ul class="list-inside space-y-1">
             <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
             <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Creating Chirps</a></li>
             <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Listing Chirps</a></li>
@@ -159,9 +159,9 @@
             <li><a href="/bootcamp/broadcasting" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
           </ul>
   </li>
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Native</li>
   <li class="children mt-2">
-    <ul class="list-inside space-y-1 text-lg">
+    <ul class="list-inside space-y-1">
             <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
             <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Authentication</a></li>
             <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Our First Bridge Component</a></li>
@@ -170,9 +170,9 @@
             <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Toasts</a></li>
           </ul>
   </li>
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Epilogue</li>
   <li class="children mt-2">
-    <ul class="list-inside space-y-1 text-lg">
+    <ul class="list-inside space-y-1">
             <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conclusion</a></li>
           </ul>
   </li>
@@ -180,8 +180,8 @@
         </div>
       </aside>
 
-      <main class="flex-1 min-w-0">
-        <div class="prose prose-xl overflow-hidden prose-zinc [&_code:not(pre_code)]:text-wrap [&_code:not(pre_code)]:break-words prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+      <main class="flex-1 min-w-0 max-w-3xl">
+        <div class="prose prose-lg overflow-hidden prose-zinc [&_code:not(pre_code)]:text-wrap [&_code:not(pre_code)]:break-words prose-headings:font-heading prose-headings:font-extrabold max-w-none w-full">
             <h1><em>07.</em> Broadcasting</h1>
 
 <p>We can send the same Turbo Streams we're returning to our users after a form submission over WebSockets and update the page for all users visiting it! Broadcasts may be triggered automatically whenever a <a href="https://laravel.com/docs/eloquent#events">model updates</a> or manually whenever you want to broadcast it.</p>
@@ -192,10 +192,10 @@
 
 <p>First, run the <code>install:broadcasting</code> Artisan command:</p>
 
-<pre><code class="language-bash">php artisan install:broadcasting
+<pre><code class="language-bash">php artisan install:broadcasting --without-node
 </code></pre>
 
-<p>When it asks if you want to install the Node dependencies, say "No". After that, we'll install them manually with importamps:</p>
+<p>When it asks if you wan to install Reverb, answer "Yes". After that, we'll install them manually with importamps:</p>
 
 <pre><code class="language-bash">php artisan importmap:pin laravel-echo pusher-js current.js
 </code></pre>
@@ -203,9 +203,9 @@
 <p>Next, we'll need to update the published <code>echo.js</code> file. It currently uses <code>import.meta.env.*</code>, which requires a build step. Instead, we'll update it to use the <code>current.js</code> to read the configs from meta tags we'll add to our layouts. But first, replace the <code>echo.js</code> with the following version:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -213,11 +213,11 @@
         </div>
 
                 <button class="flex items-center space-x-1" title="Copy to clipboard" data-action="clipboard#copy" type="button">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 group-data-[copied]:hidden">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 group-data-[copied]:hidden">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
             </svg>
 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 hidden group-data-[copied]:block">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 hidden group-data-[copied]:block">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
 
@@ -253,9 +253,9 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 <p>We also need to update the <code>bootstrap.js</code> file to fix the import that was appended by Reverb to the Importmap style:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -285,9 +285,9 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 <p>Next, let's create a new layout partial at <code>resources/views/layouts/partials/reverb.blade.php</code> with the following content:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -295,11 +295,11 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
         </div>
 
                 <button class="flex items-center space-x-1" title="Copy to clipboard" data-action="clipboard#copy" type="button">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 group-data-[copied]:hidden">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 group-data-[copied]:hidden">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
             </svg>
 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 hidden group-data-[copied]:block">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 hidden group-data-[copied]:block">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
 
@@ -310,9 +310,9 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
     </p>
 
 <pre><code class="language-blade">&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-reverb-app-key&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">config</span>(<span class="hl-value">'broadcasting.connections.reverb.key'</span>) }}&quot; /&gt;
-&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-reverb-host&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">config</span>(<span class="hl-value">'reverb.servers.reverb.frontend.host'</span>) }}&quot; /&gt;
-&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-reverb-port&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">config</span>(<span class="hl-value">'reverb.servers.reverb.frontend.port'</span>) }}&quot; /&gt;
-&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-reverb-scheme&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">config</span>(<span class="hl-value">'reverb.servers.reverb.frontend.scheme'</span>) }}&quot; /&gt;
+&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-reverb-host&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">config</span>(<span class="hl-value">'broadcasting.connections.reverb.options.host'</span>) }}&quot; /&gt;
+&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-reverb-port&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">config</span>(<span class="hl-value">'broadcasting.connections.reverb.options.port'</span>) }}&quot; /&gt;
+&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-reverb-scheme&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">config</span>(<span class="hl-value">'broadcasting.connections.reverb.options.scheme'</span>) }}&quot; /&gt;
 </code></pre>
 
 <p>
@@ -322,9 +322,9 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 <p>Then, add that to the <code>app.blade.php</code> layout file:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -366,9 +366,9 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 <p>Do the same for the guest layout:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -405,147 +405,32 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 </div>
 </p>
 
-<p>Then, we need to tweak our <code>.env</code> file to look something like this:</p>
+<p>Now, make sure your <code>.env</code> file has the following configs:</p>
 
-<pre><code class="language-php"># ...
-
-<span class="hl-type">BROADCAST_CONNECTION</span>=reverb
-
-<span class="hl-type">REVERB_APP_ID</span>=[<span class="hl-property">REDACTED</span>]
-<span class="hl-type">REVERB_APP_KEY</span>=[<span class="hl-property">REDACTED</span>]
-<span class="hl-type">REVERB_APP_SECRET</span>=[<span class="hl-property">REDACTED</span>]
-<span class="hl-type">REVERB_HOST</span>=<span class="hl-value">&quot;reverb.test&quot;</span>
-<span class="hl-type">REVERB_PORT</span>=8080
-<span class="hl-type">REVERB_SCHEME</span>=http
-
-<span class="hl-type">REVERB_FRONTEND_HOST</span>=<span class="hl-value">&quot;localhost&quot;</span>
-<span class="hl-type">REVERB_FRONTEND_PORT</span>=<span class="hl-value">&quot;${REVERB_PORT}&quot;</span>
-<span class="hl-type">REVERB_FRONTEND_SCHEME</span>=<span class="hl-value">&quot;${REVERB_SCHEME}&quot;</span>
+<pre><code class="language-bash">BROADCAST_CONNECTION=reverb
+REVERB_APP_ID=[REDACTED]
+REVERB_APP_KEY=[REDACTED]
+REVERB_APP_SECRET=[REDACTED]
+REVERB_HOST=&quot;127.0.0.1&quot;
+REVERB_PORT=&quot;8080&quot;
+REVERB_SCHEME=http
 </code></pre>
 
-<p>With that, our Reverb config needs to be updated to use the new frontend configs:</p>
+<p>That's all we need to configure Reverb. We may start the Reverb server process by running the Artisan command in a new terminal window:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-            </svg>
-
-            <span class="whitespace-nowrap">config/reverb.php</span>
-        </div>
-
-            </div>
-
-    </p>
-
-<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
-
-<span class="hl-keyword">return</span> [
-    <span class="hl-comment">// ...</span>
-
-    <span class="hl-value">'servers'</span> =&gt; [
-
-        <span class="hl-value">'reverb'</span> =&gt; [
-            <span class="hl-value">'host'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_SERVER_HOST'</span>, <span class="hl-value">'0.0.0.0'</span>),
-            <span class="hl-value">'port'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_SERVER_PORT'</span>, 8080),
-            <span class="hl-value">'hostname'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_HOST'</span>),
-            <span class="hl-value">'options'</span> =&gt; [
-                <span class="hl-value">'tls'</span> =&gt; [],
-            ],
-            <span class="hl-value">'scaling'</span> =&gt; [
-                <span class="hl-value">'enabled'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_SCALING_ENABLED'</span>, <span class="hl-keyword">false</span>),
-                <span class="hl-value">'channel'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_SCALING_CHANNEL'</span>, <span class="hl-value">'reverb'</span>),
-            ],
-<span class="hl-addition">            <span class="hl-value">'frontend'</span> =&gt; [</span>
-<span class="hl-addition">                <span class="hl-value">'host'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_FRONTEND_HOST'</span>),</span>
-<span class="hl-addition">                <span class="hl-value">'port'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_FRONTEND_PORT'</span>),</span>
-<span class="hl-addition">                <span class="hl-value">'scheme'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_FRONTEND_SCHEME'</span>),</span>
-<span class="hl-addition">            ],</span>
-            <span class="hl-value">'pulse_ingest_interval'</span> =&gt; <span class="hl-property">env</span>(<span class="hl-value">'REVERB_PULSE_INGEST_INTERVAL'</span>, 15),
-        ],
-    ],
-
-    <span class="hl-comment">// ...</span>
-];
-</code></pre>
-
-<p>
-</div>
-</p>
-
-<p>The Broadcasting component has two sides: the backend and the frontend. The backend needs to connect to the Reverb server, and since we're using Sail, we'll spin up a new container for that. For this reason, we cannot use the same host as the frontend, since that's what the browser will use to connect to the server. The backend will connect to a host named <code>reverb.test:8080</code> (we'll add it next), and the browser will connect to <code>localhost:8080</code>.</p>
-
-<p>If you're following using <code>artisan serve</code>, both can be <code>localhost</code> or <code>127.0.0.1</code>.</p>
-
-<p>Next, update the <code>docker-compose.yml</code> to add the new <code>reverb.test</code> service:</p>
-
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-            </svg>
-
-            <span class="whitespace-nowrap">docker-compose.yml</span>
-        </div>
-
-            </div>
-
-    </p>
-
-<pre><code class="language-yaml"><span class="hl-keyword">services</span><span class="hl-property">:</span>
-    <span class="hl-comment"># ...</span>
-
-<span class="hl-addition">    reverb.<span class="hl-keyword">test</span>:</span>
-<span class="hl-addition">        <span class="hl-keyword">build</span><span class="hl-property">:</span></span>
-<span class="hl-addition">            <span class="hl-keyword">context</span><span class="hl-property">:</span> ./vendor/laravel/sail/runtimes/8.3</span>
-<span class="hl-addition">            <span class="hl-keyword">dockerfile</span><span class="hl-property">:</span> Dockerfile</span>
-<span class="hl-addition">            <span class="hl-keyword">args</span><span class="hl-property">:</span></span>
-<span class="hl-addition">                <span class="hl-keyword">WWWGROUP</span><span class="hl-property">:</span> '<span class="hl-value">${WWWGROUP}</span>'</span>
-<span class="hl-addition">        <span class="hl-keyword">image</span><span class="hl-property">:</span> sail-8.3/app</span>
-<span class="hl-addition">        <span class="hl-keyword">command</span><span class="hl-property">:</span> <span class="hl-property">[</span>&quot;<span class="hl-value">php</span>&quot;, &quot;<span class="hl-value">artisan</span>&quot;, &quot;<span class="hl-value">reverb:start</span>&quot;<span class="hl-property">]</span></span>
-<span class="hl-addition">        <span class="hl-keyword">extra_hosts</span><span class="hl-property">:</span></span>
-<span class="hl-addition">            <span class="hl-property">-</span> '<span class="hl-value">host.docker.internal:host-gateway</span>'</span>
-<span class="hl-addition">        <span class="hl-keyword">ports</span><span class="hl-property">:</span></span>
-<span class="hl-addition">            <span class="hl-property">-</span> '<span class="hl-value">${REVERB_PORT:-8080}:8080</span>'</span>
-<span class="hl-addition">        <span class="hl-keyword">environment</span><span class="hl-property">:</span></span>
-<span class="hl-addition">            <span class="hl-keyword">WWWUSER</span><span class="hl-property">:</span> '<span class="hl-value">${WWWUSER}</span>'</span>
-<span class="hl-addition">            <span class="hl-keyword">LARAVEL_SAIL</span><span class="hl-property">:</span> 1</span>
-<span class="hl-addition">            <span class="hl-keyword">XDEBUG_MODE</span><span class="hl-property">:</span> '<span class="hl-value">${SAIL_XDEBUG_MODE:-off}</span>'</span>
-<span class="hl-addition">            <span class="hl-keyword">XDEBUG_CONFIG</span><span class="hl-property">:</span> '<span class="hl-value">${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}</span>'</span>
-<span class="hl-addition">            <span class="hl-keyword">IGNITION_LOCAL_SITES_PATH</span><span class="hl-property">:</span> '<span class="hl-value">${PWD}</span>'</span>
-<span class="hl-addition">        <span class="hl-keyword">volumes</span><span class="hl-property">:</span></span>
-<span class="hl-addition">            <span class="hl-property">-</span> '<span class="hl-value">.:/var/www/html</span>'</span>
-<span class="hl-addition">        <span class="hl-keyword">networks</span><span class="hl-property">:</span></span>
-<span class="hl-addition">            <span class="hl-property">-</span> sail</span>
-<span class="hl-addition">        <span class="hl-keyword">depends_on</span><span class="hl-property">:</span></span>
-<span class="hl-addition">            <span class="hl-property">-</span> laravel.test</span>
-
-<span class="hl-keyword">networks</span><span class="hl-property">:</span>
-    <span class="hl-keyword">sail</span><span class="hl-property">:</span>
-        <span class="hl-keyword">driver</span><span class="hl-property">:</span> bridge
-</code></pre>
-
-<p>
-</div>
-</p>
-
-<p>Now, we can boot the Reverb service by running:</p>
-
-<pre><code class="language-bash">./vendor/bin/sail up -d
+<pre><code class="language-bash">php artisan reverb:start
 </code></pre>
 
 <p>That's it!</p>
 
 <h2>Broadcasting Turbo Streams</h2>
 
-<p>Let's start by sending new Chirps to all users currently visiting the chirps page. We're going to start by creating a private broadcasting channel called <code>chirps</code> in our <code>routes/channels.php</code> file. Any authenticated user may start receiving new Chirps broadcasts when they visit the <code>chirps.index</code> page, so we're simply returning <code>true</code> in the authorization check:</p>
+<p>We'll start by broadcasting new Chirps to all users visiting the <code>chirps.index</code> page. To start, we'll register the private broadcasting channel named "<em>chirps</em>" in our <code>routes/channels.php</code> file. This way, only authenticated users will be able to receive broadcasts:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -565,8 +450,8 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
     <span class="hl-keyword">return</span> (int) <span class="hl-variable">$user</span>-&gt;<span class="hl-property">id</span> === (int) <span class="hl-variable">$id</span>;
 });
 
-<span class="hl-addition"><span class="hl-type">Broadcast</span>::<span class="hl-property">channel</span>(<span class="hl-value">'chirps'</span>, <span class="hl-keyword">function</span> () {</span>
-<span class="hl-addition">    <span class="hl-keyword">return</span> <span class="hl-keyword">true</span>;</span>
+<span class="hl-addition"><span class="hl-type">Broadcast</span>::<span class="hl-property">channel</span>(<span class="hl-value">'chirps'</span>, <span class="hl-keyword">function</span> (<span class="hl-injection">$user</span>) {</span>
+<span class="hl-addition">    <span class="hl-keyword">return</span> <span class="hl-variable">$user</span>?-&gt;<span class="hl-property">exists</span>;</span>
 <span class="hl-addition">});</span>
 </code></pre>
 
@@ -574,12 +459,12 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 </div>
 </p>
 
-<p>Now, let's update the <code>chirps/index.blade.php</code> to add the <code>x-turbo::stream-from</code> Blade component that ships with Turbo Laravel:</p>
+<p>To start listening for Turbo Broadcasts all we need to do is use the <code>&lt;x-turbo::stream-from&gt;</code> Blade component in the page where we want to receive them from. In our case, that will be the <code>chirps/index.blade.php</code> view:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -614,9 +499,9 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 <p>Now, we're ready to start broadcasting! First, let's add the <code>Broadcasts</code> trait to our <code>Chirp</code> model:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -658,9 +543,9 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 <p>That trait will give us a bunch of methods we can call from our Chirp model instances. Let's use it in the <code>store</code> action of our <code>ChirpController</code> to send newly created Chirps to all connected users:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -716,14 +601,14 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 </div>
 </p>
 
-<p>To test this, try visiting the <code>/chirps</code> page from two different tabs and creating a Chirp in one of them. The other should automatically update! We're also broadcasting on-the-fly in the same request/response life-cycle, which could slow down our response time a bit, depending on your load and your queue driver response time. We can delay the broadcasting (which includes view rendering) to a queued job by chaining the <code>-&gt;later()</code> method, for example.</p>
+<p>To test this, try visiting the <code>/chirps</code> page from two different browser windows and creating a Chirp in one of them. The other window should automatically update! We're also broadcasting on-the-fly in the same request/response life-cycle, which could slow down our response time a bit, depending on your load and your queue driver response time. We can delay the broadcasting (which includes view rendering) to a queued job by chaining the <code>-&gt;later()</code> method, for example.</p>
 
 <p>Now, let's make sure all visiting users receive Chirp updates whenever it changes. To achieve that, change the <code>update</code> action in the <code>ChirpController</code>:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -787,9 +672,9 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 <p>Finally, let's make sure deleted Chirps are removed from all visiting users' pages. Tweak the <code>destroy</code> action in the <code>ChirpController</code> like so:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -854,9 +739,9 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 <p>Our <code>Chirp</code> model would end up looking like this:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -910,9 +795,9 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 <p>We can then remove a few lines from our <code>ChirpsController</code>:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -1048,6 +933,11 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 <pre><code class="language-bash">sail artisan queue:work --tries=1
 </code></pre>
 
+<p>Also, make sure you have the <code>APP_URL</code> correctly set to your local testing URL in your <code>.env</code> file, since URLs will be generated in background:</p>
+
+<pre><code class="language-bash">APP_URL=http://localhost:8000
+</code></pre>
+
 <p>Now we can test it and it should be working!</p>
 
 <p>One more cool thing about this approach: users will receive the broadcasts no matter where the Chirp models were created from! We can test this out by creating a Chirp entry from Tinker, for example. To try that, start a new Tinker session:</p>
@@ -1067,7 +957,7 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 # }
 </code></pre>
 
-<p><img src="/assets/images/bootcamp/broadcasting-tinker.png" alt="Broadcasting from Tinker" /></p>
+<p><img src="/assets/images/bootcamp/broadcasting-tinker.png?v=3" alt="Broadcasting from Tinker" /></p>
 
 <h3>Extra Credit: Fixing The Missing Dropdowns</h3>
 
@@ -1078,9 +968,9 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 <p>First, let's update our <code>layouts.partials.current-identity</code> partial to include a few things about the currently authenticated user when there's one:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -1088,11 +978,11 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
         </div>
 
                 <button class="flex items-center space-x-1" title="Copy to clipboard" data-action="clipboard#copy" type="button">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 group-data-[copied]:hidden">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 group-data-[copied]:hidden">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
             </svg>
 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 hidden group-data-[copied]:block">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 hidden group-data-[copied]:block">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
 
@@ -1115,9 +1005,9 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 <p>Next, update the <code>app.blade.php</code> to include it:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -1167,9 +1057,9 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 <p>Now, update the Stimulus controller to look like this:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -1177,11 +1067,11 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
         </div>
 
                 <button class="flex items-center space-x-1" title="Copy to clipboard" data-action="clipboard#copy" type="button">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 group-data-[copied]:hidden">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 group-data-[copied]:hidden">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
             </svg>
 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 hidden group-data-[copied]:block">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 hidden group-data-[copied]:block">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
 
@@ -1222,9 +1112,9 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 <p>Now, let's update our <code>chirps.partials.chirp.blade.php</code> partial to use this controller instead of handling this in the server-side:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -1269,9 +1159,9 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 <p>Next, we need to tweak our <code>dropdown.blade.php</code> Blade component to accept and merge the <code>class</code>, <code>data-controller</code>, and <code>data-action</code> attributes:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
@@ -1299,7 +1189,7 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 
 <p>Now, if you try creating another user and test this out, you'll see that the dropdown only shows up for the creator of the Chirp!</p>
 
-<p><img src="/assets/images/bootcamp/broadcasting-dropdown-fix.png" alt="Dropdown only shows up for creator" /></p>
+<p><img src="/assets/images/bootcamp/broadcasting-dropdown-fix.png?v=3" alt="Dropdown only shows up for creator" /></p>
 
 <p>This change also makes our entire <code>_chirp</code> partial cacheable! We could cache it and only render that when changes are made to the Chirp model using the Chirp's <code>updated_at</code> timestamps, for example.</p>
 

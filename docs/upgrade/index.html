@@ -13,10 +13,10 @@
         <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=4d73d68534fb60a6d8714799848a8219">
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=7c6f8b27ddcb18db8e76e62fda1aa439">
         <script defer src="/assets/build/js/main.js?id=b0f29cd4e71d41b4ee570d0f42344180"></script>
     </head>
-    <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
+    <body class="text-zinc-900 text-lg font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
         <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
   <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
     <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
@@ -125,7 +125,7 @@
 </header>
 
           <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
-    <div class="sm:flex sm:space-x-6 sm:max-w-7xl w-full mx-auto">
+    <div class="sm:flex sm:space-x-12 sm:max-w-7xl w-full mx-auto">
       <aside data-search-target="aside" class="relative w-1/4 hidden lg:block">
         <div class="sticky top-4 block space-y-4">
             <form action="/docs/search" method="GET">
@@ -133,24 +133,24 @@
   <input data-search-target="web" type="text" name="q" placeholder="Search v2 docs... (press &quot;/&quot; to focus)" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
 </form>
 
-            <ul class="[&_.children]:mb-4">
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
+            <ul class="[&_.children]:mb-4 text-base">
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Prologue</li>
   <li class="children mt-2">
-    <ul class="list-inside space-y-1 text-lg">
+    <ul class="list-inside space-y-1">
             <li><a href="/docs/upgrade" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Upgrade Guide</a></li>
           </ul>
   </li>
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Getting Started</li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Getting Started</li>
   <li class="children mt-2">
-    <ul class="list-inside space-y-1 text-lg">
+    <ul class="list-inside space-y-1">
             <li><a href="/docs/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
             <li><a href="/docs/overview" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Overview</a></li>
             <li><a href="/docs/conventions" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conventions</a></li>
           </ul>
   </li>
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Essentials</li>
+    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Essentials</li>
   <li class="children mt-2">
-    <ul class="list-inside space-y-1 text-lg">
+    <ul class="list-inside space-y-1">
             <li><a href="/docs/helpers" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Helpers</a></li>
             <li><a href="/docs/turbo-frames" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Turbo Frames</a></li>
             <li><a href="/docs/turbo-streams" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Turbo Streams</a></li>
@@ -166,8 +166,8 @@
         </div>
       </aside>
 
-      <main class="flex-1 min-w-0">
-        <div class="prose prose-xl prose-zinc overflow-hidden prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
+      <main class="flex-1 min-w-0 max-w-3xl">
+        <div class="prose prose-lg overflow-hidden prose-zinc [&_code:not(pre_code)]:text-wrap [&_code:not(pre_code)]:break-words prose-headings:font-heading prose-headings:font-extrabold max-w-none w-full">
             <h1>Upgrade Guide</h1>
 
 <h2>Upgrading from 1.x to 2.x</h2>
