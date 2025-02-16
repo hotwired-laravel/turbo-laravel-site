@@ -158,12 +158,8 @@ We can then create our `chirps.index` view with a link to our form for creating 
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl mx-auto">
-                    @include('chirps.partials.new-chirp-trigger')
-                </div>
-            </div>
+        <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
+            @include('chirps.partials.new-chirp-trigger')
         </div>
     </div>
 </x-app-layout>
@@ -176,9 +172,9 @@ This view is including a partial called `new-chirp-trigger`, so create the parti
 <x-fenced-code file="resources/views/chirps/partials/new-chirp-trigger.blade.php" copy>
 
 ```blade 
-<div class="relative flex items-center justify-center py-10 px-4 rounded-lg border border-dotted border-gray-300 dark:border-gray-600">
-    <a class="text-gray-700 dark:text-gray-500" href="{{ route('chirps.create') }}">
-        {{ __('New Chirp') }}
+<div class="relative flex items-center pt-2 pb-8 px-3 rounded-lg transition bg-white border border-gray-300 dark:border-gray-700 dark:bg-gray-900 hover:bg-opacity-70">
+    <a class="text-gray-500" href="{{ route('chirps.create') }}">
+        {{ __('Create a Chirp') }}
         <span class="absolute inset-0"></span>
     </a>
 </div>
@@ -200,11 +196,7 @@ Then, let's create our `chirps.create` page view with the Chirps form:
 
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl mx-auto">
-                    @include('chirps.partials.form')
-                </div>
-            </div>
+            @include('chirps.partials.form')
         </div>
     </div>
 </x-app-layout>
@@ -250,11 +242,11 @@ This partial is making use a Blade component that doesn't exist yet called `x-te
 
 That's it! Refresh the page in your browser to see your new form rendered in the default layout provided by Breeze!
 
-![Creating Chirps Link](/assets/images/bootcamp/creating-chirps-link.png?v=2)
+![Creating Chirps Link](/assets/images/bootcamp/creating-chirps-link.png?v=3)
 
 If you click on that link, you will see the form to create Chirps and the breadcrumbs should also have been updated:
 
-![Creating Chirps Form](/assets/images/bootcamp/creating-chirps-form.png?v=2)
+![Creating Chirps Form](/assets/images/bootcamp/creating-chirps-form.png?v=3)
 
 ### Navigation menu
 
@@ -302,7 +294,7 @@ Don't forget the responsive menu:
 
 We should see the Chirps link on the page nav now:
 
-![Chirps Nav Link](/assets/images/bootcamp/creating-chirps-nav-link.png?v=2)
+![Chirps Nav Link](/assets/images/bootcamp/creating-chirps-nav-link.png?v=3)
 
 ## Saving the Chirp
 
@@ -433,7 +425,7 @@ return new class extends Migration
 
 </x-fenced-code>
 
-We haven't migrated the database since we added this migration, so let do it now:
+We haven't migrated the database since we added this migration, so let's do it now:
 
 ```bash
 php artisan migrate
@@ -445,7 +437,7 @@ Each database migration will only be run once. To make additional changes to a t
 
 We're now ready to send a Chirp using the form we just created! We won't be able to see the result yet because we haven't displayed existing Chirps on the page.
 
-![Saving Chirps](/assets/images/bootcamp/creating-chirps-saving.png?v=2)
+![Saving Chirps](/assets/images/bootcamp/creating-chirps-saving.png?v=3)
 
 If you leave the message field empty, or enter more than 255 characters, then you'll see the validation in action.
 
@@ -508,10 +500,8 @@ class ChirpController extends Controller
 
         $request->user()->chirps()->create($validated);
 
-{-        return redirect()->route('chirps.index');-}
-{+        return redirect()
-            ->route('chirps.index')
-            ->with('notice', __('Chirp created.'));+}
+{-        return redirect(route('chirps.index'));-}
+{+        return redirect(route('chirps.index'))->with('notice', __('Chirp created.'));+}
     }
 
     // ...
@@ -577,4 +567,4 @@ php artisan tailwindcss:build
 
 If you create another Chirp now, you should see a nice notification message at the top:
 
-![Flash Messages](/assets/images/bootcamp/creating-chirps-flash-messages.png?v=2)
+![Flash Messages](/assets/images/bootcamp/creating-chirps-flash-messages.png?v=3)

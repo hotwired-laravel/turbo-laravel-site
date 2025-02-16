@@ -27,7 +27,7 @@ php artisan serve
 
 Once you have started the Artisan development server, your application will be accessible in your web browser at [http://localhost:8000](http://localhost:8000).
 
-![Laravel Welcome page](/assets/images/bootcamp/laravel-welcome.png?v=2)
+![Laravel Welcome page](/assets/images/bootcamp/laravel-welcome.png?v=3)
 
 By default, the Laravel app will be created using SQLite.
 
@@ -49,15 +49,15 @@ Turbo Breeze will install and configure your front-end dependencies for you. It 
 
 The welcome page should now have the Login and Register links at the top:
 
-![Welcome with Auth](/assets/images/bootcamp/install-welcome-auth.png?v=2)
+![Welcome with Auth](/assets/images/bootcamp/install-welcome-auth.png?v=3)
 
 And you should be able to head to the `/register` route and create your own account:
 
-![Register Page](/assets/images/bootcamp/install-register.png?v=2)
+![Register Page](/assets/images/bootcamp/install-register.png?v=3)
 
 Then, you should be redirected to the Dashboard page:
 
-![Dashboard Page](/assets/images/bootcamp/install-dashboard.png?v=2)
+![Dashboard Page](/assets/images/bootcamp/install-dashboard.png?v=3)
 
 This Dashboard page is protected by Laravel's auth middleware, so only authenticated users can access it. The registration process automatically authenticates us.
 
@@ -65,7 +65,7 @@ Turbo Breeze is a fork of Laravel Breeze, but customized to work better in a Hot
 
 There are a couple differences between Turbo Breeze and Laravel Breeze. In Laravel Breeze, your name at the top of the navigation bar is a dropdown. In Turbo Breeze, it's a link to a page with the menu:
 
-![Profile Menu](/assets/images/bootcamp/profile-menu.png?v=2)
+![Profile Menu](/assets/images/bootcamp/profile-menu.png?v=3)
 
 In Laravel Breeze, all the profile forms are rendered in the same page. In Turbo Breeze, each one has its own dedicated page. That's not a requirement for Hotwired apps, but it works best in a mobile context. We'll see more about that later in this bootcamp.
 
