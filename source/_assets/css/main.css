@@ -4,7 +4,6 @@
 
 @import './_code';
 @import './_scrollbar';
-@import './_borders';
 
 .sr-only {
     position: absolute;
