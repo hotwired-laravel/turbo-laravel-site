@@ -732,7 +732,7 @@ Now, if you try creating another user and test this out, you'll see that the dro
 
 ![Dropdown only shows up for creator](/assets/images/bootcamp/broadcasting-dropdown-fix.png?v=4)
 
-This change also makes our entire `_chirp` partial cacheable! We could cache it and only render that when changes are made to the Chirp model using the Chirp's `updated_at` timestamps, for example.
+This change also makes our entire `chirps/partials/chirp.blade.php` partial cacheable! We could cache it and only render that when changes are made to the Chirp model using the Chirp's `updated_at` timestamps, for example.
 
 
 <x-note type="warning">
