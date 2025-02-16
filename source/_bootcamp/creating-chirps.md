@@ -577,4 +577,4 @@ php artisan tailwindcss:build
 
 If you create another Chirp now, you should see a nice notification message at the top:
 
-![Flash Messages](/assets//images/bootcamp/creating-chirps-flash-messages.png)
+![Flash Messages](/assets/images/bootcamp/creating-chirps-flash-messages.png)

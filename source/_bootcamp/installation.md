@@ -7,15 +7,11 @@ order: 2
 
 # *01.* Installation
 
-Our first step is to create the web app and setup our local environment.
+Our first step is to create the web app and setup our local environment. This bootcamp [assumes you have PHP installed on your system](https://php.new/).
 
 ## Installing Laravel
 
-There are two paths in here: one uses a local installation setup, and another one that uses [Laravel Sail](https://laravel.com/docs/sail). Choose how you're going to run the app locally as you feel more comfortable.
-
-### Quick Installation
-
-If you have already installed PHP and Composer on your local machine, you may create a new Laravel project via [Composer](https://getcomposer.org/):
+You may create a new Laravel project using [Composer](https://getcomposer.org/):
 
 ```bash
 composer create-project laravel/laravel turbo-chirper
@@ -33,52 +29,7 @@ Once you have started the Artisan development server, your application will be a
 
 ![Laravel Welcome page](/assets/images/bootcamp/laravel-welcome.png)
 
-For simplicity, you may use SQLite to store your application's data.
-
-### Installing via Docker
-
-If you do not have PHP installed locally, you may develop your application using [Laravel Sail](https://laravel.com/docs/sail), a light-weight command-line interface for interacting with Laravel's default Docker development environment, which is compatible with all operating systems. Before we get started, make sure to install [Docker](https://docs.docker.com/get-docker/) for your operating system. For alternative installation methods, check out Laravel's full [installation guide](https://laravel.com/docs/installation).
-
-The easiest way to install Laravel is using Laravel's `laravel.build` service, which will download and create a fresh Laravel application for you. Launch a terminal and run the following command:
-
-```bash
-curl -s "https://laravel.build/turbo-chirper?with=none" | bash
-```
-
-Sail installation may take several minutes while Sail's application containers are built on your local machine.
-
-Notice that we're passing the `?with=none` flag to the command. By default, the installer will pre-configure Laravel Sail with a number of useful services for your application. We don't want that. We only need the app container and we'll use SQLite, which should be the default.
-
-After the project has been created, you can navigate to the application directory and start Laravel Sail:
-
-```bash
-cd turbo-chirper
-
-./vendor/bin/sail up -d
-```
-
-<x-note type="warning">
-
-<x-slot name="heading">
-#### Create an alias
-</x-slot>
-
-You may [create a shell alias](https://laravel.com/docs/sail#configuring-a-shell-alias) that allows you execute Sail's commands more easily.
-
-</x-note>
-
-When developing applications using Sail, you may execute Artisan, NPM, and Composer commands via the Sail CLI instead of invoking them directly:
-
-```bash
-./vendor/bin/sail php --version
-./vendor/bin/sail artisan --version
-./vendor/bin/sail composer --version
-./vendor/bin/sail npm --version
-```
-
-Once the application's Docker containers have been started, you can access the application in your web browser at: [http://localhost](http://localhost).
-
-![Welcome Page over Sail](/assets/images/bootcamp/laravel-welcome-sail.png)
+By default, the Laravel app will be created using SQLite.
 
 ## Installing Turbo Breeze
 
@@ -93,16 +44,6 @@ composer require hotwired-laravel/turbo-breeze:1.x-dev --dev
 
 php artisan turbo-breeze:install turbo --dark
 ```
-
-<x-note type="warning">
-
-<x-slot name="heading">
-#### Prefix all Sail commands
-</x-slot>
-
-If you're using Sail, remember to prefix this command with `./vendor/bin/sail`, since the symlink needs to be created inside the container.
-
-</x-note>
 
 Turbo Breeze will install and configure your front-end dependencies for you. It should have built the initial version of our assets for us.
 
