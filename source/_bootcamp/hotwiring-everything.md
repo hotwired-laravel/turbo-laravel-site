@@ -25,17 +25,13 @@ Our application works, but we could improve it. Instead of sending users to a de
 
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl mx-auto">
-{-                    @include('chirps.partials.new-chirp-trigger')-}
-{+                    <x-turbo::frame id="create_chirp" src="{{ route('chirps.create') }}">
-                        @include('chirps.partials.new-chirp-trigger')
-                    </x-turbo::frame>+}
+{-            @include('chirps.partials.new-chirp-trigger')-}
+{+            <x-turbo::frame id="create_chirp" src="{{ route('chirps.create') }}">
+                @include('chirps.partials.new-chirp-trigger')
+            </x-turbo::frame>+}
 
-                    <div class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">
-                        @each('chirps.partials.chirp', $chirps, 'chirp')
-                    </div>
-                </div>
+            <div class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">
+                @each('chirps.partials.chirp', $chirps, 'chirp')
             </div>
         </div>
     </div>
@@ -58,14 +54,10 @@ For that to work, we also need to wrap our create form with a matching Turbo Fra
 
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl mx-auto">
-{-                    @include('chirps.partials.form')-}
-{+                    <x-turbo::frame id="create_chirp" target="_top">
-                        @include('chirps.partials.form')
-                    </x-turbo::frame>+}
-                </div>
-            </div>
+{-            @include('chirps.partials.form')-}
+{+            <x-turbo::frame id="create_chirp" target="_top">
+                @include('chirps.partials.form')
+            </x-turbo::frame>+}
         </div>
     </div>
 </x-app-layout>
@@ -100,17 +92,13 @@ Before we change the `ChirpController`, let's give our list of chirps wrapper el
 
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl mx-auto">
-                    <x-turbo::frame id="create_chirp" src="{{ route('chirps.create') }}">
-                        @include('chirps.partials.new-chirp-trigger')
-                    </x-turbo::frame>
+            <x-turbo::frame id="create_chirp" src="{{ route('chirps.create') }}">
+                @include('chirps.partials.new-chirp-trigger')
+            </x-turbo::frame>
 
-{-                    <div class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">-}
-{+                    <div id="chirps" class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">+}
-                        @each('chirps.partials.chirp', $chirps, 'chirp')
-                    </div>
-                </div>
+{-            <div class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">-}
+{+            <div id="chirps" class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">+}
+                @each('chirps.partials.chirp', $chirps, 'chirp')
             </div>
         </div>
     </div>
@@ -189,7 +177,7 @@ class AppServiceProvider extends ServiceProvider
 
 Now if you try creating a Chirp, you should see the newly created Chirp at the top of the chirps list, the form should have been cleared, and a flash message showed up.
 
-![Hotwiring Chirps Creationg](/assets/images/bootcamp/hotwiring-creating-chirps.png)
+![Hotwiring Chirps Creationg](/assets/images/bootcamp/hotwiring-creating-chirps.png?v=3)
 
 Let's also implement inline editing for our chirps.
 
@@ -229,14 +217,10 @@ Now, let's also update the `chirps.edit` page to add a wrapping Turbo Frame arou
 
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl mx-auto">
-{-                    @include('chirps.partials.form', ['chirp' => $chirp])-}
-{+                    <x-turbo::frame :id="$chirp" target="_top">
-                        @include('chirps.partials.form', ['chirp' => $chirp])
-                    </x-turbo::frame>+}
-                </div>
-            </div>
+{-            @include('chirps.partials.form', ['chirp' => $chirp])-}
+{+            <x-turbo::frame :id="$chirp" target="_top">
+                @include('chirps.partials.form', ['chirp' => $chirp])
+            </x-turbo::frame>+}
         </div>
     </div>
 </x-app-layout>
@@ -293,7 +277,7 @@ class ChirpController extends Controller
 
 Now, if you try editing a chirp, you should see the same thing as before, but now we're sure that our chirp will just be updated no matter if it's present in the index listing of chirps or not after the form is submitted. Yay!
 
-![Hotwiring Editing Chirps](/assets/images/bootcamp/hotwiring-editing-chirp.png)
+![Hotwiring Editing Chirps](/assets/images/bootcamp/hotwiring-editing-chirp.png?v=3)
 
 ## Deleting Chirps with Turbo Streams
 
@@ -463,4 +447,4 @@ Although this is using Macros, we're still using the Turbo Stream actions that s
 
 With these changes, our application behaves so much better than before! Try it out yourself!
 
-![Inline Editing Forms](/assets/images/bootcamp/hotwiring-chirps-inline-forms.png)
+![Inline Editing Forms](/assets/images/bootcamp/hotwiring-chirps-inline-forms.png?v=3)

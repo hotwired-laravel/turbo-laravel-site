@@ -87,15 +87,11 @@ Next, update the `chirps.index` view so we can list all Chirps:
 
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl mx-auto">
-                    @include('chirps.partials.new-chirp-trigger')
+            @include('chirps.partials.new-chirp-trigger')
 
-{+                    <div class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">
-                        @each('chirps.partials.chirp', $chirps, 'chirp')
-                    </div>+}
-                </div>
-            </div>
+{+            <div class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">
+                @each('chirps.partials.chirp', $chirps, 'chirp')
+            </div>+}
         </div>
     </div>
 </x-app-layout>

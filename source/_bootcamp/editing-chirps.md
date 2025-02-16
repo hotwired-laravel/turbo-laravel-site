@@ -140,11 +140,7 @@ Now, we need to create our `chirps.edit` view:
 
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl mx-auto">
-                    @include('chirps.partials.form', ['chirp' => $chirp])
-                </div>
-            </div>
+            @include('chirps.partials.form', ['chirp' => $chirp])
         </div>
     </div>
 </x-app-layout>
@@ -222,7 +218,7 @@ class ChirpPolicy
 
 You should be able to use the dropdown, click on the Edit link and view the edit Chirp form:
 
-![Edit Chirp Form](/assets/images/bootcamp/editing-chirps-form.png)
+![Edit Chirp Form](/assets/images/bootcamp/editing-chirps-form.png?v=3)
 
 ## Updating Chirps
 
@@ -254,9 +250,7 @@ class ChirpController extends Controller
 
         $chirp->update($validated);
 
-        return redirect()
-            ->route('chirps.index')
-            ->with('notice', __('Chirp updated.'));+}
+        return redirect(route('chirps.index'))->with('notice', __('Chirp updated.'));+}
     }
 
     // ...
@@ -271,4 +265,4 @@ You may have noticed the validation rules are duplicated with the `store` action
 
 Time to test it out! Go ahead and edit a few Chirps using the dropdown menu. If you register another user account, you'll see that only the author of a Chirp can edit it.
 
-![Changed Chirps](/assets/images/bootcamp/editing-chirps-changed.png)
+![Changed Chirps](/assets/images/bootcamp/editing-chirps-changed.png?v=3)

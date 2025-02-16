@@ -16,10 +16,10 @@ Let's setup [Reverb](https://laravel.com/docs/11.x/reverb) to handle our WebSock
 First, run the `install:broadcasting` Artisan command:
 
 ```bash
-php artisan install:broadcasting
+php artisan install:broadcasting --without-node
 ```
 
-When it asks if you want to install the Node dependencies, say "No". After that, we'll install them manually with importamps:
+When it asks if you wan to install Reverb, answer "Yes". After that, we'll install them manually with importamps:
 
 ```bash
 php artisan importmap:pin laravel-echo pusher-js current.js
@@ -76,9 +76,9 @@ Next, let's create a new layout partial at `resources/views/layouts/partials/rev
 
 ```blade
 <meta name="current-reverb-app-key" content="{{ config('broadcasting.connections.reverb.key') }}" />
-<meta name="current-reverb-host" content="{{ config('reverb.servers.reverb.frontend.host') }}" />
-<meta name="current-reverb-port" content="{{ config('reverb.servers.reverb.frontend.port') }}" />
-<meta name="current-reverb-scheme" content="{{ config('reverb.servers.reverb.frontend.scheme') }}" />
+<meta name="current-reverb-host" content="{{ config('broadcasting.connections.reverb.options.host') }}" />
+<meta name="current-reverb-port" content="{{ config('broadcasting.connections.reverb.options.port') }}" />
+<meta name="current-reverb-scheme" content="{{ config('broadcasting.connections.reverb.options.scheme') }}" />
 ```
 
 </x-fenced-code>
@@ -143,118 +143,29 @@ Do the same for the guest layout:
 
 </x-fenced-code>
 
-Then, we need to tweak our `.env` file to look something like this:
+Now, make sure your `.env` file has the following configs:
 
-```php
-# ...
-
+```bash
 BROADCAST_CONNECTION=reverb
-
 REVERB_APP_ID=[REDACTED]
 REVERB_APP_KEY=[REDACTED]
 REVERB_APP_SECRET=[REDACTED]
-REVERB_HOST="reverb.test"
-REVERB_PORT=8080
+REVERB_HOST="127.0.0.1"
+REVERB_PORT="8080"
 REVERB_SCHEME=http
-
-REVERB_FRONTEND_HOST="localhost"
-REVERB_FRONTEND_PORT="${REVERB_PORT}"
-REVERB_FRONTEND_SCHEME="${REVERB_SCHEME}"
 ```
 
-With that, our Reverb config needs to be updated to use the new frontend configs:
-
-<x-fenced-code file="config/reverb.php">
-
-```php
-<?php
-
-return [
-    // ...
-
-    'servers' => [
-
-        'reverb' => [
-            'host' => env('REVERB_SERVER_HOST', '0.0.0.0'),
-            'port' => env('REVERB_SERVER_PORT', 8080),
-            'hostname' => env('REVERB_HOST'),
-            'options' => [
-                'tls' => [],
-            ],
-            'scaling' => [
-                'enabled' => env('REVERB_SCALING_ENABLED', false),
-                'channel' => env('REVERB_SCALING_CHANNEL', 'reverb'),
-            ],
-{+            'frontend' => [
-                'host' => env('REVERB_FRONTEND_HOST'),
-                'port' => env('REVERB_FRONTEND_PORT'),
-                'scheme' => env('REVERB_FRONTEND_SCHEME'),
-            ],+}
-            'pulse_ingest_interval' => env('REVERB_PULSE_INGEST_INTERVAL', 15),
-        ],
-    ],
-
-    // ...
-];
-```
-
-</x-fenced-code>
-
-The Broadcasting component has two sides: the backend and the frontend. The backend needs to connect to the Reverb server, and since we're using Sail, we'll spin up a new container for that. For this reason, we cannot use the same host as the frontend, since that's what the browser will use to connect to the server. The backend will connect to a host named `reverb.test:8080` (we'll add it next), and the browser will connect to `localhost:8080`.
-
-If you're following using `artisan serve`, both can be `localhost` or `127.0.0.1`.
-
-Next, update the `docker-compose.yml` to add the new `reverb.test` service:
-
-<x-fenced-code file="docker-compose.yml">
-
-```yaml
-services:
-    # ...
-
-{+    reverb.test:
-        build:
-            context: ./vendor/laravel/sail/runtimes/8.3
-            dockerfile: Dockerfile
-            args:
-                WWWGROUP: '${WWWGROUP}'
-        image: sail-8.3/app
-        command: ["php", "artisan", "reverb:start"]
-        extra_hosts:
-            - 'host.docker.internal:host-gateway'
-        ports:
-            - '${REVERB_PORT:-8080}:8080'
-        environment:
-            WWWUSER: '${WWWUSER}'
-            LARAVEL_SAIL: 1
-            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
-            XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
-            IGNITION_LOCAL_SITES_PATH: '${PWD}'
-        volumes:
-            - '.:/var/www/html'
-        networks:
-            - sail
-        depends_on:
-            - laravel.test+}
-
-networks:
-    sail:
-        driver: bridge
-```
-
-</x-fenced-code>
-
-Now, we can boot the Reverb service by running:
+That's all we need to configure Reverb. We may start the Reverb server process by running the Artisan command in a new terminal window:
 
 ```bash
-./vendor/bin/sail up -d
+php artisan reverb:start
 ```
 
 That's it!
 
 ## Broadcasting Turbo Streams
 
-Let's start by sending new Chirps to all users currently visiting the chirps page. We're going to start by creating a private broadcasting channel called `chirps` in our `routes/channels.php` file. Any authenticated user may start receiving new Chirps broadcasts when they visit the `chirps.index` page, so we're simply returning `true` in the authorization check:
+We'll start by broadcasting new Chirps to all users visiting the `chirps.index` page. To start, we'll register the private broadcasting channel named "_chirps_" in our `routes/channels.php` file. This way, only authenticated users will be able to receive broadcasts:
 
 <x-fenced-code file="routes/channels.php">
 
@@ -268,14 +179,14 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
 
-{+Broadcast::channel('chirps', function () {
-    return true;
+{+Broadcast::channel('chirps', function ($user) {
+    return $user?->exists;
 });+}
 ```
 
 </x-fenced-code>
 
-Now, let's update the `chirps/index.blade.php` to add the `x-turbo::stream-from` Blade component that ships with Turbo Laravel:
+To start listening for Turbo Broadcasts all we need to do is use the `<x-turbo::stream-from>` Blade component in the page where we want to receive them from. In our case, that will be the `chirps/index.blade.php` view:
 
 <x-fenced-code file="resources/views/chirps/index.blade.php">
 
@@ -378,7 +289,7 @@ class ChirpController extends Controller
 
 </x-fenced-code>
 
-To test this, try visiting the `/chirps` page from two different tabs and creating a Chirp in one of them. The other should automatically update! We're also broadcasting on-the-fly in the same request/response life-cycle, which could slow down our response time a bit, depending on your load and your queue driver response time. We can delay the broadcasting (which includes view rendering) to a queued job by chaining the `->later()` method, for example.
+To test this, try visiting the `/chirps` page from two different browser windows and creating a Chirp in one of them. The other window should automatically update! We're also broadcasting on-the-fly in the same request/response life-cycle, which could slow down our response time a bit, depending on your load and your queue driver response time. We can delay the broadcasting (which includes view rendering) to a queued job by chaining the `->later()` method, for example.
 
 Now, let's make sure all visiting users receive Chirp updates whenever it changes. To achieve that, change the `update` action in the `ChirpController`:
 
@@ -646,6 +557,12 @@ Before testing it out, we'll need to start a queue worker. That's because Larave
 sail artisan queue:work --tries=1
 ```
 
+Also, make sure you have the `APP_URL` correctly set to your local testing URL in your `.env` file, since URLs will be generated in background:
+
+```bash
+APP_URL=http://localhost:8000
+```
+
 Now we can test it and it should be working!
 
 One more cool thing about this approach: users will receive the broadcasts no matter where the Chirp models were created from! We can test this out by creating a Chirp entry from Tinker, for example. To try that, start a new Tinker session:
@@ -667,7 +584,7 @@ App\Models\User::first()->chirps()->create(['message' => 'Hello from Tinker!'])
 # }
 ```
 
-![Broadcasting from Tinker](/assets/images/bootcamp/broadcasting-tinker.png)
+![Broadcasting from Tinker](/assets/images/bootcamp/broadcasting-tinker.png?v=3)
 
 ### Extra Credit: Fixing The Missing Dropdowns
 
@@ -813,7 +730,7 @@ Next, we need to tweak our `dropdown.blade.php` Blade component to accept and me
 
 Now, if you try creating another user and test this out, you'll see that the dropdown only shows up for the creator of the Chirp!
 
-![Dropdown only shows up for creator](/assets/images/bootcamp/broadcasting-dropdown-fix.png)
+![Dropdown only shows up for creator](/assets/images/bootcamp/broadcasting-dropdown-fix.png?v=3)
 
 This change also makes our entire `_chirp` partial cacheable! We could cache it and only render that when changes are made to the Chirp model using the Chirp's `updated_at` timestamps, for example.
 
