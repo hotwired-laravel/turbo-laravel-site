@@ -13,8 +13,8 @@
         <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=62e57fdfe8d488536a9d3781fc8e074f">
-        <script defer src="/assets/build/js/main.js?id=c803e2f5c4ee879500977d6eb36d43a5"></script>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=4d73d68534fb60a6d8714799848a8219">
+        <script defer src="/assets/build/js/main.js?id=b0f29cd4e71d41b4ee570d0f42344180"></script>
     </head>
     <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
         <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
@@ -232,7 +232,7 @@
 <li>The <code>verified</code> middleware will be used if you decide to enable <a href="https://laravel.com/docs/verification">email verification</a>.</li>
 </ul>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -309,7 +309,7 @@
 
 <p>Let's test our route and controller by returning a test message from the <code>index</code> method of our new <code>ChirpController</code> class:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -349,7 +349,7 @@
 
 <p>Let's update our <code>index</code> action in the <code>ChirpController</code> to render the view that will display the listing of Chirps and a link to create a Chirp. We'll also update the <code>create</code> action to render the view that will display the form to create Chirps:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -395,7 +395,7 @@
 
 <p>We can then create our <code>chirps.index</code> view with a link to our form for creating new Chirps:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -405,12 +405,16 @@
             <span class="whitespace-nowrap">resources/views/chirps/index.blade.php</span>
         </div>
 
-                <button title="Copy to clipboard" data-action="clipboard#copy" type="button">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <button class="flex items-center space-x-1" title="Copy to clipboard" data-action="clipboard#copy" type="button">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 group-data-[copied]:hidden">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
             </svg>
 
-            <span class="sr-only">Copy</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 hidden group-data-[copied]:block">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+
+            <span>Copy</span>
         </button>
             </div>
 
@@ -441,7 +445,7 @@
 
 <p>This view is including a partial called <code>new-chirp-trigger</code>, so create the partial with the following content:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -451,12 +455,16 @@
             <span class="whitespace-nowrap">resources/views/chirps/partials/new-chirp-trigger.blade.php</span>
         </div>
 
-                <button title="Copy to clipboard" data-action="clipboard#copy" type="button">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <button class="flex items-center space-x-1" title="Copy to clipboard" data-action="clipboard#copy" type="button">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 group-data-[copied]:hidden">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
             </svg>
 
-            <span class="sr-only">Copy</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 hidden group-data-[copied]:block">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+
+            <span>Copy</span>
         </button>
             </div>
 
@@ -476,7 +484,7 @@
 
 <p>Then, let's create our <code>chirps.create</code> page view with the Chirps form:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -486,12 +494,16 @@
             <span class="whitespace-nowrap">resources/views/chirps/create.blade.php</span>
         </div>
 
-                <button title="Copy to clipboard" data-action="clipboard#copy" type="button">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <button class="flex items-center space-x-1" title="Copy to clipboard" data-action="clipboard#copy" type="button">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 group-data-[copied]:hidden">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
             </svg>
 
-            <span class="sr-only">Copy</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 hidden group-data-[copied]:block">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+
+            <span>Copy</span>
         </button>
             </div>
 
@@ -522,7 +534,7 @@
 
 <p>Again, this view is including a <code>form</code> partial. Create that file with the following content:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -532,12 +544,16 @@
             <span class="whitespace-nowrap">resources/views/chirps/partials/form.blade.php</span>
         </div>
 
-                <button title="Copy to clipboard" data-action="clipboard#copy" type="button">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <button class="flex items-center space-x-1" title="Copy to clipboard" data-action="clipboard#copy" type="button">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 group-data-[copied]:hidden">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
             </svg>
 
-            <span class="sr-only">Copy</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 hidden group-data-[copied]:block">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+
+            <span>Copy</span>
         </button>
             </div>
 
@@ -566,7 +582,7 @@
 
 <p>This partial is making use a Blade component that doesn't exist yet called <code>x-textarea-input</code>, let's create it:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -576,12 +592,16 @@
             <span class="whitespace-nowrap">resources/views/components/textarea-input.blade.php</span>
         </div>
 
-                <button title="Copy to clipboard" data-action="clipboard#copy" type="button">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <button class="flex items-center space-x-1" title="Copy to clipboard" data-action="clipboard#copy" type="button">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 group-data-[copied]:hidden">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
             </svg>
 
-            <span class="sr-only">Copy</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 hidden group-data-[copied]:block">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+
+            <span>Copy</span>
         </button>
             </div>
 
@@ -610,7 +630,7 @@
 
 <p>Update the <code>navigation</code> partial provided by Turbo Breeze to add a menu item for desktop screens:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -642,7 +662,7 @@
 
 <p>Don't forget the responsive menu:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -682,7 +702,7 @@
 
 <p>Our form has been configured to post messages to the <code>chirps.store</code> route that we created earlier. Let's update the <code>store</code> action on our <code>ChirpController</code> class to validate the data and create a new Chirp:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -734,7 +754,7 @@
 
 <p>You may have noticed in the previous step that we called a <code>chirps</code> method on the <code>$request-&gt;user()</code> object. We need to create this method on our <code>User</code> model to define a <a href="https://laravel.com/docs/eloquent-relationships#one-to-many">"has many"</a> relationship:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -781,7 +801,7 @@
 
 <p>Let's add the <code>$fillable</code> property to our <code>Chirp</code> model to enable mass-assignment for the <code>message</code> attribute:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -819,7 +839,7 @@
 
 <p>The only thing missing is extra columns in our database to store the relationship between a <code>Chirp</code> and its <code>User</code> and the message itself. Remember the database migration we created earlier? It's time to open that file to add some extra columns:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -911,7 +931,7 @@
 
 <p>Let's update our <code>store</code> action in the <code>ChirpController</code> to also return a flash message named <code>notice</code> in the redirect:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -957,7 +977,7 @@
 
 <p>Then, let's change our <code>layouts.app</code> file to include a <code>layouts.partials.notifications</code> partial:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -987,7 +1007,7 @@
 
 <p>Next, let's create the <code>layouts.partials.notifications</code> wrapper partial:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -997,12 +1017,16 @@
             <span class="whitespace-nowrap">resources/views/layouts/partials/notifications.blade.php</span>
         </div>
 
-                <button title="Copy to clipboard" data-action="clipboard#copy" type="button">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <button class="flex items-center space-x-1" title="Copy to clipboard" data-action="clipboard#copy" type="button">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 group-data-[copied]:hidden">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
             </svg>
 
-            <span class="sr-only">Copy</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 hidden group-data-[copied]:block">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+
+            <span>Copy</span>
         </button>
             </div>
 
@@ -1021,7 +1045,7 @@
 
 <p>So, each notification will render with the <code>layouts.partials.notice</code> (singular) partial and will be added to the wrapper partial. Let's add the individual notification partial:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -1031,12 +1055,16 @@
             <span class="whitespace-nowrap">resources/views/layouts/partials/notice.blade.php</span>
         </div>
 
-                <button title="Copy to clipboard" data-action="clipboard#copy" type="button">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <button class="flex items-center space-x-1" title="Copy to clipboard" data-action="clipboard#copy" type="button">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 group-data-[copied]:hidden">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
             </svg>
 
-            <span class="sr-only">Copy</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 hidden group-data-[copied]:block">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+
+            <span>Copy</span>
         </button>
             </div>
 
@@ -1066,7 +1094,7 @@
 
 <p>If you create another Chirp now, you should see a nice notification message at the top:</p>
 
-<p><img src="/assets//images/bootcamp/creating-chirps-flash-messages.png" alt="Flash Messages" /></p>
+<p><img src="/assets/images/bootcamp/creating-chirps-flash-messages.png" alt="Flash Messages" /></p>
         </div>
 
                     <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">

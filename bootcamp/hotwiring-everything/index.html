@@ -13,8 +13,8 @@
         <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=62e57fdfe8d488536a9d3781fc8e074f">
-        <script defer src="/assets/build/js/main.js?id=c803e2f5c4ee879500977d6eb36d43a5"></script>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=4d73d68534fb60a6d8714799848a8219">
+        <script defer src="/assets/build/js/main.js?id=b0f29cd4e71d41b4ee570d0f42344180"></script>
     </head>
     <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
         <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
@@ -190,7 +190,7 @@
 
 <p>Our application works, but we could improve it. Instead of sending users to a dedicated chirp creation form page, let's display the form inline right on the <code>chirps.index</code> page. To do that, we're going to use <a href="https://turbo.hotwired.dev/reference/frames">lazy-loading Turbo Frames</a>:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -236,7 +236,7 @@
 
 <p>For that to work, we also need to wrap our create form with a matching Turbo Frame (by "matching" I mean same DOM ID):</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -293,7 +293,7 @@
 
 <p>Before we change the <code>ChirpController</code>, let's give our list of chirps wrapper element an ID in the <code>chirps.index</code> page:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -339,7 +339,7 @@
 
 <p>Okay, now we can change the <code>store</code> action in our <code>ChirpController</code> to return 3 Turbo Streams if the client supports it, one to update the form with a clean one, another to prepend the new chirp to the list, and another to append the flash message:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -395,7 +395,7 @@
 
 <p>If you try to create one now, you'll notice Turbo Laravel expects to find the Chirp partial at <code>resources/views/chirps/_chirp.blade.php</code>, but we are using a folder-based partial convention. This pattern is common in Laravel, so Turbo Laravel understands that as well. Let's update the package to use that. Update your <code>AppServiceProvider</code> like so:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -441,7 +441,7 @@
 
 <p>To do that, we need to tweak our <code>chirps.partials.chirp</code> partial and wrap it with a Turbo Frame. Instead of showing you a long Git diff, replace the existing partial with this one:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -474,7 +474,7 @@
 
 <p>Now, let's also update the <code>chirps.edit</code> page to add a wrapping Turbo Frame around the form there:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -520,7 +520,7 @@
 
 <p>Let's change the <code>update</code> action in the <code>ChirpController</code> to return a Turbo Stream with the updated Chirp partial if the client supports it:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -584,7 +584,7 @@
 
 <p>Let's change the <code>destroy</code> action in our <code>ChirpController</code> to respond with a remove Turbo Stream whenever a Chirp is deleted and the client supports it:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -638,7 +638,7 @@
 
 <p>So far we've been using the default action methods provided by the Turbo Laravel package. Let's add a <code>notice</code> macro to the <code>PendingTurboStreamResponse</code> class, which the <code>turbo_stream()</code> function returns (except when we give it an array, which then it returns an instance of the <code>MultiplePendingTurboStreamResponse</code> class). This <code>notice</code> macro will work as a shorthand for the creating Turbo Streams to append notifications on the page:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -681,7 +681,7 @@
 
 <p>Now, our controllers can be cleaned up a bit:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">

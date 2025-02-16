@@ -13,8 +13,8 @@
         <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=62e57fdfe8d488536a9d3781fc8e074f">
-        <script defer src="/assets/build/js/main.js?id=c803e2f5c4ee879500977d6eb36d43a5"></script>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=4d73d68534fb60a6d8714799848a8219">
+        <script defer src="/assets/build/js/main.js?id=b0f29cd4e71d41b4ee570d0f42344180"></script>
     </head>
     <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
         <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
@@ -192,7 +192,7 @@
 
 <p>Let's update our <code>routes/web.php</code> file to add the new <code>destroy</code> action in our resource definition:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -276,7 +276,7 @@
 
 <p>Now we can update the <code>destroy</code> action on our <code>ChirpController</code> class to perform the deletion and return to the Chirp index:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -320,7 +320,7 @@
 
 <p>As with editing, we only want our Chirp authors to be able to delete their Chirps, so let's update the <code>delete</code> method our <code>ChirpPolicy</code> class:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -362,7 +362,7 @@
 
 <p>Finally, we can add a delete button to the dropdown menu we created earlier in our <code>chirps._chirp</code> Blade partial:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e]" data-controller="clipboard">
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-base text-gray-400 border-b border-gray-700">
         <div class="min-w-0 overflow-auto font-mono flex items-center space-x-2">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">

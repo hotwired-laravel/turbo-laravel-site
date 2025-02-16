@@ -13,8 +13,8 @@
         <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=62e57fdfe8d488536a9d3781fc8e074f">
-        <script defer src="/assets/build/js/main.js?id=c803e2f5c4ee879500977d6eb36d43a5"></script>
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=4d73d68534fb60a6d8714799848a8219">
+        <script defer src="/assets/build/js/main.js?id=b0f29cd4e71d41b4ee570d0f42344180"></script>
     </head>
     <body class="text-zinc-900 text-xl font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
         <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
@@ -184,15 +184,11 @@
         <div class="prose prose-xl overflow-hidden prose-zinc [&_code:not(pre_code)]:text-wrap [&_code:not(pre_code)]:break-words prose-headings:font-heading prose-headings:font-extrabold max-w-none mx-auto w-full">
             <h1><em>01.</em> Installation</h1>
 
-<p>Our first step is to create the web app and setup our local environment.</p>
+<p>Our first step is to create the web app and setup our local environment. This bootcamp <a href="https://php.new/">assumes you have PHP installed on your system</a>.</p>
 
 <h2>Installing Laravel</h2>
 
-<p>There are two paths in here: one uses a local installation setup, and another one that uses <a href="https://laravel.com/docs/sail">Laravel Sail</a>. Choose how you're going to run the app locally as you feel more comfortable.</p>
-
-<h3>Quick Installation</h3>
-
-<p>If you have already installed PHP and Composer on your local machine, you may create a new Laravel project via <a href="https://getcomposer.org/">Composer</a>:</p>
+<p>You may create a new Laravel project using <a href="https://getcomposer.org/">Composer</a>:</p>
 
 <pre><code class="language-bash">composer create-project laravel/laravel turbo-chirper
 </code></pre>
@@ -208,63 +204,7 @@ php artisan serve
 
 <p><img src="/assets/images/bootcamp/laravel-welcome.png" alt="Laravel Welcome page" /></p>
 
-<p>For simplicity, you may use SQLite to store your application's data.</p>
-
-<h3>Installing via Docker</h3>
-
-<p>If you do not have PHP installed locally, you may develop your application using <a href="https://laravel.com/docs/sail">Laravel Sail</a>, a light-weight command-line interface for interacting with Laravel's default Docker development environment, which is compatible with all operating systems. Before we get started, make sure to install <a href="https://docs.docker.com/get-docker/">Docker</a> for your operating system. For alternative installation methods, check out Laravel's full <a href="https://laravel.com/docs/installation">installation guide</a>.</p>
-
-<p>The easiest way to install Laravel is using Laravel's <code>laravel.build</code> service, which will download and create a fresh Laravel application for you. Launch a terminal and run the following command:</p>
-
-<pre><code class="language-bash">curl -s &quot;https://laravel.build/turbo-chirper?with=none&quot; | bash
-</code></pre>
-
-<p>Sail installation may take several minutes while Sail's application containers are built on your local machine.</p>
-
-<p>Notice that we're passing the <code>?with=none</code> flag to the command. By default, the installer will pre-configure Laravel Sail with a number of useful services for your application. We don't want that. We only need the app container and we'll use SQLite, which should be the default.</p>
-
-<p>After the project has been created, you can navigate to the application directory and start Laravel Sail:</p>
-
-<pre><code class="language-bash">cd turbo-chirper
-
-./vendor/bin/sail up -d
-</code></pre>
-
-<p><div class="p-6 flex space-x-4 border border-opacity-75 bg-opacity-75 rounded shadow my-8 sm:p-8 border-yellow-50 bg-yellow-50 text-yellow-900">
-    <div>
-        <svg class="!size-8 mt-3 !shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
-        </svg>
-    </div>
-
-    <div class="[&_h4]:!my-0 [&_h4]:text-yellow-900">
-        <div class="!mt-0 !font-bold !text-2xl flex items-center space-x-1"></p>
-
-<h4>Create an alias</h4>
-
-<p></div>
-        <div class="!my-0 [&>p]:my-0"></p>
-
-<p> </p>
-
-<p>You may <a href="https://laravel.com/docs/sail#configuring-a-shell-alias">create a shell alias</a> that allows you execute Sail's commands more easily.</p>
-
-<p></div>
-    </div>
-</div>
-</p>
-
-<p>When developing applications using Sail, you may execute Artisan, NPM, and Composer commands via the Sail CLI instead of invoking them directly:</p>
-
-<pre><code class="language-bash">./vendor/bin/sail php --version
-./vendor/bin/sail artisan --version
-./vendor/bin/sail composer --version
-./vendor/bin/sail npm --version
-</code></pre>
-
-<p>Once the application's Docker containers have been started, you can access the application in your web browser at: <a href="http://localhost">http://localhost</a>.</p>
-
-<p><img src="/assets/images/bootcamp/laravel-welcome-sail.png" alt="Welcome Page over Sail" /></p>
+<p>By default, the Laravel app will be created using SQLite.</p>
 
 <h2>Installing Turbo Breeze</h2>
 
@@ -278,30 +218,6 @@ php artisan serve
 
 php artisan turbo-breeze:install turbo --dark
 </code></pre>
-
-<p><div class="p-6 flex space-x-4 border border-opacity-75 bg-opacity-75 rounded shadow my-8 sm:p-8 border-yellow-50 bg-yellow-50 text-yellow-900">
-    <div>
-        <svg class="!size-8 mt-3 !shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
-        </svg>
-    </div>
-
-    <div class="[&_h4]:!my-0 [&_h4]:text-yellow-900">
-        <div class="!mt-0 !font-bold !text-2xl flex items-center space-x-1"></p>
-
-<h4>Prefix all Sail commands</h4>
-
-<p></div>
-        <div class="!my-0 [&>p]:my-0"></p>
-
-<p> </p>
-
-<p>If you're using Sail, remember to prefix this command with <code>./vendor/bin/sail</code>, since the symlink needs to be created inside the container.</p>
-
-<p></div>
-    </div>
-</div>
-</p>
 
 <p>Turbo Breeze will install and configure your front-end dependencies for you. It should have built the initial version of our assets for us.</p>
 
