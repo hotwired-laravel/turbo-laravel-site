@@ -721,7 +721,7 @@ Next, we need to tweak our `dropdown.blade.php` Blade component to accept and me
 <!-- ... -->
 
 {-<div class="relative" data-controller="dropdown" data-action="turbo:before-cache@window->dropdown#closeNow click@window->dropdown#close close->dropdown#close">-}
-{+<div {{ $attributes->merge(['class' => 'relative', 'data-controller' => "dropdown {$dataController}", 'data-action' => "turbo:before-cache@window->dropdown#closeNow click@window->dropdown#closeWhenClickedOutside close->dropdown#close:stop {$dataAction}"]) }}>+}
+{+<div {{ $attributes->merge(['class' => 'relative', 'data-controller' => 'dropdown ' . $dataController, 'data-action' => 'turbo:before-cache@window->dropdown#closeNow click@window->dropdown#closeWhenClickedOutside close->dropdown#close:stop ' . $dataAction]) }}>+}
     <!-- ... -->
 </div>
 ```
