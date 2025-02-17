@@ -21,7 +21,7 @@
         <meta property="og:type" content="website" />
         <meta property="og:url" content="{{ $page->url }}" />
         <!-- The image dimensions are necessary otherwise it will not display on LinkedIn -->
-        <meta property="og:image" content="/assets/images/turbo-laravel-meta.png" />
+        <meta property="og:image" content="{{ rtrim($page->baseUrl, '/') . '/assets/images/turbo-laravel-meta.png' }}" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:description" content="{{ $page->description ?? 'Build web and hybrid native apps in Laravel with Hotwire.' }}" />
