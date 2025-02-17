@@ -1,7 +1,7 @@
 ---
 extends: _layouts.bootcamp
 title: Editing in a Modal
-description: Editing in a Modal
+description: Editing in a Native Modal
 order: 13
 ---
 

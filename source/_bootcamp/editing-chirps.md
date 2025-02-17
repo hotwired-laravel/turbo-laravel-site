@@ -1,7 +1,7 @@
 ---
 extends: _layouts.bootcamp
 title: Editing Chirps
-description: Editing Chirps
+description: Allowing users to edit their Chirps
 order: 5
 ---
 

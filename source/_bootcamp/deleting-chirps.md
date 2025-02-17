@@ -1,7 +1,7 @@
 ---
 extends: _layouts.bootcamp
 title: Deleting Chirps
-description: Deleting Chirps
+description: Implemeting the deletion of Chirps
 order: 6
 ---
 

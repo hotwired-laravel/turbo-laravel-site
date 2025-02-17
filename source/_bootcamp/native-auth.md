@@ -1,7 +1,7 @@
 ---
 extends: _layouts.bootcamp
 title: Native Authentication
-description: Native Authentication
+description: Native Authentication with Laravel Sanctum
 order: 10
 ---
 

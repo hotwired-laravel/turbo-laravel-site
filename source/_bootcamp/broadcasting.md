@@ -1,7 +1,7 @@
 ---
 extends: _layouts.bootcamp
 title: Broadcasting
-description: Broadcasting
+description: Broadcasting with Turbo Streams!
 order: 8
 ---
 

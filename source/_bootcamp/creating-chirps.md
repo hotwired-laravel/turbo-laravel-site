@@ -1,7 +1,7 @@
 ---
 extends: _layouts.bootcamp
 title: Creating Chirps
-description: Creating Chirps
+description: Let's allow users to post short messages called Chirps.
 order: 3
 ---
 

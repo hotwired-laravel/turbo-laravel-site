@@ -1,7 +1,7 @@
 ---
 extends: _layouts.bootcamp
 title: Hotwiring Everything
-description: Hotwiring Everything
+description: Make it alive with Turbo Frames and Turbo Streams!
 order: 7
 ---
 

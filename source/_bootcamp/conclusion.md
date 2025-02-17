@@ -1,7 +1,7 @@
 ---
 extends: _layouts.bootcamp
 title: Conclusion
-description: Conclusion
+description: What we have learned in the Bootcamp, next steps, etc.
 order: 16
 ---
 

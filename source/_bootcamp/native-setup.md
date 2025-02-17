@@ -1,7 +1,7 @@
 ---
 extends: _layouts.bootcamp
 title: Hotwire Native Installation
-description: Hotwire Native Installation
+description: Let's setup our Hotwire Native app
 order: 9
 ---
 
