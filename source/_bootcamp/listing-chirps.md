@@ -1,7 +1,7 @@
 ---
 extends: _layouts.bootcamp
-title: Listing Chirps
-description: Listing Chirps
+title: Listing Chirps | Turbo Laravel Bootcamp
+description: Let's add the ability to list Chirps on the app
 order: 4
 ---
 

@@ -1,7 +1,7 @@
 ---
 extends: _layouts.bootcamp
-title: Introduction
-description: Introduction
+title: Introduction | Turbo Laravel Bootcamp
+description: Learn how to make Hotwired apps using Laravel.
 order: 1
 ---
 

@@ -15,6 +15,24 @@
         <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
         <script defer src="{{ mix('js/main.js', 'assets/build') }}"></script>
+
+        <!-- Open Graph data -->
+        <meta property="og:title" content="{{ $page?->title ?? 'Turbo Laravel' }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{ $page->url }}" />
+        <!-- The image dimensions are necessary otherwise it will not display on LinkedIn -->
+        <meta property="og:image" content="/assets/images/turbo-laravel-meta.png" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:description" content="{{ $page->description ?? '' }}" />
+        <meta property="og:locale" content="en_US">
+        <meta property="og:site_name" content="Turbo Laravel" />
+
+        <!-- Twitter Card meta -->
+        <!-- See documentation linked above for other card types. -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="When Great Minds Don’t Think Alike">
+        <meta name="twitter:description" content="Page description less than 200 characters">
     </head>
     <body class="text-zinc-900 text-lg font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
         @include('_layouts.partials.header')
