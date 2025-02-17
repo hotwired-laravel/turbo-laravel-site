@@ -1,6 +1,6 @@
 ---
 extends: _layouts.bootcamp
-title: Installation | Turbo Laravel Bootcamp
+title: Installation
 description: See how to install Turbo Laravel in your Laravel app.
 order: 2
 ---
