@@ -1,5 +1,7 @@
 @extends('_layouts.main')
 
+@section('title', sprintf('%s | Bootcamp | Turbo Laravel', $page->title))
+
 @section('sub-nav-bootcamp-mobile')
   @include('_layouts.partials.subnav-mobile-menu', ['menu' => $page->navigation['bootcamp']])
 @endsection

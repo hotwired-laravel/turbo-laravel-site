@@ -1,5 +1,7 @@
 @extends('_layouts.main')
 
+@section('title', sprintf('%s | Turbo Laravel', $page->title))
+
 @section('sub-nav-docs-mobile')
   @include('_layouts.partials.subnav-mobile-menu', ['menu' => $page->navigation['v2']])
 @endsection

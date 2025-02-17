@@ -5,19 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="canonical" href="{{ $page->getUrl() }}">
         <meta name="description" content="{{ $page->description }}">
-        <title>{{ $page->title }}</title>
-        <link rel="apple-touch-icon" sizes="180x180" href="/assets/manifest/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/assets/manifest/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/assets/manifest/favicon-16x16.png">
-        <link rel="manifest" href="/assets/site.webmanifest">
-        <link rel="preload" href="/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
-        <link rel="preload" href="/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
+        <title>@yield('title', $page->title)</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ rtrim($page->baseUrl, '/') }}/assets/manifest/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ rtrim($page->baseUrl, '/') }}/assets/manifest/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ rtrim($page->baseUrl, '/') }}/assets/manifest/favicon-16x16.png">
+        <link rel="manifest" href="{{ rtrim($page->baseUrl, '/') }}/assets/site.webmanifest">
+        <link rel="preload" href="{{ rtrim($page->baseUrl, '/') }}/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="{{ rtrim($page->baseUrl, '/') }}/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="{{ rtrim($page->baseUrl, '/') }}/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
         <script defer src="{{ mix('js/main.js', 'assets/build') }}"></script>
 
         <!-- Open Graph data -->
-        <meta property="og:title" content="{{ $page?->title ?? 'Turbo Laravel' }}" />
+        <meta property="og:title" content="@yield('title', $page->title)" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="{{ $page->url }}" />
 
@@ -30,7 +30,7 @@
 
         <!-- Twitter Card meta -->
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="{{ $page->title ?? 'Turbo Laravel' }}">
+        <meta name="twitter:title" content="@yield('title', $page->title)">
         <meta name="twitter:description" content="{{ $page->description ?? 'Build web and hybrid native apps in Laravel with Hotwire.' }}">
     </head>
     <body class="text-zinc-900 text-lg font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
