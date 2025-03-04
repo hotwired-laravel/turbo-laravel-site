@@ -584,7 +584,7 @@ App\Models\User::first()->chirps()->create(['message' => 'Hello from Tinker!'])
 # }
 ```
 
-![Broadcasting from Tinker](/assets/images/bootcamp/broadcasting-tinker.png?v=4)
+![Broadcasting from Tinker](/assets/images/bootcamp/broadcasting-tinker.png?v=5)
 
 ### Extra Credit: Fixing The Missing Dropdowns
 
@@ -730,7 +730,7 @@ Next, we need to tweak our `dropdown.blade.php` Blade component to accept and me
 
 Now, if you try creating another user and test this out, you'll see that the dropdown only shows up for the creator of the Chirp!
 
-![Dropdown only shows up for creator](/assets/images/bootcamp/broadcasting-dropdown-fix.png?v=4)
+![Dropdown only shows up for creator](/assets/images/bootcamp/broadcasting-dropdown-fix.png?v=6)
 
 This change also makes our entire `chirps/partials/chirp.blade.php` partial cacheable! We could cache it and only render that when changes are made to the Chirp model using the Chirp's `updated_at` timestamps, for example.
 

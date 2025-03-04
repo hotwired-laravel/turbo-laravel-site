@@ -157,4 +157,4 @@ Finally, we can add a delete button to the dropdown menu we created earlier in o
 
 If you Chirped anything you weren't happy with, try deleting it!
 
-![Deleting Chirps](/assets/images/bootcamp/deleting-chirps.png?v=3)
+![Deleting Chirps](/assets/images/bootcamp/deleting-chirps.png?v=4)

@@ -127,7 +127,7 @@ Finally, let's create a `chirps.partials.chirp` Blade partial to display Chirp. 
 
 Now take a look in your browser to see the message you Chirped earlier!
 
-![Showing Chirps](/assets/images/bootcamp/showing-chirps.png?v=3)
+![Showing Chirps](/assets/images/bootcamp/showing-chirps.png?v=4)
 
 ## Extra Credit: Relative Dates
 

@@ -218,7 +218,7 @@ class ChirpPolicy
 
 You should be able to use the dropdown, click on the Edit link and view the edit Chirp form:
 
-![Edit Chirp Form](/assets/images/bootcamp/editing-chirps-form.png?v=3)
+![Edit Chirp Form](/assets/images/bootcamp/editing-chirps-form.png?v=4)
 
 ## Updating Chirps
 
@@ -265,4 +265,4 @@ You may have noticed the validation rules are duplicated with the `store` action
 
 Time to test it out! Go ahead and edit a few Chirps using the dropdown menu. If you register another user account, you'll see that only the author of a Chirp can edit it.
 
-![Changed Chirps](/assets/images/bootcamp/editing-chirps-changed.png?v=3)
+![Changed Chirps](/assets/images/bootcamp/editing-chirps-changed.png?v=4)

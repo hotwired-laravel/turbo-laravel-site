@@ -177,7 +177,7 @@ class AppServiceProvider extends ServiceProvider
 
 Now if you try creating a Chirp, you should see the newly created Chirp at the top of the chirps list, the form should have been cleared, and a flash message showed up.
 
-![Hotwiring Chirps Creationg](/assets/images/bootcamp/hotwiring-creating-chirps.png?v=3)
+![Hotwiring Chirps Creationg](/assets/images/bootcamp/hotwiring-creating-chirps.png?v=4)
 
 Let's also implement inline editing for our chirps.
 
@@ -277,7 +277,7 @@ class ChirpController extends Controller
 
 Now, if you try editing a chirp, you should see the same thing as before, but now we're sure that our chirp will just be updated no matter if it's present in the index listing of chirps or not after the form is submitted. Yay!
 
-![Hotwiring Editing Chirps](/assets/images/bootcamp/hotwiring-editing-chirp.png?v=3)
+![Hotwiring Editing Chirps](/assets/images/bootcamp/hotwiring-editing-chirp.png?v=4)
 
 ## Deleting Chirps with Turbo Streams
 
@@ -447,4 +447,4 @@ Although this is using Macros, we're still using the Turbo Stream actions that s
 
 With these changes, our application behaves so much better than before! Try it out yourself!
 
-![Inline Editing Forms](/assets/images/bootcamp/hotwiring-chirps-inline-forms.png?v=3)
+![Inline Editing Forms](/assets/images/bootcamp/hotwiring-chirps-inline-forms.png?v=4)
