@@ -159,25 +159,10 @@ We can then create our `chirps.index` view with a link to our form for creating 
 
     <div class="py-12">
         <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
-            @include('chirps.partials.new-chirp-trigger')
+            <a href="{{ route('chirps.create') }}" class="underline underline-offset-2 dark:text-gray-300">New Chirp</a>
         </div>
     </div>
 </x-app-layout>
-```
-
-</x-fenced-code>
-
-This view is including a partial called `new-chirp-trigger`, so create the partial with the following content:
-
-<x-fenced-code file="resources/views/chirps/partials/new-chirp-trigger.blade.php" copy>
-
-```blade 
-<div class="relative flex items-center pt-2 pb-8 px-3 rounded-lg transition bg-white border border-gray-300 dark:border-gray-700 dark:bg-gray-900 hover:bg-opacity-70">
-    <a class="text-gray-500" href="{{ route('chirps.create') }}">
-        {{ __('Create a Chirp') }}
-        <span class="absolute inset-0"></span>
-    </a>
-</div>
 ```
 
 </x-fenced-code>
@@ -382,8 +367,6 @@ Let's add the `$fillable` property to our `Chirp` model to enable mass-assignmen
 
 class Chirp extends Model
 {
-    use HasFactory;
-
 {+    protected $fillable = [
         'message',
     ];+}
@@ -431,7 +414,7 @@ We haven't migrated the database since we added this migration, so let's do it n
 php artisan migrate
 ```
 
-Each database migration will only be run once. To make additional changes to a table, you will need to create another migration. During development, you may wish to update an undeployed migration and rebuild your database from scratch using the `php artisan migrate:fresh` command.
+Each database migration will only run once. To make additional changes to a table, you will need to create another migration. During development, you may wish to update an undeployed migration and rebuild your database from scratch using the `php artisan migrate:fresh` command.
 
 ### Testing it out
 

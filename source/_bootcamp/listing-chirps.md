@@ -56,8 +56,6 @@ The Chirp's `user` relationship hasn't been defined yet. To fix this, let's add 
 
 class Chirp extends Model
 {
-    use HasFactory;
-
     // ...
 
 {+    public function user()
@@ -87,7 +85,7 @@ Next, update the `chirps.index` view so we can list all Chirps:
 
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            @include('chirps.partials.new-chirp-trigger')
+            <a href="{{ route('chirps.create') }}" class="underline underline-offset-2 dark:text-gray-300">New Chirp</a>
 
 {+            <div class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">
                 @each('chirps.partials.chirp', $chirps, 'chirp')

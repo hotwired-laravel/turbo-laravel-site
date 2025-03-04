@@ -220,12 +220,10 @@ Now, we're ready to start broadcasting! First, let's add the `Broadcasts` trait 
 namespace App\Models;
 
 {+use HotwiredLaravel\TurboLaravel\Models\Broadcasts;+}
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Chirp extends Model
 {
-    use HasFactory;
 {+    use Broadcasts;+}
 
     protected $fillable = [
@@ -278,9 +276,7 @@ class ChirpController extends Controller
             ]);
         }
 
-        return redirect()
-            ->route('chirps.index')
-            ->with('notice', __('Chirp created.'));
+        return redirect(route('chirps.index'))->with('notice', __('Chirp created.'));
     }
 
     // ...
@@ -331,9 +327,7 @@ class ChirpController extends Controller
             ]);
         }
 
-        return redirect()
-            ->route('chirps.index')
-            ->with('notice', __('Chirp updated.'));
+        return redirect(route('chirps.index'))->with('notice', __('Chirp updated.'));
     }
 
     // ...
@@ -379,9 +373,7 @@ class ChirpController extends Controller
             ]);
         }
 
-        return redirect()
-            ->route('chirps.index')
-            ->with('notice', __('Chirp deleted.'));
+        return redirect(route('chirps.index'))->with('notice', __('Chirp deleted.'));
     }
 }
 ```
@@ -409,12 +401,10 @@ namespace App\Models;
 
 use HotwiredLaravel\TurboLaravel\Models\Broadcasts;
 {+use Illuminate\Broadcasting\PrivateChannel;+}
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Chirp extends Model
 {
-    use HasFactory;
     use Broadcasts;
 
 {+    protected $broadcasts = [
@@ -480,9 +470,7 @@ class ChirpController extends Controller
             ]);
         }
 
-        return redirect()
-            ->route('chirps.index')
-            ->with('notice', __('Chirp created.'));
+        return redirect(route('chirps.index'))->with('notice', __('Chirp created.'));
     }
 
     // ...
@@ -509,9 +497,7 @@ class ChirpController extends Controller
             ]);
         }
 
-        return redirect()
-            ->route('chirps.index')
-            ->with('notice', __('Chirp updated.'));
+        return redirect(route('chirps.index'))->with('notice', __('Chirp updated.'));
     }
 
     public function destroy(Request $request, Chirp $chirp)
@@ -531,9 +517,7 @@ class ChirpController extends Controller
             ]);
         }
 
-        return redirect()
-            ->route('chirps.index')
-            ->with('notice', __('Chirp deleted.'));
+        return redirect(route('chirps.index'))->with('notice', __('Chirp deleted.'));
     }
 }
 ```
@@ -720,8 +704,8 @@ Next, we need to tweak our `dropdown.blade.php` Blade component to accept and me
 
 <!-- ... -->
 
-{-<div class="relative" data-controller="dropdown" data-action="turbo:before-cache@window->dropdown#closeNow click@window->dropdown#close close->dropdown#close">-}
-{+<div {{ $attributes->merge(['class' => 'relative']) }} data-controller="dropdown {{ $dataController }}" data-action="turbo:before-cache@window->dropdown#closeNow click@window->dropdown#close close->dropdown#close {{ $dataAction }}">+}
+{-<div class="relative" data-controller="dropdown" data-action="turbo:before-cache@window->dropdown#closeNow click@window->dropdown#close:stop close->dropdown#close">-}
+{+<div {{ $attributes->merge(['class' => 'relative']) }} data-controller="dropdown {{ $dataController }}" data-action="turbo:before-cache@window->dropdown#closeNow click@window->dropdown#close:stop close->dropdown#close {{ $dataAction }}">+}
     <!-- ... -->
 </div>
 ```

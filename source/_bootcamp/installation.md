@@ -7,7 +7,7 @@ order: 2
 
 # *01.* Installation
 
-Our first step is to create the web app and setup our local environment. This bootcamp [assumes you have PHP installed on your system](https://php.new/).
+Our first step is to create the web app and setup our local environment. This Bootcamp [assumes you have PHP installed on your system](https://php.new/).
 
 ## Installing Laravel
 

@@ -25,9 +25,9 @@ Our application works, but we could improve it. Instead of sending users to a de
 
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
-{-            @include('chirps.partials.new-chirp-trigger')-}
+{-            <a hiref="{{ route('chirps.create') }}" class="underline underline-offset-2 dark:text-gray-300">New Chirp</a>-}
 {+            <x-turbo::frame id="create_chirp" src="{{ route('chirps.create') }}">
-                @include('chirps.partials.new-chirp-trigger')
+                <a href="{{ route('chirps.create') }}" class="underline underline-offset-2 dark:text-gray-300">New Chirp</a>
             </x-turbo::frame>+}
 
             <div class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">
@@ -93,7 +93,7 @@ Before we change the `ChirpController`, let's give our list of chirps wrapper el
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <x-turbo::frame id="create_chirp" src="{{ route('chirps.create') }}">
-                @include('chirps.partials.new-chirp-trigger')
+                <a href="{{ route('chirps.create') }}" class="underline underline-offset-2 dark:text-gray-300">New Chirp</a>
             </x-turbo::frame>
 
 {-            <div class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">-}
@@ -139,9 +139,7 @@ class ChirpController extends Controller
             ]);
         }+}
 
-        return redirect()
-            ->route('chirps.index')
-            ->with('status', __('Chirp created.'));
+        return redirect(route('chirps.index'))->with('notice', __('Chirp created.'));
     }
 
     // ...
@@ -264,9 +262,7 @@ class ChirpController extends Controller
             ]);
         }+}
 
-        return redirect()
-            ->route('chirps.index')
-            ->with('notice', __('Chirp updated.'));
+        return redirect(route('chirps.index'))->with('notice', __('Chirp updated.'));
     }
 
     // ...
@@ -311,9 +307,7 @@ class ChirpController extends Controller
             ]);
         }+}
 
-        return redirect()
-            ->route('chirps.index')
-            ->with('notice', __('Chirp deleted.'));
+        return redirect(route('chirps.index'))->with('notice', __('Chirp deleted.'));
     }
 }
 ```
@@ -386,9 +380,7 @@ class ChirpController extends Controller
             ]);
         }
 
-        return redirect()
-            ->route('chirps.index')
-            ->with('notice', __('Chirp created.'));
+        return redirect(route('chirps.index'))->with('notice', __('Chirp created.'));
     }
 
     public function update(Request $request, Chirp $chirp)
@@ -411,9 +403,7 @@ class ChirpController extends Controller
             ]);
         }
 
-        return redirect()
-            ->route('chirps.index')
-            ->with('notice', __('Chirp updated.'));
+        return redirect(route('chirps.index'))->with('notice', __('Chirp updated.'));
     }
 
     public function destroy(Chirp $chirp)
@@ -432,9 +422,7 @@ class ChirpController extends Controller
             ]);
         }
 
-        return redirect()
-            ->route('chirps.index')
-            ->with('notice', __('Chirp deleted.'));
+        return redirect(route('chirps.index'))->with('notice', __('Chirp deleted.'));
     }
 }
 ```
