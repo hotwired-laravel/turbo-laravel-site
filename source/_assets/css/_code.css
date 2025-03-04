@@ -7,6 +7,7 @@ pre:has(code), pre > code {
     color: #cdd6f4 !important;
     background-color: #1e1e2e !important;
     width: 100%;
+    display: inline-block;
 }
 
 .hl-keyword {
