@@ -13,7 +13,7 @@
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=8e71b661f25bd2cf748d6f6ebfdc2aeb">
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=6b05837cc65a091f2f0479773b06a85f">
         <script defer src="/assets/build/js/main.js?id=b0f29cd4e71d41b4ee570d0f42344180"></script>
 
         <!-- Open Graph data -->
@@ -230,9 +230,9 @@
 
     &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;py-12&quot;&gt;
         &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6&quot;&gt;
-<span class="hl-deletion">            <span class="hl-keyword">@include</span>(<span class="hl-value">'chirps.partials.new-chirp-trigger'</span>)</span>
+<span class="hl-deletion">            &lt;<span class="hl-keyword">a</span> <span class="hl-property">hiref</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}&quot; <span class="hl-property">class</span>=&quot;underline underline-offset-2 dark:text-gray-300&quot;&gt;New Chirp&lt;/<span class="hl-keyword">a</span>&gt;</span>
 <span class="hl-addition">            &lt;<span class="hl-keyword">x-turbo::frame</span> <span class="hl-property">id</span>=&quot;create_chirp&quot; <span class="hl-property">src</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}&quot;&gt;</span>
-<span class="hl-addition">                <span class="hl-keyword">@include</span>(<span class="hl-value">'chirps.partials.new-chirp-trigger'</span>)</span>
+<span class="hl-addition">                &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}&quot; <span class="hl-property">class</span>=&quot;underline underline-offset-2 dark:text-gray-300&quot;&gt;New Chirp&lt;/<span class="hl-keyword">a</span>&gt;</span>
 <span class="hl-addition">            &lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;</span>
 
             &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500&quot;&gt;
@@ -326,7 +326,7 @@
     &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;py-12&quot;&gt;
         &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6&quot;&gt;
             &lt;<span class="hl-keyword">x-turbo::frame</span> <span class="hl-property">id</span>=&quot;create_chirp&quot; <span class="hl-property">src</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}&quot;&gt;
-                <span class="hl-keyword">@include</span>(<span class="hl-value">'chirps.partials.new-chirp-trigger'</span>)
+                &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}&quot; <span class="hl-property">class</span>=&quot;underline underline-offset-2 dark:text-gray-300&quot;&gt;New Chirp&lt;/<span class="hl-keyword">a</span>&gt;
             &lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;
 
 <span class="hl-deletion">            &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500&quot;&gt;</span>
@@ -385,9 +385,7 @@
 <span class="hl-addition">            ]);</span>
 <span class="hl-addition">        }</span>
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
-            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
-            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'status'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));
     }
 
     <span class="hl-comment">// ...</span>
@@ -562,9 +560,7 @@
 <span class="hl-addition">            ]);</span>
 <span class="hl-addition">        }</span>
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
-            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
-            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
     }
 
     <span class="hl-comment">// ...</span>
@@ -622,9 +618,7 @@
 <span class="hl-addition">            ]);</span>
 <span class="hl-addition">        }</span>
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
-            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
-            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
     }
 }
 </code></pre>
@@ -723,9 +717,7 @@
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
-            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
-            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));
     }
 
     <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">update</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request, <span class="hl-type">Chirp</span> $chirp</span>)
@@ -748,9 +740,7 @@
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
-            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
-            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
     }
 
     <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">destroy</span>(<span class="hl-injection"><span class="hl-type">Chirp</span> $chirp</span>)
@@ -769,9 +759,7 @@
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
-            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
-            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
     }
 }
 </code></pre>

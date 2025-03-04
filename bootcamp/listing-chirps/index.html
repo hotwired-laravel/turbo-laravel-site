@@ -13,7 +13,7 @@
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=8e71b661f25bd2cf748d6f6ebfdc2aeb">
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=6b05837cc65a091f2f0479773b06a85f">
         <script defer src="/assets/build/js/main.js?id=b0f29cd4e71d41b4ee570d0f42344180"></script>
 
         <!-- Open Graph data -->
@@ -274,8 +274,6 @@
 
 <span class="hl-keyword">class</span> <span class="hl-type">Chirp</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
 {
-    <span class="hl-keyword">use</span> <span class="hl-type">HasFactory</span>;
-
     <span class="hl-comment">// ...</span>
 
 <span class="hl-addition">    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">user</span>()</span>
@@ -318,7 +316,7 @@
 
     &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;py-12&quot;&gt;
         &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6&quot;&gt;
-            <span class="hl-keyword">@include</span>(<span class="hl-value">'chirps.partials.new-chirp-trigger'</span>)
+            &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}&quot; <span class="hl-property">class</span>=&quot;underline underline-offset-2 dark:text-gray-300&quot;&gt;New Chirp&lt;/<span class="hl-keyword">a</span>&gt;
 
 <span class="hl-addition">            &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500&quot;&gt;</span>
 <span class="hl-addition">                <span class="hl-keyword">@each</span>(<span class="hl-value">'chirps.partials.chirp'</span>, <span class="hl-variable">$chirps</span>, <span class="hl-value">'chirp'</span>)</span>

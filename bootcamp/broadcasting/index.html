@@ -13,7 +13,7 @@
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=8e71b661f25bd2cf748d6f6ebfdc2aeb">
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=6b05837cc65a091f2f0479773b06a85f">
         <script defer src="/assets/build/js/main.js?id=b0f29cd4e71d41b4ee570d0f42344180"></script>
 
         <!-- Open Graph data -->
@@ -534,12 +534,10 @@ REVERB_SCHEME=http
 <span class="hl-keyword">namespace</span> <span class="hl-type">App\Models</span>;
 
 <span class="hl-addition"><span class="hl-keyword">use</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\Models\Broadcasts</span>;</span>
-<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Database\Eloquent\Factories\HasFactory</span>;
 <span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Database\Eloquent\Model</span>;
 
 <span class="hl-keyword">class</span> <span class="hl-type">Chirp</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
 {
-    <span class="hl-keyword">use</span> <span class="hl-type">HasFactory</span>;
 <span class="hl-addition">    <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;</span>
 
     <span class="hl-keyword">protected</span> <span class="hl-property">$fillable</span> = [
@@ -605,9 +603,7 @@ REVERB_SCHEME=http
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
-            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
-            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));
     }
 
     <span class="hl-comment">// ...</span>
@@ -671,9 +667,7 @@ REVERB_SCHEME=http
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
-            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
-            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
     }
 
     <span class="hl-comment">// ...</span>
@@ -732,9 +726,7 @@ REVERB_SCHEME=http
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
-            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
-            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
     }
 }
 </code></pre>
@@ -775,12 +767,10 @@ REVERB_SCHEME=http
 
 <span class="hl-keyword">use</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\Models\Broadcasts</span>;
 <span class="hl-addition"><span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Broadcasting\PrivateChannel</span>;</span>
-<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Database\Eloquent\Factories\HasFactory</span>;
 <span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Database\Eloquent\Model</span>;
 
 <span class="hl-keyword">class</span> <span class="hl-type">Chirp</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
 {
-    <span class="hl-keyword">use</span> <span class="hl-type">HasFactory</span>;
     <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;
 
 <span class="hl-addition">    <span class="hl-keyword">protected</span> <span class="hl-property">$broadcasts</span> = [</span>
@@ -859,9 +849,7 @@ REVERB_SCHEME=http
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
-            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
-            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));
     }
 
     <span class="hl-comment">// ...</span>
@@ -888,9 +876,7 @@ REVERB_SCHEME=http
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
-            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
-            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
     }
 
     <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">destroy</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request, <span class="hl-type">Chirp</span> $chirp</span>)
@@ -910,9 +896,7 @@ REVERB_SCHEME=http
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()
-            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
-            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
     }
 }
 </code></pre>
@@ -1194,8 +1178,8 @@ REVERB_SCHEME=http
 
 <span class="hl-comment">&lt;!-- ... --&gt;</span>
 
-<span class="hl-deletion">&lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;relative&quot; <span class="hl-property">data-controller</span>=&quot;dropdown&quot; <span class="hl-property">data-action</span>=&quot;turbo:before-cache<span class="hl-keyword">@window</span>-&gt;dropdown#closeNow click<span class="hl-keyword">@window</span>-&gt;dropdown#close close-&gt;dropdown#close&quot;&gt;</span>
-<span class="hl-addition">&lt;<span class="hl-keyword">div</span> {{ <span class="hl-variable">$attributes</span>-&gt;<span class="hl-property">merge</span>([<span class="hl-value">'class'</span> =&gt; <span class="hl-value">'relative'</span>]) }} data-controller=<span class="hl-value">&quot;dropdown {{ $dataController }}&quot;</span> <span class="hl-property">data-action</span>=&quot;turbo:before-cache<span class="hl-keyword">@window</span>-&gt;<span class="hl-property">dropdown</span>#closeNow click<span class="hl-keyword">@window</span>-&gt;<span class="hl-property">dropdown</span>#close close-&gt;<span class="hl-property">dropdown</span>#close {{ <span class="hl-variable">$dataAction</span> }}&quot;&gt;</span>
+<span class="hl-deletion">&lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;relative&quot; <span class="hl-property">data-controller</span>=&quot;dropdown&quot; <span class="hl-property">data-action</span>=&quot;turbo:before-cache<span class="hl-keyword">@window</span>-&gt;dropdown#closeNow click<span class="hl-keyword">@window</span>-&gt;dropdown#close:stop close-&gt;dropdown#close&quot;&gt;</span>
+<span class="hl-addition">&lt;<span class="hl-keyword">div</span> {{ <span class="hl-variable">$attributes</span>-&gt;<span class="hl-property">merge</span>([<span class="hl-value">'class'</span> =&gt; <span class="hl-value">'relative'</span>]) }} data-controller=<span class="hl-value">&quot;dropdown {{ $dataController }}&quot;</span> <span class="hl-property">data-action</span>=&quot;turbo:before-cache<span class="hl-keyword">@window</span>-&gt;<span class="hl-property">dropdown</span>#closeNow click<span class="hl-keyword">@window</span>-&gt;<span class="hl-property">dropdown</span>#close:stop close-&gt;<span class="hl-property">dropdown</span>#close {{ <span class="hl-variable">$dataAction</span> }}&quot;&gt;</span>
     <span class="hl-comment">&lt;!-- ... --&gt;</span>
 &lt;/<span class="hl-keyword">div</span>&gt;
 </code></pre>
