@@ -76,23 +76,19 @@ Next, update the `chirps.index` view so we can list all Chirps:
 <x-fenced-code file="resources/views/chirps/index.blade.php">
 
 ```blade
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <x-breadcrumbs :links="[__('Chirps')]" />
-        </h2>
-    </x-slot>
+<x-layouts.app :title="__('Chirps')">
+    <section class="w-full lg:max-w-lg mx-auto">
+        <div class="flex items-center space-x-2 justify-between">
+            <x-text.heading size="xl">{{ __('Chirps') }}</x-text.heading>
 
-    <div class="py-12">
-        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <a href="{{ route('chirps.create') }}" class="underline underline-offset-2 dark:text-gray-300">New Chirp</a>
-
-{+            <div class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">
-                @each('chirps.partials.chirp', $chirps, 'chirp')
-            </div>+}
+            <a href="{{ route('chirps.create') }}" class="btn btn-primary btn-sm">{{ __('Write') }}</a>
         </div>
-    </div>
-</x-app-layout>
+
+{+        <div class="mt-6 hotwire-native:mt-0 card hotwire-native:rounded-none hotwire-native:mb-20 bg-base-100 divide-y divide-base-200 shadow">
+            @each('chirps.partials.chirp', $chirps, 'chirp')
+        </div>+}
+    </section>
+</x-layouts.app>
 ```
 
 </x-fenced-code>
@@ -102,21 +98,19 @@ Finally, let's create a `chirps.partials.chirp` Blade partial to display Chirp. 
 <x-fenced-code file="resources/views/chirps/partials/chirp.blade.php" copy>
 
 ```blade
-<div class="p-6 flex space-x-2">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 dark:text-gray-400 -scale-x-100" fill="none" viewBox="0 0 24 24"
-        stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round"
-            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-    </svg>
+<div class="p-4 flex space-x-4">
+    <div>
+        <x-profile :initials="$chirp->user->initials()" />
+    </div>
 
     <div class="flex-1">
         <div class="flex justify-between items-center">
             <div>
-                <span class="text-gray-800 dark:text-gray-200">{{ $chirp->user->name }}</span>
-                <small class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ $chirp->created_at->diffForHumans() }}</small>
+                <span class="text-base-content font-medium">{{ $chirp->user->name }}</span>
+                <small class="ml-2 text-sm text-base-content/50">{{ $chirp->created_at->diffForHumans() }}</small>
             </div>
         </div>
-        <p class="mt-4 text-lg text-gray-900 dark:text-gray-200">{{ $chirp->message }}</p>
+        <p class="mt-1 text-base">{{ $chirp->message }}</p>
     </div>
 </div>
 ```
@@ -125,7 +119,7 @@ Finally, let's create a `chirps.partials.chirp` Blade partial to display Chirp. 
 
 Now take a look in your browser to see the message you Chirped earlier!
 
-![Showing Chirps](/assets/images/bootcamp/showing-chirps.png?v=4)
+![Showing Chirps](/assets/images/bootcamp/showing-chirps.png?v=1)
 
 ## Extra Credit: Relative Dates
 
@@ -170,22 +164,19 @@ Then we can use this package's component in our `chirps._chirp` Blade partial to
 <x-fenced-code file="resources/views/chirps/partials/chirp.blade.php">
 
 ```blade
-<div class="p-6 flex space-x-2">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 dark:text-gray-400 -scale-x-100" fill="none" viewBox="0 0 24 24"
-        stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round"
-            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-    </svg>
+<div class="p-4 flex space-x-4">
+    <div>
+        <x-profile :initials="$chirp->user->initials()" />
+    </div>
 
     <div class="flex-1">
         <div class="flex justify-between items-center">
             <div>
-                <span class="text-gray-800 dark:text-gray-200">{{ $chirp->user->name }}</span>
-{-                <small class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ $chirp->created_at->diffForHumans() }}</small>-}
-{+                <small class="ml-2 text-sm text-gray-600 dark:text-gray-400"><x-local-time-ago :value="$chirp->created_at" /></small>+}
+                <span class="text-base-content font-medium">{{ $chirp->user->name }}</span>
+                <small class="ml-2 text-sm text-base-content/50"><x-local-time-ago :value="$chirp->created_at" data-turbo-permanent /></small>
             </div>
         </div>
-        <p class="mt-4 text-lg text-gray-900 dark:text-gray-200">{{ $chirp->message }}</p>
+        <p class="mt-1 text-base">{{ $chirp->message }}</p>
     </div>
 </div>
 ```
@@ -193,3 +184,5 @@ Then we can use this package's component in our `chirps._chirp` Blade partial to
 </x-fenced-code>
 
 If you refresh the page, you should see the date string and it quickly updates to the relative time ago. The real nice thing about this approach is that if you keep your browser tab opened while visiting the listing Chirps page, the relative time will update from time to time!
+
+Notice that we're using a `data-turbo-permanent` attribute in the component. That's because we don't want DOM morphing to touch this element at all, since its contents is managed by JavaScript. We'll talk more about morphing later.

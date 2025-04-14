@@ -9,20 +9,26 @@ order: 1
 
 Lean how to make [Hotwired](https://hotwired.dev/) web apps using Laravel. And when we're finished with the web app, we'll dive into the Hotwire Native side of Hotwire so we can see how it bridges the web and native worlds!
 
-To explore the many sides of Hotwire, we'll build a micro-blogging platform called Turbo Chirper. Many parts of this tutorial were inspired by the [official Laravel Bootcamp](https://bootcamp.laravel.com/) adapted to work better in a Hotwired app.
+To explore the many sides of Hotwire, we'll build a micro-blogging platform called Turbo Chirper. Many parts of this tutorial were inspired by the [official Laravel Bootcamp](https://github.com/laravel/bootcamp.laravel.com) adapted to work better in a Hotwire context.
 
-We'll use [Importmap Laravel](https://github.com/tonysm/importmap-laravel) and [TailwindCSS Laravel](https://github.com/tonysm/tailwindcss-laravel) instead of Laravel's default Vite setup. Vite would work, but I'm taking this opportunity to demonstrate an alternative front-end setup. If you're already familiar with Vite, feel free to choose the `turbo-vite` stack when setting up the application in the [installation guide](/bootcamp/installation).
+We'll use the [Hotwire Starter Kit](https://github.com/hotwired-laravel/hotwire-starter-kit), which sets up a fresh Laravel app with the following packages already installed and configured for us:
 
-On the JavaScript side, we'll use [Stimulus.js](https://stimulus.hotwired.dev/). [Turbo Breeze](https://github.com/hotwired-laravel/turbo-breeze) - the starter kit we'll use - comes with all the same components in Laravel Breeze, reimplemented in Stimulus, so you won't miss out on anything. Also, most of the time, we're able to quickly convert Alpine components into Stimulus controllers.
+- [Importmap Laravel](https://github.com/tonysm/importmap-laravel) which will take care of loading our JavaScript without the need for a bundler
+- [Tailwind CSS Laravel](https://github.com/tonysm/tailwindcss-laravel) which will compile our Tailwind CSS styles using the Tailwind CLI so we also don't need a bundlerr
+- [Turbo Laravel](https://github.com/hotwired-laravel/turbo-laravel) which installs Turbo and provides a bunch of Hotwire helpers for us to use
+- [Stimulus Laravel](https://github.com/hotwired-laravel/stimulus-laravel) which installs Stimulus and adds some convenience on our workflow, like a make command for Stimulus controllers and Hotwire Native Bridge components
+- [Hotreload](https://github.com/hotwired-laravel/hotreload) so when we make changes to our Blade files, JavaScript, or CSS, the browser will automatically reload things for us
 
-Let's get started!
+All you need is [PHP installed](https://php.new/) on the latest version and that's about it.
 
 ## Web
 
 In the Web Tutorial, we're gonna build our [majestic web app](https://m.signalvnoise.com/the-majestic-monolith/) using [Laravel](https://laravel.com/) and [Turbo Laravel](https://github.com/hotwired-laravel/turbo-laravel) that will serve as basis for the second part of the tutorial which focuses on Hotwire Native and Android.
 
-[Start the Web Tutorial...](/guides/installation)
+[Start the Web Tutorial...](/bootcamp/installation)
 
 ## Native
 
 The second part of this Bootcamp will focus on Hotwire Native. The goal is to showcase the Native side of Hotwire. We're going to use Android and Kotlin to build a fully native wrapper around our web app and [progressively enhance the UX for mobile users](https://m.signalvnoise.com/basecamp-3-for-ios-hybrid-architecture/).
+
+[Start the Native Tutorial...](/bootcamp/native-setup)

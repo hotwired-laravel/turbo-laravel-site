@@ -16,26 +16,23 @@ Our application works, but we could improve it. Instead of sending users to a de
 <x-fenced-code file="resources/views/chirps/index.blade.php">
 
 ```blade
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <x-breadcrumbs :links="[__('Chirps')]" />
-        </h2>
-    </x-slot>
+<x-layouts.app :title="__('Chirps')">
+    <section class="w-full lg:max-w-lg mx-auto">
+        <div class="flex items-center space-x-2 justify-between">
+            <x-text.heading size="xl">{{ __('Chirps') }}</x-text.heading>
 
-    <div class="py-12">
-        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
-{-            <a hiref="{{ route('chirps.create') }}" class="underline underline-offset-2 dark:text-gray-300">New Chirp</a>-}
-{+            <x-turbo::frame id="create_chirp" src="{{ route('chirps.create') }}">
-                <a href="{{ route('chirps.create') }}" class="underline underline-offset-2 dark:text-gray-300">New Chirp</a>
-            </x-turbo::frame>+}
-
-            <div class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">
-                @each('chirps.partials.chirp', $chirps, 'chirp')
-            </div>
+{-            <a href="{{ route('chirps.create') }}" class="btn btn-primary btn-sm">{{ __('Write') }}</a>-}
+{+            <a href="{{ route('chirps.create') }}" class="btn btn-primary btn-sm invisible [body:where(:has(#create\_chirp:empty))_&]:visible">{{ __('Write') }}</a>+}
         </div>
-    </div>
-</x-app-layout>
+
+{+        <x-turbo::frame id="create_chirp" class="hidden md:block *:mt-4" loading="lazy" src="{{ route('chirps.create') }}"></x-turbo::frame>+}
+
+{-        <div class="mt-6 hotwire-native:mt-0 card hotwire-native:rounded-none hotwire-native:mb-20 bg-base-100 divide-y divide-base-200 shadow">-}
+{+        <div id="chirps" class="mt-6 hotwire-native:mt-0 card hotwire-native:rounded-none hotwire-native:mb-20 bg-base-100 divide-y divide-base-200 shadow">+}
+            @each('chirps.partials.chirp', $chirps, 'chirp')
+        </div>
+    </section>
+</x-layouts.app>
 ```
 
 </x-fenced-code>
@@ -45,22 +42,20 @@ For that to work, we also need to wrap our create form with a matching Turbo Fra
 <x-fenced-code file="resources/views/chirps/create.blade.php">
 
 ```blade
-<x-app-layout :title="__('Create Chirp')">
-    <x-slot name="header">
-        <h2 class="flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <x-breadcrumbs :links="[route('chirps.index') => __('Chirps'), __('New Chirp')]" />
-        </h2>
-    </x-slot>
+<x-layouts.app :title="__('New Chirp')">
+    <section class="w-full lg:max-w-lg mx-auto">
+        <x-back-link :href="route('chirps.index')">{{ __('Chirps') }}</x-back-link>
+        <x-text.heading size="xl">{{ __('New Chirp') }}</x-text.heading>
+        <x-text.subheading>{{ __('Write a message to the World.') }}</x-text.subheading>
 
-    <div class="py-12">
-        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
+        <x-page-card class="my-6">
 {-            @include('chirps.partials.form')-}
 {+            <x-turbo::frame id="create_chirp" target="_top">
                 @include('chirps.partials.form')
             </x-turbo::frame>+}
-        </div>
-    </div>
-</x-app-layout>
+        </x-page-card>
+    </section>
+</x-layouts.app>
 ```
 
 </x-fenced-code>
@@ -76,36 +71,30 @@ That happens because we're redirecting users to the `chirps.index` page after th
 
 Let's make use of Turbo Streams to update our form with a clean one and prepend the recently created Chirp to the chirps list.
 
-### Resetting the form and prepending Chirps to the list
-
 Before we change the `ChirpController`, let's give our list of chirps wrapper element an ID in the `chirps.index` page:
 
-<x-fenced-code file="resources/views/chirps/index.blade.php">
+<x-fenced-code file="resources/views/chirps/create.blade.php">
 
 ```blade
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <x-breadcrumbs :links="[__('Chirps')]" />
-        </h2>
-    </x-slot>
+<x-layouts.app :title="__('New Chirp')">
+    <section class="w-full lg:max-w-lg mx-auto">
+        <x-back-link :href="route('chirps.index')">{{ __('Chirps') }}</x-back-link>
+        <x-text.heading size="xl">{{ __('New Chirp') }}</x-text.heading>
+        <x-text.subheading>{{ __('Write a message to the World.') }}</x-text.subheading>
 
-    <div class="py-12">
-        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <x-turbo::frame id="create_chirp" src="{{ route('chirps.create') }}">
-                <a href="{{ route('chirps.create') }}" class="underline underline-offset-2 dark:text-gray-300">New Chirp</a>
-            </x-turbo::frame>
-
-{-            <div class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">-}
-{+            <div id="chirps" class="mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500">+}
-                @each('chirps.partials.chirp', $chirps, 'chirp')
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+        <x-page-card class="my-6">
+{-            @include('chirps.partials.form')-}
+{+            <x-turbo::frame id="create_chirp" target="_top">
+                @include('chirps.partials.form')
+            </x-turbo::frame>+}
+        </x-page-card>
+    </section>
+</x-layouts.app>
 ```
 
 </x-fenced-code>
+
+### Resetting the form and prepending Chirps to the list
 
 Okay, now we can change the `store` action in our `ChirpController` to return 3 Turbo Streams if the client supports it, one to update the form with a clean one, another to prepend the new chirp to the list, and another to append the flash message:
 
@@ -133,41 +122,16 @@ class ChirpController extends Controller
             return turbo_stream([
                 turbo_stream($chirp, 'prepend'),
                 turbo_stream()->update('create_chirp', view('chirps.partials.form')),
-                turbo_stream()->append('notifications', view('layouts.partials.notice', [
+                turbo_stream()->append('notifications', view('partials.notice', [
                     'message' => __('Chirp created.'),
                 ])),
             ]);
         }+}
 
-        return redirect(route('chirps.index'))->with('notice', __('Chirp created.'));
+        return to_route('chirps.index')->with('notice', __('Chirp posted.'));
     }
 
     // ...
-}
-```
-
-</x-fenced-code>
-
-If you try to create one now, you'll notice Turbo Laravel expects to find the Chirp partial at `resources/views/chirps/_chirp.blade.php`, but we are using a folder-based partial convention. This pattern is common in Laravel, so Turbo Laravel understands that as well. Let's update the package to use that. Update your `AppServiceProvider` like so:
-
-<x-fenced-code file="app/Providers/AppServiceProvider.php">
-
-```php
-<?php
-
-namespace App\Providers;
-
-{+use HotwiredLaravel\TurboLaravel\Facades\Turbo;+}
-use Illuminate\Support\ServiceProvider;
-
-class AppServiceProvider extends ServiceProvider
-{
-    // ...
-
-    public function boot(): void
-    {
-{+        Turbo::usePartialsSubfolderPattern();+}
-    }
 }
 ```
 
@@ -175,7 +139,7 @@ class AppServiceProvider extends ServiceProvider
 
 Now if you try creating a Chirp, you should see the newly created Chirp at the top of the chirps list, the form should have been cleared, and a flash message showed up.
 
-![Hotwiring Chirps Creationg](/assets/images/bootcamp/hotwiring-creating-chirps.png?v=4)
+![Hotwiring Chirps Creation](/assets/images/bootcamp/hotwiring-creating-chirps.png?v=1)
 
 Let's also implement inline editing for our chirps.
 
@@ -186,11 +150,11 @@ To do that, we need to tweak our `chirps.partials.chirp` partial and wrap it wit
 <x-fenced-code file="resources/views/chirps/partials/chirp.blade.php">
 
 ```blade
-{-<div class="p-6 flex space-x-2">-}
-{+<x-turbo::frame :id="$chirp" class="p-6 flex space-x-2">+}
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 dark:text-gray-400 -scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <!-- ... -->
-    </svg>
+{-<div class="p-4 flex space-x-4">-}
+{+<x-turbo::frame :id="$chirp" class="p-4 flex space-x-4">+}
+    <div>
+        <x-profile :initials="$chirp->user->initials()" />
+    </div>
 
     <div class="flex-1">
         <!-- ... -->
@@ -206,22 +170,20 @@ Now, let's also update the `chirps.edit` page to add a wrapping Turbo Frame arou
 <x-fenced-code file="resources/views/chirps/edit.blade.php">
 
 ```blade
-<x-app-layout :title="__('Edit Chirp')">
-    <x-slot name="header">
-        <h2 class="flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <x-breadcrumbs :links="[route('chirps.index') => __('Chirps'), __('Edit Chirp')]" />
-        </h2>
-    </x-slot>
+<x-layouts.app :title="__('Edit Chirp')">
+    <section class="w-full lg:max-w-lg mx-auto">
+        <x-back-link :href="route('chirps.index')">{{ __('Chirps') }}</x-back-link>
+        <x-text.heading size="xl">{{ __('Edit Chirp') }}</x-text.heading>
+        <x-text.subheading>{{ __('Update your Chirp message.') }}</x-text.subheading>
 
-    <div class="py-12">
-        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
-{-            @include('chirps.partials.form', ['chirp' => $chirp])-}
+        <x-page-card class="my-6">
+{-            @include('chirps.partials.form')-}
 {+            <x-turbo::frame :id="$chirp" target="_top">
-                @include('chirps.partials.form', ['chirp' => $chirp])
+                @include('chirps.partials.form')
             </x-turbo::frame>+}
-        </div>
-    </div>
-</x-app-layout>
+        </x-page-card>
+    </section>
+</x-layouts.app>
 ```
 
 </x-fenced-code>
@@ -256,13 +218,13 @@ class ChirpController extends Controller
 {+        if ($request->wantsTurboStream()) {
             return turbo_stream([
                 turbo_stream($chirp),
-                turbo_stream()->append('notifications', view('layouts.partials.notice', [
+                turbo_stream()->append('notifications', view('partials.notice', [
                     'message' => __('Chirp updated.'),
                 ])),
             ]);
         }+}
 
-        return redirect(route('chirps.index'))->with('notice', __('Chirp updated.'));
+        return to_route('chirps.index')->with('notice', __('Chirp updated.'));
     }
 
     // ...
@@ -301,13 +263,13 @@ class ChirpController extends Controller
 {+        if (request()->wantsTurboStream()) {
             return turbo_stream([
                 turbo_stream($chirp),
-                turbo_stream()->append('notifications', view('layouts.partials.notice', [
+                turbo_stream()->append('notifications', view('partials.notice', [
                     'message' => __('Chirp deleted.'),
                 ])),
             ]);
         }+}
 
-        return redirect(route('chirps.index'))->with('notice', __('Chirp deleted.'));
+        return to_route('chirps.index')->with('notice', __('Chirp deleted.'));
     }
 }
 ```
@@ -359,8 +321,13 @@ Now, our controllers can be cleaned up a bit:
 
 class ChirpController extends Controller
 {
+    use AuthorizesRequests;
+
     // ...
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -373,16 +340,19 @@ class ChirpController extends Controller
             return turbo_stream([
                 turbo_stream($chirp, 'prepend'),
                 turbo_stream()->update('create_chirp', view('chirps.partials.form')),
-{-                turbo_stream()->append('notifications', view('layouts.partials.notice', [
-                    'message' => __('Chirp created.'),
+{-                turbo_stream()->append('notifications', view('partials.notice', [
+                    'message' => __('Chirp posted.'),
                 ])),-}
-{+                turbo_stream()->notice(__('Chirp created.')),+}
+{+                turbo_stream()->notice(__('Chirp posted.')),+}
             ]);
         }
 
-        return redirect(route('chirps.index'))->with('notice', __('Chirp created.'));
+        return to_route('chirps.index')->with('notice', __('Chirp posted.'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, Chirp $chirp)
     {
         $this->authorize('update', $chirp);
@@ -396,16 +366,19 @@ class ChirpController extends Controller
         if ($request->wantsTurboStream()) {
             return turbo_stream([
                 turbo_stream($chirp),
-{-                turbo_stream()->append('notifications', view('layouts.partials.notice', [
+{-                turbo_stream()->append('notifications', view('partials.notice', [
                     'message' => __('Chirp updated.'),
                 ])),-}
 {+                turbo_stream()->notice(__('Chirp updated.')),+}
             ]);
         }
 
-        return redirect(route('chirps.index'))->with('notice', __('Chirp updated.'));
+        return to_route('chirps.index')->with('notice', __('Chirp updated.'));
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy(Chirp $chirp)
     {
         $this->authorize('delete', $chirp);
@@ -415,14 +388,14 @@ class ChirpController extends Controller
         if (request()->wantsTurboStream()) {
             return turbo_stream([
                 turbo_stream($chirp),
-{-                turbo_stream()->append('notifications', view('layouts.partials.notice', [
+{-                turbo_stream()->append('notifications', view('partials.notice', [
                     'message' => __('Chirp deleted.'),
                 ])),-}
 {+                turbo_stream()->notice(__('Chirp deleted.')),+}
             ]);
         }
 
-        return redirect(route('chirps.index'))->with('notice', __('Chirp deleted.'));
+        return to_route('chirps.index')->with('notice', __('Chirp deleted.'));
     }
 }
 ```

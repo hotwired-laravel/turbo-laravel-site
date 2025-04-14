@@ -150,19 +150,15 @@ We can then create our `chirps.index` view with a link to our form for creating 
 <x-fenced-code file="resources/views/chirps/index.blade.php" copy>
 
 ```blade
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <x-breadcrumbs :links="[__('Chirps')]" />
-        </h2>
-    </x-slot>
+<x-layouts.app :title="__('Chirps')">
+    <section class="w-full lg:max-w-lg mx-auto">
+        <div class="flex items-center space-x-2 justify-between">
+            <x-text.heading size="xl">{{ __('Chirps') }}</x-text.heading>
 
-    <div class="py-12">
-        <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
-            <a href="{{ route('chirps.create') }}" class="underline underline-offset-2 dark:text-gray-300">New Chirp</a>
+            <a href="{{ route('chirps.create') }}" class="btn btn-primary btn-sm">{{ __('Write') }}</a>
         </div>
-    </div>
-</x-app-layout>
+    </section>
+</x-layouts.app>
 ```
 
 </x-fenced-code>
@@ -172,19 +168,19 @@ Then, let's create our `chirps.create` page view with the Chirps form:
 <x-fenced-code file="resources/views/chirps/create.blade.php" copy>
 
 ```blade 
-<x-app-layout :title="__('Create Chirp')">
-    <x-slot name="header">
-        <h2 class="flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <x-breadcrumbs :links="[route('chirps.index') => __('Chirps'), __('New Chirp')]" />
-        </h2>
-    </x-slot>
+<x-layouts.app :title="__('New Chirp')">
+    <section class="w-full lg:max-w-lg mx-auto">
+        <x-back-link :href="route('chirps.index')">{{ __('Chirps') }}</x-back-link>
+        <x-text.heading size="xl">{{ __('New Chirp') }}</x-text.heading>
+        <x-text.subheading>{{ __('Write a message to the World.') }}</x-text.subheading>
 
-    <div class="py-12">
-        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            @include('chirps.partials.form')
-        </div>
-    </div>
-</x-app-layout>
+        <x-page-card class="my-6">
+            <x-turbo::frame id="create_chirp" target="_top">
+                @include('chirps.partials.form')
+            </x-turbo::frame>
+        </x-page-card>
+    </section>
+</x-layouts.app>
 ```
 
 </x-fenced-code>
@@ -194,19 +190,30 @@ Again, this view is including a `form` partial. Create that file with the follow
 <x-fenced-code file="resources/views/chirps/partials/form.blade.php" copy>
 
 ```blade 
-<form action="{{ route('chirps.store') }}" method="POST" class="w-full">
+<form action="{{ route('chirps.store') }}" method="post" class="w-full space-y-6">
     @csrf
 
+    <!-- Content -->
     <div>
-        <x-input-label for="message" :value="__('Message')" class="sr-only" />
-        <x-textarea-input id="message" name="message" placeholder="{{ __('What\'s on your mind?') }}" class="block w-full" />
-        <x-input-error :messages="$errors->get('message')" class="mt-2" />
+        <x-form.label for="message">{{ __('What\'s on your mind?') }}</x-form.label>
+
+        <x-form.textarea-input
+            id="message"
+            name="message"
+            :value="old('message')"
+            :data-error="$errors->has('message')"
+            required
+            autofocus
+            autocomplete="off"
+            :placeholder="strip_tags(Illuminate\Foundation\Inspiring::quote())"
+            class="mt-2"
+        />
+
+        <x-form.error :message="$errors->first('content')" />
     </div>
 
-    <div class="mt-6">
-        <x-primary-button>
-            {{ __('Chirp') }}
-        </x-primary-button>
+    <div class="flex items-center justify-start gap-4">
+        <x-form.button.primary type="submit">{{ __('Post') }}</x-form.button.primary>
     </div>
 </form>
 ```
@@ -215,71 +222,64 @@ Again, this view is including a `form` partial. Create that file with the follow
 
 This partial is making use a Blade component that doesn't exist yet called `x-textarea-input`, let's create it:
 
-<x-fenced-code file="resources/views/components/textarea-input.blade.php" copy>
+<x-fenced-code file="resources/views/components/form/textarea-input.blade.php" copy>
 
 ```blade 
-@props(['disabled' => false, 'value' => ''])
+@props(['value'])
 
-<textarea {{ $disabled ? 'disabled' : '' }} {!! $attributes->merge(['class' => 'border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm']) !!}>{{ $value }}</textarea>
+<textarea {{ $attributes->merge([
+    'class' => 'w-full textarea data-error:textarea-error',
+]) }}>{{ $value }}</textarea>
 ```
 
 </x-fenced-code>
 
 That's it! Refresh the page in your browser to see your new form rendered in the default layout provided by Breeze!
 
-![Creating Chirps Link](/assets/images/bootcamp/creating-chirps-link.png?v=4)
+![Creating Chirps Link](/assets/images/bootcamp/creating-chirps-link.png?v=1)
 
 If you click on that link, you will see the form to create Chirps and the breadcrumbs should also have been updated:
 
-![Creating Chirps Form](/assets/images/bootcamp/creating-chirps-form.png?v=4)
+![Creating Chirps Form](/assets/images/bootcamp/creating-chirps-form.png?v=1)
 
 ### Navigation menu
 
-Let's take a moment to add a link to the navigation menu provided by Turbo Breeze.
+Update the nav links in the header partial to add a menu item for desktop screens:
 
-Update the `navigation` partial provided by Turbo Breeze to add a menu item for desktop screens:
-
-<x-fenced-code file="resources/views/layouts/partials/navigation.blade.php">
+<x-fenced-code file="resources/views/components/layouts/app/header.blade.php">
 
 ```blade
-<!-- Navigation Links -->
-<div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-        {{ __('Dashboard') }}
-    </x-nav-link>
+<x-navbar class="-mb-px max-lg:hidden">
+    <x-navbar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')">
+        <span>{{ __('Dashboard') }}</span>
+    </x-navbar.item>
 
-{+    <x-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.*')">
-        {{ __('Chirps') }}
-    </x-nav-link>+}
-</div>
+{+    <x-navbar.item icon="inbox" :href="route('chirps.index')" :current="request()->routeIs('chirps.*')">
+        <span>{{ __('Chirps') }}</span>
+    </x-navbar.item>+}
+</x-navbar>
 ```
 
 </x-fenced-code>
 
 Don't forget the responsive menu:
 
-<x-fenced-code file="resources/views/layouts/partials/navigation.blade.php">
+<x-fenced-code file="resources/views/components/layouts/app/header.blade.php">
 
 ```blade 
-<!-- Responsive Navigation Menu -->
-<div class="hidden group-data-[responsive-nav-open-value=true]:block sm:group-data-[responsive-nav-open-value=true]:hidden">
-    <div class="pt-2 pb-3 space-y-1">
-        <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-            {{ __('Dashboard') }}
-        </x-responsive-nav-link>
-
-{+        <x-responsive-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.*')">
-            {{ __('Chirps') }}
-        </x-responsive-nav-link>+}
-    </div>
-</div>
+<x-sidebar.navlist class="px-0">
+    <x-sidebar.navlist-item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')">{{ __('Dashboard') }}</x-sidebar>
+{+    <x-sidebar.navlist-item icon="inbox" :href="route('chirps.index')" :current="request()->routeIs('chirps.*')">{{ __('Chirps') }}</x-sidebar>+}
+</x-sidebar.navlist>
 ```
 
 </x-fenced-code>
 
+Next, we need to add
+
 We should see the Chirps link on the page nav now:
 
-![Chirps Nav Link](/assets/images/bootcamp/creating-chirps-nav-link.png?v=4)
+![Chirps Nav Link](/assets/images/bootcamp/creating-chirps-nav-link.png?v=1)
 
 ## Saving the Chirp
 
@@ -305,7 +305,7 @@ class ChirpController extends Controller
 
         $request->user()->chirps()->create($validated);
 
-        return redirect()->route('chirps.index');+}
+        return to_route('chirps.index')->with('notice', __('Chirp posted.'));+}
     }
 
     // ...
@@ -420,7 +420,7 @@ Each database migration will only run once. To make additional changes to a tabl
 
 We're now ready to send a Chirp using the form we just created! We won't be able to see the result yet because we haven't displayed existing Chirps on the page.
 
-![Saving Chirps](/assets/images/bootcamp/creating-chirps-saving.png?v=4)
+![Saving Chirps](/assets/images/bootcamp/creating-chirps-saving.png?v=1)
 
 If you leave the message field empty, or enter more than 255 characters, then you'll see the validation in action.
 
@@ -455,99 +455,3 @@ App\Models\Chirp::all();
 ```
 
 You may exit Tinker by using the `exit` command, or by pressing `Ctrl` + `c`.
-
-## Flash Messages
-
-Before we move on from creating Chirps, let's add the ability to show flash messages to the users. This may be useful to tell them that something happened in our app.
-
-Since we're redirecting the user to another page and redirects happens in the browser (client side), we'd need a way to store messages across requests. Laravel has a feature called [Flash Data](https://laravel.com/docs/session#flash-data) which does exactly that! With that, we can safely store a flash message in the user's session, just so we can retrive it from there after the redirect happens in the user's browser.
-
-Let's update our `store` action in the `ChirpController` to also return a flash message named `notice` in the redirect:
-
-<x-fenced-code file="app/Http/Controllers/ChirpController.php">
-
-```php 
-<?php
-
-// ...
-
-class ChirpController extends Controller
-{
-    // ...
-
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'message' => ['required', 'string', 'max:255'],
-        ]);
-
-        $request->user()->chirps()->create($validated);
-
-{-        return redirect(route('chirps.index'));-}
-{+        return redirect(route('chirps.index'))->with('notice', __('Chirp created.'));+}
-    }
-
-    // ...
-}
-```
-
-</x-fenced-code>
-
-Then, let's change our `layouts.app` file to include a `layouts.partials.notifications` partial:
-
-<x-fenced-code file="resources/views/layouts/app.blade.php">
-
-```blade 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
-        @include('layouts.partials.navigation')
-{+        @include('layouts.partials.notifications')+}
-
-        <!-- ... -->
-    </div>
-</body>
-```
-
-</x-fenced-code>
-
-Next, let's create the `layouts.partials.notifications` wrapper partial:
-
-<x-fenced-code file="resources/views/layouts/partials/notifications.blade.php" copy>
-
-```blade 
-<div id="notifications" class="fixed top-10 left-0 right-0 flex flex-col items-center justify-center space-y-2 z-10 opacity-80">
-    @if (session()->has('notice'))
-        @include('layouts.partials.notice', ['message' => session('notice')])
-    @endif
-</div>
-```
-
-</x-fenced-code>
-
-So, each notification will render with the `layouts.partials.notice` (singular) partial and will be added to the wrapper partial. Let's add the individual notification partial:
-
-<x-fenced-code file="resources/views/layouts/partials/notice.blade.php" copy>
-
-```blade
-<div data-turbo-temporary data-controller="flash" data-action="animationend->flash#remove" class="py-1 px-4 leading-7 text-center text-white rounded-full bg-gray-900 transition-all animate-appear-then-fade-out">
-    {{ $message }}
-</div>
-```
-
-</x-fenced-code>
-
-There are a few attributes I'd like to briefly discuss here:
-
-- The `data-turbo-temporary` tells Turbo to remove this element from the [Page Cache](https://turbo.hotwired.dev/handbook/building#preparing-the-page-to-be-cached)
-- The `data-controller="flash"` is how we bind Stimulus controllers to an element. In this case, we're binding the `flash` controller, which is a controller that ships with Turbo Breeze and may be found at `resources/js/controllers/flash_controller.js`
-- The `data-action="animationend->flash#remove"` is how we add event listeners and invoke Stimulus controller actions when those events happens. In this case, we're listening to a CSS3 event called `animationend` which is fired whenever a CSS animation ends. The animation is the one provided by the `animation-appear-then-fade-out` CSS class, it also comes from Turbo Breeze.
-
-Now, build our Tailwind CSS styles:
-
-```bash
-php artisan tailwindcss:build
-```
-
-If you create another Chirp now, you should see a nice notification message at the top:
-
-![Flash Messages](/assets/images/bootcamp/creating-chirps-flash-messages.png?v=4)
