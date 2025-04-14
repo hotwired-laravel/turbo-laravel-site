@@ -13,7 +13,7 @@
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=6b05837cc65a091f2f0479773b06a85f">
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=b73df3e6e225b65ad7f03dff8377a5b6">
         <script defer src="/assets/build/js/main.js?id=b0f29cd4e71d41b4ee570d0f42344180"></script>
 
         <!-- Open Graph data -->
@@ -221,26 +221,23 @@
 
     </p>
 
-<pre><code class="language-blade">&lt;<span class="hl-keyword">x-app-layout</span>&gt;
-    &lt;<span class="hl-keyword">x-slot</span> <span class="hl-property">name</span>=&quot;header&quot;&gt;
-        &lt;<span class="hl-keyword">h2</span> <span class="hl-property">class</span>=&quot;flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight&quot;&gt;
-            &lt;<span class="hl-keyword">x-breadcrumbs</span> :<span class="hl-property">links</span>=&quot;[__('Chirps')]&quot; /&gt;
-        &lt;/<span class="hl-keyword">h2</span>&gt;
-    &lt;/<span class="hl-keyword">x-slot</span>&gt;
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-layouts.app</span> :<span class="hl-property">title</span>=&quot;__('Chirps')&quot;&gt;
+    &lt;<span class="hl-keyword">section</span> <span class="hl-property">class</span>=&quot;w-full lg:max-w-lg mx-auto&quot;&gt;
+        &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex items-center space-x-2 justify-between&quot;&gt;
+            &lt;<span class="hl-keyword">x-text.heading</span> <span class="hl-property">size</span>=&quot;xl&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Chirps'</span>) }}&lt;/<span class="hl-keyword">x-text.heading</span>&gt;
 
-    &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;py-12&quot;&gt;
-        &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6&quot;&gt;
-<span class="hl-deletion">            &lt;<span class="hl-keyword">a</span> <span class="hl-property">hiref</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}&quot; <span class="hl-property">class</span>=&quot;underline underline-offset-2 dark:text-gray-300&quot;&gt;New Chirp&lt;/<span class="hl-keyword">a</span>&gt;</span>
-<span class="hl-addition">            &lt;<span class="hl-keyword">x-turbo::frame</span> <span class="hl-property">id</span>=&quot;create_chirp&quot; <span class="hl-property">src</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}&quot;&gt;</span>
-<span class="hl-addition">                &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}&quot; <span class="hl-property">class</span>=&quot;underline underline-offset-2 dark:text-gray-300&quot;&gt;New Chirp&lt;/<span class="hl-keyword">a</span>&gt;</span>
-<span class="hl-addition">            &lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;</span>
-
-            &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500&quot;&gt;
-                <span class="hl-keyword">@each</span>(<span class="hl-value">'chirps.partials.chirp'</span>, <span class="hl-variable">$chirps</span>, <span class="hl-value">'chirp'</span>)
-            &lt;/<span class="hl-keyword">div</span>&gt;
+<span class="hl-deletion">            &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}<span class="hl-value">&quot; <span class="hl-property">class</span>=&quot;</span>btn btn-primary btn-sm&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Write'</span>) }}&lt;/<span class="hl-keyword">a</span>&gt;</span>
+<span class="hl-addition">            &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}<span class="hl-value">&quot; <span class="hl-property">class</span>=&quot;</span>btn btn-primary btn-sm invisible [body:<span class="hl-property">where</span>(:<span class="hl-property">has</span>(#create\_chirp:<span class="hl-keyword">empty</span>))<span class="hl-property">_</span>&amp;]:visible&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Write'</span>) }}&lt;/<span class="hl-keyword">a</span>&gt;</span>
         &lt;/<span class="hl-keyword">div</span>&gt;
-    &lt;/<span class="hl-keyword">div</span>&gt;
-&lt;/<span class="hl-keyword">x-app-layout</span>&gt;
+
+<span class="hl-addition">        &lt;<span class="hl-keyword">x-turbo::frame</span> <span class="hl-property">id</span>=&quot;create_chirp&quot; <span class="hl-property">class</span>=&quot;hidden md:block *:mt-4&quot; <span class="hl-property">loading</span>=&quot;lazy&quot; <span class="hl-property">src</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}&quot;&gt;&lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;</span>
+
+<span class="hl-deletion">        &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;mt-6 hotwire-native:mt-0 card hotwire-native:rounded-none hotwire-native:mb-20 bg-base-100 divide-y divide-base-200 shadow&quot;&gt;</span>
+<span class="hl-addition">        &lt;<span class="hl-keyword">div</span> <span class="hl-property">id</span>=&quot;chirps&quot; <span class="hl-property">class</span>=&quot;mt-6 hotwire-native:mt-0 card hotwire-native:rounded-none hotwire-native:mb-20 bg-base-100 divide-y divide-base-200 shadow&quot;&gt;</span>
+            <span class="hl-keyword">@each</span>(<span class="hl-value">'chirps.partials.chirp'</span>, <span class="hl-variable">$chirps</span>, <span class="hl-value">'chirp'</span>)
+        &lt;/<span class="hl-keyword">div</span>&gt;
+    &lt;/<span class="hl-keyword">section</span>&gt;
+&lt;/<span class="hl-keyword">x-layouts.app</span>&gt;
 </code></pre>
 
 <p>
@@ -263,22 +260,20 @@
 
     </p>
 
-<pre><code class="language-blade">&lt;<span class="hl-keyword">x-app-layout</span> :<span class="hl-property">title</span>=&quot;__('Create Chirp')&quot;&gt;
-    &lt;<span class="hl-keyword">x-slot</span> <span class="hl-property">name</span>=&quot;header&quot;&gt;
-        &lt;<span class="hl-keyword">h2</span> <span class="hl-property">class</span>=&quot;flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight&quot;&gt;
-            &lt;<span class="hl-keyword">x-breadcrumbs</span> :<span class="hl-property">links</span>=&quot;[route('chirps.index') =&gt; __('Chirps'), __('New Chirp')]&quot; /&gt;
-        &lt;/<span class="hl-keyword">h2</span>&gt;
-    &lt;/<span class="hl-keyword">x-slot</span>&gt;
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-layouts.app</span> :<span class="hl-property">title</span>=&quot;__('New Chirp')&quot;&gt;
+    &lt;<span class="hl-keyword">section</span> <span class="hl-property">class</span>=&quot;w-full lg:max-w-lg mx-auto&quot;&gt;
+        &lt;<span class="hl-keyword">x-back-link</span> :<span class="hl-property">href</span>=&quot;route('chirps.index')&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Chirps'</span>) }}&lt;/<span class="hl-keyword">x-back-link</span>&gt;
+        &lt;<span class="hl-keyword">x-text.heading</span> <span class="hl-property">size</span>=&quot;xl&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'New Chirp'</span>) }}&lt;/<span class="hl-keyword">x-text.heading</span>&gt;
+        &lt;<span class="hl-keyword">x-text.subheading</span>&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Write a message to the World.'</span>) }}&lt;/<span class="hl-keyword">x-text.subheading</span>&gt;
 
-    &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;py-12&quot;&gt;
-        &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6&quot;&gt;
+        &lt;<span class="hl-keyword">x-page-card</span> <span class="hl-property">class</span>=&quot;my-6&quot;&gt;
 <span class="hl-deletion">            <span class="hl-keyword">@include</span>(<span class="hl-value">'chirps.partials.form'</span>)</span>
 <span class="hl-addition">            &lt;<span class="hl-keyword">x-turbo::frame</span> <span class="hl-property">id</span>=&quot;create_chirp&quot; <span class="hl-property">target</span>=&quot;_top&quot;&gt;</span>
 <span class="hl-addition">                <span class="hl-keyword">@include</span>(<span class="hl-value">'chirps.partials.form'</span>)</span>
 <span class="hl-addition">            &lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;</span>
-        &lt;/<span class="hl-keyword">div</span>&gt;
-    &lt;/<span class="hl-keyword">div</span>&gt;
-&lt;/<span class="hl-keyword">x-app-layout</span>&gt;
+        &lt;/<span class="hl-keyword">x-page-card</span>&gt;
+    &lt;/<span class="hl-keyword">section</span>&gt;
+&lt;/<span class="hl-keyword">x-layouts.app</span>&gt;
 </code></pre>
 
 <p>
@@ -298,8 +293,6 @@
 
 <p>Let's make use of Turbo Streams to update our form with a clean one and prepend the recently created Chirp to the chirps list.</p>
 
-<h3>Resetting the form and prepending Chirps to the list</h3>
-
 <p>Before we change the <code>ChirpController</code>, let's give our list of chirps wrapper element an ID in the <code>chirps.index</code> page:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
@@ -309,38 +302,34 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
-            <span class="whitespace-nowrap">resources/views/chirps/index.blade.php</span>
+            <span class="whitespace-nowrap">resources/views/chirps/create.blade.php</span>
         </div>
 
             </div>
 
     </p>
 
-<pre><code class="language-blade">&lt;<span class="hl-keyword">x-app-layout</span>&gt;
-    &lt;<span class="hl-keyword">x-slot</span> <span class="hl-property">name</span>=&quot;header&quot;&gt;
-        &lt;<span class="hl-keyword">h2</span> <span class="hl-property">class</span>=&quot;flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight&quot;&gt;
-            &lt;<span class="hl-keyword">x-breadcrumbs</span> :<span class="hl-property">links</span>=&quot;[__('Chirps')]&quot; /&gt;
-        &lt;/<span class="hl-keyword">h2</span>&gt;
-    &lt;/<span class="hl-keyword">x-slot</span>&gt;
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-layouts.app</span> :<span class="hl-property">title</span>=&quot;__('New Chirp')&quot;&gt;
+    &lt;<span class="hl-keyword">section</span> <span class="hl-property">class</span>=&quot;w-full lg:max-w-lg mx-auto&quot;&gt;
+        &lt;<span class="hl-keyword">x-back-link</span> :<span class="hl-property">href</span>=&quot;route('chirps.index')&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Chirps'</span>) }}&lt;/<span class="hl-keyword">x-back-link</span>&gt;
+        &lt;<span class="hl-keyword">x-text.heading</span> <span class="hl-property">size</span>=&quot;xl&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'New Chirp'</span>) }}&lt;/<span class="hl-keyword">x-text.heading</span>&gt;
+        &lt;<span class="hl-keyword">x-text.subheading</span>&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Write a message to the World.'</span>) }}&lt;/<span class="hl-keyword">x-text.subheading</span>&gt;
 
-    &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;py-12&quot;&gt;
-        &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6&quot;&gt;
-            &lt;<span class="hl-keyword">x-turbo::frame</span> <span class="hl-property">id</span>=&quot;create_chirp&quot; <span class="hl-property">src</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}&quot;&gt;
-                &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}&quot; <span class="hl-property">class</span>=&quot;underline underline-offset-2 dark:text-gray-300&quot;&gt;New Chirp&lt;/<span class="hl-keyword">a</span>&gt;
-            &lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;
-
-<span class="hl-deletion">            &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500&quot;&gt;</span>
-<span class="hl-addition">            &lt;<span class="hl-keyword">div</span> <span class="hl-property">id</span>=&quot;chirps&quot; <span class="hl-property">class</span>=&quot;mt-6 bg-white shadow-sm rounded-lg divide-y dark:bg-gray-700 dark:divide-gray-500&quot;&gt;</span>
-                <span class="hl-keyword">@each</span>(<span class="hl-value">'chirps.partials.chirp'</span>, <span class="hl-variable">$chirps</span>, <span class="hl-value">'chirp'</span>)
-            &lt;/<span class="hl-keyword">div</span>&gt;
-        &lt;/<span class="hl-keyword">div</span>&gt;
-    &lt;/<span class="hl-keyword">div</span>&gt;
-&lt;/<span class="hl-keyword">x-app-layout</span>&gt;
+        &lt;<span class="hl-keyword">x-page-card</span> <span class="hl-property">class</span>=&quot;my-6&quot;&gt;
+<span class="hl-deletion">            <span class="hl-keyword">@include</span>(<span class="hl-value">'chirps.partials.form'</span>)</span>
+<span class="hl-addition">            &lt;<span class="hl-keyword">x-turbo::frame</span> <span class="hl-property">id</span>=&quot;create_chirp&quot; <span class="hl-property">target</span>=&quot;_top&quot;&gt;</span>
+<span class="hl-addition">                <span class="hl-keyword">@include</span>(<span class="hl-value">'chirps.partials.form'</span>)</span>
+<span class="hl-addition">            &lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;</span>
+        &lt;/<span class="hl-keyword">x-page-card</span>&gt;
+    &lt;/<span class="hl-keyword">section</span>&gt;
+&lt;/<span class="hl-keyword">x-layouts.app</span>&gt;
 </code></pre>
 
 <p>
 </div>
 </p>
+
+<h3>Resetting the form and prepending Chirps to the list</h3>
 
 <p>Okay, now we can change the <code>store</code> action in our <code>ChirpController</code> to return 3 Turbo Streams if the client supports it, one to update the form with a clean one, another to prepend the new chirp to the list, and another to append the flash message:</p>
 
@@ -379,54 +368,16 @@
 <span class="hl-addition">            <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([</span>
 <span class="hl-addition">                <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$chirp</span>, <span class="hl-value">'prepend'</span>),</span>
 <span class="hl-addition">                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">update</span>(<span class="hl-value">'create_chirp'</span>, <span class="hl-property">view</span>(<span class="hl-value">'chirps.partials.form'</span>)),</span>
-<span class="hl-addition">                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-property">view</span>(<span class="hl-value">'layouts.partials.notice'</span>, [</span>
+<span class="hl-addition">                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-property">view</span>(<span class="hl-value">'partials.notice'</span>, [</span>
 <span class="hl-addition">                    <span class="hl-value">'message'</span> =&gt; <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>),</span>
 <span class="hl-addition">                ])),</span>
 <span class="hl-addition">            ]);</span>
 <span class="hl-addition">        }</span>
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">to_route</span>(<span class="hl-value">'chirps.index'</span>)-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp posted.'</span>));
     }
 
     <span class="hl-comment">// ...</span>
-}
-</code></pre>
-
-<p>
-</div>
-</p>
-
-<p>If you try to create one now, you'll notice Turbo Laravel expects to find the Chirp partial at <code>resources/views/chirps/_chirp.blade.php</code>, but we are using a folder-based partial convention. This pattern is common in Laravel, so Turbo Laravel understands that as well. Let's update the package to use that. Update your <code>AppServiceProvider</code> like so:</p>
-
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-            </svg>
-
-            <span class="whitespace-nowrap">app/Providers/AppServiceProvider.php</span>
-        </div>
-
-            </div>
-
-    </p>
-
-<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
-
-<span class="hl-keyword">namespace</span> <span class="hl-type">App\Providers</span>;
-
-<span class="hl-addition"><span class="hl-keyword">use</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\Facades\Turbo</span>;</span>
-<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Support\ServiceProvider</span>;
-
-<span class="hl-keyword">class</span> <span class="hl-type">AppServiceProvider</span> <span class="hl-keyword">extends</span> <span class="hl-type">ServiceProvider</span>
-{
-    <span class="hl-comment">// ...</span>
-
-    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">boot</span>(): <span class="hl-type">void</span>
-    {
-<span class="hl-addition">        <span class="hl-type">Turbo</span>::<span class="hl-property">usePartialsSubfolderPattern</span>();</span>
-    }
 }
 </code></pre>
 
@@ -436,7 +387,7 @@
 
 <p>Now if you try creating a Chirp, you should see the newly created Chirp at the top of the chirps list, the form should have been cleared, and a flash message showed up.</p>
 
-<p><img src="/assets/images/bootcamp/hotwiring-creating-chirps.png?v=4" alt="Hotwiring Chirps Creationg" /></p>
+<p><img src="/assets/images/bootcamp/hotwiring-creating-chirps.png?v=1" alt="Hotwiring Chirps Creation" /></p>
 
 <p>Let's also implement inline editing for our chirps.</p>
 
@@ -458,11 +409,11 @@
 
     </p>
 
-<pre><code class="language-blade"><span class="hl-deletion">&lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;p-6 flex space-x-2&quot;&gt;</span>
-<span class="hl-addition">&lt;<span class="hl-keyword">x-turbo::frame</span> :<span class="hl-property">id</span>=&quot;$chirp&quot; <span class="hl-property">class</span>=&quot;p-6 flex space-x-2&quot;&gt;</span>
-    &lt;<span class="hl-keyword">svg</span> <span class="hl-property">xmlns</span>=&quot;http://www.w3.org/2000/svg&quot; <span class="hl-property">class</span>=&quot;h-6 w-6 text-gray-600 dark:text-gray-400 -scale-x-100&quot; <span class="hl-property">fill</span>=&quot;none&quot; <span class="hl-property">viewBox</span>=&quot;0 0 24 24&quot; <span class="hl-property">stroke</span>=&quot;currentColor&quot; <span class="hl-property">stroke-width</span>=&quot;2&quot;&gt;
-        <span class="hl-comment">&lt;!-- ... --&gt;</span>
-    &lt;/<span class="hl-keyword">svg</span>&gt;
+<pre><code class="language-blade"><span class="hl-deletion">&lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;p-4 flex space-x-4&quot;&gt;</span>
+<span class="hl-addition">&lt;<span class="hl-keyword">x-turbo::frame</span> :<span class="hl-property">id</span>=&quot;$chirp&quot; <span class="hl-property">class</span>=&quot;p-4 flex space-x-4&quot;&gt;</span>
+    &lt;<span class="hl-keyword">div</span>&gt;
+        &lt;<span class="hl-keyword">x-profile</span> :<span class="hl-property">initials</span>=&quot;$chirp-&gt;user-&gt;initials()&quot; /&gt;
+    &lt;/<span class="hl-keyword">div</span>&gt;
 
     &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex-1&quot;&gt;
         <span class="hl-comment">&lt;!-- ... --&gt;</span>
@@ -491,22 +442,20 @@
 
     </p>
 
-<pre><code class="language-blade">&lt;<span class="hl-keyword">x-app-layout</span> :<span class="hl-property">title</span>=&quot;__('Edit Chirp')&quot;&gt;
-    &lt;<span class="hl-keyword">x-slot</span> <span class="hl-property">name</span>=&quot;header&quot;&gt;
-        &lt;<span class="hl-keyword">h2</span> <span class="hl-property">class</span>=&quot;flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight&quot;&gt;
-            &lt;<span class="hl-keyword">x-breadcrumbs</span> :<span class="hl-property">links</span>=&quot;[route('chirps.index') =&gt; __('Chirps'), __('Edit Chirp')]&quot; /&gt;
-        &lt;/<span class="hl-keyword">h2</span>&gt;
-    &lt;/<span class="hl-keyword">x-slot</span>&gt;
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-layouts.app</span> :<span class="hl-property">title</span>=&quot;__('Edit Chirp')&quot;&gt;
+    &lt;<span class="hl-keyword">section</span> <span class="hl-property">class</span>=&quot;w-full lg:max-w-lg mx-auto&quot;&gt;
+        &lt;<span class="hl-keyword">x-back-link</span> :<span class="hl-property">href</span>=&quot;route('chirps.index')&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Chirps'</span>) }}&lt;/<span class="hl-keyword">x-back-link</span>&gt;
+        &lt;<span class="hl-keyword">x-text.heading</span> <span class="hl-property">size</span>=&quot;xl&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Edit Chirp'</span>) }}&lt;/<span class="hl-keyword">x-text.heading</span>&gt;
+        &lt;<span class="hl-keyword">x-text.subheading</span>&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Update your Chirp message.'</span>) }}&lt;/<span class="hl-keyword">x-text.subheading</span>&gt;
 
-    &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;py-12&quot;&gt;
-        &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6&quot;&gt;
-<span class="hl-deletion">            <span class="hl-keyword">@include</span>(<span class="hl-value">'chirps.partials.form'</span>, [<span class="hl-value">'chirp'</span> =&gt; <span class="hl-variable">$chirp</span>])</span>
+        &lt;<span class="hl-keyword">x-page-card</span> <span class="hl-property">class</span>=&quot;my-6&quot;&gt;
+<span class="hl-deletion">            <span class="hl-keyword">@include</span>(<span class="hl-value">'chirps.partials.form'</span>)</span>
 <span class="hl-addition">            &lt;<span class="hl-keyword">x-turbo::frame</span> :<span class="hl-property">id</span>=&quot;$chirp&quot; <span class="hl-property">target</span>=&quot;_top&quot;&gt;</span>
-<span class="hl-addition">                <span class="hl-keyword">@include</span>(<span class="hl-value">'chirps.partials.form'</span>, [<span class="hl-value">'chirp'</span> =&gt; <span class="hl-variable">$chirp</span>])</span>
+<span class="hl-addition">                <span class="hl-keyword">@include</span>(<span class="hl-value">'chirps.partials.form'</span>)</span>
 <span class="hl-addition">            &lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;</span>
-        &lt;/<span class="hl-keyword">div</span>&gt;
-    &lt;/<span class="hl-keyword">div</span>&gt;
-&lt;/<span class="hl-keyword">x-app-layout</span>&gt;
+        &lt;/<span class="hl-keyword">x-page-card</span>&gt;
+    &lt;/<span class="hl-keyword">section</span>&gt;
+&lt;/<span class="hl-keyword">x-layouts.app</span>&gt;
 </code></pre>
 
 <p>
@@ -554,13 +503,13 @@
 <span class="hl-addition">        <span class="hl-keyword">if</span> (<span class="hl-variable">$request</span>-&gt;<span class="hl-property">wantsTurboStream</span>()) {</span>
 <span class="hl-addition">            <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([</span>
 <span class="hl-addition">                <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$chirp</span>),</span>
-<span class="hl-addition">                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-property">view</span>(<span class="hl-value">'layouts.partials.notice'</span>, [</span>
+<span class="hl-addition">                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-property">view</span>(<span class="hl-value">'partials.notice'</span>, [</span>
 <span class="hl-addition">                    <span class="hl-value">'message'</span> =&gt; <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>),</span>
 <span class="hl-addition">                ])),</span>
 <span class="hl-addition">            ]);</span>
 <span class="hl-addition">        }</span>
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">to_route</span>(<span class="hl-value">'chirps.index'</span>)-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
     }
 
     <span class="hl-comment">// ...</span>
@@ -612,13 +561,13 @@
 <span class="hl-addition">        <span class="hl-keyword">if</span> (<span class="hl-property">request</span>()-&gt;<span class="hl-property">wantsTurboStream</span>()) {</span>
 <span class="hl-addition">            <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([</span>
 <span class="hl-addition">                <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$chirp</span>),</span>
-<span class="hl-addition">                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-property">view</span>(<span class="hl-value">'layouts.partials.notice'</span>, [</span>
+<span class="hl-addition">                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-property">view</span>(<span class="hl-value">'partials.notice'</span>, [</span>
 <span class="hl-addition">                    <span class="hl-value">'message'</span> =&gt; <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>),</span>
 <span class="hl-addition">                ])),</span>
 <span class="hl-addition">            ]);</span>
 <span class="hl-addition">        }</span>
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">to_route</span>(<span class="hl-value">'chirps.index'</span>)-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
     }
 }
 </code></pre>
@@ -696,8 +645,13 @@
 
 <span class="hl-keyword">class</span> <span class="hl-type">ChirpController</span> <span class="hl-keyword">extends</span> <span class="hl-type">Controller</span>
 {
+    <span class="hl-keyword">use</span> <span class="hl-type">AuthorizesRequests</span>;
+
     <span class="hl-comment">// ...</span>
 
+    <span class="hl-comment">/**
+     * Store a newly created resource in storage.
+     */</span>
     <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">store</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request</span>)
     {
         <span class="hl-variable">$validated</span> = <span class="hl-variable">$request</span>-&gt;<span class="hl-property">validate</span>([
@@ -710,16 +664,19 @@
             <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([
                 <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$chirp</span>, <span class="hl-value">'prepend'</span>),
                 <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">update</span>(<span class="hl-value">'create_chirp'</span>, <span class="hl-property">view</span>(<span class="hl-value">'chirps.partials.form'</span>)),
-<span class="hl-deletion">                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-property">view</span>(<span class="hl-value">'layouts.partials.notice'</span>, [</span>
-<span class="hl-deletion">                    <span class="hl-value">'message'</span> =&gt; <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>),</span>
+<span class="hl-deletion">                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-property">view</span>(<span class="hl-value">'partials.notice'</span>, [</span>
+<span class="hl-deletion">                    <span class="hl-value">'message'</span> =&gt; <span class="hl-property">__</span>(<span class="hl-value">'Chirp posted.'</span>),</span>
 <span class="hl-deletion">                ])),</span>
-<span class="hl-addition">                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">notice</span>(<span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>)),</span>
+<span class="hl-addition">                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">notice</span>(<span class="hl-property">__</span>(<span class="hl-value">'Chirp posted.'</span>)),</span>
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">to_route</span>(<span class="hl-value">'chirps.index'</span>)-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp posted.'</span>));
     }
 
+    <span class="hl-comment">/**
+     * Update the specified resource in storage.
+     */</span>
     <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">update</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request, <span class="hl-type">Chirp</span> $chirp</span>)
     {
         <span class="hl-variable">$this</span>-&gt;<span class="hl-property">authorize</span>(<span class="hl-value">'update'</span>, <span class="hl-variable">$chirp</span>);
@@ -733,16 +690,19 @@
         <span class="hl-keyword">if</span> (<span class="hl-variable">$request</span>-&gt;<span class="hl-property">wantsTurboStream</span>()) {
             <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([
                 <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$chirp</span>),
-<span class="hl-deletion">                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-property">view</span>(<span class="hl-value">'layouts.partials.notice'</span>, [</span>
+<span class="hl-deletion">                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-property">view</span>(<span class="hl-value">'partials.notice'</span>, [</span>
 <span class="hl-deletion">                    <span class="hl-value">'message'</span> =&gt; <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>),</span>
 <span class="hl-deletion">                ])),</span>
 <span class="hl-addition">                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">notice</span>(<span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>)),</span>
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">to_route</span>(<span class="hl-value">'chirps.index'</span>)-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
     }
 
+    <span class="hl-comment">/**
+     * Remove the specified resource from storage.
+     */</span>
     <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">destroy</span>(<span class="hl-injection"><span class="hl-type">Chirp</span> $chirp</span>)
     {
         <span class="hl-variable">$this</span>-&gt;<span class="hl-property">authorize</span>(<span class="hl-value">'delete'</span>, <span class="hl-variable">$chirp</span>);
@@ -752,14 +712,14 @@
         <span class="hl-keyword">if</span> (<span class="hl-property">request</span>()-&gt;<span class="hl-property">wantsTurboStream</span>()) {
             <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([
                 <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$chirp</span>),
-<span class="hl-deletion">                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-property">view</span>(<span class="hl-value">'layouts.partials.notice'</span>, [</span>
+<span class="hl-deletion">                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-property">view</span>(<span class="hl-value">'partials.notice'</span>, [</span>
 <span class="hl-deletion">                    <span class="hl-value">'message'</span> =&gt; <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>),</span>
 <span class="hl-deletion">                ])),</span>
 <span class="hl-addition">                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">notice</span>(<span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>)),</span>
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">to_route</span>(<span class="hl-value">'chirps.index'</span>)-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
     }
 }
 </code></pre>

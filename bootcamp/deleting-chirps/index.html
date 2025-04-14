@@ -13,7 +13,7 @@
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=6b05837cc65a091f2f0479773b06a85f">
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=b73df3e6e225b65ad7f03dff8377a5b6">
         <script defer src="/assets/build/js/main.js?id=b0f29cd4e71d41b4ee570d0f42344180"></script>
 
         <!-- Open Graph data -->
@@ -322,9 +322,7 @@
 <span class="hl-addition"></span>
 <span class="hl-addition">        <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">delete</span>();</span>
 <span class="hl-addition"></span>
-<span class="hl-addition">        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>()</span>
-<span class="hl-addition">            -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)</span>
-<span class="hl-addition">            -&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));</span>
+<span class="hl-addition">        <span class="hl-keyword">return</span> <span class="hl-property">to_route</span>(<span class="hl-value">'chirps.index'</span>)-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));</span>
     }
 }
 </code></pre>
@@ -393,44 +391,40 @@
 
     </p>
 
-<pre><code class="language-blade">&lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;p-6 flex space-x-2&quot;&gt;
-    &lt;<span class="hl-keyword">svg</span> <span class="hl-property">xmlns</span>=&quot;http://www.w3.org/2000/svg&quot; <span class="hl-property">class</span>=&quot;h-6 w-6 text-gray-600 dark:text-gray-400 -scale-x-100&quot; <span class="hl-property">fill</span>=&quot;none&quot; <span class="hl-property">viewBox</span>=&quot;0 0 24 24&quot; <span class="hl-property">stroke</span>=&quot;currentColor&quot; <span class="hl-property">stroke-width</span>=&quot;2&quot;&gt;
-        &lt;<span class="hl-keyword">path</span> <span class="hl-property">stroke-linecap</span>=&quot;round&quot; <span class="hl-property">stroke-linejoin</span>=&quot;round&quot; <span class="hl-property">d</span>=&quot;M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z&quot; /&gt;
-    &lt;/<span class="hl-keyword">svg</span>&gt;
+<pre><code class="language-blade">&lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;p-4 flex space-x-4&quot;&gt;
+    &lt;<span class="hl-keyword">div</span>&gt;
+        &lt;<span class="hl-keyword">x-profile</span> :<span class="hl-property">initials</span>=&quot;$chirp-&gt;user-&gt;initials()&quot; /&gt;
+    &lt;/<span class="hl-keyword">div</span>&gt;
 
     &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex-1&quot;&gt;
         &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex justify-between items-center&quot;&gt;
             &lt;<span class="hl-keyword">div</span>&gt;
-                &lt;<span class="hl-keyword">span</span> <span class="hl-property">class</span>=&quot;text-gray-800 dark:text-gray-200&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user</span>-&gt;<span class="hl-property">name</span> }}&lt;/<span class="hl-keyword">span</span>&gt;
-                &lt;<span class="hl-keyword">small</span> <span class="hl-property">class</span>=&quot;ml-2 text-sm text-gray-600 dark:text-gray-400&quot;&gt;&lt;<span class="hl-keyword">x-local-time-ago</span> :<span class="hl-property">value</span>=&quot;$chirp-&gt;created_at&quot; /&gt;&lt;/<span class="hl-keyword">small</span>&gt;
+                &lt;<span class="hl-keyword">span</span> <span class="hl-property">class</span>=&quot;text-base-content font-medium&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user</span>-&gt;<span class="hl-property">name</span> }}&lt;/<span class="hl-keyword">span</span>&gt;
+                &lt;<span class="hl-keyword">small</span> <span class="hl-property">class</span>=&quot;ml-2 text-sm text-base-content/50&quot;&gt;&lt;<span class="hl-keyword">x-local-time-ago</span> :<span class="hl-property">value</span>=&quot;$chirp-&gt;created_at&quot; data-turbo-permanent /&gt;&lt;/<span class="hl-keyword">small</span>&gt;
                 <span class="hl-keyword">@unless</span> (<span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">created_at</span>-&gt;<span class="hl-property">eq</span>(<span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">updated_at</span>))
-                &lt;<span class="hl-keyword">small</span> <span class="hl-property">class</span>=&quot;text-sm text-gray-600&quot;&gt; &amp;middot; edited&lt;/<span class="hl-keyword">small</span>&gt;
+                &lt;<span class="hl-keyword">small</span> <span class="hl-property">class</span>=&quot;text-sm text-base-content/50&quot;&gt; &amp;middot; edited&lt;/<span class="hl-keyword">small</span>&gt;
                 <span class="hl-keyword">@endunless</span>
             &lt;/<span class="hl-keyword">div</span>&gt;
 
             <span class="hl-keyword">@if</span> (<span class="hl-type">Auth</span>::<span class="hl-property">id</span>() === <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user</span>-&gt;<span class="hl-property">id</span>)
-            &lt;<span class="hl-keyword">x-dropdown</span> <span class="hl-property">align</span>=&quot;right&quot; <span class="hl-property">width</span>=&quot;48&quot;&gt;
-                &lt;<span class="hl-keyword">x-slot</span> <span class="hl-property">name</span>=&quot;trigger&quot;&gt;
-                    &lt;<span class="hl-keyword">button</span>&gt;
-                        &lt;<span class="hl-keyword">svg</span> <span class="hl-property">xmlns</span>=&quot;http://www.w3.org/2000/svg&quot; <span class="hl-property">class</span>=&quot;h-4 w-4 text-gray-400&quot; <span class="hl-property">viewBox</span>=&quot;0 0 20 20&quot; <span class="hl-property">fill</span>=&quot;currentColor&quot;&gt;
-                            &lt;<span class="hl-keyword">path</span> <span class="hl-property">d</span>=&quot;M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z&quot; /&gt;
-                        &lt;/<span class="hl-keyword">svg</span>&gt;
-                    &lt;/<span class="hl-keyword">button</span>&gt;
+            &lt;<span class="hl-keyword">x-dropdown</span> <span class="hl-property">class</span>=&quot;dropdown-end&quot;&gt;
+                &lt;<span class="hl-keyword">x-slot</span> <span class="hl-property">name</span>=&quot;trigger&quot; <span class="hl-property">class</span>=&quot;btn-ghost btn-xs&quot;&gt;
+                    &lt;<span class="hl-keyword">x-heroicon-o-ellipsis-vertical</span> <span class="hl-property">class</span>=&quot;size-6&quot; /&gt;
+                    &lt;<span class="hl-keyword">span</span> <span class="hl-property">class</span>=&quot;sr-only&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Options'</span>) }}&lt;/<span class="hl-keyword">span</span>&gt;
                 &lt;/<span class="hl-keyword">x-slot</span>&gt;
 
-                &lt;<span class="hl-keyword">x-slot</span> <span class="hl-property">name</span>=&quot;content&quot;&gt;
-                    &lt;<span class="hl-keyword">x-dropdown-link</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.edit'</span>, <span class="hl-variable">$chirp</span>) }}&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Edit'</span>) }}&lt;/<span class="hl-keyword">x-dropdown-link</span>&gt;
+                &lt;<span class="hl-keyword">x-dropdown.menu</span> <span class="hl-property">class</span>=&quot;bg-base-200&quot;&gt;
+                    &lt;<span class="hl-keyword">x-dropdown.link</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.edit'</span>, <span class="hl-variable">$chirp</span>) }}&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Edit'</span>) }}&lt;/<span class="hl-keyword">x-dropdown.link</span>&gt;
 
 <span class="hl-addition">                    &lt;<span class="hl-keyword">form</span> <span class="hl-property">action</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.destroy'</span>, <span class="hl-variable">$chirp</span>) }}&quot; <span class="hl-property">method</span>=&quot;POST&quot;&gt;</span>
 <span class="hl-addition">                        <span class="hl-keyword">@method</span>(<span class="hl-value">'DELETE'</span>)</span>
-<span class="hl-addition">                        &lt;<span class="hl-keyword">x-dropdown-button</span> <span class="hl-property">type</span>=&quot;submit&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Delete'</span>) }}&lt;/<span class="hl-keyword">x-dropdown-button</span>&gt;</span>
+<span class="hl-addition">                        &lt;<span class="hl-keyword">x-dropdown.button</span> <span class="hl-property">type</span>=&quot;submit&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Delete'</span>) }}&lt;/<span class="hl-keyword">x-dropdown.button</span>&gt;</span>
 <span class="hl-addition">                    &lt;/<span class="hl-keyword">form</span>&gt;</span>
-                &lt;/<span class="hl-keyword">x-slot</span>&gt;
+                &lt;/<span class="hl-keyword">x-dropdown.menu</span>&gt;
             &lt;/<span class="hl-keyword">x-dropdown</span>&gt;
             <span class="hl-keyword">@endif</span>
         &lt;/<span class="hl-keyword">div</span>&gt;
-
-        &lt;<span class="hl-keyword">p</span> <span class="hl-property">class</span>=&quot;mt-4 text-lg text-gray-900&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">message</span> }}&lt;/<span class="hl-keyword">p</span>&gt;
+        &lt;<span class="hl-keyword">p</span> <span class="hl-property">class</span>=&quot;mt-1 text-base&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">message</span> }}&lt;/<span class="hl-keyword">p</span>&gt;
     &lt;/<span class="hl-keyword">div</span>&gt;
 &lt;/<span class="hl-keyword">div</span>&gt;
 </code></pre>
@@ -443,7 +437,7 @@
 
 <p>If you Chirped anything you weren't happy with, try deleting it!</p>
 
-<p><img src="/assets/images/bootcamp/deleting-chirps.png?v=4" alt="Deleting Chirps" /></p>
+<p><img src="/assets/images/bootcamp/deleting-chirps.png?v=1" alt="Deleting Chirps" /></p>
         </div>
 
                     <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
