@@ -590,7 +590,7 @@ When creating the Chirp from Tinker, even though we see them appearing on the pa
 
 Instead of conditionally rendering the dropdown in the server side, let's switch to always rendering them and hide it from our users with a sprinkle of JavaScript instead.
 
-First, let's update our `layouts.partials.current-identity` partial to include a few things about the currently authenticated user when there's one:
+First, let's create the `resources/views/layouts/identity.blade.php` partial to include a few things about the currently authenticated user when there's one:
 
 <x-fenced-code file="resources/views/partials/identity.blade.php" copy>
 
