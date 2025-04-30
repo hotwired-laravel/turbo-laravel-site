@@ -13,7 +13,7 @@
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=b73df3e6e225b65ad7f03dff8377a5b6">
+        <link rel="stylesheet" href="/assets/build/css/main.css?id=43ade17df46426aaccbc2cac40014c37">
         <script defer src="/assets/build/js/main.js?id=b0f29cd4e71d41b4ee570d0f42344180"></script>
 
         <!-- Open Graph data -->
@@ -267,7 +267,7 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 </div>
 </p>
 
-<p>We also need to update the <code>bootstrap.js</code> file to fix the import that was appended by Reverb to the Importmap style:</p>
+<p>We also need to update the <code>app.js</code> file to fix the import that was appended by Reverb to the Importmap style:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
@@ -276,30 +276,23 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
-            <span class="whitespace-nowrap">resources/js/bootstrap.js</span>
+            <span class="whitespace-nowrap">resources/js/app.js</span>
         </div>
 
             </div>
 
     </p>
 
-<pre><code class="language-js"><span class="hl-comment">// ...</span>
-
-<span class="hl-comment">/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allow your team to quickly build robust real-time web applications.
- */</span>
-
-<span class="hl-deletion"><span class="hl-keyword">import</span> <span class="hl-value">'./echo'</span>;</span>
-<span class="hl-addition"><span class="hl-keyword">import</span> <span class="hl-value">'echo'</span>;</span>
+<pre><code class="language-js"><span class="hl-addition"><span class="hl-keyword">import</span> <span class="hl-value">&quot;echo&quot;</span>;</span>
+<span class="hl-keyword">import</span> <span class="hl-value">&quot;elements/turbo-echo-stream-tag&quot;</span>;
+<span class="hl-keyword">import</span> <span class="hl-value">&quot;libs&quot;</span>;
 </code></pre>
 
 <p>
 </div>
 </p>
 
-<p>Next, let's create a new layout partial at <code>resources/views/layouts/partials/reverb.blade.php</code> with the following content:</p>
+<p>Next, let's create a new layout partial at <code>resources/views/partials/reverb.blade.php</code> with the following content:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
@@ -308,7 +301,7 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
-            <span class="whitespace-nowrap">resources/views/layouts/partials/reverb.blade.php</span>
+            <span class="whitespace-nowrap">resources/views/partials/reverb.blade.php</span>
         </div>
 
                 <button class="flex items-center space-x-1" title="Copy to clipboard" data-action="clipboard#copy" type="button">
@@ -327,7 +320,7 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
     </p>
 
 <pre><code class="language-blade">&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-reverb-app-key&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">config</span>(<span class="hl-value">'broadcasting.connections.reverb.key'</span>) }}&quot; /&gt;
-&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-reverb-host&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">config</span>(<span class="hl-value">'broadcasting.connections.reverb.options.host'</span>) }}&quot; /&gt;
+&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-reverb-host&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">app</span>()-&gt;<span class="hl-property">environment</span>(<span class="hl-value">'local'</span>) <span class="hl-operator">&amp;&amp;</span> <span class="hl-type">Turbo</span>::<span class="hl-property">isHotwireNativeVisit</span>() <span class="hl-operator">?</span> <span class="hl-value">'10.0.2.2'</span> : <span class="hl-property">config</span>(<span class="hl-value">'broadcasting.connections.reverb.options.host'</span>) }}&quot; /&gt;
 &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-reverb-port&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">config</span>(<span class="hl-value">'broadcasting.connections.reverb.options.port'</span>) }}&quot; /&gt;
 &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;current-reverb-scheme&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">config</span>(<span class="hl-value">'broadcasting.connections.reverb.options.scheme'</span>) }}&quot; /&gt;
 </code></pre>
@@ -336,7 +329,7 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
 </div>
 </p>
 
-<p>Then, add that to the <code>app.blade.php</code> layout file:</p>
+<p>Then, add that to the <code>head.blade.php</code> layout file partials:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
@@ -345,82 +338,41 @@ window.<span class="hl-property">Echo</span> = <span class="hl-keyword">new</spa
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
-            <span class="whitespace-nowrap">resources/views/layouts/app.blade.php</span>
+            <span class="whitespace-nowrap">resources/views/partials/head.blade.php</span>
         </div>
 
             </div>
 
     </p>
 
-<pre><code class="language-blade">&lt;!DOCTYPE html&gt;
-&lt;<span class="hl-keyword">html</span> <span class="hl-property">lang</span>=&quot;{{ <span class="hl-property">str_replace</span>(<span class="hl-value">'_'</span>, <span class="hl-value">'-'</span>, <span class="hl-property">app</span>()-&gt;<span class="hl-property">getLocale</span>()) }}&quot;&gt;
-    &lt;<span class="hl-keyword">head</span>&gt;
-        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">charset</span>=&quot;utf-8&quot;&gt;
-        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;viewport&quot; <span class="hl-property">content</span>=&quot;width=device-width, initial-scale=1&quot;&gt;
-        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;csrf-token&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">csrf_token</span>() }}&quot;&gt;
+<pre><code class="language-blade">&lt;<span class="hl-keyword">meta</span> <span class="hl-property">charset</span>=&quot;utf-8&quot; /&gt;
+&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;viewport&quot;
+    <span class="hl-property">content</span>=&quot;width=device-width, initial-scale=1.0{{ <span class="hl-variable">$scalable</span> ?? <span class="hl-keyword">false</span> <span class="hl-operator">?</span> <span class="hl-value">', maximum-scale=1.0, user-scalable=0'</span> : <span class="hl-value">''</span> }}&quot; /&gt;
+&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;csrf-token&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">csrf_token</span>() }}&quot;&gt;
 
-        <span class="hl-keyword">@if</span> (<span class="hl-variable">$viewTransitions</span> ?? <span class="hl-keyword">false</span>)
-        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;view-transition&quot; <span class="hl-property">content</span>=&quot;same-origin&quot; /&gt;
-        <span class="hl-keyword">@endif</span>
+<span class="hl-keyword">@if</span> (<span class="hl-variable">$transitions</span> ?? <span class="hl-keyword">false</span>)
+    &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;view-transition&quot; <span class="hl-property">content</span>=&quot;same-origin&quot;&gt;
+<span class="hl-keyword">@endif</span>
 
-<span class="hl-addition">        <span class="hl-keyword">@include</span>(<span class="hl-value">'layouts.partials.reverb'</span>)</span>
+<span class="hl-addition"><span class="hl-keyword">@include</span>(<span class="hl-value">'partials.reverb'</span>)</span>
 
-        {{ <span class="hl-variable">$meta</span> ?? <span class="hl-value">''</span> }}
+{{ <span class="hl-variable">$meta</span> ?? <span class="hl-value">''</span> }}
 
-        &lt;<span class="hl-keyword">title</span>&gt;{{ <span class="hl-property">config</span>(<span class="hl-value">'app.name'</span>, <span class="hl-value">'Laravel'</span>) }}&lt;/<span class="hl-keyword">title</span>&gt;
+&lt;<span class="hl-keyword">title</span>&gt;{{ <span class="hl-variable">$title</span> ?? <span class="hl-property">config</span>(<span class="hl-value">'app.name'</span>) }}&lt;/<span class="hl-keyword">title</span>&gt;
 
-        <span class="hl-comment">&lt;!-- ... --&gt;</span>
-    &lt;/<span class="hl-keyword">head</span>&gt;
+&lt;<span class="hl-keyword">link</span> <span class="hl-property">rel</span>=&quot;preconnect&quot; <span class="hl-property">href</span>=&quot;https://fonts.bunny.net&quot;&gt;
+&lt;<span class="hl-keyword">link</span> <span class="hl-property">href</span>=&quot;https://fonts.bunny.net/css?family=instrument-sans:400,500,600&quot; <span class="hl-property">rel</span>=&quot;stylesheet&quot; /&gt;
 
-    <span class="hl-comment">&lt;!-- ... --&gt;</span>
-&lt;/<span class="hl-keyword">html</span>&gt;
+&lt;<span class="hl-keyword">link</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">tailwindcss</span>(<span class="hl-value">'css/app.css'</span>) }}&quot; <span class="hl-property">rel</span>=&quot;stylesheet&quot; /&gt;
+
+&lt;<span class="hl-keyword">x-importmap::tags</span> /&gt;
 </code></pre>
 
 <p>
 </div>
 </p>
 
-<p>Do the same for the guest layout:</p>
-
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-            </svg>
-
-            <span class="whitespace-nowrap">resources/views/layouts/guest.blade.php</span>
-        </div>
-
-            </div>
-
-    </p>
-
-<pre><code class="language-blade">&lt;!DOCTYPE html&gt;
-&lt;<span class="hl-keyword">html</span> <span class="hl-property">lang</span>=&quot;{{ <span class="hl-property">str_replace</span>(<span class="hl-value">'_'</span>, <span class="hl-value">'-'</span>, <span class="hl-property">app</span>()-&gt;<span class="hl-property">getLocale</span>()) }}&quot;&gt;
-    &lt;<span class="hl-keyword">head</span>&gt;
-        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">charset</span>=&quot;utf-8&quot;&gt;
-        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;viewport&quot; <span class="hl-property">content</span>=&quot;width=device-width, initial-scale=1&quot;&gt;
-        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;csrf-token&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">csrf_token</span>() }}&quot;&gt;
-
-        <span class="hl-keyword">@if</span> (<span class="hl-variable">$viewTransitions</span> ?? <span class="hl-keyword">false</span>)
-        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;view-transition&quot; <span class="hl-property">content</span>=&quot;same-origin&quot; /&gt;
-        <span class="hl-keyword">@endif</span>
-
-<span class="hl-addition">        <span class="hl-keyword">@include</span>(<span class="hl-value">'layouts.partials.reverb'</span>)</span>
-
-        {{ <span class="hl-variable">$meta</span> ?? <span class="hl-value">''</span> }}
-
-        <span class="hl-comment">&lt;!-- ... --&gt;</span>
-    &lt;/<span class="hl-keyword">head</span>&gt;
-
-    <span class="hl-comment">&lt;!-- ... --&gt;</span>
-&lt;/<span class="hl-keyword">html</span>&gt;
-</code></pre>
-
-<p>
-</div>
-</p>
+<p>The <code>head.blade.php</code> partial file is also included in the auth template.</p>
 
 <p>Now, make sure your <code>.env</code> file has the following configs:</p>
 
@@ -437,6 +389,57 @@ REVERB_SCHEME=http
 
 <pre><code class="language-bash">php artisan reverb:start
 </code></pre>
+
+<p>If you're using <a href="https://github.com/soloterm/solo">Solo</a>, update the <code>config/solo.php</code> to add the new Reverb command:</p>
+
+<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
+    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
+        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
+
+            <span class="whitespace-nowrap">config/solo.php</span>
+        </div>
+
+            </div>
+
+    </p>
+
+<pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
+
+<span class="hl-comment">// ...</span>
+
+<span class="hl-keyword">return</span> [
+    <span class="hl-comment">// ...</span>
+
+    <span class="hl-comment">/*
+    |--------------------------------------------------------------------------
+    | Commands
+    |--------------------------------------------------------------------------
+    |
+    */</span>
+    <span class="hl-value">'commands'</span> =&gt; [
+        <span class="hl-value">'HTTP'</span> =&gt; <span class="hl-value">'php artisan serve --host=0.0.0.0 --no-reload'</span>,
+        <span class="hl-value">'Logs'</span> =&gt; <span class="hl-type">EnhancedTailCommand</span>::<span class="hl-property">file</span>(<span class="hl-property">storage_path</span>(<span class="hl-value">'logs/laravel.log'</span>)),
+        <span class="hl-value">'Tailwind'</span> =&gt; <span class="hl-value">'php artisan tailwindcss:watch'</span>,
+        <span class="hl-addition"><span class="hl-value">'Reverb'</span> =&gt; <span class="hl-value">'php artisan reverb:start --debug'</span>,</span>
+
+        <span class="hl-comment">// Lazy commands do not automatically start when Solo starts.</span>
+        <span class="hl-value">'Queue'</span> =&gt; <span class="hl-type">Command</span>::<span class="hl-property">from</span>(<span class="hl-value">'php artisan queue:work'</span>)-&gt;<span class="hl-property">lazy</span>(),
+        <span class="hl-value">'Dumps'</span> =&gt; <span class="hl-type">Command</span>::<span class="hl-property">from</span>(<span class="hl-value">'php artisan solo:dumps'</span>)-&gt;<span class="hl-property">lazy</span>(),
+        <span class="hl-value">'Reverb'</span> =&gt; <span class="hl-type">Command</span>::<span class="hl-property">from</span>(<span class="hl-value">'php artisan reverb:start --debug'</span>)-&gt;<span class="hl-property">lazy</span>(),
+        <span class="hl-value">'Pint'</span> =&gt; <span class="hl-type">Command</span>::<span class="hl-property">from</span>(<span class="hl-value">'./vendor/bin/pint --ansi'</span>)-&gt;<span class="hl-property">lazy</span>(),
+        <span class="hl-value">'Tests'</span> =&gt; <span class="hl-type">Command</span>::<span class="hl-property">from</span>(<span class="hl-value">'php artisan test --colors=always'</span>)-&gt;<span class="hl-property">withEnv</span>([<span class="hl-value">'APP_ENV'</span> =&gt; <span class="hl-value">'testing'</span>])-&gt;<span class="hl-property">lazy</span>(),
+    ],
+
+    <span class="hl-comment">// ...</span>
+];
+</code></pre>
+
+<p>
+</div>
+</p>
 
 <p>That's it!</p>
 
@@ -492,26 +495,35 @@ REVERB_SCHEME=http
 
     </p>
 
-<pre><code class="language-blade">&lt;<span class="hl-keyword">x-app-layout</span>&gt;
-    &lt;<span class="hl-keyword">x-slot</span> <span class="hl-property">name</span>=&quot;header&quot;&gt;
-        &lt;<span class="hl-keyword">h2</span> <span class="hl-property">class</span>=&quot;flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight&quot;&gt;
-            &lt;<span class="hl-keyword">x-breadcrumbs</span> :<span class="hl-property">links</span>=&quot;[__('Chirps')]&quot; /&gt;
-        &lt;/<span class="hl-keyword">h2</span>&gt;
-    &lt;/<span class="hl-keyword">x-slot</span>&gt;
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-layouts.app</span> :<span class="hl-property">title</span>=&quot;__('Chirps')&quot; <span class="hl-property">class</span>=&quot;hotwire-native:p-0&quot;&gt;
+    &lt;<span class="hl-keyword">section</span> <span class="hl-property">class</span>=&quot;w-full md:max-w-lg mx-auto&quot;&gt;
+        <span class="hl-addition">&lt;<span class="hl-keyword">x-turbo::stream-from</span> <span class="hl-property">source</span>=&quot;chirps&quot; /&gt;</span>
 
-<span class="hl-addition">    &lt;<span class="hl-keyword">x-turbo::stream-from</span> <span class="hl-property">source</span>=&quot;chirps&quot; /&gt;</span>
+        &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex items-center space-x-2 justify-between hotwire-native:hidden&quot;&gt;
+            &lt;<span class="hl-keyword">x-text.heading</span> <span class="hl-property">size</span>=&quot;xl&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Chirps'</span>) }}&lt;/<span class="hl-keyword">x-text.heading</span>&gt;
 
-    &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;py-12&quot;&gt;
-        <span class="hl-comment">&lt;!-- ... --&gt;</span>
-    &lt;/<span class="hl-keyword">div</span>&gt;
-&lt;/<span class="hl-keyword">x-app-layout</span>&gt;
+            &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}<span class="hl-value">&quot; <span class="hl-property">class</span>=&quot;</span>btn btn-primary btn-sm invisible [body:<span class="hl-property">where</span>(:<span class="hl-property">has</span>(#create\_chirp:<span class="hl-keyword">empty</span>))<span class="hl-property">_</span>&amp;]:visible&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Write'</span>) }}&lt;/<span class="hl-keyword">a</span>&gt;
+        &lt;/<span class="hl-keyword">div</span>&gt;
+
+        &lt;<span class="hl-keyword">x-turbo::frame</span> <span class="hl-property">id</span>=&quot;create_chirp&quot; <span class="hl-property">class</span>=&quot;hidden md:block *:mt-4&quot; <span class="hl-property">loading</span>=&quot;lazy&quot; <span class="hl-property">src</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}&quot;&gt;&lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;
+
+        &lt;<span class="hl-keyword">div</span> <span class="hl-property">id</span>=&quot;chirps&quot; <span class="hl-property">class</span>=&quot;has-[*]:mt-6 peer hotwire-native:mt-0 card hotwire-native:rounded-none hotwire-native:mb-20 bg-base-100 divide-y divide-base-200 shadow&quot;&gt;
+            <span class="hl-keyword">@each</span>(<span class="hl-value">'chirps.partials.chirp'</span>, <span class="hl-variable">$chirps</span>, <span class="hl-value">'chirp'</span>)
+        &lt;/<span class="hl-keyword">div</span>&gt;
+
+        &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;block space-y-4 peer-has-[*]:hidden my-10 hotwire-native:my-20&quot;&gt;
+            &lt;<span class="hl-keyword">x-icons.sparkles</span> <span class="hl-property">size</span>=&quot;size-8 hotwire-native:size-12&quot; <span class="hl-property">class</span>=&quot;mx-auto text-yellow-500&quot; /&gt;
+            &lt;<span class="hl-keyword">p</span> <span class="hl-property">class</span>=&quot;text-sm text-base-content/50 text-center&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'The birds are quiet. No chirps yet.'</span>) }}&lt;/<span class="hl-keyword">p</span>&gt;
+        &lt;/<span class="hl-keyword">div</span>&gt;
+    &lt;/<span class="hl-keyword">section</span>&gt;
+&lt;/<span class="hl-keyword">x-layouts.app</span>&gt;
 </code></pre>
 
 <p>
 </div>
 </p>
 
-<p>That's it! When the user visits that page, this component will automatically start listening to a <code>chirps</code> <em>private</em> channel for broadcasts. By default, it assumes we're using private channels, but you may configure it to listen to <code>presence</code> or <code>public</code> channels by passing the <code>type</code> prop to the component. In this case, we're passing a string for the channel name, but we could also pass an Eloquent model instance and it would figure out the channel name based on <a href="https://laravel.com/docs/broadcasting#model-broadcasting-conventions">Laravel's conventions</a>.</p>
+<p>Now, when the user visits that page, this component will automatically start listening to a <code>chirps</code> <em>private</em> channel for broadcasts. By default, it assumes we're using private channels, but you may configure it to listen to <code>presence</code> or <code>public</code> channels by passing the <code>type</code> prop to the component. In this case, we're passing a string for the channel name, but we could also pass an Eloquent model instance and it would figure out the channel name based on <a href="https://laravel.com/docs/broadcasting#model-broadcasting-conventions">Laravel's conventions</a>.</p>
 
 <p>Now, we're ready to start broadcasting! First, let's add the <code>Broadcasts</code> trait to our <code>Chirp</code> model:</p>
 
@@ -534,17 +546,18 @@ REVERB_SCHEME=http
 <span class="hl-keyword">namespace</span> <span class="hl-type">App\Models</span>;
 
 <span class="hl-addition"><span class="hl-keyword">use</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\Models\Broadcasts</span>;</span>
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Database\Eloquent\Factories\HasFactory</span>;
 <span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Database\Eloquent\Model</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Database\Eloquent\Relations\BelongsTo</span>;
 
 <span class="hl-keyword">class</span> <span class="hl-type">Chirp</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
 {
-<span class="hl-addition">    <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;</span>
+    <span class="hl-addition"><span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;</span>
+    <span class="hl-keyword">use</span> <span class="hl-type">HasFactory</span>;
 
-    <span class="hl-keyword">protected</span> <span class="hl-property">$fillable</span> = [
-        <span class="hl-value">'message'</span>,
-    ];
+    <span class="hl-keyword">protected</span> <span class="hl-property">$guarded</span> = [];
 
-    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">user</span>()
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">user</span>(): <span class="hl-type">BelongsTo</span>
     {
         <span class="hl-keyword">return</span> <span class="hl-variable">$this</span>-&gt;<span class="hl-property">belongsTo</span>(<span class="hl-type">User</span>::<span class="hl-keyword">class</span>);
     }
@@ -598,12 +611,12 @@ REVERB_SCHEME=http
         <span class="hl-keyword">if</span> (<span class="hl-variable">$request</span>-&gt;<span class="hl-property">wantsTurboStream</span>()) {
             <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([
                 <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$chirp</span>, <span class="hl-value">'prepend'</span>),
-                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">update</span>(<span class="hl-value">'create_chirp'</span>, <span class="hl-property">view</span>(<span class="hl-value">'chirps._form'</span>)),
+                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">update</span>(<span class="hl-value">'create_chirp'</span>, <span class="hl-property">view</span>(<span class="hl-value">'chirps.partials.form'</span>)),
                 <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">notice</span>(<span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>)),
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">to_route</span>(<span class="hl-value">'chirps.index'</span>)-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));
     }
 
     <span class="hl-comment">// ...</span>
@@ -667,7 +680,7 @@ REVERB_SCHEME=http
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">to_route</span>(<span class="hl-value">'chirps.index'</span>)-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
     }
 
     <span class="hl-comment">// ...</span>
@@ -726,7 +739,7 @@ REVERB_SCHEME=http
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">to_route</span>(<span class="hl-value">'chirps.index'</span>)-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
     }
 }
 </code></pre>
@@ -767,26 +780,27 @@ REVERB_SCHEME=http
 
 <span class="hl-keyword">use</span> <span class="hl-type">HotwiredLaravel\TurboLaravel\Models\Broadcasts</span>;
 <span class="hl-addition"><span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Broadcasting\PrivateChannel</span>;</span>
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Database\Eloquent\Factories\HasFactory</span>;
 <span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Database\Eloquent\Model</span>;
+<span class="hl-keyword">use</span> <span class="hl-type">Illuminate\Database\Eloquent\Relations\BelongsTo</span>;
 
 <span class="hl-keyword">class</span> <span class="hl-type">Chirp</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
 {
     <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;
+    <span class="hl-keyword">use</span> <span class="hl-type">HasFactory</span>;
 
-<span class="hl-addition">    <span class="hl-keyword">protected</span> <span class="hl-property">$broadcasts</span> = [</span>
+    <span class="hl-keyword">protected</span> <span class="hl-property">$guarded</span> = [];
+
+    <span class="hl-addition"><span class="hl-keyword">protected</span> <span class="hl-property">$broadcasts</span> = [</span>
 <span class="hl-addition">        <span class="hl-value">'insertsBy'</span> =&gt; <span class="hl-value">'prepend'</span>,</span>
 <span class="hl-addition">    ];</span>
 
-    <span class="hl-keyword">protected</span> <span class="hl-property">$fillable</span> = [
-        <span class="hl-value">'message'</span>,
-    ];
-
-    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">user</span>()
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">user</span>(): <span class="hl-type">BelongsTo</span>
     {
         <span class="hl-keyword">return</span> <span class="hl-variable">$this</span>-&gt;<span class="hl-property">belongsTo</span>(<span class="hl-type">User</span>::<span class="hl-keyword">class</span>);
     }
 
-<span class="hl-addition">    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">broadcastsTo</span>()</span>
+    <span class="hl-addition"><span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">broadcastsTo</span>()</span>
 <span class="hl-addition">    {</span>
 <span class="hl-addition">        <span class="hl-keyword">return</span> [</span>
 <span class="hl-addition">            <span class="hl-keyword">new</span> <span class="hl-type">PrivateChannel</span>(<span class="hl-value">'chirps'</span>),</span>
@@ -844,12 +858,12 @@ REVERB_SCHEME=http
         <span class="hl-keyword">if</span> (<span class="hl-variable">$request</span>-&gt;<span class="hl-property">wantsTurboStream</span>()) {
             <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([
                 <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$chirp</span>, <span class="hl-value">'prepend'</span>),
-                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">update</span>(<span class="hl-value">'create_chirp'</span>, <span class="hl-property">view</span>(<span class="hl-value">'chirps._form'</span>)),
+                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">update</span>(<span class="hl-value">'create_chirp'</span>, <span class="hl-property">view</span>(<span class="hl-value">'chirps.partials.form'</span>)),
                 <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">notice</span>(<span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>)),
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">to_route</span>(<span class="hl-value">'chirps.index'</span>)-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp created.'</span>));
     }
 
     <span class="hl-comment">// ...</span>
@@ -876,7 +890,7 @@ REVERB_SCHEME=http
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">to_route</span>(<span class="hl-value">'chirps.index'</span>)-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp updated.'</span>));
     }
 
     <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-property">destroy</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request, <span class="hl-type">Chirp</span> $chirp</span>)
@@ -896,7 +910,7 @@ REVERB_SCHEME=http
             ]);
         }
 
-        <span class="hl-keyword">return</span> <span class="hl-property">redirect</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>))-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
+        <span class="hl-keyword">return</span> <span class="hl-property">to_route</span>(<span class="hl-value">'chirps.index'</span>)-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
     }
 }
 </code></pre>
@@ -931,7 +945,7 @@ REVERB_SCHEME=http
 
 <p>Before testing it out, we'll need to start a queue worker. That's because Laravel 11 sets the <code>QUEUE_CONNECTION=database</code> by default instead of <code>sync</code>, and Turbo Laravel will send automatic broadcasts in background. Let's do that:</p>
 
-<pre><code class="language-bash">sail artisan queue:work --tries=1
+<pre><code class="language-bash">php artisan queue:work --tries=1
 </code></pre>
 
 <p>Also, make sure you have the <code>APP_URL</code> correctly set to your local testing URL in your <code>.env</code> file, since URLs will be generated in background:</p>
@@ -952,13 +966,13 @@ REVERB_SCHEME=http
 # App\Models\Chirp {#7426
 #   <span class="hl-property">message</span>: <span class="hl-value">&quot;Hello from Tinker!&quot;</span>,
 #   <span class="hl-property">user_id</span>: 1,
-#   <span class="hl-property">updated_at</span>: <span class="hl-value">&quot;2023-11-26 23:01:00&quot;</span>,
-#   <span class="hl-property">created_at</span>: <span class="hl-value">&quot;2023-11-26 23:01:00&quot;</span>,
+#   <span class="hl-property">updated_at</span>: <span class="hl-value">&quot;2025-4-26 23:01:00&quot;</span>,
+#   <span class="hl-property">created_at</span>: <span class="hl-value">&quot;2025-4-26 23:01:00&quot;</span>,
 #   <span class="hl-property">id</span>: 18,
 # }
 </code></pre>
 
-<p><img src="/assets/images/bootcamp/broadcasting-tinker.png?v=5" alt="Broadcasting from Tinker" /></p>
+<p><img src="/assets/images/bootcamp/broadcasting-tinker.png?v=6" alt="Broadcasting from Tinker" /></p>
 
 <h3>Extra Credit: Fixing The Missing Dropdowns</h3>
 
@@ -975,7 +989,7 @@ REVERB_SCHEME=http
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
-            <span class="whitespace-nowrap">resources/views/layouts/partials/current-identity.blade.php</span>
+            <span class="whitespace-nowrap">resources/views/partials/identity.blade.php</span>
         </div>
 
                 <button class="flex items-center space-x-1" title="Copy to clipboard" data-action="clipboard#copy" type="button">
@@ -1003,7 +1017,7 @@ REVERB_SCHEME=http
 </div>
 </p>
 
-<p>Next, update the <code>app.blade.php</code> to include it:</p>
+<p>Next, update the <code>head.blade.php</code> to include it:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
@@ -1012,38 +1026,35 @@ REVERB_SCHEME=http
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
 
-            <span class="whitespace-nowrap">resources/views/layouts/app.blade.php</span>
+            <span class="whitespace-nowrap">resources/views/partials/head.blade.php</span>
         </div>
 
             </div>
 
     </p>
 
-<pre><code class="language-blade">&lt;!DOCTYPE html&gt;
-&lt;<span class="hl-keyword">html</span> <span class="hl-property">lang</span>=&quot;{{ <span class="hl-property">str_replace</span>(<span class="hl-value">'_'</span>, <span class="hl-value">'-'</span>, <span class="hl-property">app</span>()-&gt;<span class="hl-property">getLocale</span>()) }}&quot;&gt;
-    &lt;<span class="hl-keyword">head</span>&gt;
-        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">charset</span>=&quot;utf-8&quot;&gt;
-        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;viewport&quot; <span class="hl-property">content</span>=&quot;width=device-width, initial-scale=1&quot;&gt;
-        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;csrf-token&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">csrf_token</span>() }}&quot;&gt;
+<pre><code class="language-blade">&lt;<span class="hl-keyword">meta</span> <span class="hl-property">charset</span>=&quot;utf-8&quot; /&gt;
+&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;viewport&quot;
+    <span class="hl-property">content</span>=&quot;width=device-width, initial-scale=1.0{{ <span class="hl-variable">$scalable</span> ?? <span class="hl-keyword">false</span> <span class="hl-operator">?</span> <span class="hl-value">', maximum-scale=1.0, user-scalable=0'</span> : <span class="hl-value">''</span> }}&quot; /&gt;
+&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;csrf-token&quot; <span class="hl-property">content</span>=&quot;{{ <span class="hl-property">csrf_token</span>() }}&quot;&gt;
 
-        <span class="hl-keyword">@if</span> (<span class="hl-variable">$viewTransitions</span> ?? <span class="hl-keyword">false</span>)
-        &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;view-transition&quot; <span class="hl-property">content</span>=&quot;same-origin&quot; /&gt;
-        <span class="hl-keyword">@endif</span>
+<span class="hl-keyword">@if</span> (<span class="hl-variable">$transitions</span> ?? <span class="hl-keyword">false</span>)
+    &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;view-transition&quot; <span class="hl-property">content</span>=&quot;same-origin&quot;&gt;
+<span class="hl-keyword">@endif</span>
 
-        <span class="hl-keyword">@include</span>(<span class="hl-value">'layouts.partials.reverb'</span>)
-<span class="hl-addition">        <span class="hl-keyword">@include</span>(<span class="hl-value">'layouts.partials.current-identity'</span>)</span>
+<span class="hl-keyword">@include</span>(<span class="hl-value">'partials.reverb'</span>)
+<span class="hl-addition"><span class="hl-keyword">@include</span>(<span class="hl-value">'partials.identity'</span>)</span>
 
-        {{ <span class="hl-variable">$meta</span> ?? <span class="hl-value">''</span> }}
+{{ <span class="hl-variable">$meta</span> ?? <span class="hl-value">''</span> }}
 
-        &lt;<span class="hl-keyword">title</span>&gt;{{ <span class="hl-property">config</span>(<span class="hl-value">'app.name'</span>, <span class="hl-value">'Laravel'</span>) }}&lt;/<span class="hl-keyword">title</span>&gt;
+&lt;<span class="hl-keyword">title</span>&gt;{{ <span class="hl-variable">$title</span> ?? <span class="hl-property">config</span>(<span class="hl-value">'app.name'</span>) }}&lt;/<span class="hl-keyword">title</span>&gt;
 
-        <span class="hl-comment">&lt;!-- ... --&gt;</span>
-    &lt;/<span class="hl-keyword">head</span>&gt;
+&lt;<span class="hl-keyword">link</span> <span class="hl-property">rel</span>=&quot;preconnect&quot; <span class="hl-property">href</span>=&quot;https://fonts.bunny.net&quot;&gt;
+&lt;<span class="hl-keyword">link</span> <span class="hl-property">href</span>=&quot;https://fonts.bunny.net/css?family=instrument-sans:400,500,600&quot; <span class="hl-property">rel</span>=&quot;stylesheet&quot; /&gt;
 
-    &lt;<span class="hl-keyword">body</span> <span class="hl-property">class</span>=&quot;font-sans antialiased&quot;&gt;
-        <span class="hl-comment">&lt;!-- ... --&gt;</span>
-    &lt;/<span class="hl-keyword">body</span>&gt;
-&lt;/<span class="hl-keyword">html</span>&gt;
+&lt;<span class="hl-keyword">link</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">tailwindcss</span>(<span class="hl-value">'css/app.css'</span>) }}&quot; <span class="hl-property">rel</span>=&quot;stylesheet&quot; /&gt;
+
+&lt;<span class="hl-keyword">x-importmap::tags</span> /&gt;
 </code></pre>
 
 <p>
@@ -1110,7 +1121,7 @@ REVERB_SCHEME=http
 </div>
 </p>
 
-<p>Now, let's update our <code>chirps.partials.chirp.blade.php</code> partial to use this controller instead of handling this in the server-side:</p>
+<p>Now, let's update our <code>chirp.blade.php</code> partial to use this controller instead of handling this in the server-side:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
@@ -1127,28 +1138,44 @@ REVERB_SCHEME=http
     </p>
 
 <pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::frame</span> :<span class="hl-property">id</span>=&quot;$chirp&quot; <span class="hl-property">class</span>=&quot;p-6 flex space-x-2&quot;&gt;
-    &lt;<span class="hl-keyword">svg</span> <span class="hl-property">xmlns</span>=&quot;http://www.w3.org/2000/svg&quot; <span class="hl-property">class</span>=&quot;h-6 w-6 text-gray-600 dark:text-gray-400 -scale-x-100&quot; <span class="hl-property">fill</span>=&quot;none&quot; <span class="hl-property">viewBox</span>=&quot;0 0 24 24&quot; <span class="hl-property">stroke</span>=&quot;currentColor&quot; <span class="hl-property">stroke-width</span>=&quot;2&quot;&gt;
-        <span class="hl-comment">&lt;!-- ... --&gt;</span>
+    &lt;<span class="hl-keyword">svg</span> <span class="hl-property">xmlns</span>=&quot;http://www.w3.org/2000/svg&quot; <span class="hl-property">class</span>=&quot;h-6 w-6 text-base-content/70 -scale-x-100&quot; <span class="hl-property">fill</span>=&quot;none&quot; <span class="hl-property">viewBox</span>=&quot;0 0 24 24&quot;
+        <span class="hl-property">stroke</span>=&quot;currentColor&quot; <span class="hl-property">stroke-width</span>=&quot;2&quot;&gt;
+        &lt;<span class="hl-keyword">path</span> <span class="hl-property">stroke-linecap</span>=&quot;round&quot; <span class="hl-property">stroke-linejoin</span>=&quot;round&quot;
+            <span class="hl-property">d</span>=&quot;M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z&quot; /&gt;
     &lt;/<span class="hl-keyword">svg</span>&gt;
 
     &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex-1&quot;&gt;
         &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex justify-between items-center&quot;&gt;
             &lt;<span class="hl-keyword">div</span>&gt;
-                &lt;<span class="hl-keyword">span</span> <span class="hl-property">class</span>=&quot;text-gray-800 dark:text-gray-200&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user</span>-&gt;<span class="hl-property">name</span> }}&lt;/<span class="hl-keyword">span</span>&gt;
-                &lt;<span class="hl-keyword">small</span> <span class="hl-property">class</span>=&quot;ml-2 text-sm text-gray-600 dark:text-gray-400&quot;&gt;&lt;<span class="hl-keyword">x-local-time-ago</span> :<span class="hl-property">value</span>=&quot;$chirp-&gt;created_at&quot; /&gt;&lt;/<span class="hl-keyword">small</span>&gt;
+                &lt;<span class="hl-keyword">span</span> <span class="hl-property">class</span>=&quot;text-base-content/70&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user</span>-&gt;<span class="hl-property">name</span> }}&lt;/<span class="hl-keyword">span</span>&gt;
+                &lt;<span class="hl-keyword">small</span> <span class="hl-property">class</span>=&quot;ml-2 text-sm text-base-content/50&quot;&gt;&lt;<span class="hl-keyword">x-local-time-ago</span> :<span class="hl-property">value</span>=&quot;$chirp-&gt;created_at&quot; /&gt;&lt;/<span class="hl-keyword">small</span>&gt;
                 <span class="hl-keyword">@unless</span> (<span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">created_at</span>-&gt;<span class="hl-property">eq</span>(<span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">updated_at</span>))
-                &lt;<span class="hl-keyword">small</span> <span class="hl-property">class</span>=&quot;text-sm text-gray-600&quot;&gt; &amp;middot; edited&lt;/<span class="hl-keyword">small</span>&gt;
+                &lt;<span class="hl-keyword">small</span> <span class="hl-property">class</span>=&quot;text-sm text-base-content/50&quot;&gt; &amp;middot; edited&lt;/<span class="hl-keyword">small</span>&gt;
                 <span class="hl-keyword">@endunless</span>
             &lt;/<span class="hl-keyword">div</span>&gt;
 
-<span class="hl-deletion">            <span class="hl-keyword">@if</span> (<span class="hl-type">Auth</span>::<span class="hl-property">id</span>() === <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user</span>-&gt;<span class="hl-property">id</span>) </span>
-<span class="hl-deletion">            &lt;<span class="hl-keyword">x-dropdown</span> <span class="hl-property">align</span>=&quot;right&quot; <span class="hl-property">width</span>=&quot;48&quot;&gt;</span>
-<span class="hl-addition">            &lt;<span class="hl-keyword">x-dropdown</span> <span class="hl-property">align</span>=&quot;right&quot; <span class="hl-property">width</span>=&quot;48&quot; <span class="hl-property">class</span>=&quot;hidden&quot; <span class="hl-property">data-controller</span>=&quot;visible-to-creator&quot; <span class="hl-property">data-visible-to-creator-id-value</span>=&quot;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user_id</span> }}&quot; <span class="hl-property">data-visible-to-creator-hidden-class</span>=&quot;hidden&quot;&gt;</span>
-                <span class="hl-comment">&lt;!-- ... --&gt;</span>
+<span class="hl-deletion">            <span class="hl-keyword">@if</span> (<span class="hl-type">Auth</span>::<span class="hl-property">id</span>() === <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user</span>-&gt;<span class="hl-property">id</span>)</span>
+<span class="hl-deletion">            &lt;<span class="hl-keyword">x-dropdown</span> <span class="hl-property">class</span>=&quot;dropdown-end&quot; <span class="hl-property">class</span>=&quot;hidden&quot;&gt;</span>
+<span class="hl-addition">            &lt;<span class="hl-keyword">x-dropdown</span> <span class="hl-property">class</span>=&quot;dropdown-end&quot; <span class="hl-property">class</span>=&quot;hidden&quot; <span class="hl-property">data-controller</span>=&quot;visible-to-creator&quot; <span class="hl-property">data-visible-to-creator-id-value</span>=&quot;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user_id</span> }}&quot; <span class="hl-property">data-visible-to-creator-hidden-class</span>=&quot;hidden&quot;&gt;</span>
+                &lt;<span class="hl-keyword">x-slot</span> <span class="hl-property">name</span>=&quot;trigger&quot; <span class="hl-property">class</span>=&quot;btn-ghost btn-xs&quot;&gt;
+                    &lt;<span class="hl-keyword">x-icons.ellipsis-vertical</span> /&gt;
+                    &lt;<span class="hl-keyword">span</span> <span class="hl-property">class</span>=&quot;sr-only&quot; <span class="hl-property">data-bridge--menu-target</span>=&quot;title&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Options'</span>) }}&lt;/<span class="hl-keyword">span</span>&gt;
+                &lt;/<span class="hl-keyword">x-slot</span>&gt;
+
+                &lt;<span class="hl-keyword">x-dropdown.menu</span> <span class="hl-property">class</span>=&quot;bg-base-200&quot;&gt;
+                    &lt;<span class="hl-keyword">x-dropdown.link</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.edit'</span>, <span class="hl-variable">$chirp</span>) }}<span class="hl-value">&quot; <span class="hl-property">data-bridge-disabled</span>=&quot;</span>true<span class="hl-value">&quot; <span class="hl-property">class</span>=&quot;</span>hotwire-native:hidden&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Edit'</span>) }}&lt;/<span class="hl-keyword">x-dropdown.link</span>&gt;
+                    &lt;<span class="hl-keyword">x-dropdown.link</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.edit'</span>, <span class="hl-variable">$chirp</span>) }}<span class="hl-value">&quot; <span class="hl-property">data-turbo-frame</span>=&quot;</span>_top<span class="hl-value">&quot; <span class="hl-property">class</span>=&quot;</span>hidden hotwire-native:inline-block&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Edit'</span>) }}&lt;/<span class="hl-keyword">x-dropdown.link</span>&gt;
+
+                    &lt;<span class="hl-keyword">form</span> <span class="hl-property">action</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.destroy'</span>, <span class="hl-variable">$chirp</span>) }}&quot; <span class="hl-property">method</span>=&quot;POST&quot;&gt;
+                        <span class="hl-keyword">@method</span>(<span class="hl-value">'DELETE'</span>)
+                        &lt;<span class="hl-keyword">x-dropdown.button</span> <span class="hl-property">type</span>=&quot;submit&quot; <span class="hl-property">data-bridge-disabled</span>=&quot;true&quot; <span class="hl-property">class</span>=&quot;hotwire-native:hidden&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Delete'</span>) }}&lt;/<span class="hl-keyword">x-dropdown.button</span>&gt;
+                        &lt;<span class="hl-keyword">x-dropdown.button</span> <span class="hl-property">type</span>=&quot;submit&quot; <span class="hl-property">data-turbo-frame</span>=&quot;_top&quot; <span class="hl-property">class</span>=&quot;hidden hotwire-native:inline-block&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Delete'</span>) }}&lt;/<span class="hl-keyword">x-dropdown.button</span>&gt;
+                    &lt;/<span class="hl-keyword">form</span>&gt;
+                &lt;/<span class="hl-keyword">x-dropdown.menu</span>&gt;
             &lt;/<span class="hl-keyword">x-dropdown</span>&gt;
 <span class="hl-deletion">            <span class="hl-keyword">@endif</span></span>
         &lt;/<span class="hl-keyword">div</span>&gt;
-        &lt;<span class="hl-keyword">p</span> <span class="hl-property">class</span>=&quot;mt-4 text-lg text-gray-900 dark:text-gray-200&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">message</span> }}&lt;/<span class="hl-keyword">p</span>&gt;
+        &lt;<span class="hl-keyword">p</span> <span class="hl-property">class</span>=&quot;mt-4 text-lg&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">content</span> }}&lt;/<span class="hl-keyword">p</span>&gt;
     &lt;/<span class="hl-keyword">div</span>&gt;
 &lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;
 </code></pre>
@@ -1173,15 +1200,17 @@ REVERB_SCHEME=http
 
     </p>
 
-<pre><code class="language-blade"><span class="hl-deletion"><span class="hl-keyword">@props</span>([<span class="hl-value">'align'</span> =&gt; <span class="hl-value">'right'</span>, <span class="hl-value">'width'</span> =&gt; <span class="hl-value">'48'</span>, <span class="hl-value">'contentClasses'</span> =&gt; <span class="hl-value">'py-1 bg-white'</span>])</span>
-<span class="hl-addition"><span class="hl-keyword">@props</span>([<span class="hl-value">'align'</span> =&gt; <span class="hl-value">'right'</span>, <span class="hl-value">'width'</span> =&gt; <span class="hl-value">'48'</span>, <span class="hl-value">'contentClasses'</span> =&gt; <span class="hl-value">'py-1 bg-white'</span>, <span class="hl-value">'dataController'</span> =&gt; <span class="hl-value">''</span>, <span class="hl-value">'dataAction'</span> =&gt; <span class="hl-value">''</span>])</span>
+<pre><code class="language-blade"><span class="hl-addition"><span class="hl-keyword">@props</span>([<span class="hl-value">'dataController'</span> =&gt; <span class="hl-value">''</span>])</span>
 
-<span class="hl-comment">&lt;!-- ... --&gt;</span>
+<span class="hl-deletion">&lt;<span class="hl-keyword">details</span> {{ <span class="hl-variable">$attributes</span>-&gt;<span class="hl-property">merge</span>([<span class="hl-value">'class'</span> =&gt; <span class="hl-value">'dropdown'</span>, <span class="hl-value">'data-controller'</span> =&gt; <span class="hl-value">'bridge--menu'</span>]) }}&gt;</span>
+<span class="hl-addition">&lt;<span class="hl-keyword">details</span> {{ <span class="hl-variable">$attributes</span>-&gt;<span class="hl-property">merge</span>([<span class="hl-value">'class'</span> =&gt; <span class="hl-value">'dropdown'</span>, <span class="hl-value">'data-controller'</span> =&gt; <span class="hl-value">'bridge--menu '</span> . <span class="hl-variable">$dataController</span>]) }}&gt;</span>
+    <span class="hl-deletion">&lt;<span class="hl-keyword">summary</span> {{ <span class="hl-variable">$trigger</span>-&gt;<span class="hl-property">attributes</span>-&gt;<span class="hl-property">merge</span>([<span class="hl-value">'class'</span> =&gt; <span class="hl-value">'btn m-1'</span>]) }}&gt;</span>
+    <span class="hl-addition">&lt;<span class="hl-keyword">summary</span> {{ <span class="hl-variable">$trigger</span>-&gt;<span class="hl-property">attributes</span>-&gt;<span class="hl-property">merge</span>([<span class="hl-value">'class'</span> =&gt; <span class="hl-value">'btn m-1'</span>, <span class="hl-value">'data-action'</span> =&gt; <span class="hl-value">'click-&gt;bridge--menu#show'</span>]) }}&gt;</span>
+        {{ <span class="hl-variable">$trigger</span> }}
+    &lt;/<span class="hl-keyword">summary</span>&gt;
 
-<span class="hl-deletion">&lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;relative&quot; <span class="hl-property">data-controller</span>=&quot;dropdown&quot; <span class="hl-property">data-action</span>=&quot;turbo:before-cache<span class="hl-keyword">@window</span>-&gt;dropdown#closeNow click<span class="hl-keyword">@window</span>-&gt;dropdown#close:stop close-&gt;dropdown#close&quot;&gt;</span>
-<span class="hl-addition">&lt;<span class="hl-keyword">div</span> {{ <span class="hl-variable">$attributes</span>-&gt;<span class="hl-property">merge</span>([<span class="hl-value">'class'</span> =&gt; <span class="hl-value">'relative'</span>]) }} data-controller=<span class="hl-value">&quot;dropdown {{ $dataController }}&quot;</span> <span class="hl-property">data-action</span>=&quot;turbo:before-cache<span class="hl-keyword">@window</span>-&gt;<span class="hl-property">dropdown</span>#closeNow click<span class="hl-keyword">@window</span>-&gt;<span class="hl-property">dropdown</span>#close:stop close-&gt;<span class="hl-property">dropdown</span>#close {{ <span class="hl-variable">$dataAction</span> }}&quot;&gt;</span>
-    <span class="hl-comment">&lt;!-- ... --&gt;</span>
-&lt;/<span class="hl-keyword">div</span>&gt;
+    {{ <span class="hl-variable">$slot</span> }}
+&lt;/<span class="hl-keyword">details</span>&gt;
 </code></pre>
 
 <p>
@@ -1190,7 +1219,7 @@ REVERB_SCHEME=http
 
 <p>Now, if you try creating another user and test this out, you'll see that the dropdown only shows up for the creator of the Chirp!</p>
 
-<p><img src="/assets/images/bootcamp/broadcasting-dropdown-fix.png?v=6" alt="Dropdown only shows up for creator" /></p>
+<p><img src="/assets/images/bootcamp/broadcasting-dropdown-fix.png?v=7" alt="Dropdown only shows up for creator" /></p>
 
 <p>This change also makes our entire <code>chirps/partials/chirp.blade.php</code> partial cacheable! We could cache it and only render that when changes are made to the Chirp model using the Chirp's <code>updated_at</code> timestamps, for example.</p>
 
