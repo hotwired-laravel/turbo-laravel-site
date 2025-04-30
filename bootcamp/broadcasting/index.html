@@ -980,7 +980,7 @@ REVERB_SCHEME=http
 
 <p>Instead of conditionally rendering the dropdown in the server side, let's switch to always rendering them and hide it from our users with a sprinkle of JavaScript instead.</p>
 
-<p>First, let's update our <code>layouts.partials.current-identity</code> partial to include a few things about the currently authenticated user when there's one:</p>
+<p>First, let's create the <code>resources/views/layouts/identity.blade.php</code> partial to include a few things about the currently authenticated user when there's one:</p>
 
 <p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
     <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
