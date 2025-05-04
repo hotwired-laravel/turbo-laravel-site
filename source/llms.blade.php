@@ -1,6 +1,6 @@
 # Turbo Laravel
 
-Turbo Laravel is a community-maintenade package that integrates Laravel with Hotwire.
+Turbo Laravel is a community-maintained package that integrates Laravel with Hotwire.
 
 ## Table of Contents
 
