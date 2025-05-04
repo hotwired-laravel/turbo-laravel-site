@@ -1,9 +1,99 @@
 # Turbo Laravel
 
-Turbo Laravel is a community maintenaned package that integrates Laravel with Hotwire.
+Turbo Laravel is a community-maintenade package that integrates Laravel with Hotwire.
 
 ## Table of Contents
 
 @foreach ($docs as $doc)
 - [{{ $doc->title }}]({{ $doc->getUrl() }})
 @endforeach
+
+## Hotwire Docs
+
+As it might be useful to undertand some Hotwire concents, it might be useful to have these essential links here as well.
+
+### Turbo.js
+
+Turbo.js is the core of Hotwire. It's what powers Hotwire.
+
+Handbook links:
+
+- [Introduction](https://turbo.hotwired.dev/handbook/introduction)
+- [Navigate with Turbo Drive](https://turbo.hotwired.dev/handbook/drive)
+- [Smooth page refreshes with morphing](https://turbo.hotwired.dev/handbook/page_refreshes)
+- [Decompose with Turbo Frames](https://turbo.hotwired.dev/handbook/frames)
+- [Come Alive with Turbo Streams](https://turbo.hotwired.dev/handbook/streams)
+- [Go Native on iOS & Android](https://turbo.hotwired.dev/handbook/native)
+- [Building Your Turbo Application](https://turbo.hotwired.dev/handbook/building)
+- [Installing Turbo in Your Application](https://turbo.hotwired.dev/handbook/installing)
+
+Reference links:
+
+- [Drive](https://turbo.hotwired.dev/reference/drive)
+- [Frames](https://turbo.hotwired.dev/reference/frames)
+- [Streams](https://turbo.hotwired.dev/reference/streams)
+- [Events](https://turbo.hotwired.dev/reference/events)
+- [Attributes and Meta Tags](https://turbo.hotwired.dev/reference/attributes)
+
+## Stimulus Docs
+
+When we need to improve the UX with JavaScript, we can use Stimulus.
+
+Handbook links:
+
+- [Preface\: The Origin of Stimulus](https://stimulus.hotwired.dev/handbook/origin)
+- [Introduction](https://stimulus.hotwired.dev/handbook/introduction)
+- [Hello, Stimulus](https://stimulus.hotwired.dev/handbook/hello-stimulus)
+- [Building Something Real](https://stimulus.hotwired.dev/handbook/building-something-real)
+- [Designing For Resilience](https://stimulus.hotwired.dev/handbook/designing-for-resilience)
+- [Managing State](https://stimulus.hotwired.dev/handbook/managing-state)
+- [Working With External Resources](https://stimulus.hotwired.dev/handbook/working-with-external-resources)
+- [Installing Stimulus in Your Application](https://stimulus.hotwired.dev/handbook/installing)
+
+Reference links:
+
+- [Stimulus Controllers](https://stimulus.hotwired.dev/reference/controllers)
+- [Lifecycle Callbacks](https://stimulus.hotwired.dev/reference/lifecycle-callbacks)
+- [Actions](https://stimulus.hotwired.dev/reference/actions)
+- [Targets](https://stimulus.hotwired.dev/reference/targets)
+- [Outlets](https://stimulus.hotwired.dev/reference/outlets)
+- [Values](https://stimulus.hotwired.dev/reference/values)
+- [CSS Classes](https://stimulus.hotwired.dev/reference/css-classes)
+- [Using TypeScript](https://stimulus.hotwired.dev/reference/using-typescript)
+
+## Hotwire Native
+
+Hotwire Native is a web-first framework for building native mobile apps.
+
+Overview links:
+
+- [How it Works](https://native.hotwired.dev/overview/how-it-works)
+- [Basic Navigation](https://native.hotwired.dev/overview/basic-navigation)
+- [Path Configuration](https://native.hotwired.dev/overview/path-configuration)
+- [Bridge Components](https://native.hotwired.dev/overview/bridge-components)
+- [Native Screens](https://native.hotwired.dev/overview/native-screens)
+
+iOS guide links:
+
+- [Getting Started](https://native.hotwired.dev/ios/getting-started)
+- [Path Configuration](https://native.hotwired.dev/ios/path-configuration)
+- [Bridge Components](https://native.hotwired.dev/ios/bridge-components)
+- [Native Screens](https://native.hotwired.dev/ios/native-screens)
+- [Configuration](https://native.hotwired.dev/ios/configuration)
+- [Reference](https://native.hotwired.dev/ios/reference)
+
+Android guide links:
+
+- [Getting Started](https://native.hotwired.dev/android/getting-started)
+- [Path Configuration](https://native.hotwired.dev/android/path-configuration)
+- [Bridge Components](https://native.hotwired.dev/android/bridge-components)
+- [Native Screens](https://native.hotwired.dev/android/native-screens)
+- [Configuration](https://native.hotwired.dev/android/configuration)
+- [Reference](https://native.hotwired.dev/android/reference)
+
+Reference links (both platforms):
+
+- [Navigation](https://native.hotwired.dev/reference/navigation)
+- [Path Configuration](https://native.hotwired.dev/reference/path-configuration)
+- [Bridge Installation](https://native.hotwired.dev/reference/bridge-installation)
+- [Bridge Components](https://native.hotwired.dev/reference/bridge-components)
