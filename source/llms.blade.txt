@@ -35,7 +35,7 @@ Reference links:
 - [Events](https://turbo.hotwired.dev/reference/events)
 - [Attributes and Meta Tags](https://turbo.hotwired.dev/reference/attributes)
 
-## Stimulus Docs
+### Stimulus Docs
 
 When we need to improve the UX with JavaScript, we can use Stimulus.
 
@@ -61,7 +61,7 @@ Reference links:
 - [CSS Classes](https://stimulus.hotwired.dev/reference/css-classes)
 - [Using TypeScript](https://stimulus.hotwired.dev/reference/using-typescript)
 
-## Hotwire Native
+### Hotwire Native
 
 Hotwire Native is a web-first framework for building native mobile apps.
 
