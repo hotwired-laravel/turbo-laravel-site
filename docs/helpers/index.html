@@ -191,7 +191,7 @@
 
 <h2>Blade Directives</h2>
 
-<h3>The <code>@domid()</code> Blade Directive</h3>
+<h3>The DOM ID Blade Directive</h3>
 
 <p>Since Turbo relies a lot on DOM IDs, the package offers a helper to generate unique DOM IDs based on your models. You may use the <code>@domid</code> Blade Directive in your Blade views like so:</p>
 
@@ -211,7 +211,7 @@
 
 <h2>Blade Components</h2>
 
-<h3>The <code>&lt;x-turbo::frame&gt;</code> Blade Component</h3>
+<h3>The Turbo Frame Blade Component</h3>
 
 <p>You may also prefer using the <code>&lt;x-turbo::frame&gt;</code> Blade component that ships with the package. This way, you don't need to worry about using the <code>@domid()</code> helper for your Turbo Frame:</p>
 
@@ -229,7 +229,7 @@
 
 <p>Additionally, you may also pass along any prop that is supported by the Turbo Frame custom Element to the <code>&lt;x-turbo::frame&gt;</code> Blade component, like <code>target</code>, <code>src</code>, or <code>loading</code>. These are the listed attributes, but any other attribute will also be forwarded to the <code>&lt;turbo-frame&gt;</code> tag that will be rendered by the <code>&lt;x-turbo::frame&gt;</code> component. For a full list of what's possible to do with Turbo Frames, see the <a href="https://turbo.hotwired.dev/handbook/frames">documentation</a>.</p>
 
-<h3>The <code>&lt;x-turbo::stream&gt;</code> Blade Component</h3>
+<h3>The Turbo Stream Blade Component</h3>
 
 <p>If you're rendering a Turbo Stream inside a your Blade files, you may use the <code>&lt;x-turbo::stream&gt;</code> helper:</p>
 
@@ -240,7 +240,7 @@
 
 <p>Just like in the Turbo Frames' <code>:id</code> prop, the <code>:target</code> prop of the Turbo Stream component accepts a string, a model instance, or an array to resolve the DOM ID using the <code>dom_id()</code> function.</p>
 
-<h3>The <code>&lt;x-turbo::refresh-method method="morph" /&gt;</code> Blade Component</h3>
+<h3>The Refresh Method Blade Component</h3>
 
 <p>We can configure which update method Turbo should so to update the document:</p>
 
@@ -273,7 +273,7 @@
 <pre><code class="language-blade">&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;turbo-refresh-method&quot; <span class="hl-property">content</span>=&quot;morph&quot;&gt;
 </code></pre>
 
-<h3>The <code>&lt;x-turbo::refresh-scroll scroll="preserve" /&gt;</code> Blade Component</h3>
+<h3>The Refresh Scroll Behavior Blade Component</h3>
 
 <p>You can also configure the scroll behavior on Turbo:</p>
 
@@ -306,7 +306,7 @@
 <pre><code class="language-blade">&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;turbo-refresh-scroll&quot; <span class="hl-property">content</span>=&quot;preserve&quot;&gt;
 </code></pre>
 
-<h3>The <code>&lt;x-turbo::refreshes-with&gt;</code> Blade Component</h3>
+<h3>The Refresh Behaviors Blade Component</h3>
 
 <p>You may configure both the refresh method and scroll behavior using the <code>&lt;x-turbo::refreshes-with /&gt;</code> component in your main layout's <code>&lt;head&gt;</code> tag or on specific pages to configure how Turbo should update the page. Here's an example:</p>
 
@@ -319,7 +319,7 @@
 &lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;turbo-refresh-scroll&quot; <span class="hl-property">content</span>=&quot;preserve&quot;&gt;
 </code></pre>
 
-<h3>The <code>&lt;x-turbo::exempts-page-from-cache /&gt;</code> Blade Component</h3>
+<h3>The Page Cache Exemption Blade Component</h3>
 
 <p>This component may be added to any page you don't want Turbo to keep a cache in the page cache. Example:</p>
 
@@ -331,7 +331,7 @@
 <pre><code class="language-html">&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;turbo-cache-control&quot; <span class="hl-property">content</span>=&quot;no-cache&quot;&gt;
 </code></pre>
 
-<h3>The <code>&lt;x-turbo::exempts-page-from-preview /&gt;</code> Blade Component</h3>
+<h3>The Page Preview Exemption Blade Component</h3>
 
 <p>This component may be added to any page you don't want Turbo to show as a preview on regular navigation visits. No-preview pages will only be used in restoration visits (when you use the browser's back or forward buttons, or when when moving backward in the navigation stack). Example:</p>
 
@@ -343,7 +343,7 @@
 <pre><code class="language-html">&lt;<span class="hl-keyword">meta</span> <span class="hl-property">name</span>=&quot;turbo-cache-control&quot; <span class="hl-property">content</span>=&quot;no-preview&quot;&gt;
 </code></pre>
 
-<h3>The <code>&lt;x-turbo::page-requires-reload /&gt;</code> Blade Component</h3>
+<h3>The Page Reload Blade Component</h3>
 
 <p>This component may be added to any page you want Turbo to reload. This will break out of Turbo Frame navigations. May be used at a login screen, for instance. Example:</p>
 
@@ -359,7 +359,7 @@
 
 <p>The package ships with a set of helper functions. These functions are all namespaced under <code>HotwiredLaravel\\TurboLaravel\\</code> but we also add them globally for convenience, so you may use them directly without the <code>use</code> statements (this is useful in contexts like Blade views, for instance).</p>
 
-<h3>The <code>dom_id()</code></h3>
+<h3>The DOM ID Helper Function</h3>
 
 <p>The mentioned namespaced <code>dom_id()</code> helper function may also be used from anywhere in your application, like so:</p>
 
@@ -372,7 +372,7 @@
 
 <p>These helpers strip out the model's FQCN (see <a href="https://github.com/hotwired-laravel/turbo-laravel/blob/main/config/turbo-laravel.php">config/turbo-laravel.php</a> if you use an unconventional location for your models).</p>
 
-<h3>The <code>dom_class()</code></h3>
+<h3>The DOM CSS Class Helper Function</h3>
 
 <p>The <code>dom_class()</code> helper function may be used from anywhere in your application, like so:</p>
 
@@ -390,7 +390,7 @@
 
 <p>This will generate a DOM class of <code>reactions_list_comment</code>.</p>
 
-<h3>The <code>turbo_stream()</code></h3>
+<h3>The Turbo Stream Helper Function</h3>
 
 <p>You may generate Turbo Streams using the <code>Response::turboStream()</code> macro, but you may also do so using the <code>turbo_stream()</code> helper function:</p>
 
@@ -401,7 +401,7 @@
 
 <p>Both the <code>Response::turboStream()</code> and the <code>turbo_stream()</code> function work the same way. The <code>turbo_stream()</code> function may be easier to use.</p>
 
-<h3>The <code>turbo_stream_view()</code></h3>
+<h3>The Turbo Stream View Helper Function</h3>
 
 <p>You may combo Turbo Streams using the <code>turbo_stream([])</code> function passing an array, but you may prefer to create a separate Blade view with all the Turbo Streams, this way you may also use template extensions and everything else Blade offers:</p>
 
@@ -414,13 +414,13 @@
 
 <h2>Request &amp; Response Macros</h2>
 
-<h3>The <code>request()-&gt;wantsTurboStream()</code> macro</h3>
+<h3>Detect If Request Accepts Turbo Streams</h3>
 
 <p>The <code>request()-&gt;wantsTurboStream()</code> macro added to the request class will check if the request accepts Turbo Stream and return <code>true</code> or <code>false</code> accordingly.</p>
 
 <p>Turbo will add a <code>Accept: text/vnd.turbo-stream.html, ...</code> header to the requests. That's how we can detect if the request came from a client using Turbo.</p>
 
-<h3>The <code>request()-&gt;wasFromTurboFrame()</code> macro</h3>
+<h3>Detect If Request Was Made From Turbo Frame</h3>
 
 <p>The <code>request()-&gt;wasFromTurboFrame()</code> macro added to the request class will check if the request was made from a Turbo Frame. When used with no parameters, it returns <code>true</code> if the request has a <code>Turbo-Frame</code> header, no matter which specific Turbo Frame.</p>
 
@@ -431,17 +431,17 @@
 }
 </code></pre>
 
-<h3>The <code>request()-&gt;wasFromHotwireNative()</code> macro</h3>
+<h3>Detect If Request Was Made From Hotwire Native Client</h3>
 
 <p>The <code>request()-&gt;wasFromHotwireNative()</code> macro added to the request class will check if the request came from a Hotwire Native client and returns <code>true</code> or <code>false</code> accordingly.</p>
 
 <p>Hotwire Native clients are encouraged to override the <code>User-Agent</code> header in the WebViews to mention the words <code>Hotwire Native</code> on them. This is what this macro uses to detect if it came from a Hotwire Native client.</p>
 
-<h3>The <code>response()-&gt;turboStream()</code> macro</h3>
+<h3>Turbo Stream Response Macro</h3>
 
 <p>The <code>response()-&gt;turboStream()</code> macro works similarly to the <code>turbo_stream()</code> function above. It was only added to the response for convenience.</p>
 
-<h3>The <code>response()-&gt;turboStreamView()</code> macro</h3>
+<h3>The Turbo Stream View Response Macro</h3>
 
 <p>The <code>response()-&gt;turboStreamView()</code> macro works similarly to the <code>turbo_stream_view()</code> function above. It was only added to the response for convenience.</p>
         </div>
