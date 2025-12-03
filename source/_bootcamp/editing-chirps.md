@@ -65,7 +65,7 @@ We're going to use the `<x-dropdown>` component that comes with Turbo Breeze, wh
                 @endunless+}
             </div>
 
-{+            @if (Auth::id() === $chirp->user->id)
+{+            @if (auth()->user()->id === $chirp->user->id)
             <x-dropdown class="dropdown-end">
                 <x-slot name="trigger" class="btn-ghost btn-xs">
                     <x-heroicon-o-ellipsis-vertical class="size-6" />
@@ -127,19 +127,17 @@ Now, we need to create our `chirps.edit` view:
 <x-fenced-code file="resources/views/chirps/edit.blade.php" copy>
 
 ```blade
-<x-app-layout :title="__('Edit Chirp')">
-    <x-slot name="header">
-        <h2 class="flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <x-breadcrumbs :links="[route('chirps.index') => __('Chirps'), __('Edit Chirp')]" />
-        </h2>
-    </x-slot>
+<x-layouts.app :title="__('Edit Chirp')">
+    <section class="w-full lg:max-w-lg mx-auto">
+        <x-back-link :href="route('chirps.index')">{{ __('Chirps') }}</x-back-link>
+        <x-text.heading size="xl">{{ __('Edit Chirp') }}</x-text.heading>
+        <x-text.subheading>{{ __('Update your Chirp message.') }}</x-text.subheading>
 
-    <div class="py-12">
-        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
+        <x-page-card class="my-6">
             @include('chirps.partials.form', ['chirp' => $chirp])
-        </div>
-    </div>
-</x-app-layout>
+        </x-page-card>
+    </section>
+</x-layouts.app>
 ```
 
 </x-fenced-code>
@@ -149,23 +147,32 @@ We're using the same `form` partial the create chirps view uses. However, in thi
 <x-fenced-code file="resources/views/chirps/partials/form.blade.php" copy>
 
 ```blade
-<form action="{{ ($chirp ?? false) ? route('chirps.update', $chirp) : route('chirps.store') }}" method="POST" class="w-full">
+<form action="{{ ($chirp ?? false) ? route('chirps.update', $chirp) : route('chirps.store') }}" method="post" class="w-full space-y-6">
     @csrf
     @if ($chirp ?? false)
         @method('PUT')
     @endif
 
     <div>
-        <x-input-label for="message" :value="__('Message')" class="sr-only" />
-        <x-textarea-input id="message" name="message" autofocus placeholder="{{ __('What\'s on your mind?') }}" class="block w-full" :value="old('message', $chirp?->message ?? '')" />
-        <x-input-error :messages="$errors->get('message')" class="mt-2" />
+        <x-form.label for="message">{{ __("What's on your mind?") }}</x-form.label>
+
+        <x-form.textarea-input
+            id="message"
+            name="message"
+            :value="old('message', $chirp?->message ?? '')"
+            :data-error="$errors->has('message')"
+            required
+            autofocus
+            autocomplete="off"
+            :placeholder="strip_tags(Illuminate\Foundation\Inspiring::quote())"
+            class="mt-2"
+        />
+
+        <x-form.error :message="$errors->first('content')" />
     </div>
 
-    <div class="mt-6 flex items-center space-x-4">
-        <x-primary-button>
-            {{ __('Chirp') }}
-        </x-primary-button>
-
+    <div class="flex items-center justify-start gap-4">
+        <x-form.button.primary type="submit">{{ __('Post') }}</x-form.button.primary>
         @if ($chirp ?? false)
         <a href="{{ route('chirps.index') }}" class="dark:text-gray-400">{{ __('Cancel') }}</a>
         @endif

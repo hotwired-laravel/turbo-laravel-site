@@ -50,7 +50,7 @@ For that to work, we also need to wrap our create form with a matching Turbo Fra
 
         <x-page-card class="my-6">
 {-            @include('chirps.partials.form')-}
-{+            <x-turbo::frame id="create_chirp" target="_top">
+{+            <x-turbo::frame target="_top">
                 @include('chirps.partials.form')
             </x-turbo::frame>+}
         </x-page-card>
@@ -83,7 +83,7 @@ Before we change the `ChirpController`, let's give our list of chirps wrapper el
         <x-text.subheading>{{ __('Write a message to the World.') }}</x-text.subheading>
 
         <x-page-card class="my-6">
-{-            @include('chirps.partials.form')-}
+{-            <x-turbo::frame target="_top">-}
 {+            <x-turbo::frame id="create_chirp" target="_top">
                 @include('chirps.partials.form')
             </x-turbo::frame>+}
@@ -177,9 +177,9 @@ Now, let's also update the `chirps.edit` page to add a wrapping Turbo Frame arou
         <x-text.subheading>{{ __('Update your Chirp message.') }}</x-text.subheading>
 
         <x-page-card class="my-6">
-{-            @include('chirps.partials.form')-}
+{-            @include('chirps.partials.form', ['chirp' => $chirp])-}
 {+            <x-turbo::frame :id="$chirp" target="_top">
-                @include('chirps.partials.form')
+                @include('chirps.partials.form', ['chirp' => $chirp])
             </x-turbo::frame>+}
         </x-page-card>
     </section>
