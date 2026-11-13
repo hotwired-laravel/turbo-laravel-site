@@ -34,7 +34,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Figtree:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
-                <link rel="stylesheet" href="/assets/build/assets/main-DiWY8ktk.css">
+                <link rel="stylesheet" href="/assets/build/assets/main-cqHj4bsv.css">
         <script defer type="module" src="/assets/build/assets/main-B2QLDe1R.js"></script>
     </head>
     <body class="min-h-screen bg-paper font-body text-ink antialiased" data-controller="search" data-action="keydown@window->search#focus">
@@ -286,7 +286,7 @@
 <span class="hl-addition">                <span class="hl-keyword">@endunless</span></span>
             &lt;/<span class="hl-keyword">div</span>&gt;
 
-<span class="hl-addition">            <span class="hl-keyword">@if</span> (<span class="hl-property">auth</span>()-&gt;<span class="hl-property">user</span>()-&gt;<span class="hl-property">id</span> === <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user</span>-&gt;<span class="hl-property">id</span>)</span>
+<span class="hl-addition">            <span class="hl-keyword">@if</span> (<span class="hl-type">Auth</span>::<span class="hl-property">id</span>() === <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user</span>-&gt;<span class="hl-property">id</span>)</span>
 <span class="hl-addition">            &lt;<span class="hl-keyword">x-dropdown</span> <span class="hl-property">class</span>=&quot;dropdown-end&quot;&gt;</span>
 <span class="hl-addition">                &lt;<span class="hl-keyword">x-slot</span> <span class="hl-property">name</span>=&quot;trigger&quot; <span class="hl-property">class</span>=&quot;btn-ghost btn-xs&quot;&gt;</span>
 <span class="hl-addition">                    &lt;<span class="hl-keyword">x-heroicon-o-ellipsis-vertical</span> <span class="hl-property">class</span>=&quot;size-6&quot; /&gt;</span>
@@ -416,13 +416,13 @@
             <span class="hl-property">class</span>=&quot;mt-2&quot;
         /&gt;
 
-        &lt;<span class="hl-keyword">x-form.error</span> <span class="hl-property">:message</span>=&quot;$errors-&gt;first('content')&quot; /&gt;
+        &lt;<span class="hl-keyword">x-form.error</span> <span class="hl-property">:message</span>=&quot;$errors-&gt;first('message')&quot; /&gt;
     &lt;/<span class="hl-keyword">div</span>&gt;
 
     &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex items-center justify-start gap-4&quot;&gt;
         &lt;<span class="hl-keyword">x-form.button.primary</span> <span class="hl-property">type</span>=&quot;submit&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Post'</span>) }}&lt;/<span class="hl-keyword">x-form.button.primary</span>&gt;
         <span class="hl-keyword">@if</span> (<span class="hl-variable">$chirp</span> ?? <span class="hl-keyword">false</span>)
-        &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>) }}<span class="hl-value">&quot; <span class="hl-property">class</span>=&quot;</span>dark:text-gray-400&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Cancel'</span>) }}&lt;/<span class="hl-keyword">a</span>&gt;
+        &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>) }}<span class="hl-value">&quot; <span class="hl-property">class</span>=&quot;</span>btn btn-ghost&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Cancel'</span>) }}&lt;/<span class="hl-keyword">a</span>&gt;
         <span class="hl-keyword">@endif</span>
     &lt;/<span class="hl-keyword">div</span>&gt;
 &lt;/<span class="hl-keyword">form</span>&gt;</code></pre>
