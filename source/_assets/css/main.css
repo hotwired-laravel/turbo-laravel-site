@@ -2,6 +2,8 @@
 
 @import './_code.css' layer(utilities);
 @import './_scrollbar.css' layer(utilities);
+@import './_home.css' layer(utilities);
+@import './_docs.css' layer(utilities);
 
 @plugin '@tailwindcss/typography';
 
@@ -16,6 +18,42 @@
   --font-heading:
     OpenSans, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  /* Homepage design system */
+  --font-display: 'Bricolage Grotesque', Figtree, system-ui, sans-serif;
+  --font-body: Figtree, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-code: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --color-paper: #fbf8f2;
+  --color-paper-raised: #ffffff;
+  --color-paper-sunken: #f3eee4;
+  --color-line: #e4ddd0;
+  --color-line-control: #857b6a;
+  --color-ink: #0f1a2a;
+  --color-ink-muted: #4b5768;
+  --color-ink-subtle: #646d7d;
+  --color-wire: #5cd8e5;
+  --color-wire-strong: #0a6b78;
+  --color-wire-soft: #ddf5f7;
+  --color-ember: #ff3b2f;
+  --color-ember-strong: #c42416;
+  --color-ember-soft: #ffe3de;
+  --color-code-bg: #0f1a2a;
+  --color-code-chrome: #18253a;
+  --color-code-ink: #e6edf5;
+  --color-code-muted: #8d9ab0;
+  --color-night-ink: #eef2f7;
+  --color-night-muted: #a6b1c2;
+  --color-syntax-keyword: #7fe3ee;
+  --color-syntax-string: #ffb08a;
+  --color-syntax-function: #ffd479;
+  --color-syntax-variable: #ff8a7d;
+  --color-syntax-tag: #9fe6a8;
+  --color-focus: #0a6b78;
+
+  --shadow-lift: 0 1px 2px rgba(15, 26, 42, 0.06), 0 12px 32px -16px rgba(15, 26, 42, 0.22);
+  --shadow-wire: 8px 8px 0 #5cd8e5;
+  --shadow-ember: 8px 8px 0 #ff3b2f;
 }
 
 /*

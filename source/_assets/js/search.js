@@ -8,19 +8,24 @@ function showResults(results, store, term) {
   let resultsHtml = "";
 
   if (results.length) {
+    resultsHtml += '<ul class="search-results">';
     results.forEach((result) => {
       const item = store[result.ref];
 
       resultsHtml += `
-      <div>
-        <h4 class="text-2xl font-heading font-extrabold text-zinc-900/50"><a href="${item.url}" class="font-heading font-extrabold !no-underline transition hover:!underline underline-offset-2">${item.title}</a></h4>
-        <p>${item.content.replace("&quot;", "").substring(0, 250)}&hellip;</p>
-      </div>
+      <li>
+        <a href="${item.url}" class="search-result">
+          <span class="search-result-title">${item.title}</span>
+          <span class="search-result-excerpt">${item.content.replace("&quot;", "").substring(0, 250)}&hellip;</span>
+        </a>
+      </li>
       `;
     });
+
+    resultsHtml += "</ul>";
   } else {
     resultsHtml += `
-    <p>No results found.<p>
+    <p>No results found.</p>
     `;
   }
 

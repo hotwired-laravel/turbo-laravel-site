@@ -1,15 +1,13 @@
 it('creates chirps', function () {
-    $response = $this->post(route('chirps.store'), [
+    $response = $this->turbo()->post(route('chirps.store'), [
         'content' => 'Test Chirp',
     ]);
 
-    $response->assertTurboStream(fn (AssertableTurboStream $streams) => (
+    $response->assertTurboStream(fn (AssertableTurboStream $streams) =>
         $streams->has(1)
-        && $streams->hasTurboStream(fn ($turboStream) => (
-            $turboStream
+            && $streams->hasTurboStream(fn ($stream) => $stream
                 ->where('target', 'chirps')
                 ->where('action', 'prepend')
-                ->see('Test Chirp')
-        ))
-    ));
+                ->see('Test Chirp'))
+    );
 });

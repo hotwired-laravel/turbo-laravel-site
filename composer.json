@@ -6,6 +6,11 @@
     "require-dev": {
         "tightenco/duster": "^3.1"
     },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
     "scripts": {
         "dev": [
             "Composer\\Config::disableProcessTimeout",

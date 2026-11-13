@@ -1,0 +1,319 @@
+/*
+  Docs & Bootcamp article styles. Lives in the utilities layer (like _code.css)
+  so the code overrides below can win over the global Catppuccin theme.
+*/
+
+/* ---------- Syntax colors (homepage code panels + docs code cards) ---------- */
+:is(.code-panel, .code-card) .hl-keyword { color: var(--color-syntax-keyword); }
+:is(.code-panel, .code-card) .language-blade .hl-keyword { color: var(--color-syntax-tag); }
+:is(.code-panel, .code-card) :is(.hl-property, .hl-type) { color: var(--color-syntax-function); }
+:is(.code-panel, .code-card) :is(.hl-value, .hl-literal, .hl-number) { color: var(--color-syntax-string); }
+:is(.code-panel, .code-card) .hl-variable { color: var(--color-syntax-variable); }
+:is(.code-panel, .code-card) .hl-comment { color: var(--color-code-muted); font-style: italic; }
+
+/* ---------- Code cards ---------- */
+.code-card {
+    position: relative;
+    margin: 24px 0;
+    border-radius: 12px;
+    background: var(--color-code-bg);
+    overflow: hidden;
+}
+
+.code-card pre:has(code),
+.code-card pre > code {
+    background-color: var(--color-code-bg) !important;
+    color: var(--color-code-ink) !important;
+}
+
+.code-card pre:has(code) {
+    margin: 0;
+    padding: 20px 104px 20px 24px;
+    border-radius: 0;
+    overflow-x: auto;
+    font: 400 14px/24px var(--font-code);
+}
+
+.code-card-tools {
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.code-card-lang {
+    font: 500 12px/16px var(--font-code);
+    color: var(--color-code-muted);
+}
+
+.code-card-copy {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--color-code-chrome);
+    color: var(--color-code-muted);
+    cursor: pointer;
+}
+
+.code-card-copy:hover { color: var(--color-code-ink); }
+.code-card-copy:focus-visible { outline: 2px solid var(--color-syntax-keyword); outline-offset: 2px; }
+
+/* Diff lines from Tempest's {+ +} / {- -} markers, stretched edge to edge */
+.code-card :is(.hl-addition, .hl-deletion) {
+    display: inline-block;
+    box-sizing: border-box;
+    min-width: calc(100% + 48px);
+    margin: 0 -24px;
+    padding: 0 24px;
+}
+
+.code-card .hl-addition {
+    background: rgba(95, 214, 154, .13);
+    box-shadow: inset 3px 0 #5fd69a;
+}
+
+.code-card .hl-deletion {
+    background: rgba(255, 106, 92, .14);
+    box-shadow: inset 3px 0 #ff6a5c;
+}
+
+/* Bootcamp blocks without a filename only show the copy button */
+[data-kind="bootcamp"] .code-card-lang { display: none; }
+[data-kind="bootcamp"] .code-card pre:has(code) { padding-right: 56px; }
+
+/* <x-fenced-code file="..."> — filename bar, copy button moves into it */
+.code-file {
+    position: relative;
+    margin: 24px 0;
+    border-radius: 12px;
+    background: var(--color-code-bg);
+    overflow: hidden;
+}
+
+.code-file > p { margin: 0; }
+
+.code-file-bar {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 8px 52px 8px 16px;
+    background: var(--color-code-chrome);
+    font: 500 12.5px/16px var(--font-code);
+    color: var(--color-code-muted);
+}
+
+.code-file .code-card { position: static; margin: 0; border-radius: 0; }
+.code-file .code-card-tools { top: 8px; right: 10px; }
+.code-file .code-card-lang { display: none; }
+.code-file .code-card-copy { background: transparent; }
+.code-file .code-card pre:has(code) { padding: 18px 24px; }
+
+/* ---------- Sidebar ---------- */
+.doc-side a {
+    position: relative;
+    display: block;
+    padding: 6px 12px;
+    border-radius: 10px;
+    color: var(--color-ink-muted);
+    font-size: 15px;
+    line-height: 24px;
+}
+
+.doc-side a:hover { color: var(--color-ink); background: var(--color-paper-sunken); }
+
+.doc-side a[aria-current] {
+    color: var(--color-ink);
+    font-weight: 600;
+    background: var(--color-wire-soft);
+}
+
+.doc-side a[aria-current]::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 3px;
+    border-radius: 2px;
+    background: var(--color-wire);
+}
+
+/* ---------- Article ---------- */
+.doc-title {
+    margin: 0 0 24px;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(40px, 5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+}
+
+.doc-title em { font-style: normal; color: var(--color-wire-strong); }
+[data-kind="bootcamp"] .doc-title { margin-bottom: 28px; }
+
+.doc-body { font-size: 17px; line-height: 30px; }
+
+.doc-body p { margin: 0 0 20px; }
+
+/* Markdown wraps Blade components like <x-fenced-code> in <p>, leaving empty ones behind */
+.doc-body p:empty { display: none; }
+
+.doc-body > p:first-child {
+    font-size: 20px;
+    line-height: 32px;
+    color: var(--color-ink-muted);
+}
+
+.doc-body :is(h2, h3, h4) { scroll-margin-top: 24px; }
+
+.doc-body h2 {
+    margin: 56px 0 16px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: -0.02em;
+}
+
+.doc-body h3 {
+    margin: 40px 0 12px;
+    font-family: var(--font-display);
+    font-weight: 650;
+    font-size: 21px;
+    line-height: 28px;
+}
+
+.doc-body h4 {
+    margin: 32px 0 8px;
+    font-family: var(--font-display);
+    font-weight: 650;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+.doc-body a:not([class]) {
+    color: var(--color-wire-strong);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+}
+
+.doc-body a:not([class]):hover { color: var(--color-ink); }
+
+.doc-body :is(ul, ol):not([class]) { margin: 0 0 20px; padding-left: 1.5em; }
+.doc-body ul:not([class]) { list-style: disc; }
+.doc-body ol:not([class]) { list-style: decimal; }
+.doc-body li + li { margin-top: 6px; }
+.doc-body li::marker { color: var(--color-ink-subtle); }
+.doc-body li > :is(ul, ol) { margin: 6px 0 0; }
+.doc-body li > p { margin: 0; }
+
+.doc-body blockquote {
+    margin: 24px 0;
+    padding: 4px 0 4px 20px;
+    border-left: 3px solid var(--color-wire);
+    color: var(--color-ink-muted);
+}
+
+.doc-body blockquote p:last-child { margin-bottom: 0; }
+
+.doc-body strong { font-weight: 700; }
+
+.doc-body :not(pre) > code {
+    font: 500 0.88em/1.4 var(--font-code);
+    background: var(--color-paper-sunken);
+    border: 1px solid var(--color-line);
+    border-radius: 6px;
+    padding: .1em .4em;
+    color: var(--color-ink);
+    overflow-wrap: anywhere;
+}
+
+.doc-body table {
+    width: 100%;
+    margin: 24px 0;
+    border-collapse: collapse;
+    font-size: 15px;
+    line-height: 22px;
+}
+
+.doc-body :is(th, td) {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--color-line);
+    text-align: left;
+    vertical-align: top;
+}
+
+.doc-body :is(th, td) code { white-space: nowrap; overflow-wrap: normal; }
+
+.doc-body th {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-ink-subtle);
+}
+
+@media (max-width: 640px) {
+    .doc-body table { display: block; overflow-x: auto; }
+}
+
+.doc-body img {
+    max-width: 100%;
+    height: auto;
+    margin: 24px 0;
+    border: 1px solid var(--color-line);
+    border-radius: 12px;
+}
+
+.doc-body hr {
+    margin: 48px 0;
+    border: 0;
+    border-top: 1px solid var(--color-line);
+}
+
+/* <x-note> */
+.doc-note h4 { margin: 0; font: inherit; }
+.doc-note-body { font-size: 16px; line-height: 26px; color: var(--color-ink-muted); }
+.doc-note-body p { margin: 0 0 8px; }
+.doc-note-body > :last-child { margin-bottom: 0; }
+
+/* ---------- Search results ---------- */
+.search-results {
+    display: grid;
+    gap: 12px;
+    margin: 24px 0;
+}
+
+.search-result {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 20px;
+    border: 1px solid var(--color-line);
+    border-radius: 12px;
+    background: var(--color-paper-raised);
+    color: var(--color-ink);
+    transition: border-color .16s ease-out;
+}
+
+.search-result:hover { border-color: var(--color-ink); }
+
+.search-result-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 700;
+}
+
+.search-result-excerpt {
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--color-ink-muted);
+}

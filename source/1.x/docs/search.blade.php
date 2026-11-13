@@ -1,7 +1,7 @@
 @extends('_layouts.v1-docs')
 
 @section('content')
-  <h2>Search results for <em id="search-term" class="text-zinc-900/40"></em></h2>
+  <h1>Search results for <span id="search-term" class="text-wire-strong"></span></h1>
 
   <div id="search-results"></div>
 

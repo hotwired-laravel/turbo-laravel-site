@@ -1,6 +1,8 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
+  static targets = ["source"];
+
   #timeout;
 
   copy() {
@@ -18,6 +20,10 @@ export default class extends Controller {
   }
 
   get #code() {
-    return this.element.querySelector("pre code").innerText;
+    const source = this.hasSourceTarget
+      ? this.sourceTarget
+      : this.element.querySelector("pre code");
+
+    return source.innerText;
   }
 }

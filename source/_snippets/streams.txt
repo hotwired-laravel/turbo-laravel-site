@@ -4,8 +4,7 @@ class Comment extends Model
 }
 
 // And then...
-
-$comment = $post->comments()->create();
+$comment = $post->comments()->create($data);
 
 $comment->broadcastPrependTo($post)
     ->toOthers()

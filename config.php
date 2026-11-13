@@ -6,11 +6,14 @@ return [
     'production' => false,
     'baseUrl' => '',
     'title' => 'Turbo Laravel',
-    'description' => 'Build web and hybrid navite apps with Laravel and Hotwire today.',
+    'description' => 'Build web and hybrid native apps with Laravel and Hotwire today.',
 
     'github_url' => 'https://github.com/hotwired-laravel/turbo-laravel',
     'hotwire_site_url' => 'https://hotwired.dev/',
     'tony_site_url' => 'https://tonysm.com',
+
+    // Social card. The hash busts the caches of platforms that already scraped an older card.
+    'og_image' => '/assets/images/turbo-laravel-meta.png?v='.substr(md5_file(__DIR__.'/source/assets/images/turbo-laravel-meta.png'), 0, 8),
 
     'current_version' => '2.2.0',
     'latest_v1' => '1.12.2',
@@ -35,7 +38,7 @@ return [
 
     'snippets' => [
         'frames' => <<<HTML
-    <pre class="overflow-x-auto"><code class="language-php">{$highlighter->parse(file_get_contents(__DIR__ . '/source/_snippets/frames.txt'), 'blade')}</code></pre>
+    <pre class="overflow-x-auto"><code class="language-blade">{$highlighter->parse(file_get_contents(__DIR__ . '/source/_snippets/frames.txt'), 'blade')}</code></pre>
     HTML,
         'streams' => <<<HTML
     <pre class="overflow-x-auto"><code class="language-php">{$highlighter->parse(file_get_contents(__DIR__ . '/source/_snippets/streams.txt'), 'php')}</code></pre>

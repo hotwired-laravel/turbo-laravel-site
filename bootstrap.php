@@ -17,6 +17,9 @@ use TightenCo\Jigsaw\Jigsaw;
  */
 $highlighter = new \Tempest\Highlight\Highlighter;
 
+// Wraps fenced code blocks in the docs "code card" chrome (language label + copy button).
+$container['markdownParser']->parser = new \App\DocsMarkdownParser;
+
 $container['markdownParser']->code_block_content_func = function ($code, $language) use ($highlighter) {
     return strtr($highlighter->parse(
         content: strtr($code, [

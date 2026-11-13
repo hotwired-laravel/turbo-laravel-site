@@ -1,0 +1,36 @@
+/* Homepage: code panels (overrides the global Catppuccin theme from _code.css) */
+.code-panel pre:has(code),
+.code-panel pre > code {
+    background-color: var(--color-code-bg) !important;
+    color: var(--color-code-ink) !important;
+}
+
+.code-panel pre:has(code) {
+    margin: 0;
+    padding: 24px;
+    overflow-x: auto;
+    font: 400 14px/24px var(--font-code);
+}
+
+.code-panel[data-chrome] pre:has(code) {
+    padding-top: 18px;
+}
+
+/* Homepage: "Turbo updates the page" illustration */
+.ill text { white-space: pre; }
+.tl-new { animation: tl-in 4.8s cubic-bezier(.2, .7, .2, 1) infinite; }
+.tl-old { animation: tl-down 4.8s cubic-bezier(.2, .7, .2, 1) infinite; }
+
+@keyframes tl-in {
+    0%, 14% { opacity: 0; transform: translateY(-12px); }
+    30%, 100% { opacity: 1; transform: none; }
+}
+
+@keyframes tl-down {
+    0%, 14% { transform: translateY(-30px); }
+    30%, 100% { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tl-new, .tl-old { animation: none; }
+}
