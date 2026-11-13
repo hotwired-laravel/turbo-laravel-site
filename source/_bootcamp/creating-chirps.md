@@ -175,9 +175,7 @@ Then, let's create our `chirps.create` page view with the Chirps form:
         <x-text.subheading>{{ __('Write a message to the World.') }}</x-text.subheading>
 
         <x-page-card class="my-6">
-            <x-turbo::frame id="create_chirp" target="_top">
-                @include('chirps.partials.form')
-            </x-turbo::frame>
+            @include('chirps.partials.form')
         </x-page-card>
     </section>
 </x-layouts.app>
