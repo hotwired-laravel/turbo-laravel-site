@@ -2,232 +2,205 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="canonical" href="https://turbo-laravel.com/bootcamp/hotwiring-everything">
-        <meta name="description" content="Make it alive with Turbo Frames and Turbo Streams!">
-        <title>Hotwiring Everything | Bootcamp | Turbo Laravel</title>
-        <link rel="apple-touch-icon" sizes="180x180" href="https://turbo-laravel.com/assets/manifest/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="https://turbo-laravel.com/assets/manifest/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="https://turbo-laravel.com/assets/manifest/favicon-16x16.png">
-        <link rel="manifest" href="https://turbo-laravel.com/assets/site.webmanifest">
-        <link rel="preload" href="https://turbo-laravel.com/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
-        <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=43ade17df46426aaccbc2cac40014c37">
-        <script defer src="/assets/build/js/main.js?id=b0f29cd4e71d41b4ee570d0f42344180"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://turbo-laravel.com/bootcamp/hotwiring-everything">
+<meta name="description" content="Make it alive with Turbo Frames and Turbo Streams!">
+<title>Hotwiring Everything | Bootcamp | Turbo Laravel</title>
+<link rel="apple-touch-icon" sizes="180x180" href="https://turbo-laravel.com/assets/manifest/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://turbo-laravel.com/assets/manifest/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://turbo-laravel.com/assets/manifest/favicon-16x16.png">
+<link rel="manifest" href="https://turbo-laravel.com/assets/site.webmanifest">
 
-        <!-- Open Graph data -->
-        <meta property="og:title" content="Hotwiring Everything | Bootcamp | Turbo Laravel" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="" />
+<!-- Open Graph data -->
+<meta property="og:title" content="Hotwiring Everything | Bootcamp | Turbo Laravel" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://turbo-laravel.com/bootcamp/hotwiring-everything" />
 
-        <meta property="og:image" content="https://turbo-laravel.com/assets/images/turbo-laravel-meta.png" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:description" content="Make it alive with Turbo Frames and Turbo Streams!" />
-        <meta property="og:locale" content="en_US">
-        <meta property="og:site_name" content="Turbo Laravel" />
+<meta property="og:image" content="https://turbo-laravel.com/assets/images/turbo-laravel-meta.png?v=3060538a" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:alt" content="Turbo Laravel, Hotwire for Laravel: HTML over the wire." />
+<meta property="og:description" content="Make it alive with Turbo Frames and Turbo Streams!" />
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Turbo Laravel" />
 
-        <!-- Twitter Card meta -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Hotwiring Everything | Bootcamp | Turbo Laravel">
-        <meta name="twitter:description" content="Make it alive with Turbo Frames and Turbo Streams!">
+<!-- Twitter Card meta -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hotwiring Everything | Bootcamp | Turbo Laravel">
+<meta name="twitter:description" content="Make it alive with Turbo Frames and Turbo Streams!">
+<meta name="twitter:image" content="https://turbo-laravel.com/assets/images/turbo-laravel-meta.png?v=3060538a">
+<meta name="twitter:image:alt" content="Turbo Laravel, Hotwire for Laravel: HTML over the wire.">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Figtree:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+                <link rel="stylesheet" href="/assets/build/assets/main-QHec2Cla.css">
+        <script defer type="module" src="/assets/build/assets/main-B2QLDe1R.js"></script>
     </head>
-    <body class="text-zinc-900 text-lg font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
-        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
-  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
-    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
-      <a href="/">Turbo Laravel</a>
-    </h1>
+    <body class="min-h-screen bg-paper font-body text-ink antialiased" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="relative border-b border-line bg-paper" data-controller="menu" data-action="keydown.esc@window->menu#dismiss click@window->menu#closeOnOutsideClick search:reveal@window->menu#open">
+  <nav aria-label="Main" class="mx-auto flex max-w-[1248px] items-center justify-between gap-x-8 px-6 py-[18px]">
+    <a href="/" class="font-display text-2xl font-bold tracking-[-0.02em] text-ink"><span class="text-wire-strong">Turbo</span> Laravel</a>
 
-    <nav class="inline-block lg:hidden">
-      <details class="group" data-search-target="nav">
-        <summary class="list-none">
-          <span>
-            <span class="sr-only">Navigation</span>
+    <button type="button" class="group -mr-2 inline-flex size-11 items-center justify-center rounded-[10px] text-ink hover:bg-paper-sunken focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-focus lg:hidden" aria-expanded="false" aria-controls="site-menu" data-menu-target="button" data-action="menu#toggle">
+      <span class="sr-only">Menu</span>
+      <svg class="group-aria-expanded:hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+      <svg class="hidden group-aria-expanded:block" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+    </button>
 
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
-              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-          </span>
-        </summary>
+    <div id="site-menu" data-menu-target="panel" class="absolute inset-x-0 top-full z-30 hidden flex-col border-b border-line bg-paper px-6 pt-2 pb-6 text-base font-semibold shadow-lift data-open:flex lg:static lg:flex lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-7 lg:gap-y-3 lg:border-0 lg:bg-transparent lg:p-0 lg:text-[15px] lg:shadow-none">
+      <div class="group relative border-b border-line lg:border-0">
+        <a href="/docs/installation"  class="text-ink decoration-wire decoration-2 underline-offset-[6px] hover:underline aria-[current=page]:underline aria-[current=page]:decoration-ember focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus flex min-h-12 items-center gap-1.5 lg:inline-flex lg:min-h-0">
+          Documentation
+          <svg class="hidden transition group-hover:rotate-180 group-focus-within:rotate-180 lg:block" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+        </a>
 
-        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
-          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
-            <form action="/docs/search" method="GET" class="px-4">
-  <label for="search" class="sr-only">Search</label>
-  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 2.x docs..." />
-  <button type="submit" class="sr-only">Search</button>
-</form>
-
-            <ul class="space-y-6 -mb-2 mt-4">
-              <li>
-                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
-                  <span>Documentation</span>
-                </a>
-
-                              </li>
-              <li>
-                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
-              </li>
-              <li class="space-y-6">
-                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
-                  <div class="mx-4 pl-3 border-l-4 border-zinc-900/30">
-  <ul class="">
-        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
-    <li class="children mt-2">
-      <ul class="list-inside space-y-1 text-lg">
-                <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Introduction</a></li>
-              </ul>
-    </li>
-        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
-    <li class="children mt-2">
-      <ul class="list-inside space-y-1 text-lg">
-                <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
-                <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Creating Chirps</a></li>
-                <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Listing Chirps</a></li>
-                <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing Chirps</a></li>
-                <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Deleting Chirps</a></li>
-                <li><a href="/bootcamp/hotwiring-everything" class="font-bold transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Hotwiring Everything</a></li>
-                <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Broadcasting</a></li>
-              </ul>
-    </li>
-        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
-    <li class="children mt-2">
-      <ul class="list-inside space-y-1 text-lg">
-                <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
-                <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Authentication</a></li>
-                <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Our First Bridge Component</a></li>
-                <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing as a Modal</a></li>
-                <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Confirmation Dialog</a></li>
-                <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Toasts</a></li>
-              </ul>
-    </li>
-        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
-    <li class="children mt-2">
-      <ul class="list-inside space-y-1 text-lg">
-                <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Conclusion</a></li>
-              </ul>
-    </li>
-      </ul>
-</div>
-              </li>
-              <!-- <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li> -->
-            </ul>
-          </div>
+        <div class="pb-3 lg:invisible lg:absolute lg:top-full lg:left-0 lg:z-10 lg:pt-3 lg:pb-0 lg:opacity-0 lg:transition lg:group-focus-within:visible lg:group-focus-within:opacity-100 lg:group-hover:visible lg:group-hover:opacity-100">
+          <ul class="flex flex-col gap-1 border-l-2 border-line pl-3 text-[15px] lg:min-w-52 lg:rounded-[10px] lg:border lg:border-line lg:bg-paper-raised lg:p-2 lg:shadow-lift">
+            <li>
+              <a href="/docs/installation"  class="flex items-center justify-between gap-4 rounded-md px-3 py-2 text-ink hover:bg-paper-sunken aria-current:bg-wire-soft">
+                Version 2.2.0
+                <span class="rounded-full bg-wire-soft px-2 font-code text-[11px] leading-[18px] font-medium text-wire-strong">latest</span>
+              </a>
+            </li>
+            <li>
+              <a href="/1.x/docs/installation"  class="flex rounded-md px-3 py-2 text-ink hover:bg-paper-sunken aria-current:bg-wire-soft">Version 1.12.2</a>
+            </li>
+          </ul>
         </div>
-      </details>
-    </nav>
-  </div>
+      </div>
 
-  <nav class="hidden lg:block">
-    <ul class="flex items-center space-x-6 -my-2">
-      <li>
-        <div class="group relative py-2">
-          <a href="/docs" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
-            <span>Documentation</span>
+      <div class="flex min-h-12 items-center border-b border-line lg:min-h-0 lg:border-0">
+        <a href="/bootcamp/introduction"  aria-current="page"  class="text-ink decoration-wire decoration-2 underline-offset-[6px] hover:underline aria-[current=page]:underline aria-[current=page]:decoration-ember focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus">Bootcamp</a>
+      </div>
 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-            </svg>
-          </a>
+      <div class="flex min-h-12 items-center border-b border-line lg:min-h-0 lg:border-0">
+        <a href="https://github.com/hotwired-laravel/turbo-laravel" class="text-ink decoration-wire decoration-2 underline-offset-[6px] hover:underline aria-[current=page]:underline aria-[current=page]:decoration-ember focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus inline-flex items-center gap-1.5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4 1.3-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C6.6 3.3 5.6 3.6 5.6 3.6a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 10c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>
+          Source code
+        </a>
+      </div>
 
-          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
-            <ul class="space-y-1">
-              <li><a href="/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">2.2.0</span></a></li>
-              <li><a href="/1.x/docs/installation" class="block px-2 py-1  rounded">Version <span class="">1.12.2</span></a></li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
-      <li><a href="/bootcamp/introduction" class="bg-white/90 px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
-      <!-- <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li> -->
-    </ul>
+      <span class="hidden rounded-full border-[1.5px] border-line-control px-2.5 py-0.5 font-code text-[12.5px] leading-[18px] font-medium text-ink-muted lg:inline">v2.x</span>
+
+      <form action="/bootcamp/search" method="GET" role="search" class="order-first py-3 lg:order-none lg:py-0">
+        <label class="flex min-h-11 min-w-[216px] cursor-text items-center gap-2 rounded-[10px] border-[1.5px] border-line-control bg-paper-raised px-3 py-[9px] text-ink-subtle focus-within:outline-2 focus-within:outline-offset-3 focus-within:outline-focus">
+          <svg class="shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m20 20-4.4-4.4"></path></svg>
+          <span class="sr-only">Search bootcamp</span>
+          <input data-search-target="web" type="search" name="q" placeholder="Search bootcamp" class="search-input w-0 min-w-0 flex-1 bg-transparent text-base leading-5 font-normal text-ink placeholder:text-ink-subtle focus:outline-none lg:text-[15px]">
+          <kbd class="hidden rounded-md border border-line bg-paper-sunken px-1.5 py-px font-code text-xs font-medium text-ink-subtle lg:inline">/</kbd>
+        </label>
+      </form>
+    </div>
   </nav>
 </header>
 
-          <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
-    <div class="sm:flex sm:space-x-12 sm:max-w-7xl w-full mx-auto">
-      <aside class="relative w-1/4 hidden lg:block" data-search-target="aside">
-        <div class="sticky top-4 block space-y-4">
-            <form action="/bootcamp/search" method="GET">
-  <label for="search" class="sr-only">Search</label>
-  <input data-search-target="web" type="text" name="q" placeholder="Search bootcamp... (press &quot;/&quot; to focus)" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
-</form>
+        <div class="mx-auto flex max-w-[1248px] flex-wrap items-start gap-x-12 gap-y-8 px-6 pt-12 pb-24">
+  
+  <details class="doc-side-mobile w-full rounded-[10px] border border-line bg-paper-raised lg:hidden">
+    <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 px-4 py-2.5 text-[15px] font-semibold [&::-webkit-details-marker]:hidden">
+      <span class="min-w-0 truncate"><span class="text-ink-subtle">Web /</span> Hotwiring Everything</span>
+      <svg class="shrink-0 transition [[open]>summary>&]:rotate-180" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+    </summary>
+    <nav aria-label="Bootcamp chapters" class="doc-side border-t border-line px-2 pt-4 pb-3">
+      <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle">Prologue</p>
+  <ul>
+          <li><a href="/bootcamp/introduction" >Introduction</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Web</p>
+  <ul>
+          <li><a href="/bootcamp/installation" >Installation</a></li>
+          <li><a href="/bootcamp/creating-chirps" >Creating Chirps</a></li>
+          <li><a href="/bootcamp/listing-chirps" >Listing Chirps</a></li>
+          <li><a href="/bootcamp/editing-chirps" >Editing Chirps</a></li>
+          <li><a href="/bootcamp/deleting-chirps" >Deleting Chirps</a></li>
+          <li><a href="/bootcamp/hotwiring-everything"  aria-current="page" >Hotwiring Everything</a></li>
+          <li><a href="/bootcamp/broadcasting" >Broadcasting</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Native</p>
+  <ul>
+          <li><a href="/bootcamp/native-setup" >Installation</a></li>
+          <li><a href="/bootcamp/native-auth" >Authentication</a></li>
+          <li><a href="/bootcamp/native-bridge-component" >Our First Bridge Component</a></li>
+          <li><a href="/bootcamp/native-editing-modal" >Editing as a Modal</a></li>
+          <li><a href="/bootcamp/native-confirmation" >Native Confirmation Dialog</a></li>
+          <li><a href="/bootcamp/native-toasts" >Native Toasts</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Epilogue</p>
+  <ul>
+          <li><a href="/bootcamp/conclusion" >Conclusion</a></li>
+      </ul>
+    </nav>
+  </details>
 
-            <ul class="[&_.children]:mb-4 text-base">
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Prologue</li>
-  <li class="children mt-2">
-    <ul class="list-inside space-y-1">
-            <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Introduction</a></li>
-          </ul>
-  </li>
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Web</li>
-  <li class="children mt-2">
-    <ul class="list-inside space-y-1">
-            <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
-            <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Creating Chirps</a></li>
-            <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Listing Chirps</a></li>
-            <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing Chirps</a></li>
-            <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Deleting Chirps</a></li>
-            <li><a href="/bootcamp/hotwiring-everything" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Hotwiring Everything</a></li>
-            <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
-          </ul>
-  </li>
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Native</li>
-  <li class="children mt-2">
-    <ul class="list-inside space-y-1">
-            <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
-            <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Authentication</a></li>
-            <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Our First Bridge Component</a></li>
-            <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing as a Modal</a></li>
-            <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Confirmation Dialog</a></li>
-            <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Toasts</a></li>
-          </ul>
-  </li>
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Epilogue</li>
-  <li class="children mt-2">
-    <ul class="list-inside space-y-1">
-            <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conclusion</a></li>
-          </ul>
-  </li>
-  </ul>
-        </div>
-      </aside>
+  <nav aria-label="Bootcamp chapters" class="doc-side sticky top-6 hidden max-h-[calc(100vh-3rem)] max-w-[232px] min-w-0 flex-[1_1_220px] overflow-y-auto lg:block">
+    <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle">Prologue</p>
+  <ul>
+          <li><a href="/bootcamp/introduction" >Introduction</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Web</p>
+  <ul>
+          <li><a href="/bootcamp/installation" >Installation</a></li>
+          <li><a href="/bootcamp/creating-chirps" >Creating Chirps</a></li>
+          <li><a href="/bootcamp/listing-chirps" >Listing Chirps</a></li>
+          <li><a href="/bootcamp/editing-chirps" >Editing Chirps</a></li>
+          <li><a href="/bootcamp/deleting-chirps" >Deleting Chirps</a></li>
+          <li><a href="/bootcamp/hotwiring-everything"  aria-current="page" >Hotwiring Everything</a></li>
+          <li><a href="/bootcamp/broadcasting" >Broadcasting</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Native</p>
+  <ul>
+          <li><a href="/bootcamp/native-setup" >Installation</a></li>
+          <li><a href="/bootcamp/native-auth" >Authentication</a></li>
+          <li><a href="/bootcamp/native-bridge-component" >Our First Bridge Component</a></li>
+          <li><a href="/bootcamp/native-editing-modal" >Editing as a Modal</a></li>
+          <li><a href="/bootcamp/native-confirmation" >Native Confirmation Dialog</a></li>
+          <li><a href="/bootcamp/native-toasts" >Native Toasts</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Epilogue</p>
+  <ul>
+          <li><a href="/bootcamp/conclusion" >Conclusion</a></li>
+      </ul>
+  </nav>
 
-      <main class="flex-1 min-w-0 max-w-3xl">
-        <div class="prose prose-lg overflow-hidden prose-zinc [&_code:not(pre_code)]:text-wrap [&_code:not(pre_code)]:break-words prose-headings:font-heading prose-headings:font-extrabold max-w-none w-full">
-            <h1><em>06.</em> Hotwiring Everything</h1>
+  
+  <main class="max-w-[720px] min-w-0 flex-[999_1_560px]">
+    <article class="doc-article" data-kind="bootcamp">
+              <p class="mb-3 text-sm leading-5 text-ink-subtle">
+          <a href="/bootcamp/introduction" class="text-ink-subtle hover:text-ink">Bootcamp</a>
+          <span aria-hidden="true">/</span>
+          Web
+        </p>
+      
+              <h1 id="top" class="doc-title"><em>06.</em> Hotwiring Everything</h1>
+      
+      
+      <div class="doc-body">
+        
 
-<p>So far, our application is quite basic. Out of Hotwire, we're only using Turbo Drive, which is enabled by default when we install and start Turbo.</p>
+<p>So far, our application is quite basic. Of all the Hotwire pieces, we're only using Turbo Drive, which is enabled by default when we install and start Turbo.</p>
 
-<h2>Inline forms with Turbo Frames</h2>
+<h2 id="inline-forms-with-turbo-frames">Inline forms with Turbo Frames</h2>
 
-<p>Our application works, but we could improve it. Instead of sending users to a dedicated chirp creation form page, let's display the form inline right on the <code>chirps.index</code> page. To do that, we're going to use <a href="https://turbo.hotwired.dev/reference/frames">lazy-loading Turbo Frames</a>:</p>
+<p>Our application works, but we could improve it. Instead of sending users to a dedicated Chirp creation page, let's display the form inline right on the <code>chirps.index</code> page. To do that, we're going to use <a href="https://turbo.hotwired.dev/reference/frames">lazy-loading Turbo Frames</a>:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-            </svg>
-
-            <span class="whitespace-nowrap">resources/views/chirps/index.blade.php</span>
-        </div>
-
-            </div>
+<p><div class="code-file">
+    <div class="code-file-bar"><span class="truncate">resources/views/chirps/index.blade.php</span></div>
 
     </p>
 
-<pre><code class="language-blade">&lt;<span class="hl-keyword">x-layouts.app</span> :<span class="hl-property">title</span>=&quot;__('Chirps')&quot;&gt;
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-layouts.app</span> <span class="hl-property">:title</span>=&quot;__('Chirps')&quot;&gt;
     &lt;<span class="hl-keyword">section</span> <span class="hl-property">class</span>=&quot;w-full lg:max-w-lg mx-auto&quot;&gt;
         &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex items-center space-x-2 justify-between&quot;&gt;
             &lt;<span class="hl-keyword">x-text.heading</span> <span class="hl-property">size</span>=&quot;xl&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Chirps'</span>) }}&lt;/<span class="hl-keyword">x-text.heading</span>&gt;
 
 <span class="hl-deletion">            &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}<span class="hl-value">&quot; <span class="hl-property">class</span>=&quot;</span>btn btn-primary btn-sm&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Write'</span>) }}&lt;/<span class="hl-keyword">a</span>&gt;</span>
-<span class="hl-addition">            &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}<span class="hl-value">&quot; <span class="hl-property">class</span>=&quot;</span>btn btn-primary btn-sm invisible [body:<span class="hl-property">where</span>(:<span class="hl-property">has</span>(#create\_chirp:<span class="hl-keyword">empty</span>))<span class="hl-property">_</span>&amp;]:visible&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Write'</span>) }}&lt;/<span class="hl-keyword">a</span>&gt;</span>
+<span class="hl-addition">            &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}<span class="hl-value">&quot; <span class="hl-property">class</span>=&quot;</span>btn btn-primary btn-sm invisible [body:<span class="hl-property">where</span>(:<span class="hl-property">has</span>(<span class="hl-comment">#create\_chirp:empty))_&amp;]:visible&quot;&gt;{{ __('Write') </span>}}&lt;/<span class="hl-keyword">a</span>&gt;</span>
         &lt;/<span class="hl-keyword">div</span>&gt;
 
 <span class="hl-addition">        &lt;<span class="hl-keyword">x-turbo::frame</span> <span class="hl-property">id</span>=&quot;create_chirp&quot; <span class="hl-property">class</span>=&quot;hidden md:block *:mt-4&quot; <span class="hl-property">loading</span>=&quot;lazy&quot; <span class="hl-property">src</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.create'</span>) }}&quot;&gt;&lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;</span>
@@ -237,32 +210,28 @@
             <span class="hl-keyword">@each</span>(<span class="hl-value">'chirps.partials.chirp'</span>, <span class="hl-variable">$chirps</span>, <span class="hl-value">'chirp'</span>)
         &lt;/<span class="hl-keyword">div</span>&gt;
     &lt;/<span class="hl-keyword">section</span>&gt;
-&lt;/<span class="hl-keyword">x-layouts.app</span>&gt;
-</code></pre>
+&lt;/<span class="hl-keyword">x-layouts.app</span>&gt;</code></pre>
+</div>
 
 <p>
 </div>
 </p>
 
-<p>For that to work, we also need to wrap our create form with a matching Turbo Frame (by "matching" I mean same DOM ID):</p>
+<p>For that to work, we also need to wrap our create form with a matching Turbo Frame (by "matching" I mean the same DOM ID):</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-            </svg>
-
-            <span class="whitespace-nowrap">resources/views/chirps/create.blade.php</span>
-        </div>
-
-            </div>
+<p><div class="code-file">
+    <div class="code-file-bar"><span class="truncate">resources/views/chirps/create.blade.php</span></div>
 
     </p>
 
-<pre><code class="language-blade">&lt;<span class="hl-keyword">x-layouts.app</span> :<span class="hl-property">title</span>=&quot;__('New Chirp')&quot;&gt;
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-layouts.app</span> <span class="hl-property">:title</span>=&quot;__('New Chirp')&quot;&gt;
     &lt;<span class="hl-keyword">section</span> <span class="hl-property">class</span>=&quot;w-full lg:max-w-lg mx-auto&quot;&gt;
-        &lt;<span class="hl-keyword">x-back-link</span> :<span class="hl-property">href</span>=&quot;route('chirps.index')&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Chirps'</span>) }}&lt;/<span class="hl-keyword">x-back-link</span>&gt;
+        &lt;<span class="hl-keyword">x-back-link</span> <span class="hl-property">:href</span>=&quot;route('chirps.index')&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Chirps'</span>) }}&lt;/<span class="hl-keyword">x-back-link</span>&gt;
         &lt;<span class="hl-keyword">x-text.heading</span> <span class="hl-property">size</span>=&quot;xl&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'New Chirp'</span>) }}&lt;/<span class="hl-keyword">x-text.heading</span>&gt;
         &lt;<span class="hl-keyword">x-text.subheading</span>&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Write a message to the World.'</span>) }}&lt;/<span class="hl-keyword">x-text.subheading</span>&gt;
 
@@ -273,8 +242,8 @@
 <span class="hl-addition">            &lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;</span>
         &lt;/<span class="hl-keyword">x-page-card</span>&gt;
     &lt;/<span class="hl-keyword">section</span>&gt;
-&lt;/<span class="hl-keyword">x-layouts.app</span>&gt;
-</code></pre>
+&lt;/<span class="hl-keyword">x-layouts.app</span>&gt;</code></pre>
+</div>
 
 <p>
 </div>
@@ -283,35 +252,31 @@
 <p>A few things about this:</p>
 
 <ol>
-<li>In the <code>chirps.index</code>, we specified the Turbo Frame with the <code>src</code> attribute, which indicates Turbo that this is lazy-loading Turbo Frame</li>
-<li>The Turbo Frame in the <code>chirps.create</code> page has a <code>target="_top"</code> on it. That's not gonna be used, it's just in case someone opens that page directly by visiting <code>/chirps/create</code> or disables JavaScript (in this case, they would still see the link pointing to the create chirps page, so they would be able to use our application normally)</li>
+<li>In the <code>chirps.index</code>, we specified the Turbo Frame with the <code>src</code> attribute, which tells Turbo that this is a lazy-loading Turbo Frame</li>
+<li>The Turbo Frame in the <code>chirps.create</code> page has a <code>target="_top"</code> on it. That's not gonna be used. It's just in case someone opens that page directly by visiting <code>/chirps/create</code> or disables JavaScript (in this case, they would still see the link pointing to the create Chirps page, so they would be able to use our application normally)</li>
 </ol>
 
-<p>If you try to use the form now, you will see a strange behavior where the form disappears after you submit it and the link is back. If you refresh the page, you'll see the chirp was successfully created.</p>
+<p>If you try to use the form now, you will see a strange behavior where the form disappears after you submit it and the link is back. If you refresh the page, you'll see the Chirp was successfully created.</p>
 
-<p>That happens because we're redirecting users to the <code>chirps.index</code> page after the form submission. That page has a matching Turbo Frame, which contains the link. Nothing else on the page changes because of the Turbo Frame contains the page changes to only its fragment.</p>
+<p>That happens because we're redirecting users to the <code>chirps.index</code> page after the form submission. That page has a matching Turbo Frame, which contains the link. Nothing else on the page changes because the Turbo Frame scopes the page changes to only its fragment.</p>
 
-<p>Let's make use of Turbo Streams to update our form with a clean one and prepend the recently created Chirp to the chirps list.</p>
+<p>Let's make use of Turbo Streams to update our form with a clean one and prepend the recently created Chirp to the Chirps list.</p>
 
-<p>Before we change the <code>ChirpController</code>, let's give our list of chirps wrapper element an ID in the <code>chirps.index</code> page:</p>
+<p>Before we change the <code>ChirpController</code>, let's give the wrapper element of our Chirps list an ID in the <code>chirps.index</code> page:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-            </svg>
-
-            <span class="whitespace-nowrap">resources/views/chirps/create.blade.php</span>
-        </div>
-
-            </div>
+<p><div class="code-file">
+    <div class="code-file-bar"><span class="truncate">resources/views/chirps/create.blade.php</span></div>
 
     </p>
 
-<pre><code class="language-blade">&lt;<span class="hl-keyword">x-layouts.app</span> :<span class="hl-property">title</span>=&quot;__('New Chirp')&quot;&gt;
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-layouts.app</span> <span class="hl-property">:title</span>=&quot;__('New Chirp')&quot;&gt;
     &lt;<span class="hl-keyword">section</span> <span class="hl-property">class</span>=&quot;w-full lg:max-w-lg mx-auto&quot;&gt;
-        &lt;<span class="hl-keyword">x-back-link</span> :<span class="hl-property">href</span>=&quot;route('chirps.index')&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Chirps'</span>) }}&lt;/<span class="hl-keyword">x-back-link</span>&gt;
+        &lt;<span class="hl-keyword">x-back-link</span> <span class="hl-property">:href</span>=&quot;route('chirps.index')&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Chirps'</span>) }}&lt;/<span class="hl-keyword">x-back-link</span>&gt;
         &lt;<span class="hl-keyword">x-text.heading</span> <span class="hl-property">size</span>=&quot;xl&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'New Chirp'</span>) }}&lt;/<span class="hl-keyword">x-text.heading</span>&gt;
         &lt;<span class="hl-keyword">x-text.subheading</span>&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Write a message to the World.'</span>) }}&lt;/<span class="hl-keyword">x-text.subheading</span>&gt;
 
@@ -322,31 +287,27 @@
 <span class="hl-addition">            &lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;</span>
         &lt;/<span class="hl-keyword">x-page-card</span>&gt;
     &lt;/<span class="hl-keyword">section</span>&gt;
-&lt;/<span class="hl-keyword">x-layouts.app</span>&gt;
-</code></pre>
+&lt;/<span class="hl-keyword">x-layouts.app</span>&gt;</code></pre>
+</div>
 
 <p>
 </div>
 </p>
 
-<h3>Resetting the form and prepending Chirps to the list</h3>
+<h3 id="resetting-the-form-and-prepending-chirps-to-the-list">Resetting the form and prepending Chirps to the list</h3>
 
-<p>Okay, now we can change the <code>store</code> action in our <code>ChirpController</code> to return 3 Turbo Streams if the client supports it, one to update the form with a clean one, another to prepend the new chirp to the list, and another to append the flash message:</p>
+<p>Okay, now we can change the <code>store</code> action in our <code>ChirpController</code> to return 3 Turbo Streams if the client supports it: one to update the form with a clean one, another to prepend the new Chirp to the list, and another to append the flash message:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-            </svg>
-
-            <span class="whitespace-nowrap">app/Http/Controllers/ChirpController.php</span>
-        </div>
-
-            </div>
+<p><div class="code-file">
+    <div class="code-file-bar"><span class="truncate">app/Http/Controllers/ChirpController.php</span></div>
 
     </p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
 
 <span class="hl-comment">// ...</span>
@@ -378,49 +339,45 @@
     }
 
     <span class="hl-comment">// ...</span>
-}
-</code></pre>
+}</code></pre>
+</div>
 
 <p>
 </div>
 </p>
 
-<p>Now if you try creating a Chirp, you should see the newly created Chirp at the top of the chirps list, the form should have been cleared, and a flash message showed up.</p>
+<p>Now if you try creating a Chirp, you should see the newly created Chirp at the top of the Chirps list, the form should be cleared, and a flash message should show up.</p>
 
 <p><img src="/assets/images/bootcamp/hotwiring-creating-chirps.png?v=1" alt="Hotwiring Chirps Creation" /></p>
 
-<p>Let's also implement inline editing for our chirps.</p>
+<p>Let's also implement inline editing for our Chirps.</p>
 
-<h2>Displaying the edit chirps form inline</h2>
+<h2 id="displaying-the-edit-chirp-form-inline">Displaying the edit Chirp form inline</h2>
 
 <p>To do that, we need to tweak our <code>chirps.partials.chirp</code> partial and wrap it with a Turbo Frame. Instead of showing you a long Git diff, replace the existing partial with this one:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-            </svg>
-
-            <span class="whitespace-nowrap">resources/views/chirps/partials/chirp.blade.php</span>
-        </div>
-
-            </div>
+<p><div class="code-file">
+    <div class="code-file-bar"><span class="truncate">resources/views/chirps/partials/chirp.blade.php</span></div>
 
     </p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-blade"><span class="hl-deletion">&lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;p-4 flex space-x-4&quot;&gt;</span>
-<span class="hl-addition">&lt;<span class="hl-keyword">x-turbo::frame</span> :<span class="hl-property">id</span>=&quot;$chirp&quot; <span class="hl-property">class</span>=&quot;p-4 flex space-x-4&quot;&gt;</span>
+<span class="hl-addition">&lt;<span class="hl-keyword">x-turbo::frame</span> <span class="hl-property">:id</span>=&quot;$chirp&quot; <span class="hl-property">class</span>=&quot;p-4 flex space-x-4&quot;&gt;</span>
     &lt;<span class="hl-keyword">div</span>&gt;
-        &lt;<span class="hl-keyword">x-profile</span> :<span class="hl-property">initials</span>=&quot;$chirp-&gt;user-&gt;initials()&quot; /&gt;
+        &lt;<span class="hl-keyword">x-profile</span> <span class="hl-property">:initials</span>=&quot;$chirp-&gt;user-&gt;initials()&quot; /&gt;
     &lt;/<span class="hl-keyword">div</span>&gt;
 
     &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex-1&quot;&gt;
         <span class="hl-comment">&lt;!-- ... --&gt;</span>
     &lt;/<span class="hl-keyword">div</span>&gt;
 <span class="hl-deletion">&lt;/<span class="hl-keyword">div</span>&gt;</span>
-<span class="hl-addition">&lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;</span>
-</code></pre>
+<span class="hl-addition">&lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;</span></code></pre>
+</div>
 
 <p>
 </div>
@@ -428,60 +385,52 @@
 
 <p>Now, let's also update the <code>chirps.edit</code> page to add a wrapping Turbo Frame around the form there:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-            </svg>
-
-            <span class="whitespace-nowrap">resources/views/chirps/edit.blade.php</span>
-        </div>
-
-            </div>
+<p><div class="code-file">
+    <div class="code-file-bar"><span class="truncate">resources/views/chirps/edit.blade.php</span></div>
 
     </p>
 
-<pre><code class="language-blade">&lt;<span class="hl-keyword">x-layouts.app</span> :<span class="hl-property">title</span>=&quot;__('Edit Chirp')&quot;&gt;
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-layouts.app</span> <span class="hl-property">:title</span>=&quot;__('Edit Chirp')&quot;&gt;
     &lt;<span class="hl-keyword">section</span> <span class="hl-property">class</span>=&quot;w-full lg:max-w-lg mx-auto&quot;&gt;
-        &lt;<span class="hl-keyword">x-back-link</span> :<span class="hl-property">href</span>=&quot;route('chirps.index')&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Chirps'</span>) }}&lt;/<span class="hl-keyword">x-back-link</span>&gt;
+        &lt;<span class="hl-keyword">x-back-link</span> <span class="hl-property">:href</span>=&quot;route('chirps.index')&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Chirps'</span>) }}&lt;/<span class="hl-keyword">x-back-link</span>&gt;
         &lt;<span class="hl-keyword">x-text.heading</span> <span class="hl-property">size</span>=&quot;xl&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Edit Chirp'</span>) }}&lt;/<span class="hl-keyword">x-text.heading</span>&gt;
         &lt;<span class="hl-keyword">x-text.subheading</span>&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Update your Chirp message.'</span>) }}&lt;/<span class="hl-keyword">x-text.subheading</span>&gt;
 
         &lt;<span class="hl-keyword">x-page-card</span> <span class="hl-property">class</span>=&quot;my-6&quot;&gt;
 <span class="hl-deletion">            <span class="hl-keyword">@include</span>(<span class="hl-value">'chirps.partials.form'</span>)</span>
-<span class="hl-addition">            &lt;<span class="hl-keyword">x-turbo::frame</span> :<span class="hl-property">id</span>=&quot;$chirp&quot; <span class="hl-property">target</span>=&quot;_top&quot;&gt;</span>
+<span class="hl-addition">            &lt;<span class="hl-keyword">x-turbo::frame</span> <span class="hl-property">:id</span>=&quot;$chirp&quot; <span class="hl-property">target</span>=&quot;_top&quot;&gt;</span>
 <span class="hl-addition">                <span class="hl-keyword">@include</span>(<span class="hl-value">'chirps.partials.form'</span>)</span>
 <span class="hl-addition">            &lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;</span>
         &lt;/<span class="hl-keyword">x-page-card</span>&gt;
     &lt;/<span class="hl-keyword">section</span>&gt;
-&lt;/<span class="hl-keyword">x-layouts.app</span>&gt;
-</code></pre>
+&lt;/<span class="hl-keyword">x-layouts.app</span>&gt;</code></pre>
+</div>
 
 <p>
 </div>
 </p>
 
-<h2>Updating inline edit form with the chirps partial</h2>
+<h2 id="replacing-the-inline-edit-form-with-the-chirp-partial">Replacing the inline edit form with the Chirp partial</h2>
 
-<p>Now, if you try clicking on the edit button, you should see the form appearing inline! If you submit it, you will see the change takes place already. That's awesome, right? Well, not so much. See, we can see the change because after the chirp is updated, the controller redirects the user to the index page and it happens that the chirp is rendered on that page, so it finds a matching Turbo Frame. If that wasn't the case, we would see a strange behavior.</p>
+<p>Now, if you try clicking on the edit button, you should see the form appearing inline! If you submit it, you will see the change take place already. That's awesome, right? Well, not so much. See, we only see the change because after the Chirp is updated, the controller redirects the user to the index page, and it just so happens that the Chirp is rendered on that page, so Turbo finds a matching Turbo Frame. If that wasn't the case, we would see a strange behavior.</p>
 
 <p>Let's change the <code>update</code> action in the <code>ChirpController</code> to return a Turbo Stream with the updated Chirp partial if the client supports it:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-            </svg>
-
-            <span class="whitespace-nowrap">app/Controllers/ChirpController.php</span>
-        </div>
-
-            </div>
+<p><div class="code-file">
+    <div class="code-file-bar"><span class="truncate">app/Controllers/ChirpController.php</span></div>
 
     </p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
 
 <span class="hl-comment">// ...</span>
@@ -513,37 +462,33 @@
     }
 
     <span class="hl-comment">// ...</span>
-}
-</code></pre>
+}</code></pre>
+</div>
 
 <p>
 </div>
 </p>
 
-<p>Now, if you try editing a chirp, you should see the same thing as before, but now we're sure that our chirp will just be updated no matter if it's present in the index listing of chirps or not after the form is submitted. Yay!</p>
+<p>Now, if you try editing a Chirp, you should see the same thing as before, but now we're sure our Chirp will be updated whether or not it's present in the index listing after the form is submitted. Yay!</p>
 
 <p><img src="/assets/images/bootcamp/hotwiring-editing-chirp.png?v=4" alt="Hotwiring Editing Chirps" /></p>
 
-<h2>Deleting Chirps with Turbo Streams</h2>
+<h2 id="deleting-chirps-with-turbo-streams">Deleting Chirps with Turbo Streams</h2>
 
-<p>If you try deleting a Chirp now that they are wrapped in a <code>turbo-frame</code> you'll notice the Chirp itself is gone, but for the wrong reason. That happens because after deleting a Chirp, we're also redirecting users to the index page and it happens that there's no chirp in there because it's gone from the database. Since Turbo didn't find a matching Turbo Frame, it removes the frame's content!</p>
+<p>If you try deleting a Chirp now that they are wrapped in a <code>turbo-frame</code>, you'll notice the Chirp itself is gone, but for the wrong reason. That happens because after deleting a Chirp, we're also redirecting users to the index page, and the Chirp isn't there anymore because it's gone from the database. Since Turbo didn't find a matching Turbo Frame, it removes the frame's content!</p>
 
 <p>Let's change the <code>destroy</code> action in our <code>ChirpController</code> to respond with a remove Turbo Stream whenever a Chirp is deleted and the client supports it:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-            </svg>
-
-            <span class="whitespace-nowrap">app/Controllers/ChirpController.php</span>
-        </div>
-
-            </div>
+<p><div class="code-file">
+    <div class="code-file-bar"><span class="truncate">app/Controllers/ChirpController.php</span></div>
 
     </p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
 
 <span class="hl-comment">// ...</span>
@@ -569,8 +514,8 @@
 
         <span class="hl-keyword">return</span> <span class="hl-property">to_route</span>(<span class="hl-value">'chirps.index'</span>)-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
     }
-}
-</code></pre>
+}</code></pre>
+</div>
 
 <p>
 </div>
@@ -578,24 +523,20 @@
 
 <p>And that's it!</p>
 
-<h2>Turbo Stream Flash Macro</h2>
+<h2 id="turbo-stream-flash-macro">Turbo Stream Flash Macro</h2>
 
-<p>So far we've been using the default action methods provided by the Turbo Laravel package. Let's add a <code>notice</code> macro to the <code>PendingTurboStreamResponse</code> class, which the <code>turbo_stream()</code> function returns (except when we give it an array, which then it returns an instance of the <code>MultiplePendingTurboStreamResponse</code> class). This <code>notice</code> macro will work as a shorthand for the creating Turbo Streams to append notifications on the page:</p>
+<p>So far we've been using the default action methods provided by the Turbo Laravel package. Let's add a <code>notice</code> macro to the <code>PendingTurboStreamResponse</code> class, which the <code>turbo_stream()</code> function returns (except when we give it an array, in which case it returns an instance of the <code>MultiplePendingTurboStreamResponse</code> class). This <code>notice</code> macro will work as a shorthand for creating Turbo Streams to append notifications on the page:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-            </svg>
-
-            <span class="whitespace-nowrap">app/Providers/AppServiceProvider.php</span>
-        </div>
-
-            </div>
+<p><div class="code-file">
+    <div class="code-file-bar"><span class="truncate">app/Providers/AppServiceProvider.php</span></div>
 
     </p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
 
 <span class="hl-keyword">namespace</span> <span class="hl-type">App\Providers</span>;
@@ -616,8 +557,8 @@
 <span class="hl-addition">            ]));</span>
 <span class="hl-addition">        });</span>
     }
-}
-</code></pre>
+}</code></pre>
+</div>
 
 <p>
 </div>
@@ -625,20 +566,16 @@
 
 <p>Now, our controllers can be cleaned up a bit:</p>
 
-<p><div class="[&>p]:m-0 [&>pre]:m-0 [&>pre]:rounded-none rounded-lg my-8 bg-[#1e1e2e] group" data-controller="clipboard">
-    <div class="pt-3 pb-2.5 px-6 flex items-center justify-between text-sm text-gray-400 border-b border-gray-700">
-        <div class="min-w-0 overflow-auto font-mono flex items-center space-x-1">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-            </svg>
-
-            <span class="whitespace-nowrap">app/Http/Controllers/ChirpController.php</span>
-        </div>
-
-            </div>
+<p><div class="code-file">
+    <div class="code-file-bar"><span class="truncate">app/Http/Controllers/ChirpController.php</span></div>
 
     </p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
 
 <span class="hl-comment">// ...</span>
@@ -721,41 +658,68 @@
 
         <span class="hl-keyword">return</span> <span class="hl-property">to_route</span>(<span class="hl-value">'chirps.index'</span>)-&gt;<span class="hl-property">with</span>(<span class="hl-value">'notice'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
     }
-}
-</code></pre>
+}</code></pre>
+</div>
 
 <p>
 </div>
 </p>
 
-<p>Although this is using Macros, we're still using the Turbo Stream actions that ship with Turbo by default. It's also possible to go custom and create your own actions, if you want to.</p>
+<p>Although we're using macros, we're still using the Turbo Stream actions that ship with Turbo by default. It's also possible to go custom and create your own actions, if you want to.</p>
 
-<h2>Testing it out</h2>
+<h2 id="testing-it-out">Testing it out</h2>
 
 <p>With these changes, our application behaves so much better than before! Try it out yourself!</p>
 
 <p><img src="/assets/images/bootcamp/hotwiring-chirps-inline-forms.png?v=4" alt="Inline Editing Forms" /></p>
-        </div>
 
-                    <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div class="relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
-      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Previous</div>
-      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/deleting-chirps">Deleting Chirps <span class="absolute inset-0"></span></a>
-    </div>
+      </div>
+    </article>
+
+          <nav aria-label="Pagination" class="mt-14 grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4 border-t border-line pt-8">
+                  <a href="/bootcamp/deleting-chirps" class="flex flex-col gap-1 rounded-xl border border-line bg-paper-raised px-5 py-4 text-ink transition-colors hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus">
+            <span class="inline-flex items-center gap-1 text-[13px] leading-[18px] text-ink-subtle">
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>Previous
+                          </span>
+            <span class="font-display text-xl leading-7 font-bold">05. Deleting Chirps</span>
+          </a>
+                  <a href="/bootcamp/broadcasting" class="flex flex-col gap-1 rounded-xl border border-line bg-paper-raised px-5 py-4 text-ink transition-colors hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus items-end text-right">
+            <span class="inline-flex items-center gap-1 text-[13px] leading-[18px] text-ink-subtle">
+                              Next<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+                          </span>
+            <span class="font-display text-xl leading-7 font-bold">07. Broadcasting</span>
+          </a>
+              </nav>
+      </main>
+
   
-      <div class="lg:col-start-2 relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
-      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Next</div>
-      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/broadcasting">Broadcasting <span class="absolute inset-0"></span></a>
-    </div>
-  </div>
-              </main>
-    </div>
+      <aside aria-label="On this page" class="sticky top-6 hidden flex-[0_0_200px] flex-col gap-2.5 text-sm leading-5 min-[1100px]:flex">
+      <p class="mb-0.5 text-[13px] leading-[18px] font-semibold text-ink-subtle">On this page</p>
+      <a href="#top" class="font-semibold text-ink hover:underline hover:underline-offset-3">Introduction</a>
+              <a href="#inline-forms-with-turbo-frames" class="text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">Inline forms with Turbo Frames</a>
+              <a href="#displaying-the-edit-chirp-form-inline" class="text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">Displaying the edit Chirp form inline</a>
+              <a href="#replacing-the-inline-edit-form-with-the-chirp-partial" class="text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">Replacing the inline edit form with the Chirp partial</a>
+              <a href="#deleting-chirps-with-turbo-streams" class="text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">Deleting Chirps with Turbo Streams</a>
+              <a href="#turbo-stream-flash-macro" class="text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">Turbo Stream Flash Macro</a>
+              <a href="#testing-it-out" class="text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">Testing it out</a>
+            <a href="https://github.com/hotwired-laravel/turbo-laravel-site/edit/main/source/_bootcamp/hotwiring-everything.md" class="mt-3.5 inline-flex items-center gap-1.5 border-t border-line pt-3.5 text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">Edit this page on GitHub</a>
+    </aside>
   </div>
 
-        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
-          <p class="text-base text-center w-full">
-            Turbo Laravel is maintained by <a href="https://tonysm.com" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
-          </p>
-        </footer>
+        <footer class="border-t border-[#243046] bg-ink text-night-muted">
+  <div class="mx-auto flex max-w-[1248px] flex-wrap items-center justify-between gap-x-12 gap-y-6 px-6 py-12 text-[15px] leading-6">
+    <div class="flex max-w-[560px] flex-col gap-1.5">
+      <span class="font-display text-xl font-bold tracking-[-0.02em] text-night-ink"><span class="text-syntax-keyword">Turbo</span> Laravel</span>
+      <span>Maintained by <a href="https://tonysm.com" class="underline hover:text-night-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">Tony Messias</a>. A <em>community project</em>, not affiliated with Laravel or 37signals.</span>
+    </div>
+
+    <nav aria-label="Footer" class="flex flex-wrap gap-x-7 gap-y-3 font-semibold">
+              <a href="/docs/installation" class="hover:text-night-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">Documentation</a>
+              <a href="/bootcamp/introduction" class="hover:text-night-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">Bootcamp</a>
+              <a href="https://github.com/hotwired-laravel/turbo-laravel" class="hover:text-night-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">GitHub</a>
+              <a href="https://hotwired.dev/" class="hover:text-night-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">Hotwire</a>
+          </nav>
+  </div>
+</footer>
     </body>
 </html>

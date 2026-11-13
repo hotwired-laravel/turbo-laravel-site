@@ -2,375 +2,372 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="canonical" href="https://turbo-laravel.com/bootcamp/native-editing-modal">
-        <meta name="description" content="Editing in a Native Modal">
-        <title>Editing in a Modal | Bootcamp | Turbo Laravel</title>
-        <link rel="apple-touch-icon" sizes="180x180" href="https://turbo-laravel.com/assets/manifest/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="https://turbo-laravel.com/assets/manifest/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="https://turbo-laravel.com/assets/manifest/favicon-16x16.png">
-        <link rel="manifest" href="https://turbo-laravel.com/assets/site.webmanifest">
-        <link rel="preload" href="https://turbo-laravel.com/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
-        <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=43ade17df46426aaccbc2cac40014c37">
-        <script defer src="/assets/build/js/main.js?id=b0f29cd4e71d41b4ee570d0f42344180"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://turbo-laravel.com/bootcamp/native-editing-modal">
+<meta name="description" content="Editing in a Native Modal">
+<title>Editing in a Modal | Bootcamp | Turbo Laravel</title>
+<link rel="apple-touch-icon" sizes="180x180" href="https://turbo-laravel.com/assets/manifest/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://turbo-laravel.com/assets/manifest/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://turbo-laravel.com/assets/manifest/favicon-16x16.png">
+<link rel="manifest" href="https://turbo-laravel.com/assets/site.webmanifest">
 
-        <!-- Open Graph data -->
-        <meta property="og:title" content="Editing in a Modal | Bootcamp | Turbo Laravel" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="" />
+<!-- Open Graph data -->
+<meta property="og:title" content="Editing in a Modal | Bootcamp | Turbo Laravel" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://turbo-laravel.com/bootcamp/native-editing-modal" />
 
-        <meta property="og:image" content="https://turbo-laravel.com/assets/images/turbo-laravel-meta.png" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:description" content="Editing in a Native Modal" />
-        <meta property="og:locale" content="en_US">
-        <meta property="og:site_name" content="Turbo Laravel" />
+<meta property="og:image" content="https://turbo-laravel.com/assets/images/turbo-laravel-meta.png?v=3060538a" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:alt" content="Turbo Laravel, Hotwire for Laravel: HTML over the wire." />
+<meta property="og:description" content="Editing in a Native Modal" />
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Turbo Laravel" />
 
-        <!-- Twitter Card meta -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Editing in a Modal | Bootcamp | Turbo Laravel">
-        <meta name="twitter:description" content="Editing in a Native Modal">
+<!-- Twitter Card meta -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Editing in a Modal | Bootcamp | Turbo Laravel">
+<meta name="twitter:description" content="Editing in a Native Modal">
+<meta name="twitter:image" content="https://turbo-laravel.com/assets/images/turbo-laravel-meta.png?v=3060538a">
+<meta name="twitter:image:alt" content="Turbo Laravel, Hotwire for Laravel: HTML over the wire.">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Figtree:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+                <link rel="stylesheet" href="/assets/build/assets/main-QHec2Cla.css">
+        <script defer type="module" src="/assets/build/assets/main-B2QLDe1R.js"></script>
     </head>
-    <body class="text-zinc-900 text-lg font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
-        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
-  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
-    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
-      <a href="/">Turbo Laravel</a>
-    </h1>
+    <body class="min-h-screen bg-paper font-body text-ink antialiased" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="relative border-b border-line bg-paper" data-controller="menu" data-action="keydown.esc@window->menu#dismiss click@window->menu#closeOnOutsideClick search:reveal@window->menu#open">
+  <nav aria-label="Main" class="mx-auto flex max-w-[1248px] items-center justify-between gap-x-8 px-6 py-[18px]">
+    <a href="/" class="font-display text-2xl font-bold tracking-[-0.02em] text-ink"><span class="text-wire-strong">Turbo</span> Laravel</a>
 
-    <nav class="inline-block lg:hidden">
-      <details class="group" data-search-target="nav">
-        <summary class="list-none">
-          <span>
-            <span class="sr-only">Navigation</span>
+    <button type="button" class="group -mr-2 inline-flex size-11 items-center justify-center rounded-[10px] text-ink hover:bg-paper-sunken focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-focus lg:hidden" aria-expanded="false" aria-controls="site-menu" data-menu-target="button" data-action="menu#toggle">
+      <span class="sr-only">Menu</span>
+      <svg class="group-aria-expanded:hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+      <svg class="hidden group-aria-expanded:block" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+    </button>
 
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
-              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-          </span>
-        </summary>
+    <div id="site-menu" data-menu-target="panel" class="absolute inset-x-0 top-full z-30 hidden flex-col border-b border-line bg-paper px-6 pt-2 pb-6 text-base font-semibold shadow-lift data-open:flex lg:static lg:flex lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-7 lg:gap-y-3 lg:border-0 lg:bg-transparent lg:p-0 lg:text-[15px] lg:shadow-none">
+      <div class="group relative border-b border-line lg:border-0">
+        <a href="/docs/installation"  class="text-ink decoration-wire decoration-2 underline-offset-[6px] hover:underline aria-[current=page]:underline aria-[current=page]:decoration-ember focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus flex min-h-12 items-center gap-1.5 lg:inline-flex lg:min-h-0">
+          Documentation
+          <svg class="hidden transition group-hover:rotate-180 group-focus-within:rotate-180 lg:block" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+        </a>
 
-        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
-          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
-            <form action="/docs/search" method="GET" class="px-4">
-  <label for="search" class="sr-only">Search</label>
-  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 2.x docs..." />
-  <button type="submit" class="sr-only">Search</button>
-</form>
-
-            <ul class="space-y-6 -mb-2 mt-4">
-              <li>
-                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
-                  <span>Documentation</span>
-                </a>
-
-                              </li>
-              <li>
-                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
-              </li>
-              <li class="space-y-6">
-                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
-                  <div class="mx-4 pl-3 border-l-4 border-zinc-900/30">
-  <ul class="">
-        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
-    <li class="children mt-2">
-      <ul class="list-inside space-y-1 text-lg">
-                <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Introduction</a></li>
-              </ul>
-    </li>
-        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
-    <li class="children mt-2">
-      <ul class="list-inside space-y-1 text-lg">
-                <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
-                <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Creating Chirps</a></li>
-                <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Listing Chirps</a></li>
-                <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing Chirps</a></li>
-                <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Deleting Chirps</a></li>
-                <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Hotwiring Everything</a></li>
-                <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Broadcasting</a></li>
-              </ul>
-    </li>
-        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
-    <li class="children mt-2">
-      <ul class="list-inside space-y-1 text-lg">
-                <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
-                <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Authentication</a></li>
-                <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Our First Bridge Component</a></li>
-                <li><a href="/bootcamp/native-editing-modal" class="font-bold transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing as a Modal</a></li>
-                <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Confirmation Dialog</a></li>
-                <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Toasts</a></li>
-              </ul>
-    </li>
-        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
-    <li class="children mt-2">
-      <ul class="list-inside space-y-1 text-lg">
-                <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Conclusion</a></li>
-              </ul>
-    </li>
-      </ul>
-</div>
-              </li>
-              <!-- <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li> -->
-            </ul>
-          </div>
+        <div class="pb-3 lg:invisible lg:absolute lg:top-full lg:left-0 lg:z-10 lg:pt-3 lg:pb-0 lg:opacity-0 lg:transition lg:group-focus-within:visible lg:group-focus-within:opacity-100 lg:group-hover:visible lg:group-hover:opacity-100">
+          <ul class="flex flex-col gap-1 border-l-2 border-line pl-3 text-[15px] lg:min-w-52 lg:rounded-[10px] lg:border lg:border-line lg:bg-paper-raised lg:p-2 lg:shadow-lift">
+            <li>
+              <a href="/docs/installation"  class="flex items-center justify-between gap-4 rounded-md px-3 py-2 text-ink hover:bg-paper-sunken aria-current:bg-wire-soft">
+                Version 2.2.0
+                <span class="rounded-full bg-wire-soft px-2 font-code text-[11px] leading-[18px] font-medium text-wire-strong">latest</span>
+              </a>
+            </li>
+            <li>
+              <a href="/1.x/docs/installation"  class="flex rounded-md px-3 py-2 text-ink hover:bg-paper-sunken aria-current:bg-wire-soft">Version 1.12.2</a>
+            </li>
+          </ul>
         </div>
-      </details>
-    </nav>
-  </div>
+      </div>
 
-  <nav class="hidden lg:block">
-    <ul class="flex items-center space-x-6 -my-2">
-      <li>
-        <div class="group relative py-2">
-          <a href="/docs" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
-            <span>Documentation</span>
+      <div class="flex min-h-12 items-center border-b border-line lg:min-h-0 lg:border-0">
+        <a href="/bootcamp/introduction"  aria-current="page"  class="text-ink decoration-wire decoration-2 underline-offset-[6px] hover:underline aria-[current=page]:underline aria-[current=page]:decoration-ember focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus">Bootcamp</a>
+      </div>
 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-            </svg>
-          </a>
+      <div class="flex min-h-12 items-center border-b border-line lg:min-h-0 lg:border-0">
+        <a href="https://github.com/hotwired-laravel/turbo-laravel" class="text-ink decoration-wire decoration-2 underline-offset-[6px] hover:underline aria-[current=page]:underline aria-[current=page]:decoration-ember focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus inline-flex items-center gap-1.5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4 1.3-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C6.6 3.3 5.6 3.6 5.6 3.6a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 10c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>
+          Source code
+        </a>
+      </div>
 
-          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
-            <ul class="space-y-1">
-              <li><a href="/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">2.2.0</span></a></li>
-              <li><a href="/1.x/docs/installation" class="block px-2 py-1  rounded">Version <span class="">1.12.2</span></a></li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
-      <li><a href="/bootcamp/introduction" class="bg-white/90 px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
-      <!-- <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li> -->
-    </ul>
+      <span class="hidden rounded-full border-[1.5px] border-line-control px-2.5 py-0.5 font-code text-[12.5px] leading-[18px] font-medium text-ink-muted lg:inline">v2.x</span>
+
+      <form action="/bootcamp/search" method="GET" role="search" class="order-first py-3 lg:order-none lg:py-0">
+        <label class="flex min-h-11 min-w-[216px] cursor-text items-center gap-2 rounded-[10px] border-[1.5px] border-line-control bg-paper-raised px-3 py-[9px] text-ink-subtle focus-within:outline-2 focus-within:outline-offset-3 focus-within:outline-focus">
+          <svg class="shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m20 20-4.4-4.4"></path></svg>
+          <span class="sr-only">Search bootcamp</span>
+          <input data-search-target="web" type="search" name="q" placeholder="Search bootcamp" class="search-input w-0 min-w-0 flex-1 bg-transparent text-base leading-5 font-normal text-ink placeholder:text-ink-subtle focus:outline-none lg:text-[15px]">
+          <kbd class="hidden rounded-md border border-line bg-paper-sunken px-1.5 py-px font-code text-xs font-medium text-ink-subtle lg:inline">/</kbd>
+        </label>
+      </form>
+    </div>
   </nav>
 </header>
 
-          <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
-    <div class="sm:flex sm:space-x-12 sm:max-w-7xl w-full mx-auto">
-      <aside class="relative w-1/4 hidden lg:block" data-search-target="aside">
-        <div class="sticky top-4 block space-y-4">
-            <form action="/bootcamp/search" method="GET">
-  <label for="search" class="sr-only">Search</label>
-  <input data-search-target="web" type="text" name="q" placeholder="Search bootcamp... (press &quot;/&quot; to focus)" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
-</form>
+        <div class="mx-auto flex max-w-[1248px] flex-wrap items-start gap-x-12 gap-y-8 px-6 pt-12 pb-24">
+  
+  <details class="doc-side-mobile w-full rounded-[10px] border border-line bg-paper-raised lg:hidden">
+    <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 px-4 py-2.5 text-[15px] font-semibold [&::-webkit-details-marker]:hidden">
+      <span class="min-w-0 truncate"><span class="text-ink-subtle">Native /</span> Editing in a Modal</span>
+      <svg class="shrink-0 transition [[open]>summary>&]:rotate-180" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+    </summary>
+    <nav aria-label="Bootcamp chapters" class="doc-side border-t border-line px-2 pt-4 pb-3">
+      <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle">Prologue</p>
+  <ul>
+          <li><a href="/bootcamp/introduction" >Introduction</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Web</p>
+  <ul>
+          <li><a href="/bootcamp/installation" >Installation</a></li>
+          <li><a href="/bootcamp/creating-chirps" >Creating Chirps</a></li>
+          <li><a href="/bootcamp/listing-chirps" >Listing Chirps</a></li>
+          <li><a href="/bootcamp/editing-chirps" >Editing Chirps</a></li>
+          <li><a href="/bootcamp/deleting-chirps" >Deleting Chirps</a></li>
+          <li><a href="/bootcamp/hotwiring-everything" >Hotwiring Everything</a></li>
+          <li><a href="/bootcamp/broadcasting" >Broadcasting</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Native</p>
+  <ul>
+          <li><a href="/bootcamp/native-setup" >Installation</a></li>
+          <li><a href="/bootcamp/native-auth" >Authentication</a></li>
+          <li><a href="/bootcamp/native-bridge-component" >Our First Bridge Component</a></li>
+          <li><a href="/bootcamp/native-editing-modal"  aria-current="page" >Editing as a Modal</a></li>
+          <li><a href="/bootcamp/native-confirmation" >Native Confirmation Dialog</a></li>
+          <li><a href="/bootcamp/native-toasts" >Native Toasts</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Epilogue</p>
+  <ul>
+          <li><a href="/bootcamp/conclusion" >Conclusion</a></li>
+      </ul>
+    </nav>
+  </details>
 
-            <ul class="[&_.children]:mb-4 text-base">
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Prologue</li>
-  <li class="children mt-2">
-    <ul class="list-inside space-y-1">
-            <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Introduction</a></li>
-          </ul>
-  </li>
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Web</li>
-  <li class="children mt-2">
-    <ul class="list-inside space-y-1">
-            <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
-            <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Creating Chirps</a></li>
-            <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Listing Chirps</a></li>
-            <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing Chirps</a></li>
-            <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Deleting Chirps</a></li>
-            <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Hotwiring Everything</a></li>
-            <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
-          </ul>
-  </li>
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Native</li>
-  <li class="children mt-2">
-    <ul class="list-inside space-y-1">
-            <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
-            <li><a href="/bootcamp/native-auth" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Authentication</a></li>
-            <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Our First Bridge Component</a></li>
-            <li><a href="/bootcamp/native-editing-modal" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing as a Modal</a></li>
-            <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Confirmation Dialog</a></li>
-            <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Toasts</a></li>
-          </ul>
-  </li>
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Epilogue</li>
-  <li class="children mt-2">
-    <ul class="list-inside space-y-1">
-            <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conclusion</a></li>
-          </ul>
-  </li>
-  </ul>
-        </div>
-      </aside>
+  <nav aria-label="Bootcamp chapters" class="doc-side sticky top-6 hidden max-h-[calc(100vh-3rem)] max-w-[232px] min-w-0 flex-[1_1_220px] overflow-y-auto lg:block">
+    <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle">Prologue</p>
+  <ul>
+          <li><a href="/bootcamp/introduction" >Introduction</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Web</p>
+  <ul>
+          <li><a href="/bootcamp/installation" >Installation</a></li>
+          <li><a href="/bootcamp/creating-chirps" >Creating Chirps</a></li>
+          <li><a href="/bootcamp/listing-chirps" >Listing Chirps</a></li>
+          <li><a href="/bootcamp/editing-chirps" >Editing Chirps</a></li>
+          <li><a href="/bootcamp/deleting-chirps" >Deleting Chirps</a></li>
+          <li><a href="/bootcamp/hotwiring-everything" >Hotwiring Everything</a></li>
+          <li><a href="/bootcamp/broadcasting" >Broadcasting</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Native</p>
+  <ul>
+          <li><a href="/bootcamp/native-setup" >Installation</a></li>
+          <li><a href="/bootcamp/native-auth" >Authentication</a></li>
+          <li><a href="/bootcamp/native-bridge-component" >Our First Bridge Component</a></li>
+          <li><a href="/bootcamp/native-editing-modal"  aria-current="page" >Editing as a Modal</a></li>
+          <li><a href="/bootcamp/native-confirmation" >Native Confirmation Dialog</a></li>
+          <li><a href="/bootcamp/native-toasts" >Native Toasts</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Epilogue</p>
+  <ul>
+          <li><a href="/bootcamp/conclusion" >Conclusion</a></li>
+      </ul>
+  </nav>
 
-      <main class="flex-1 min-w-0 max-w-3xl">
-        <div class="prose prose-lg overflow-hidden prose-zinc [&_code:not(pre_code)]:text-wrap [&_code:not(pre_code)]:break-words prose-headings:font-heading prose-headings:font-extrabold max-w-none w-full">
-            <h1><em>11.</em> Editing in a Modal</h1>
+  
+  <main class="max-w-[720px] min-w-0 flex-[999_1_560px]">
+    <article class="doc-article" data-kind="bootcamp">
+              <p class="mb-3 text-sm leading-5 text-ink-subtle">
+          <a href="/bootcamp/introduction" class="text-ink-subtle hover:text-ink">Bootcamp</a>
+          <span aria-hidden="true">/</span>
+          Native
+        </p>
+      
+              <h1 id="top" class="doc-title"><em>11.</em> Editing in a Modal</h1>
+      
+      
+      <div class="doc-body">
+        
 
-<p>Right now our editing flow is not very mobile-friendly. Instead of showing the edit form inline in the list, we could show it as a native modal screen instead. But before we introduce the new native screen, let's first ensure our web dropdown appears as a real native bottom sheet list of options. That will serve as an example of how we can bridge the web and mobile native Worlds with a little bit of JavaScript. This approach was based on how the Hey app works (at least on the pieces I could spot from inspecting the page source).</p>
+<p>Right now our editing flow is not very mobile-friendly. Instead of showing the edit form inline in the list, we could show it as a native modal screen instead. But before we introduce the new native screen, let's first ensure our web dropdown appears as a real native bottom sheet list of options. That will serve as an example of how we can bridge the web and native mobile worlds with a little bit of JavaScript. This approach was based on how the HEY app works (at least on the pieces I could spot from inspecting the page source).</p>
 
-<h2>Dropdowns in a BottomSheet modal</h2>
+<h2 id="dropdowns-in-a-bottomsheet-modal">Dropdowns in a BottomSheet modal</h2>
 
-<p>Let's first create our BottomSheet. This one won't be driven by a navigation, though. We're going implement a web->native bridge that we can trigger when the app is running inside a Hotwire Native client. For now, let's create a new XML view. Head to the sidebar, under "res/layout", right-click on it an choose "New -> Layout Resource File". Call it "popup_menu.xml" and add this content:</p>
+<p>Let's first create our BottomSheet. This one won't be driven by navigation, though. We're going to implement a web->native bridge that we can trigger when the app is running inside a Hotwire Native client. For now, let's create a new XML view. Head to the sidebar, under "res/layout", right-click on it and choose "New -> Layout Resource File". Call it "popup_menu.xml" and add this content:</p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">xml</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-xml">&lt;?xml <span class="hl-property">version</span>=&quot;1.0&quot; <span class="hl-property">encoding</span>=&quot;utf-8&quot;?&gt;
-&lt;<span class="hl-keyword">androidx</span>.cardview.widget.CardView
-    xmlns:<span class="hl-property">android</span>=&quot;http://schemas.android.com/apk/res/android&quot;
-    android:<span class="hl-property">layout_width</span>=&quot;match_parent&quot;
-    android:<span class="hl-property">layout_height</span>=&quot;wrap_content&quot;&gt;
+&lt;<span class="hl-keyword">androidx.cardview.widget.CardView</span>
+    <span class="hl-property">xmlns:android</span>=&quot;http://schemas.android.com/apk/res/android&quot;
+    <span class="hl-property">android:layout_width</span>=&quot;match_parent&quot;
+    <span class="hl-property">android:layout_height</span>=&quot;wrap_content&quot;&gt;
 
     &lt;<span class="hl-keyword">LinearLayout</span>
-        android:<span class="hl-property">id</span>=&quot;@+id/popupMenuWrapper&quot;
-        android:<span class="hl-property">layout_width</span>=&quot;match_parent&quot;
-        android:<span class="hl-property">layout_height</span>=&quot;wrap_content&quot;
-        android:<span class="hl-property">layout_margin</span>=&quot;2dp&quot;
-        android:<span class="hl-property">orientation</span>=&quot;vertical&quot;&gt;
+        <span class="hl-property">android:id</span>=&quot;@+id/popupMenuWrapper&quot;
+        <span class="hl-property">android:layout_width</span>=&quot;match_parent&quot;
+        <span class="hl-property">android:layout_height</span>=&quot;wrap_content&quot;
+        <span class="hl-property">android:layout_margin</span>=&quot;2dp&quot;
+        <span class="hl-property">android:orientation</span>=&quot;vertical&quot;&gt;
     &lt;/<span class="hl-keyword">LinearLayout</span>&gt;
 
-&lt;/<span class="hl-keyword">androidx</span>.cardview.widget.CardView&gt;
-</code></pre>
+&lt;/<span class="hl-keyword">androidx.cardview.widget.CardView</span>&gt;</code></pre>
+</div>
 
-<p>This will be programatically added, so what's really important here is the <code>android:id</code> property. Since we're going to trigger this native feature from the web, the Hotwire Native for Android <a href="https://github.com/hotwired/turbo-android/blob/main/docs/ADVANCED-OPTIONS.md#native---javascript-integration">documentation says</a> that the best location is in the <code>TurboSessionNavHostFragment::onSessionCreated</code> function. Let's then tweak our <code>MainSessionNavHostFragment</code> with the following change:</p>
+<p>This will be added programmatically, so what's really important here is the <code>android:id</code> property. Since we're going to trigger this native feature from the web, the Hotwire Native for Android <a href="https://github.com/hotwired/turbo-android/blob/main/docs/ADVANCED-OPTIONS.md#native---javascript-integration">documentation says</a> that the best location is in the <code>TurboSessionNavHostFragment::onSessionCreated</code> function. So let's tweak our <code>MainSessionNavHostFragment</code> with the following change:</p>
 
-<pre><code class="language-kotlin">package com.example.turbochirpernative.main
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">kotlin</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-kotlin"><span class="hl-keyword">package</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>main</span>
 
-import android.webkit.JavascriptInterface // Add this
-import android.webkit.WebView
-import android.widget.Button // Add this
-import android.widget.LinearLayout
-import android.widget.Toast // Add this
-import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.res.integerResource
-import androidx.fragment.app.Fragment
-import com.example.turbochirpernative.BuildConfig
-import com.example.turbochirpernative.R // Add this
-import com.example.turbochirpernative.features.auth.LoginFragment
-import com.example.turbochirpernative.features.web.ChirpsHomeFragment
-import com.example.turbochirpernative.features.web.WebFragment
-import com.example.turbochirpernative.util.CHIRPS_HOME_URL
-import com.google.android.material.bottomsheet.BottomSheetDialog // Add this
-import com.google.gson.Gson // Add this
-import dev.hotwire.turbo.config.TurboPathConfiguration
-import dev.hotwire.turbo.session.TurboSessionNavHostFragment
-import kotlin.reflect.KClass
+<span class="hl-keyword">import</span> <span class="hl-type">android<span class="hl-operator">.</span>webkit<span class="hl-operator">.</span>JavascriptInterface</span> <span class="hl-comment">// Add this</span>
+<span class="hl-keyword">import</span> <span class="hl-type">android<span class="hl-operator">.</span>webkit<span class="hl-operator">.</span>WebView</span>
+<span class="hl-keyword">import</span> <span class="hl-type">android<span class="hl-operator">.</span>widget<span class="hl-operator">.</span>Button</span> <span class="hl-comment">// Add this</span>
+<span class="hl-keyword">import</span> <span class="hl-type">android<span class="hl-operator">.</span>widget<span class="hl-operator">.</span>LinearLayout</span>
+<span class="hl-keyword">import</span> <span class="hl-type">android<span class="hl-operator">.</span>widget<span class="hl-operator">.</span>Toast</span> <span class="hl-comment">// Add this</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>appcompat<span class="hl-operator">.</span>app<span class="hl-operator">.</span>AppCompatActivity</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>ui<span class="hl-operator">.</span>res<span class="hl-operator">.</span>integerResource</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>fragment<span class="hl-operator">.</span>app<span class="hl-operator">.</span>Fragment</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>BuildConfig</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>R</span> <span class="hl-comment">// Add this</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>features<span class="hl-operator">.</span>auth<span class="hl-operator">.</span>LoginFragment</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>features<span class="hl-operator">.</span>web<span class="hl-operator">.</span>ChirpsHomeFragment</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>features<span class="hl-operator">.</span>web<span class="hl-operator">.</span>WebFragment</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>util<span class="hl-operator">.</span>CHIRPS_HOME_URL</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>google<span class="hl-operator">.</span>android<span class="hl-operator">.</span>material<span class="hl-operator">.</span>bottomsheet<span class="hl-operator">.</span>BottomSheetDialog</span> <span class="hl-comment">// Add this</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>google<span class="hl-operator">.</span>gson<span class="hl-operator">.</span>Gson</span> <span class="hl-comment">// Add this</span>
+<span class="hl-keyword">import</span> <span class="hl-type">dev<span class="hl-operator">.</span>hotwire<span class="hl-operator">.</span>turbo<span class="hl-operator">.</span>config<span class="hl-operator">.</span>TurboPathConfiguration</span>
+<span class="hl-keyword">import</span> <span class="hl-type">dev<span class="hl-operator">.</span>hotwire<span class="hl-operator">.</span>turbo<span class="hl-operator">.</span>session<span class="hl-operator">.</span>TurboSessionNavHostFragment</span>
+<span class="hl-keyword">import</span> <span class="hl-type">kotlin<span class="hl-operator">.</span>reflect<span class="hl-operator">.</span>KClass</span>
 
-class MainSessionNavHostFragment : TurboSessionNavHostFragment(), PopupMenuDelegator {
-    // ...
+<span class="hl-keyword">class</span> <span class="hl-type">MainSessionNavHostFragment</span> <span class="hl-operator">:</span> <span class="hl-type">TurboSessionNavHostFragment</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">,</span> <span class="hl-type">PopupMenuDelegator</span> <span class="hl-operator">{</span>
+    <span class="hl-comment">// ...</span>
 
-    override fun onSessionCreated() {
-        super.onSessionCreated()
-        session.webView.settings.userAgentString = customUserAgent(session.webView)
+    <span class="hl-keyword">override</span> <span class="hl-keyword">fun</span> <span class="hl-property">onSessionCreated</span><span class="hl-operator">(</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+        <span class="hl-keyword">super</span><span class="hl-operator">.</span><span class="hl-property">onSessionCreated</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+        session<span class="hl-operator">.</span>webView<span class="hl-operator">.</span>settings<span class="hl-operator">.</span>userAgentString <span class="hl-operator">=</span> <span class="hl-property">customUserAgent</span><span class="hl-operator">(</span>session<span class="hl-operator">.</span>webView<span class="hl-operator">)</span>
 
-        if (BuildConfig.DEBUG) {
-            session.setDebugLoggingEnabled(true)
-            WebView.setWebContentsDebuggingEnabled(true)
-        }
+        <span class="hl-keyword">if</span> <span class="hl-operator">(</span><span class="hl-type">BuildConfig</span><span class="hl-operator">.</span><span class="hl-type">DEBUG</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+            session<span class="hl-operator">.</span><span class="hl-property">setDebugLoggingEnabled</span><span class="hl-operator">(</span><span class="hl-literal">true</span><span class="hl-operator">)</span>
+            <span class="hl-type">WebView</span><span class="hl-operator">.</span><span class="hl-property">setWebContentsDebuggingEnabled</span><span class="hl-operator">(</span><span class="hl-literal">true</span><span class="hl-operator">)</span>
+        <span class="hl-operator">}</span>
 
-        // Add this:
-        session.webView.addJavascriptInterface(
-            JsBridge(this),
-            &quot;NativeBridge&quot;,
-        )
-    }
+        <span class="hl-comment">// Add this:</span>
+        session<span class="hl-operator">.</span>webView<span class="hl-operator">.</span><span class="hl-property">addJavascriptInterface</span><span class="hl-operator">(</span>
+            <span class="hl-type">JsBridge</span><span class="hl-operator">(</span><span class="hl-keyword">this</span><span class="hl-operator">)</span><span class="hl-operator">,</span>
+            <span class="hl-value">&quot;NativeBridge&quot;</span><span class="hl-operator">,</span>
+        <span class="hl-operator">)</span>
+    <span class="hl-operator">}</span>
 
-    private fun customUserAgent(webView: WebView): String {
-        return &quot;Hotwire Native Android ${webView.settings.userAgentString}&quot;
-    }
+    <span class="hl-keyword">private</span> <span class="hl-keyword">fun</span> <span class="hl-property">customUserAgent</span><span class="hl-operator">(</span>webView<span class="hl-operator">:</span> <span class="hl-type">WebView</span><span class="hl-operator">)</span><span class="hl-operator">:</span> <span class="hl-type">String</span> <span class="hl-operator">{</span>
+        <span class="hl-keyword">return</span> <span class="hl-value">&quot;Hotwire Native Android ${webView.settings.userAgentString}&quot;</span>
+    <span class="hl-operator">}</span>
 
-    override fun showPopupMenu(options: PopupMenu) {
-        activity?.runOnUiThread {
-            val context = requireContext()
+    <span class="hl-keyword">override</span> <span class="hl-keyword">fun</span> <span class="hl-property">showPopupMenu</span><span class="hl-operator">(</span>options<span class="hl-operator">:</span> <span class="hl-type">PopupMenu</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+        activity<span class="hl-operator">?.</span>runOnUiThread <span class="hl-operator">{</span>
+            <span class="hl-keyword">val</span> <span class="hl-variable">context</span> <span class="hl-operator">=</span> <span class="hl-property">requireContext</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
 
-            val dialog = BottomSheetDialog(context)
+            <span class="hl-keyword">val</span> <span class="hl-variable">dialog</span> <span class="hl-operator">=</span> <span class="hl-type">BottomSheetDialog</span><span class="hl-operator">(</span>context<span class="hl-operator">)</span>
 
-            val view = layoutInflater.inflate(R.layout.popup_menu, null)!!
+            <span class="hl-keyword">val</span> <span class="hl-variable">view</span> <span class="hl-operator">=</span> layoutInflater<span class="hl-operator">.</span><span class="hl-property">inflate</span><span class="hl-operator">(</span><span class="hl-type">R</span><span class="hl-operator">.</span>layout<span class="hl-operator">.</span>popup_menu<span class="hl-operator">,</span> <span class="hl-literal">null</span><span class="hl-operator">)</span><span class="hl-operator">!!</span>
 
-            val menuWrapper = view.findViewById&lt;LinearLayout&gt;(R.id.popupMenuWrapper)!!
+            <span class="hl-keyword">val</span> <span class="hl-variable">menuWrapper</span> <span class="hl-operator">=</span> view<span class="hl-operator">.</span>findViewById<span class="hl-operator">&lt;</span><span class="hl-type">LinearLayout</span><span class="hl-operator">&gt;</span><span class="hl-operator">(</span><span class="hl-type">R</span><span class="hl-operator">.</span>id<span class="hl-operator">.</span>popupMenuWrapper<span class="hl-operator">)</span><span class="hl-operator">!!</span>
 
-            menuWrapper.removeAllViews()
+            menuWrapper<span class="hl-operator">.</span><span class="hl-property">removeAllViews</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
 
-            options.items.forEach { item -&gt;
-                val button = Button(context)
+            options<span class="hl-operator">.</span>items<span class="hl-operator">.</span>forEach <span class="hl-operator">{</span> item <span class="hl-operator">-&gt;</span>
+                <span class="hl-keyword">val</span> <span class="hl-variable">button</span> <span class="hl-operator">=</span> <span class="hl-type">Button</span><span class="hl-operator">(</span>context<span class="hl-operator">)</span>
 
-                button.text = item.text
-                button.setBackgroundColor(resources.getColor(R.color.white, null))
+                button<span class="hl-operator">.</span>text <span class="hl-operator">=</span> item<span class="hl-operator">.</span>text
+                button<span class="hl-operator">.</span><span class="hl-property">setBackgroundColor</span><span class="hl-operator">(</span>resources<span class="hl-operator">.</span><span class="hl-property">getColor</span><span class="hl-operator">(</span><span class="hl-type">R</span><span class="hl-operator">.</span>color<span class="hl-operator">.</span>white<span class="hl-operator">,</span> <span class="hl-literal">null</span><span class="hl-operator">)</span><span class="hl-operator">)</span>
 
-                button.setOnClickListener {
-                    session.webView.evaluateJavascript(
-                        &quot;window.dispatchEvent(new CustomEvent('popup-menu:selected', { detail: { index: &quot; + item.index + &quot;, text: '&quot; + item.text + &quot;' } }))&quot;,
-                        null
-                    )
+                button<span class="hl-operator">.</span>setOnClickListener <span class="hl-operator">{</span>
+                    session<span class="hl-operator">.</span>webView<span class="hl-operator">.</span><span class="hl-property">evaluateJavascript</span><span class="hl-operator">(</span>
+                        <span class="hl-value">&quot;window.dispatchEvent(new CustomEvent('popup-menu:selected', { detail: { index: &quot;</span> <span class="hl-operator">+</span> item<span class="hl-operator">.</span>index <span class="hl-operator">+</span> <span class="hl-value">&quot;, text: '&quot;</span> <span class="hl-operator">+</span> item<span class="hl-operator">.</span>text <span class="hl-operator">+</span> <span class="hl-value">&quot;' } }))&quot;</span><span class="hl-operator">,</span>
+                        <span class="hl-literal">null</span>
+                    <span class="hl-operator">)</span>
 
-                    dialog.dismiss()
-                }
+                    dialog<span class="hl-operator">.</span><span class="hl-property">dismiss</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+                <span class="hl-operator">}</span>
 
-                menuWrapper.addView(button)
-            }
+                menuWrapper<span class="hl-operator">.</span><span class="hl-property">addView</span><span class="hl-operator">(</span>button<span class="hl-operator">)</span>
+            <span class="hl-operator">}</span>
 
-            dialog.setOnCancelListener {
-                session.webView.evaluateJavascript(&quot;window.dispatchEvent(new CustomEvent('popup-menu:canceled'))&quot;, null)
-            }
+            dialog<span class="hl-operator">.</span>setOnCancelListener <span class="hl-operator">{</span>
+                session<span class="hl-operator">.</span>webView<span class="hl-operator">.</span><span class="hl-property">evaluateJavascript</span><span class="hl-operator">(</span><span class="hl-value">&quot;window.dispatchEvent(new CustomEvent('popup-menu:canceled'))&quot;</span><span class="hl-operator">,</span> <span class="hl-literal">null</span><span class="hl-operator">)</span>
+            <span class="hl-operator">}</span>
 
-            dialog.setCancelable(true)
+            dialog<span class="hl-operator">.</span><span class="hl-property">setCancelable</span><span class="hl-operator">(</span><span class="hl-literal">true</span><span class="hl-operator">)</span>
 
-            dialog.setContentView(view)
+            dialog<span class="hl-operator">.</span><span class="hl-property">setContentView</span><span class="hl-operator">(</span>view<span class="hl-operator">)</span>
 
-            dialog.show()
-        }
-    }
+            dialog<span class="hl-operator">.</span><span class="hl-property">show</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+        <span class="hl-operator">}</span>
+    <span class="hl-operator">}</span>
 
-    override fun showToast(msg: String) {
-        activity?.runOnUiThread {
-            Toast
-                .makeText(requireContext(), msg, Toast.LENGTH_SHORT)
-                .show()
-        }
-    }
-}
+    <span class="hl-keyword">override</span> <span class="hl-keyword">fun</span> <span class="hl-property">showToast</span><span class="hl-operator">(</span>msg<span class="hl-operator">:</span> <span class="hl-type">String</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+        activity<span class="hl-operator">?.</span>runOnUiThread <span class="hl-operator">{</span>
+            <span class="hl-type">Toast</span>
+                <span class="hl-operator">.</span><span class="hl-property">makeText</span><span class="hl-operator">(</span><span class="hl-property">requireContext</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">,</span> msg<span class="hl-operator">,</span> <span class="hl-type">Toast</span><span class="hl-operator">.</span><span class="hl-type">LENGTH_SHORT</span><span class="hl-operator">)</span>
+                <span class="hl-operator">.</span><span class="hl-property">show</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+        <span class="hl-operator">}</span>
+    <span class="hl-operator">}</span>
+<span class="hl-operator">}</span>
 
-data class MenuItem(
-    val text: String,
-    val index: Int,
-)
+<span class="hl-keyword">data</span> <span class="hl-keyword">class</span> <span class="hl-type">MenuItem</span><span class="hl-operator">(</span>
+    <span class="hl-keyword">val</span> <span class="hl-variable">text</span><span class="hl-operator">:</span> <span class="hl-type">String</span><span class="hl-operator">,</span>
+    <span class="hl-keyword">val</span> <span class="hl-variable">index</span><span class="hl-operator">:</span> <span class="hl-type">Int</span><span class="hl-operator">,</span>
+<span class="hl-operator">)</span>
 
-data class PopupMenu(
-    val items: List&lt;MenuItem&gt;,
-)
+<span class="hl-keyword">data</span> <span class="hl-keyword">class</span> <span class="hl-type">PopupMenu</span><span class="hl-operator">(</span>
+    <span class="hl-keyword">val</span> <span class="hl-variable">items</span><span class="hl-operator">:</span> <span class="hl-type">List</span><span class="hl-operator">&lt;</span><span class="hl-type">MenuItem</span><span class="hl-operator">&gt;</span><span class="hl-operator">,</span>
+<span class="hl-operator">)</span>
 
-interface PopupMenuDelegator {
-    fun showPopupMenu(options: PopupMenu);
-    fun showToast(msg: String);
-}
+<span class="hl-keyword">interface</span> <span class="hl-type">PopupMenuDelegator</span> <span class="hl-operator">{</span>
+    <span class="hl-keyword">fun</span> <span class="hl-property">showPopupMenu</span><span class="hl-operator">(</span>options<span class="hl-operator">:</span> <span class="hl-type">PopupMenu</span><span class="hl-operator">)</span><span class="hl-operator">;</span>
+    <span class="hl-keyword">fun</span> <span class="hl-property">showToast</span><span class="hl-operator">(</span>msg<span class="hl-operator">:</span> <span class="hl-type">String</span><span class="hl-operator">)</span><span class="hl-operator">;</span>
+<span class="hl-operator">}</span>
 
-class JsBridge(private var delegator: PopupMenuDelegator) {
-    @JavascriptInterface
-    override fun toString(): String {
-        return &quot;NativeBridge&quot;
-    }
+<span class="hl-keyword">class</span> <span class="hl-type">JsBridge</span><span class="hl-operator">(</span><span class="hl-keyword">private</span> <span class="hl-keyword">var</span> <span class="hl-variable">delegator</span><span class="hl-operator">:</span> <span class="hl-type">PopupMenuDelegator</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+    <span class="hl-attribute">@JavascriptInterface</span>
+    <span class="hl-keyword">override</span> <span class="hl-keyword">fun</span> <span class="hl-property">toString</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">:</span> <span class="hl-type">String</span> <span class="hl-operator">{</span>
+        <span class="hl-keyword">return</span> <span class="hl-value">&quot;NativeBridge&quot;</span>
+    <span class="hl-operator">}</span>
 
-    @JavascriptInterface
-    fun showPopup(json: String) {
-        val gson = Gson()
+    <span class="hl-attribute">@JavascriptInterface</span>
+    <span class="hl-keyword">fun</span> <span class="hl-property">showPopup</span><span class="hl-operator">(</span>json<span class="hl-operator">:</span> <span class="hl-type">String</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+        <span class="hl-keyword">val</span> <span class="hl-variable">gson</span> <span class="hl-operator">=</span> <span class="hl-type">Gson</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
 
-        val options = gson.fromJson(json, PopupMenu::class.java)
+        <span class="hl-keyword">val</span> <span class="hl-variable">options</span> <span class="hl-operator">=</span> gson<span class="hl-operator">.</span><span class="hl-property">fromJson</span><span class="hl-operator">(</span>json<span class="hl-operator">,</span> <span class="hl-type">PopupMenu</span><span class="hl-operator">::</span><span class="hl-keyword">class</span><span class="hl-operator">.</span>java<span class="hl-operator">)</span>
 
-        delegator.showPopupMenu(options)
-    }
+        delegator<span class="hl-operator">.</span><span class="hl-property">showPopupMenu</span><span class="hl-operator">(</span>options<span class="hl-operator">)</span>
+    <span class="hl-operator">}</span>
 
-    @JavascriptInterface
-    fun showToast(msg: String) {
-        delegator.showToast(msg)
-    }
-}
-</code></pre>
+    <span class="hl-attribute">@JavascriptInterface</span>
+    <span class="hl-keyword">fun</span> <span class="hl-property">showToast</span><span class="hl-operator">(</span>msg<span class="hl-operator">:</span> <span class="hl-type">String</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+        delegator<span class="hl-operator">.</span><span class="hl-property">showToast</span><span class="hl-operator">(</span>msg<span class="hl-operator">)</span>
+    <span class="hl-operator">}</span>
+<span class="hl-operator">}</span></code></pre>
+</div>
 
-<p>Now we have the BottomSheet Menu ready to be triggered by our webapp.</p>
+<p>Now we have the BottomSheet Menu ready to be triggered by our web app.</p>
 
-<h2>Telling the Native App to Show The Options</h2>
+<h2 id="telling-the-native-app-to-show-the-options">Telling the Native App to Show The Options</h2>
 
-<p>We're gonna create a Stimulus controller that will act when a user triggers the dropdown inside a Hotwire Native client. We're also gonna use the custom User Agent to detect we're on that platform. Whenever that is the case, we'll get some metadata from the HTML and pass that to the Native app so it can build the native menu. When the user either picks one of the options or dismisses the menu, we're gonna notify the web app about it.</p>
+<p>We're gonna create a Stimulus controller that will act when a user triggers the dropdown inside a Hotwire Native client. We're also gonna use the custom User Agent to detect that we're on that platform. Whenever that is the case, we'll get some metadata from the HTML and pass that to the Native app so it can build the native menu. When the user either picks one of the options or dismisses the menu, we're gonna notify the web app about it.</p>
 
-<p>Let's then add the Stimulus controller. Open a terminal at the root of the webapp and run:</p>
+<p>Let's add the Stimulus controller. Open a terminal at the root of the web app and run:</p>
 
-<pre><code class="language-bash">php artisan stimulus:make bridge/popup_menu_controller
-</code></pre>
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">bash</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-bash">php artisan stimulus:make bridge/popup_menu_controller</code></pre>
+</div>
 
-<p>That should take care of creating and registering the controller for us. Open that Stimulus controller and place the following content:</p>
+<p>That should take care of creating and registering the controller for us. Open that Stimulus controller and add the following content:</p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">js</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-js"><span class="hl-keyword">import</span> { Controller } <span class="hl-keyword">from</span> <span class="hl-value">&quot;@hotwired/stimulus&quot;</span>
 <span class="hl-keyword">import</span> { isMobileApp } <span class="hl-keyword">from</span> <span class="hl-value">&quot;../../helpers/platform&quot;</span>
 <span class="hl-keyword">import</span> { BridgeElement } <span class="hl-keyword">from</span> <span class="hl-value">&quot;../../helpers/bridge_element&quot;</span>
@@ -420,13 +417,18 @@ class JsBridge(private var delegator: PopupMenuDelegator) {
     <span class="hl-keyword">get</span> <span class="hl-property">enabled</span>() {
         <span class="hl-keyword">return</span> isMobileApp
     }
-}
-</code></pre>
+}</code></pre>
+</div>
 
-<p>So, we're detecting if we're on a Hotwire Native client using the <code>isMobileApp</code> platform check (that same one we're using to add the <code>turbo-native</code> CSS class to the HTML document). The <code>update</code> method will be triggered by the dropdown trigger (same one that opens it), but we need to register it <em>before</em> the normal web trigger because we want to stop it from showing the dropdown and, instead, show the native menu. When the dropdown opens, we'll scan through all the option targets and fetch metadata from it, then register a callback in the controller's instance. When the user picks one of the options, the native client will dispatch a custom event to the window, so all instances of dropdown controllers will receive that event, but only the one with the callback will act on it. Then, it should trigger the default behavior of that option (link or button click).</p>
+<p>So, we're detecting if we're on a Hotwire Native client using the <code>isMobileApp</code> platform check (the same one we're using to add the <code>turbo-native</code> CSS class to the HTML document). The <code>update</code> method will be triggered by the dropdown trigger (same one that opens it), but we need to register it <em>before</em> the normal web trigger because we want to stop it from showing the dropdown and show the native menu instead. When the dropdown opens, we'll scan through all the option targets and fetch their metadata, then register a callback in the controller's instance. When the user picks one of the options, the native client will dispatch a custom event to the window, so all instances of dropdown controllers will receive that event, but only the one with the callback will act on it. Then, it should trigger the default behavior of that option (link or button click).</p>
 
 <p>When the controller scans the option targets, it builds an instance of a <code>BridgeElement</code> class, which we don't have yet. Let's add one at <code>resources/js/helpers/bridge_element.js</code>:</p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">js</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-js"><span class="hl-keyword">import</span> { isAndroidApp, isMobileApp } <span class="hl-keyword">from</span> <span class="hl-value">&quot;./platform&quot;</span>
 
 <span class="hl-keyword">export</span> <span class="hl-keyword">class</span> <span class="hl-type">BridgeElement</span> {
@@ -495,11 +497,16 @@ class JsBridge(private var delegator: PopupMenuDelegator) {
     <span class="hl-keyword">get</span> <span class="hl-property">enabled</span>() {
         <span class="hl-keyword">return</span> isMobileApp
     }
-}
-</code></pre>
+}</code></pre>
+</div>
 
-<p>Next, let's update the our <code>dropdown</code> blade component to use this Stimulus controller we just created:</p>
+<p>Next, let's update our <code>dropdown</code> Blade component to use this Stimulus controller we just created:</p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-blade"><span class="hl-keyword">@props</span>([<span class="hl-value">'align'</span> =&gt; <span class="hl-value">'right'</span>, <span class="hl-value">'width'</span> =&gt; <span class="hl-value">'48'</span>, <span class="hl-value">'contentClasses'</span> =&gt; <span class="hl-value">'py-1 bg-white'</span>])
 
 <span class="hl-keyword">@php</span>
@@ -555,12 +562,17 @@ class JsBridge(private var delegator: PopupMenuDelegator) {
             {{ <span class="hl-variable">$content</span> }}
         &lt;/<span class="hl-keyword">div</span>&gt;
     &lt;/<span class="hl-keyword">div</span>&gt;
-&lt;/<span class="hl-keyword">div</span>&gt;
-</code></pre>
+&lt;/<span class="hl-keyword">div</span>&gt;</code></pre>
+</div>
 
-<p>Now, we need to make sure the options are registered in the Stimulus controller where this Blade component is used. Let's update our <code>_chirp</code> blade partial:</p>
+<p>Now, we need to make sure the options are registered in the Stimulus controller where this Blade component is used. Let's update our <code>chirps.partials.chirp</code> Blade partial:</p>
 
-<pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::frame</span> :<span class="hl-property">id</span>=&quot;$chirp&quot; <span class="hl-property">class</span>=&quot;block p-6&quot;&gt;
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::frame</span> <span class="hl-property">:id</span>=&quot;$chirp&quot; <span class="hl-property">class</span>=&quot;block p-6&quot;&gt;
     &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex space-x-2&quot;&gt;
         <span class="hl-comment">&lt;!-- ... --&gt;</span>
 
@@ -593,8 +605,8 @@ class JsBridge(private var delegator: PopupMenuDelegator) {
             &lt;<span class="hl-keyword">p</span> <span class="hl-property">class</span>=&quot;mt-4 text-lg text-gray-900&quot;&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">message</span> }}&lt;/<span class="hl-keyword">p</span>&gt;
         &lt;/<span class="hl-keyword">div</span>&gt;
     &lt;/<span class="hl-keyword">div</span>&gt;
-&lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;
-</code></pre>
+&lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;</code></pre>
+</div>
 
 <p>This should get our dropdown appearing as a BottomSheet menu!</p>
 
@@ -602,8 +614,13 @@ class JsBridge(private var delegator: PopupMenuDelegator) {
 
 <p>Our Bridge Popup Menu controller also changes the frame target to <code>_top</code>, which is handy in our case as that will make a full page visit to the edit page instead of rendering the form inline!</p>
 
-<p>If you try to update a chirp, however, the behavior will be similar to what it was previously on the create chirp flow. Let's fix it by letting the controller redirect to the list index of chirps instead of returning Turbo Streams. Since we're tinkering with the controller, let's also update the destroy flow so it also redirects there:</p>
+<p>If you try to update a Chirp, however, the behavior will be similar to what we previously saw in the create Chirp flow. Let's fix it by letting the controller redirect to the Chirps index instead of returning Turbo Streams. Since we're tinkering with the controller, let's also update the destroy flow so it also redirects there:</p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
 
 <span class="hl-keyword">namespace</span> <span class="hl-type">App\Http\Controllers</span>;
@@ -662,76 +679,96 @@ class JsBridge(private var delegator: PopupMenuDelegator) {
             -&gt;<span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>)
             -&gt;<span class="hl-property">with</span>(<span class="hl-value">'status'</span>, <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>));
     }
-}
-</code></pre>
+}</code></pre>
+</div>
 
 <p>That should have our edit and delete flows working properly, which is cool!</p>
 
-<h2>Using a Native Modal Screen for Forms</h2>
+<h2 id="using-a-native-modal-screen-for-forms">Using a Native Modal Screen for Forms</h2>
 
 <p>Instead of showing the edit form in a new screen, I think it would be cool to introduce a native modal screen that other pages could use as well. First, add a new Fragment called <code>WebModalFragment</code> under the <code>web</code> package in the Android project without a layout:</p>
 
-<pre><code class="language-kotlin">package com.example.turbochirpernative.features.web
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">kotlin</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-kotlin"><span class="hl-keyword">package</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>features<span class="hl-operator">.</span>web</span>
 
-import android.os.Bundle
-import android.view.View
-import com.example.turbochirpernative.util.displayBackButtonAsCloseIcon
-import dev.hotwire.turbo.nav.TurboNavGraphDestination
+<span class="hl-keyword">import</span> <span class="hl-type">android<span class="hl-operator">.</span>os<span class="hl-operator">.</span>Bundle</span>
+<span class="hl-keyword">import</span> <span class="hl-type">android<span class="hl-operator">.</span>view<span class="hl-operator">.</span>View</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>util<span class="hl-operator">.</span>displayBackButtonAsCloseIcon</span>
+<span class="hl-keyword">import</span> <span class="hl-type">dev<span class="hl-operator">.</span>hotwire<span class="hl-operator">.</span>turbo<span class="hl-operator">.</span>nav<span class="hl-operator">.</span>TurboNavGraphDestination</span>
 
-@TurboNavGraphDestination(uri = &quot;turbo://fragment/web/modal&quot;)
-class WebModalFragment : WebFragment() {
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initToolbar()
-    }
+<span class="hl-attribute">@<span class="hl-property">TurboNavGraphDestination</span></span><span class="hl-operator">(</span>uri <span class="hl-operator">=</span> <span class="hl-value">&quot;turbo://fragment/web/modal&quot;</span><span class="hl-operator">)</span>
+<span class="hl-keyword">class</span> <span class="hl-type">WebModalFragment</span> <span class="hl-operator">:</span> <span class="hl-type">WebFragment</span><span class="hl-operator">(</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+    <span class="hl-keyword">override</span> <span class="hl-keyword">fun</span> <span class="hl-property">onViewCreated</span><span class="hl-operator">(</span>view<span class="hl-operator">:</span> <span class="hl-type">View</span><span class="hl-operator">,</span> savedInstanceState<span class="hl-operator">:</span> <span class="hl-type">Bundle</span><span class="hl-operator">?</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+        <span class="hl-keyword">super</span><span class="hl-operator">.</span><span class="hl-property">onViewCreated</span><span class="hl-operator">(</span>view<span class="hl-operator">,</span> savedInstanceState<span class="hl-operator">)</span>
+        <span class="hl-property">initToolbar</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+    <span class="hl-operator">}</span>
 
-    private fun initToolbar() {
-        toolbarForNavigation()?.displayBackButtonAsCloseIcon()
-    }
-}
-</code></pre>
+    <span class="hl-keyword">private</span> <span class="hl-keyword">fun</span> <span class="hl-property">initToolbar</span><span class="hl-operator">(</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+        <span class="hl-property">toolbarForNavigation</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">?.</span><span class="hl-property">displayBackButtonAsCloseIcon</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+    <span class="hl-operator">}</span>
+<span class="hl-operator">}</span></code></pre>
+</div>
 
-<p>We need to create a new Extensions.kt file inside the <code>util</code> package so we can add this <code>displayBackButtonAsCloseIcon</code> method to the Toolbar:</p>
+<p>We need to create a new <code>Extensions.kt</code> file inside the <code>util</code> package so we can add this <code>displayBackButtonAsCloseIcon</code> method to the Toolbar:</p>
 
-<pre><code class="language-kotlin">package com.example.turbochirpernative.util
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">kotlin</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-kotlin"><span class="hl-keyword">package</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>util</span>
 
-import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
-import com.example.turbochirpernative.R
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>appcompat<span class="hl-operator">.</span>widget<span class="hl-operator">.</span>Toolbar</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>core<span class="hl-operator">.</span>content<span class="hl-operator">.</span>ContextCompat</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>R</span>
 
-fun Toolbar.displayBackButtonAsCloseIcon() {
-    navigationIcon = ContextCompat.getDrawable(context, R.drawable.ic_close)
-}
-</code></pre>
+<span class="hl-keyword">fun</span> <span class="hl-type">Toolbar</span><span class="hl-operator">.</span><span class="hl-property">displayBackButtonAsCloseIcon</span><span class="hl-operator">(</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+    navigationIcon <span class="hl-operator">=</span> <span class="hl-type">ContextCompat</span><span class="hl-operator">.</span><span class="hl-property">getDrawable</span><span class="hl-operator">(</span>context<span class="hl-operator">,</span> <span class="hl-type">R</span><span class="hl-operator">.</span>drawable<span class="hl-operator">.</span>ic_close<span class="hl-operator">)</span>
+<span class="hl-operator">}</span></code></pre>
+</div>
 
-<p>Next, add a new Vector to the drawables by right-clicking on "New -> Vector Asset" inside the "res/drawables" folder, name it <code>ic_close</code> and choose the close icon.</p>
+<p>Next, add a new Vector to the drawables by right-clicking on "New -> Vector Asset" inside the "res/drawables" folder. Name it <code>ic_close</code> and choose the close icon.</p>
 
 <p>Then, let's register the <code>WebModalFragment</code> in our <code>MainSessionNavHostFragment</code>:</p>
 
-<pre><code class="language-kotlin">package com.example.turbochirpernative.main
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">kotlin</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-kotlin"><span class="hl-keyword">package</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>main</span>
 
-// ...
-import com.example.turbochirpernative.features.web.WebModalFragment // Add this
+<span class="hl-comment">// ...</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>features<span class="hl-operator">.</span>web<span class="hl-operator">.</span>WebModalFragment</span> <span class="hl-comment">// Add this</span>
 
-class MainSessionNavHostFragment : TurboSessionNavHostFragment(), PopupMenuDelegator {
-    // ...
+<span class="hl-keyword">class</span> <span class="hl-type">MainSessionNavHostFragment</span> <span class="hl-operator">:</span> <span class="hl-type">TurboSessionNavHostFragment</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">,</span> <span class="hl-type">PopupMenuDelegator</span> <span class="hl-operator">{</span>
+    <span class="hl-comment">// ...</span>
 
-    override val registeredFragments: List&lt;KClass&lt;out Fragment&gt;&gt;
-        get() = listOf(
-            WebFragment::class,
-            WebModalFragment::class, // Add this
-            LoginFragment::class,
-            ChirpsHomeFragment::class,
-        )
+    <span class="hl-keyword">override</span> <span class="hl-keyword">val</span> <span class="hl-variable">registeredFragments</span><span class="hl-operator">:</span> <span class="hl-type">List</span><span class="hl-operator">&lt;</span><span class="hl-type">KClass</span><span class="hl-operator">&lt;</span><span class="hl-keyword">out</span> <span class="hl-type">Fragment</span><span class="hl-operator">&gt;</span><span class="hl-operator">&gt;</span>
+        <span class="hl-keyword">get</span><span class="hl-operator">(</span><span class="hl-operator">)</span> <span class="hl-operator">=</span> <span class="hl-property">listOf</span><span class="hl-operator">(</span>
+            <span class="hl-type">WebFragment</span><span class="hl-operator">::</span><span class="hl-keyword">class</span><span class="hl-operator">,</span>
+            <span class="hl-type">WebModalFragment</span><span class="hl-operator">::</span><span class="hl-keyword">class</span><span class="hl-operator">,</span> <span class="hl-comment">// Add this</span>
+            <span class="hl-type">LoginFragment</span><span class="hl-operator">::</span><span class="hl-keyword">class</span><span class="hl-operator">,</span>
+            <span class="hl-type">ChirpsHomeFragment</span><span class="hl-operator">::</span><span class="hl-keyword">class</span><span class="hl-operator">,</span>
+        <span class="hl-operator">)</span>
 
-    // ...
-}
+    <span class="hl-comment">// ...</span>
+<span class="hl-operator">}</span>
 
-// ...
-</code></pre>
+<span class="hl-comment">// ...</span></code></pre>
+</div>
 
-<p>We need to add a new entry to our configuration so any URI ending with <code>/edit</code> or <code>/create</code> (our forms), will open inside of a web modal fragment instead of the default web fragment:</p>
+<p>We need to add a new entry to our configuration so any URI ending with <code>/edit</code> or <code>/create</code> (our forms) will open inside of a web modal fragment instead of the default web fragment:</p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">json</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-json"><span class="hl-property">{</span>
   <span class="hl-keyword">&quot;settings&quot;</span>: <span class="hl-property">{</span>
     <span class="hl-keyword">&quot;screenshots_enabled&quot;</span>: true
@@ -783,11 +820,16 @@ class MainSessionNavHostFragment : TurboSessionNavHostFragment(), PopupMenuDeleg
       <span class="hl-property">}</span>
     <span class="hl-property">}</span>
   <span class="hl-property">]</span>
-<span class="hl-property">}</span>
-</code></pre>
+<span class="hl-property">}</span></code></pre>
+</div>
 
-<p>Let's also hide the cancel button when inside a Hotwire Native client by updating our <code>resources/chirps/_form.blade.php</code> in our web app:</p>
+<p>Let's also hide the cancel button when inside a Hotwire Native client by updating the <code>resources/views/chirps/partials/form.blade.php</code> partial in our web app:</p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-blade">&lt;<span class="hl-keyword">form</span> <span class="hl-property">action</span>=&quot;{{ (<span class="hl-variable">$chirp</span> ?? <span class="hl-keyword">false</span>) <span class="hl-operator">?</span> <span class="hl-property">route</span>(<span class="hl-value">'chirps.update'</span>, <span class="hl-variable">$chirp</span>) : <span class="hl-property">route</span>(<span class="hl-value">'chirps.store'</span>) }}&quot; <span class="hl-property">method</span>=&quot;POST&quot;&gt;
     <span class="hl-comment">&lt;!-- ... --&gt;</span>
 
@@ -801,35 +843,60 @@ class MainSessionNavHostFragment : TurboSessionNavHostFragment(), PopupMenuDeleg
         &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>) }}&quot; <span class="hl-property">class</span>=&quot;mt-4 turbo-native:hidden&quot;&gt;Cancel&lt;/<span class="hl-keyword">a</span>&gt;
         <span class="hl-keyword">@endif</span>
     &lt;/<span class="hl-keyword">div</span>&gt;
-&lt;/<span class="hl-keyword">form</span>&gt;
-</code></pre>
+&lt;/<span class="hl-keyword">form</span>&gt;</code></pre>
+</div>
 
-<h2>Testing It Out</h2>
+<h2 id="testing-it-out">Testing It Out</h2>
 
 <p>Now, our app should be a bit nicer:</p>
 
 <p><img src="/assets/images/bootcamp/native/web-modal-fragment.png" alt="Edit Chirp as modal" /></p>
-        </div>
 
-                    <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div class="relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
-      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Previous</div>
-      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/native-bridge-component">Our First Bridge Component <span class="absolute inset-0"></span></a>
-    </div>
+      </div>
+    </article>
+
+          <nav aria-label="Pagination" class="mt-14 grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4 border-t border-line pt-8">
+                  <a href="/bootcamp/native-bridge-component" class="flex flex-col gap-1 rounded-xl border border-line bg-paper-raised px-5 py-4 text-ink transition-colors hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus">
+            <span class="inline-flex items-center gap-1 text-[13px] leading-[18px] text-ink-subtle">
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>Previous
+                          </span>
+            <span class="font-display text-xl leading-7 font-bold">10. Our First Bridge Component</span>
+          </a>
+                  <a href="/bootcamp/native-confirmation" class="flex flex-col gap-1 rounded-xl border border-line bg-paper-raised px-5 py-4 text-ink transition-colors hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus items-end text-right">
+            <span class="inline-flex items-center gap-1 text-[13px] leading-[18px] text-ink-subtle">
+                              Next<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+                          </span>
+            <span class="font-display text-xl leading-7 font-bold">12. Native Confirmation Dialog</span>
+          </a>
+              </nav>
+      </main>
+
   
-      <div class="lg:col-start-2 relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
-      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Next</div>
-      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/native-confirmation">Native Confirmation Dialog <span class="absolute inset-0"></span></a>
-    </div>
-  </div>
-              </main>
-    </div>
+      <aside aria-label="On this page" class="sticky top-6 hidden flex-[0_0_200px] flex-col gap-2.5 text-sm leading-5 min-[1100px]:flex">
+      <p class="mb-0.5 text-[13px] leading-[18px] font-semibold text-ink-subtle">On this page</p>
+      <a href="#top" class="font-semibold text-ink hover:underline hover:underline-offset-3">Introduction</a>
+              <a href="#dropdowns-in-a-bottomsheet-modal" class="text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">Dropdowns in a BottomSheet modal</a>
+              <a href="#telling-the-native-app-to-show-the-options" class="text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">Telling the Native App to Show The Options</a>
+              <a href="#using-a-native-modal-screen-for-forms" class="text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">Using a Native Modal Screen for Forms</a>
+              <a href="#testing-it-out" class="text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">Testing It Out</a>
+            <a href="https://github.com/hotwired-laravel/turbo-laravel-site/edit/main/source/_bootcamp/native-editing-modal.md" class="mt-3.5 inline-flex items-center gap-1.5 border-t border-line pt-3.5 text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">Edit this page on GitHub</a>
+    </aside>
   </div>
 
-        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
-          <p class="text-base text-center w-full">
-            Turbo Laravel is maintained by <a href="https://tonysm.com" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
-          </p>
-        </footer>
+        <footer class="border-t border-[#243046] bg-ink text-night-muted">
+  <div class="mx-auto flex max-w-[1248px] flex-wrap items-center justify-between gap-x-12 gap-y-6 px-6 py-12 text-[15px] leading-6">
+    <div class="flex max-w-[560px] flex-col gap-1.5">
+      <span class="font-display text-xl font-bold tracking-[-0.02em] text-night-ink"><span class="text-syntax-keyword">Turbo</span> Laravel</span>
+      <span>Maintained by <a href="https://tonysm.com" class="underline hover:text-night-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">Tony Messias</a>. A <em>community project</em>, not affiliated with Laravel or 37signals.</span>
+    </div>
+
+    <nav aria-label="Footer" class="flex flex-wrap gap-x-7 gap-y-3 font-semibold">
+              <a href="/docs/installation" class="hover:text-night-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">Documentation</a>
+              <a href="/bootcamp/introduction" class="hover:text-night-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">Bootcamp</a>
+              <a href="https://github.com/hotwired-laravel/turbo-laravel" class="hover:text-night-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">GitHub</a>
+              <a href="https://hotwired.dev/" class="hover:text-night-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">Hotwire</a>
+          </nav>
+  </div>
+</footer>
     </body>
 </html>

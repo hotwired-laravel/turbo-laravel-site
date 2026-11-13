@@ -2,217 +2,199 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="canonical" href="https://turbo-laravel.com/bootcamp/native-auth">
-        <meta name="description" content="Native Authentication with Laravel Sanctum">
-        <title>Native Authentication | Bootcamp | Turbo Laravel</title>
-        <link rel="apple-touch-icon" sizes="180x180" href="https://turbo-laravel.com/assets/manifest/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="https://turbo-laravel.com/assets/manifest/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="https://turbo-laravel.com/assets/manifest/favicon-16x16.png">
-        <link rel="manifest" href="https://turbo-laravel.com/assets/site.webmanifest">
-        <link rel="preload" href="https://turbo-laravel.com/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
-        <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=43ade17df46426aaccbc2cac40014c37">
-        <script defer src="/assets/build/js/main.js?id=b0f29cd4e71d41b4ee570d0f42344180"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://turbo-laravel.com/bootcamp/native-auth">
+<meta name="description" content="Native Authentication with Laravel Sanctum">
+<title>Native Authentication | Bootcamp | Turbo Laravel</title>
+<link rel="apple-touch-icon" sizes="180x180" href="https://turbo-laravel.com/assets/manifest/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://turbo-laravel.com/assets/manifest/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://turbo-laravel.com/assets/manifest/favicon-16x16.png">
+<link rel="manifest" href="https://turbo-laravel.com/assets/site.webmanifest">
 
-        <!-- Open Graph data -->
-        <meta property="og:title" content="Native Authentication | Bootcamp | Turbo Laravel" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="" />
+<!-- Open Graph data -->
+<meta property="og:title" content="Native Authentication | Bootcamp | Turbo Laravel" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://turbo-laravel.com/bootcamp/native-auth" />
 
-        <meta property="og:image" content="https://turbo-laravel.com/assets/images/turbo-laravel-meta.png" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:description" content="Native Authentication with Laravel Sanctum" />
-        <meta property="og:locale" content="en_US">
-        <meta property="og:site_name" content="Turbo Laravel" />
+<meta property="og:image" content="https://turbo-laravel.com/assets/images/turbo-laravel-meta.png?v=3060538a" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:alt" content="Turbo Laravel, Hotwire for Laravel: HTML over the wire." />
+<meta property="og:description" content="Native Authentication with Laravel Sanctum" />
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Turbo Laravel" />
 
-        <!-- Twitter Card meta -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Native Authentication | Bootcamp | Turbo Laravel">
-        <meta name="twitter:description" content="Native Authentication with Laravel Sanctum">
+<!-- Twitter Card meta -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Native Authentication | Bootcamp | Turbo Laravel">
+<meta name="twitter:description" content="Native Authentication with Laravel Sanctum">
+<meta name="twitter:image" content="https://turbo-laravel.com/assets/images/turbo-laravel-meta.png?v=3060538a">
+<meta name="twitter:image:alt" content="Turbo Laravel, Hotwire for Laravel: HTML over the wire.">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Figtree:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+                <link rel="stylesheet" href="/assets/build/assets/main-QHec2Cla.css">
+        <script defer type="module" src="/assets/build/assets/main-B2QLDe1R.js"></script>
     </head>
-    <body class="text-zinc-900 text-lg font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
-        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
-  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
-    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
-      <a href="/">Turbo Laravel</a>
-    </h1>
+    <body class="min-h-screen bg-paper font-body text-ink antialiased" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="relative border-b border-line bg-paper" data-controller="menu" data-action="keydown.esc@window->menu#dismiss click@window->menu#closeOnOutsideClick search:reveal@window->menu#open">
+  <nav aria-label="Main" class="mx-auto flex max-w-[1248px] items-center justify-between gap-x-8 px-6 py-[18px]">
+    <a href="/" class="font-display text-2xl font-bold tracking-[-0.02em] text-ink"><span class="text-wire-strong">Turbo</span> Laravel</a>
 
-    <nav class="inline-block lg:hidden">
-      <details class="group" data-search-target="nav">
-        <summary class="list-none">
-          <span>
-            <span class="sr-only">Navigation</span>
+    <button type="button" class="group -mr-2 inline-flex size-11 items-center justify-center rounded-[10px] text-ink hover:bg-paper-sunken focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-focus lg:hidden" aria-expanded="false" aria-controls="site-menu" data-menu-target="button" data-action="menu#toggle">
+      <span class="sr-only">Menu</span>
+      <svg class="group-aria-expanded:hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+      <svg class="hidden group-aria-expanded:block" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+    </button>
 
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
-              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-          </span>
-        </summary>
+    <div id="site-menu" data-menu-target="panel" class="absolute inset-x-0 top-full z-30 hidden flex-col border-b border-line bg-paper px-6 pt-2 pb-6 text-base font-semibold shadow-lift data-open:flex lg:static lg:flex lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-7 lg:gap-y-3 lg:border-0 lg:bg-transparent lg:p-0 lg:text-[15px] lg:shadow-none">
+      <div class="group relative border-b border-line lg:border-0">
+        <a href="/docs/installation"  class="text-ink decoration-wire decoration-2 underline-offset-[6px] hover:underline aria-[current=page]:underline aria-[current=page]:decoration-ember focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus flex min-h-12 items-center gap-1.5 lg:inline-flex lg:min-h-0">
+          Documentation
+          <svg class="hidden transition group-hover:rotate-180 group-focus-within:rotate-180 lg:block" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+        </a>
 
-        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
-          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
-            <form action="/docs/search" method="GET" class="px-4">
-  <label for="search" class="sr-only">Search</label>
-  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 2.x docs..." />
-  <button type="submit" class="sr-only">Search</button>
-</form>
-
-            <ul class="space-y-6 -mb-2 mt-4">
-              <li>
-                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
-                  <span>Documentation</span>
-                </a>
-
-                              </li>
-              <li>
-                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
-              </li>
-              <li class="space-y-6">
-                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
-                  <div class="mx-4 pl-3 border-l-4 border-zinc-900/30">
-  <ul class="">
-        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Prologue</li>
-    <li class="children mt-2">
-      <ul class="list-inside space-y-1 text-lg">
-                <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Introduction</a></li>
-              </ul>
-    </li>
-        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Web</li>
-    <li class="children mt-2">
-      <ul class="list-inside space-y-1 text-lg">
-                <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
-                <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Creating Chirps</a></li>
-                <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Listing Chirps</a></li>
-                <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing Chirps</a></li>
-                <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Deleting Chirps</a></li>
-                <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Hotwiring Everything</a></li>
-                <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Broadcasting</a></li>
-              </ul>
-    </li>
-        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Native</li>
-    <li class="children mt-2">
-      <ul class="list-inside space-y-1 text-lg">
-                <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Installation</a></li>
-                <li><a href="/bootcamp/native-auth" class="font-bold transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Authentication</a></li>
-                <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Our First Bridge Component</a></li>
-                <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Editing as a Modal</a></li>
-                <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Confirmation Dialog</a></li>
-                <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Native Toasts</a></li>
-              </ul>
-    </li>
-        <li class="px-2 py-1 font-heading font-extrabold uppercase text-sm text-zinc-900/40">Epilogue</li>
-    <li class="children mt-2">
-      <ul class="list-inside space-y-1 text-lg">
-                <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1">Conclusion</a></li>
-              </ul>
-    </li>
-      </ul>
-</div>
-              </li>
-              <!-- <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li> -->
-            </ul>
-          </div>
+        <div class="pb-3 lg:invisible lg:absolute lg:top-full lg:left-0 lg:z-10 lg:pt-3 lg:pb-0 lg:opacity-0 lg:transition lg:group-focus-within:visible lg:group-focus-within:opacity-100 lg:group-hover:visible lg:group-hover:opacity-100">
+          <ul class="flex flex-col gap-1 border-l-2 border-line pl-3 text-[15px] lg:min-w-52 lg:rounded-[10px] lg:border lg:border-line lg:bg-paper-raised lg:p-2 lg:shadow-lift">
+            <li>
+              <a href="/docs/installation"  class="flex items-center justify-between gap-4 rounded-md px-3 py-2 text-ink hover:bg-paper-sunken aria-current:bg-wire-soft">
+                Version 2.2.0
+                <span class="rounded-full bg-wire-soft px-2 font-code text-[11px] leading-[18px] font-medium text-wire-strong">latest</span>
+              </a>
+            </li>
+            <li>
+              <a href="/1.x/docs/installation"  class="flex rounded-md px-3 py-2 text-ink hover:bg-paper-sunken aria-current:bg-wire-soft">Version 1.12.2</a>
+            </li>
+          </ul>
         </div>
-      </details>
-    </nav>
-  </div>
+      </div>
 
-  <nav class="hidden lg:block">
-    <ul class="flex items-center space-x-6 -my-2">
-      <li>
-        <div class="group relative py-2">
-          <a href="/docs" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
-            <span>Documentation</span>
+      <div class="flex min-h-12 items-center border-b border-line lg:min-h-0 lg:border-0">
+        <a href="/bootcamp/introduction"  aria-current="page"  class="text-ink decoration-wire decoration-2 underline-offset-[6px] hover:underline aria-[current=page]:underline aria-[current=page]:decoration-ember focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus">Bootcamp</a>
+      </div>
 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-            </svg>
-          </a>
+      <div class="flex min-h-12 items-center border-b border-line lg:min-h-0 lg:border-0">
+        <a href="https://github.com/hotwired-laravel/turbo-laravel" class="text-ink decoration-wire decoration-2 underline-offset-[6px] hover:underline aria-[current=page]:underline aria-[current=page]:decoration-ember focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus inline-flex items-center gap-1.5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4 1.3-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C6.6 3.3 5.6 3.6 5.6 3.6a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 10c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>
+          Source code
+        </a>
+      </div>
 
-          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
-            <ul class="space-y-1">
-              <li><a href="/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">2.2.0</span></a></li>
-              <li><a href="/1.x/docs/installation" class="block px-2 py-1  rounded">Version <span class="">1.12.2</span></a></li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
-      <li><a href="/bootcamp/introduction" class="bg-white/90 px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
-      <!-- <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li> -->
-    </ul>
+      <span class="hidden rounded-full border-[1.5px] border-line-control px-2.5 py-0.5 font-code text-[12.5px] leading-[18px] font-medium text-ink-muted lg:inline">v2.x</span>
+
+      <form action="/bootcamp/search" method="GET" role="search" class="order-first py-3 lg:order-none lg:py-0">
+        <label class="flex min-h-11 min-w-[216px] cursor-text items-center gap-2 rounded-[10px] border-[1.5px] border-line-control bg-paper-raised px-3 py-[9px] text-ink-subtle focus-within:outline-2 focus-within:outline-offset-3 focus-within:outline-focus">
+          <svg class="shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m20 20-4.4-4.4"></path></svg>
+          <span class="sr-only">Search bootcamp</span>
+          <input data-search-target="web" type="search" name="q" placeholder="Search bootcamp" class="search-input w-0 min-w-0 flex-1 bg-transparent text-base leading-5 font-normal text-ink placeholder:text-ink-subtle focus:outline-none lg:text-[15px]">
+          <kbd class="hidden rounded-md border border-line bg-paper-sunken px-1.5 py-px font-code text-xs font-medium text-ink-subtle lg:inline">/</kbd>
+        </label>
+      </form>
+    </div>
   </nav>
 </header>
 
-          <div class="bg-white/90 custom-border px-6 py-20 sm:flex space-x-6">
-    <div class="sm:flex sm:space-x-12 sm:max-w-7xl w-full mx-auto">
-      <aside class="relative w-1/4 hidden lg:block" data-search-target="aside">
-        <div class="sticky top-4 block space-y-4">
-            <form action="/bootcamp/search" method="GET">
-  <label for="search" class="sr-only">Search</label>
-  <input data-search-target="web" type="text" name="q" placeholder="Search bootcamp... (press &quot;/&quot; to focus)" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" />
-</form>
+        <div class="mx-auto flex max-w-[1248px] flex-wrap items-start gap-x-12 gap-y-8 px-6 pt-12 pb-24">
+  
+  <details class="doc-side-mobile w-full rounded-[10px] border border-line bg-paper-raised lg:hidden">
+    <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 px-4 py-2.5 text-[15px] font-semibold [&::-webkit-details-marker]:hidden">
+      <span class="min-w-0 truncate"><span class="text-ink-subtle">Native /</span> Native Authentication</span>
+      <svg class="shrink-0 transition [[open]>summary>&]:rotate-180" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+    </summary>
+    <nav aria-label="Bootcamp chapters" class="doc-side border-t border-line px-2 pt-4 pb-3">
+      <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle">Prologue</p>
+  <ul>
+          <li><a href="/bootcamp/introduction" >Introduction</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Web</p>
+  <ul>
+          <li><a href="/bootcamp/installation" >Installation</a></li>
+          <li><a href="/bootcamp/creating-chirps" >Creating Chirps</a></li>
+          <li><a href="/bootcamp/listing-chirps" >Listing Chirps</a></li>
+          <li><a href="/bootcamp/editing-chirps" >Editing Chirps</a></li>
+          <li><a href="/bootcamp/deleting-chirps" >Deleting Chirps</a></li>
+          <li><a href="/bootcamp/hotwiring-everything" >Hotwiring Everything</a></li>
+          <li><a href="/bootcamp/broadcasting" >Broadcasting</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Native</p>
+  <ul>
+          <li><a href="/bootcamp/native-setup" >Installation</a></li>
+          <li><a href="/bootcamp/native-auth"  aria-current="page" >Authentication</a></li>
+          <li><a href="/bootcamp/native-bridge-component" >Our First Bridge Component</a></li>
+          <li><a href="/bootcamp/native-editing-modal" >Editing as a Modal</a></li>
+          <li><a href="/bootcamp/native-confirmation" >Native Confirmation Dialog</a></li>
+          <li><a href="/bootcamp/native-toasts" >Native Toasts</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Epilogue</p>
+  <ul>
+          <li><a href="/bootcamp/conclusion" >Conclusion</a></li>
+      </ul>
+    </nav>
+  </details>
 
-            <ul class="[&_.children]:mb-4 text-base">
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Prologue</li>
-  <li class="children mt-2">
-    <ul class="list-inside space-y-1">
-            <li><a href="/bootcamp/introduction" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Introduction</a></li>
-          </ul>
-  </li>
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Web</li>
-  <li class="children mt-2">
-    <ul class="list-inside space-y-1">
-            <li><a href="/bootcamp/installation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
-            <li><a href="/bootcamp/creating-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Creating Chirps</a></li>
-            <li><a href="/bootcamp/listing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Listing Chirps</a></li>
-            <li><a href="/bootcamp/editing-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing Chirps</a></li>
-            <li><a href="/bootcamp/deleting-chirps" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Deleting Chirps</a></li>
-            <li><a href="/bootcamp/hotwiring-everything" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Hotwiring Everything</a></li>
-            <li><a href="/bootcamp/broadcasting" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Broadcasting</a></li>
-          </ul>
-  </li>
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Native</li>
-  <li class="children mt-2">
-    <ul class="list-inside space-y-1">
-            <li><a href="/bootcamp/native-setup" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Installation</a></li>
-            <li><a href="/bootcamp/native-auth" class="bg-zinc-900/20 transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Authentication</a></li>
-            <li><a href="/bootcamp/native-bridge-component" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Our First Bridge Component</a></li>
-            <li><a href="/bootcamp/native-editing-modal" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Editing as a Modal</a></li>
-            <li><a href="/bootcamp/native-confirmation" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Confirmation Dialog</a></li>
-            <li><a href="/bootcamp/native-toasts" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Native Toasts</a></li>
-          </ul>
-  </li>
-    <li class="px-2 py-1 font-heading font-extrabold uppercase text-zinc-900/40">Epilogue</li>
-  <li class="children mt-2">
-    <ul class="list-inside space-y-1">
-            <li><a href="/bootcamp/conclusion" class=" transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">Conclusion</a></li>
-          </ul>
-  </li>
-  </ul>
-        </div>
-      </aside>
+  <nav aria-label="Bootcamp chapters" class="doc-side sticky top-6 hidden max-h-[calc(100vh-3rem)] max-w-[232px] min-w-0 flex-[1_1_220px] overflow-y-auto lg:block">
+    <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle">Prologue</p>
+  <ul>
+          <li><a href="/bootcamp/introduction" >Introduction</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Web</p>
+  <ul>
+          <li><a href="/bootcamp/installation" >Installation</a></li>
+          <li><a href="/bootcamp/creating-chirps" >Creating Chirps</a></li>
+          <li><a href="/bootcamp/listing-chirps" >Listing Chirps</a></li>
+          <li><a href="/bootcamp/editing-chirps" >Editing Chirps</a></li>
+          <li><a href="/bootcamp/deleting-chirps" >Deleting Chirps</a></li>
+          <li><a href="/bootcamp/hotwiring-everything" >Hotwiring Everything</a></li>
+          <li><a href="/bootcamp/broadcasting" >Broadcasting</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Native</p>
+  <ul>
+          <li><a href="/bootcamp/native-setup" >Installation</a></li>
+          <li><a href="/bootcamp/native-auth"  aria-current="page" >Authentication</a></li>
+          <li><a href="/bootcamp/native-bridge-component" >Our First Bridge Component</a></li>
+          <li><a href="/bootcamp/native-editing-modal" >Editing as a Modal</a></li>
+          <li><a href="/bootcamp/native-confirmation" >Native Confirmation Dialog</a></li>
+          <li><a href="/bootcamp/native-toasts" >Native Toasts</a></li>
+      </ul>
+  <p class="mb-1.5 px-3 text-[13px] leading-[18px] font-semibold text-ink-subtle mt-6">Epilogue</p>
+  <ul>
+          <li><a href="/bootcamp/conclusion" >Conclusion</a></li>
+      </ul>
+  </nav>
 
-      <main class="flex-1 min-w-0 max-w-3xl">
-        <div class="prose prose-lg overflow-hidden prose-zinc [&_code:not(pre_code)]:text-wrap [&_code:not(pre_code)]:break-words prose-headings:font-heading prose-headings:font-extrabold max-w-none w-full">
-            <h1><em>09.</em> Native Authentication</h1>
+  
+  <main class="max-w-[720px] min-w-0 flex-[999_1_560px]">
+    <article class="doc-article" data-kind="bootcamp">
+              <p class="mb-3 text-sm leading-5 text-ink-subtle">
+          <a href="/bootcamp/introduction" class="text-ink-subtle hover:text-ink">Bootcamp</a>
+          <span aria-hidden="true">/</span>
+          Native
+        </p>
+      
+              <h1 id="top" class="doc-title"><em>09.</em> Native Authentication</h1>
+      
+      
+      <div class="doc-body">
+        
 
-<p>Let's tackle the mobile authentication first. We're now able to use the web authentication flow, but as we discussed earlier, sometimes we need to implement fully native screens in our app that uses JSON endpoints with an Access Token. For that reason, we're gonna change our login flow just for our Hotwire Native Android client. If you were building a Native iOS app, that could also use this same flow.</p>
+<p>Let's tackle the mobile authentication first. We're now able to use the web authentication flow, but as we discussed earlier, sometimes we need to implement fully native screens in our app that use JSON endpoints with an Access Token. For that reason, we're gonna change our login flow just for our Hotwire Native Android client. If you were building a native iOS app, it could use this same flow too.</p>
 
 <p>Laravel has essentially two first-party packages when it comes to Token-based authentication: <a href="https://laravel.com/docs/sanctum">Laravel Sanctum</a> and <a href="https://laravel.com/docs/passport">Laravel Passport</a>.</p>
 
 <p>For this Bootcamp, we're gonna be using Laravel Sanctum, as our flow is a mix of an SPA and mobile authentication flows, both provided by Sanctum.</p>
 
-<p>Oh, and we're going to use <a href="https://developer.android.com/jetpack/compose">Jetpack Compose</a> to build the Login screen. I don't know about you, but building screens in XML ain't I'd be proud to show you. Let's start by adding the Gradle dependencies we need and making some tweaks to our app so Compose works properly.</p>
+<p>Oh, and we're going to use <a href="https://developer.android.com/jetpack/compose">Jetpack Compose</a> to build the Login screen. I don't know about you, but building screens in XML ain't something I'd be proud to show you. Let's start by adding the Gradle dependencies we need and making some tweaks to our app so Compose works properly.</p>
 
-<h2>Adding Jetpack Compose</h2>
+<h2 id="adding-jetpack-compose">Adding Jetpack Compose</h2>
 
 <p>Open the Module's <code>build.gradle</code> file and add the following lines to it:</p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">groovy</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-groovy">dependencies {
     def lifecycle_version = '2.5.1'
     def compose_version = '1.3.0-rc01' // Add this
@@ -236,10 +218,10 @@
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-}
-</code></pre>
+}</code></pre>
+</div>
 
-<p>We added a bunch of dependencies here, let's dissect that:</p>
+<p>We added a bunch of dependencies here, so let's dissect them:</p>
 
 <ul>
 <li>The <code>androidx.compose.ui:ui:*</code> one is the main Jetpack Compose package</li>
@@ -248,10 +230,15 @@
 <li>The <code>com.google.code.gson:gson:2.9.1</code> is the lib we're gonna use to serialize our JSON responses to objects we can use in Kotlin</li>
 </ul>
 
-<p>We also made some changes to the <code>buildFeatures</code> to enable compose and also configured the <code>composeOptions</code> to use a specific version Jetcompose Compose Compiler to work with the Kotlin version I have (which is <code>1.7.20-RC</code>). I was getting weird compilation errors without this. It was after many attempts that I found this fix (again, I'm no mobile Android expert). If you happen to use a different Kotlin version, make sure you visit the <a href="https://androidx.dev/storage/compose-compiler/repository">compatibility table to see which version of the Compose Compiler you need</a>.</p>
+<p>We also made some changes to the <code>buildFeatures</code> to enable Compose and also configured the <code>composeOptions</code> to use a specific version of the Jetpack Compose Compiler to work with the Kotlin version I have (which is <code>1.7.20-RC</code>). I was getting weird compilation errors without this. It was after many attempts that I found this fix (again, I'm no Android expert). If you happen to use a different Kotlin version, make sure you visit the <a href="https://androidx.dev/storage/compose-compiler/repository">compatibility table to see which version of the Compose Compiler you need</a>.</p>
 
-<p>For that compiler customization to work, we need to make a change to our <code>settings.gradle</code> file to add the compose compiler's repository to Maven:</p>
+<p>For that compiler customization to work, we need to make a change to our <code>settings.gradle</code> file to add the Compose Compiler's repository to Maven:</p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">groovy</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-groovy">dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -262,387 +249,432 @@
             url &quot;https://androidx.dev/storage/compose-compiler/repository/&quot;
         }
     }
-}
-</code></pre>
+}</code></pre>
+</div>
 
 <p>Okay, now press that "Sync now" link at the top and fingers crossed!</p>
 
 <p><img src="/assets/images/bootcamp/native/auth-gradle-dependencies.png" alt="Gradle Dependencies" /></p>
 
-<h2>The Auth Client Service</h2>
+<h2 id="the-auth-client-service">The Auth Client Service</h2>
 
 <p>Now that we have all the libs in place, let's start sketching out how this is gonna work.</p>
 
-<p>As mentioned earlier, we're gonna need both the <a href="https://laravel.com/docs/sanctum#spa-authentication">Cookie</a> AND the <a href="https://laravel.com/docs/sanctum#mobile-application-authentication">Token</a> authentication in our case. We need the Cookie-based authentication for our shared WebView while the Access Token we'll store in our app settings so we can reuse it whenever we need to build a fully native screen.</p>
+<p>As mentioned earlier, we're gonna need both the <a href="https://laravel.com/docs/sanctum#spa-authentication">Cookie</a> AND the <a href="https://laravel.com/docs/sanctum#mobile-application-authentication">Token</a> authentication in our case. We need the Cookie-based authentication for our shared WebView, while the Access Token will be stored in our app settings so we can reuse it whenever we need to build a fully native screen.</p>
 
 <p>We'll handle the Laravel side of this soon. Add these new constants to our <code>util.Constants</code> file:</p>
 
-<pre><code class="language-kotlin">package com.example.turbochirpernative.util
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">kotlin</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-kotlin"><span class="hl-keyword">package</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>util</span>
 
-const val BASE_URL = &quot;http://10.0.2.2&quot;
-const val CHIRPS_HOME_URL = &quot;$BASE_URL/chirps&quot;
-const val API_BASE_URL = &quot;$BASE_URL/api&quot;
-const val API_CSRF_COOKIES_URL = &quot;$BASE_URL/sanctum/csrf-cookie&quot;
-const val API_LOGIN_URL = &quot;$API_BASE_URL/login&quot;
-</code></pre>
+<span class="hl-keyword">const</span> <span class="hl-keyword">val</span> <span class="hl-type"><span class="hl-variable">BASE_URL</span></span> <span class="hl-operator">=</span> <span class="hl-value">&quot;http://10.0.2.2&quot;</span>
+<span class="hl-keyword">const</span> <span class="hl-keyword">val</span> <span class="hl-type"><span class="hl-variable">CHIRPS_HOME_URL</span></span> <span class="hl-operator">=</span> <span class="hl-value">&quot;$BASE_URL/chirps&quot;</span>
+<span class="hl-keyword">const</span> <span class="hl-keyword">val</span> <span class="hl-type"><span class="hl-variable">API_BASE_URL</span></span> <span class="hl-operator">=</span> <span class="hl-value">&quot;$BASE_URL/api&quot;</span>
+<span class="hl-keyword">const</span> <span class="hl-keyword">val</span> <span class="hl-type"><span class="hl-variable">API_CSRF_COOKIES_URL</span></span> <span class="hl-operator">=</span> <span class="hl-value">&quot;$BASE_URL/sanctum/csrf-cookie&quot;</span>
+<span class="hl-keyword">const</span> <span class="hl-keyword">val</span> <span class="hl-type"><span class="hl-variable">API_LOGIN_URL</span></span> <span class="hl-operator">=</span> <span class="hl-value">&quot;$API_BASE_URL/login&quot;</span></code></pre>
+</div>
 
 <p>Next, let's create our <code>AuthClient</code> to interact with the API. First, add an "api" package to the root of the project (next to the "features" package) by right-clicking on the root package then choosing "New > Package". Inside of it, add a new Kotlin class:</p>
 
-<pre><code class="language-kotlin">package com.example.turbochirpernative.api
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">kotlin</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-kotlin"><span class="hl-keyword">package</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>api</span>
 
-import android.util.Log
-import android.webkit.CookieManager
-import com.example.turbochirpernative.util.API_CSRF_COOKIES_URL
-import com.example.turbochirpernative.util.API_LOGIN_URL
-import com.example.turbochirpernative.util.BASE_URL
-import com.google.gson.Gson
-import com.google.gson.JsonObject
-import okhttp3.*
-import okhttp3.HttpUrl.Companion.toHttpUrl
-import okhttp3.RequestBody.Companion.toRequestBody
-import okio.IOException
-import java.net.URLDecoder
+<span class="hl-keyword">import</span> <span class="hl-type">android<span class="hl-operator">.</span>util<span class="hl-operator">.</span>Log</span>
+<span class="hl-keyword">import</span> <span class="hl-type">android<span class="hl-operator">.</span>webkit<span class="hl-operator">.</span>CookieManager</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>util<span class="hl-operator">.</span>API_CSRF_COOKIES_URL</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>util<span class="hl-operator">.</span>API_LOGIN_URL</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>util<span class="hl-operator">.</span>BASE_URL</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>google<span class="hl-operator">.</span>gson<span class="hl-operator">.</span>Gson</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>google<span class="hl-operator">.</span>gson<span class="hl-operator">.</span>JsonObject</span>
+<span class="hl-keyword">import</span> <span class="hl-type">okhttp3<span class="hl-operator">.</span><span class="hl-operator">*</span></span>
+<span class="hl-keyword">import</span> <span class="hl-type">okhttp3<span class="hl-operator">.</span>HttpUrl<span class="hl-operator">.</span>Companion<span class="hl-operator">.</span>toHttpUrl</span>
+<span class="hl-keyword">import</span> <span class="hl-type">okhttp3<span class="hl-operator">.</span>RequestBody<span class="hl-operator">.</span>Companion<span class="hl-operator">.</span>toRequestBody</span>
+<span class="hl-keyword">import</span> <span class="hl-type">okio<span class="hl-operator">.</span>IOException</span>
+<span class="hl-keyword">import</span> <span class="hl-type">java<span class="hl-operator">.</span>net<span class="hl-operator">.</span>URLDecoder</span>
 
-class AuthClient() {
-    private var CLIENT_USER_AGENT = &quot;Hotwire Native Android HTTP Client&quot;
+<span class="hl-keyword">class</span> <span class="hl-type">AuthClient</span><span class="hl-operator">(</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+    <span class="hl-keyword">private</span> <span class="hl-keyword">var</span> <span class="hl-type"><span class="hl-variable">CLIENT_USER_AGENT</span></span> <span class="hl-operator">=</span> <span class="hl-value">&quot;Hotwire Native Android HTTP Client&quot;</span>
 
-    private var csrfToken: String = &quot;&quot;
-    private var csrfCookieStored: String = &quot;&quot;
-    private var sessionCookieStored: String = &quot;&quot;
+    <span class="hl-keyword">private</span> <span class="hl-keyword">var</span> <span class="hl-variable">csrfToken</span><span class="hl-operator">:</span> <span class="hl-type">String</span> <span class="hl-operator">=</span> <span class="hl-value">&quot;&quot;</span>
+    <span class="hl-keyword">private</span> <span class="hl-keyword">var</span> <span class="hl-variable">csrfCookieStored</span><span class="hl-operator">:</span> <span class="hl-type">String</span> <span class="hl-operator">=</span> <span class="hl-value">&quot;&quot;</span>
+    <span class="hl-keyword">private</span> <span class="hl-keyword">var</span> <span class="hl-variable">sessionCookieStored</span><span class="hl-operator">:</span> <span class="hl-type">String</span> <span class="hl-operator">=</span> <span class="hl-value">&quot;&quot;</span>
 
-    @Throws(IOException::class)
-    fun fetchCsrfToken(onCsrfTokenFetched: () -&gt; Unit) {
-        val client = OkHttpClient()
+    <span class="hl-attribute">@<span class="hl-property">Throws</span></span><span class="hl-operator">(</span><span class="hl-type">IOException</span><span class="hl-operator">::</span><span class="hl-keyword">class</span><span class="hl-operator">)</span>
+    <span class="hl-keyword">fun</span> <span class="hl-property">fetchCsrfToken</span><span class="hl-operator">(</span>onCsrfTokenFetched<span class="hl-operator">:</span> <span class="hl-operator">(</span><span class="hl-operator">)</span> <span class="hl-operator">-&gt;</span> <span class="hl-type">Unit</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+        <span class="hl-keyword">val</span> <span class="hl-variable">client</span> <span class="hl-operator">=</span> <span class="hl-type">OkHttpClient</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
 
-        val request: Request = Request.Builder()
-            .url(API_CSRF_COOKIES_URL)
-            .addHeader(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)
-            .addHeader(&quot;Accept&quot;, &quot;application/json; charset=utf-8&quot;)
-            .addHeader(&quot;User-Agent&quot;, CLIENT_USER_AGENT)
-            .get()
-            .build()
+        <span class="hl-keyword">val</span> <span class="hl-variable">request</span><span class="hl-operator">:</span> <span class="hl-type">Request</span> <span class="hl-operator">=</span> <span class="hl-type">Request</span><span class="hl-operator">.</span><span class="hl-type">Builder</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+            <span class="hl-operator">.</span><span class="hl-property">url</span><span class="hl-operator">(</span><span class="hl-type">API_CSRF_COOKIES_URL</span><span class="hl-operator">)</span>
+            <span class="hl-operator">.</span><span class="hl-property">addHeader</span><span class="hl-operator">(</span><span class="hl-value">&quot;Content-Type&quot;</span><span class="hl-operator">,</span> <span class="hl-value">&quot;application/json; charset=utf-8&quot;</span><span class="hl-operator">)</span>
+            <span class="hl-operator">.</span><span class="hl-property">addHeader</span><span class="hl-operator">(</span><span class="hl-value">&quot;Accept&quot;</span><span class="hl-operator">,</span> <span class="hl-value">&quot;application/json; charset=utf-8&quot;</span><span class="hl-operator">)</span>
+            <span class="hl-operator">.</span><span class="hl-property">addHeader</span><span class="hl-operator">(</span><span class="hl-value">&quot;User-Agent&quot;</span><span class="hl-operator">,</span> <span class="hl-type">CLIENT_USER_AGENT</span><span class="hl-operator">)</span>
+            <span class="hl-operator">.</span><span class="hl-keyword">get</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+            <span class="hl-operator">.</span><span class="hl-property">build</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
 
-        client.newCall(request).enqueue(object: Callback {
-            override fun onFailure(call: Call, e: java.io.IOException) {
-                e.printStackTrace()
-            }
+        client<span class="hl-operator">.</span><span class="hl-property">newCall</span><span class="hl-operator">(</span>request<span class="hl-operator">)</span><span class="hl-operator">.</span><span class="hl-property">enqueue</span><span class="hl-operator">(</span><span class="hl-keyword">object</span><span class="hl-operator">:</span> <span class="hl-type">Callback</span> <span class="hl-operator">{</span>
+            <span class="hl-keyword">override</span> <span class="hl-keyword">fun</span> <span class="hl-property">onFailure</span><span class="hl-operator">(</span>call<span class="hl-operator">:</span> <span class="hl-type">Call</span><span class="hl-operator">,</span> e<span class="hl-operator">:</span> java<span class="hl-operator">.</span>io<span class="hl-operator">.</span><span class="hl-type">IOException</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+                e<span class="hl-operator">.</span><span class="hl-property">printStackTrace</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+            <span class="hl-operator">}</span>
 
-            override fun onResponse(call: Call, response: Response) {
-                response.use {
-                    val cookieManager = CookieManager.getInstance()
-                    val cookies = Cookie.parseAll(BASE_URL.toHttpUrl(), it.headers)
+            <span class="hl-keyword">override</span> <span class="hl-keyword">fun</span> <span class="hl-property">onResponse</span><span class="hl-operator">(</span>call<span class="hl-operator">:</span> <span class="hl-type">Call</span><span class="hl-operator">,</span> response<span class="hl-operator">:</span> <span class="hl-type">Response</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+                response<span class="hl-operator">.</span>use <span class="hl-operator">{</span>
+                    <span class="hl-keyword">val</span> <span class="hl-variable">cookieManager</span> <span class="hl-operator">=</span> <span class="hl-type">CookieManager</span><span class="hl-operator">.</span><span class="hl-property">getInstance</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+                    <span class="hl-keyword">val</span> <span class="hl-variable">cookies</span> <span class="hl-operator">=</span> <span class="hl-type">Cookie</span><span class="hl-operator">.</span><span class="hl-property">parseAll</span><span class="hl-operator">(</span><span class="hl-type">BASE_URL</span><span class="hl-operator">.</span><span class="hl-property">toHttpUrl</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">,</span> it<span class="hl-operator">.</span>headers<span class="hl-operator">)</span>
 
-                    cookies.forEach { cookie -&gt;
-                        if (cookie.name == &quot;XSRF-TOKEN&quot;) {
-                            csrfToken = URLDecoder.decode(cookie.value.toString(), Charsets.UTF_8.name())
-                            csrfCookieStored = cookie.toString()
-                        } else if (cookie.name == &quot;turbo_chirp_native_session&quot;) {
-                            sessionCookieStored = cookie.toString()
-                        }
+                    cookies<span class="hl-operator">.</span>forEach <span class="hl-operator">{</span> cookie <span class="hl-operator">-&gt;</span>
+                        <span class="hl-keyword">if</span> <span class="hl-operator">(</span>cookie<span class="hl-operator">.</span>name <span class="hl-operator">==</span> <span class="hl-value">&quot;XSRF-TOKEN&quot;</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+                            csrfToken <span class="hl-operator">=</span> <span class="hl-type">URLDecoder</span><span class="hl-operator">.</span><span class="hl-property">decode</span><span class="hl-operator">(</span>cookie<span class="hl-operator">.</span><span class="hl-keyword">value</span><span class="hl-operator">.</span><span class="hl-property">toString</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">,</span> <span class="hl-type">Charsets</span><span class="hl-operator">.</span><span class="hl-type">UTF_8</span><span class="hl-operator">.</span><span class="hl-property">name</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">)</span>
+                            csrfCookieStored <span class="hl-operator">=</span> cookie<span class="hl-operator">.</span><span class="hl-property">toString</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+                        <span class="hl-operator">}</span> <span class="hl-keyword">else</span> <span class="hl-keyword">if</span> <span class="hl-operator">(</span>cookie<span class="hl-operator">.</span>name <span class="hl-operator">==</span> <span class="hl-value">&quot;turbo_chirp_native_session&quot;</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+                            sessionCookieStored <span class="hl-operator">=</span> cookie<span class="hl-operator">.</span><span class="hl-property">toString</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+                        <span class="hl-operator">}</span>
 
-                        cookieManager.setCookie(BASE_URL, cookie.toString())
-                    }
-                }
+                        cookieManager<span class="hl-operator">.</span><span class="hl-property">setCookie</span><span class="hl-operator">(</span><span class="hl-type">BASE_URL</span><span class="hl-operator">,</span> cookie<span class="hl-operator">.</span><span class="hl-property">toString</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">)</span>
+                    <span class="hl-operator">}</span>
+                <span class="hl-operator">}</span>
 
-                onCsrfTokenFetched()
-            }
-        })
-    }
+                <span class="hl-property">onCsrfTokenFetched</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+            <span class="hl-operator">}</span>
+        <span class="hl-operator">}</span><span class="hl-operator">)</span>
+    <span class="hl-operator">}</span>
 
-    @Throws(IOException::class)
-    fun attempt(email: String, password: String, onResponse: (AuthResponse) -&gt; Unit) {
-        val client = OkHttpClient()
+    <span class="hl-attribute">@<span class="hl-property">Throws</span></span><span class="hl-operator">(</span><span class="hl-type">IOException</span><span class="hl-operator">::</span><span class="hl-keyword">class</span><span class="hl-operator">)</span>
+    <span class="hl-keyword">fun</span> <span class="hl-property">attempt</span><span class="hl-operator">(</span>email<span class="hl-operator">:</span> <span class="hl-type">String</span><span class="hl-operator">,</span> password<span class="hl-operator">:</span> <span class="hl-type">String</span><span class="hl-operator">,</span> onResponse<span class="hl-operator">:</span> <span class="hl-operator">(</span><span class="hl-type">AuthResponse</span><span class="hl-operator">)</span> <span class="hl-operator">-&gt;</span> <span class="hl-type">Unit</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+        <span class="hl-keyword">val</span> <span class="hl-variable">client</span> <span class="hl-operator">=</span> <span class="hl-type">OkHttpClient</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
 
-        val body = JsonObject()
-        body.addProperty(&quot;email&quot;, email)
-        body.addProperty(&quot;password&quot;, password)
+        <span class="hl-keyword">val</span> <span class="hl-variable">body</span> <span class="hl-operator">=</span> <span class="hl-type">JsonObject</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+        body<span class="hl-operator">.</span><span class="hl-property">addProperty</span><span class="hl-operator">(</span><span class="hl-value">&quot;email&quot;</span><span class="hl-operator">,</span> email<span class="hl-operator">)</span>
+        body<span class="hl-operator">.</span><span class="hl-property">addProperty</span><span class="hl-operator">(</span><span class="hl-value">&quot;password&quot;</span><span class="hl-operator">,</span> password<span class="hl-operator">)</span>
 
-        val request: Request = Request.Builder()
-            .url(API_LOGIN_URL)
-            .addHeader(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)
-            .addHeader(&quot;Accept&quot;, &quot;application/json; charset=utf-8&quot;)
-            .addHeader(&quot;User-Agent&quot;, CLIENT_USER_AGENT)
-            .addHeader(&quot;X-XSRF-TOKEN&quot;, csrfToken)
-            .addHeader(&quot;Cookie&quot;, &quot;$sessionCookieStored; $csrfCookieStored&quot;)
-            .post(body.toString().toRequestBody())
-            .build()
+        <span class="hl-keyword">val</span> <span class="hl-variable">request</span><span class="hl-operator">:</span> <span class="hl-type">Request</span> <span class="hl-operator">=</span> <span class="hl-type">Request</span><span class="hl-operator">.</span><span class="hl-type">Builder</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+            <span class="hl-operator">.</span><span class="hl-property">url</span><span class="hl-operator">(</span><span class="hl-type">API_LOGIN_URL</span><span class="hl-operator">)</span>
+            <span class="hl-operator">.</span><span class="hl-property">addHeader</span><span class="hl-operator">(</span><span class="hl-value">&quot;Content-Type&quot;</span><span class="hl-operator">,</span> <span class="hl-value">&quot;application/json; charset=utf-8&quot;</span><span class="hl-operator">)</span>
+            <span class="hl-operator">.</span><span class="hl-property">addHeader</span><span class="hl-operator">(</span><span class="hl-value">&quot;Accept&quot;</span><span class="hl-operator">,</span> <span class="hl-value">&quot;application/json; charset=utf-8&quot;</span><span class="hl-operator">)</span>
+            <span class="hl-operator">.</span><span class="hl-property">addHeader</span><span class="hl-operator">(</span><span class="hl-value">&quot;User-Agent&quot;</span><span class="hl-operator">,</span> <span class="hl-type">CLIENT_USER_AGENT</span><span class="hl-operator">)</span>
+            <span class="hl-operator">.</span><span class="hl-property">addHeader</span><span class="hl-operator">(</span><span class="hl-value">&quot;X-XSRF-TOKEN&quot;</span><span class="hl-operator">,</span> csrfToken<span class="hl-operator">)</span>
+            <span class="hl-operator">.</span><span class="hl-property">addHeader</span><span class="hl-operator">(</span><span class="hl-value">&quot;Cookie&quot;</span><span class="hl-operator">,</span> <span class="hl-value">&quot;$sessionCookieStored; $csrfCookieStored&quot;</span><span class="hl-operator">)</span>
+            <span class="hl-operator">.</span><span class="hl-property">post</span><span class="hl-operator">(</span>body<span class="hl-operator">.</span><span class="hl-property">toString</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">.</span><span class="hl-property">toRequestBody</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">)</span>
+            <span class="hl-operator">.</span><span class="hl-property">build</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
 
-        client.newCall(request).enqueue(object: Callback {
-            override fun onFailure(call: Call, e: java.io.IOException) {
-                e.printStackTrace()
-            }
+        client<span class="hl-operator">.</span><span class="hl-property">newCall</span><span class="hl-operator">(</span>request<span class="hl-operator">)</span><span class="hl-operator">.</span><span class="hl-property">enqueue</span><span class="hl-operator">(</span><span class="hl-keyword">object</span><span class="hl-operator">:</span> <span class="hl-type">Callback</span> <span class="hl-operator">{</span>
+            <span class="hl-keyword">override</span> <span class="hl-keyword">fun</span> <span class="hl-property">onFailure</span><span class="hl-operator">(</span>call<span class="hl-operator">:</span> <span class="hl-type">Call</span><span class="hl-operator">,</span> e<span class="hl-operator">:</span> java<span class="hl-operator">.</span>io<span class="hl-operator">.</span><span class="hl-type">IOException</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+                e<span class="hl-operator">.</span><span class="hl-property">printStackTrace</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+            <span class="hl-operator">}</span>
 
-            override fun onResponse(call: Call, response: Response) {
-                response.use {
-                    val gson = Gson()
+            <span class="hl-keyword">override</span> <span class="hl-keyword">fun</span> <span class="hl-property">onResponse</span><span class="hl-operator">(</span>call<span class="hl-operator">:</span> <span class="hl-type">Call</span><span class="hl-operator">,</span> response<span class="hl-operator">:</span> <span class="hl-type">Response</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+                response<span class="hl-operator">.</span>use <span class="hl-operator">{</span>
+                    <span class="hl-keyword">val</span> <span class="hl-variable">gson</span> <span class="hl-operator">=</span> <span class="hl-type">Gson</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
 
-                    when {
-                        it.isSuccessful -&gt; {
-                            Log.i(&quot;AuthClient&quot;, &quot;HTTP request worked!&quot;)
+                    <span class="hl-keyword">when</span> <span class="hl-operator">{</span>
+                        it<span class="hl-operator">.</span>isSuccessful <span class="hl-operator">-&gt;</span> <span class="hl-operator">{</span>
+                            <span class="hl-type">Log</span><span class="hl-operator">.</span><span class="hl-property">i</span><span class="hl-operator">(</span><span class="hl-value">&quot;AuthClient&quot;</span><span class="hl-operator">,</span> <span class="hl-value">&quot;HTTP request worked!&quot;</span><span class="hl-operator">)</span>
 
-                            val cookieManager = CookieManager.getInstance()
-                            val cookies = Cookie.parseAll(BASE_URL.toHttpUrl(), it.headers)
+                            <span class="hl-keyword">val</span> <span class="hl-variable">cookieManager</span> <span class="hl-operator">=</span> <span class="hl-type">CookieManager</span><span class="hl-operator">.</span><span class="hl-property">getInstance</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+                            <span class="hl-keyword">val</span> <span class="hl-variable">cookies</span> <span class="hl-operator">=</span> <span class="hl-type">Cookie</span><span class="hl-operator">.</span><span class="hl-property">parseAll</span><span class="hl-operator">(</span><span class="hl-type">BASE_URL</span><span class="hl-operator">.</span><span class="hl-property">toHttpUrl</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">,</span> it<span class="hl-operator">.</span>headers<span class="hl-operator">)</span>
 
-                            cookies.forEach { cookie -&gt;
-                                Log.i(&quot;AuthClient&quot;, &quot;Received cookie &quot; + cookie.name + &quot; adding to the CookieManager...&quot;)
+                            cookies<span class="hl-operator">.</span>forEach <span class="hl-operator">{</span> cookie <span class="hl-operator">-&gt;</span>
+                                <span class="hl-type">Log</span><span class="hl-operator">.</span><span class="hl-property">i</span><span class="hl-operator">(</span><span class="hl-value">&quot;AuthClient&quot;</span><span class="hl-operator">,</span> <span class="hl-value">&quot;Received cookie &quot;</span> <span class="hl-operator">+</span> cookie<span class="hl-operator">.</span>name <span class="hl-operator">+</span> <span class="hl-value">&quot; adding to the CookieManager...&quot;</span><span class="hl-operator">)</span>
 
-                                cookieManager.setCookie(BASE_URL, cookie.toString())
-                            }
+                                cookieManager<span class="hl-operator">.</span><span class="hl-property">setCookie</span><span class="hl-operator">(</span><span class="hl-type">BASE_URL</span><span class="hl-operator">,</span> cookie<span class="hl-operator">.</span><span class="hl-property">toString</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">)</span>
+                            <span class="hl-operator">}</span>
 
-                            val login = gson.fromJson(it.body?.string(), LoginSuccessful::class.java)
+                            <span class="hl-keyword">val</span> <span class="hl-variable">login</span> <span class="hl-operator">=</span> gson<span class="hl-operator">.</span><span class="hl-property">fromJson</span><span class="hl-operator">(</span>it<span class="hl-operator">.</span>body<span class="hl-operator">?.</span><span class="hl-property">string</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">,</span> <span class="hl-type">LoginSuccessful</span><span class="hl-operator">::</span><span class="hl-keyword">class</span><span class="hl-operator">.</span>java<span class="hl-operator">)</span>
 
-                            onResponse(AuthResponse(
-                                ok = true,
-                                successResponse = login,
-                                failedResponse = null,
-                            ))
-                        }
-                        else -&gt; {
-                            Log.i(&quot;AuthClient&quot;, &quot;HTTP request failed!&quot;)
+                            <span class="hl-property">onResponse</span><span class="hl-operator">(</span><span class="hl-type">AuthResponse</span><span class="hl-operator">(</span>
+                                ok <span class="hl-operator">=</span> <span class="hl-literal">true</span><span class="hl-operator">,</span>
+                                successResponse <span class="hl-operator">=</span> login<span class="hl-operator">,</span>
+                                failedResponse <span class="hl-operator">=</span> <span class="hl-literal">null</span><span class="hl-operator">,</span>
+                            <span class="hl-operator">)</span><span class="hl-operator">)</span>
+                        <span class="hl-operator">}</span>
+                        <span class="hl-keyword">else</span> <span class="hl-operator">-&gt;</span> <span class="hl-operator">{</span>
+                            <span class="hl-type">Log</span><span class="hl-operator">.</span><span class="hl-property">i</span><span class="hl-operator">(</span><span class="hl-value">&quot;AuthClient&quot;</span><span class="hl-operator">,</span> <span class="hl-value">&quot;HTTP request failed!&quot;</span><span class="hl-operator">)</span>
 
-                            onResponse(AuthResponse(
-                                ok = false,
-                                failedResponse = gson.fromJson(it.body?.string(), FailedResponse::class.java),
-                                successResponse = null,
-                            ))
-                        }
-                    }
-                }
-            }
-        })
-    }
-}
+                            <span class="hl-property">onResponse</span><span class="hl-operator">(</span><span class="hl-type">AuthResponse</span><span class="hl-operator">(</span>
+                                ok <span class="hl-operator">=</span> <span class="hl-literal">false</span><span class="hl-operator">,</span>
+                                failedResponse <span class="hl-operator">=</span> gson<span class="hl-operator">.</span><span class="hl-property">fromJson</span><span class="hl-operator">(</span>it<span class="hl-operator">.</span>body<span class="hl-operator">?.</span><span class="hl-property">string</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">,</span> <span class="hl-type">FailedResponse</span><span class="hl-operator">::</span><span class="hl-keyword">class</span><span class="hl-operator">.</span>java<span class="hl-operator">)</span><span class="hl-operator">,</span>
+                                successResponse <span class="hl-operator">=</span> <span class="hl-literal">null</span><span class="hl-operator">,</span>
+                            <span class="hl-operator">)</span><span class="hl-operator">)</span>
+                        <span class="hl-operator">}</span>
+                    <span class="hl-operator">}</span>
+                <span class="hl-operator">}</span>
+            <span class="hl-operator">}</span>
+        <span class="hl-operator">}</span><span class="hl-operator">)</span>
+    <span class="hl-operator">}</span>
+<span class="hl-operator">}</span>
 
-data class AuthResponse(
-    var ok: Boolean,
-    var successResponse: LoginSuccessful?,
-    var failedResponse: FailedResponse?,
-)
+<span class="hl-keyword">data</span> <span class="hl-keyword">class</span> <span class="hl-type">AuthResponse</span><span class="hl-operator">(</span>
+    <span class="hl-keyword">var</span> <span class="hl-variable">ok</span><span class="hl-operator">:</span> <span class="hl-type">Boolean</span><span class="hl-operator">,</span>
+    <span class="hl-keyword">var</span> <span class="hl-variable">successResponse</span><span class="hl-operator">:</span> <span class="hl-type">LoginSuccessful</span><span class="hl-operator">?</span><span class="hl-operator">,</span>
+    <span class="hl-keyword">var</span> <span class="hl-variable">failedResponse</span><span class="hl-operator">:</span> <span class="hl-type">FailedResponse</span><span class="hl-operator">?</span><span class="hl-operator">,</span>
+<span class="hl-operator">)</span>
 
-data class UserData(
-    val name: String,
-)
+<span class="hl-keyword">data</span> <span class="hl-keyword">class</span> <span class="hl-type">UserData</span><span class="hl-operator">(</span>
+    <span class="hl-keyword">val</span> <span class="hl-variable">name</span><span class="hl-operator">:</span> <span class="hl-type">String</span><span class="hl-operator">,</span>
+<span class="hl-operator">)</span>
 
-data class LoginSuccessful(
-    val token: String,
-    val data: UserData,
-    val redirectTo: String?,
-)
+<span class="hl-keyword">data</span> <span class="hl-keyword">class</span> <span class="hl-type">LoginSuccessful</span><span class="hl-operator">(</span>
+    <span class="hl-keyword">val</span> <span class="hl-variable">token</span><span class="hl-operator">:</span> <span class="hl-type">String</span><span class="hl-operator">,</span>
+    <span class="hl-keyword">val</span> <span class="hl-keyword">data</span><span class="hl-operator">:</span> <span class="hl-type">UserData</span><span class="hl-operator">,</span>
+    <span class="hl-keyword">val</span> <span class="hl-variable">redirectTo</span><span class="hl-operator">:</span> <span class="hl-type">String</span><span class="hl-operator">?</span><span class="hl-operator">,</span>
+<span class="hl-operator">)</span>
 
-data class InvalidLoginResponse(
-    val email: Array&lt;String&gt;?,
-    val password: Array&lt;String&gt;?,
-)
+<span class="hl-keyword">data</span> <span class="hl-keyword">class</span> <span class="hl-type">InvalidLoginResponse</span><span class="hl-operator">(</span>
+    <span class="hl-keyword">val</span> <span class="hl-variable">email</span><span class="hl-operator">:</span> <span class="hl-type">Array</span><span class="hl-operator">&lt;</span><span class="hl-type">String</span><span class="hl-operator">&gt;</span><span class="hl-operator">?</span><span class="hl-operator">,</span>
+    <span class="hl-keyword">val</span> <span class="hl-variable">password</span><span class="hl-operator">:</span> <span class="hl-type">Array</span><span class="hl-operator">&lt;</span><span class="hl-type">String</span><span class="hl-operator">&gt;</span><span class="hl-operator">?</span><span class="hl-operator">,</span>
+<span class="hl-operator">)</span>
 
-data class FailedResponse(
-    val message: String,
-    val errors: InvalidLoginResponse,
-)
-</code></pre>
+<span class="hl-keyword">data</span> <span class="hl-keyword">class</span> <span class="hl-type">FailedResponse</span><span class="hl-operator">(</span>
+    <span class="hl-keyword">val</span> <span class="hl-variable">message</span><span class="hl-operator">:</span> <span class="hl-type">String</span><span class="hl-operator">,</span>
+    <span class="hl-keyword">val</span> <span class="hl-variable">errors</span><span class="hl-operator">:</span> <span class="hl-type">InvalidLoginResponse</span><span class="hl-operator">,</span>
+<span class="hl-operator">)</span></code></pre>
+</div>
 
-<p>I know there's a lot here. I'm not that good in Kotlin, but this is not the point of this bootcamp. We're essentially adding a method to fetch the CSRF token used to get the Cookie authentication working, which we can use like so:</p>
+<p>I know there's a lot here. I'm not that good at Kotlin, but that's not the point of this Bootcamp. We're essentially adding a method to fetch the CSRF token used to get the Cookie authentication working, which we can use like so:</p>
 
-<pre><code class="language-kotlin">AuthClient().fetchCsrfToken {
-    // It worked, do something after...
-}
-</code></pre>
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">kotlin</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-kotlin"><span class="hl-type">AuthClient</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">.</span>fetchCsrfToken <span class="hl-operator">{</span>
+    <span class="hl-comment">// It worked, do something after...</span>
+<span class="hl-operator">}</span></code></pre>
+</div>
 
 <p>This method will make an HTTP call to the <code>/sanctum/csrf-cookie</code> route provided by Sanctum. That route will return the Cookies we need in order to successfully authenticate, since we're gonna use the CSRF protection middleware from Laravel in the API routes.</p>
 
-<p>We'd need a way to store the cookies so they'd automatically be added to the <code>CookieManager</code> whenever a response is received by the HTTP Client in whatever context, not just for the auth one. Anyways, for our purposes, this will do.</p>
+<p>We'd need a way to store the cookies so they'd automatically be added to the <code>CookieManager</code> whenever a response is received by the HTTP Client in whatever context, not just for the auth one. Anyway, for our purposes, this will do.</p>
 
-<p>This code also adds the method to attempt authenticating, which should call an endpoint at <code>/api/login</code>, which will create soon when we're handling the Laravel side of things. This is how the <code>attempt</code> method may be used:</p>
+<p>This code also adds the method to attempt authenticating, which should call an endpoint at <code>/api/login</code>, which we'll create soon when we're handling the Laravel side of things. This is how the <code>attempt</code> method may be used:</p>
 
-<pre><code class="language-kotlin">AuthClient().attempt(email, password) { it -&gt;
-    // &quot;it&quot; in this case is an instance of the `AuthResponse` class
-    // we created in the same file as the `AuthClient`...
-}
-</code></pre>
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">kotlin</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-kotlin"><span class="hl-type">AuthClient</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">.</span><span class="hl-property">attempt</span><span class="hl-operator">(</span>email<span class="hl-operator">,</span> password<span class="hl-operator">)</span> <span class="hl-operator">{</span> it <span class="hl-operator">-&gt;</span>
+    <span class="hl-comment">// &quot;it&quot; in this case is an instance of the `AuthResponse` class</span>
+    <span class="hl-comment">// we created in the same file as the `AuthClient`...</span>
+<span class="hl-operator">}</span></code></pre>
+</div>
 
 <p>With that in place, let's build the Login Screen!</p>
 
-<h2>The Native Login Screen</h2>
+<h2 id="the-native-login-screen">The Native Login Screen</h2>
 
-<p>Create the <code>features.auth</code> package. And, before we create the <code>LoginFragment</code>, we'll add two interfaces that it's gonna use. First, add a <code>CsrfTokenCallback</code> interface to the <code>features.auth</code> package with the following contents:</p>
+<p>Create the <code>features.auth</code> package. Before we create the <code>LoginFragment</code>, we'll add two interfaces that it's gonna use. First, add a <code>CsrfTokenCallback</code> interface to the <code>features.auth</code> package with the following contents:</p>
 
-<pre><code class="language-kotlin">package com.example.turbochirpernative.features.auth
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">kotlin</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-kotlin"><span class="hl-keyword">package</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>features<span class="hl-operator">.</span>auth</span>
 
-interface CsrfTokenCallback {
-    fun onCsrfTokenFetched()
-}
-</code></pre>
+<span class="hl-keyword">interface</span> <span class="hl-type">CsrfTokenCallback</span> <span class="hl-operator">{</span>
+    <span class="hl-keyword">fun</span> <span class="hl-property">onCsrfTokenFetched</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+<span class="hl-operator">}</span></code></pre>
+</div>
 
 <p>Then, add a <code>LoginRequestCallback</code> interface also in the <code>features.auth</code> package:</p>
 
-<pre><code class="language-kotlin">package com.example.turbochirpernative.features.auth
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">kotlin</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-kotlin"><span class="hl-keyword">package</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>features<span class="hl-operator">.</span>auth</span>
 
-interface LoginRequestCallback {
-    fun onLoginSucceeded(url: String)
-    fun onLoginFailed(msg: String)
-}
-</code></pre>
+<span class="hl-keyword">interface</span> <span class="hl-type">LoginRequestCallback</span> <span class="hl-operator">{</span>
+    <span class="hl-keyword">fun</span> <span class="hl-property">onLoginSucceeded</span><span class="hl-operator">(</span>url<span class="hl-operator">:</span> <span class="hl-type">String</span><span class="hl-operator">)</span>
+    <span class="hl-keyword">fun</span> <span class="hl-property">onLoginFailed</span><span class="hl-operator">(</span>msg<span class="hl-operator">:</span> <span class="hl-type">String</span><span class="hl-operator">)</span>
+<span class="hl-operator">}</span></code></pre>
+</div>
 
 <p>Next, add the <code>LoginFragment</code> also to the <code>features.auth</code> package:</p>
 
-<pre><code class="language-kotlin">package com.example.turbochirpernative.features.auth
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">kotlin</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-kotlin"><span class="hl-keyword">package</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>features<span class="hl-operator">.</span>auth</span>
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.example.turbochirpernative.api.AuthClient
-import dev.hotwire.turbo.fragments.TurboFragment
-import dev.hotwire.turbo.nav.TurboNavGraphDestination
+<span class="hl-keyword">import</span> <span class="hl-type">android<span class="hl-operator">.</span>os<span class="hl-operator">.</span>Bundle</span>
+<span class="hl-keyword">import</span> <span class="hl-type">android<span class="hl-operator">.</span>view<span class="hl-operator">.</span>LayoutInflater</span>
+<span class="hl-keyword">import</span> <span class="hl-type">android<span class="hl-operator">.</span>view<span class="hl-operator">.</span>View</span>
+<span class="hl-keyword">import</span> <span class="hl-type">android<span class="hl-operator">.</span>view<span class="hl-operator">.</span>ViewGroup</span>
+<span class="hl-keyword">import</span> <span class="hl-type">android<span class="hl-operator">.</span>widget<span class="hl-operator">.</span>Toast</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>foundation<span class="hl-operator">.</span>layout<span class="hl-operator">.</span>Arrangement</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>foundation<span class="hl-operator">.</span>layout<span class="hl-operator">.</span>Column</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>foundation<span class="hl-operator">.</span>layout<span class="hl-operator">.</span>fillMaxWidth</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>foundation<span class="hl-operator">.</span>layout<span class="hl-operator">.</span>padding</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>material<span class="hl-operator">.</span>Button</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>material<span class="hl-operator">.</span>MaterialTheme</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>material<span class="hl-operator">.</span>OutlinedTextField</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>material<span class="hl-operator">.</span>Text</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>runtime<span class="hl-operator">.</span>Composable</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>runtime<span class="hl-operator">.</span>DisposableEffect</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>runtime<span class="hl-operator">.</span>mutableStateOf</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>runtime<span class="hl-operator">.</span>remember</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>ui<span class="hl-operator">.</span>Alignment</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>ui<span class="hl-operator">.</span>Modifier</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>ui<span class="hl-operator">.</span>platform<span class="hl-operator">.</span>ComposeView</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>ui<span class="hl-operator">.</span>text<span class="hl-operator">.</span>TextStyle</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>ui<span class="hl-operator">.</span>text<span class="hl-operator">.</span>font<span class="hl-operator">.</span>FontWeight</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>ui<span class="hl-operator">.</span>text<span class="hl-operator">.</span>input<span class="hl-operator">.</span>PasswordVisualTransformation</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>ui<span class="hl-operator">.</span>text<span class="hl-operator">.</span>input<span class="hl-operator">.</span>TextFieldValue</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>ui<span class="hl-operator">.</span>unit<span class="hl-operator">.</span>dp</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>compose<span class="hl-operator">.</span>ui<span class="hl-operator">.</span>unit<span class="hl-operator">.</span>sp</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>api<span class="hl-operator">.</span>AuthClient</span>
+<span class="hl-keyword">import</span> <span class="hl-type">dev<span class="hl-operator">.</span>hotwire<span class="hl-operator">.</span>turbo<span class="hl-operator">.</span>fragments<span class="hl-operator">.</span>TurboFragment</span>
+<span class="hl-keyword">import</span> <span class="hl-type">dev<span class="hl-operator">.</span>hotwire<span class="hl-operator">.</span>turbo<span class="hl-operator">.</span>nav<span class="hl-operator">.</span>TurboNavGraphDestination</span>
 
-@TurboNavGraphDestination(uri = &quot;turbo://fragment/auth/login&quot;)
-class LoginFragment : TurboFragment(), LoginRequestCallback, CsrfTokenCallback {
-    private val authClient = AuthClient()
+<span class="hl-attribute">@<span class="hl-property">TurboNavGraphDestination</span></span><span class="hl-operator">(</span>uri <span class="hl-operator">=</span> <span class="hl-value">&quot;turbo://fragment/auth/login&quot;</span><span class="hl-operator">)</span>
+<span class="hl-keyword">class</span> <span class="hl-type">LoginFragment</span> <span class="hl-operator">:</span> <span class="hl-type">TurboFragment</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">,</span> <span class="hl-type">LoginRequestCallback</span><span class="hl-operator">,</span> <span class="hl-type">CsrfTokenCallback</span> <span class="hl-operator">{</span>
+    <span class="hl-keyword">private</span> <span class="hl-keyword">val</span> <span class="hl-variable">authClient</span> <span class="hl-operator">=</span> <span class="hl-type">AuthClient</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return ComposeView(requireContext()).apply {
-            setContent {
-                MaterialTheme {
-                    LoginScreen()
-                }
-            }
-        }
-    }
+    <span class="hl-keyword">override</span> <span class="hl-keyword">fun</span> <span class="hl-property">onCreateView</span><span class="hl-operator">(</span>
+        inflater<span class="hl-operator">:</span> <span class="hl-type">LayoutInflater</span><span class="hl-operator">,</span> container<span class="hl-operator">:</span> <span class="hl-type">ViewGroup</span><span class="hl-operator">?</span><span class="hl-operator">,</span>
+        savedInstanceState<span class="hl-operator">:</span> <span class="hl-type">Bundle</span><span class="hl-operator">?</span>
+    <span class="hl-operator">)</span><span class="hl-operator">:</span> <span class="hl-type">View</span> <span class="hl-operator">{</span>
+        <span class="hl-keyword">return</span> <span class="hl-type">ComposeView</span><span class="hl-operator">(</span><span class="hl-property">requireContext</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">)</span><span class="hl-operator">.</span>apply <span class="hl-operator">{</span>
+            setContent <span class="hl-operator">{</span>
+                <span class="hl-type">MaterialTheme</span> <span class="hl-operator">{</span>
+                    <span class="hl-type">LoginScreen</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+                <span class="hl-operator">}</span>
+            <span class="hl-operator">}</span>
+        <span class="hl-operator">}</span>
+    <span class="hl-operator">}</span>
 
-    @Composable
-    private fun LoginScreen() {
-        DisposableEffect(true) {
-            fetchCsrfToken()
+    <span class="hl-attribute">@Composable</span>
+    <span class="hl-keyword">private</span> <span class="hl-keyword">fun</span> <span class="hl-type">LoginScreen</span><span class="hl-operator">(</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+        <span class="hl-type">DisposableEffect</span><span class="hl-operator">(</span><span class="hl-literal">true</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+            <span class="hl-property">fetchCsrfToken</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
 
-            onDispose {  }
-        }
+            onDispose <span class="hl-operator">{</span>  <span class="hl-operator">}</span>
+        <span class="hl-operator">}</span>
 
-        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+        <span class="hl-type">Column</span><span class="hl-operator">(</span><span class="hl-type">Modifier</span><span class="hl-operator">.</span><span class="hl-property">fillMaxWidth</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">,</span> horizontalAlignment <span class="hl-operator">=</span> <span class="hl-type">Alignment</span><span class="hl-operator">.</span><span class="hl-type">CenterHorizontally</span><span class="hl-operator">,</span> verticalArrangement <span class="hl-operator">=</span> <span class="hl-type">Arrangement</span><span class="hl-operator">.</span><span class="hl-type">Center</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
 
-            val email = remember { mutableStateOf(TextFieldValue(&quot;&quot;)) }
-            val password = remember { mutableStateOf(TextFieldValue(&quot;&quot;)) }
+            <span class="hl-keyword">val</span> <span class="hl-variable">email</span> <span class="hl-operator">=</span> remember <span class="hl-operator">{</span> <span class="hl-property">mutableStateOf</span><span class="hl-operator">(</span><span class="hl-type">TextFieldValue</span><span class="hl-operator">(</span><span class="hl-value">&quot;&quot;</span><span class="hl-operator">)</span><span class="hl-operator">)</span> <span class="hl-operator">}</span>
+            <span class="hl-keyword">val</span> <span class="hl-variable">password</span> <span class="hl-operator">=</span> remember <span class="hl-operator">{</span> <span class="hl-property">mutableStateOf</span><span class="hl-operator">(</span><span class="hl-type">TextFieldValue</span><span class="hl-operator">(</span><span class="hl-value">&quot;&quot;</span><span class="hl-operator">)</span><span class="hl-operator">)</span> <span class="hl-operator">}</span>
 
-            Text(&quot;Turbo Chirp Native&quot;, fontSize = 30.sp, style = TextStyle(fontWeight = FontWeight.Bold))
-            Text(&quot;Login&quot;, fontSize = 24.sp, modifier = Modifier.padding(top = 10.dp))
-            Column(modifier = Modifier.padding(vertical = 16.dp)) {
-                OutlinedTextField(
-                    label = { Text(&quot;Email&quot;) },
-                    singleLine = true,
-                    value = email.value,
-                    onValueChange = { email.value = it }
-                )
-            }
-            Column(modifier = Modifier.padding(vertical = 10.dp)) {
-                OutlinedTextField(
-                    label = { Text(&quot;Password&quot;) },
-                    singleLine = true,
-                    value = password.value,
-                    onValueChange = { password.value = it },
-                    visualTransformation = PasswordVisualTransformation(),
-                )
-            }
-            Column(modifier = Modifier.padding(vertical = 10.dp)) {
-                Button(onClick = {
-                    if (! email.value.text.isEmpty() &amp;&amp; ! password.value.text.isEmpty()) {
-                        authClient.attempt(email.value.text, password.value.text) {
-                            if (it.ok) {
-                                onLoginSucceeded(it.successResponse?.redirectTo + &quot;&quot;)
-                            } else {
-                                onLoginFailed(it.failedResponse?.message ?: &quot;Something went wrong!&quot;)
-                            }
-                        }
-                    }
-                }) {
-                    Text(&quot;Login&quot;)
-                }
-            }
-        }
-    }
+            <span class="hl-type">Text</span><span class="hl-operator">(</span><span class="hl-value">&quot;Turbo Chirp Native&quot;</span><span class="hl-operator">,</span> fontSize <span class="hl-operator">=</span> 30<span class="hl-operator">.</span>sp<span class="hl-operator">,</span> style <span class="hl-operator">=</span> <span class="hl-type">TextStyle</span><span class="hl-operator">(</span>fontWeight <span class="hl-operator">=</span> <span class="hl-type">FontWeight</span><span class="hl-operator">.</span><span class="hl-type">Bold</span><span class="hl-operator">)</span><span class="hl-operator">)</span>
+            <span class="hl-type">Text</span><span class="hl-operator">(</span><span class="hl-value">&quot;Login&quot;</span><span class="hl-operator">,</span> fontSize <span class="hl-operator">=</span> 24<span class="hl-operator">.</span>sp<span class="hl-operator">,</span> modifier <span class="hl-operator">=</span> <span class="hl-type">Modifier</span><span class="hl-operator">.</span><span class="hl-property">padding</span><span class="hl-operator">(</span>top <span class="hl-operator">=</span> 10<span class="hl-operator">.</span>dp<span class="hl-operator">)</span><span class="hl-operator">)</span>
+            <span class="hl-type">Column</span><span class="hl-operator">(</span>modifier <span class="hl-operator">=</span> <span class="hl-type">Modifier</span><span class="hl-operator">.</span><span class="hl-property">padding</span><span class="hl-operator">(</span>vertical <span class="hl-operator">=</span> 16<span class="hl-operator">.</span>dp<span class="hl-operator">)</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+                <span class="hl-type">OutlinedTextField</span><span class="hl-operator">(</span>
+                    label <span class="hl-operator">=</span> <span class="hl-operator">{</span> <span class="hl-type">Text</span><span class="hl-operator">(</span><span class="hl-value">&quot;Email&quot;</span><span class="hl-operator">)</span> <span class="hl-operator">}</span><span class="hl-operator">,</span>
+                    singleLine <span class="hl-operator">=</span> <span class="hl-literal">true</span><span class="hl-operator">,</span>
+                    <span class="hl-keyword">value</span> <span class="hl-operator">=</span> email<span class="hl-operator">.</span><span class="hl-keyword">value</span><span class="hl-operator">,</span>
+                    onValueChange <span class="hl-operator">=</span> <span class="hl-operator">{</span> email<span class="hl-operator">.</span><span class="hl-keyword">value</span> <span class="hl-operator">=</span> it <span class="hl-operator">}</span>
+                <span class="hl-operator">)</span>
+            <span class="hl-operator">}</span>
+            <span class="hl-type">Column</span><span class="hl-operator">(</span>modifier <span class="hl-operator">=</span> <span class="hl-type">Modifier</span><span class="hl-operator">.</span><span class="hl-property">padding</span><span class="hl-operator">(</span>vertical <span class="hl-operator">=</span> 10<span class="hl-operator">.</span>dp<span class="hl-operator">)</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+                <span class="hl-type">OutlinedTextField</span><span class="hl-operator">(</span>
+                    label <span class="hl-operator">=</span> <span class="hl-operator">{</span> <span class="hl-type">Text</span><span class="hl-operator">(</span><span class="hl-value">&quot;Password&quot;</span><span class="hl-operator">)</span> <span class="hl-operator">}</span><span class="hl-operator">,</span>
+                    singleLine <span class="hl-operator">=</span> <span class="hl-literal">true</span><span class="hl-operator">,</span>
+                    <span class="hl-keyword">value</span> <span class="hl-operator">=</span> password<span class="hl-operator">.</span><span class="hl-keyword">value</span><span class="hl-operator">,</span>
+                    onValueChange <span class="hl-operator">=</span> <span class="hl-operator">{</span> password<span class="hl-operator">.</span><span class="hl-keyword">value</span> <span class="hl-operator">=</span> it <span class="hl-operator">}</span><span class="hl-operator">,</span>
+                    visualTransformation <span class="hl-operator">=</span> <span class="hl-type">PasswordVisualTransformation</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">,</span>
+                <span class="hl-operator">)</span>
+            <span class="hl-operator">}</span>
+            <span class="hl-type">Column</span><span class="hl-operator">(</span>modifier <span class="hl-operator">=</span> <span class="hl-type">Modifier</span><span class="hl-operator">.</span><span class="hl-property">padding</span><span class="hl-operator">(</span>vertical <span class="hl-operator">=</span> 10<span class="hl-operator">.</span>dp<span class="hl-operator">)</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+                <span class="hl-type">Button</span><span class="hl-operator">(</span>onClick <span class="hl-operator">=</span> <span class="hl-operator">{</span>
+                    <span class="hl-keyword">if</span> <span class="hl-operator">(</span><span class="hl-operator">!</span> email<span class="hl-operator">.</span><span class="hl-keyword">value</span><span class="hl-operator">.</span>text<span class="hl-operator">.</span><span class="hl-property">isEmpty</span><span class="hl-operator">(</span><span class="hl-operator">)</span> <span class="hl-operator">&amp;&amp;</span> <span class="hl-operator">!</span> password<span class="hl-operator">.</span><span class="hl-keyword">value</span><span class="hl-operator">.</span>text<span class="hl-operator">.</span><span class="hl-property">isEmpty</span><span class="hl-operator">(</span><span class="hl-operator">)</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+                        authClient<span class="hl-operator">.</span><span class="hl-property">attempt</span><span class="hl-operator">(</span>email<span class="hl-operator">.</span><span class="hl-keyword">value</span><span class="hl-operator">.</span>text<span class="hl-operator">,</span> password<span class="hl-operator">.</span><span class="hl-keyword">value</span><span class="hl-operator">.</span>text<span class="hl-operator">)</span> <span class="hl-operator">{</span>
+                            <span class="hl-keyword">if</span> <span class="hl-operator">(</span>it<span class="hl-operator">.</span>ok<span class="hl-operator">)</span> <span class="hl-operator">{</span>
+                                <span class="hl-property">onLoginSucceeded</span><span class="hl-operator">(</span>it<span class="hl-operator">.</span>successResponse<span class="hl-operator">?.</span>redirectTo <span class="hl-operator">+</span> <span class="hl-value">&quot;&quot;</span><span class="hl-operator">)</span>
+                            <span class="hl-operator">}</span> <span class="hl-keyword">else</span> <span class="hl-operator">{</span>
+                                <span class="hl-property">onLoginFailed</span><span class="hl-operator">(</span>it<span class="hl-operator">.</span>failedResponse<span class="hl-operator">?.</span>message <span class="hl-operator">?:</span> <span class="hl-value">&quot;Something went wrong!&quot;</span><span class="hl-operator">)</span>
+                            <span class="hl-operator">}</span>
+                        <span class="hl-operator">}</span>
+                    <span class="hl-operator">}</span>
+                <span class="hl-operator">}</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+                    <span class="hl-type">Text</span><span class="hl-operator">(</span><span class="hl-value">&quot;Login&quot;</span><span class="hl-operator">)</span>
+                <span class="hl-operator">}</span>
+            <span class="hl-operator">}</span>
+        <span class="hl-operator">}</span>
+    <span class="hl-operator">}</span>
 
-    override fun onLoginSucceeded(url: String) {
-        activity?.runOnUiThread { navigate(url) }
-    }
+    <span class="hl-keyword">override</span> <span class="hl-keyword">fun</span> <span class="hl-property">onLoginSucceeded</span><span class="hl-operator">(</span>url<span class="hl-operator">:</span> <span class="hl-type">String</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+        activity<span class="hl-operator">?.</span>runOnUiThread <span class="hl-operator">{</span> <span class="hl-property">navigate</span><span class="hl-operator">(</span>url<span class="hl-operator">)</span> <span class="hl-operator">}</span>
+    <span class="hl-operator">}</span>
 
-    override fun onLoginFailed(msg: String) {
-        activity?.runOnUiThread {
-            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
-        }
-    }
+    <span class="hl-keyword">override</span> <span class="hl-keyword">fun</span> <span class="hl-property">onLoginFailed</span><span class="hl-operator">(</span>msg<span class="hl-operator">:</span> <span class="hl-type">String</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+        activity<span class="hl-operator">?.</span>runOnUiThread <span class="hl-operator">{</span>
+            <span class="hl-type">Toast</span><span class="hl-operator">.</span><span class="hl-property">makeText</span><span class="hl-operator">(</span>context<span class="hl-operator">,</span> msg<span class="hl-operator">,</span> <span class="hl-type">Toast</span><span class="hl-operator">.</span><span class="hl-type">LENGTH_SHORT</span><span class="hl-operator">)</span><span class="hl-operator">.</span><span class="hl-property">show</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+        <span class="hl-operator">}</span>
+    <span class="hl-operator">}</span>
 
-    override fun onCsrfTokenFetched() {
-        activity?.runOnUiThread {
-            Toast.makeText(context, &quot;CSRF Token fetched!&quot;, Toast.LENGTH_SHORT).show()
-        }
-    }
+    <span class="hl-keyword">override</span> <span class="hl-keyword">fun</span> <span class="hl-property">onCsrfTokenFetched</span><span class="hl-operator">(</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+        activity<span class="hl-operator">?.</span>runOnUiThread <span class="hl-operator">{</span>
+            <span class="hl-type">Toast</span><span class="hl-operator">.</span><span class="hl-property">makeText</span><span class="hl-operator">(</span>context<span class="hl-operator">,</span> <span class="hl-value">&quot;CSRF Token fetched!&quot;</span><span class="hl-operator">,</span> <span class="hl-type">Toast</span><span class="hl-operator">.</span><span class="hl-type">LENGTH_SHORT</span><span class="hl-operator">)</span><span class="hl-operator">.</span><span class="hl-property">show</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+        <span class="hl-operator">}</span>
+    <span class="hl-operator">}</span>
 
-    private fun fetchCsrfToken() {
-        authClient.fetchCsrfToken() {
-            onCsrfTokenFetched()
-        }
-    }
-}
-</code></pre>
+    <span class="hl-keyword">private</span> <span class="hl-keyword">fun</span> <span class="hl-property">fetchCsrfToken</span><span class="hl-operator">(</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+        authClient<span class="hl-operator">.</span><span class="hl-property">fetchCsrfToken</span><span class="hl-operator">(</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+            <span class="hl-property">onCsrfTokenFetched</span><span class="hl-operator">(</span><span class="hl-operator">)</span>
+        <span class="hl-operator">}</span>
+    <span class="hl-operator">}</span>
+<span class="hl-operator">}</span></code></pre>
+</div>
 
 <p>There's a lot going on in this screen, and we're not gonna talk about it much. The important thing to note here is that we're instantiating the <code>authClient</code> as an attribute to the <code>LoginFragment</code> instance. This is important because we're storing the CSRF Token, Cookie, and the Laravel Session cookie in the <code>AuthClient</code> instance, so we can't just create a new instance of the <code>AuthClient</code> whenever we want.</p>
 
-<p>Also, we're calling the <code>authClient.fetchCsrfToken()</code> in a <code>DisposableEffect</code> to make sure it only calls it once when Compose mounts this screen. Then, whenever the user types non-blank email and password fields to the inputs we have just created, we'll call the <code>authClient.attempt()</code> with it. We're using Toast messages here and there to give some feedback on what's going on. That's more for us than for actual users of our app, so feel free to remove those if you want to.</p>
+<p>Also, we're calling the <code>authClient.fetchCsrfToken()</code> in a <code>DisposableEffect</code> to make sure it only calls it once when Compose mounts this screen. Then, whenever the user submits a non-blank email and password, we'll call <code>authClient.attempt()</code> with them. We're using Toast messages here and there to give some feedback on what's going on. That's more for us than for actual users of our app, so feel free to remove those if you want to.</p>
 
 <p>Finally, let's register our fragment in the <code>MainSessionNavHostFragment</code>:</p>
 
-<pre><code class="language-kotlin">package com.example.turbochirpernative.main
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">kotlin</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-kotlin"><span class="hl-keyword">package</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>main</span>
 
-import android.webkit.WebView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import com.example.turbochirpernative.BuildConfig
+<span class="hl-keyword">import</span> <span class="hl-type">android<span class="hl-operator">.</span>webkit<span class="hl-operator">.</span>WebView</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>appcompat<span class="hl-operator">.</span>app<span class="hl-operator">.</span>AppCompatActivity</span>
+<span class="hl-keyword">import</span> <span class="hl-type">androidx<span class="hl-operator">.</span>fragment<span class="hl-operator">.</span>app<span class="hl-operator">.</span>Fragment</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>BuildConfig</span>
 
-import com.example.turbochirpernative.features.auth.LoginFragment
-import com.example.turbochirpernative.features.web.WebFragment
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>features<span class="hl-operator">.</span>auth<span class="hl-operator">.</span>LoginFragment</span>
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>features<span class="hl-operator">.</span>web<span class="hl-operator">.</span>WebFragment</span>
 
-import com.example.turbochirpernative.util.CHIRPS_HOME_URL
-import dev.hotwire.turbo.config.TurboPathConfiguration
-import dev.hotwire.turbo.session.TurboSessionNavHostFragment
-import kotlin.reflect.KClass
+<span class="hl-keyword">import</span> <span class="hl-type">com<span class="hl-operator">.</span>example<span class="hl-operator">.</span>turbochirpernative<span class="hl-operator">.</span>util<span class="hl-operator">.</span>CHIRPS_HOME_URL</span>
+<span class="hl-keyword">import</span> <span class="hl-type">dev<span class="hl-operator">.</span>hotwire<span class="hl-operator">.</span>turbo<span class="hl-operator">.</span>config<span class="hl-operator">.</span>TurboPathConfiguration</span>
+<span class="hl-keyword">import</span> <span class="hl-type">dev<span class="hl-operator">.</span>hotwire<span class="hl-operator">.</span>turbo<span class="hl-operator">.</span>session<span class="hl-operator">.</span>TurboSessionNavHostFragment</span>
+<span class="hl-keyword">import</span> <span class="hl-type">kotlin<span class="hl-operator">.</span>reflect<span class="hl-operator">.</span>KClass</span>
 
-class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
-    // ...
+<span class="hl-keyword">class</span> <span class="hl-type">MainSessionNavHostFragment</span> <span class="hl-operator">:</span> <span class="hl-type">TurboSessionNavHostFragment</span><span class="hl-operator">(</span><span class="hl-operator">)</span> <span class="hl-operator">{</span>
+    <span class="hl-comment">// ...</span>
 
-    override val registeredFragments: List&lt;KClass&lt;out Fragment&gt;&gt;
-        get() = listOf(
-            WebFragment::class,
-            LoginFragment::class, // Add this
-        )
+    <span class="hl-keyword">override</span> <span class="hl-keyword">val</span> <span class="hl-variable">registeredFragments</span><span class="hl-operator">:</span> <span class="hl-type">List</span><span class="hl-operator">&lt;</span><span class="hl-type">KClass</span><span class="hl-operator">&lt;</span><span class="hl-keyword">out</span> <span class="hl-type">Fragment</span><span class="hl-operator">&gt;</span><span class="hl-operator">&gt;</span>
+        <span class="hl-keyword">get</span><span class="hl-operator">(</span><span class="hl-operator">)</span> <span class="hl-operator">=</span> <span class="hl-property">listOf</span><span class="hl-operator">(</span>
+            <span class="hl-type">WebFragment</span><span class="hl-operator">::</span><span class="hl-keyword">class</span><span class="hl-operator">,</span>
+            <span class="hl-type">LoginFragment</span><span class="hl-operator">::</span><span class="hl-keyword">class</span><span class="hl-operator">,</span> <span class="hl-comment">// Add this</span>
+        <span class="hl-operator">)</span>
 
-    // ...
-}
-</code></pre>
+    <span class="hl-comment">// ...</span>
+<span class="hl-operator">}</span></code></pre>
+</div>
 
 <p>Then, add the new entry to the <code>assets/json/configuration.json</code> to tell Turbo to render the <code>LoginFragment</code> whenever we're visiting the <code>/login</code> route:</p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">json</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-json"><span class="hl-property">{</span>
   <span class="hl-keyword">&quot;settings&quot;</span>: <span class="hl-property">{</span>
     <span class="hl-keyword">&quot;screenshots_enabled&quot;</span>: true
@@ -670,34 +702,54 @@ class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
       <span class="hl-property">}</span>
     <span class="hl-property">}</span>
   <span class="hl-property">]</span>
-<span class="hl-property">}</span>
-</code></pre>
+<span class="hl-property">}</span></code></pre>
+</div>
 
 <p>This is what the project structure should look like for you:</p>
 
 <p><img src="/assets/images/bootcamp/native/auth-project-structure-login-screen.png" alt="Login Screen project structure" /></p>
 
-<p>Before we're able to test this, we need add Sanctum and our API routes to the Laravel side of our Chirper web app!</p>
+<p>Before we're able to test this, we need to add Sanctum and our API routes to the Laravel side of our Chirper web app!</p>
 
-<h2>Setting up Sanctum and the API Endpoints</h2>
+<h2 id="setting-up-sanctum-and-the-api-endpoints">Setting up Sanctum and the API Endpoints</h2>
 
-<p>Our Sanctum installation process will follow the docs with one exception. First thing is the Sanctum installation. In the chirper web app root folder, install Sanctum via Composer:</p>
+<p>Our Sanctum installation process will follow the docs with one exception. First thing is the Sanctum installation. In the Chirper web app root folder, install Sanctum via Composer:</p>
 
-<pre><code class="language-bash">composer require laravel/sanctum
-</code></pre>
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">bash</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-bash">composer require laravel/sanctum</code></pre>
+</div>
 
 <p>Next, publish the configuration file:</p>
 
-<pre><code class="language-bash">php artisan vendor:publish --provider=&quot;Laravel\Sanctum\SanctumServiceProvider&quot;
-</code></pre>
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">bash</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-bash">php artisan vendor:publish <span class="hl-generic">--provider</span>=<span class="hl-value">&quot;Laravel\Sanctum\SanctumServiceProvider&quot;</span></code></pre>
+</div>
 
 <p>Then, migrate the database:</p>
 
-<pre><code class="language-bash">php artisan migrate
-</code></pre>
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">bash</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-bash">php artisan migrate</code></pre>
+</div>
 
-<p>Now is the exception part. Sanctum's default installation recommends adding the <code>EnsureFrontendRequestsAreStateful</code> middleware that ships with Sanctum at the top of the API route group middleware stack. Instead, we're gonna create our own. We're also adding the <code>TurboMiddleware</code> to that route group:</p>
+<p>Now for the exception part. Sanctum's default installation recommends adding the <code>EnsureFrontendRequestsAreStateful</code> middleware that ships with Sanctum at the top of the API route group middleware stack. Instead, we're gonna create our own. We're also adding the <code>TurboMiddleware</code> to that route group:</p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
 
 <span class="hl-keyword">namespace</span> <span class="hl-type">App\Http</span>;
@@ -727,11 +779,16 @@ class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
     ];
 
     <span class="hl-comment">// ...</span>
-}
-</code></pre>
+}</code></pre>
+</div>
 
 <p>Now, let's create our own <code>EnsureFrontendRequestsAreStateful</code> in the <code>app/Http/Middleware/</code> folder:</p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
 
 <span class="hl-keyword">namespace</span> <span class="hl-type">App\Http\Middleware</span>;
@@ -763,7 +820,7 @@ class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
             <span class="hl-type">\Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse</span>::<span class="hl-keyword">class</span>,
             <span class="hl-type">\Illuminate\Session\Middleware\StartSession</span>::<span class="hl-keyword">class</span>,
             <span class="hl-property">config</span>(<span class="hl-value">'turbo-laravel.middleware.verify_csrf_token'</span>, <span class="hl-type">\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken</span>::<span class="hl-keyword">class</span>),
-        ] : [])-&gt;<span class="hl-property">then</span>(<span class="hl-keyword">function</span> (<span class="hl-injection">$request) use ($next</span>) {
+        ] : [])-&gt;<span class="hl-property">then</span>(<span class="hl-keyword">function</span> (<span class="hl-injection">$request) </span><span class="hl-keyword">use</span> (<span class="hl-variable">$next</span>) {
             <span class="hl-keyword">return</span> <span class="hl-variable">$next</span>(<span class="hl-variable">$request</span>);
         });
     }
@@ -780,11 +837,16 @@ class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
             <span class="hl-value">'session.same_site'</span> =&gt; <span class="hl-value">'lax'</span>,
         ]);
     }
-}
-</code></pre>
+}</code></pre>
+</div>
 
 <p>Now, let's add our login route to the <code>routes/api.php</code> entrypoint:</p>
 
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
 <pre><code class="language-php"><span class="hl-keyword">&lt;?php</span>
 
 <span class="hl-keyword">use</span> <span class="hl-type">App\Models\User</span>;
@@ -818,19 +880,24 @@ class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
     ];
 });
 
-<span class="hl-comment">// ...</span>
-</code></pre>
+<span class="hl-comment">// ...</span></code></pre>
+</div>
 
 <p>Now, we're ready to test it!</p>
 
-<h2>Testing Out</h2>
+<h2 id="testing-it-out">Testing it out</h2>
 
 <p>If you want to, purge all your sessions in the Laravel app by deleting all the files in the <code>storage/framework/sessions/</code> folder (assuming you're using the file session driver):</p>
 
-<pre><code class="language-bash">rm -f storage/framework/sessions/*
-</code></pre>
+<div class="code-card group" data-controller="clipboard">
+<div class="code-card-tools"><span class="code-card-lang">bash</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
+<svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
+<svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+</button></div>
+<pre><code class="language-bash">rm <span class="hl-generic">-f</span> storage/framework/sessions/*</code></pre>
+</div>
 
-<p>Now, go back to Android Studio and build the client again. You should see the login screen and if you authenticate, you should then be sent to the chirps home page!</p>
+<p>Now, go back to Android Studio and build the client again. You should see the login screen, and once you authenticate, you should be sent to the Chirps home page!</p>
 
 <p><img src="/assets/images/bootcamp/native/auth-login-screen.png" alt="Native Login Screen" /></p>
 
@@ -838,28 +905,54 @@ class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
 
 <p><img src="/assets/images/bootcamp/native/auth-chirps-home.png" alt="Chirps Home Page After Native Login" /></p>
 
-<p>Our access token is being stored in the preferences section of our app, which means we can reuse it whenever we need to make an HTTP call with a native screen and our WebView is successfully authenticated, so we don't need to worry about those screens that don't need native authentication anymore. Yay! Next, let's take a look at improving our mobile UX for creating Chirps.</p>
-        </div>
+<p>Our access token is being stored in the preferences section of our app, which means we can reuse it whenever we need to make an HTTP call from a native screen. Our WebView is also successfully authenticated, so we don't need to worry about the screens that don't need native authentication anymore. Yay! Next, let's take a look at improving our mobile UX for creating Chirps.</p>
 
-                    <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div class="relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
-      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Previous</div>
-      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/native-setup">Hotwire Native Installation <span class="absolute inset-0"></span></a>
-    </div>
+      </div>
+    </article>
+
+          <nav aria-label="Pagination" class="mt-14 grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4 border-t border-line pt-8">
+                  <a href="/bootcamp/native-setup" class="flex flex-col gap-1 rounded-xl border border-line bg-paper-raised px-5 py-4 text-ink transition-colors hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus">
+            <span class="inline-flex items-center gap-1 text-[13px] leading-[18px] text-ink-subtle">
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>Previous
+                          </span>
+            <span class="font-display text-xl leading-7 font-bold">08. Hotwire Native Installation</span>
+          </a>
+                  <a href="/bootcamp/native-bridge-component" class="flex flex-col gap-1 rounded-xl border border-line bg-paper-raised px-5 py-4 text-ink transition-colors hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus items-end text-right">
+            <span class="inline-flex items-center gap-1 text-[13px] leading-[18px] text-ink-subtle">
+                              Next<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+                          </span>
+            <span class="font-display text-xl leading-7 font-bold">10. Our First Bridge Component</span>
+          </a>
+              </nav>
+      </main>
+
   
-      <div class="lg:col-start-2 relative space-y-1 p-4 rounded border border-zinc-900/10 shadow transition hover:bg-zinc-900/5">
-      <div class="text-sm font-heading font-extrabold text-zinc-900/30 uppercase">Next</div>
-      <a class="font-heading font-extrabold text-zinc-900/80" href="/bootcamp/native-bridge-component">Our First Bridge Component <span class="absolute inset-0"></span></a>
-    </div>
-  </div>
-              </main>
-    </div>
+      <aside aria-label="On this page" class="sticky top-6 hidden flex-[0_0_200px] flex-col gap-2.5 text-sm leading-5 min-[1100px]:flex">
+      <p class="mb-0.5 text-[13px] leading-[18px] font-semibold text-ink-subtle">On this page</p>
+      <a href="#top" class="font-semibold text-ink hover:underline hover:underline-offset-3">Introduction</a>
+              <a href="#adding-jetpack-compose" class="text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">Adding Jetpack Compose</a>
+              <a href="#the-auth-client-service" class="text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">The Auth Client Service</a>
+              <a href="#the-native-login-screen" class="text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">The Native Login Screen</a>
+              <a href="#setting-up-sanctum-and-the-api-endpoints" class="text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">Setting up Sanctum and the API Endpoints</a>
+              <a href="#testing-it-out" class="text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">Testing it out</a>
+            <a href="https://github.com/hotwired-laravel/turbo-laravel-site/edit/main/source/_bootcamp/native-auth.md" class="mt-3.5 inline-flex items-center gap-1.5 border-t border-line pt-3.5 text-ink-muted hover:text-ink hover:underline hover:underline-offset-3">Edit this page on GitHub</a>
+    </aside>
   </div>
 
-        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
-          <p class="text-base text-center w-full">
-            Turbo Laravel is maintained by <a href="https://tonysm.com" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
-          </p>
-        </footer>
+        <footer class="border-t border-[#243046] bg-ink text-night-muted">
+  <div class="mx-auto flex max-w-[1248px] flex-wrap items-center justify-between gap-x-12 gap-y-6 px-6 py-12 text-[15px] leading-6">
+    <div class="flex max-w-[560px] flex-col gap-1.5">
+      <span class="font-display text-xl font-bold tracking-[-0.02em] text-night-ink"><span class="text-syntax-keyword">Turbo</span> Laravel</span>
+      <span>Maintained by <a href="https://tonysm.com" class="underline hover:text-night-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">Tony Messias</a>. A <em>community project</em>, not affiliated with Laravel or 37signals.</span>
+    </div>
+
+    <nav aria-label="Footer" class="flex flex-wrap gap-x-7 gap-y-3 font-semibold">
+              <a href="/docs/installation" class="hover:text-night-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">Documentation</a>
+              <a href="/bootcamp/introduction" class="hover:text-night-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">Bootcamp</a>
+              <a href="https://github.com/hotwired-laravel/turbo-laravel" class="hover:text-night-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">GitHub</a>
+              <a href="https://hotwired.dev/" class="hover:text-night-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">Hotwire</a>
+          </nav>
+  </div>
+</footer>
     </body>
 </html>

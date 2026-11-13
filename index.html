@@ -2,193 +2,276 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="canonical" href="https://turbo-laravel.com/">
-        <meta name="description" content="Build web and hybrid navite apps with Laravel and Hotwire today.">
-        <title>Turbo Laravel</title>
-        <link rel="apple-touch-icon" sizes="180x180" href="https://turbo-laravel.com/assets/manifest/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="https://turbo-laravel.com/assets/manifest/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="https://turbo-laravel.com/assets/manifest/favicon-16x16.png">
-        <link rel="manifest" href="https://turbo-laravel.com/assets/site.webmanifest">
-        <link rel="preload" href="https://turbo-laravel.com/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
-        <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="https://turbo-laravel.com/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="/assets/build/css/main.css?id=43ade17df46426aaccbc2cac40014c37">
-        <script defer src="/assets/build/js/main.js?id=b0f29cd4e71d41b4ee570d0f42344180"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://turbo-laravel.com/">
+<meta name="description" content="Build web and hybrid native apps with Laravel and Hotwire today.">
+<title>Turbo Laravel</title>
+<link rel="apple-touch-icon" sizes="180x180" href="https://turbo-laravel.com/assets/manifest/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://turbo-laravel.com/assets/manifest/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://turbo-laravel.com/assets/manifest/favicon-16x16.png">
+<link rel="manifest" href="https://turbo-laravel.com/assets/site.webmanifest">
 
-        <!-- Open Graph data -->
-        <meta property="og:title" content="Turbo Laravel" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="" />
+<!-- Open Graph data -->
+<meta property="og:title" content="Turbo Laravel" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://turbo-laravel.com/" />
 
-        <meta property="og:image" content="https://turbo-laravel.com/assets/images/turbo-laravel-meta.png" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:description" content="Build web and hybrid navite apps with Laravel and Hotwire today." />
-        <meta property="og:locale" content="en_US">
-        <meta property="og:site_name" content="Turbo Laravel" />
+<meta property="og:image" content="https://turbo-laravel.com/assets/images/turbo-laravel-meta.png?v=3060538a" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:alt" content="Turbo Laravel, Hotwire for Laravel: HTML over the wire." />
+<meta property="og:description" content="Build web and hybrid native apps with Laravel and Hotwire today." />
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Turbo Laravel" />
 
-        <!-- Twitter Card meta -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Turbo Laravel">
-        <meta name="twitter:description" content="Build web and hybrid navite apps with Laravel and Hotwire today.">
+<!-- Twitter Card meta -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Turbo Laravel">
+<meta name="twitter:description" content="Build web and hybrid native apps with Laravel and Hotwire today.">
+<meta name="twitter:image" content="https://turbo-laravel.com/assets/images/turbo-laravel-meta.png?v=3060538a">
+<meta name="twitter:image:alt" content="Turbo Laravel, Hotwire for Laravel: HTML over the wire.">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Figtree:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+                <link rel="stylesheet" href="/assets/build/assets/main-QHec2Cla.css">
+        <script defer type="module" src="/assets/build/assets/main-B2QLDe1R.js"></script>
     </head>
-    <body class="text-zinc-900 text-lg font-sans antialiased bg-zinc-700/5 min-h-screen" data-controller="search" data-action="keydown@window->search#focus">
-        <header class="px-4 py-6 lg:px-10 xl:px-20 lg:py-10 flex items-center space-x-2 justify-between">
-  <div class="relative flex-1 lg:flex-auto flex justify-between items-center space-x-4 sm:space-x-2">
-    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">
-      <a href="/">Turbo Laravel</a>
-    </h1>
+    <body class="min-h-screen bg-paper font-body text-ink antialiased" data-controller="search" data-action="keydown@window->search#focus">
+        <header class="relative border-b border-line bg-paper" data-controller="menu" data-action="keydown.esc@window->menu#dismiss click@window->menu#closeOnOutsideClick search:reveal@window->menu#open">
+  <nav aria-label="Main" class="mx-auto flex max-w-[1248px] items-center justify-between gap-x-8 px-6 py-[18px]">
+    <a href="/" class="font-display text-2xl font-bold tracking-[-0.02em] text-ink"><span class="text-wire-strong">Turbo</span> Laravel</a>
 
-    <nav class="inline-block lg:hidden">
-      <details class="group" data-search-target="nav">
-        <summary class="list-none">
-          <span>
-            <span class="sr-only">Navigation</span>
+    <button type="button" class="group -mr-2 inline-flex size-11 items-center justify-center rounded-[10px] text-ink hover:bg-paper-sunken focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-focus lg:hidden" aria-expanded="false" aria-controls="site-menu" data-menu-target="button" data-action="menu#toggle">
+      <span class="sr-only">Menu</span>
+      <svg class="group-aria-expanded:hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+      <svg class="hidden group-aria-expanded:block" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+    </button>
 
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 rotate-0 transition group-open:rotate-90">
-              <path class="opacity-100 transition group-open:opacity-0" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              <path class="transition opacity-0 group-open:opacity-100" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-          </span>
-        </summary>
+    <div id="site-menu" data-menu-target="panel" class="absolute inset-x-0 top-full z-30 hidden flex-col border-b border-line bg-paper px-6 pt-2 pb-6 text-base font-semibold shadow-lift data-open:flex lg:static lg:flex lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-7 lg:gap-y-3 lg:border-0 lg:bg-transparent lg:p-0 lg:text-[15px] lg:shadow-none">
+      <div class="group relative border-b border-line lg:border-0">
+        <a href="/docs/installation"  class="text-ink decoration-wire decoration-2 underline-offset-[6px] hover:underline aria-[current=page]:underline aria-[current=page]:decoration-ember focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus flex min-h-12 items-center gap-1.5 lg:inline-flex lg:min-h-0">
+          Documentation
+          <svg class="hidden transition group-hover:rotate-180 group-focus-within:rotate-180 lg:block" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+        </a>
 
-        <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
-          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
-            <form action="/docs/search" method="GET" class="px-4">
-  <label for="search" class="sr-only">Search</label>
-  <input data-search-target="mobile" type="search" name="q" class="search-input rounded border border-zinc-900/5 px-4 py-2 text-base leading-3 shadow w-full" placeholder="Search 2.x docs..." />
-  <button type="submit" class="sr-only">Search</button>
-</form>
-
-            <ul class="space-y-6 -mb-2 mt-4">
-              <li>
-                <a href="/docs" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
-                  <span>Documentation</span>
-                </a>
-
-                              </li>
-              <li>
-                <a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-zinc-900/20">Source Code</a>
-              </li>
-              <li class="space-y-6">
-                <a href="/bootcamp/introduction" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a>
-                              </li>
-              <!-- <li><a href="/demo" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li> -->
-            </ul>
-          </div>
-        </div>
-      </details>
-    </nav>
-  </div>
-
-  <nav class="hidden lg:block">
-    <ul class="flex items-center space-x-6 -my-2">
-      <li>
-        <div class="group relative py-2">
-          <a href="/docs" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90 flex items-center space-x-1">
-            <span>Documentation</span>
-
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-            </svg>
-          </a>
-
-          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
-            <ul class="space-y-1">
-              <li><a href="/docs/installation" class="block px-2 py-1 bg-zinc-900/20 rounded">Version <span class="">2.2.0</span></a></li>
-              <li><a href="/1.x/docs/installation" class="block px-2 py-1  rounded">Version <span class="">1.12.2</span></a></li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Source Code</a></li>
-      <li><a href="/bootcamp/introduction" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Bootcamp</a></li>
-      <!-- <li><a href="/demo" class=" px-4 py-2 font-medium rounded-full transition hover:bg-white/90">Demo</a></li> -->
-    </ul>
-  </nav>
-</header>
-
-          <main>
-    <div class="sm:max-w-5xl mx-auto w-full px-6 py-12 space-y-4 sm:space-y-12  xl:space-y-6">
-      <h2 class="font-heading text-4xl sm:text-7xl font-extrabold text-center">
-          Build web and hybrid native apps in Laravel <em>today</em>.
-      </h2>
-
-      <p class="text-center font-sans text-xl sm:text-2xl text-zinc-900/80">
-        Turbo Laravel integrates your Laravel application with <a href="https://hotwired.dev/" class="underline text-zinc-900/90">Hotwire</a>, an alternative way of building web and native apps with minimal JavaScript, sending HTML over the wire.
-      </p>
-
-      <ul class="sm:flex items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-        <li><a href="/docs" class="px-4 py-2 inline-block w-full text-center rounded-full bg-zinc-900/90 text-white transition hover:bg-zinc-900/70">Read the docs</a></li>
-        <li><a href="https://github.com/hotwired-laravel/turbo-laravel" class="px-4 py-2 inline-block w-full text-center rounded-full bg-zinc-900/90 text-white transition hover:bg-zinc-900/70">View the source</a></li>
-        <!-- <li><a href="/demo" class="px-4 py-2 inline-block w-full text-center rounded-full bg-zinc-900/90 text-white transition hover:bg-zinc-900/70">Try the demo</a></li> -->
-      </ul>
-    </div>
-  </main>
-
-  <section class="bg-white/90 custom-border px-6 py-20">
-    <div class="space-y-4 sm:space-y-6 sm:max-w-5xl mx-auto w-full text-center">
-      <h3 class="text-4xl sm:text-6xl font-heading font-extrabold">Your typical Laravel app.</h3>
-      <p class="text-xl">Hotwire was built for full-stack web frameworks, like Laravel and Rails. Modern web applications don't have to be built as stateful components. We can keep writing regular <a class="underline text-zinc-900/90" href="https://youtu.be/MF0jFKvS4SI?si=1wGv8BYVd8v8IdA2">Cruddy applications</a>, with controllers, Blade views and so on, and progressively enhance the <em>fidelity</em> of our UIs using Turbo Frames, Turbo Streams, or JavaScript.</p>
-    </div>
-
-    <div class="mt-20 lg:max-w-5xl mx-auto w-full space-y-20 lg:space-y-0 lg:grid grid-cols-2 gap-20 thin-scrollbar">
-      <div class="space-y-4">
-        <div class="overflow-x-auto text-sm rounded">
-          <pre class="overflow-x-auto"><code class="language-php"><span class="hl-comment">&lt;!-- File: chirps/show.blade.php --&gt;</span>
-&lt;<span class="hl-keyword">x-turbo::frame</span> :<span class="hl-property">id</span>=&quot;$chirp&quot;&gt;
-    &lt;<span class="hl-keyword">p</span>&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">content</span> }}&lt;/<span class="hl-keyword">p</span>&gt;
-    &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.edit'</span>, <span class="hl-variable">$edit</span>) }}&quot;&gt;
-        Edit
-    &lt;/<span class="hl-keyword">a</span>&gt;
-&lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;
-
-<span class="hl-comment">&lt;!-- File: chirps/edit.blade.php --&gt;</span>
-&lt;<span class="hl-keyword">x-turbo::frame</span> :<span class="hl-property">id</span>=&quot;$chirp&quot;&gt;
-    &lt;<span class="hl-keyword">form</span> <span class="hl-property">action</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.update'</span>, <span class="hl-variable">$chirp</span>) }}&quot; <span class="hl-property">method</span>=&quot;POST&quot;&gt;...&lt;/<span class="hl-keyword">form</span>&gt;
-&lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;
-</code></pre>
-        </div>
-
-        <p class="text-2xl font-heading font-extrabold text-center text-zinc-900/90">Decompose screens with Turbo Frames.</p>
-
-        <p class="text-center text-lg">Turbo Frames allow predefined sections of your page to be updated on request, independently of the rest of the page. We can build things like data tables, inline forms, and so on with a blink of an eye.</p>
-
-        <div class="flex items-center justify-center">
-            <a href="/docs/turbo-frames" class="px-4 py-2 inline-block w-full mx-auto sm:w-auto text-center rounded-full border border-zinc-900/30 hover:bg-zinc-900/5 text-zinc-900 transition">Read more</a>
+        <div class="pb-3 lg:invisible lg:absolute lg:top-full lg:left-0 lg:z-10 lg:pt-3 lg:pb-0 lg:opacity-0 lg:transition lg:group-focus-within:visible lg:group-focus-within:opacity-100 lg:group-hover:visible lg:group-hover:opacity-100">
+          <ul class="flex flex-col gap-1 border-l-2 border-line pl-3 text-[15px] lg:min-w-52 lg:rounded-[10px] lg:border lg:border-line lg:bg-paper-raised lg:p-2 lg:shadow-lift">
+            <li>
+              <a href="/docs/installation"  class="flex items-center justify-between gap-4 rounded-md px-3 py-2 text-ink hover:bg-paper-sunken aria-current:bg-wire-soft">
+                Version 2.2.0
+                <span class="rounded-full bg-wire-soft px-2 font-code text-[11px] leading-[18px] font-medium text-wire-strong">latest</span>
+              </a>
+            </li>
+            <li>
+              <a href="/1.x/docs/installation"  class="flex rounded-md px-3 py-2 text-ink hover:bg-paper-sunken aria-current:bg-wire-soft">Version 1.12.2</a>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div class="space-y-4">
-        <div class="overflow-x-auto text-sm rounded">
-          <pre class="overflow-x-auto"><code class="language-php"><span class="hl-keyword">class</span> <span class="hl-type">Comment</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
+      <div class="flex min-h-12 items-center border-b border-line lg:min-h-0 lg:border-0">
+        <a href="/bootcamp/introduction"  class="text-ink decoration-wire decoration-2 underline-offset-[6px] hover:underline aria-[current=page]:underline aria-[current=page]:decoration-ember focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus">Bootcamp</a>
+      </div>
+
+      <div class="flex min-h-12 items-center border-b border-line lg:min-h-0 lg:border-0">
+        <a href="https://github.com/hotwired-laravel/turbo-laravel" class="text-ink decoration-wire decoration-2 underline-offset-[6px] hover:underline aria-[current=page]:underline aria-[current=page]:decoration-ember focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus inline-flex items-center gap-1.5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4 1.3-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C6.6 3.3 5.6 3.6 5.6 3.6a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 10c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>
+          Source code
+        </a>
+      </div>
+
+      <span class="hidden rounded-full border-[1.5px] border-line-control px-2.5 py-0.5 font-code text-[12.5px] leading-[18px] font-medium text-ink-muted lg:inline">v2.x</span>
+
+      <form action="/docs/search" method="GET" role="search" class="order-first py-3 lg:order-none lg:py-0">
+        <label class="flex min-h-11 min-w-[216px] cursor-text items-center gap-2 rounded-[10px] border-[1.5px] border-line-control bg-paper-raised px-3 py-[9px] text-ink-subtle focus-within:outline-2 focus-within:outline-offset-3 focus-within:outline-focus">
+          <svg class="shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m20 20-4.4-4.4"></path></svg>
+          <span class="sr-only">Search the docs</span>
+          <input data-search-target="web" type="search" name="q" placeholder="Search the docs" class="search-input w-0 min-w-0 flex-1 bg-transparent text-base leading-5 font-normal text-ink placeholder:text-ink-subtle focus:outline-none lg:text-[15px]">
+          <kbd class="hidden rounded-md border border-line bg-paper-sunken px-1.5 py-px font-code text-xs font-medium text-ink-subtle lg:inline">/</kbd>
+        </label>
+      </form>
+    </div>
+  </nav>
+</header>
+
+        <main>
+  
+  <section class="mx-auto flex max-w-[1248px] flex-col items-center gap-7 px-6 pt-24 pb-[88px] text-center">
+    <h1 class="max-w-[15ch] font-display text-[clamp(44px,7vw,80px)] leading-none font-extrabold tracking-[-0.035em]">
+      Build web and hybrid native apps in <span class="text-ember">Laravel</span> <em class="text-wire-strong">today</em>.
+    </h1>
+
+    <p class="max-w-[36em] text-xl leading-8 text-ink-muted">
+      Turbo Laravel integrates your Laravel application with <a class="font-semibold text-wire-strong underline decoration-[1.5px] underline-offset-[3px] hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus" href="https://hotwired.dev/">Hotwire</a>, an alternative way of building web and native apps with minimal JavaScript, by sending HTML over the wire.
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="/docs/installation" class="inline-flex items-center gap-2 rounded-full bg-ember-strong font-semibold text-white hover:brightness-[.92] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus min-h-12 px-6 py-3 text-base">Read the docs <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      <a href="https://github.com/hotwired-laravel/turbo-laravel" class="inline-flex items-center rounded-full border-2 border-ink font-semibold text-ink hover:bg-ink hover:text-paper focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus min-h-12 px-6 py-3 text-base">View the source</a>
+    </div>
+
+    <div data-controller="clipboard" class="group mt-2 flex max-w-full items-center gap-3.5 rounded-full bg-code-bg py-2.5 pr-2.5 pl-5 font-code text-sm leading-5 text-code-ink">
+      <span class="text-wire" aria-hidden="true">$</span>
+      <span data-clipboard-target="source" class="overflow-x-auto whitespace-nowrap">composer require hotwired-laravel/turbo-laravel</span>
+      <button type="button" data-action="clipboard#copy" aria-label="Copy install command" class="inline-flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-code-chrome text-code-muted hover:text-code-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword"><svg class="group-data-copied:hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg><svg class="hidden text-wire group-data-copied:block" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></button>
+    </div>
+  </section>
+
+  
+  <section class="border-y border-line bg-paper-sunken">
+    <div class="mx-auto max-w-[1248px] px-6 pt-[88px] pb-16">
+      <div class="flex max-w-[760px] flex-col gap-4">
+        <h2 class="font-display font-bold text-[clamp(36px,5vw,52px)] leading-[1.08] tracking-[-0.03em]">Your typical Laravel app.</h2>
+        <p class="text-lg leading-[30px] text-ink-muted">Hotwire was built for full-stack web frameworks like Laravel and Rails. Modern web applications don't have to be built as stateful components. Keep writing regular <a class="font-semibold text-wire-strong underline decoration-[1.5px] underline-offset-[3px] hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus" href="https://youtu.be/MF0jFKvS4SI?si=1wGv8BYVd8v8IdA2">Cruddy applications</a>, with controllers and Blade views, and progressively enhance the <em>fidelity</em> of your UI with Turbo Frames, Turbo Streams, or a sprinkle of JavaScript.</p>
+      </div>
+    </div>
+
+    <div class="border-t border-line bg-paper-raised">
+      <ol class="mx-auto grid max-w-[1248px] grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-px bg-line">
+        <li class="flex flex-col gap-2 bg-paper-raised px-6 pt-9 pb-10">
+          <div class="ill mb-5 overflow-hidden rounded-[14px] border border-line bg-paper" aria-hidden="true">
+            <svg viewBox="0 0 320 184" width="100%" class="block" font-family="'JetBrains Mono', monospace">
+              <rect x="17" y="17" width="296" height="156" rx="10" fill="#5cd8e5"></rect>
+              <rect x="12" y="12" width="296" height="156" rx="10" fill="#ffffff" stroke="#0f1a2a" stroke-width="1.5"></rect>
+              <text x="24" y="30" font-size="9.5" fill="#4b5768">ChirpController.php</text>
+              <path d="M12.75 40H307.25" stroke="#e4ddd0" stroke-width="1"></path>
+              <rect x="18" y="107" width="284" height="19" rx="4" fill="#dcf5f7"></rect>
+              <g font-size="10.5" fill="#0f1a2a">
+                <text x="24" y="60"><tspan fill="#0a6b78">public function </tspan>store(<tspan fill="#857b6a">Request </tspan>$request)</text>
+                <text x="24" y="80">{</text>
+                <text x="24" y="100">    Chirp::create($request-&gt;validated());</text>
+                <text x="24" y="120">    <tspan fill="#c42416" font-weight="500">return </tspan>to_route(<tspan fill="#a8431a">'chirps.index'</tspan>);</text>
+                <text x="24" y="140">}</text>
+              </g>
+            </svg>
+          </div>
+          <h3 class="font-display text-[26px] leading-8 font-bold tracking-[-0.02em]">Write a regular controller</h3>
+          <p class="text-[15px] leading-6 text-ink-muted">Routes, form requests, Eloquent, redirects. Nothing new to learn on the server.</p>
+        </li>
+
+        <li class="flex flex-col gap-2 bg-paper-raised px-6 pt-9 pb-10">
+          <div class="ill mb-5 overflow-hidden rounded-[14px] border border-line bg-paper" aria-hidden="true">
+            <svg viewBox="0 0 320 184" width="100%" class="block" font-family="'JetBrains Mono', monospace">
+              <rect x="17" y="17" width="296" height="156" rx="10" fill="#5cd8e5"></rect>
+              <rect x="12" y="12" width="296" height="156" rx="10" fill="#ffffff" stroke="#0f1a2a" stroke-width="1.5"></rect>
+              <text x="24" y="30" font-size="9.5" fill="#4b5768">chirps/index.blade.php</text>
+              <path d="M12.75 40H307.25" stroke="#e4ddd0" stroke-width="1"></path>
+              <rect x="28" y="50" width="96" height="9" rx="3" fill="#0f1a2a"></rect>
+              <rect x="28" y="65" width="164" height="6" rx="3" fill="#e4ddd0"></rect>
+              <rect x="24" y="84" width="272" height="72" rx="8" fill="#effafb" stroke="#0a6b78" stroke-width="1.5" stroke-dasharray="5 4"></rect>
+              <rect x="36" y="77" width="104" height="15" rx="7.5" fill="#0a6b78"></rect>
+              <text x="44" y="87.5" font-size="9" fill="#ffffff">&lt;x-turbo::frame&gt;</text>
+              <circle cx="44" cy="108" r="7" fill="#f3eee4" stroke="#857b6a" stroke-width="1.25"></circle>
+              <rect x="58" y="102" width="118" height="5" rx="2.5" fill="#4b5768"></rect>
+              <rect x="58" y="111" width="184" height="5" rx="2.5" fill="#d3e7ea"></rect>
+              <circle cx="44" cy="136" r="7" fill="#f3eee4" stroke="#857b6a" stroke-width="1.25"></circle>
+              <rect x="58" y="130" width="96" height="5" rx="2.5" fill="#4b5768"></rect>
+              <rect x="58" y="139" width="168" height="5" rx="2.5" fill="#d3e7ea"></rect>
+            </svg>
+          </div>
+          <h3 class="font-display text-[26px] leading-8 font-bold tracking-[-0.02em]">Return Blade HTML</h3>
+          <p class="text-[15px] leading-6 text-ink-muted">Render the views you already have. Wrap the parts that change in a frame or a stream.</p>
+        </li>
+
+        <li class="flex flex-col gap-2 bg-paper-raised px-6 pt-9 pb-10">
+          <div class="ill mb-5 overflow-hidden rounded-[14px] border border-line bg-paper" aria-hidden="true">
+            <svg viewBox="0 0 320 184" width="100%" class="block" font-family="'JetBrains Mono', monospace">
+              <rect x="17" y="17" width="296" height="156" rx="10" fill="#5cd8e5"></rect>
+              <rect x="12" y="12" width="296" height="156" rx="10" fill="#ffffff" stroke="#0f1a2a" stroke-width="1.5"></rect>
+              <rect x="22" y="19" width="160" height="15" rx="7.5" fill="#f3eee4"></rect>
+              <text x="31" y="29.5" font-size="9" fill="#4b5768">/chirps</text>
+              <path d="M12.75 40H307.25" stroke="#e4ddd0" stroke-width="1"></path>
+              <rect x="28" y="50" width="96" height="9" rx="3" fill="#0f1a2a"></rect>
+              <rect x="28" y="65" width="164" height="6" rx="3" fill="#e4ddd0"></rect>
+              <rect x="24" y="84" width="272" height="72" rx="8" fill="#ffffff" stroke="#0a6b78" stroke-width="1.5"></rect>
+              <g class="tl-old">
+                <circle cx="44" cy="136" r="7" fill="#f3eee4" stroke="#857b6a" stroke-width="1.25"></circle>
+                <rect x="58" y="130" width="118" height="5" rx="2.5" fill="#4b5768"></rect>
+                <rect x="58" y="139" width="184" height="5" rx="2.5" fill="#e4ddd0"></rect>
+              </g>
+              <g class="tl-new">
+                <rect x="30" y="92" width="260" height="32" rx="8" fill="#effafb" stroke="#0a6b78" stroke-width="1.5" stroke-dasharray="5 4"></rect>
+                <circle cx="44" cy="108" r="7" fill="#5cd8e5" stroke="#0a6b78" stroke-width="1.25"></circle>
+                <rect x="58" y="102" width="104" height="5" rx="2.5" fill="#0a6b78"></rect>
+                <rect x="58" y="111" width="150" height="5" rx="2.5" fill="#9fd9df"></rect>
+                <rect x="42" y="84.5" width="110" height="15" rx="7.5" fill="#0a6b78"></rect>
+                <text x="50" y="95" font-size="9" fill="#ffffff">&lt;x-turbo::stream&gt;</text>
+              </g>
+            </svg>
+          </div>
+          <h3 class="font-display text-[26px] leading-8 font-bold tracking-[-0.02em]">Turbo updates the page</h3>
+          <p class="text-[15px] leading-6 text-ink-muted">No full reloads, no JSON APIs, no client-side state to keep in sync.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  
+  <div class="mx-auto flex max-w-[1248px] flex-col gap-8 px-6 py-12">
+          <section class="flex flex-wrap items-center gap-x-16 gap-y-10 py-14">
+        <div class="flex min-w-0 flex-[1_1_340px] flex-col items-start gap-4">
+          <h2 class="font-display text-[40px] leading-[44px] font-bold tracking-[-0.03em]">Decompose screens with Turbo Frames.</h2>
+          <p class="text-[17px] leading-7 text-ink-muted">Turbo Frames let predefined sections of your page update on request, independently of the rest of the page. Build data tables, inline forms and more in the blink of an eye.</p>
+          <a href="/docs/turbo-frames" class="inline-flex items-center rounded-full border-2 border-ink font-semibold text-ink hover:bg-ink hover:text-paper focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus min-h-11 px-[18px] py-2 text-[15px]">Read more</a>
+        </div>
+
+        <div class="min-w-0 flex-[1.4_1_480px] pr-2 pb-2">
+          <div  class="code-panel overflow-hidden rounded-2xl bg-code-bg text-code-ink shadow-wire">
+  
+  <pre class="overflow-x-auto"><code class="language-blade"><span class="hl-comment">{{-- chirps/show.blade.php --}}</span>
+&lt;<span class="hl-keyword">x-turbo::frame</span> <span class="hl-property">:id</span>=&quot;$chirp&quot;&gt;
+    &lt;<span class="hl-keyword">p</span>&gt;{{ <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">content</span> }}&lt;/<span class="hl-keyword">p</span>&gt;
+    &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.edit'</span>, <span class="hl-variable">$chirp</span>) }}&quot;&gt;Edit&lt;/<span class="hl-keyword">a</span>&gt;
+&lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;
+
+<span class="hl-comment">{{-- chirps/edit.blade.php --}}</span>
+&lt;<span class="hl-keyword">x-turbo::frame</span> <span class="hl-property">:id</span>=&quot;$chirp&quot;&gt;
+    &lt;<span class="hl-keyword">form</span> <span class="hl-property">action</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.update'</span>, <span class="hl-variable">$chirp</span>) }}&quot;&gt;...&lt;/<span class="hl-keyword">form</span>&gt;
+&lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;
+</code></pre>
+</div>
+        </div>
+      </section>
+          <section class="flex flex-wrap items-center gap-x-16 gap-y-10 py-14 flex-row-reverse">
+        <div class="flex min-w-0 flex-[1_1_340px] flex-col items-start gap-4">
+          <h2 class="font-display text-[40px] leading-[44px] font-bold tracking-[-0.03em]">Come alive with Turbo Streams.</h2>
+          <p class="text-[17px] leading-7 text-ink-muted">Turbo Streams deliver page changes as fragments of HTML: synchronously after a form submit, or asynchronously over WebSockets through Laravel Echo. Add a trait to your model and broadcasting just works.</p>
+          <a href="/docs/turbo-streams" class="inline-flex items-center rounded-full border-2 border-ink font-semibold text-ink hover:bg-ink hover:text-paper focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus min-h-11 px-[18px] py-2 text-[15px]">Read more</a>
+        </div>
+
+        <div class="min-w-0 flex-[1.4_1_480px] pr-2 pb-2">
+          <div  class="code-panel overflow-hidden rounded-2xl bg-code-bg text-code-ink shadow-ember">
+  
+  <pre class="overflow-x-auto"><code class="language-php"><span class="hl-keyword">class</span> <span class="hl-type">Comment</span> <span class="hl-keyword">extends</span> <span class="hl-type">Model</span>
 {
     <span class="hl-keyword">use</span> <span class="hl-type">Broadcasts</span>;
 }
 
 <span class="hl-comment">// And then...</span>
-
-<span class="hl-variable">$comment</span> = <span class="hl-variable">$post</span>-&gt;<span class="hl-property">comments</span>()-&gt;<span class="hl-property">create</span>();
+<span class="hl-variable">$comment</span> = <span class="hl-variable">$post</span>-&gt;<span class="hl-property">comments</span>()-&gt;<span class="hl-property">create</span>(<span class="hl-variable">$data</span>);
 
 <span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastPrependTo</span>(<span class="hl-variable">$post</span>)
     -&gt;<span class="hl-property">toOthers</span>()
     -&gt;<span class="hl-property">later</span>();
 </code></pre>
+</div>
+        </div>
+      </section>
+          <section class="flex flex-wrap items-center gap-x-16 gap-y-10 py-14">
+        <div class="flex min-w-0 flex-[1_1_340px] flex-col items-start gap-4">
+          <h2 class="font-display text-[40px] leading-[44px] font-bold tracking-[-0.03em]">Go native with iOS &amp; Android.</h2>
+          <p class="text-[17px] leading-7 text-ink-muted">Hotwire Native puts your Laravel application at the center of your iOS and Android apps, with seamless transitions between web and native screens. Turbo Laravel ships helpers for instrumenting your Hotwire Native clients.</p>
+          <a href="/docs/hotwire-native" class="inline-flex items-center rounded-full border-2 border-ink font-semibold text-ink hover:bg-ink hover:text-paper focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus min-h-11 px-[18px] py-2 text-[15px]">Read more</a>
         </div>
 
-        <p class="text-2xl font-heading font-extrabold text-center text-zinc-900/90">Come Alive with Turbo Streams.</p>
-
-        <p class="text-center text-lg">Turbo Streams deliver page changes as fragments of HTML. They may be delivered to the browser synchronously after form submits, or asynchronously over WebSockets via Laravel Echo.</p>
-
-        <div class="flex items-center justify-center">
-            <a href="/docs/turbo-streams" class="px-4 py-2 inline-block w-full mx-auto sm:w-auto text-center rounded-full border border-zinc-900/30 hover:bg-zinc-900/5 text-zinc-900 transition">Read more</a>
-        </div>
-      </div>
-
-      <div class="space-y-4">
-        <div class="overflow-x-auto text-sm rounded">
-          <pre class="overflow-x-auto"><code class="language-php"><span class="hl-keyword">class</span> <span class="hl-type">ChirpsController</span>
+        <div class="min-w-0 flex-[1.4_1_480px] pr-2 pb-2">
+          <div  data-chrome  class="code-panel overflow-hidden rounded-2xl bg-code-bg text-code-ink shadow-wire">
+      <div class="flex items-center gap-2 bg-code-chrome px-4 py-2.5 font-code text-[12.5px] leading-4 font-medium text-code-muted">
+      <span class="size-2 rounded-full bg-wire"></span>app/Http/Controllers/ChirpsController.php
+    </div>
+  
+  <pre class="overflow-x-auto"><code class="language-php"><span class="hl-keyword">class</span> <span class="hl-type">ChirpsController</span>
 {
     <span class="hl-keyword">use</span> <span class="hl-type">InteractsWithHotwireNativeNavigation</span>;
 
@@ -204,64 +287,281 @@
     }
 }
 </code></pre>
+</div>
+        </div>
+      </section>
+          <section class="flex flex-wrap items-center gap-x-16 gap-y-10 py-14 flex-row-reverse">
+        <div class="flex min-w-0 flex-[1_1_340px] flex-col items-start gap-4">
+          <h2 class="font-display text-[40px] leading-[44px] font-bold tracking-[-0.03em]">Everything is testable.</h2>
+          <p class="text-[17px] leading-7 text-ink-muted">Turbo Laravel ships testing helpers out of the box, so you can make sure your whole application works. The best part: not much changes from your typical Laravel testing approach.</p>
+          <a href="/docs/testing" class="inline-flex items-center rounded-full border-2 border-ink font-semibold text-ink hover:bg-ink hover:text-paper focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus min-h-11 px-[18px] py-2 text-[15px]">Read more</a>
         </div>
 
-        <p class="text-2xl font-heading font-extrabold text-center text-zinc-900/90">Go Native with iOS & Android.</p>
-
-        <p class="text-center text-lg">Hotwire Native lets your Laravel application be the center of your native iOS and Android apps, with seamless transitions between web and native screens. Turbo Laravel has tons of helpers for instrumenting your Hotwire Native clients!</p>
-
-        <div class="flex items-center justify-center">
-            <a href="/docs/hotwire-native" class="px-4 py-2 inline-block w-full mx-auto sm:w-auto text-center rounded-full border border-zinc-900/30 hover:bg-zinc-900/5 text-zinc-900 transition">Read more</a>
-        </div>
-      </div>
-
-      <div class="space-y-4">
-        <div class="overflow-x-auto text-sm rounded">
-          <pre class="overflow-x-auto"><code class="language-php"><span class="hl-property">it</span>(<span class="hl-value">'creates chirps'</span>, <span class="hl-keyword">function</span> () {
-    <span class="hl-variable">$response</span> = <span class="hl-variable">$this</span>-&gt;<span class="hl-property">post</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.store'</span>), [
+        <div class="min-w-0 flex-[1.4_1_480px] pr-2 pb-2">
+          <div  data-chrome  class="code-panel overflow-hidden rounded-2xl bg-code-bg text-code-ink shadow-ember">
+      <div class="flex items-center gap-2 bg-code-chrome px-4 py-2.5 font-code text-[12.5px] leading-4 font-medium text-code-muted">
+      <span class="size-2 rounded-full bg-ember"></span>tests/Feature/CreatesChirpsTest.php
+    </div>
+  
+  <pre class="overflow-x-auto"><code class="language-php"><span class="hl-property">it</span>(<span class="hl-value">'creates chirps'</span>, <span class="hl-keyword">function</span> () {
+    <span class="hl-variable">$response</span> = <span class="hl-variable">$this</span>-&gt;<span class="hl-property">turbo</span>()-&gt;<span class="hl-property">post</span>(<span class="hl-property">route</span>(<span class="hl-value">'chirps.store'</span>), [
         <span class="hl-value">'content'</span> =&gt; <span class="hl-value">'Test Chirp'</span>,
     ]);
 
-    <span class="hl-variable">$response</span>-&gt;<span class="hl-property">assertTurboStream</span>(<span class="hl-keyword">fn</span> (<span class="hl-injection"><span class="hl-type">AssertableTurboStream</span> $streams</span>) =&gt; (
+    <span class="hl-variable">$response</span>-&gt;<span class="hl-property">assertTurboStream</span>(<span class="hl-keyword">fn</span> (<span class="hl-injection"><span class="hl-type">AssertableTurboStream</span> $streams</span>) =&gt;
         <span class="hl-variable">$streams</span>-&gt;<span class="hl-property">has</span>(1)
-        <span class="hl-operator">&amp;&amp;</span> <span class="hl-variable">$streams</span>-&gt;<span class="hl-property">hasTurboStream</span>(<span class="hl-keyword">fn</span> (<span class="hl-injection">$turboStream</span>) =&gt; (
-            <span class="hl-variable">$turboStream</span>
+            <span class="hl-operator">&amp;&amp;</span> <span class="hl-variable">$streams</span>-&gt;<span class="hl-property">hasTurboStream</span>(<span class="hl-keyword">fn</span> (<span class="hl-injection">$stream</span>) =&gt; <span class="hl-variable">$stream</span>
                 -&gt;<span class="hl-property">where</span>(<span class="hl-value">'target'</span>, <span class="hl-value">'chirps'</span>)
                 -&gt;<span class="hl-property">where</span>(<span class="hl-value">'action'</span>, <span class="hl-value">'prepend'</span>)
-                -&gt;<span class="hl-property">see</span>(<span class="hl-value">'Test Chirp'</span>)
-        ))
-    ));
+                -&gt;<span class="hl-property">see</span>(<span class="hl-value">'Test Chirp'</span>))
+    );
 });
 </code></pre>
+</div>
+        </div>
+      </section>
+      </div>
+
+  
+  <section class="mx-auto max-w-[1248px] px-6 pt-12 pb-28">
+    <div class="flex flex-col gap-14">
+      <div class="flex max-w-[900px] flex-col gap-5">
+        <h2 class="font-display text-[clamp(36px,5.2vw,60px)] leading-[1.04] font-extrabold tracking-[-0.035em]">Just because your agent can generate thousands of lines of code doesn't mean it <span class="text-ember">should</span>.</h2>
+        <p class="max-w-[40em] text-xl leading-8 text-ink-muted">With Hotwire, humans and agents build more with less. Plain controllers, Blade views and a sprinkle of Stimulus mean less code to generate, less code to review, and fewer places for bugs to hide.</p>
+      </div>
+
+      <div class="flex flex-wrap items-start gap-x-16 gap-y-10">
+        <div class="flex min-w-0 flex-[1_1_320px] flex-col gap-6">
+          <div class="flex flex-col gap-1.5">
+            <h3 class="font-display text-[21px] leading-7 font-[650]">Skills your agent can load</h3>
+            <p class="text-base leading-[26px] text-ink-muted">Turbo Laravel ships <a class="font-semibold text-wire-strong underline decoration-[1.5px] underline-offset-[3px] hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus" href="https://github.com/laravel/boost">Laravel Boost</a> guidelines and skills, so your agent writes idiomatic Turbo code from the first prompt.</p>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <h3 class="font-display text-[21px] leading-7 font-[650]">Stimulus and Native, too</h3>
+            <p class="text-base leading-[26px] text-ink-muted">Stimulus Laravel publishes its own Boost guidelines, including one for Hotwire Native Bridge Components.</p>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <h3 class="font-display text-[21px] leading-7 font-[650]">Small diffs, easy reviews</h3>
+            <p class="text-base leading-[26px] text-ink-muted">A frame here, a stream there. Changes stay in the files you already know, so reviewing your agent's work takes minutes.</p>
+          </div>
         </div>
 
-        <p class="text-2xl font-heading font-extrabold text-center text-zinc-900/90">Everything is testable.</p>
-
-        <p class="text-center text-lg">Turbo Laravel ships with a series of testing helpers out of the box, so you can ensure your application is fully tested. The best part is that not much changes from your typical Laravel testing approach.</p>
-
-        <div class="flex items-center justify-center">
-            <a href="/docs/testing" class="px-4 py-2 inline-block w-full mx-auto sm:w-auto text-center rounded-full border border-zinc-900/30 hover:bg-zinc-900/5 text-zinc-900 transition">Read more</a>
+        <div class="min-w-0 flex-[1.3_1_460px] pr-2 pb-2">
+          <div  data-chrome  class="code-panel overflow-hidden rounded-2xl bg-code-bg text-code-ink shadow-wire">
+      <div class="flex items-center gap-2 bg-code-chrome px-4 py-2.5 font-code text-[12.5px] leading-4 font-medium text-code-muted">
+      <span class="size-2 rounded-full bg-wire"></span>resources/boost/skills
+    </div>
+  
+  <ul class="py-3 font-code">
+                              <li class="flex flex-col gap-0.5 px-6 py-3">
+                  <span class="text-sm leading-[22px] text-syntax-keyword">developing-with-turbo-basics</span>
+                  <span class="font-body text-sm leading-[22px] text-code-muted">dom_id, turbo_stream() and the x-turbo Blade components.</span>
+                </li>
+                              <li class="flex flex-col gap-0.5 px-6 py-3 border-t border-code-chrome">
+                  <span class="text-sm leading-[22px] text-syntax-keyword">developing-with-turbo-drive</span>
+                  <span class="font-body text-sm leading-[22px] text-code-muted">SPA-like navigation, morphing and cache control.</span>
+                </li>
+                              <li class="flex flex-col gap-0.5 px-6 py-3 border-t border-code-chrome">
+                  <span class="text-sm leading-[22px] text-syntax-keyword">developing-with-turbo-frames</span>
+                  <span class="font-body text-sm leading-[22px] text-code-muted">Scoped navigation, frame targeting and lazy loading.</span>
+                </li>
+                              <li class="flex flex-col gap-0.5 px-6 py-3 border-t border-code-chrome">
+                  <span class="text-sm leading-[22px] text-syntax-keyword">developing-with-turbo-streams</span>
+                  <span class="font-body text-sm leading-[22px] text-code-muted">Partial page updates and real-time broadcasting.</span>
+                </li>
+                              <li class="flex flex-col gap-0.5 px-6 py-3 border-t border-code-chrome">
+                  <span class="text-sm leading-[22px] text-syntax-variable">developing-with-turbo-tests</span>
+                  <span class="font-body text-sm leading-[22px] text-code-muted">Testing Turbo and Hotwire Native behavior in Pest or PHPUnit.</span>
+                </li>
+                          </ul>
+</div>
         </div>
       </div>
     </div>
+  </section>
 
-    <hr class="max-w-xs mx-auto my-20">
+  
+  <section class="mx-auto max-w-[1248px] px-6 pb-24">
+    <div class="flex flex-wrap items-center gap-x-16 gap-y-10 rounded-2xl border border-line bg-paper-raised p-[clamp(28px,5vw,56px)]">
+      <div class="flex min-w-0 flex-[1_1_380px] flex-col items-start gap-4">
+        <h2 class="font-display text-[40px] leading-[44px] font-bold tracking-[-0.03em]">Start a new app, already Hotwired.</h2>
+        <p class="text-[17px] leading-7 text-ink-muted">A community-built starter kit with authentication, Turbo Laravel, Stimulus, Tailwind CSS and daisyUI components wired together. A #nobuild frontend out of the box, ready for Hotwire Native and for your coding agent. No Node.js required.</p>
 
-    <div class="space-y-6 sm:max-w-5xl mx-auto w-full text-center">
-      <h3 class="font-heading font-extrabold text-4xl">The Bootcamp</h3>
+        <div data-controller="clipboard" class="group flex w-full items-start gap-3 rounded-[10px] bg-code-bg py-3 pr-3 pl-[18px] font-code text-sm leading-[22px] text-code-ink">
+          <span class="pt-[7px] text-syntax-variable" aria-hidden="true">$</span>
+          <code data-clipboard-target="source" class="min-w-0 flex-1 pt-[7px] wrap-anywhere whitespace-pre-wrap">laravel new my-app --pest --no-node \
+    --using=hotwired-laravel/hotwire-starter-kit</code>
+          <button type="button" data-action="clipboard#copy" aria-label="Copy install command" class="inline-flex size-9 flex-none cursor-pointer items-center justify-center rounded-lg bg-code-chrome text-code-muted hover:text-code-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword"><svg class="group-data-copied:hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg><svg class="hidden text-wire group-data-copied:block" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></button>
+        </div>
 
-      <p class="text-center text-lg">In order to help you to get a better understanding of the many sides of Hotwire, we offer a free Bootcamp inspired by the official Laravel Bootcamp. In the Turbo Laravel Bootcamp, you’ll get a hands-on introduction to Hotwire and Turbo Laravel building a web application from scratch and then building the hybrid native app for it.</p>
+        <a href="https://github.com/hotwired-laravel/hotwire-starter-kit" class="inline-flex items-center gap-2 rounded-full bg-ember-strong font-semibold text-white hover:brightness-[.92] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus mt-1 min-h-11 px-5 py-2.5 text-[15px]">Explore the starter kit <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      </div>
 
-      <ul class="sm:flex items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-        <li><a href="/bootcamp/introduction" class="px-4 py-2 inline-block w-full text-center rounded-full bg-zinc-900/90 text-white transition hover:bg-zinc-900/70">Start learning</a></li>
-      </ul>
+      <ul class="grid min-w-0 flex-[1_1_340px] grid-cols-2 gap-3">
+                  <li class="flex">
+            <a href="https://turbo.hotwired.dev" class="transition duration-150 ease-out hover:-translate-y-0.5 hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus bg-wire-soft relative flex flex-1 flex-col gap-1 rounded-[10px] border border-transparent py-5 pr-10 pl-5 text-ink">
+              <span class="absolute top-4 right-3.5 flex text-ink-muted"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></span>
+              <span class="font-display text-[19px] leading-6 font-bold">Turbo</span>
+              <span class="text-sm leading-[22px] text-ink-muted">Frames, Streams and Hotreload for development.</span>
+            </a>
+          </li>
+                  <li class="flex">
+            <a href="https://stimulus.hotwired.dev" class="transition duration-150 ease-out hover:-translate-y-0.5 hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus bg-paper-sunken relative flex flex-1 flex-col gap-1 rounded-[10px] border border-transparent py-5 pr-10 pl-5 text-ink">
+              <span class="absolute top-4 right-3.5 flex text-ink-muted"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></span>
+              <span class="font-display text-[19px] leading-6 font-bold">Stimulus</span>
+              <span class="text-sm leading-[22px] text-ink-muted">Controllers and Hotwire Native Bridge Components.</span>
+            </a>
+          </li>
+                  <li class="flex">
+            <a href="https://tailwindcss.com" class="transition duration-150 ease-out hover:-translate-y-0.5 hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus bg-ember-soft relative flex flex-1 flex-col gap-1 rounded-[10px] border border-transparent py-5 pr-10 pl-5 text-ink">
+              <span class="absolute top-4 right-3.5 flex text-ink-muted"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></span>
+              <span class="font-display text-[19px] leading-6 font-bold">Tailwind CSS</span>
+              <span class="text-sm leading-[22px] text-ink-muted">Via Importmap Laravel and Tailwind CSS Laravel. Vite works too.</span>
+            </a>
+          </li>
+                  <li class="flex">
+            <a href="https://daisyui.com" class="transition duration-150 ease-out hover:-translate-y-0.5 hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus bg-wire-soft relative flex flex-1 flex-col gap-1 rounded-[10px] border border-transparent py-5 pr-10 pl-5 text-ink">
+              <span class="absolute top-4 right-3.5 flex text-ink-muted"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></span>
+              <span class="font-display text-[19px] leading-6 font-bold">daisyUI</span>
+              <span class="text-sm leading-[22px] text-ink-muted">A component library integrated from the start.</span>
+            </a>
+          </li>
+              </ul>
     </div>
   </section>
 
-        <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
-          <p class="text-base text-center w-full">
-            Turbo Laravel is maintained by <a href="https://tonysm.com" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
-          </p>
-        </footer>
+  
+  <section class="bg-ink text-night-ink">
+    <div class="mx-auto flex max-w-[1248px] flex-wrap items-start gap-x-[72px] gap-y-12 px-6 py-24">
+      <div class="flex min-w-0 flex-[1_1_360px] flex-col items-start gap-[18px]">
+        <h2 class="font-display font-bold text-[clamp(36px,5vw,52px)] leading-[1.08] tracking-[-0.03em]">The Bootcamp.</h2>
+        <p class="text-lg leading-[30px] text-night-muted">Inspired by the official Laravel Bootcamp: a hands-on introduction to Hotwire and Turbo Laravel. You'll build a web application from scratch, then the hybrid native app for it.</p>
+        <a href="/bootcamp/introduction" class="mt-1.5 inline-flex min-h-12 items-center gap-2 rounded-full bg-wire px-6 py-3 text-base font-semibold text-ink hover:brightness-[.94] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">Start learning <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      </div>
+
+      <ol class="grid min-w-0 flex-[1.2_1_420px] grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-3">
+                  <li class="flex">
+            <a href="/bootcamp/installation" class="flex flex-1 items-baseline gap-3.5 rounded-[10px] bg-code-chrome px-[18px] py-4 text-night-ink ring-wire/0 transition hover:ring-1 hover:ring-wire focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">
+              <span class="font-code text-[13px] leading-4 font-medium text-syntax-keyword">01</span>
+              <span class="text-base leading-6 font-semibold">Installation</span>
+            </a>
+          </li>
+                  <li class="flex">
+            <a href="/bootcamp/creating-chirps" class="flex flex-1 items-baseline gap-3.5 rounded-[10px] bg-code-chrome px-[18px] py-4 text-night-ink ring-wire/0 transition hover:ring-1 hover:ring-wire focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">
+              <span class="font-code text-[13px] leading-4 font-medium text-syntax-keyword">02</span>
+              <span class="text-base leading-6 font-semibold">Creating chirps</span>
+            </a>
+          </li>
+                  <li class="flex">
+            <a href="/bootcamp/listing-chirps" class="flex flex-1 items-baseline gap-3.5 rounded-[10px] bg-code-chrome px-[18px] py-4 text-night-ink ring-wire/0 transition hover:ring-1 hover:ring-wire focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">
+              <span class="font-code text-[13px] leading-4 font-medium text-syntax-keyword">03</span>
+              <span class="text-base leading-6 font-semibold">Listing chirps</span>
+            </a>
+          </li>
+                  <li class="flex">
+            <a href="/bootcamp/editing-chirps" class="flex flex-1 items-baseline gap-3.5 rounded-[10px] bg-code-chrome px-[18px] py-4 text-night-ink ring-wire/0 transition hover:ring-1 hover:ring-wire focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">
+              <span class="font-code text-[13px] leading-4 font-medium text-syntax-keyword">04</span>
+              <span class="text-base leading-6 font-semibold">Editing chirps</span>
+            </a>
+          </li>
+                  <li class="flex">
+            <a href="/bootcamp/deleting-chirps" class="flex flex-1 items-baseline gap-3.5 rounded-[10px] bg-code-chrome px-[18px] py-4 text-night-ink ring-wire/0 transition hover:ring-1 hover:ring-wire focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">
+              <span class="font-code text-[13px] leading-4 font-medium text-syntax-keyword">05</span>
+              <span class="text-base leading-6 font-semibold">Deleting chirps</span>
+            </a>
+          </li>
+                  <li class="flex">
+            <a href="/bootcamp/hotwiring-everything" class="flex flex-1 items-baseline gap-3.5 rounded-[10px] bg-code-chrome px-[18px] py-4 text-night-ink ring-wire/0 transition hover:ring-1 hover:ring-wire focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">
+              <span class="font-code text-[13px] leading-4 font-medium text-syntax-keyword">06</span>
+              <span class="text-base leading-6 font-semibold">Hotwiring everything</span>
+            </a>
+          </li>
+                  <li class="flex">
+            <a href="/bootcamp/broadcasting" class="flex flex-1 items-baseline gap-3.5 rounded-[10px] bg-code-chrome px-[18px] py-4 text-night-ink ring-wire/0 transition hover:ring-1 hover:ring-wire focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">
+              <span class="font-code text-[13px] leading-4 font-medium text-[#ff6a5c]">07</span>
+              <span class="text-base leading-6 font-semibold">Broadcasting</span>
+            </a>
+          </li>
+                  <li class="flex">
+            <a href="/bootcamp/native-setup" class="flex flex-1 items-baseline gap-3.5 rounded-[10px] bg-code-chrome px-[18px] py-4 text-night-ink ring-wire/0 transition hover:ring-1 hover:ring-wire focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">
+              <span class="font-code text-[13px] leading-4 font-medium text-[#ff6a5c]">08</span>
+              <span class="text-base leading-6 font-semibold">Native apps</span>
+            </a>
+          </li>
+              </ol>
+    </div>
+  </section>
+
+  
+  <section class="mx-auto flex max-w-[1248px] flex-col gap-10 px-6 py-28">
+    <div class="flex flex-col gap-4">
+      <h2 class="font-display font-bold text-[clamp(36px,5vw,52px)] leading-[1.08] tracking-[-0.03em]">Pairs well with.</h2>
+      <p class="max-w-[36em] text-lg leading-[30px] text-ink-muted">Turbo Laravel is one piece of the Hotwired Laravel stack. Add the rest as you need it.</p>
+    </div>
+
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4">
+              <a href="https://github.com/hotwired-laravel/stimulus-laravel" class="transition duration-150 ease-out hover:-translate-y-0.5 hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus relative flex flex-col justify-between gap-5 rounded-2xl border border-line bg-paper-raised px-4 pt-4 pb-5 text-ink">
+          <span class="absolute top-5 right-[18px] flex text-ink-subtle"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></span>
+          <span class="inline-flex items-center gap-2 self-start rounded-full bg-ink px-3.5 py-1.5 text-[13px] leading-[18px] font-semibold text-white"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4 1.3-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C6.6 3.3 5.6 3.6 5.6 3.6a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 10c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>Source</span>
+          <span aria-hidden="true" class="bg-[#fff3d1] block overflow-hidden rounded-[10px]">
+            <svg viewBox="0 0 240 132" width="100%" class="block" font-family="'JetBrains Mono', monospace"><rect x="44" y="40" width="140" height="62" rx="8" fill="#ffffff" stroke="#0f1a2a" stroke-width="1.5"></rect><text x="56" y="60" font-size="9.5" fill="#0f1a2a">&lt;div <tspan fill="#a8431a">data-controller</tspan>&gt;</text><rect x="56" y="72" width="84" height="5" rx="2.5" fill="#4b5768"></rect><rect x="56" y="83" width="112" height="5" rx="2.5" fill="#e4ddd0"></rect><path d="M184 46 L198 32" stroke="#0f1a2a" stroke-width="1.5" stroke-dasharray="3 3"></path><circle cx="204" cy="26" r="11" fill="#ffd479" stroke="#0f1a2a" stroke-width="1.5"></circle><path d="M200 26h8M204 22v8" stroke="#0f1a2a" stroke-width="1.5" stroke-linecap="round"></path><g stroke="#c58a00" stroke-width="1.75" stroke-linecap="round"><path d="M204 8v4M222 26h-4M217 13l-3 3M191 13l3 3"></path></g></svg>
+          </span>
+          <span class="flex flex-col gap-2.5">
+            <span class="font-display text-[28px] leading-8 font-bold tracking-[-0.025em]">Stimulus Laravel</span>
+            <span class="text-[15px] leading-6 text-ink-muted">The modest JavaScript framework for the HTML you already have.</span>
+          </span>
+        </a>
+              <a href="https://github.com/tonysm/importmap-laravel" class="transition duration-150 ease-out hover:-translate-y-0.5 hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus relative flex flex-col justify-between gap-5 rounded-2xl border border-line bg-paper-raised px-4 pt-4 pb-5 text-ink">
+          <span class="absolute top-5 right-[18px] flex text-ink-subtle"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></span>
+          <span class="inline-flex items-center gap-2 self-start rounded-full bg-ink px-3.5 py-1.5 text-[13px] leading-[18px] font-semibold text-white"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4 1.3-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C6.6 3.3 5.6 3.6 5.6 3.6a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 10c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>Source</span>
+          <span aria-hidden="true" class="bg-wire-soft block overflow-hidden rounded-[10px]">
+            <svg viewBox="0 0 240 132" width="100%" class="block" font-family="'JetBrains Mono', monospace"><path d="M28 30 L84 20 L84 112 L28 122Z" fill="#fbf8f2" stroke="#0f1a2a" stroke-width="1.5" stroke-linejoin="round"></path><path d="M84 20 L156 30 L156 122 L84 112Z" fill="#f3eee4" stroke="#0f1a2a" stroke-width="1.5" stroke-linejoin="round"></path><path d="M156 30 L212 20 L212 112 L156 122Z" fill="#fbf8f2" stroke="#0f1a2a" stroke-width="1.5" stroke-linejoin="round"></path><path d="M40 100 C70 92 80 64 110 70 S150 98 172 76 S196 50 204 44" fill="none" stroke="#857b6a" stroke-width="1.5" stroke-dasharray="4 4"></path><path d="M58 98 C54 90 46 84 46 76 A12 12 0 1 1 70 76 C70 84 62 90 58 98Z" fill="#0a6b78" stroke="#0f1a2a" stroke-width="1.5"></path><text x="58" y="79.5" font-size="9.5" font-weight="500" fill="#ffffff" text-anchor="middle">js</text><path d="M124 74 C120 66 112 60 112 52 A12 12 0 1 1 136 52 C136 60 128 66 124 74Z" fill="#c42416" stroke="#0f1a2a" stroke-width="1.5"></path><text x="124" y="55.5" font-size="9.5" font-weight="500" fill="#ffffff" text-anchor="middle">js</text><path d="M186 92 C182 84 174 78 174 70 A12 12 0 1 1 198 70 C198 78 190 84 186 92Z" fill="#0a6b78" stroke="#0f1a2a" stroke-width="1.5"></path><text x="186" y="73.5" font-size="9.5" font-weight="500" fill="#ffffff" text-anchor="middle">js</text></svg>
+          </span>
+          <span class="flex flex-col gap-2.5">
+            <span class="font-display text-[28px] leading-8 font-bold tracking-[-0.025em]">Importmap Laravel</span>
+            <span class="text-[15px] leading-6 text-ink-muted">JavaScript modules without a bundler or build step.</span>
+          </span>
+        </a>
+              <a href="https://github.com/tonysm/tailwindcss-laravel" class="transition duration-150 ease-out hover:-translate-y-0.5 hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus relative flex flex-col justify-between gap-5 rounded-2xl border border-line bg-paper-raised px-4 pt-4 pb-5 text-ink">
+          <span class="absolute top-5 right-[18px] flex text-ink-subtle"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></span>
+          <span class="inline-flex items-center gap-2 self-start rounded-full bg-ink px-3.5 py-1.5 text-[13px] leading-[18px] font-semibold text-white"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4 1.3-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C6.6 3.3 5.6 3.6 5.6 3.6a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 10c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>Source</span>
+          <span aria-hidden="true" class="bg-[#e3f2fb] block overflow-hidden rounded-[10px]">
+            <svg viewBox="0 0 240 132" width="100%" class="block" font-family="'JetBrains Mono', monospace"><g fill="none" stroke="#0a6b78" stroke-width="2.5" stroke-linecap="round"><path d="M24 50 H150 C170 50 176 30 160 26 C148 23 142 36 152 40"></path><path d="M44 70 H190 C210 70 214 92 198 95 C186 97 182 84 192 82"></path><path d="M24 90 H120"></path></g><g font-size="9"><rect x="132" y="102" width="34" height="16" rx="8" fill="#ffffff" stroke="#0f1a2a" stroke-width="1.25"></rect><text x="140" y="113.5" fill="#0f1a2a">p-4</text><rect x="172" y="102" width="44" height="16" rx="8" fill="#ffffff" stroke="#0f1a2a" stroke-width="1.25"></rect><text x="180" y="113.5" fill="#0f1a2a">flex</text><rect x="176" y="14" width="48" height="16" rx="8" fill="#0f1a2a"></rect><text x="184" y="25.5" fill="#7fe3ee">gap-2</text></g></svg>
+          </span>
+          <span class="flex flex-col gap-2.5">
+            <span class="font-display text-[28px] leading-8 font-bold tracking-[-0.025em]">Tailwind CSS Laravel</span>
+            <span class="text-[15px] leading-6 text-ink-muted">The standalone Tailwind CLI, wired into Laravel.</span>
+          </span>
+        </a>
+              <a href="https://github.com/hotwired-laravel/hotreload" class="transition duration-150 ease-out hover:-translate-y-0.5 hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-focus relative flex flex-col justify-between gap-5 rounded-2xl border border-line bg-paper-raised px-4 pt-4 pb-5 text-ink">
+          <span class="absolute top-5 right-[18px] flex text-ink-subtle"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></span>
+          <span class="inline-flex items-center gap-2 self-start rounded-full bg-ink px-3.5 py-1.5 text-[13px] leading-[18px] font-semibold text-white"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4 1.3-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C6.6 3.3 5.6 3.6 5.6 3.6a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 10c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>Source</span>
+          <span aria-hidden="true" class="bg-ember-soft block overflow-hidden rounded-[10px]">
+            <svg viewBox="0 0 240 132" width="100%" class="block" font-family="'JetBrains Mono', monospace"><rect x="20" y="16" width="190" height="104" rx="8" fill="#ffffff" stroke="#0f1a2a" stroke-width="1.5"></rect><circle cx="31" cy="26" r="2.5" fill="#e4ddd0"></circle><circle cx="40" cy="26" r="2.5" fill="#e4ddd0"></circle><circle cx="49" cy="26" r="2.5" fill="#e4ddd0"></circle><path d="M20.75 36H209.25" stroke="#e4ddd0" stroke-width="1"></path><path d="M196 21 C200 25 202 27 202 30 A4.5 4.5 0 0 1 193 30 C193 28 194.5 26.5 196 21Z" fill="#ff3b2f" stroke="#0f1a2a" stroke-width="1" stroke-linejoin="round"></path><rect x="32" y="46" width="64" height="7" rx="3" fill="#0f1a2a"></rect><rect x="32" y="59" width="44" height="5" rx="2.5" fill="#e4ddd0"></rect><rect x="32" y="72" width="100" height="36" rx="6" fill="#fff6f4" stroke="#c42416" stroke-width="1.5" stroke-dasharray="4 3"></rect><g transform="rotate(-11 70 116)" opacity="0.5"><rect x="36" y="104" width="78" height="20" rx="5" fill="#f3eee4" stroke="#857b6a" stroke-width="1.25"></rect><rect x="44" y="110" width="40" height="4" rx="2" fill="#a59c8c"></rect></g><rect x="148" y="52" width="84" height="26" rx="6" fill="#ff3b2f" stroke="#0f1a2a" stroke-width="1.5"></rect><rect x="157" y="60" width="44" height="4" rx="2" fill="#ffffff"></rect><rect x="157" y="68" width="62" height="4" rx="2" fill="#ffd2cb"></rect><g fill="none" stroke="#0f1a2a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M160 82 C158 92 150 96 138 92"></path><path d="M143 87 L137.5 92 L144 95.5"></path></g></svg>
+          </span>
+          <span class="flex flex-col gap-2.5">
+            <span class="font-display text-[28px] leading-8 font-bold tracking-[-0.025em]">Hotreload</span>
+            <span class="text-[15px] leading-6 text-ink-muted">Hot reloading for Turbo Laravel apps during development.</span>
+          </span>
+        </a>
+          </div>
+  </section>
+</main>
+
+        <footer class="border-t border-[#243046] bg-ink text-night-muted">
+  <div class="mx-auto flex max-w-[1248px] flex-wrap items-center justify-between gap-x-12 gap-y-6 px-6 py-12 text-[15px] leading-6">
+    <div class="flex max-w-[560px] flex-col gap-1.5">
+      <span class="font-display text-xl font-bold tracking-[-0.02em] text-night-ink"><span class="text-syntax-keyword">Turbo</span> Laravel</span>
+      <span>Maintained by <a href="https://tonysm.com" class="underline hover:text-night-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">Tony Messias</a>. A <em>community project</em>, not affiliated with Laravel or 37signals.</span>
+    </div>
+
+    <nav aria-label="Footer" class="flex flex-wrap gap-x-7 gap-y-3 font-semibold">
+              <a href="/docs/installation" class="hover:text-night-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">Documentation</a>
+              <a href="/bootcamp/introduction" class="hover:text-night-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">Bootcamp</a>
+              <a href="https://github.com/hotwired-laravel/turbo-laravel" class="hover:text-night-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">GitHub</a>
+              <a href="https://hotwired.dev/" class="hover:text-night-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-syntax-keyword">Hotwire</a>
+          </nav>
+  </div>
+</footer>
     </body>
 </html>
