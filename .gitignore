@@ -7,6 +7,9 @@
 /public/
 /.kamal/secrets
 npm-debug.log
+/.env
+/source/hot
+/source/assets/build/
 /config/deploy.yml
 /package-src/
 /source/_v1/
@@ -15,4 +18,3 @@ npm-debug.log
 # Optional ignores
 # /build_staging/
 # /build_production/
-# /source/assets/build/

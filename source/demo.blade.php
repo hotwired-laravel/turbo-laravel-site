@@ -7,11 +7,11 @@
 
       <p>A picture is worth a thousand words. Try the demo yourself to picture what a Hotwired app might feel like. Of course, this is a simple demo and Hotwired apps will definitely feel <em>very</em> different from one another. It all depends on how much progressive enhancements you're willing to trade-off.</p>
 
-      <div class="text-left text-lg bg-orange-100/90 shadow-sm text-orange-900/80 border-l-2 border-orange-900/90 p-4">
+      <div class="text-left text-lg bg-orange-100/90 shadow-xs text-orange-900/80 border-l-2 border-orange-900/90 p-4">
         The application was deployed using <a href="https://kamal-deploy.org/" class="underline text-orange-900/90">Kamal</a> on my own small server. The database resets every 10 minutes. Please, be respectful when changing data.
       </div>
 
-      <img src="/assets/images/demo.webp" alt="Demo Example" class="rounded shadow" />
+      <img src="/assets/images/demo.webp" alt="Demo Example" class="rounded-sm shadow-sm" />
 
       <p>The source code for this sample app is available on <a href="{{ $page->github_demo_app_url }}" class="underline text-zinc-900/90">GitHub</a>.</p>
     </div>

@@ -1,18 +1,18 @@
 {
     "private": true,
+    "type": "module",
     "scripts": {
-        "dev": "mix",
-        "watch": "mix watch",
-        "staging": "NODE_ENV=staging mix",
-        "prod": "mix --production"
+        "dev": "vite",
+        "build": "vite build",
+        "staging": "NODE_ENV=staging vite build --mode staging",
+        "prod": "vite build --mode production"
     },
     "devDependencies": {
-        "@tailwindcss/typography": "^0.5.15",
-        "laravel-mix": "^6.0.39",
-        "laravel-mix-jigsaw": "^2.0.0",
-        "postcss": "^8.4.14",
-        "postcss-import": "^14.0.0",
-        "tailwindcss": "^3.1.6"
+        "@tailwindcss/typography": "^0.5.4",
+        "@tailwindcss/vite": "^4.3.5",
+        "@tighten/jigsaw-vite-plugin": "^2.1.0",
+        "tailwindcss": "^4.3.5",
+        "vite": "^8.3.8"
     },
     "dependencies": {
         "@hotwired/stimulus": "^3.2.2",

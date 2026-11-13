@@ -27,7 +27,7 @@
 
     <div class="mt-20 lg:max-w-5xl mx-auto w-full space-y-20 lg:space-y-0 lg:grid grid-cols-2 gap-20 thin-scrollbar">
       <div class="space-y-4">
-        <div class="overflow-x-auto text-sm rounded">
+        <div class="overflow-x-auto text-sm rounded-sm">
           {!! $page->snippets['frames'] !!}
         </div>
 
@@ -41,7 +41,7 @@
       </div>
 
       <div class="space-y-4">
-        <div class="overflow-x-auto text-sm rounded">
+        <div class="overflow-x-auto text-sm rounded-sm">
           {!! $page->snippets['streams'] !!}
         </div>
 
@@ -55,7 +55,7 @@
       </div>
 
       <div class="space-y-4">
-        <div class="overflow-x-auto text-sm rounded">
+        <div class="overflow-x-auto text-sm rounded-sm">
           {!! $page->snippets['native'] !!}
         </div>
 
@@ -69,7 +69,7 @@
       </div>
 
       <div class="space-y-4">
-        <div class="overflow-x-auto text-sm rounded">
+        <div class="overflow-x-auto text-sm rounded-sm">
           {!! $page->snippets['tests'] !!}
         </div>
 

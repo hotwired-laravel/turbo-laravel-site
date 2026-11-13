@@ -1,6 +1,6 @@
 {
     "require": {
-        "tightenco/jigsaw": "^1.7",
+        "tightenco/jigsaw": "^1.8",
         "tempest/highlight": "^2.11"
     },
     "require-dev": {
@@ -9,7 +9,7 @@
     "scripts": {
         "dev": [
             "Composer\\Config::disableProcessTimeout",
-            "npx concurrently -c \"#93c5fd,#c4b5fd\" \"jigsaw serve\" \"npm run watch\" --names=serve,watch"
+            "npx concurrently -c \"#93c5fd,#c4b5fd\" \"jigsaw serve\" \"npm run dev\" --names=serve,vite"
         ]
     }
 }

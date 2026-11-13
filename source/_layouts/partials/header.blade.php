@@ -18,7 +18,7 @@
         </summary>
 
         <div class="bg-white/50 z-10 absolute top-12 -inset-x-4 backdrop-blur-xl">
-          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur">
+          <div class="bg-zinc-700/5 px-4 py-6 backdrop-blur-sm">
             @include('_layouts.partials.nav-search-mobile', [
               'url' => str_starts_with($page->getPath(), '/1.x/') ? '/1.x/docs/search' : '/docs/search',
               'placeholder' => str_starts_with($page->getPath(), '/1.x/') ? 'Search 1.x docs...' : 'Search 2.x docs...',
@@ -59,10 +59,10 @@
             </svg>
           </a>
 
-          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded bg-white shadow z-10">
+          <div class="absolute p-4 top-14 inset-x opacity-0 scale-0 -translate-y-8 transition group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 rounded-sm bg-white shadow-sm z-10">
             <ul class="space-y-1">
-              <li><a href="{{ $page->current_docs_index }}" class="block px-2 py-1 {{ ! str_starts_with($page->getPath(), '/1.x/') ? 'bg-zinc-900/20' : '' }} rounded">Version <span class="">{{ $page->current_version }}</span></a></li>
-              <li><a href="{{ $page->v1_docs_index }}" class="block px-2 py-1 {{ str_starts_with($page->getPath(), '/1.x') ? 'bg-zinc-900/20' : '' }} rounded">Version <span class="">{{ $page->latest_v1 }}</span></a></li>
+              <li><a href="{{ $page->current_docs_index }}" class="block px-2 py-1 {{ ! str_starts_with($page->getPath(), '/1.x/') ? 'bg-zinc-900/20' : '' }} rounded-sm">Version <span class="">{{ $page->current_version }}</span></a></li>
+              <li><a href="{{ $page->v1_docs_index }}" class="block px-2 py-1 {{ str_starts_with($page->getPath(), '/1.x') ? 'bg-zinc-900/20' : '' }} rounded-sm">Version <span class="">{{ $page->latest_v1 }}</span></a></li>
             </ul>
           </div>
         </div>

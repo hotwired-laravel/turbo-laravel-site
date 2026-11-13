@@ -4,7 +4,7 @@
   <li class="children mt-2">
     <ul class="list-inside space-y-1">
       @foreach ($section['children'] as $text => $link)
-      <li><a href="{{ $link }}" class="{{ $page->selected($link) ? 'bg-zinc-900/20' : '' }} transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded">{{ $text }}</a></li>
+      <li><a href="{{ $link }}" class="{{ $page->selected($link) ? 'bg-zinc-900/20' : '' }} transition hover:bg-zinc-900/20 w-full inline-block px-2 py-1 rounded-sm">{{ $text }}</a></li>
       @endforeach
     </ul>
   </li>

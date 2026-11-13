@@ -13,8 +13,9 @@
         <link rel="preload" href="{{ rtrim($page->baseUrl, '/') }}/assets/fonts/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
         <link rel="preload" href="{{ rtrim($page->baseUrl, '/') }}/assets/fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="{{ rtrim($page->baseUrl, '/') }}/assets/fonts/Jost-Italic.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
-        <script defer src="{{ mix('js/main.js', 'assets/build') }}"></script>
+        @viteRefresh()
+        <link rel="stylesheet" href="{{ vite('source/_assets/css/main.css') }}">
+        <script defer type="module" src="{{ vite('source/_assets/js/main.js') }}"></script>
 
         <!-- Open Graph data -->
         <meta property="og:title" content="@yield('title', $page->title)" />
