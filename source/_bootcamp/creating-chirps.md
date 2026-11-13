@@ -207,7 +207,7 @@ Again, this view is including a `form` partial. Create that file with the follow
             class="mt-2"
         />
 
-        <x-form.error :message="$errors->first('content')" />
+        <x-form.error :message="$errors->first('message')" />
     </div>
 
     <div class="flex items-center justify-start gap-4">

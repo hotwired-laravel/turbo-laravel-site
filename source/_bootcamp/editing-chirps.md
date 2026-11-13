@@ -65,7 +65,7 @@ We're going to use the `<x-dropdown>` component that comes with the starter kit,
                 @endunless+}
             </div>
 
-{+            @if (auth()->user()->id === $chirp->user->id)
+{+            @if (Auth::id() === $chirp->user->id)
             <x-dropdown class="dropdown-end">
                 <x-slot name="trigger" class="btn-ghost btn-xs">
                     <x-heroicon-o-ellipsis-vertical class="size-6" />
@@ -168,13 +168,13 @@ We're using the same `form` partial the create Chirps view uses. However, in thi
             class="mt-2"
         />
 
-        <x-form.error :message="$errors->first('content')" />
+        <x-form.error :message="$errors->first('message')" />
     </div>
 
     <div class="flex items-center justify-start gap-4">
         <x-form.button.primary type="submit">{{ __('Post') }}</x-form.button.primary>
         @if ($chirp ?? false)
-        <a href="{{ route('chirps.index') }}" class="dark:text-gray-400">{{ __('Cancel') }}</a>
+        <a href="{{ route('chirps.index') }}" class="btn btn-ghost">{{ __('Cancel') }}</a>
         @endif
     </div>
 </form>
