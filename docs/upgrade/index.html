@@ -170,9 +170,9 @@
 
 <h2 id="upgrading-from-1x-to-2x">Upgrading from 1.x to 2.x</h2>
 
-<p>For version 2.x, we're migrating from <code>hotwired/turbo-laravel</code> to <code>hotwired-laravel/turbo-laravel</code>. That's just so folks don't get confused thinking this is an official Hotwired project, which it's not. Even if you're on <code>1.x</code>, it's recommended to migrate to <code>hotwired-laravel/turbo-laravel</code>.</p>
+<p>For version 2.x, we're migrating from <code>hotwired/turbo-laravel</code> to <code>hotwired-laravel/turbo-laravel</code>. This is so folks don't mistake it for an official Hotwired project, which it's not. Even if you're staying on <code>1.x</code>, it's recommended that you migrate to <code>hotwired-laravel/turbo-laravel</code>.</p>
 
-<p>First, update the namespaces from the previous package. You can either do it from your IDE by searching for <code>Tonysm\TurboLaravel</code> and replacing it with <code>HotwiredLaravel\TurboLaravel</code> on your application (make sure you include all folders), or you can run the following command if you're on a macOS or Linux machine:</p>
+<p>First, update the namespaces from the previous package. You can either do it from your IDE by searching for <code>Tonysm\TurboLaravel</code> and replacing it with <code>HotwiredLaravel\TurboLaravel</code> across your application (make sure you include all folders), or you can run the following command if you're on a macOS or Linux machine:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">bash</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -182,7 +182,7 @@
 <pre><code class="language-bash">find app config resources tests <span class="hl-generic">-type</span> f <span class="hl-generic">-exec</span> sed <span class="hl-generic">-i</span> <span class="hl-value">'s/Tonysm\\TurboLaravel/HotwiredLaravel\\TurboLaravel/g'</span> {} +</code></pre>
 </div>
 
-<p>Next, update your views referencing the old components as <code>&lt;x-turbo-*</code> to the new format which is <code>&lt;x-turbo::*</code>. This command should be enough:</p>
+<p>Next, update views that reference the old components as <code>&lt;x-turbo-*</code> to the new <code>&lt;x-turbo::*</code> format. This command should be enough:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">bash</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">

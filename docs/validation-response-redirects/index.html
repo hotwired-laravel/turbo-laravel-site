@@ -168,29 +168,29 @@
       <div class="doc-body">
         
 
-<p>By default, Laravel redirects failed validation exceptions "back" to the page where the request came from. This isn't usually a problem, in fact it's the expected behavior, since that page usually is the one where the form which triggered the request renders.</p>
+<p>By default, when validation fails, Laravel redirects "back" to the page the request came from. This isn't usually a problem. In fact, it's the expected behavior, since that's usually the page that renders the form which triggered the request.</p>
 
-<p>However, this is a bit of a problem when it comes to Turbo Frames, since a form might get injected into a page that doesn't initially render it. The problem is that after a failed validation exception from that form, Laravel would redirect it "back" to the page where the form got injected and since the form is not rendered there initially, the user would see the form disappear.</p>
+<p>However, this becomes a problem with Turbo Frames, since a form might get injected into a page that doesn't initially render it. After a failed validation, Laravel would redirect "back" to the page where the form was injected and, since that page doesn't render the form initially, the user would see the form disappear.</p>
 
-<p>In other words, we can't redirect "back" to display the form again with the error messages, because the form might not be re-rendered there originally. Instead, Turbo expects that we return a non-200 HTTP status code with the form and validation messages right way after a failed validation exception is thrown.</p>
+<p>In other words, we can't redirect "back" to display the form again with the error messages, because that page might not render the form. Instead, Turbo expects us to return the form and validation messages with a non-200 HTTP status code right away after a validation failure.</p>
 
-<p>Turbo Laravel automatically prepends a <code>TurboMiddleware</code> on the web route group. The middleware will intercept the response when it detects that Laravel is responding after a <code>ValidationException</code>. Instead of letting it send the "redirect back" response, it will try to guess where the form for that request usually renders and send an internal request back to the app to render the form, then update the status code so it renders as a 422 instead of 200.</p>
+<p>Turbo Laravel automatically prepends a <code>TurboMiddleware</code> on the web route group. The middleware intercepts the response when it detects that Laravel is responding to a <code>ValidationException</code>. Instead of sending the "redirect back" response, it tries to guess where the form for that request usually renders, sends an internal request back to the app to render the form, and then changes the status code to 422 instead of 200.</p>
 
-<p>To guess where the form is located at we rely on the route resource naming convention. For any route name ending in <code>.store</code>, it will guess that the form can be located in a similar route ending with <code>.create</code> for the same resource. Similarly, for any route ending with <code>.update</code>, it will guess the form is located at a route ending with <code>.edit</code>. Additionally, for any route ending with <code>.destroy</code>, it will guess the form is located at a route ending with <code>.delete</code> (this is the only convention that is not there by default in Laravel's conventions.)</p>
+<p>To guess where the form is located, it relies on the resource route naming convention. For any route name ending in <code>.store</code>, it will guess that the form is located in a similar route ending with <code>.create</code> for the same resource. Similarly, for any route ending with <code>.update</code>, it will guess the form is located at a route ending with <code>.edit</code>. Additionally, for any route ending with <code>.destroy</code>, it will guess the form is located at a route ending with <code>.delete</code> (this is the only one that isn't part of Laravel's default conventions).</p>
 
-<p>For this internal request, the middleware will pass along any resource the current route has as well as any query string that was passed.</p>
+<p>For this internal request, the middleware will pass along any route parameters of the current route, as well as any query string that was passed.</p>
 
 <p>Here are some examples:</p>
 
 <ul>
 <li><code>posts.comments.store</code> will guess the form is at the <code>posts.comments.create</code> route with the <code>{post}</code> route param.</li>
 <li><code>comments.store</code> will guess the form is at the <code>comments.create</code> route with no route params.</li>
-<li><code>comments.update</code> will guess the form is at the <code>comments.edit</code> with the <code>{comment}</code> param.</li>
+<li><code>comments.update</code> will guess the form is at the <code>comments.edit</code> route with the <code>{comment}</code> param.</li>
 </ul>
 
-<p>If a guessed route name doesn't exist (which will always happen if you don't use the route resource convention), the middleware will not change the default handling of validation errors, so the regular "redirect back" behavior will act.</p>
+<p>If a guessed route name doesn't exist (which will always happen if you don't use the route resource convention), the middleware will not change the default handling of validation errors, so the regular "redirect back" behavior applies.</p>
 
-<p>When you're not using the <a href="/docs/conventions">resource route naming convention</a>, you may override redirect behavior by catching the <code>ValidationException</code> and re-throwing it setting the correct location where the form renders using the <code>redirectTo</code> method. If the exception has that, the middleware will respect it and make a GET request to that location instead of trying to guess it:</p>
+<p>When you're not using the <a href="/docs/conventions">resource route naming convention</a>, you may override the redirect behavior by catching the <code>ValidationException</code> and re-throwing it with the location where the form renders, using the <code>redirectTo</code> method. If the exception has a redirect location set, the middleware will respect it and make a GET request to that location instead of guessing:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -224,9 +224,9 @@
 
 <h2 id="the-turbo-http-middleware">The Turbo HTTP Middleware</h2>
 
-<p>Turbo Laravel ships with a middleware which applies some conventions on your redirects, like the one for how failed validations are handled automatically by Laravel as described before. Read more about this in the <a href="#conventions">Conventions</a> section of the documentation.</p>
+<p>Turbo Laravel ships with a middleware which applies some conventions on your redirects, like the one for how failed validations are handled automatically by Laravel as described before. Read more about this in the <a href="/docs/conventions">Conventions</a> section of the documentation.</p>
 
-<p><strong>The middleware is automatically prepended to your web route group middleware stack</strong>. You may want to add the middleware to other groups. When doing so, make sure it's at the top of the middleware stack:</p>
+<p><strong>The middleware is automatically prepended to your web route group middleware stack</strong>. If you want to add the middleware to other groups, make sure it's at the top of the middleware stack:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -252,7 +252,7 @@
     <span class="hl-keyword">protected</span> <span class="hl-property">$middlewareGroups</span> = [
         <span class="hl-value">'web'</span> =&gt; [
             <span class="hl-type">\HotwiredLaravel\TurboLaravel\Http\Middleware\TurboMiddleware</span>::<span class="hl-keyword">class</span>,
-            <span class="hl-comment">// other middlewares...</span>
+            <span class="hl-comment">// other middleware...</span>
         ],
     ];
 }</code></pre>

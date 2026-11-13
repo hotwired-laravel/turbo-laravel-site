@@ -168,7 +168,7 @@
       <div class="doc-body">
         
 
-<p>The Turbo Frame tag that ships with Turbo can be used on your Blade views just like any other HTML tag:</p>
+<p>The Turbo Frame tag that ships with Turbo can be used in your Blade views just like any other HTML tag:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -180,7 +180,7 @@
 &lt;/<span class="hl-keyword">turbo-frame</span>&gt;</code></pre>
 </div>
 
-<p>In this case, the <code>@domid()</code> directive is being used to create a DOM ID that looks like this <code>create_comment_post_123</code>. There's also a Blade Component that ships with Turbo Laravel and can be used like this:</p>
+<p>In this case, the <code>@domid()</code> directive is being used to create a DOM ID that looks like <code>create_comment_post_123</code>. Turbo Laravel also ships with a Blade Component that can be used like this:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -192,7 +192,7 @@
 &lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;</code></pre>
 </div>
 
-<p>When using the Blade Component, you don't have to worry about using the <code>@domid()</code> directive or the <code>dom_id()</code> function, as this gets handled automatically by the package. You may also pass a string if you want to enforce your own DOM ID.</p>
+<p>When using the Blade Component, you don't have to worry about using the <code>@domid()</code> directive or the <code>dom_id()</code> function, as the package handles this automatically. You may also pass a string if you want to use your own DOM ID.</p>
 
 <p>Any other attribute passed to the Blade Component will get forwarded to the underlying <code>&lt;turbo-frame&gt;</code> element, so if you want to turn a Turbo Frame into a lazy-loading Turbo Frame using the Blade Component, you can do it like so:</p>
 
@@ -210,11 +210,11 @@
 &lt;/<span class="hl-keyword">x-turbo::frame</span>&gt;</code></pre>
 </div>
 
-<p>This will work for any other attribute you want to forward to the underlying component.</p>
+<p>This works for any other attribute you want to forward to the underlying element.</p>
 
 <h2 id="detecting-turbo-frames-requests">Detecting Turbo Frames Requests</h2>
 
-<p>You may want to detect if a request came from a Turbo Frame in the backend. You may use the <code>wasFromTurboFrame()</code> method for that:</p>
+<p>You may want to detect in the backend whether a request came from a Turbo Frame. You may use the <code>wasFromTurboFrame()</code> method for that:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -226,7 +226,7 @@
 }</code></pre>
 </div>
 
-<p>When used like this, the macro will return <code>true</code> if the <code>X-Turbo-Frame</code> custom HTTP header is present in the request (which Turbo adds automatically), or <code>false</code> otherwise.</p>
+<p>When used like this, the macro will return <code>true</code> if the <code>Turbo-Frame</code> custom HTTP header is present in the request (which Turbo adds automatically), or <code>false</code> otherwise.</p>
 
 <p>You may also check if the request came from a specific Turbo Frame:</p>
 

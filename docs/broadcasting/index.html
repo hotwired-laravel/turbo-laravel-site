@@ -168,23 +168,23 @@
       <div class="doc-body">
         
 
-<p>So far, we've seen how we may generate Turbo Streams to either add it to our Blade views or return them from controllers after a form submission over HTTP. In addition to that, we may also broadcast model changes over WebSockets (or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events">Server-Sent Events</a>).</p>
+<p>So far, we've seen how to generate Turbo Streams, either to add them to our Blade views or to return them from controllers after a form submission over HTTP. In addition to that, we may also broadcast model changes over WebSockets (or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events">Server-Sent Events</a>).</p>
 
-<p>It's important to mention that this is an optional feature of Turbo and Turbo Laravel. <strong>You don't have to use Turbo Streams Broadcasting if you don't have the need for it</strong> in order to use Turbo.</p>
+<p>It's important to mention that this is an optional feature of Turbo and Turbo Laravel. <strong>You don't have to use Turbo Streams Broadcasting in order to use Turbo</strong> if you don't need it.</p>
 
-<p>We can make our model changes generate Turbo Streams. Yes, the exact same Turbo Streams tags we're used to. Remember, "HTML over the wire." Turbo Streams Broadcasting use <a href="https://github.com/laravel/echo">Laravel Echo</a> and <a href="https://laravel.com/docs/broadcasting">Laravel's Broadcasting</a> component.</p>
+<p>We can make our model changes generate Turbo Streams. Yes, the exact same Turbo Streams tags we're used to. Remember, "HTML over the wire." Turbo Streams Broadcasting uses <a href="https://github.com/laravel/echo">Laravel Echo</a> and <a href="https://laravel.com/docs/broadcasting">Laravel's Broadcasting</a> component.</p>
 
-<p>Broadcasts are usually triggered after a form submission. You may still return Turbo Streams over HTTP to the user that triggered the form submission, and only send the Turbo Stream Broadcasting to <em>other</em> users. This way, the user making the change will have an instant feedback compared to having to wait for the broadcasting over WebSockets, which may involve queue workers.</p>
+<p>Broadcasts are usually triggered after a form submission. You may still return Turbo Streams over HTTP to the user that triggered the form submission, and only send the Turbo Stream Broadcasting to <em>other</em> users. This way, the user making the change gets instant feedback instead of having to wait for the broadcast over WebSockets, which may involve queue workers.</p>
 
 <h2 id="configuration">Configuration</h2>
 
-<p>Broadcasting Turbo Streams relies heavily on <a href="https://laravel.com/docs/broadcasting">Laravel's Broadcasting</a>  component. This means you need to configure Laravel Echo in the frontend and either <a href="https://reverb.laravel.com/">Laravel Reverb</a> or a paid service like <a href="https://pusher.com/">Pusher</a>.</p>
+<p>Broadcasting Turbo Streams relies heavily on <a href="https://laravel.com/docs/broadcasting">Laravel's Broadcasting</a> component. This means you need to configure Laravel Echo in the frontend and either <a href="https://reverb.laravel.com/">Laravel Reverb</a> or a paid service like <a href="https://pusher.com/">Pusher</a>.</p>
 
 <h2 id="listening-to-broadcasts">Listening to Broadcasts</h2>
 
 <p>Turbo Laravel will publish a custom HTML tag to your application's <code>resources/js/elements</code> folder. This tag is called <code>&lt;turbo-echo-stream-source&gt;</code> (see <a href="https://github.com/hotwired-laravel/turbo-laravel/blob/main/stubs/resources/js/elements/turbo-echo-stream-tag.js">here</a>).</p>
 
-<p>You may add this tag to any Blade view passing the channel you want to listen to and users will start receiving Turbo Stream Broadcasts right away:</p>
+<p>You may add this tag to any Blade view, passing the channel you want to listen to, and users will start receiving Turbo Stream Broadcasts right away:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -196,7 +196,7 @@
 /&gt;</code></pre>
 </div>
 
-<p>For convenience, you may prefer using the <code>&lt;x-turbo::stream-from&gt;</code> Blade component that ships with Turbo Laravel (it requires that you have a custom element named <code>&lt;turbo-echo-stream-source&gt;</code> available, since that's the tag this component will render in HTML). You may pass the model as the <code>source</code> prop to it, it will figure out the channel name for that specific model using <a href="https://laravel.com/docs/broadcasting#model-broadcasting-conventions">Laravel's conventions</a>:</p>
+<p>For convenience, you may prefer using the <code>&lt;x-turbo::stream-from&gt;</code> Blade component that ships with Turbo Laravel (it requires that you have a custom element named <code>&lt;turbo-echo-stream-source&gt;</code> available, since that's the tag this component will render in HTML). You may pass the model as the <code>source</code> prop, and it will figure out the channel name for that specific model using <a href="https://laravel.com/docs/broadcasting#model-broadcasting-conventions">Laravel's conventions</a>:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -206,7 +206,7 @@
 <pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::stream-from</span> <span class="hl-property">:source</span>=&quot;$post&quot; /&gt;</code></pre>
 </div>
 
-<p>By default, it expects a private channel, so it must be used in a page where users are already authenticated. You may control the channel type in the tag with a <code>type</code> attribute.</p>
+<p>By default, it expects a private channel, so it must be used on a page where users are already authenticated. You may control the channel type in the tag with a <code>type</code> attribute.</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -236,7 +236,7 @@
 
 <h2 id="broadcasting-model-changes">Broadcasting Model Changes</h2>
 
-<p>To be broadcast model changes for a particular, you must add the <code>Broadcasts</code> trait to your models:</p>
+<p>To broadcast changes for a particular model, you must add the <code>Broadcasts</code> trait to it:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -271,7 +271,7 @@
 });</code></pre>
 </div>
 
-<p>Here are the methods now available to your model:</p>
+<p>Here are the methods now available on your model:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -288,7 +288,7 @@
 <span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastRefresh</span>();</code></pre>
 </div>
 
-<p>These methods will assume you want to broadcast to your model's channel. In this case, it would broadcast the Turbo Streams to a private channel named <code>App.Models.Comments.{id}</code>.</p>
+<p>These methods will assume you want to broadcast to your model's channel. In this case, it would broadcast the Turbo Streams to a private channel named <code>App.Models.Comment.{id}</code>.</p>
 
 <p>Additionally, you may send these broadcasts to any other model's channel:</p>
 
@@ -311,7 +311,7 @@
 
 <p>When it receives a model, it will guess the channel name using Laravel's <a href="https://laravel.com/docs/broadcasting#model-broadcasting-conventions">Broadcasting channel naming convention</a>.</p>
 
-<p>All of these broadcasting methods return an instance of the <code>PendingBroadcast</code> class that will only dispatch the broadcasting job when that pending object is being garbage collected. Which means you may make changes to this pending broadcast by chaining on the returned object:</p>
+<p>All of these broadcasting methods return an instance of the <code>PendingBroadcast</code> class, which will only dispatch the broadcasting job when the pending object is garbage collected. This means you may make changes to the pending broadcast by chaining on the returned object:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -328,7 +328,7 @@
     -&gt;<span class="hl-property">later</span>(); <span class="hl-comment">// Don't send it now, dispatch a job to send in background instead...</span></code></pre>
 </div>
 
-<p>You may want to hook these broadcasts from your <a href="https://laravel.com/docs/eloquent#events">model's events</a> to trigger Turbo Stream broadcasts whenever your models are changed in any context:</p>
+<p>You may want to hook these broadcasts into your <a href="https://laravel.com/docs/eloquent#events">model's events</a> to trigger Turbo Stream broadcasts whenever your models are changed in any context:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -356,7 +356,7 @@
 }</code></pre>
 </div>
 
-<p>For convenience, instead of adding all these lines to achieve this set of broadcasting, you may add a <code>$broadcasts = true</code> property to your model class. This property instructs the <code>Brodcasts</code> trait to automatically hook the model Turbo Stream broadcasts on the correct events:</p>
+<p>For convenience, instead of adding all these lines to achieve this set of broadcasting, you may add a <code>$broadcasts = true</code> property to your model class. This property instructs the <code>Broadcasts</code> trait to automatically hook the model Turbo Stream broadcasts on the correct events:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -371,7 +371,7 @@
 }</code></pre>
 </div>
 
-<p>This achieves almost the same set of Broadcasts as the previous example, with a few nuanced differences. First, by default, it will broadcast an <code>append</code> Turbo Stream on newly created models. You may want to use <code>prepend</code> instead. You may do that by changing the <code>$broadcasts</code> property to be a configuration array instead of a boolean <code>true</code>, then set the <code>insertsBy</code> key to <code>prepend</code>:</p>
+<p>This achieves almost the same set of broadcasts as the previous example, with a few nuanced differences. First, by default, it will broadcast an <code>append</code> Turbo Stream for newly created models. If you want to use <code>prepend</code> instead, you may do so by changing the <code>$broadcasts</code> property to be a configuration array instead of a boolean <code>true</code>, then set the <code>insertsBy</code> key to <code>prepend</code>:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -388,7 +388,7 @@
 }</code></pre>
 </div>
 
-<p>When using the <code>$broadcasts</code> property, the Turbo Stream broadcasts will be sent to the current model's channel. However, since the channels use the model's ID as per the naming convention, no one will ever be able to listen on that channel before the model is created. For that reason, Turbo Stream broadcasts of newly created models will be sent to a private channel using the model's plural name instead. You may also configure which <code>stream</code> name this specific Turbo Stream should be sent to by setting the <code>stream</code> key on the <code>$broadcasts</code> property:</p>
+<p>When using the <code>$broadcasts</code> property, the Turbo Stream broadcasts will be sent to the current model's channel. However, since the channel names include the model's ID as per the naming convention, no one would be able to listen on that channel before the model is created. For that reason, Turbo Stream broadcasts of newly created models will be sent to a private channel using the model's plural name instead. You may also configure which <code>stream</code> name this specific Turbo Stream should be sent to by setting the <code>stream</code> key on the <code>$broadcasts</code> property:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -406,9 +406,9 @@
 }</code></pre>
 </div>
 
-<p>This will send the Turbo Stream broadcast to private channel called <code>my-comments</code> when a new comment is created.</p>
+<p>This will send the Turbo Stream broadcast to a private channel called <code>my-comments</code> when a new comment is created.</p>
 
-<p>Alternatively, you may also set a <code>$broadcastsTo</code> property with either a string with the name of the relationship to be used to resolve the channel, or an array of relationships if you want to send the broadcast to multiple related model's channels:</p>
+<p>Alternatively, you may set a <code>$broadcastsTo</code> property to either a string with the name of the relationship used to resolve the channel, or an array of relationships if you want to send the broadcast to multiple related models' channels:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -465,11 +465,11 @@
 }</code></pre>
 </div>
 
-<p>Having a <code>$broadcastsTo</code> property or implementing the <code>broadcastsTo()</code> method in your model will have precedence over the <code>stream</code> key of the <code>$broadcasts</code> property.</p>
+<p>Having a <code>$broadcastsTo</code> property or implementing the <code>broadcastsTo()</code> method in your model will take precedence over the <code>stream</code> key of the <code>$broadcasts</code> property.</p>
 
 <h2 id="broadcasting-page-refreshes">Broadcasting Page Refreshes</h2>
 
-<p>Similar to the <code>$broadcasts</code> property, you may want to automatically configure page refresh broadcasts on a modal. You may use the <code>$broadcastsRefreshes</code> property for that:</p>
+<p>Similar to the <code>$broadcasts</code> property, you may want to automatically configure page refresh broadcasts on a model. You may use the <code>$broadcastsRefreshes</code> property for that:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -540,9 +540,9 @@
 }</code></pre>
 </div>
 
-<p>This will send page refreshes broadcasts to the related <code>Post</code> model channel.</p>
+<p>This will send page refresh broadcasts to the related <code>Post</code> model's channel.</p>
 
-<p>Alternatively, you may specific a <code>broadcastsRefreshesTo</code> method instead of a property:</p>
+<p>Alternatively, you may define a <code>broadcastsRefreshesTo()</code> method instead of a property:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -573,7 +573,7 @@
 
 <h2 id="broadcasting-turbo-streams-to-other-users-only">Broadcasting Turbo Streams to Other Users Only</h2>
 
-<p>As mentioned earlier, you may want to feed the current user with Turbo Streams using HTTP requests and only send the broadcasts to other users. You may achieve that by chaining on the pending broadcast object that returns from all <code>broadcastX</code> methods:</p>
+<p>As mentioned earlier, you may want to feed the current user with Turbo Streams using HTTP requests and only send the broadcasts to other users. You may achieve that by chaining on the pending broadcast object returned from all <code>broadcastX</code> methods:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -583,7 +583,7 @@
 <pre><code class="language-php"><span class="hl-variable">$comment</span>-&gt;<span class="hl-property">broadcastAppendTo</span>(<span class="hl-variable">$post</span>)-&gt;<span class="hl-property">toOthers</span>();</code></pre>
 </div>
 
-<p>Alternatively, you may use the Turbo Facade like so to configure a scope where all broadcast Turbo Streams triggered inside of it will be sent to other users only:</p>
+<p>Alternatively, you may use the Turbo Facade to configure a scope where all Turbo Stream broadcasts triggered inside it will be sent to other users only:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -597,7 +597,7 @@
 });</code></pre>
 </div>
 
-<p>If you always want to send broadcasts to other users excluding the current user from receiving broadcasts, you may call the <code>broadcastToOthers</code> without passing a closure to it somewhere globally like a middleware or the <code>AppServiceProvider::boot()</code> method:</p>
+<p>If you always want to exclude the current user from receiving broadcasts, you may call the <code>broadcastToOthers()</code> method without a Closure somewhere global, like a middleware or the <code>AppServiceProvider::boot()</code> method:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -620,7 +620,7 @@
 }</code></pre>
 </div>
 
-<p>This only applies to broadcasts generated in an HTTP request, because this relies on having the <code>X-Socket-ID</code> header in the request, which Laravel Echo sets automatically. Any broadcast generate from a queue worker, for instance, will always be broadcast to all users listening on the broadcast channels.</p>
+<p>This only applies to broadcasts generated in an HTTP request, because this relies on having the <code>X-Socket-ID</code> header in the request, which Laravel Echo sets automatically. Any broadcast generated from a queue worker, for instance, will always be sent to all users listening on the broadcast channels.</p>
 
 <h2 id="handmade-broadcasts">Handmade Broadcasts</h2>
 
@@ -655,7 +655,7 @@
 <span class="hl-type">TurboStream</span>::<span class="hl-property">broadcastRefresh</span>();</code></pre>
 </div>
 
-<p>All of these methods, except the <code>broadcastRemove()</code> and <code>broadcastRefresh</code>, accept a <code>$content</code> parameter that may be a View instance, an instance of the <code>HtmlString</code> class, or a simple string:</p>
+<p>All of these methods, except <code>broadcastRemove()</code> and <code>broadcastRefresh()</code>, accept a <code>$content</code> parameter that may be a View instance, an instance of the <code>HtmlString</code> class, or a simple string:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -714,7 +714,7 @@
     -&gt;<span class="hl-property">toPresenceChannel</span>(<span class="hl-value">'user.123'</span>);</code></pre>
 </div>
 
-<p>Using the <code>broadcastAction()</code> will allow you to broadcast any custom Turbo Stream action, so you're not limited to the default ones when using this approach:</p>
+<p>The <code>broadcastAction()</code> method allows you to broadcast any custom Turbo Stream action, so you're not limited to the default ones when using this approach:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -726,7 +726,7 @@
 
 <h2 id="handmade-broadcasting-using-the-turbo-stream-response-builder">Handmade Broadcasting Using The <code>turbo_stream()</code> Response Builder</h2>
 
-<p>One more alternative to broadcasting Turbo Streams is to call the <code>broadcastTo()</code> method on the returned object of the <code>turbo_stream()</code> function:</p>
+<p>One more alternative for broadcasting Turbo Streams is to call the <code>broadcastTo()</code> method on the object returned by the <code>turbo_stream()</code> function:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -738,7 +738,7 @@
     -&gt;<span class="hl-property">broadcastTo</span>(<span class="hl-value">'general'</span>);</code></pre>
 </div>
 
-<p>This will tap on the <code>PendingTurboStreamResponse</code> and create a <code>PendingBroadcast</code> from it. It's important to note that this will return the same <code>PendingTurboStreamResponse</code>, not the <code>PendingBroadcast</code>. If you want to configure the <code>PendingBroadcast</code> that will be generated, you must do that before calling the <code>broadcastTo()</code> method, but you may also pass a <code>Closure</code> as the second parameter:</p>
+<p>This will tap on the <code>PendingTurboStreamResponse</code> and create a <code>PendingBroadcast</code> from it. It's important to note that this returns the same <code>PendingTurboStreamResponse</code>, not the <code>PendingBroadcast</code>. If you want to configure the generated <code>PendingBroadcast</code>, you may pass a <code>Closure</code> as the second parameter:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -750,7 +750,7 @@
     -&gt;<span class="hl-property">broadcastTo</span>(<span class="hl-value">'general'</span>, <span class="hl-keyword">fn</span> (<span class="hl-injection">$broadcast</span>) =&gt; <span class="hl-variable">$broadcast</span>-&gt;<span class="hl-property">toOthers</span>());</code></pre>
 </div>
 
-<p>The first argument must be either a string, an Eloquent model, or an instance of the <code>Illuminate\Broadcasting\Channel</code> class as the channel:</p>
+<p>The first argument is the channel, which must be either a string, an Eloquent model, or an instance of the <code>Illuminate\Broadcasting\Channel</code> class:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -771,7 +771,7 @@
 <pre><code class="language-php"><span class="hl-comment">// Broadcast to private channels...</span>
 <span class="hl-property">turbo_stream</span>()
     -&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-value">'Hello World'</span>)
-    -&gt;<span class="hl-property">broadcastToPrivateChannel</span>(<span class="hl-value">'user.123'</span>, <span class="hl-keyword">fn</span> (<span class="hl-injection">$broadcast</span>) =&gt; <span class="hl-variable">$broadcast</span>-&gt;<span class="hl-property">toOthers</span>())
+    -&gt;<span class="hl-property">broadcastToPrivateChannel</span>(<span class="hl-value">'user.123'</span>, <span class="hl-keyword">fn</span> (<span class="hl-injection">$broadcast</span>) =&gt; <span class="hl-variable">$broadcast</span>-&gt;<span class="hl-property">toOthers</span>());
 
 <span class="hl-comment">// Broadcast to presence channels...</span>
 <span class="hl-property">turbo_stream</span>()

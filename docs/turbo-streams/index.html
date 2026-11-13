@@ -168,9 +168,9 @@
       <div class="doc-body">
         
 
-<p>Out of everything Turbo provides, it's Turbo Streams that benefits the most from a tight backend integration.</p>
+<p>Out of everything Turbo provides, Turbo Streams benefit the most from a tight backend integration.</p>
 
-<p>Turbo Laravel offers helper functions, Blade Components, and <a href="/docs/broadcasting">Model traits</a> to generate Turbo Streams. Turbo will add a new <code>Content-Type</code> to the HTTP Accept header (<code>Accept: text/vnd.turbo-stream.html, ...</code>) on Form submissions. This is a signal to the backend that we can return a Turbo Stream response for that form submission instead of an HTML document, if we want to.</p>
+<p>Turbo Laravel offers helper functions, Blade Components, and <a href="/docs/broadcasting">Model traits</a> to generate Turbo Streams. On form submissions, Turbo adds a new MIME type to the HTTP Accept header (<code>Accept: text/vnd.turbo-stream.html, ...</code>). This is a signal to the backend that we can return a Turbo Stream response for that form submission instead of an HTML document, if we want to.</p>
 
 <p>Here's an example of a route handler detecting and returning a Turbo Stream response to a form submission:</p>
 
@@ -190,9 +190,9 @@
 });</code></pre>
 </div>
 
-<p>The <code>request()-&gt;wantsTurboStream()</code> macro added to the request class will check if the request accepts Turbo Stream and return <code>true</code> or <code>false</code> accordingly.</p>
+<p>The <code>request()-&gt;wantsTurboStream()</code> macro added to the request class will check if the request accepts Turbo Streams and return <code>true</code> or <code>false</code> accordingly.</p>
 
-<p>The <code>turbo_stream()</code> helper function may be used to generate streams, but you may also use the <code>response()-&gt;turboStream()</code> macro as well. In the docs, we'll only use the helper function, but you may use either one of those.</p>
+<p>The <code>turbo_stream()</code> helper function may be used to generate streams, but you may also use the <code>response()-&gt;turboStream()</code> macro. In these docs, we'll only use the helper function, but you may use either one.</p>
 
 <p>Here's what the HTML response will look like:</p>
 
@@ -210,7 +210,7 @@
 &lt;/<span class="hl-keyword">turbo-stream</span>&gt;</code></pre>
 </div>
 
-<p>Most of these things were "guessed" based on the <a href="/docs/conventions">conventions</a> we talked about earlier. But you can override most things, like so:</p>
+<p>Most of these values were "guessed" based on the <a href="/docs/conventions">conventions</a> we talked about earlier, but you can override most of them, like so:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -236,7 +236,7 @@
 &lt;/<span class="hl-keyword">turbo-stream</span>&gt;</code></pre>
 </div>
 
-<p>Although it's handy to pass a model instance to the <code>turbo_stream()</code> function - which will be used to decide the default values of the Turbo Stream response based on the model's current state, sometimes you may want to build a Turbo Stream response manually:</p>
+<p>Although it's handy to pass a model instance to the <code>turbo_stream()</code> function (which will be used to decide the default values of the Turbo Stream response based on the model's current state), sometimes you may want to build a Turbo Stream response manually:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -249,7 +249,7 @@
     -&gt;<span class="hl-property">view</span>(<span class="hl-value">'comments.partials.comment'</span>, [<span class="hl-value">'comment'</span> =&gt; <span class="hl-variable">$comment</span>]);</code></pre>
 </div>
 
-<p>There are also shorthand methods which may be used as well:</p>
+<p>There are also shorthand methods you may use:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -266,9 +266,9 @@
 <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">refresh</span>();</code></pre>
 </div>
 
-<p>You may pass an instance of an Eloquent model to all these shorthand methods, except the <code>refresh</code> one, which will be used to figure things out like <code>target</code>, the <code>view</code>, and will also pass that model instance to the view.</p>
+<p>You may pass an Eloquent model instance to all of these shorthand methods, except <code>refresh</code>. The model will be used to figure out things like the <code>target</code> and the <code>view</code>, and it will also be passed to the view.</p>
 
-<p>For a model <code>App\Models\Comment</code>, the <a href="/docs/conventions">convention</a> says that the view is located at <code>resources/views/comments/_comment.blade.php</code>. Based on the model's class basename, it will figure out the name of the variable that the view should depend on, which would be <code>$comment</code> in this case, so it would pass the model instance down to the view automatically. For that reason, when using the convention (which is optional), the model view must only depend on the model instance to be available (no globals or other locals with no defaults).</p>
+<p>For a model <code>App\Models\Comment</code>, the <a href="/docs/conventions">convention</a> says that the view is located at <code>resources/views/comments/_comment.blade.php</code>. Based on the model's class basename, it will figure out the name of the variable that the view should depend on, which would be <code>$comment</code> in this case, so it would pass the model instance down to the view automatically. For that reason, when using the convention (which is optional), the model's view must only depend on the model instance (no globals or other locals without defaults).</p>
 
 <p>Alternatively, you may also pass strings to the shorthand stream builders, which will be used as the target, and an optional content string, which will be rendered instead of a partial, for instance:</p>
 
@@ -321,7 +321,7 @@
 &lt;/<span class="hl-keyword">turbo-stream</span>&gt;</code></pre>
 </div>
 
-<p>For both the <code>before</code> and <code>after</code> methods you need additional calls to specify the view template you want to insert, since the given model/string will only be used to specify the target, something like:</p>
+<p>For both the <code>before</code> and <code>after</code> methods, you need an additional call to specify the view template you want to insert, since the given model/string will only be used as the target, something like:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -335,7 +335,7 @@
     ]);</code></pre>
 </div>
 
-<p>Just like the other shorthand stream builders, you may also pass an option content string or <code>HtmlString</code> instance to the <code>before</code> and <code>after</code> shorthands. When doing that, you don't need to specify the view section.</p>
+<p>Just like the other shorthand stream builders, you may also pass an optional content string or <code>HtmlString</code> instance to the <code>before</code> and <code>after</code> shorthands. When doing that, you don't need to specify the view.</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -349,7 +349,7 @@
 
 <p>As mentioned earlier, passing a model to the <code>turbo_stream()</code> helper (or the shorthand Turbo Stream builders) will pre-fill the pending response object with some defaults based on the model's state.</p>
 
-<p>It will build a <code>remove</code> Turbo Stream if the model was just deleted (or if it was trashed - in case it's a Soft Deleted model), an <code>append</code> if the model was recently created (which you can override the action as the second parameter), a <code>replace</code> if the model was just updated (you can also change it to <code>update</code> using the second parameter.) Here's how overriding would look like:</p>
+<p>It will build a <code>remove</code> Turbo Stream if the model was just deleted (or trashed, in case it's a soft-deleted model), an <code>append</code> if the model was recently created (you may override the action using the second parameter), and a <code>replace</code> if the model was just updated (you may also change it to <code>update</code> using the second parameter). Here's what overriding looks like:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -413,7 +413,7 @@
 
 <h2 id="target-multiple-elements">Target Multiple Elements</h2>
 
-<p>Turbo Stream elements can either have a <code>target</code> with a DOM ID or a <code>targets</code> attribute with a CSS selector to <a href="https://turbo.hotwired.dev/reference/streams#targeting-multiple-elements">match multiple elements</a>. You may use the <code>xAll</code> shorthand methods to set the <code>targets</code> attribute instead of <code>target</code>:</p>
+<p>Turbo Stream elements can either have a <code>target</code> with a DOM ID or a <code>targets</code> attribute with a CSS selector to <a href="https://turbo.hotwired.dev/reference/streams#targeting-multiple-elements">match multiple elements</a>. You may use the <code>*All</code> shorthand methods to set the <code>targets</code> attribute instead of <code>target</code>:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -429,9 +429,9 @@
 <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">removeAll</span>(<span class="hl-value">'.comment'</span>);</code></pre>
 </div>
 
-<p>With the exception of the <code>removeAll</code> method, the <code>xAll</code> methods accept a string of inline content, an instance of a View (which may be created using the <code>view()</code> function provided by Laravel), or an instance of the <code>HtmlSafe</code> class as the second parameter.</p>
+<p>With the exception of the <code>removeAll</code> method, the <code>*All</code> methods accept a string of inline content, a View instance (which may be created using Laravel's <code>view()</code> function), or an instance of the <code>HtmlString</code> class as the second parameter.</p>
 
-<p>When creating Turbo Streams using the builders, you may also specify the CSS class using the <code>targets()</code> (plural) method instead of the <code>target()</code> (singular) version:</p>
+<p>When creating Turbo Streams using the builders, you may also specify a CSS selector using the <code>targets()</code> (plural) method instead of the <code>target()</code> (singular) version:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -475,7 +475,7 @@
 }</code></pre>
 </div>
 
-<p>Chances are you're gonna return flash messages from all your controllers, so you could create a custom macro like so:</p>
+<p>Chances are you're going to return flash messages from all your controllers, so you could create a custom macro like so:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">php</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -513,9 +513,6 @@
         <span class="hl-keyword">if</span> (<span class="hl-variable">$request</span>-&gt;<span class="hl-property">wantsTurboStream</span>()) {
             <span class="hl-keyword">return</span> <span class="hl-property">turbo_stream</span>([
                 <span class="hl-property">turbo_stream</span>(<span class="hl-variable">$chirp</span>),
-                <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">append</span>(<span class="hl-value">'notifications'</span>, <span class="hl-property">view</span>(<span class="hl-value">'layouts.notification'</span>, [
-                    <span class="hl-value">'message'</span> =&gt; <span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>),
-                ])),
                 <span class="hl-property">turbo_stream</span>()-&gt;<span class="hl-property">flash</span>(<span class="hl-property">__</span>(<span class="hl-value">'Chirp deleted.'</span>)),
             ]);
         }
@@ -561,7 +558,7 @@
 ]);</code></pre>
 </div>
 
-<p>Similar to the <code>turbo_stream()</code> helper function and the <code>Response::turboStream()</code> macro, you may prefer using the <code>Response::turboStreamView()</code> macro. It works the same way.</p>
+<p>Similar to the <code>turbo_stream()</code> helper function and the <code>Response::turboStream()</code> macro, you may prefer using the <code>Response::turboStreamView()</code> macro instead. It works the same way.</p>
 
 <p>Here's an example of a more complex custom Turbo Stream view:</p>
 
@@ -579,7 +576,7 @@
 &lt;/<span class="hl-keyword">turbo-stream</span>&gt;</code></pre>
 </div>
 
-<p>Remember, these are Blade views, so you have the full power of Blade at your hands. In this example, we're including a shared Turbo Stream partial which could append any flash messages we may have. That <code>layouts.turbo.flash_stream</code> could look like this:</p>
+<p>Remember, these are Blade views, so you have the full power of Blade at your disposal. In this example, we're including a shared Turbo Stream partial that appends any flash messages we may have. That <code>layouts.turbo.flash_stream</code> could look like this:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -595,7 +592,7 @@
 <span class="hl-keyword">@endif</span></code></pre>
 </div>
 
-<p>Similar to the <code>&lt;x-turbo::frame&gt;</code> Blade component, there's also a <code>&lt;x-turbo::stream&gt;</code> Blade component that can simplify things a bit. It has the same convention of figuring out the DOM ID when you're passing a model instance or an array as <code>target</code> attribute of the <code>&lt;x-turbo::frame&gt;</code> component. When using the component version, there's no need to specify the template wrapper for the Turbo Stream tag, as that will be added by the component itself. So, the same example would look something like this:</p>
+<p>Similar to the <code>&lt;x-turbo::frame&gt;</code> Blade component, there's also a <code>&lt;x-turbo::stream&gt;</code> Blade component that can simplify things a bit. It follows the same convention for figuring out the DOM ID when you pass a model instance or an array as the <code>target</code> attribute. When using the component version, there's no need to add the <code>&lt;template&gt;</code> wrapper to the Turbo Stream tag, as the component adds it for you. So, the same example would look something like this:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -609,11 +606,11 @@
 &lt;/<span class="hl-keyword">x-turbo::stream</span>&gt;</code></pre>
 </div>
 
-<p>I hope you can see how powerful this can be to reusing views.</p>
+<p>I hope you can see how powerful this can be for reusing views.</p>
 
 <h2 id="custom-actions">Custom Actions</h2>
 
-<p>You may also use the <code>&lt;x-turbo::stream&gt;</code> Blade component for your custom actions as well:</p>
+<p>You may also use the <code>&lt;x-turbo::stream&gt;</code> Blade component for your custom actions:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -623,7 +620,7 @@
 <pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::stream</span> <span class="hl-property">action</span>=&quot;console_log&quot; <span class="hl-property">value</span>=&quot;Hello World&quot; /&gt;</code></pre>
 </div>
 
-<p>Custom actions are only supported from Blade views. You cannot return those from controllers using the Pending Streams Builder.</p>
+<p>Custom actions are only supported from Blade views. You cannot return them from controllers using the pending Turbo Stream builder.</p>
 
       </div>
     </article>

@@ -168,17 +168,17 @@
       <div class="doc-body">
         
 
-<p>It's highly recommended that you read the <a href="https://turbo.hotwired.dev/handbook/introduction">Turbo Handbook</a> first before continuing here. However, a quick intro will be provided here and we'll link to the Turbo documentations when relevant.</p>
+<p>It's highly recommended that you read the <a href="https://turbo.hotwired.dev/handbook/introduction">Turbo Handbook</a> before continuing. However, we'll provide a quick intro here and link to the Turbo documentation when relevant.</p>
 
 <p>Turbo is the heart of Hotwire. In essence, it's a JavaScript library that turns regular web applications (aka. multi-page web applications) into something that <em>feels</em> like a single-page application (SPA).</p>
 
-<p>It provides a bunch of components that allows us to build modern web applications with minimal JavaScript. It relies on sending <strong>H</strong>TML <strong>O</strong>ver <strong>T</strong>he <strong>Wire</strong> (hence the name), instead of JSON, which is how JavaScript-heavy web applications are built, typically consuming some sort of JSON API.</p>
+<p>It provides a set of components that allow us to build modern web applications with minimal JavaScript. It relies on sending <strong>H</strong>TML <strong>O</strong>ver <strong>T</strong>he <strong>Wire</strong> (hence the name) instead of JSON, which is how JavaScript-heavy web applications are typically built, consuming some sort of JSON API.</p>
 
-<p>When Turbo.js is started in the browser, it intercepts link clicks and form submissions to convert those into fetch requests (aka. AJAX) instead of letting the browser do a full page refresh. The component in Turbo that handles this behavior is called <a href="https://turbo.hotwired.dev/handbook/drive">Turbo Drive</a>.</p>
+<p>When Turbo.js is started in the browser, it intercepts link clicks and form submissions and converts them into fetch requests (aka. AJAX) instead of letting the browser do a full page refresh. The component in Turbo that handles this behavior is called <a href="https://turbo.hotwired.dev/handbook/drive">Turbo Drive</a>.</p>
 
-<p>Turbo Drive will do the heavy-lifting of the <em>SPA feel</em> in our application. Just by turning it on, the <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Performance/Perceived_performance">perceived performance</a> should be noticeable. The default behavior of Turbo will be to <em>replace</em> the contents of the <code>&lt;body&gt;</code> tag in our page with the one from the response it gets from the link or form submission.</p>
+<p>Turbo Drive does the heavy lifting of the <em>SPA feel</em> in our application. Just by turning it on, the improvement in <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Performance/Perceived_performance">perceived performance</a> should be noticeable. By default, Turbo <em>replaces</em> the contents of the page's <code>&lt;body&gt;</code> tag with the one from the response to the link click or form submission.</p>
 
-<p>Additionally, since Turbo 8, we can also instruct Turbo to <a href="https://turbo.hotwired.dev/handbook/page_refreshes"><em>morph</em> the page</a> instead of just replacing its contents by adding a meta tag on the pages we can it enabled:</p>
+<p>Additionally, since Turbo 8, we can also instruct Turbo to <a href="https://turbo.hotwired.dev/handbook/page_refreshes"><em>morph</em> the page</a> instead of just replacing its contents, by adding meta tags to the pages where we want it enabled:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">html</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -199,9 +199,9 @@
 <pre><code class="language-blade">&lt;<span class="hl-keyword">x-turbo::refreshes-with</span> <span class="hl-property">method</span>=&quot;morph&quot; <span class="hl-property">scroll</span>=&quot;preserve&quot; /&gt;</code></pre>
 </div>
 
-<p>Turbo Drive does a lot for us, and with <em>morphing</em> it gets even more powerful, but sometimes you can want to <a href="https://turbo.hotwired.dev/handbook/frames">decompose a page into independent sections</a> (for different reasons, such as having more control over HTTP caching for these sections). For these use cases, Turbo offers <em>Turbo Frames</em>.</p>
+<p>Turbo Drive does a lot for us, and with <em>morphing</em> it gets even more powerful, but sometimes you may want to <a href="https://turbo.hotwired.dev/handbook/frames">decompose a page into independent sections</a> (for different reasons, such as having more control over HTTP caching for these sections). For these use cases, Turbo offers <em>Turbo Frames</em>.</p>
 
-<p>Turbo Frames are custom HTML tags that Turbo provides. You can think of those as "modern iframes", if you will. When link clicks or form submissions happen inside of a Turbo Frame, instead of replacing or morphing the entire page, Turbo will only affect that specific Turbo Frame's content. It will do so by extracting a <em>matching Turbo Frame</em> (one that has the same DOM ID) on the response.</p>
+<p>Turbo Frames are custom HTML tags that Turbo provides. You can think of them as "modern iframes", if you will. When link clicks or form submissions happen inside a Turbo Frame, instead of replacing or morphing the entire page, Turbo only updates that specific Turbo Frame's content. It does so by extracting the <em>matching Turbo Frame</em> (one with the same DOM ID) from the response.</p>
 
 <p>Here's how you can use Turbo Frames:</p>
 
@@ -217,7 +217,7 @@
 &lt;/<span class="hl-keyword">turbo-frame</span>&gt;</code></pre>
 </div>
 
-<p>Alternatively, you may want a Turbo Frame to immediately fetch its contents instead of waiting for a user interaction. For that, you may add a <code>[src]</code> attribute to the Turbo Frame tag with the URL of where Turbo should fetch that content from. This technique is called <a href="https://turbo.hotwired.dev/handbook/frames#lazy-loading-frames">Lazy-loading Turbo Frames</a>:</p>
+<p>Alternatively, you may want a Turbo Frame to fetch its contents immediately instead of waiting for a user interaction. For that, you may add a <code>[src]</code> attribute to the Turbo Frame tag with the URL Turbo should fetch the content from. This technique is called <a href="https://turbo.hotwired.dev/handbook/frames#lazy-loading-frames">Lazy-loading Turbo Frames</a>:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -229,7 +229,7 @@
 &lt;/<span class="hl-keyword">turbo-frame</span>&gt;</code></pre>
 </div>
 
-<p>A lazy-loaded Turbo Frame will dispatch a fetch request (aka. AJAX) as soon as it enters the DOM, replacing its contents with the contents of a matching Turbo Frame in the response HTML. Optionally, you may add a <code>[loading=lazy]</code> attribute to the lazy-loaded Turbo Frame so Turbo will only fetch its content when the Turbo Frame is visible (within the viewport):</p>
+<p>A lazy-loaded Turbo Frame will dispatch a fetch request (aka. AJAX) as soon as it enters the DOM, replacing its contents with the contents of a matching Turbo Frame in the response HTML. Optionally, you may add a <code>[loading=lazy]</code> attribute to the lazy-loaded Turbo Frame so Turbo only fetches its content when the Turbo Frame becomes visible (within the viewport):</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -241,7 +241,7 @@
 &lt;/<span class="hl-keyword">turbo-frame</span>&gt;</code></pre>
 </div>
 
-<p>You may also trigger a Turbo Frame with forms and links that are <em>outside</em> of the frame tag by adding a <code>[data-turbo-frame]</code> attribute in the link, form, or submit buttons, passing the ID of the Turbo Frame:</p>
+<p>You may also trigger a Turbo Frame with forms and links that are <em>outside</em> of the frame tag by adding a <code>[data-turbo-frame]</code> attribute to the link, form, or submit button, passing the ID of the Turbo Frame:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">blade</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -257,11 +257,11 @@
 &lt;/<span class="hl-keyword">div</span>&gt;</code></pre>
 </div>
 
-<p>Turbo Drive and Turbo Frames allows us to build A LOT of different sorts of interactions. However, sometimes you may want to update multiple sections of a page after a form submission, for instance. For those use cases, Turbo provides another custom HTML tag called <a href="https://turbo.hotwired.dev/handbook/streams">Turbo Streams</a>.</p>
+<p>Turbo Drive and Turbo Frames allow us to build A LOT of different kinds of interactions. However, sometimes you may want to update multiple sections of a page after a form submission, for instance. For those use cases, Turbo provides another custom HTML tag called <a href="https://turbo.hotwired.dev/handbook/streams">Turbo Streams</a>.</p>
 
-<p>All link clicks and form submissions that Turbo intercepts are annotated by Turbo, which tells our back-end application that Turbo is <em>on</em>, so we can return a special type of response that only contains Turbo Streams. Turbo.js will do so by adding a custom <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/MIME_types/Common_types">MIME type</a> of <code>text/vnd.turbo-stream.html</code> to the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept"><code>Accept</code> HTTP Header</a>.</p>
+<p>Turbo annotates the form submissions it intercepts, which tells our back-end application that Turbo is <em>on</em>, so we can return a special type of response that only contains Turbo Streams. Turbo.js does so by adding a custom <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/MIME_types/Common_types">MIME type</a> of <code>text/vnd.turbo-stream.html</code> to the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept"><code>Accept</code> HTTP Header</a>.</p>
 
-<p>Turbo Streams allows for a more fine-grained control over the page updates. For instance, here's an example of a Turbro Stream that appends a new comment to a comments section:</p>
+<p>Turbo Streams allow for more fine-grained control over page updates. For instance, here's an example of a Turbo Stream that appends a new comment to a comments section:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">html</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -275,7 +275,7 @@
 &lt;/<span class="hl-keyword">turbo-stream</span>&gt;</code></pre>
 </div>
 
-<p>The <code>[action=append]</code> will add the contents of what's inside the <code>&lt;template&gt;&lt;/template&gt;</code> tag into the element that has a DOM ID matching the <code>[target=comments]</code> attribute, so <code>#comments</code> in this case.</p>
+<p>The <code>[action=append]</code> will add the contents of the <code>&lt;template&gt;&lt;/template&gt;</code> tag to the element whose DOM ID matches the <code>[target=comments]</code> attribute, so <code>#comments</code> in this case.</p>
 
 <p>There are 8 <em>default</em> Turbo Stream actions in Turbo:</p>
 
@@ -317,16 +317,16 @@
 </tr>
 <tr>
   <td><code>refresh</code></td>
-  <td>Signals to Turbo Drive to do a page refresh (doesn't require a <code>&lt;template&gt;</code> tag, nor "target")</td>
+  <td>Signals Turbo Drive to do a page refresh (requires neither a <code>&lt;template&gt;</code> tag nor a target)</td>
 </tr>
 </tbody>
 </table>
 
-<p>All the default Turbo Stream actions, except the <code>refresh</code> one, require a <code>target</code> or a <code>targets</code> attribute. The difference here is that if you use the <code>target</code> attribute, it expects a DOM ID of the target element, and if you use the <code>targets</code> attribute, it expects a CSS selector of the target(s) element(s).</p>
+<p>All the default Turbo Stream actions, except the <code>refresh</code> one, require a <code>target</code> or a <code>targets</code> attribute. The <code>target</code> attribute expects the DOM ID of the target element, while the <code>targets</code> attribute expects a CSS selector matching the target element(s).</p>
 
-<p>All of the default actions require the contents of the new or updated element to be wrapped inside a <code>&lt;template&gt;</code> tag, except for the <code>remove</code> and <code>refresh</code> actions. That's because Turbo Stream tags can be activated by simply adding them to the document. They'll get activate based on the action and then get removed from the DOM. Having the <code>&lt;template&gt;</code> ensure the content is not visible in the browser as it gets activated.</p>
+<p>All of the default actions require the contents of the new or updated element to be wrapped inside a <code>&lt;template&gt;</code> tag, except for the <code>remove</code> and <code>refresh</code> actions. That's because Turbo Stream tags are activated simply by adding them to the document. They perform their action and are then removed from the DOM. Wrapping the content in a <code>&lt;template&gt;</code> ensures it isn't visible in the browser while the stream is being activated.</p>
 
-<p>I keep saying "default action", well, that's because Turbo allows us to create our own <a href="https://turbo.hotwired.dev/handbook/streams#custom-actions">custom actions</a>:</p>
+<p>I keep saying "default actions" because Turbo also allows us to create our own <a href="https://turbo.hotwired.dev/handbook/streams#custom-actions">custom actions</a>:</p>
 
 <div class="code-card group" data-controller="clipboard">
 <div class="code-card-tools"><span class="code-card-lang">js</span><button type="button" class="code-card-copy" data-action="clipboard#copy" aria-label="Copy code">
@@ -350,9 +350,9 @@
 <pre><code class="language-html">&lt;<span class="hl-keyword">turbo-stream</span> <span class="hl-property">action</span>=&quot;log&quot; <span class="hl-property">message</span>=&quot;Hello World&quot;&gt;&lt;/<span class="hl-keyword">turbo-stream</span>&gt;</code></pre>
 </div>
 
-<p>This will get "Hello World" printed on the DevTools Console. With custom actions, you can do pretty much anything on the document.</p>
+<p>This will print "Hello World" to the DevTools Console. With custom actions, you can do pretty much anything on the document.</p>
 
-<p>So far, all vanilla Hotwire and Turbo.</p>
+<p>So far, this has all been vanilla Hotwire and Turbo.</p>
 
       </div>
     </article>
