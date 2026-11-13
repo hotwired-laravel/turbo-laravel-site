@@ -1,6 +1,0 @@
-#!/usr/bin/bash
-set -e
-
-bash ./pull
-
-exec kamal deploy

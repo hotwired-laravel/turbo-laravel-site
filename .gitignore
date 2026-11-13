@@ -5,16 +5,14 @@
 /.idea/
 /.vscode/
 /public/
-/.kamal/secrets
 npm-debug.log
 /.env
 /source/hot
 /source/assets/build/
-/config/deploy.yml
 /package-src/
 /source/_v1/
 /source/_docs/
 
 # Optional ignores
 # /build_staging/
-# /build_production/
+/build_production/

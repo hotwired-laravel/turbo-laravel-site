@@ -42,6 +42,9 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    /* long lines scroll underneath, so fade them out instead of overlapping the label */
+    padding-left: 20px;
+    background: linear-gradient(to right, transparent, var(--color-code-bg) 20px);
 }
 
 .code-card-lang {
@@ -110,7 +113,7 @@
 }
 
 .code-file .code-card { position: static; margin: 0; border-radius: 0; }
-.code-file .code-card-tools { top: 8px; right: 10px; }
+.code-file .code-card-tools { top: 8px; right: 10px; padding-left: 0; background: none; }
 .code-file .code-card-lang { display: none; }
 .code-file .code-card-copy { background: transparent; }
 .code-file .code-card pre:has(code) { padding: 18px 24px; }

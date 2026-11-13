@@ -1,24 +1,29 @@
-#!/usr/bin/bash
-set -e
+#!/usr/bin/env bash
+# Copies the docs from the Turbo Laravel package repository into the site:
+#   2.x docs/ -> source/_docs
+#   1.x docs/ -> source/_v1
+# Both folders are git-ignored; this mirrors what .github/workflows/publish.yml does on deploy.
+set -euo pipefail
 
-if [ ! -d package-src ]; then
-  git clone git@github.com:hotwired-laravel/turbo-laravel.git package-src
+cd "$(dirname "$0")/.."
+
+repo="https://github.com/hotwired-laravel/turbo-laravel.git"
+
+if [ ! -d package-src/.git ]; then
+  git clone --quiet --no-checkout "$repo" package-src
 fi
 
-rm -rf source/_docs
-rm -rf source/_v1
+git -C package-src fetch --quiet origin 2.x 1.x
 
-cd package-src
-git checkout -f || true
+copy_docs() {
+  local branch="$1" target="$2"
 
-git fetch || true
+  rm -rf "$target"
+  mkdir -p "$target"
+  git -C package-src archive "origin/$branch" docs | tar -x --strip-components=1 -C "$target"
 
-git checkout 2.x || true
-git pull origin 2.x || true
+  echo "Copied $branch docs into $target ($(git -C package-src rev-parse --short "origin/$branch"))"
+}
 
-cp -R docs/ ../source/_docs
-
-git checkout 1.x || true
-git pull origin 1.x || true
-
-cp -R docs/ ../source/_v1
+copy_docs 2.x source/_docs
+copy_docs 1.x source/_v1

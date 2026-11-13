@@ -1,23 +1,19 @@
 import { Controller } from "@hotwired/stimulus";
 
+// Pressing "/" focuses the header search. On small screens the search sits in
+// the collapsed menu, so it asks the menu to open first (search:reveal).
 export default class extends Controller {
-  static targets = ["web", "mobile", "aside", "nav"];
+  static targets = ["web"];
 
   focus(event) {
     if (event.key !== "/") return;
     if (event.target.closest("input, textarea, [contenteditable]")) return;
+    if (!this.hasWebTarget) return;
 
     event.preventDefault();
 
-    const asideHidden =
-      this.hasAsideTarget &&
-      getComputedStyle(this.asideTarget).display === "none";
+    if (!this.webTarget.offsetParent) this.dispatch("reveal");
 
-    if (asideHidden) {
-      if (this.hasNavTarget) this.navTarget.open = true;
-      if (this.hasMobileTarget) this.mobileTarget.focus();
-    } else if (this.hasWebTarget) {
-      this.webTarget.focus();
-    }
+    this.webTarget.focus();
   }
 }
