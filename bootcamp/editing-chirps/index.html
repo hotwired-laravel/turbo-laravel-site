@@ -34,7 +34,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Figtree:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
-                <link rel="stylesheet" href="/assets/build/assets/main-QHec2Cla.css">
+                <link rel="stylesheet" href="/assets/build/assets/main-DiWY8ktk.css">
         <script defer type="module" src="/assets/build/assets/main-B2QLDe1R.js"></script>
     </head>
     <body class="min-h-screen bg-paper font-body text-ink antialiased" data-controller="search" data-action="keydown@window->search#focus">
@@ -286,7 +286,7 @@
 <span class="hl-addition">                <span class="hl-keyword">@endunless</span></span>
             &lt;/<span class="hl-keyword">div</span>&gt;
 
-<span class="hl-addition">            <span class="hl-keyword">@if</span> (<span class="hl-type">Auth</span>::<span class="hl-property">id</span>() === <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user</span>-&gt;<span class="hl-property">id</span>)</span>
+<span class="hl-addition">            <span class="hl-keyword">@if</span> (<span class="hl-property">auth</span>()-&gt;<span class="hl-property">user</span>()-&gt;<span class="hl-property">id</span> === <span class="hl-variable">$chirp</span>-&gt;<span class="hl-property">user</span>-&gt;<span class="hl-property">id</span>)</span>
 <span class="hl-addition">            &lt;<span class="hl-keyword">x-dropdown</span> <span class="hl-property">class</span>=&quot;dropdown-end&quot;&gt;</span>
 <span class="hl-addition">                &lt;<span class="hl-keyword">x-slot</span> <span class="hl-property">name</span>=&quot;trigger&quot; <span class="hl-property">class</span>=&quot;btn-ghost btn-xs&quot;&gt;</span>
 <span class="hl-addition">                    &lt;<span class="hl-keyword">x-heroicon-o-ellipsis-vertical</span> <span class="hl-property">class</span>=&quot;size-6&quot; /&gt;</span>
@@ -366,19 +366,17 @@
 <svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
 <svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
 </button></div>
-<pre><code class="language-blade">&lt;<span class="hl-keyword">x-app-layout</span> <span class="hl-property">:title</span>=&quot;__('Edit Chirp')&quot;&gt;
-    &lt;<span class="hl-keyword">x-slot</span> <span class="hl-property">name</span>=&quot;header&quot;&gt;
-        &lt;<span class="hl-keyword">h2</span> <span class="hl-property">class</span>=&quot;flex items-center space-x-1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight&quot;&gt;
-            &lt;<span class="hl-keyword">x-breadcrumbs</span> <span class="hl-property">:links</span>=&quot;[route('chirps.index') =&gt; __('Chirps'), __('Edit Chirp')]&quot; /&gt;
-        &lt;/<span class="hl-keyword">h2</span>&gt;
-    &lt;/<span class="hl-keyword">x-slot</span>&gt;
+<pre><code class="language-blade">&lt;<span class="hl-keyword">x-layouts.app</span> <span class="hl-property">:title</span>=&quot;__('Edit Chirp')&quot;&gt;
+    &lt;<span class="hl-keyword">section</span> <span class="hl-property">class</span>=&quot;w-full lg:max-w-lg mx-auto&quot;&gt;
+        &lt;<span class="hl-keyword">x-back-link</span> <span class="hl-property">:href</span>=&quot;route('chirps.index')&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Chirps'</span>) }}&lt;/<span class="hl-keyword">x-back-link</span>&gt;
+        &lt;<span class="hl-keyword">x-text.heading</span> <span class="hl-property">size</span>=&quot;xl&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Edit Chirp'</span>) }}&lt;/<span class="hl-keyword">x-text.heading</span>&gt;
+        &lt;<span class="hl-keyword">x-text.subheading</span>&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Update your Chirp message.'</span>) }}&lt;/<span class="hl-keyword">x-text.subheading</span>&gt;
 
-    &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;py-12&quot;&gt;
-        &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6&quot;&gt;
+        &lt;<span class="hl-keyword">x-page-card</span> <span class="hl-property">class</span>=&quot;my-6&quot;&gt;
             <span class="hl-keyword">@include</span>(<span class="hl-value">'chirps.partials.form'</span>, [<span class="hl-value">'chirp'</span> =&gt; <span class="hl-variable">$chirp</span>])
-        &lt;/<span class="hl-keyword">div</span>&gt;
-    &lt;/<span class="hl-keyword">div</span>&gt;
-&lt;/<span class="hl-keyword">x-app-layout</span>&gt;</code></pre>
+        &lt;/<span class="hl-keyword">x-page-card</span>&gt;
+    &lt;/<span class="hl-keyword">section</span>&gt;
+&lt;/<span class="hl-keyword">x-layouts.app</span>&gt;</code></pre>
 </div>
 
 <p>
@@ -397,23 +395,32 @@
 <svg class="group-data-copied:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"></rect><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path></svg>
 <svg class="hidden group-data-copied:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
 </button></div>
-<pre><code class="language-blade">&lt;<span class="hl-keyword">form</span> <span class="hl-property">action</span>=&quot;{{ (<span class="hl-variable">$chirp</span> ?? <span class="hl-keyword">false</span>) <span class="hl-operator">?</span> <span class="hl-property">route</span>(<span class="hl-value">'chirps.update'</span>, <span class="hl-variable">$chirp</span>) : <span class="hl-property">route</span>(<span class="hl-value">'chirps.store'</span>) }}&quot; <span class="hl-property">method</span>=&quot;POST&quot; <span class="hl-property">class</span>=&quot;w-full&quot;&gt;
+<pre><code class="language-blade">&lt;<span class="hl-keyword">form</span> <span class="hl-property">action</span>=&quot;{{ (<span class="hl-variable">$chirp</span> ?? <span class="hl-keyword">false</span>) <span class="hl-operator">?</span> <span class="hl-property">route</span>(<span class="hl-value">'chirps.update'</span>, <span class="hl-variable">$chirp</span>) : <span class="hl-property">route</span>(<span class="hl-value">'chirps.store'</span>) }}&quot; <span class="hl-property">method</span>=&quot;post&quot; <span class="hl-property">class</span>=&quot;w-full space-y-6&quot;&gt;
     <span class="hl-keyword">@csrf</span>
     <span class="hl-keyword">@if</span> (<span class="hl-variable">$chirp</span> ?? <span class="hl-keyword">false</span>)
         <span class="hl-keyword">@method</span>(<span class="hl-value">'PUT'</span>)
     <span class="hl-keyword">@endif</span>
 
     &lt;<span class="hl-keyword">div</span>&gt;
-        &lt;<span class="hl-keyword">x-input-label</span> <span class="hl-property">for</span>=&quot;message&quot; <span class="hl-property">:value</span>=&quot;__('Message')&quot; <span class="hl-property">class</span>=&quot;sr-only&quot; /&gt;
-        &lt;<span class="hl-keyword">x-textarea-input</span> <span class="hl-property">id</span>=&quot;message&quot; <span class="hl-property">name</span>=&quot;message&quot; autofocus <span class="hl-property">placeholder</span>=&quot;{{ <span class="hl-property">__</span>(<span class="hl-value">'What\'s on your mind?'</span>) }}&quot; <span class="hl-property">class</span>=&quot;block w-full&quot; <span class="hl-property">:value</span>=&quot;old('message', $chirp?-&gt;message ?? '')&quot; /&gt;
-        &lt;<span class="hl-keyword">x-input-error</span> <span class="hl-property">:messages</span>=&quot;$errors-&gt;get('message')&quot; <span class="hl-property">class</span>=&quot;mt-2&quot; /&gt;
+        &lt;<span class="hl-keyword">x-form.label</span> <span class="hl-property">for</span>=&quot;message&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">&quot;What's on your mind?&quot;</span>) }}&lt;/<span class="hl-keyword">x-form.label</span>&gt;
+
+        &lt;<span class="hl-keyword">x-form.textarea-input</span>
+            <span class="hl-property">id</span>=&quot;message&quot;
+            <span class="hl-property">name</span>=&quot;message&quot;
+            <span class="hl-property">:value</span>=&quot;old('message', $chirp?-&gt;message ?? '')&quot;
+            <span class="hl-property">:data-error</span>=&quot;$errors-&gt;has('message')&quot;
+            required
+            autofocus
+            <span class="hl-property">autocomplete</span>=&quot;off&quot;
+            <span class="hl-property">:placeholder</span>=&quot;strip_tags(Illuminate\Foundation\Inspiring::quote())&quot;
+            <span class="hl-property">class</span>=&quot;mt-2&quot;
+        /&gt;
+
+        &lt;<span class="hl-keyword">x-form.error</span> <span class="hl-property">:message</span>=&quot;$errors-&gt;first('content')&quot; /&gt;
     &lt;/<span class="hl-keyword">div</span>&gt;
 
-    &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;mt-6 flex items-center space-x-4&quot;&gt;
-        &lt;<span class="hl-keyword">x-primary-button</span>&gt;
-            {{ <span class="hl-property">__</span>(<span class="hl-value">'Chirp'</span>) }}
-        &lt;/<span class="hl-keyword">x-primary-button</span>&gt;
-
+    &lt;<span class="hl-keyword">div</span> <span class="hl-property">class</span>=&quot;flex items-center justify-start gap-4&quot;&gt;
+        &lt;<span class="hl-keyword">x-form.button.primary</span> <span class="hl-property">type</span>=&quot;submit&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Post'</span>) }}&lt;/<span class="hl-keyword">x-form.button.primary</span>&gt;
         <span class="hl-keyword">@if</span> (<span class="hl-variable">$chirp</span> ?? <span class="hl-keyword">false</span>)
         &lt;<span class="hl-keyword">a</span> <span class="hl-property">href</span>=&quot;{{ <span class="hl-property">route</span>(<span class="hl-value">'chirps.index'</span>) }}<span class="hl-value">&quot; <span class="hl-property">class</span>=&quot;</span>dark:text-gray-400&quot;&gt;{{ <span class="hl-property">__</span>(<span class="hl-value">'Cancel'</span>) }}&lt;/<span class="hl-keyword">a</span>&gt;
         <span class="hl-keyword">@endif</span>
