@@ -1,7 +1,7 @@
 ---
 extends: _layouts.bootcamp
 title: Deleting Chirps
-description: Implemeting the deletion of Chirps
+description: Implementing the deletion of Chirps
 order: 6
 ---
 
@@ -9,7 +9,7 @@ order: 6
 
 Sometimes no amount of editing can fix a message, so let's give our users the ability to delete their Chirps.
 
-Hopefully you're starting to get the hang of things now. We think you'll be impressed how quickly we can add this feature.
+Hopefully you're starting to get the hang of things now. We think you'll be impressed by how quickly we can add this feature.
 
 ## Routing
 
@@ -73,7 +73,7 @@ class ChirpController extends Controller
 
 ## Authorization
 
-As with editing, we only want our Chirp authors to be able to delete their Chirps, so let's update the `delete` method our `ChirpPolicy` class:
+As with editing, we only want our Chirp authors to be able to delete their Chirps, so let's update the `delete` method of our `ChirpPolicy` class:
 
 <x-fenced-code file="app/Policies/ChirpPolicy.php">
 
@@ -102,7 +102,7 @@ Although the logic of authorizing users to update or delete Chirps is pretty muc
 
 ## Updating our Chirp partial
 
-Finally, we can add a delete button to the dropdown menu we created earlier in our `chirps._chirp` Blade partial:
+Finally, we can add a delete button to the dropdown menu we created earlier in our `chirps.partials.chirp` Blade partial:
 
 <x-fenced-code file="resources/views/chirps/partials/chirp.blade.php">
 

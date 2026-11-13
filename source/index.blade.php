@@ -60,7 +60,7 @@
     ['Turbo', 'Frames, Streams and Hotreload for development.', 'https://turbo.hotwired.dev', 'bg-wire-soft'],
     ['Stimulus', 'Controllers and Hotwire Native Bridge Components.', 'https://stimulus.hotwired.dev', 'bg-paper-sunken'],
     ['Tailwind CSS', 'Via Importmap Laravel and Tailwind CSS Laravel. Vite works too.', 'https://tailwindcss.com', 'bg-ember-soft'],
-    ['DaisyUI', 'A component library integrated from the start.', 'https://daisyui.com', 'bg-wire-soft'],
+    ['daisyUI', 'A component library integrated from the start.', 'https://daisyui.com', 'bg-wire-soft'],
   ];
 
   $bootcamp = [

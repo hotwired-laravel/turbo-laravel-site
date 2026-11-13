@@ -7,11 +7,11 @@ order: 12
 
 # *10.* Our First Bridge Component
 
-Rendering the create chirps form inline right on the homepage isn't the best UX for mobile. Instead, it would be better to display the form as a native modal screen. Let's implement that, but first, let's hide the entire create chirps form on Hotwire Native.
+Rendering the create Chirps form inline right on the homepage isn't the best UX for mobile. Instead, it would be better to display the form as a native modal screen. Let's implement that, but first, let's hide the entire create Chirps form on Hotwire Native.
 
 ## Hiding the Elements for Hotwire Native only
 
-We could technically prevent the entire section from even rendering on requests made by Hotwire Native clients using the `@unlessturbonative` Blade directives, something like this:
+We could technically prevent the entire section from even rendering on requests made by Hotwire Native clients using the `@unlessturbonative` Blade directive, something like this:
 
 ```blade
 <x-app-layout>
@@ -41,9 +41,9 @@ We could technically prevent the entire section from even rendering on requests 
 </x-app-layout>
 ```
 
-This would work, but that makes this page harder to cache. Not a problem now, but I prefer doing things like that on the client-side with CSS and a bit of JS.
+This would work, but that makes this page harder to cache. Not a problem now, but I prefer doing things like that on the client side with CSS and a bit of JS.
 
-Since we have configured our WebView to use a custom `User-Agent` header, we can actually detect when our webapp is running inside a Hotwire Native client by checking that. Let's first add a helper to check the platform by creating a `resources/js/helpers/platform.js` file with the following contents:
+Since we have configured our WebView to use a custom `User-Agent` header, we can actually detect when our web app is running inside a Hotwire Native client by checking that. Let's first add a helper to check the platform by creating a `resources/js/helpers/platform.js` file with the following contents:
 
 ```js
 const { userAgent } = window.navigator;
@@ -57,7 +57,7 @@ export const isAndroidApp = /Hotwire Native Android/.test(userAgent)
 export const isMobileApp = isIosApp || isAndroidApp
 ```
 
-Now, let's update our `resources/js/app.js` file to add a `turbo-native` class to out HTML document:
+Now, let's update our `resources/js/app.js` file to add a `turbo-native` class to our HTML document:
 
 ```js
 import './bootstrap';
@@ -73,7 +73,7 @@ if (isMobileApp) {
 }
 ```
 
-This will ensure that when our web app runs inside a Hotwire Native client, a `.turbo-native` class will be added to the `<html>` element in our page, but we're not doing anything yet with it. Let's create a custom Tailwind CSS modifier that will allow us to make things behave differently when the `.turbo-native` class is present in the document.
+This will ensure that when our web app runs inside a Hotwire Native client, a `.turbo-native` class will be added to the `<html>` element in our page, but we're not doing anything with it yet. Let's create a custom Tailwind CSS modifier that will allow us to make things behave differently when the `.turbo-native` class is present in the document.
 
 To do that, open the `tailwind.config.js` file in the root of your Laravel app and make the following changes:
 
@@ -95,7 +95,7 @@ module.exports = {
 };
 ```
 
-With that, we can use the new modifier like any other default modifier in Tailwind. Let's use it to hide the create chirps form on the index page for Hotwire Native clients. Open the `resources/views/chirps/index.blade.php` and make the following changes:
+With that, we can use the new modifier like any other default modifier in Tailwind. Let's use it to hide the create Chirps form on the index page for Hotwire Native clients. Open the `resources/views/chirps/index.blade.php` and make the following changes:
 
 ```blade
 <x-app-layout>
@@ -141,7 +141,7 @@ Let's also tweak our index page a bit to remove some padding and unnecessary mar
 </x-app-layout>
 ```
 
-Let's also hide the web nav bar for Hotwire Native users, our navigation should be fully native on the mobile clients anyways. To do that, change the `resources/views/layouts/navigation.blade.php` file:
+Let's also hide the web nav bar for Hotwire Native users. Our navigation should be fully native on the mobile clients anyway. To do that, change the `resources/views/layouts/navigation.blade.php` file:
 
 ```blade
 <!-- Update the root nav element: -->
@@ -165,7 +165,7 @@ And our page should look like this:
 
 ## Adding the Floating Action Button
 
-Now that the create chirps form is hidden, we need to allow our users to somehow navigate to the create chirps form. Let's create our custom `ChirpsHomeFragment` that will be specific to the `chirps.index` route.
+Now that the create Chirps form is hidden, we need to give our users another way to get to it. Let's create our custom `ChirpsHomeFragment` that will be specific to the `chirps.index` route.
 
 Create a new Kotlin class inside the `features.web` package and call it `ChirpsHomeFragment`:
 
@@ -187,7 +187,7 @@ class ChirpsHomeFragment: WebFragment() {
 }
 ```
 
-Notice that we're extending the `WebFragment` class so we need to make it open:
+Notice that we're extending the `WebFragment` class, so we need to make it open:
 
 ```kotlin
 package com.example.turbochirpernative.features.web
@@ -216,7 +216,7 @@ open class WebFragment: TurboWebFragment() {
 }
 ```
 
-Also, we're rendering a different layout file, so we need to create it. Add a new layout file by right-clicking on the `res/layout` folder and choosing the "New -> Layout Resource File" option in the menu, add the following contents to it:
+Also, we're rendering a different layout file, so we need to create it. Add a new layout file by right-clicking on the `res/layout` folder and choosing the "New -> Layout Resource File" option in the menu. Add the following contents to it:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -352,7 +352,7 @@ const val API_CSRF_COOKIES_URL = "$BASE_URL/sanctum/csrf-cookie"
 const val API_LOGIN_URL = "$API_BASE_URL/login"
 ```
 
-Now, change the `ChirpsHomeFragment` to setup the click handler on that fab:
+Now, change the `ChirpsHomeFragment` to set up the click handler on that FAB:
 
 ```kotlin
 @TurboNavGraphDestination(uri = "turbo://fragment/chirps/index")
@@ -375,15 +375,15 @@ class ChirpsHomeFragment: WebFragment() {
 }
 ```
 
-Now, let's click on it and you should be redirected to the create chirps form! How cool is that?!
+Now, click on it and you should be redirected to the create Chirps form! How cool is that?!
 
 ![Create Chirps Form](/assets/images/bootcamp/native/fab-create-chirps-form-in-new-page.png)
 
-If you try creating a chirp, however, you should see some interesting behavior...
+If you try creating a Chirp, however, you should see some interesting behavior...
 
 ![Wrong behavior after creating chirps](/assets/images/bootcamp/native/fab-wrong-behavior-after-creating.png)
 
-That's not good. That's because we're returning Turbo Streams on the `ChirpController@store` action. Let's change it so it doesn't do that when the request was done via a Hotwire Native client. We want the redirect there. Head to the `app/Http/Controllers/ChirpController.php` file and change the `store` action like so:
+That's not good. That's because we're returning Turbo Streams on the `ChirpController@store` action. Let's change it so it doesn't do that when the request was made by a Hotwire Native client. We want the redirect there. Head to the `app/Http/Controllers/ChirpController.php` file and change the `store` action like so:
 
 ```php
 <?php
@@ -425,7 +425,7 @@ class ChirpController extends Controller
 }
 ```
 
-This should redirect us to the home page after creating a chirp and the new Chirp should appear there! Cool.
+This should redirect us to the home page after creating a Chirp, and the new Chirp should appear there! Cool.
 
 We have lost the flash message, but we'll handle that soon. One thing is bothering me: we're showing the "Turbo Chirper Native" title on every screen. I don't like that. Instead, I want each screen to customize the title. Well, it turns out it already does that based on the title of the page we're visiting. Let's change our `app.blade.php` layout file to accept a `$title` prop:
 
@@ -464,6 +464,6 @@ Then, in the `resources/views/chirps/create.blade.php` file, set the `:title` pr
 </x-app-layout>
 ```
 
-And with that, our create chirps page should have the "Create Chirp" title:
+And with that, our create Chirps page should have the "Create Chirp" title:
 
 ![Create Chirp Screen with Title](/assets/images/bootcamp/native/fab-create-chirps-with-title.png)

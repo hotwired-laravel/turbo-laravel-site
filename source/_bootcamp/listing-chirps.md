@@ -7,11 +7,11 @@ order: 4
 
 # *03.* Listing Chirps
 
-In the previous step we added the ability to create Chirps, now we're ready to display them!
+In the previous step, we added the ability to create Chirps. Now we're ready to display them!
 
 ## Retrieving the Chirps
 
-Let's update the `index` action our `ChirpController` to pass Chirps from every user to our `chirps.index` page.
+Let's update the `index` action of our `ChirpController` to pass Chirps from every user to our `chirps.index` page.
 
 <x-fenced-code file="app/Http/Controllers/ChirpController.php">
 
@@ -93,7 +93,7 @@ Next, update the `chirps.index` view so we can list all Chirps:
 
 </x-fenced-code>
 
-Finally, let's create a `chirps.partials.chirp` Blade partial to display Chirp. This component will be responsible for displaying an individual Chirp:
+Finally, let's create a `chirps.partials.chirp` Blade partial. This partial will be responsible for displaying an individual Chirp:
 
 <x-fenced-code file="resources/views/chirps/partials/chirp.blade.php" copy>
 
@@ -117,13 +117,13 @@ Finally, let's create a `chirps.partials.chirp` Blade partial to display Chirp. 
 
 </x-fenced-code>
 
-Now take a look in your browser to see the message you Chirped earlier!
+Now take a look at your browser to see the message you Chirped earlier!
 
 ![Showing Chirps](/assets/images/bootcamp/showing-chirps.png?v=1)
 
 ## Extra Credit: Relative Dates
 
-Right now our `chirp.blade.php` partial formats the date as relative, but that's relative to the time it was rendered, not the current time. We can write it in a way that it would auto-update without requiring a page refresh using [Local Time Laravel](https://github.com/tonysm/local-time-laravel) package.
+Right now our `chirp.blade.php` partial formats the date as relative, but that's relative to the time it was rendered, not the current time. We can make it auto-update without requiring a page refresh using the [Local Time Laravel](https://github.com/tonysm/local-time-laravel) package.
 
 First, let's install it via Composer:
 
@@ -131,12 +131,13 @@ First, let's install it via Composer:
 composer require tonysm/local-time-laravel
 ```
 
-Then, install JS package:
+Then, install the JS package:
+
 ```bash
 php artisan importmap:pin local-time
 ```
 
-Now, let's create our own lib setup file in the `libs/localtime.js` file:
+Now, let's create our own lib setup file at `libs/local-time.js`:
 
 <x-fenced-code file="resources/js/libs/local-time.js" copy>
 
@@ -159,7 +160,7 @@ import "controllers";
 
 </x-fenced-code>
 
-Then we can use this package's component in our `chirps._chirp` Blade partial to display relative dates using the newly installed HTML elements:
+Then we can use this package's component in our `chirps.partials.chirp` Blade partial to display relative dates using the newly installed HTML elements:
 
 <x-fenced-code file="resources/views/chirps/partials/chirp.blade.php">
 
@@ -183,6 +184,6 @@ Then we can use this package's component in our `chirps._chirp` Blade partial to
 
 </x-fenced-code>
 
-If you refresh the page, you should see the date string and it quickly updates to the relative time ago. The real nice thing about this approach is that if you keep your browser tab opened while visiting the listing Chirps page, the relative time will update from time to time!
+If you refresh the page, you should see the date string quickly update to the relative time. The really nice thing about this approach is that if you keep the Chirps listing page open in your browser, the relative time will update from time to time!
 
-Notice that we're using a `data-turbo-permanent` attribute in the component. That's because we don't want DOM morphing to touch this element at all, since its contents is managed by JavaScript. We'll talk more about morphing later.
+Notice that we're using a `data-turbo-permanent` attribute in the component. That's because we don't want DOM morphing to touch this element at all, since its contents are managed by JavaScript. We'll talk more about morphing later.

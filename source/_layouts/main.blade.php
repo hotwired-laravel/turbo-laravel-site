@@ -16,7 +16,7 @@
 
         <footer class="px-6 py-4 sm:px-20 sm:py-10 flex items-center space-x-2 justify-between">
           <p class="text-base text-center w-full">
-            Turbo Laravel is maintained by <a href="{{ $page->tony_site_url }}" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, therefore not affiliated with Laravel nor Hotwire.
+            Turbo Laravel is maintained by <a href="{{ $page->tony_site_url }}" class="underline text-zinc-900/90">Tony Messias</a>. This is a <em>community project</em>, not affiliated with Laravel or Hotwire.
           </p>
         </footer>
     </body>

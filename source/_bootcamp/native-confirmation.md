@@ -51,7 +51,7 @@ First, let's update our `chirps/partials/chirp.blade.php` file and add the `data
 </x-turbo::frame>
 ```
 
-That should get the JS confirm appearing both in the webapp and native.
+That should get the JS confirm appearing both in the web app and on native.
 
 ![Turbo Confirm Web](/assets/images/bootcamp/native/native-delete-js-confirm-web.png)
 
@@ -74,7 +74,7 @@ First, we're gonna create a global modal that will be used for this kind of conf
 </html>
 ```
 
-Next, let's create the `resources/views/lauouts/confirmation_modal.blade.php` file with the following contents:
+Next, let's create the `resources/views/layouts/confirmation_modal.blade.php` file with the following contents:
 
 ```blade
 <dialog id="confirmation_modal" class="p-0">
@@ -112,7 +112,7 @@ Next, let's create the `resources/views/lauouts/confirmation_modal.blade.php` fi
 </dialog>
 ```
 
-Now, let's override the default behavior to show this new modal instead of using the default JS confirm. In the `resources/js/libs/turbo.js`, let's use the `Turbo.setConfirmMethod()`, it accepts a function that returns a Promise.
+Now, let's override the default behavior to show this new modal instead of using the default JS confirm. In the `resources/js/libs/turbo.js`, let's use `Turbo.setConfirmMethod()`, which accepts a function that returns a Promise.
 
 ```js
 import * as Turbo from '@hotwired/turbo';
@@ -123,7 +123,7 @@ Turbo.setConfirmMethod(Confirmation);
 export default Turbo;
 ```
 
-Now, let's create our Confirmation function. Create a `resources/js/libs/helpers/confirmation.js` file with the function defined:
+Now, let's create our Confirmation function. Create a `resources/js/helpers/confirmation.js` file with the function defined:
 
 ```js
 import { WebConfirmation } from './web_confirmation';
@@ -133,7 +133,7 @@ export function Confirmation (message) {
 };
 ```
 
-Turbo will pass the message we set in the `data-turbo-confirm` as the first parameter and the HTML element as the second parameter. We could use it to set additional params as `data-*` attributes in the form itself if we wanted to, like the icon or title shown in the modal, for instance. We're not gonna use that here, so we only need the message. We're going to delegate the manipulation of the modal to a `WebConfirmation` class, we only need to call its `confirm` method passing down the message. Let's create the `resources/js/libs/helpers/web_confirmation.js`:
+Turbo will pass the message we set in the `data-turbo-confirm` as the first parameter and the HTML element as the second parameter. We could use it to set additional params as `data-*` attributes in the form itself if we wanted to, like the icon or title shown in the modal, for instance. We're not gonna use that here, so we only need the message. We're going to delegate the manipulation of the modal to a `WebConfirmation` class, so we only need to call its `confirm` method, passing down the message. Let's create the `resources/js/helpers/web_confirmation.js` file:
 
 ```js
 export class WebConfirmation
@@ -158,13 +158,13 @@ We're querying the dialog from the DOM, setting the contents of the `#confirmati
 
 ![Turbo Modal Confirm Web](/assets/images/bootcamp/native/native-delete-modal-confirm-web.png)
 
-![Turbo Modal Confirm Web](/assets/images/bootcamp/native/native-delete-modal-confirm-native.png)
+![Turbo Modal Confirm Native](/assets/images/bootcamp/native/native-delete-modal-confirm-native.png)
 
 This is not so good for the native version, but the web one is nice. Let's fix that.
 
 ## Native Confirmation
 
-For the Native confirmation, we're gonna need to extend our Kotlin JSBridge a little bit. Whenever a confirmation is triggered by the webapp, and we're in a Hotwire Native client, we're gonna register a listener for the Native confirmation result, then send a message to the bridge and ask it to show a native `AlertDialog`. When the user chooses an option, we're going to send the result back to the web app via a custom event.
+For the Native confirmation, we're gonna need to extend our Kotlin JSBridge a little bit. Whenever a confirmation is triggered by the web app and we're in a Hotwire Native client, we're gonna register a listener for the Native confirmation result, then send a message to the bridge and ask it to show a native `AlertDialog`. When the user chooses an option, we're going to send the result back to the web app via a custom event.
 
 Let's start with the web side, since it's simpler. Change the `resources/js/helpers/confirmation.js` file to look like the following:
 
@@ -200,9 +200,9 @@ export class BridgeConfirmation
 }
 ```
 
-It's really simple, right? Registering the event listener and sending a `showConfirmationModal` message to the bridge.
+It's really simple, right? We're registering the event listener and sending a `showConfirmationModal` message to the bridge.
 
-Now, let's update the `MainSessionNavHostFragment.kt` in the native side to accept that message:
+Now, let's update the `MainSessionNavHostFragment.kt` on the native side to accept that message:
 
 ```kotlin
 package com.example.turbochirpernative.main
@@ -270,6 +270,6 @@ class JsBridge(private var delegator: PopupMenuDelegator) {
 
 ## Testing It Out
 
-This should get our native confirmation modal looking similar to our JS confirm one, but now we're in full control of it looks like and what it does:
+This should get our native confirmation modal looking similar to our JS confirm one, but now we're in full control of what it looks like and what it does:
 
 ![Turbo Confirm Native](/assets/images/bootcamp/native/native-delete-confirmation-native.png)

@@ -11,7 +11,7 @@ Let's add a feature that's missing from other popular bird-themed microblogging 
 
 ## Routing
 
-First we will update our routes file to enable the `chirps.edit` and `chirps.update` routes for our resource controller:
+First, we'll update our routes file to enable the `chirps.edit` and `chirps.update` routes for our resource controller:
 
 <x-fenced-code file="routes/web.php">
 
@@ -45,7 +45,7 @@ PUT/PATCH | `/chirps/{chirp}`      | update       | `chirps.update`
 
 Next, let's update our `chirps.partials.chirp` Blade partial to have an edit form for existing Chirps.
 
-We're going to use the `<x-dropdown>` component that comes with Turbo Breeze, which we'll only display to the Chirp author. We'll also display an indication if a Chirp has been edited by comparing the Chirp's `created_at` date with its `updated_at` date:
+We're going to use the `<x-dropdown>` component that comes with the starter kit, which we'll only display to the Chirp author. We'll also display an indication if a Chirp has been edited by comparing the Chirp's `created_at` date with its `updated_at` date:
 
 <x-fenced-code file="resources/views/chirps/partials/chirp.blade.php">
 
@@ -144,7 +144,7 @@ Now, we need to create our `chirps.edit` view:
 
 </x-fenced-code>
 
-We're using the same `form` partial the create chirps view uses. However, in this case we're passing down a Chirp model to the form so it can pre-fill the message field. Since we're passing a Chirp model, we can make the form submit to the `chirps.update` endpoint instead of the default `chirps.store` one when no Chirp is passed. Let's make the changes to the `chirps.partials.form` partial, replace the existing form with this one:
+We're using the same `form` partial the create Chirps view uses. However, in this case, we're passing down a Chirp model to the form so it can pre-fill the message field. Since we're passing a Chirp model, we can make the form submit to the `chirps.update` endpoint instead of the default `chirps.store` one when no Chirp is passed. Let's update the `chirps.partials.form` partial by replacing the existing form with this one:
 
 <x-fenced-code file="resources/views/chirps/partials/form.blade.php" copy>
 
@@ -212,7 +212,7 @@ class ChirpPolicy
 
 </x-fenced-code>
 
-You should be able to use the dropdown, click on the Edit link and view the edit Chirp form:
+You should be able to use the dropdown, click on the Edit link, and view the edit Chirp form:
 
 ![Edit Chirp Form](/assets/images/bootcamp/editing-chirps-form.png?v=4)
 
@@ -255,7 +255,7 @@ class ChirpController extends Controller
 
 </x-fenced-code>
 
-You may have noticed the validation rules are duplicated with the `store` action. You might consider extracting them using Laravel's [Form Request Validation](https://laravel.com/docs/validation#form-request-validation), which makes it easy to re-use validation rules and to keep your controllers light.
+You may have noticed the validation rules are duplicated with the `store` action. You might consider extracting them using Laravel's [Form Request Validation](https://laravel.com/docs/validation#form-request-validation), which makes it easy to reuse validation rules and to keep your controllers light.
 
 ## Testing it out
 

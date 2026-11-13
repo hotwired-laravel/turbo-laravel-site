@@ -7,7 +7,7 @@ order: 2
 
 # *01.* Installation
 
-Our first step is to create the web app and setup our local environment. This Bootcamp [assumes you have PHP installed on your system](https://php.new/).
+Our first step is to create the web app and set up our local environment. This Bootcamp [assumes you have PHP installed on your system](https://php.new/).
 
 ## Installing Laravel
 
@@ -44,11 +44,11 @@ Then, you should be redirected to the Dashboard page:
 
 This Dashboard page is protected by Laravel's auth middleware, so only authenticated users can access it. The registration process automatically authenticates us.
 
-If you click on your profile, you will see a settings menu screen with a few options of settings you may change:
+If you click on your profile, you will see a settings menu screen with a few settings you may change:
 
 ![Profile Menu](/assets/images/bootcamp/profile-menu.png?v=1)
 
-Click on the edit profile link will go to the edit profile page:
+Clicking on the edit profile link will take you to the edit profile page:
 
 ![Edit Profile](/assets/images/bootcamp/profile-edit.png?v=1)
 
@@ -56,7 +56,7 @@ Here's the change password page:
 
 ![Change Password](/assets/images/bootcamp/profile-change-password.png?v=1)
 
-In the main nav there's a theme switcher which allows you to change the daisyUI theme:
+In the main nav, there's a theme switcher that allows you to change the daisyUI theme:
 
 ![Theme Switcher](/assets/images/bootcamp/themes.png?v=1)
 

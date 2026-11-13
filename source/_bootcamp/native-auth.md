@@ -7,13 +7,13 @@ order: 10
 
 # *09.* Native Authentication
 
-Let's tackle the mobile authentication first. We're now able to use the web authentication flow, but as we discussed earlier, sometimes we need to implement fully native screens in our app that uses JSON endpoints with an Access Token. For that reason, we're gonna change our login flow just for our Hotwire Native Android client. If you were building a Native iOS app, that could also use this same flow.
+Let's tackle the mobile authentication first. We're now able to use the web authentication flow, but as we discussed earlier, sometimes we need to implement fully native screens in our app that use JSON endpoints with an Access Token. For that reason, we're gonna change our login flow just for our Hotwire Native Android client. If you were building a native iOS app, it could use this same flow too.
 
 Laravel has essentially two first-party packages when it comes to Token-based authentication: [Laravel Sanctum](https://laravel.com/docs/sanctum) and [Laravel Passport](https://laravel.com/docs/passport).
 
 For this Bootcamp, we're gonna be using Laravel Sanctum, as our flow is a mix of an SPA and mobile authentication flows, both provided by Sanctum.
 
-Oh, and we're going to use [Jetpack Compose](https://developer.android.com/jetpack/compose) to build the Login screen. I don't know about you, but building screens in XML ain't I'd be proud to show you. Let's start by adding the Gradle dependencies we need and making some tweaks to our app so Compose works properly.
+Oh, and we're going to use [Jetpack Compose](https://developer.android.com/jetpack/compose) to build the Login screen. I don't know about you, but building screens in XML ain't something I'd be proud to show you. Let's start by adding the Gradle dependencies we need and making some tweaks to our app so Compose works properly.
 
 ## Adding Jetpack Compose
 
@@ -46,16 +46,16 @@ dependencies {
 }
 ```
 
-We added a bunch of dependencies here, let's dissect that:
+We added a bunch of dependencies here, so let's dissect them:
 
 * The `androidx.compose.ui:ui:*` one is the main Jetpack Compose package
 * The `androidx.compose.material:material:*` comes with a set of Material UI components we can use
 * The `com.squareup.okhttp3:okhttp:4.10.0` is the lib we're gonna use to make HTTP requests from our Native screens
 * The `com.google.code.gson:gson:2.9.1` is the lib we're gonna use to serialize our JSON responses to objects we can use in Kotlin
 
-We also made some changes to the `buildFeatures` to enable compose and also configured the `composeOptions` to use a specific version Jetcompose Compose Compiler to work with the Kotlin version I have (which is `1.7.20-RC`). I was getting weird compilation errors without this. It was after many attempts that I found this fix (again, I'm no mobile Android expert). If you happen to use a different Kotlin version, make sure you visit the [compatibility table to see which version of the Compose Compiler you need](https://androidx.dev/storage/compose-compiler/repository).
+We also made some changes to the `buildFeatures` to enable Compose and also configured the `composeOptions` to use a specific version of the Jetpack Compose Compiler to work with the Kotlin version I have (which is `1.7.20-RC`). I was getting weird compilation errors without this. It was after many attempts that I found this fix (again, I'm no Android expert). If you happen to use a different Kotlin version, make sure you visit the [compatibility table to see which version of the Compose Compiler you need](https://androidx.dev/storage/compose-compiler/repository).
 
-For that compiler customization to work, we need to make a change to our `settings.gradle` file to add the compose compiler's repository to Maven:
+For that compiler customization to work, we need to make a change to our `settings.gradle` file to add the Compose Compiler's repository to Maven:
 
 ```groovy
 dependencyResolutionManagement {
@@ -79,7 +79,7 @@ Okay, now press that "Sync now" link at the top and fingers crossed!
 
 Now that we have all the libs in place, let's start sketching out how this is gonna work.
 
-As mentioned earlier, we're gonna need both the [Cookie](https://laravel.com/docs/sanctum#spa-authentication) AND the [Token](https://laravel.com/docs/sanctum#mobile-application-authentication) authentication in our case. We need the Cookie-based authentication for our shared WebView while the Access Token we'll store in our app settings so we can reuse it whenever we need to build a fully native screen.
+As mentioned earlier, we're gonna need both the [Cookie](https://laravel.com/docs/sanctum#spa-authentication) AND the [Token](https://laravel.com/docs/sanctum#mobile-application-authentication) authentication in our case. We need the Cookie-based authentication for our shared WebView, while the Access Token will be stored in our app settings so we can reuse it whenever we need to build a fully native screen.
 
 We'll handle the Laravel side of this soon. Add these new constants to our `util.Constants` file:
 
@@ -248,7 +248,7 @@ data class FailedResponse(
 )
 ```
 
-I know there's a lot here. I'm not that good in Kotlin, but this is not the point of this bootcamp. We're essentially adding a method to fetch the CSRF token used to get the Cookie authentication working, which we can use like so:
+I know there's a lot here. I'm not that good at Kotlin, but that's not the point of this Bootcamp. We're essentially adding a method to fetch the CSRF token used to get the Cookie authentication working, which we can use like so:
 
 ```kotlin
 AuthClient().fetchCsrfToken {
@@ -258,9 +258,9 @@ AuthClient().fetchCsrfToken {
 
 This method will make an HTTP call to the `/sanctum/csrf-cookie` route provided by Sanctum. That route will return the Cookies we need in order to successfully authenticate, since we're gonna use the CSRF protection middleware from Laravel in the API routes.
 
-We'd need a way to store the cookies so they'd automatically be added to the `CookieManager` whenever a response is received by the HTTP Client in whatever context, not just for the auth one. Anyways, for our purposes, this will do.
+We'd need a way to store the cookies so they'd automatically be added to the `CookieManager` whenever a response is received by the HTTP Client in whatever context, not just for the auth one. Anyway, for our purposes, this will do.
 
-This code also adds the method to attempt authenticating, which should call an endpoint at `/api/login`, which will create soon when we're handling the Laravel side of things. This is how the `attempt` method may be used:
+This code also adds the method to attempt authenticating, which should call an endpoint at `/api/login`, which we'll create soon when we're handling the Laravel side of things. This is how the `attempt` method may be used:
 
 ```kotlin
 AuthClient().attempt(email, password) { it ->
@@ -273,7 +273,7 @@ With that in place, let's build the Login Screen!
 
 ## The Native Login Screen
 
-Create the `features.auth` package. And, before we create the `LoginFragment`, we'll add two interfaces that it's gonna use. First, add a `CsrfTokenCallback` interface to the `features.auth` package with the following contents:
+Create the `features.auth` package. Before we create the `LoginFragment`, we'll add two interfaces that it's gonna use. First, add a `CsrfTokenCallback` interface to the `features.auth` package with the following contents:
 
 ```kotlin
 package com.example.turbochirpernative.features.auth
@@ -422,7 +422,7 @@ class LoginFragment : TurboFragment(), LoginRequestCallback, CsrfTokenCallback {
 
 There's a lot going on in this screen, and we're not gonna talk about it much. The important thing to note here is that we're instantiating the `authClient` as an attribute to the `LoginFragment` instance. This is important because we're storing the CSRF Token, Cookie, and the Laravel Session cookie in the `AuthClient` instance, so we can't just create a new instance of the `AuthClient` whenever we want.
 
-Also, we're calling the `authClient.fetchCsrfToken()` in a `DisposableEffect` to make sure it only calls it once when Compose mounts this screen. Then, whenever the user types non-blank email and password fields to the inputs we have just created, we'll call the `authClient.attempt()` with it. We're using Toast messages here and there to give some feedback on what's going on. That's more for us than for actual users of our app, so feel free to remove those if you want to.
+Also, we're calling the `authClient.fetchCsrfToken()` in a `DisposableEffect` to make sure it only calls it once when Compose mounts this screen. Then, whenever the user submits a non-blank email and password, we'll call `authClient.attempt()` with them. We're using Toast messages here and there to give some feedback on what's going on. That's more for us than for actual users of our app, so feel free to remove those if you want to.
 
 Finally, let's register our fragment in the `MainSessionNavHostFragment`:
 
@@ -492,11 +492,11 @@ This is what the project structure should look like for you:
 
 ![Login Screen project structure](/assets/images/bootcamp/native/auth-project-structure-login-screen.png)
 
-Before we're able to test this, we need add Sanctum and our API routes to the Laravel side of our Chirper web app!
+Before we're able to test this, we need to add Sanctum and our API routes to the Laravel side of our Chirper web app!
 
 ## Setting up Sanctum and the API Endpoints
 
-Our Sanctum installation process will follow the docs with one exception. First thing is the Sanctum installation. In the chirper web app root folder, install Sanctum via Composer:
+Our Sanctum installation process will follow the docs with one exception. First thing is the Sanctum installation. In the Chirper web app root folder, install Sanctum via Composer:
 
 ```bash
 composer require laravel/sanctum
@@ -514,7 +514,7 @@ Then, migrate the database:
 php artisan migrate
 ```
 
-Now is the exception part. Sanctum's default installation recommends adding the `EnsureFrontendRequestsAreStateful` middleware that ships with Sanctum at the top of the API route group middleware stack. Instead, we're gonna create our own. We're also adding the `TurboMiddleware` to that route group:
+Now for the exception part. Sanctum's default installation recommends adding the `EnsureFrontendRequestsAreStateful` middleware that ships with Sanctum at the top of the API route group middleware stack. Instead, we're gonna create our own. We're also adding the `TurboMiddleware` to that route group:
 
 ```php
 <?php
@@ -644,7 +644,7 @@ Route::post('/login', function (Request $request) {
 
 Now, we're ready to test it!
 
-## Testing Out
+## Testing it out
 
 If you want to, purge all your sessions in the Laravel app by deleting all the files in the `storage/framework/sessions/` folder (assuming you're using the file session driver):
 
@@ -652,7 +652,7 @@ If you want to, purge all your sessions in the Laravel app by deleting all the f
 rm -f storage/framework/sessions/*
 ```
 
-Now, go back to Android Studio and build the client again. You should see the login screen and if you authenticate, you should then be sent to the chirps home page!
+Now, go back to Android Studio and build the client again. You should see the login screen, and once you authenticate, you should be sent to the Chirps home page!
 
 ![Native Login Screen](/assets/images/bootcamp/native/auth-login-screen.png)
 
@@ -660,4 +660,4 @@ Now, go back to Android Studio and build the client again. You should see the lo
 
 ![Chirps Home Page After Native Login](/assets/images/bootcamp/native/auth-chirps-home.png)
 
-Our access token is being stored in the preferences section of our app, which means we can reuse it whenever we need to make an HTTP call with a native screen and our WebView is successfully authenticated, so we don't need to worry about those screens that don't need native authentication anymore. Yay! Next, let's take a look at improving our mobile UX for creating Chirps.
+Our access token is being stored in the preferences section of our app, which means we can reuse it whenever we need to make an HTTP call from a native screen. Our WebView is also successfully authenticated, so we don't need to worry about the screens that don't need native authentication anymore. Yay! Next, let's take a look at improving our mobile UX for creating Chirps.

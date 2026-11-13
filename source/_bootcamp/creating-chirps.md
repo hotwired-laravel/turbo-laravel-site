@@ -31,7 +31,7 @@ This command will create three files:
 
 * `app/Models/Chirp.php` - The Eloquent model.
 * `database/migrations/<timestamp>_create_chirps_table.php` - The database migration that will create the database table.
-* `app/Http/Controller/ChirpController.php` - The HTTP controller that will take incoming requests and return responses.
+* `app/Http/Controllers/ChirpController.php` - The HTTP controller that will take incoming requests and return responses.
 
 ## Routing
 
@@ -43,7 +43,7 @@ To start with, we are going to enable three routes:
 * The `create` route will display the form to create Chirps.
 * The `store` route will be used for saving new Chirps.
 
-We are also going to place these routes behind two [middlewares](https://laravel.com/docs/middleware):
+We are also going to place these routes behind two [middleware](https://laravel.com/docs/middleware):
 
 * The `auth` middleware ensures that only logged-in users can access the route.
 * The `verified` middleware will be used if you decide to enable [email verification](https://laravel.com/docs/verification).
@@ -220,7 +220,7 @@ Again, this view is including a `form` partial. Create that file with the follow
 
 </x-fenced-code>
 
-This partial is making use a Blade component that doesn't exist yet called `x-textarea-input`, let's create it:
+This partial uses a Blade component called `x-textarea-input` that doesn't exist yet, so let's create it:
 
 <x-fenced-code file="resources/views/components/form/textarea-input.blade.php" copy>
 
@@ -234,7 +234,7 @@ This partial is making use a Blade component that doesn't exist yet called `x-te
 
 </x-fenced-code>
 
-That's it! Refresh the page in your browser to see your new form rendered in the default layout provided by Breeze!
+That's it! Refresh the page in your browser to see your new form rendered in the default layout provided by the starter kit!
 
 ![Creating Chirps Link](/assets/images/bootcamp/creating-chirps-link.png?v=1)
 
@@ -275,8 +275,6 @@ Don't forget the responsive menu:
 
 </x-fenced-code>
 
-Next, we need to add
-
 We should see the Chirps link on the page nav now:
 
 ![Chirps Nav Link](/assets/images/bootcamp/creating-chirps-nav-link.png?v=1)
@@ -314,9 +312,9 @@ class ChirpController extends Controller
 
 </x-fenced-code>
 
-We're using Laravel's powerful validation feature to ensure that the user provides a message and that it won't exceed the 255 character limit of the database column we'll be creating.
+We're using Laravel's powerful validation feature to ensure that the user provides a message and that it won't exceed the 255-character limit of the database column we'll be creating.
 
-We're then creating a record that will belong to the logged in user by leveraging a `chirps` relationship. We will define that relationship soon.
+We're then creating a record that will belong to the logged-in user by leveraging a `chirps` relationship. We will define that relationship soon.
 
 Finally, we can return a redirect response to our `chirps.index` route.
 
@@ -354,7 +352,7 @@ Laravel offers many different types of model relationships that you can read mor
 
 Passing all of the data from a request to your model can be risky. Imagine you have a page where users can edit their profiles. If you were to pass the entire request to the model, then a user could edit any column they like, such as an `is_admin` column. This is called a [mass assignment vulnerability](https://en.wikipedia.org/wiki/Mass_assignment_vulnerability).
 
-Laravel protects you from accidentally doing this by blocking mass assignment by default. Mass assignment is very convenient though, as it prevents you from having to assign each attribute one-by-one. We can enable mass assignment for safe attributes by marking them as "fillable".
+Laravel protects you from accidentally doing this by blocking mass assignment by default. Mass assignment is very convenient though, as it prevents you from having to assign each attribute one by one. We can enable mass assignment for safe attributes by marking them as "fillable".
 
 Let's add the `$fillable` property to our `Chirp` model to enable mass-assignment for the `message` attribute:
 
@@ -379,7 +377,7 @@ You can learn more about Laravel's mass assignment protection in the [documentat
 
 ### Updating the migration
 
-The only thing missing is extra columns in our database to store the relationship between a `Chirp` and its `User` and the message itself. Remember the database migration we created earlier? It's time to open that file to add some extra columns:
+The only thing missing is the extra columns in our database to store the message itself and the relationship between a `Chirp` and its `User`. Remember the database migration we created earlier? It's time to open that file to add some extra columns:
 
 <x-fenced-code file="database/migrations/{timestamp}_create_chirps_table.php">
 
@@ -426,9 +424,9 @@ If you leave the message field empty, or enter more than 255 characters, then yo
 
 ### Artisan Tinker
 
-This is great time to learn about [Artisan Tinker](https://laravel.com/docs/artisan#tinker), a _REPL_ ([Read-eval-print loop](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)) where you can execute arbitrary PHP code in your Laravel application.
+This is a great time to learn about [Artisan Tinker](https://laravel.com/docs/artisan#tinker), a _REPL_ ([Read-eval-print loop](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)) where you can execute arbitrary PHP code in your Laravel application.
 
-In your console, start a new tinker session:
+In your console, start a new Tinker session:
 
 ```bash
 php artisan tinker

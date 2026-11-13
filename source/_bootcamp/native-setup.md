@@ -1,31 +1,31 @@
 ---
 extends: _layouts.bootcamp
 title: Hotwire Native Installation
-description: Let's setup our Hotwire Native app
+description: Let's set up our Hotwire Native app
 order: 9
 ---
 
 # *08.* Hotwire Native Android Setup
 
-Hotwire offers mobile native adapters to help building high-fidelity hybrid apps with native navigation and a single shared web view.
+Hotwire offers native mobile adapters to help build high-fidelity hybrid apps with native navigation and a single shared web view.
 
 You'll need a little bit of mobile development knowledge, specifically for Android and Kotlin. Not that much, though, because to be honest I'm no mobile dev expert myself.
 
 This guide isn't about "the best way to build Hotwire Native apps". The idea is just to show you what's possible and how it integrates with Turbo.js and Turbo Laravel.
 
-We're gonna focus on the [Hotwire Native for Android](https://github.com/hotwired/hotwire-native-android/) lib. I feel like [Hotwire Native for iOS](https://github.com/hotwired/hotwire-native-ios/) has a lot more attention, so I want to focus on Android for a bit. It's also the platform I am more familiar with, to be honest.
+We're gonna focus on the [Hotwire Native for Android](https://github.com/hotwired/hotwire-native-android/) lib. I feel like [Hotwire Native for iOS](https://github.com/hotwired/hotwire-native-ios/) gets a lot more attention, so I want to focus on Android for a bit. It's also the platform I'm more familiar with, to be honest.
 
-In Android development, each screen used to be its own Activity, but that has changed over the years and now the "Single Activity" approach seems to be the way to go. Watch this talk called ["Single activity: why, when, and how"](https://www.youtube.com/watch?v=2k8x8V77CrU). In short, we're gonna have a single activity and each screen will be represented by a Fragment and we'll use Google's [Navigation component library](https://developer.android.com/guide/navigation) to decide which fragment to present.
+In Android development, each screen used to be its own Activity, but that has changed over the years and now the "Single Activity" approach seems to be the way to go. Watch this talk called ["Single activity: why, when, and how"](https://www.youtube.com/watch?v=2k8x8V77CrU). In short, we're gonna have a single activity, each screen will be represented by a Fragment, and we'll use Google's [Navigation component library](https://developer.android.com/guide/navigation) to decide which fragment to present.
 
 Head over to the [Overview section in the docs for Hotwire Native](https://native.hotwired.dev/overview/how-it-works).
 
-Let's setup the Android app.
+Let's set up the Android app.
 
 ## Setting Up The Local Development
 
 To get started, you will need Java, Kotlin, and Android Studio installed locally. We're not gonna cover installing those things, but you should be able to find many resources on that.
 
-I'm using ASDF, so here's some links:
+I'm using ASDF, so here are some links:
 
 * ASDF itself: https://asdf-vm.com/
 * ASDF Java: https://github.com/halcyon/asdf-java
@@ -40,19 +40,19 @@ When creating the project, make sure you choose the "Empty Activity" option.
 
 ![Empty Compose Activity](/assets/images/bootcamp/native/setup-empty-activity.png)
 
-On the next screen, make sure you choose the "API 24" as that's required by the Hotwire Native adapter.
+On the next screen, make sure you choose "API 24", as that's required by the Hotwire Native adapter.
 
 ![API 24](/assets/images/bootcamp/native/setup-api-24.png)
 
-Next, you're going to need to create a [Virtual Device](https://developer.android.com/studio/run/managing-avds), next to the "run" icon (the green right-arrow in toolbar at the top), there's a dropdown with the "Device Manager" option. Click on it. In the sidebar that opens, click on the "Create Device" option. Choose whatever device you want to emulate, I'll go with a Pixel 2.
+Next, you're going to need to create a [Virtual Device](https://developer.android.com/studio/run/managing-avds). Next to the "run" icon (the green right arrow in the toolbar at the top), there's a dropdown with the "Device Manager" option. Click on it. In the sidebar that opens, click on the "Create Device" option. Choose whatever device you want to emulate. I'll go with a Pixel 2.
 
 ![Choose Device](/assets/images/bootcamp/native/setup-choose-device.png)
 
-For the System image, I'm choose API level 30, which is Android R.
+For the System image, I'm choosing API level 30, which is Android R.
 
 ![System Image](/assets/images/bootcamp/native/setup-system-image.png)
 
-Now, you should see the option to run the app on the device emulator! Pressing on that, you should the app is running!
+Now, you should see the option to run the app on the device emulator! Press it and you should see the app running!
 
 ![App running](/assets/images/bootcamp/native/setup-running-app.png)
 
@@ -95,7 +95,7 @@ We're following the official [Quick Start guide](https://native.hotwired.dev/and
 
 Let's start by creating our `NavHostFragment`, which is a component available in Android Jetpack that provides a contained navigation area where our fragments will appear.
 
-Before we start, let's create a `util` package where we're going to have a Constants Kotlin file. To do that, right-click on the root package and choosing the "New > Package" option. Then create the "util" package.
+Before we start, let's create a `util` package where we're going to have a Constants Kotlin file. To do that, right-click on the root package and choose the "New > Package" option. Then create the "util" package.
 
 Inside of it, create the `Constants.kt` file with the following contents:
 
@@ -106,13 +106,13 @@ const val BASE_URL = "http://10.0.2.2"
 const val CHIRPS_HOME_URL = "$BASE_URL/chirps"
 ```
 
-We need to use something [10.0.2.2 instead of localhost](https://developer.android.com/studio/run/emulator-networking) here or something like [Expose](https://expose.dev/) to get a remote URL that points to your app running locally.
+We need to use [10.0.2.2 instead of localhost](https://developer.android.com/studio/run/emulator-networking) here, or something like [Expose](https://expose.dev/) to get a remote URL that points to your app running locally.
 
 Let's now create a package in our app called "main":
 
 ![The main package](/assets/images/bootcamp/native/setup-main-package.png)
 
-Now, create a Kotlin class called `MainSessionNavHostFragment`. This class will extend the `TurboSessionNavHostFragment` class that ships with Turbo, feel free to copy the body of the class (make sure the imports are correct and the package name too):
+Now, create a Kotlin class called `MainSessionNavHostFragment`. This class will extend the `TurboSessionNavHostFragment` class that ships with Turbo. Feel free to copy the body of the class (make sure the imports and the package name are correct):
 
 ```kotlin
 package com.example.turbochirpernative.main
@@ -165,8 +165,8 @@ There's a lot going on here, and this code doesn't even work yet. Let's go piece
 1. The `startLocation` property should point to your app's default home page. In our case, it's the `/chirps` page. It could be the `/dashboard`, but we don't have anything there yet;
 2. The `registeredActivities` method is only used when we have more than one activity in our app, which isn't our case, so we return an empty list;
 3. The `registeredFragments` method will return a list of all fragments in our app to build the navigation graph. It's currently empty, but we'll use it in a bit;
-4. The `pathConfigurationLocation` returns the location to the path configuration JSON files. This file will have some app specific configurations which can be used for things like feature toggles, but it's also going to have the navigation configuration where we're going to specify which fragments will be used based on the URL pattern (more on that later). Our app should must ship with a default `configuration.json` file, but we could also provide a remote URL for the file that we could control dynamically from our backend server;
-5. We're also configuring the WebView to use the `Hotwire Native Android` User Agent header so we can detect in the backend that the request is coming from a Hotwire Native client (see more [here](/docs/hotwire-native))
+4. The `pathConfigurationLocation` returns the location to the path configuration JSON files. This file will have some app-specific configurations which can be used for things like feature toggles, but it's also going to have the navigation configuration where we're going to specify which fragments will be used based on the URL pattern (more on that later). Our app must ship with a default `configuration.json` file, but we could also provide a remote URL for the file that we could control dynamically from our backend server;
+5. We're also configuring the WebView to use the `Hotwire Native Android` User Agent header so we can detect in the backend that the request is coming from a Hotwire Native client (see more [here](/docs/hotwire-native));
 
 Okay, now let's create our `configuration.json` file. Right-click on the project root named "app" and choose "New > Directory", then call it "assets/json". Then, right-click on the `json` directory we just created, and add a new file called `configuration.json` with the following contents:
 
@@ -194,7 +194,7 @@ Okay, now let's create our `configuration.json` file. Right-click on the project
 
 We only have one rule defined in this file right now. This is the "catch-all" rule, which will be applied to every navigation started by Turbo. By default, it will render the fragment configured as the `turbo://fragment/web` URI. Let's create that fragment and register it in our `MainSessionNavHostFragment`.
 
-To create the fragment, let's first create a "features" package and then a "web" package inside of it. The "features" package will be where we keep our fragments and we can create sub packages for each subsystem we may have. For now, we only have one which we'll call "web".
+To create the fragment, let's first create a "features" package and then a "web" package inside of it. The "features" package will be where we keep our fragments and we can create subpackages for each subsystem we may have. For now, we only have one which we'll call "web".
 
 Inside of the `features.web` package, create a Kotlin class named `WebFragment` with the following contents:
 
@@ -232,7 +232,7 @@ Next, we need to update our `MainActivity` to use the `MainSessionNavHostFragmen
 
 ![Move main activity to the main package](/assets/images/bootcamp/native/setup-refactor-main-activity.png)
 
-This activity class is referenced in the `AndroidManifest.xml` file, make sure you update the reference to also use the `.main` package. You can edit the manifest by clicking on the "app/manifests" section on your left sidebar. Since we're changing the manifest, let's also make sure we add the `INTERNET` permission to our app, otherwise we won't be able to make network requests.
+This activity class is referenced in the `AndroidManifest.xml` file, so make sure you update the reference to also use the `.main` package. You can edit the manifest by clicking on the "app/manifests" section on your left sidebar. Since we're changing the manifest, let's also make sure we add the `INTERNET` permission to our app, otherwise we won't be able to make network requests.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -323,9 +323,9 @@ Now, if you run the app, you should see that we have successfully wrapped our we
 
 ![Turbo Chirper on Hotwire Native](/assets/images/bootcamp/native/setup-turbo-chirper-native-running.png)
 
-As of right now, mobile users have access to all the features exactly the way it works on mobile. As long as we build our features with a mobile first mentality using responsive UIs, we should be good most of the time. However, as of right now, you may notice our app is a little weird to use on mobile. Let's tweak our app so it looks better.
+As of right now, mobile users have access to all the features exactly the way they work on the mobile web. As long as we build our features with a mobile-first mentality using responsive UIs, we should be good most of the time. However, as of right now, you may notice our app is a little weird to use on mobile. Let's tweak our app so it looks better.
 
-Let's hide the top-level action bar and only leave the right below it. Open the layout file in "res -> values -> themes" and make it inherit from the `NoActionBar` theme:
+Let's hide the top-level action bar and only leave the one right below it. Open the layout file in "res -> values -> themes" and make it inherit from the `NoActionBar` theme:
 
 ```xml
 <resources xmlns:tools="http://schemas.android.com/tools">
@@ -336,7 +336,7 @@ Let's hide the top-level action bar and only leave the right below it. Open the 
 </resources>
 ```
 
-Then, change add the new indigo colors to the `colors.xml` file in "res -> values -> colors.xml":
+Then, add the new indigo colors to the `colors.xml` file in "res -> values -> colors.xml":
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -353,16 +353,16 @@ Then, change add the new indigo colors to the `colors.xml` file in "res -> value
 </resources>
 ```
 
-Now, it looks a little better. If you try to login, you should see the app looks exactly like you'd expect: it's a web responsive version of the Turbo Chirper app we built on the previous module.
+Now, it looks a little better. If you try to log in, you should see the app looks exactly like you'd expect: it's the responsive web version of the Turbo Chirper app we built in the previous module.
 
 ![App Running Login Screen](/assets/images/bootcamp/native/setup-app-running-login-screen.png)
 
 ![App Running Chirps Home](/assets/images/bootcamp/native/setup-app-running-chirps-home.png)
 
-There are a bunch of things we can improve here. Some of the interactions we built for the web don't really make sense in a mobile UX point-of-view. For instance:
+There are a bunch of things we can improve here. Some of the interactions we built for the web don't really make sense from a mobile UX point of view. For instance:
 
-* Adding a Chirp inline. Or editing a Chirp inline. These features would usually be done in a native modal screen instead of showing the forms inline
-* We're currently showing the web navbar at the top of the page, but that's not that useful inside the mobile app (it's still useful for users visiting our web app from mobile device's browsers), as menu bars and dropdowns like that kind of breaks the illusion of native screens. Same goes for the edit/delete Chirp dropdown
-* Right now we're only authenticating users inside the WebView using Cookies. However, it's not uncommon to need a fully native screen here and there to enhance the mobile experience. For that, we would need to setup some API routes and handle authentication
+* Adding or editing a Chirp inline. These features would usually be done in a native modal screen instead of showing the forms inline
+* We're currently showing the web navbar at the top of the page, but that's not that useful inside the mobile app (it's still useful for users visiting our web app from mobile browsers), as menu bars and dropdowns like that kind of break the illusion of native screens. The same goes for the edit/delete Chirp dropdown
+* Right now we're only authenticating users inside the WebView using Cookies. However, it's not uncommon to need a fully native screen here and there to enhance the mobile experience. For that, we would need to set up some API routes and handle authentication
 
 And we're gonna solve all that!
